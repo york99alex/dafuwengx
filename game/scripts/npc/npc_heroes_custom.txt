@@ -1,0 +1,32 @@
+"Heroes"{
+    "npc_dota_hero_phantom_assassin"{
+        "override_hero" "npc_dota_hero_phantom_assassin"
+		"Ability1"		"lua_phantom_strike"
+		"Ability2"		"phantom_assassin_coup_de_grace"
+		"Ability3"		""
+		"Ability4"		""
+		"Ability5"		""
+		"Ability6"		""
+		"Ability10"		"tf1"
+		"Ability11"		"tf2"
+		"Ability12"		"tf3"
+		"Ability13"		"tf4"
+		"Ability14"		"tf5"
+		"Ability15"		"tf6"
+		"Ability16"		"tf7"
+		"Ability17"		"tf8"
+        "StatusHealth"                "1500"       // Base health.
+        "StatusHealthRegen"           "0"         // Health regeneration rate.
+        "StatusMana"                  "800"         // Base mana.
+        "StatusManaRegen"             "0"         // Mana regeneration rate.
+		"AttackRange"		"150"
+		"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+		// "AttributeBaseStrength"		"19"
+		// "AttributeStrengthGain"		"2.0000"
+		// "AttributeBaseAgility"		"23"
+		// "AttributeAgilityGain"		"3.20000"
+		// "AttributeBaseIntelligence"		"15"
+		// "AttributeIntelligenceGain"		"1.400000"
+		// "HasAggressiveStance"		"1"     // 单位是否拥有靠近敌人的攻击性姿势
+    }
+}

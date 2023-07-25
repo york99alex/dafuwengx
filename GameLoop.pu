@@ -1,0 +1,52 @@
+@startuml GameLoop
+hide empty description
+' GameLoop:游戏循环 @game\scripts\src\utils\xstate
+' 状态机参数:{id, initial, states} 
+' states:{
+'   状态名: { on:{change:"下一个状态"}, 
+'             entry: "进入状态执行方法名",
+'             exit: "退出状态执行方法名"
+' }
+'
+
+
+[*] -> GameInit
+GameInit --> HeroSelection : Succeeded
+GameInit : 游戏初始化
+GameInit : (Precache,Activate)
+GameInit : 模块初始化
+HeroSelection --> GameState : state_change\n初始化轮序
+HeroSelection : 选择英雄
+state GameState {
+    GSNone : 初始化GameState\n设置所有玩家操作轮序\n设置回合数为0\n设置当前操作玩家\n循环变为GSReadyStart
+    GSNone --> GSReadyStart
+    GSReadyStart : 设置回合数时间\n第0回合5秒\n
+    state ReadyStartTOBegin <<join>>
+    GSReadyStart --> ReadyStartTOBegin :GSReadyStart_Exit方法{\n回合数加一addRound()\n触发事件"Event_GameStart"\n准备进入GSBegin(结束攻城和打野)\n只有两人触发终局决战}
+    ReadyStartTOBegin --> GSBegin
+    GSBegin : 玩家回合开始\n触发玩家回合开始事件\nEvent_PlayerRoundBegin\n(物品和技能CD,释放的技能,隐身符,黑黄杖效果,监狱,蓝量)\n广播Roll点操作
+    GSBegin --> GSWaitOprt
+    GSWaitOprt : 玩家操作阶段\n监听倒计时\n时间结束自动操作
+    GSWaitOprt --> GSWait : Roll点移动时进入GSWait
+    GSWait --> GSWaitOprt : Roll结束回到GSWaitOprt\n同时触发Event_Roll事件(移动和是否出狱)
+    GSWait : Wait超时回到上一个状态
+    GSWaitOprt --> GSMove : Roll后准备移动setState(GSMove)\nEvent_Roll触发移动事件Event_Move
+    GSMove --> GSWaitOprt : 如果处于亡国清算则回到GSWaitOprt
+    GSMove : moveToPath()方法进行移动\n触发路径判断功能\n触发豹子判断和事件Event_RollBaoZiJudge\n豹子Roll点和追加事件\n操作完成结束回合
+    GSMove --> GSFinished : setState(GSFinished)
+    GSFinished : Player:setRoundFinished设置玩家自己回合结束\n触发玩家回合结束事件Event_PlayerRoundFinished\n同步玩家网表信息setNetTableInfo
+    GSFinished --> GSBegin : 增加回合数\n准备进入GSBegin
+    [*] --> GSDeathClearing : 任意State如果设置金钱时检查金钱小于0\n则触发亡国清算事件
+    state 玩家死亡 <<choice>>
+    GSDeathClearing --> 还原之前游戏状态 : 亡国清算后金钱>0\n还原之前游戏状态
+    GSDeathClearing --> 玩家死亡 : 亡国清算后金钱<0\n玩家死亡\nPlayerDeath(player)\nplayerDie = true
+    玩家死亡 --> 还原之前游戏状态 : 剩余人数>1\n还剩两人则进入终局决战
+    玩家死亡 --> [*] : 剩余人数=1\n游戏结束
+    [*] --> GSSupply : 回合数更新触发事件Event_UpdateRound\n判断是否是补给回合
+    GSSupply  --> ReadyStartTOBegin : 补给结束准备进入GSBegin
+    GSSupply : 补给状态\n每位玩家%回合操作时间倒计时选择\n时间结束自动选择onTimeOver()
+}
+GameState --> GameState : Next Round
+GameState --> [*] : 游戏结束
+
+@enduml

@@ -24,4 +24,25 @@
 "test" "this is test of plain kv"
 }
 	}
+	"lua_phantom_strike" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/phantom_assassin/lua_phantom_strike"
+		"AbilityValues" {
+		}
+		"MaxLevel" "3"
+		"AbilityCooldown" "2"
+		"AbilityManaCost" "2"
+		"AbilityTextureName" "phantom_assassin_phantom_strike"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
+	}
+	"phantom_assassin_coup_de_grace" {
+		"BaseClass" "ability_datadriven"
+		"AbilityValues" {
+		}
+		"AbilityTextureName" "phantom_assassin_coup_de_grace"
+	}
 }
