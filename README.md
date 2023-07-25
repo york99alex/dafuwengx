@@ -1,6 +1,8 @@
 # 目录
 
+萌新开发笔记, 一款基于DOTA2游廊开发的拥有独特技能和玩法的大富翁游戏
 
+开发中略略略...
 
 
 
@@ -616,7 +618,7 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 - TS教程:
    - [TypeScript 入门教程](https://ts.xcatliu.com/)
    - [ 深入理解 TypeScript](https://jkchao.github.io/typescript-book-chinese/)
-   - 
+- 地图编辑器Hammer教学 [鸽子群来了个做地图的年轻人-LV1-](https://www.bilibili.com/video/BV1qx411g7eT/?spm_id_from=333.788.recommend_more_video.-1)
 
 
 ## ==文件目录/路径==
