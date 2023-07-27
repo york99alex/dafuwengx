@@ -3,7 +3,9 @@ import { HeroSelection } from "../mode/HeroSelection";
 import { Constant } from "../mode/constant";
 import { PathManager } from "../path/PathManager";
 import { PlayerManager } from "../player/playermanager";
+import { reloadable } from "../utils/tstl-utils";
 
+@reloadable
 export class GameConfig {
 
     constructor() {
@@ -131,8 +133,7 @@ export class GameConfig {
     registerEvent() {
         // 游戏状态变更
         ListenToGameEvent("game_rules_state_change", () => this.onEvent_game_rules_state_change(), undefined)
-        // 购买物品
-        CustomGameEventManager.RegisterListener("Event_Roll", (_, event) => this.onEvent_Roll(event))
+        CustomGameEventManager.RegisterListener("Event_Roll", (_, event) => { this.onEvent_Roll(event) })
         CustomGameEventManager.RegisterListener("Event_ChangeGold_Atk", () => this.onEvent_ChangeGold())
         CustomGameEventManager.RegisterListener("Event_ItemBuy", () => this.onEvent_ItemBuy())
         CustomGameEventManager.RegisterListener("Event_PlayerDie", () => this.onEvent_PlayerDie())
@@ -146,29 +147,49 @@ export class GameConfig {
     }
 
     // 操作请求
-    onMsg_oprt(tabData) {
+    onMsg_oprt(tabData: Record<any, any>) {
         DeepPrintTable(tabData)
         print("[LUA]:Receive=================>>>>>>>>>>>>>>>")
         if (tabData.typeOprt == null) {
             return
         }
+        print("tabData.nPlayerID:", tabData.nPlayerID)
+        this.processRoll(tabData)
+    }
 
+    /**处理roll点 */
+    processRoll(tabData: Record<any, any>) {
+        const oPlayer = GameRules.PlayerManager.getPlayer(tabData.nPlayerID)
+        let nNum1 = RandomInt(1, 6), nNum2 = RandomInt(1, 6)
+        print("nNum1:", nNum1)
+        print("nNum2:", nNum2)
+        print("PlayerResource.GetPlayer(oPlayer.m_nPlayerID):", PlayerResource.GetPlayer(oPlayer.m_nPlayerID))
+        DeepPrintTable(PlayerResource.GetPlayer(oPlayer.m_nPlayerID))
+        print("playerID", tabData.nPlayerID)
+        CustomGameEventManager.Send_ServerToAllClients("Event_Roll", {
+            bIgnore: 0,
+            nNum1: nNum1,
+            nNum2: nNum1,
+            playerID: tabData.nPlayerID
+        })
+        // CustomGameEventManager.Send_ServerToPlayer(PlayerResource.GetPlayer(oPlayer.m_nPlayerID), "Event_Roll", {
+        //     bIgnore: 0,
+        //     nNum1: nNum1,
+        //     nNum2: nNum1,
+        //     playerID: tabData.nPlayerID
+        // })
     }
 
     registerThink() {
     }
 
     static onEvent_Service_AllData() {
-        throw new Error("Method not implemented.");
     }
     onEvent_PlayerDie() {
-        throw new Error("Method not implemented.");
     }
     onEvent_ItemBuy() {
-        throw new Error("Method not implemented.");
     }
     onEvent_ChangeGold() {
-        throw new Error("Method not implemented.");
     }
 
     // 玩家roll点后移动
@@ -176,16 +197,22 @@ export class GameConfig {
         bIgnore: 0 | 1;
         nNum1: number;
         nNum2: number;
-        PlayerID: PlayerID;
+        playerID: PlayerID;
     }) {
-        if (event.bIgnore) {
+        print("是否触发!")
+        if (event.bIgnore == 1) {
             return;
         }
-        print(event)
 
         // 触发移动事件
-        CustomGameEventManager.Send_ServerToPlayer(PlayerResource.GetPlayer(event.PlayerID), "Event_Move", {
-            entity: PlayerResource.GetSelectedHeroEntity(event.PlayerID)
+        // CustomGameEventManager.Send_ServerToPlayer(PlayerResource.GetPlayer(event.PlayerID), "Event_Move", {
+        //     entity: PlayerResource.GetSelectedHeroEntity(event.PlayerID)
+        // })
+        const oPlayer = GameRules.PlayerManager.getPlayer(event.playerID)
+
+        const pathDes = GameRules.PathManager.getNextPath(oPlayer.m_pathCur, event.nNum1 + event.nNum2)
+        oPlayer.moveToPath(pathDes, (bSuccess: boolean) => {
+            print("=======YYY===移动结束")
         })
 
         // // 建议通过PathManager的方法传入playerID获取其当前curPath

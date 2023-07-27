@@ -229,7 +229,7 @@ export class Player {
         // 设置起点路径
         this.setPath(GameRules.PathManager.getPathByType(GameMessage.TP_START)[0])
 
-        
+
     }
 
     initTeam() {
@@ -498,5 +498,22 @@ export class Player {
             }
             eBz._ctrlBzAtk_thinkID = null
         })
+    }
+
+    /**以前 */
+    moveToPath(path: Path, funCallBack?: Function) {
+        // 开始移动
+        this.setState()
+        this.m_pathMoveStart = this.m_pathCur
+        GameRules.PathManager.moveToPath(this.m_eHero,path,true,(bSuccess:boolean)=>{
+            if(bSuccess && !this.m_bDie){
+                this.setPath(path)
+            }
+            if(funCallBack != null) funCallBack(bSuccess)
+        })
+    }
+
+    /**设置玩家状态 */
+    setState() {
     }
 }

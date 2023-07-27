@@ -16,7 +16,6 @@ import { PathTreasure } from "./pathtreasure";
 export class PathFactory {
     static create(entity: CBaseEntity) {
         const typePath = entity.GetIntAttr("PathType")
-        print("typePath:",typePath)
         // 对应类型的子类
         if (typePath >= GameMessage.TP_DOMAIN_1 && typePath < GameMessage.TP_DOMAIN_End) {
             switch (typePath) {

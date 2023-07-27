@@ -11,18 +11,8 @@
  *     to change them back into arrays yourself! See 'toArray()' in src/panorama/hud.ts
  */
 // To declare an event for use, add it to this table with the type of its data
-
-
-// 禁止引用类型
 declare interface CustomGameEventDeclarations {
     c2s_test_event: {};
-
-    Event_Roll: {
-        bIgnore: boolean,
-        nNum1: number,
-        nNum2: number,
-        playerID: PlayerID
-    }
 
     Event_Move: {
         entity: any
@@ -48,6 +38,13 @@ declare interface CustomGameEventDeclarations {
         nPlayerId: PlayerID
     }
 
+    Event_Roll: {
+        bIgnore: 0 | 1,
+        nNum1: number,
+        nNum2: number,
+        playerID: PlayerID
+    }
+
     GM_Operator: {
         nPlayerID: number;
         typeOprt: number;
@@ -70,7 +67,6 @@ declare interface CustomGameEventDeclarations {
                 arrPath: number[]
             }
         }
-
     };
 
     GM_OperatorFinished: {
@@ -90,7 +86,7 @@ declare interface CustomGameEventDeclarations {
         nPosZ: number;
     };
 
-    "GM_CardAdd": {
+    GM_CardAdd: {
         nPlayerID: number;
         json: {
             nCardID: number;
@@ -100,7 +96,7 @@ declare interface CustomGameEventDeclarations {
         }[];
     };
 
-    "GM_CardUpdata": {
+    GM_CardUpdata: {
         nPlayerID: number;
         json: {
             nCardID: number;
@@ -110,7 +106,7 @@ declare interface CustomGameEventDeclarations {
         }[];
     };
 
-    "GM_CardInfo": {
+    GM_CardInfo: {
         tabCardInfo: any;
     };
 
@@ -119,18 +115,18 @@ declare interface CustomGameEventDeclarations {
     }
 
     Event_PlayerMove: {
-        player
+        player: any
     }
 
-    Event_BZCanAtk:{
-        entity
+    Event_BZCanAtk: {
+        entity: any
     }
 
-    Event_BZCantAtk:{
-        entity
+    Event_BZCantAtk: {
+        entity: any
     }
 
-    Event_GameStart:{
-        
+    Event_GameStart: {
+
     }
 }

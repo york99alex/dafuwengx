@@ -87,33 +87,47 @@ export class Path {
     initNilPos() {
         this.m_tabPos.push({
             entity: null,
-            vPos: (this.m_entity.GetRightVector() * 75 + this.m_entity.GetAbsOrigin()) as Vector
+            vPos: (this.m_entity.GetRightVector() * 40 + this.m_entity.GetAbsOrigin()) as Vector
         })
         this.m_tabPos.push({
             entity: null,
-            vPos: (this.m_entity.GetRightVector() * -75 + this.m_entity.GetAbsOrigin()) as Vector
+            vPos: (this.m_entity.GetRightVector() * -40 + this.m_entity.GetAbsOrigin()) as Vector
         })
         this.m_tabPos.push({
             entity: null,
-            vPos: (this.m_entity.GetRightVector() * 75 + this.m_entity.GetAbsOrigin() * 50 + this.m_entity.GetAbsOrigin()) as Vector
+            vPos: (this.m_entity.GetRightVector() * 40 + this.m_entity.GetForwardVector() * 10 + this.m_entity.GetAbsOrigin()) as Vector
         })
         this.m_tabPos.push({
             entity: null,
-            vPos: (this.m_entity.GetRightVector() * -75 + this.m_entity.GetAbsOrigin() * 50 + this.m_entity.GetAbsOrigin()) as Vector
+            vPos: (this.m_entity.GetRightVector() * -40 + this.m_entity.GetForwardVector() * 10 + this.m_entity.GetAbsOrigin()) as Vector
         })
         this.m_tabPos.push({
             entity: null,
-            vPos: (this.m_entity.GetRightVector() * 75 - this.m_entity.GetAbsOrigin() * 50 + this.m_entity.GetAbsOrigin()) as Vector
+            vPos: (this.m_entity.GetRightVector() * 40 - this.m_entity.GetForwardVector() * 10 + this.m_entity.GetAbsOrigin()) as Vector
         })
         this.m_tabPos.push({
             entity: null,
-            vPos: (this.m_entity.GetRightVector() * -75 - this.m_entity.GetAbsOrigin() * 50 + this.m_entity.GetAbsOrigin()) as Vector
+            vPos: (this.m_entity.GetRightVector() * -40 - this.m_entity.GetForwardVector() * 10 + this.m_entity.GetAbsOrigin()) as Vector
         })
-
-        DeepPrintTable(this.m_tabPos)
     }
 
     setState(typeState: number) {
         this.m_typeState = typeState
+    }
+
+    /**获得一个空位,并占用 */
+    getNilPos(entity:CDOTA_BaseNPC_Hero){
+        print("===m_tabPos===")
+        DeepPrintTable(this.m_tabPos)
+        for (let i = 1; i < this.m_tabPos.length; i++) {
+            const v = this.m_tabPos[i];
+            if(v.entity == null){
+                // 空位置
+                v.entity = entity
+                print("空位置:",v.vPos)
+                return v.vPos
+            }
+        }
+        return this.m_entity.GetAbsOrigin()
     }
 }

@@ -1,9 +1,13 @@
+import { PlayerManager } from "../player/playermanager";
+import { AHMC } from "../utils/amhc";
+import { reloadable } from "../utils/tstl-utils";
 import { Path } from "./Path";
 import { PathFactory } from "./pathfactory";
 
+@reloadable
 export class PathManager {
 
-    /**全部路径 */ 
+    /**全部路径 */
     m_tabPaths: Path[] = null
     m_tabMoveData: {
         nEntId: EntityIndex
@@ -34,7 +38,7 @@ export class PathManager {
     }
 
     /** 获取当前路径的下个路径 */
-    getNextPath(pathCur: Path, nDis: number) {
+    getNextPath(pathCur: Path, nDis: number): Path {
         for (let index = 0; index < this.m_tabPaths.length; index++) {
             if (this.m_tabPaths[index] == pathCur) {
                 let nIndex = index + nDis
@@ -46,6 +50,7 @@ export class PathManager {
             }
         }
     }
+
     /** 获取路径对象 */
     getPathByType(type: number) {
         let tabPath: Path[] = []
@@ -75,8 +80,80 @@ export class PathManager {
                 }
             })
         }
-        
+
         // 设置网表
         CustomNetTables.SetTableValue("GamingTable", "path_info", tabData)
+    }
+
+    /**路径寻路移动 */
+    moveToPath(entity: CDOTA_BaseNPC_Hero, path: Path, bEventEnable: boolean, funCallBack: Function) {
+        const oPlayer = GameRules.PlayerManager.getPlayer(entity.GetPlayerID())
+        const pathBegin = oPlayer.m_pathCur
+        let pathCur = pathBegin
+        let pathNext = this.getNextPath(pathCur, 1)
+        let vNext
+        function getNextPos() {
+            if (pathNext == path) {
+                vNext = pathNext.getNilPos(entity)
+            } else {
+                vNext = pathNext.m_entity.GetOrigin()
+            }
+        }
+        getNextPos()
+
+        entity.MoveToPosition(vNext)
+
+        const nEntId = entity.GetEntityIndex()
+
+        // 结束上次移动
+        if (this.m_tabMoveData[nEntId] == null) this.moveStop(entity, false)
+        // 新的移动
+        const tMoveData = {
+            nEntId: nEntId,
+            funCallBack: funCallBack
+        }
+        this.m_tabMoveData[nEntId] = tMoveData
+
+        // 持续寻路
+        Timers.CreateTimer(() => {
+            if (tMoveData != this.m_tabMoveData[nEntId]) return
+            if (!AHMC.IsValid(entity) || !entity.IsAlive()) {
+                this.moveStop(entity, false)
+                return
+            }
+            // 检验每个寻路点path_corner
+            const nDis = (entity.GetOrigin() - vNext as Vector).Length2D()
+            let nCheckDis = 30
+            if (pathNext != path) {
+                nCheckDis = entity.GetIdealSpeed() * 0.35 - 75
+                if (nCheckDis < 30) nCheckDis = 30
+            }
+            if (nDis < nCheckDis) {
+                // 触发事件: 途径某路径
+                if (pathNext == path) {
+                    this.moveStop(entity, true)
+                    return null
+                } else {
+                    // 移动至下一个路径点
+                    pathCur = pathNext
+                    pathNext = this.getNextPath(pathCur, 1)
+                    if (pathNext == null || pathNext == pathCur) {
+                        this.moveStop(entity, true)
+                        return
+                    }
+                    getNextPos()
+                }
+            }
+            entity.MoveToPosition(vNext)
+            return 0.1
+        })
+    }
+
+    moveStop(entity: CDOTA_BaseNPC_Hero, bSuccess: boolean) {
+        const tMoveData = this.m_tabMoveData[entity.GetEntityIndex()]
+        if (tMoveData == null) return
+        this.m_tabMoveData[entity.GetEntityIndex()] = null
+        if (tMoveData.funCallBack != null)
+            tMoveData.funCallBack(bSuccess)
     }
 }
