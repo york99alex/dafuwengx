@@ -2,6 +2,7 @@ import { GameLoop } from '../mode/GameLoop';
 import { HeroSelection } from '../mode/HeroSelection';
 import { PathManager } from '../path/PathManager';
 import { PlayerManager } from '../player/playermanager';
+import { EventManager } from '../utils/eventmanager';
 import { Debug } from './Debug';
 import { GameConfig } from './GameConfig';
 import { XNetTable } from './xnet-table';
@@ -10,6 +11,7 @@ declare global {
     interface CDOTAGameRules {
         // 声明所有的GameRules模块，这个主要是为了方便其他地方的引用（保证单例模式）
         XNetTable: XNetTable;
+        EventManager: EventManager;
         GameLoop: GameLoop;
         PlayerManager: PlayerManager;
         PathManager: PathManager;

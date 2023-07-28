@@ -3,6 +3,7 @@ import { HeroSelection } from "../mode/HeroSelection";
 import { Constant } from "../mode/constant";
 import { PathManager } from "../path/PathManager";
 import { PlayerManager } from "../player/playermanager";
+import { EventManager } from "../utils/eventmanager";
 import { reloadable } from "../utils/tstl-utils";
 
 @reloadable
@@ -97,6 +98,7 @@ export class GameConfig {
         //     GameRules.SetCustomGameTeamMaxPlayers(team, 1);
         // }
 
+        GameRules.EventManager = new EventManager()
         this.registerEvent()
         this.registerMessage()
         this.registerThink()
@@ -133,7 +135,13 @@ export class GameConfig {
     registerEvent() {
         // 游戏状态变更
         ListenToGameEvent("game_rules_state_change", () => this.onEvent_game_rules_state_change(), undefined)
-        CustomGameEventManager.RegisterListener("Event_Roll", (_, event) => { this.onEvent_Roll(event) })
+        GameRules.EventManager.Register("Event_Roll", (event: {
+            bIgnore: 0 | 1
+            nNum1: number
+            nNum2: number
+            playerID: PlayerID
+        }) => { this.onEvent_Roll(event) }, this, -1, -1000)
+
         CustomGameEventManager.RegisterListener("Event_ChangeGold_Atk", () => this.onEvent_ChangeGold())
         CustomGameEventManager.RegisterListener("Event_ItemBuy", () => this.onEvent_ItemBuy())
         CustomGameEventManager.RegisterListener("Event_PlayerDie", () => this.onEvent_PlayerDie())
@@ -163,13 +171,11 @@ export class GameConfig {
         let nNum1 = RandomInt(1, 6), nNum2 = RandomInt(1, 6)
         print("nNum1:", nNum1)
         print("nNum2:", nNum2)
-        print("PlayerResource.GetPlayer(oPlayer.m_nPlayerID):", PlayerResource.GetPlayer(oPlayer.m_nPlayerID))
-        DeepPrintTable(PlayerResource.GetPlayer(oPlayer.m_nPlayerID))
         print("playerID", tabData.nPlayerID)
-        CustomGameEventManager.Send_ServerToAllClients("Event_Roll", {
+        GameRules.EventManager.FireEvent("Event_Roll", {
             bIgnore: 0,
             nNum1: nNum1,
-            nNum2: nNum1,
+            nNum2: nNum2,
             playerID: tabData.nPlayerID
         })
         // CustomGameEventManager.Send_ServerToPlayer(PlayerResource.GetPlayer(oPlayer.m_nPlayerID), "Event_Roll", {
@@ -194,10 +200,10 @@ export class GameConfig {
 
     // 玩家roll点后移动
     onEvent_Roll(event: {
-        bIgnore: 0 | 1;
-        nNum1: number;
-        nNum2: number;
-        playerID: PlayerID;
+        bIgnore: 0 | 1
+        nNum1: number
+        nNum2: number
+        playerID: PlayerID
     }) {
         print("是否触发!")
         if (event.bIgnore == 1) {
@@ -208,6 +214,7 @@ export class GameConfig {
         // CustomGameEventManager.Send_ServerToPlayer(PlayerResource.GetPlayer(event.PlayerID), "Event_Move", {
         //     entity: PlayerResource.GetSelectedHeroEntity(event.PlayerID)
         // })
+        print("playerID:", event.playerID)
         const oPlayer = GameRules.PlayerManager.getPlayer(event.playerID)
 
         const pathDes = GameRules.PathManager.getNextPath(oPlayer.m_pathCur, event.nNum1 + event.nNum2)

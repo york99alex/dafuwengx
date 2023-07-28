@@ -894,6 +894,8 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 14. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
+15. 统一所有英雄移速
+
 
 
 ## 游戏循环状态机GameLoop
@@ -964,7 +966,15 @@ Path的类class name应以	path_corner
 
 
 
-## 群大佬
+## Roll
+
+前端按钮触发GM_Operator,后端服务端监听到
+
+
+
+
+
+## 群
 
 <img src="https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/25/16-54-29-26ffdfa5d22796b5641ca47fe694acf2-image-20230725165429612-0d8335.png" alt="image-20230725165429612" style="zoom: 33%;" />
 

@@ -106,7 +106,7 @@ export class PlayerManager {
             const eHero = EntIndexToHScript(event.heroindex as EntityIndex) as CDOTA_BaseNPC_Hero
             const oPlayer = this.m_tabPlayers[eHero.GetPlayerOwnerID()]
             GameRules.HeroSelection.m_SelectHeroPlayerID.push(eHero.GetPlayerOwnerID())
-            if(GameRules.State_Get() != GameState.HERO_SELECTION){
+            if (GameRules.State_Get() != GameState.HERO_SELECTION) {
                 GameRules.HeroSelection.GiveAllPlayersSort()
             }
             if (oPlayer != null && !oPlayer.__init) {
