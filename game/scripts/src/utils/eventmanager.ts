@@ -143,9 +143,9 @@ export class EventManager {
      * 触发事件
      * @param eventName 
      */
-    FireEvent(eventName: string, args: any) {
+    FireEvent(eventName: string, args?: any) {
         print("FireEvent==>eventName:", eventName)
-        DeepPrintTable(args)
+        // DeepPrintTable(args)
         if (this.m_tBlockFire) {
             // 存在阻塞则加入阻塞队列
             this.m_tBlockFire[eventName].push(args);
@@ -169,7 +169,7 @@ export class EventManager {
                     handler(args)
                     bSuccess = true
                 } catch (error) {
-                    print(error.message)
+                    print("FireEvent Error==>eventName:", eventName)
                 }
                 bDeleteHandler = bSuccess
             } else {
@@ -178,7 +178,7 @@ export class EventManager {
             // 执行完毕后释放
             if (bDeleteHandler) {
                 const nFireCount = this.m_tabEventCount[event.nID]
-                if(nFireCount != -1){
+                if (nFireCount != -1) {
                     if (nFireCount > 0) {
                         this.m_tabEventCount[event.nID]--
                         this.UnRegisterByID(event.nID);

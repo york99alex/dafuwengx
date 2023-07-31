@@ -237,13 +237,8 @@ export class Player {
     }
 
     setHeroCanAttack(bCan: boolean) {
-        print("this.m_eHero:", this.m_eHero)
-        print("=========DeepPrintTable:this.m_eHero")
-        DeepPrintTable(this.m_eHero)
         const isValidEntity = IsValidEntity(this.m_eHero)
         const IsAlive = this.m_eHero.IsAlive()
-        print("IsValidEntity:", isValidEntity)
-        print("IsAlive:", IsAlive)
         if (bCan)
             AHMC.RemoveAbilityAndModifier(this.m_eHero, "jiaoxie")
         else
@@ -312,9 +307,9 @@ export class Player {
         const info = CustomNetTables.GetTableValue("GamingTable", keyname)
         if (info != null) info.nGold = this.m_nGold
         CustomNetTables.SetTableValue("GamingTable", keyname, info)
-        print("keyname", keyname)
-        print("=========DeepPrintTable:GamingTable", CustomNetTables.GetTableValue("GamingTable", keyname))
-        DeepPrintTable(CustomNetTables.GetTableValue("GamingTable", keyname))
+        // print("keyname", keyname)
+        // print("=========DeepPrintTable:GamingTable", CustomNetTables.GetTableValue("GamingTable", keyname))
+        // DeepPrintTable(CustomNetTables.GetTableValue("GamingTable", keyname))
 
         if ((lastnGold >= 0) != (nGold >= 0)) {
             CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, "Event_TO_SendDeathClearing", { nPlayerId: this.m_nPlayerID })
@@ -505,15 +500,24 @@ export class Player {
         // 开始移动
         this.setState()
         this.m_pathMoveStart = this.m_pathCur
-        GameRules.PathManager.moveToPath(this.m_eHero,path,true,(bSuccess:boolean)=>{
-            if(bSuccess && !this.m_bDie){
+        GameRules.PathManager.moveToPath(this.m_eHero, path, true, (bSuccess: boolean) => {
+            if (bSuccess && !this.m_bDie) {
                 this.setPath(path)
             }
-            if(funCallBack != null) funCallBack(bSuccess)
+            if (funCallBack != null) funCallBack(bSuccess)
         })
     }
 
     /**设置玩家状态 */
     setState() {
+    }
+
+    /**获取领地数量 */
+    getPathCount() {
+        let sum = 0
+        for (const key in this.m_tabMyPath) {
+            sum += this.m_tabMyPath[key].length
+        }
+        return sum
     }
 }

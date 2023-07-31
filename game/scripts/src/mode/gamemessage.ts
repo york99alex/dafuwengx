@@ -59,4 +59,31 @@ export namespace GameMessage {
     export const TP_STEPS = 1001   // 台阶
     export const TP_SHOP_SIDE = 1002   // 边路商店
     export const TP_SHOP_SECRET = 1003   // 神秘商店
+
+    // 操作类型
+    export const TypeOprt = {
+        TO_Finish: 0       // 结束回合
+        , TO_Roll: 1         // roll点
+        , TO_AYZZ: 2         // 安营扎寨
+        , TO_GCLD: 3         // 攻城略地
+        , TO_TP: 4           // 传送
+        , TO_PRISON_OUT: 5   // 出狱
+        , TO_AUCTION: 6
+        , TO_DeathClearing: 7 // 死亡清算
+        , TO_Supply: 8       // 补给轮抽
+        , TO_AtkMonster: 9   // 打野
+        , TO_RandomCard: 10  // 随机补给卡牌
+        , TO_Free: 1000      // 以下为自由操作
+        , TO_ZBMM: 1001      // 招兵买马
+        , TO_YJXR: 1002      // 养精蓄锐
+        , TO_XJGT: 1003      // 解甲归田
+        , TO_TREASURE: 1004  // 秘藏探索
+        , TO_TRADE: 1005     // 交易
+        , TO_TRADE_BE: 1006      // 被交易
+        , TO_SendAuction: 1007   // 发起拍卖
+        , TO_BidAuction: 1008    // 竞价拍卖
+        , TO_FinishAuction: 1009 // 竞拍结束
+        , TO_UseCard: 1010       // 使用卡牌
+        , TO_MultTrade: 1011     // 屏蔽交易玩家
+    }
 }

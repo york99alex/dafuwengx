@@ -845,7 +845,10 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
    ​    this.setPath(GameRules.PathManager.getPathByType(GameMessage.TP_START)[0])
 
-2. Path路径管理模块, 以及游戏地图
+2. GameConfig的计时回调registerThink和onThink_update
+   如何与GameLoop实现
+
+3. Path路径管理模块, 以及游戏地图
 
    1. 添加 unit 
 
@@ -868,37 +871,50 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
    4. PathRune
 
-3. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+4. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
 
-4. 兵卒?
+5. 兵卒?
 
-5. 其他模块
+6. 其他模块
 
-6. 英雄技能
+7. 英雄技能
 
-7. Roll点的随机路径平衡机制数值思考
+8. Roll点的随机路径平衡机制数值思考
 
-8. CustomGameEventManager.Send_ServerToPlayer?还是
+9. CustomGameEventManager.Send_ServerToPlayer?还是
 
    Send_ServerToAllClients
 
-9. 检查网表GamingTable的nSumGold总资产计算是否正确
+10. 检查网表GamingTable的nSumGold总资产计算是否正确
 
-10. 增加英雄 const HERO_TO_BANNER 需要调整
+11. 增加英雄 const HERO_TO_BANNER 需要调整
 
-11. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
+12. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
 
-12. _tEventIDGCLD   ?为数组?
+13. _tEventIDGCLD   ?为数组?
 
-13. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
+14. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
 
-14. addon_schinese.txt :		"RandomTip"						"随机英雄"
+15. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
-15. 统一所有英雄移速
+16. 统一所有英雄移速
+
+17. 检查FireEvent的args参数为空的情况
+
+18. GSManager:setState都调整为loop
+
+19.   /**设置结算数据 */
+
+      setGameEndData(){
+
+    
+
+      }
 
 
 
-## 游戏循环状态机GameLoop
+
+## 状态机GameLoop
 
 状态机负责游戏循环/进程, 状态机的每个状态为一个循环,一个循环里可以嵌套状态机/循环
 

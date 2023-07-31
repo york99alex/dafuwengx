@@ -22,6 +22,7 @@ declare interface CustomNetTableDeclarations {
             typeGameMode: number
             bNoSwap: 1 | 0
         }
+        change_gold:any
         all_playerids: any
         player_info_0: {
             bDisconnect: 1 | 0

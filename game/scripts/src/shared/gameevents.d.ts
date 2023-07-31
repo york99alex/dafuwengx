@@ -38,13 +38,6 @@ declare interface CustomGameEventDeclarations {
         nPlayerId: PlayerID
     }
 
-    Event_Roll: {
-        bIgnore: 0 | 1,
-        nNum1: number,
-        nNum2: number,
-        playerID: PlayerID
-    }
-
     GM_Operator: {
         nPlayerID: number;
         typeOprt: number;

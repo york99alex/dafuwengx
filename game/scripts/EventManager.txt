@@ -1,0 +1,17 @@
+// 汇总Server端的监听事件,自定义类game\scripts\src\utils\eventmanager.ts
+
+"Event_Roll", (event: {
+            bIgnore: 0 | 1
+            nNum1: number
+            nNum2: number
+            playerID: PlayerID
+        })
+
+"Event_ChangeGold_Atk", (event: {
+            nGold: number
+            player: Player
+        })
+
+"Event_PlayerDie", (event: {
+            player: Player
+        })

@@ -85,6 +85,20 @@ export class GameLoop {
         this.MainService = interpret(this.MainLoop).start()
     }
 
+    getMainState(Loop: StateMachine.Service<object, EventObject, {
+        value: any
+        context: object
+    }>) {
+        return interpret(this.MainLoop).getState().value
+    }
+
+    getGameState(Loop: StateMachine.Service<object, EventObject, {
+        value: any
+        context: object
+    }>) {
+        return interpret(this.GameStateLoop).getState().value
+    }
+
     // MainLoop
 
     GameInit_Entry(): void {
@@ -95,20 +109,16 @@ export class GameLoop {
         }, 3)
     }
     GameInit_Exit(): void {
-        print("游戏初始化结束")
     }
     HeroSelection_Entry(): void {
-        print("英雄选择开始")
         this.Timer(() => {
             this.GameStateService = interpret(this.GameStateLoop).start()
             return null
         }, 3)
     }
     HeroSelection_Exit(): void {
-        print("英雄选择结束")
     }
     GameState_Entry(): void {
-        print("游戏主循环开始")
 
     }
     GameOver_Entry(): void {
@@ -119,14 +129,12 @@ export class GameLoop {
     // GameStateLoop
 
     GSNone_Entry(): void {
-        print("GameState初始化开始,GSNone_Entry")
         this.Timer(() => {
             this.GameStateService.send("to_readystart")
             return null
         }, 3)
     }
     GSNone_Exit(): void {
-        print("GameState初始化结束,GSNone_Exit")
     }
     GSReadyStart_Entry(): void {
 
@@ -158,10 +166,14 @@ export class GameLoop {
     GSWait_Exit(): void {
 
     }
-    GSMove_Exit(): void {
+
+    GSMove_Entry(): void {
+        print("进入GSMOVE")
 
     }
-    GSMove_Entry(): void {
+
+    GSMove_Exit(): void {
+        print("离开GSMOVE")
 
     }
 
@@ -178,7 +190,7 @@ export class GameLoop {
     GSDeathClearing_Entry(): void {
 
     }
-    
+
     /**让出当前状态 */
     yieldState(): any {
         throw new Error("Method not implemented.");
@@ -194,5 +206,5 @@ export class GameLoop {
         throw new Error("Method not implemented.");
     }
 
-    
+
 }

@@ -1,13 +1,22 @@
+import { CardManager } from "../card/cardmanager";
 import { GameLoop } from "../mode/GameLoop";
 import { HeroSelection } from "../mode/HeroSelection";
+import { Auction } from "../mode/auction";
 import { Constant } from "../mode/constant";
+import { DeathClearing } from "../mode/deathclearing";
+import { GameMessage } from "../mode/gamemessage";
+import { Trade } from "../mode/trade";
 import { PathManager } from "../path/PathManager";
+import { Player } from "../player/player";
 import { PlayerManager } from "../player/playermanager";
 import { EventManager } from "../utils/eventmanager";
 import { reloadable } from "../utils/tstl-utils";
+import { interpret } from "../utils/xstate/xstate-dota";
 
 @reloadable
 export class GameConfig {
+
+    _DotaState: []
 
     constructor() {
         print("[GameConfig] start...开始配置")
@@ -135,17 +144,25 @@ export class GameConfig {
     registerEvent() {
         // 游戏状态变更
         ListenToGameEvent("game_rules_state_change", () => this.onEvent_game_rules_state_change(), undefined)
+
+        // 监听Roll点事件,无限次
         GameRules.EventManager.Register("Event_Roll", (event: {
             bIgnore: 0 | 1
             nNum1: number
             nNum2: number
-            playerID: PlayerID
-        }) => { this.onEvent_Roll(event) }, this, -1, -1000)
+            player: Player
+        }) => this.onEvent_Roll(event), this, -1, -1000)
 
-        CustomGameEventManager.RegisterListener("Event_ChangeGold_Atk", () => this.onEvent_ChangeGold())
-        CustomGameEventManager.RegisterListener("Event_ItemBuy", () => this.onEvent_ItemBuy())
-        CustomGameEventManager.RegisterListener("Event_PlayerDie", () => this.onEvent_PlayerDie())
-        CustomGameEventManager.RegisterListener("Event_Service_AllData", () => GameConfig.onEvent_Service_AllData())
+        // 监听攻击导致的金钱变化,无限次
+        GameRules.EventManager.Register("Event_ChangeGold_Atk", (event: {
+            nGold: number
+            player: Player
+        }) => this.onEvent_ChangeGold(event), this, -1)
+
+        // 监听玩家死亡,无限次
+        GameRules.EventManager.Register("Event_PlayerDie", (event: {
+            player: Player
+        }) => this.onEvent_PlayerDie(event), this, -1, -1000)
     }
 
     //----------消息回调----------
@@ -156,13 +173,55 @@ export class GameConfig {
 
     // 操作请求
     onMsg_oprt(tabData: Record<any, any>) {
-        DeepPrintTable(tabData)
         print("[LUA]:Receive=================>>>>>>>>>>>>>>>")
+        DeepPrintTable(tabData)
         if (tabData.typeOprt == null) {
             return
         }
         print("tabData.nPlayerID:", tabData.nPlayerID)
-        this.processRoll(tabData)
+        if (tabData.typeOprt > GameMessage.TypeOprt.TO_Free) {
+            if (tabData.typeOprt == GameMessage.TypeOprt.TO_ZBMM) { }
+            else if (tabData.typeOprt == GameMessage.TypeOprt.TO_XJGT) { }
+            else if (tabData.typeOprt == GameMessage.TypeOprt.TO_TRADE) {
+                GameRules.EventManager.FireEvent(Trade.EvtID.Event_TO_TRADE, tabData)
+            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_TRADE_BE) {
+                GameRules.EventManager.FireEvent(Trade.EvtID.Event_TO_TRADE_BE, tabData)
+            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_SendAuction) {
+                GameRules.EventManager.FireEvent(Auction.EvtID.Event_TO_SendAuction, tabData)
+            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_BidAuction) {
+                GameRules.EventManager.FireEvent(Auction.EvtID.Event_TO_BidAuction, tabData)
+            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_UseCard) {
+                GameRules.EventManager.FireEvent(CardManager.EvtID.Event_CardUseRequest, tabData)
+            } else {
+                // 
+            }
+        } else {
+            // } else if (this.checkOprt(tabData) != false) {
+            if (tabData.typeOprt == GameMessage.TypeOprt.TO_Finish) {
+                this.processFinish(tabData)
+            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_Roll) {
+                this.processRoll(tabData)
+            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_AYZZ) {
+                this.processAYZZ(tabData)
+            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_GCLD) {
+                this.processGCLD(tabData)
+            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_TP) {
+                this.processTP(tabData)
+            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_PRISON_OUT) {
+                this.processPrisonOut(tabData)
+            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_DeathClearing) {
+                GameRules.EventManager.FireEvent(DeathClearing.EvtID.Event_TO_DeathClearing, tabData)
+            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_Supply) {
+                // Supply
+            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_AtkMonster) {
+                this.processAtkMonster(tabData)
+            }
+        }
+    }
+
+    /**处理回合结束 */
+    processFinish(tabData) {
+
     }
 
     /**处理roll点 */
@@ -176,114 +235,239 @@ export class GameConfig {
             bIgnore: 0,
             nNum1: nNum1,
             nNum2: nNum2,
-            playerID: tabData.nPlayerID
+            player: oPlayer
         })
-        // CustomGameEventManager.Send_ServerToPlayer(PlayerResource.GetPlayer(oPlayer.m_nPlayerID), "Event_Roll", {
-        //     bIgnore: 0,
-        //     nNum1: nNum1,
-        //     nNum2: nNum1,
-        //     playerID: tabData.nPlayerID
-        // })
     }
 
+    /**处理安营扎寨 */
+    processAYZZ(tabData) {
+
+    }
+
+    /**处理攻城略地 */
+    processGCLD(tabData) {
+
+    }
+
+    /**处理TP传送 */
+    processTP(tabData) {
+
+    }
+
+    /**处理出狱 */
+    processPrisonOut(tabData) {
+
+    }
+
+    /**处理打野 */
+    processAtkMonster(tabData) {
+
+    }
+
+    /**验证操作 */
+    checkOprt(tabData, bDel?: boolean) {
+        print("checkOprt")
+        if (bDel) {
+            GameRules.PlayerManager.m_tabOprtSend = GameRules.PlayerManager.m_tabOprtSend.filter(item => {
+                item.nPlayerID == tabData.PlayerID &&
+                    item.typeOprt == tabData.typeOprt
+            })
+            GameRules.PlayerManager.m_tabOprtBroadcast = GameRules.PlayerManager.m_tabOprtBroadcast.filter(item => {
+                item.nPlayerID == tabData.PlayerID &&
+                    item.typeOprt == tabData.typeOprt
+            })
+        }
+        for (let index = 0; index < GameRules.PlayerManager.m_tabOprtCan.length; index++) {
+            const value = GameRules.PlayerManager.m_tabOprtCan[index];
+            // PlayerID:发送网包的玩家ID
+            if (bDel) {
+                GameRules.PlayerManager.m_tabOprtCan = GameRules.PlayerManager.m_tabOprtCan.filter(item => {
+                    item.nPlayerID == tabData.PlayerID &&
+                        item.typeOprt == tabData.typeOprt
+                })
+                return value
+            }
+        }
+        return false
+    }
+
+    // ================计时回调================
+    /**注册计时协程 */
     registerThink() {
+        // 全局主流程
+        this._DotaState = []
+        Timers.CreateTimer(2, () => {
+            return this.onThink_update()
+        })
     }
 
-    static onEvent_Service_AllData() {
-    }
-    onEvent_PlayerDie() {
-    }
-    onEvent_ItemBuy() {
-    }
-    onEvent_ChangeGold() {
+    /**游戏进行时 */
+    onThink_update() {
+        // 对于每一个GS状态都持续update进行
     }
 
-    // 玩家roll点后移动
+    /**玩家死亡 */
+    onEvent_PlayerDie(event: {
+        player: Player
+    }) {
+        const nAlive = GameRules.PlayerManager.getAlivePlayerCount()
+        GameRules.PlayerManager.m_tabEnd.push({
+            steamid64: tostring(PlayerResource.GetSteamID(event.player.m_nPlayerID)),
+            rank_num: nAlive + 1,
+            heroname: event.player.m_eHero.GetUnitName(),
+            time_game: math.floor(GameRules.GetGameTime()),
+            is_abandon: event.player.m_bAbandon
+        })
+        print("nAlive:", nAlive)
+        if (nAlive == 2) {
+            // 开启决战
+            GameRules.PlayerManager.m_bFinalBattle = true
+            GameRules.EventManager.FireEvent("Event_FinalBattle")
+        } else if (nAlive < 2) {
+            print("onEvent_PlayerDie:游戏结束")
+            print("PlayerManager:isAlivePlayer(player.m_nPlayerID):", GameRules.PlayerManager.isAlivePlayer(event.player.m_nPlayerID))
+            GameRules.SetGameWinner(DotaTeam.GOODGUYS)
+
+            // 添加第一名
+            for (const player of GameRules.PlayerManager.m_tabPlayers) {
+                if (GameRules.PlayerManager.isAlivePlayer(player.m_nPlayerID)) {
+                    GameRules.PlayerManager.m_tabEnd.push({
+                        steamid64: tostring(PlayerResource.GetSteamID(player.m_nPlayerID)),
+                        rank_num: 1,
+                        heroname: player.m_eHero.GetUnitName(),
+                        time_game: math.floor(GameRules.GetGameTime()),
+                        is_abandon: player.m_bAbandon
+                    })
+                    break
+                } else {
+                    print("steamid64:", tostring(PlayerResource.GetSteamID(event.player.m_nPlayerID)))
+                    print("rank_num: 1")
+                    print("heroname:", event.player.m_eHero.GetUnitName())
+                    print("time_game:", math.floor(GameRules.GetGameTime()))
+                    print("is_abandon:", player.m_bAbandon)
+                }
+            }
+
+            print("print PlayerManager.m_tabEnd:")
+            DeepPrintTable(GameRules.PlayerManager.m_tabEnd)
+        }
+
+        // 剩余操作出来
+        if (GameRules.PlayerManager.m_nOrderID == event.player.m_nPlayerID
+            && GameRules.PlayerManager.m_typeState != GameMessage.GS_DeathClearing) {
+            // 移除操作
+            for (let i = 0; i < GameRules.PlayerManager.m_tabOprtCan.length; i++) {
+                delete GameRules.PlayerManager.m_tabOprtCan[i]
+            }
+            if (nAlive > 1) {
+                if (GameRules.PlayerManager.m_typeStateCur != GameMessage.GS_ReadyStart) {
+                    // GSManager:setState(GS_Finished)
+                }
+            }
+        }
+
+        // 改变首位玩家
+        print("GameRules.PlayerManager.m_nOrderFirst == event.player.m_nPlayerID:", GameRules.PlayerManager.m_nOrderFirst == event.player.m_nPlayerID)
+        if (event.player.m_nPlayerID == GameRules.PlayerManager.m_nOrderFirst) {
+            GameRules.PlayerManager.m_nOrderFirst = this.getNextValidOrder(event.player.m_nPlayerID)
+        }
+        print("self.m_nOrderFirst:", GameRules.PlayerManager.m_nOrderFirst)
+
+        // 设置结算
+        this.setGameEndData()
+    }
+    // onEvent_ItemBuy() {
+    // }
+
+    /**玩家金币变化 */
+    onEvent_ChangeGold(event: {
+        nGold: number
+        player: Player
+    }) {
+        let tabChangeGold: number[]
+        tabChangeGold = GameRules.PlayerManager.m_tabChangeGold
+        if (!tabChangeGold) {
+            tabChangeGold = []
+        }
+        if (!tabChangeGold[event.player.m_nPlayerID]) {
+            tabChangeGold[event.player.m_nPlayerID] = 0
+        }
+        tabChangeGold[event.player.m_nPlayerID] += event.nGold
+        CustomNetTables.SetTableValue("GamingTable", "change_gold", tabChangeGold)
+        print("[network-changeGold]==============================")
+        DeepPrintTable(tabChangeGold)
+
+        // 设置2秒后清除
+        if (!GameRules.PlayerManager.m_nTimeChangeGold) {
+            Timers.CreateTimer(0.1, () => {
+                GameRules.PlayerManager.m_nTimeChangeGold--
+                if (GameRules.PlayerManager.m_nTimeChangeGold > 0) return 0.1
+                tabChangeGold = null
+                GameRules.PlayerManager.m_tabChangeGold = null
+                GameRules.PlayerManager.m_nTimeChangeGold = null
+                CustomNetTables.SetTableValue("GamingTable", "change_gold", {})
+            })
+        }
+        GameRules.PlayerManager.m_nTimeChangeGold = 20
+    }
+
+    /**玩家roll点后移动 */
     onEvent_Roll(event: {
         bIgnore: 0 | 1
         nNum1: number
         nNum2: number
-        playerID: PlayerID
+        player: Player
     }) {
-        print("是否触发!")
-        if (event.bIgnore == 1) {
-            return;
-        }
+        if (event.bIgnore == 1) return
 
         // 触发移动事件
-        // CustomGameEventManager.Send_ServerToPlayer(PlayerResource.GetPlayer(event.PlayerID), "Event_Move", {
-        //     entity: PlayerResource.GetSelectedHeroEntity(event.PlayerID)
-        // })
-        print("playerID:", event.playerID)
-        const oPlayer = GameRules.PlayerManager.getPlayer(event.playerID)
+        GameRules.EventManager.FireEvent("EventMove", { entity: event.player.m_eHero })
 
+        const oPlayer = GameRules.PlayerManager.getPlayer(event.player.m_nPlayerID)
         const pathDes = GameRules.PathManager.getNextPath(oPlayer.m_pathCur, event.nNum1 + event.nNum2)
+
+        if (interpret(GameRules.GameLoop.GameStateLoop).getState().value == "GSWaitOprt") {
+            GameRules.GameLoop.GameStateService.send("to_move")
+        }
         oPlayer.moveToPath(pathDes, (bSuccess: boolean) => {
-            print("=======YYY===移动结束")
+            // 触发移动结束事件
+            if (oPlayer.m_typeState == GameMessage.GS_Move ||
+                oPlayer.m_typeState == GameMessage.GS_DeathClearing) {
+                // GSMOVE_Exit()结束移动
+                GameRules.GameLoop.GameStateService.send("to_waitopr")
+            }
+            GameRules.EventManager.FireEvent("Event_MoveEnd", { entity: event.player.m_eHero })
+            event.player.m_nRollMove++
+            // 玩家死亡不操作
+            if (event.player.m_bDie) return
+            // 触发到达路径功能
+            pathDes.onPath(event.player)
+
+            // 判断豹子触发
+            const tEventJudge = { player: event.player }
+            if (!event.bIgnore && event.nNum1 == event.nNum2 &&
+                (oPlayer.m_typeState & (GameMessage.PS_InPrison | GameMessage.PS_AtkMonster)) === 0) {
+                // 豹子,发送roll点操作
+                this.broadcastOprt({
+                    typeOprt: GameMessage.TypeOprt.TO_Roll,
+                    bPrison: tonumber(Constant.PRISON_BAOZI_COUNT - 1 == GameRules.PlayerManager.m_nBaoZi),
+                    nPlayerID: oPlayer.m_nPlayerID
+                })
+                // 追加时间
+                if (GameRules.PlayerManager.m_timeOprt <= Constant.TIME_BAOZI_YZ) {
+                    GameRules.PlayerManager.m_timeOprt = Constant.TIME_BAOZI_YZ + Constant.TIME_BAOZI_ADD
+                }
+                return
+            }
+
+            // 发送操作,完成回合
+            this.broadcastOprt({
+                typeOprt: GameMessage.TypeOprt.TO_Finish,
+                nPlayerID: oPlayer.m_nPlayerID
+            })
         })
 
-        // // 建议通过PathManager的方法传入playerID获取其当前curPath
-        // let pathDes = PathManager.getNextPath(
-        //     event.player.curPath,
-        //     event.nNum1 + event.nNum2
-        // );
 
-        // // 设置状态
-        // // Loop
-
-        // event.player.moveToPath(pathDes, success => {
-
-        //     // 触发移动结束事件
-        //     if (GameState.Move === GMManager.state ||
-        //         GameState.DeathClearing === GMManager.state) {
-        //         // 移动结束
-        //         GameStateManager.setState(GameState.WaitOperator);
-        //     }
-
-        //     EventManager.fireEvent("Event_MoveEnd", {
-        //         entity: event.player.hero
-        //     });
-
-        //     event.player.rollMoveCount++;
-
-        //     // 玩家死亡不操作
-        //     if (event.player.isDead) {
-        //         return;
-        //     }
-
-        //     // 判断路径触发功能
-        //     pathDes.onPath(event.player);
-
-        //     // 触发豹子判断
-        //     const judgeEvent = { player: event.player };
-        //     EventManager.fireEvent("Event_RollBaoZiJudge", judgeEvent);
-
-        //     if (!judgeEvent.bIgnore &&
-        //         event.nNum1 === event.nNum2 &&
-        //         (PlayerState.InPrison | PlayerState.AtkMonster) === 0) {
-
-        //         // 豹子,发送roll点操作
-        //         GMManager.broadcastOprt({
-        //             typeOprt: OpType.Roll,
-        //             bPrison: PRISON_BAOZI_COUNT - 1 == GMManager.baoZiCount,
-        //             nPlayerID: event.player.id
-        //         });
-
-        //         // 追加时间
-        //         if (GMManager.oprtTime < TIME_BAOZI_YZ) {
-        //             GMManager.oprtTime += TIME_BAOZI_ADD;
-        //         }
-
-        //         return;
-        //     }
-
-        //     // 发送操作:完成回合
-        //     GMManager.broadcastOprt({
-        //         typeOprt: OpType.Finish,
-        //         nPlayerID: event.player.id
-        //     });
-
-        // });
 
     }
 
@@ -306,5 +490,34 @@ export class GameConfig {
         }
     }
 
+    /**广播操作 */
+    broadcastOprt(tabOprt) {
+        // 添加可操作记录
+        GameRules.PlayerManager.m_tabOprtCan.push(tabOprt)
+        GameRules.PlayerManager.m_tabOprtBroadcast.push(tabOprt)
+        // 发送消息给操作者
+        GameRules.PlayerManager.broadcastMsg("GM_Operator", tabOprt)
+    }
 
+    /**获取下一个有效的操作玩家ID */
+    getNextValidOrder(nOrder: number) {
+        let nIndex = GameRules.HeroSelection.GetPlayerIDIndex(nOrder)
+        nIndex = this.addOrder(nIndex + 1)
+        if (!GameRules.PlayerManager.isAlivePlayer(GameRules.HeroSelection.m_PlayersSort[nIndex])) {
+            return this.getNextValidOrder(GameRules.HeroSelection.m_PlayersSort[nIndex])
+        }
+        return GameRules.HeroSelection.m_PlayersSort[nIndex]
+    }
+
+    /**获取顺序上的order */
+    addOrder(nOrder: number) {
+        if (nOrder < 1) return this.addOrder(nOrder + GameRules.PlayerManager.getPlayerCount())
+        nOrder--
+        return (nOrder % GameRules.PlayerManager.getPlayerCount()) + 1
+    }
+
+    /**设置结算数据 */
+    setGameEndData() {
+
+    }
 }

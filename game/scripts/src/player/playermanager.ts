@@ -20,6 +20,9 @@ export class PlayerManager {
     m_tabOprtBroadcast = [] // 当前全部可操作
     m_tabEnd = [] // 结算数据
     m_bNoSwap: 1 | 0
+    m_tabChangeGold: number[]
+    m_nTimeChangeGold: number
+    m_typeStateCur: number = GameMessage.GS_None
 
     constructor() {
         this.m_bAllPlayerInit = false, // 全部玩家初始化完成
@@ -152,6 +155,28 @@ export class PlayerManager {
 
     getPlayerCount() {
         return this.m_tabPlayers.length
+    }
+
+    /**广播事件消息 */
+    broadcastMsg(strMgsID: string, tabData) {
+        // CustomGameEventManager.Send_ServerToAllClients(strMgsID, tabData)
+    }
+
+    /**获取存活玩家数量 */
+    getAlivePlayerCount() {
+        let nCount = 0
+        for (const player of this.m_tabPlayers) {
+            if (this.isAlivePlayer(player.m_nPlayerID)) {
+                nCount++
+            }
+        }
+        return nCount
+    }
+
+    /**玩家是否存活 */
+    isAlivePlayer(nPlayerID: number) {
+        const player = this.getPlayer(nPlayerID)
+        return player && !player.m_bDie
     }
 }
 

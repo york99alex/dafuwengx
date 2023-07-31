@@ -60,7 +60,7 @@ export class HeroSelection {
     }
 
     /** 获得(this.m_PlayersSort)玩家ID对应的index */
-    GetPlayerIDIndex(nPlayerID: PlayerID): number {
+    GetPlayerIDIndex(nPlayerID: number): number {
         for (let index = 0; index < this.m_PlayersSort.length; index++) {
             if (this.m_PlayersSort[index] == nPlayerID)
                 return index

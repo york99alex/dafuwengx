@@ -14,7 +14,7 @@ function Counter() {
       <TextButton className="ButtonBevel" text="Roll" onactivate={() => {
         GameEvents.SendCustomGameEventToServer("GM_Operator", {
           nPlayerID: 0,
-          typeOprt: 0,
+          typeOprt: 1,
           nRequest: 0,
           typePath: 0,
           nPathID: 0,

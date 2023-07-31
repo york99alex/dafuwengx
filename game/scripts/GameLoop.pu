@@ -8,6 +8,7 @@ hide empty description
 '             exit: "退出状态执行方法名"
 ' }
 '
+' alt + d 预览
 
 
 [*] -> GameInit

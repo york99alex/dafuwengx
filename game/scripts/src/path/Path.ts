@@ -1,4 +1,6 @@
 import { Constant } from "../mode/constant"
+import { Player } from "../player/player"
+import { EventManager } from "../utils/eventmanager"
 import { PathManager } from "./PathManager"
 
 export class Path {
@@ -116,18 +118,23 @@ export class Path {
     }
 
     /**获得一个空位,并占用 */
-    getNilPos(entity:CDOTA_BaseNPC_Hero){
-        print("===m_tabPos===")
-        DeepPrintTable(this.m_tabPos)
+    getNilPos(entity: CDOTA_BaseNPC_Hero) {
         for (let i = 1; i < this.m_tabPos.length; i++) {
             const v = this.m_tabPos[i];
-            if(v.entity == null){
+            if (v.entity == null) {
                 // 空位置
                 v.entity = entity
-                print("空位置:",v.vPos)
                 return v.vPos
             }
         }
         return this.m_entity.GetAbsOrigin()
+    }
+
+    // 触发到达路径
+    onPath(player: Player) {
+        GameRules.EventManager.FireEvent("Event_OnPath", {
+            path: this,
+            entity: player.m_eHero
+        })
     }
 }
