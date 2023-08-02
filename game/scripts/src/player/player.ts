@@ -262,8 +262,8 @@ export class Player {
         let tabBzPath: number[] = []
         for (const typePath in this.m_tabMyPath) {
             const paths = this.m_tabMyPath[typePath];
-            if (Number(typePath) >= GameMessage.TP_DOMAIN_1 && paths[1].m_tabENPC.length > 0) {
-                tabBzPath.push(Number(typePath))
+            if (tonumber(typePath) >= GameMessage.TP_DOMAIN_1 && paths[0].m_tabENPC.length > 0) {
+                tabBzPath.push(tonumber(typePath))
             }
         }
         // 设置网表
@@ -325,7 +325,7 @@ export class Player {
         this.m_nSumGold = this.m_nGold
         // 统计领地
         for (const index in this.m_tabMyPath) {
-            this.m_nSumGold += (this.m_tabMyPath[index].length * (Constant.PATH_TO_PRICE[index]))
+            this.m_nSumGold += (this.m_tabMyPath[index].length * (Constant.PATH_TO_PRICE[tonumber(index)]))
         }
         // 统计装备
         for (let slot = 0; slot < 9; slot++) {
@@ -519,5 +519,125 @@ export class Player {
             sum += this.m_tabMyPath[key].length
         }
         return sum
+    }
+
+    /**是否拥有路径 */
+    isHasPath(nPathID: number): boolean {
+        for (const key in this.m_tabMyPath) {
+            const paths = this.m_tabMyPath[key];
+            for (const path of paths) {
+                if (path.m_nID == nPathID)
+                    return true
+            }
+        }
+        return false
+    }
+
+    /**添加占领路径 */
+    setMyPathAdd(path: PathDomain) {
+        if (this.m_bDie || this.isHasPath(path.m_nID)) return
+
+        if (this.m_tabMyPath[path.m_typePath] != null) {
+            this.m_tabMyPath[path.m_typePath].push(path)
+        } else {
+            this.m_tabMyPath[path.m_typePath] = [path]
+        }
+
+        // 领地添加领主
+        path.setOwner(this)
+
+        // 计算总资产
+        this.setSumGold()
+
+        // 同步玩家网表信息
+        this.setNetTableInfo()
+    }
+
+    /**移除兵卒 */
+    removeBz(eBZ) {
+
+    }
+
+    /**创建兵卒到领地 */
+    createBZOnPath(path: PathDomain, nStarLevel: number, bLevelUp?: boolean) {
+        nStarLevel = nStarLevel ?? 1
+
+        // 创建单位
+        let strName = Constant.HERO_TO_BZ[this.m_eHero.GetUnitName()]
+        for (let i = nStarLevel; i >= 2; i--) {
+            strName += '1';
+        }
+        print("创建单位strName:", strName)
+
+        const eBZ = AHMC.CreateUnit(strName, path.m_eCity.GetOrigin(), path.m_eCity.GetAnglesAsVector().y, this.m_eHero, DotaTeam.GOODGUYS)
+        eBZ.SetMaxHealth(eBZ.GetMaxHealth() + 500)
+        eBZ.SetDayTimeVisionRange(300)
+        eBZ.SetNightTimeVisionRange(300)
+        // 添加数据
+        this.m_tabBz.push(eBZ)
+        path.m_tabENPC.push(eBZ);
+        (eBZ as any).m_path = path as Path
+        (eBZ as any).m_bBZ = true as boolean
+
+        // 设置兵卒技能等级
+        (eBZ as any).m_bAbltBZ = eBZ.GetAbilityByIndex(0)
+        // 设置技能
+        if (nStarLevel >= Constant.BZ_MAX_LEVEL) {
+            // 设置巅峰技能
+            AHMC.AddAbilityAndSetLevel(eBZ, "yjxr_max", Constant.BZ_MAX_LEVEL)
+            eBZ.SwapAbilities((eBZ as any).m_bAbltBZ.GetAbilityName(), "yjxr_max", true, true)
+        } else {
+            AHMC.AddAbilityAndSetLevel(eBZ, "yjxr_" + path.m_typePath, nStarLevel)
+            eBZ.SwapAbilities((eBZ as any).m_bAbltBZ.GetAbilityName(), "yjxr_" + path.m_typePath, true, true)
+        }
+        if (nStarLevel != 1) {
+            AHMC.AddAbilityAndSetLevel(eBZ, "xj_" + path.m_typePath, nStarLevel)
+            const oAblt = eBZ.GetAbilityByIndex(1)
+            if (oAblt) {
+                eBZ.SwapAbilities((eBZ as any).m_bAbltBZ.GetAbilityName(), "xj_" + path.m_typePath, !oAblt.IsHidden(), true)
+            }
+        }
+
+        // 重置蓝量
+        eBZ.SetMana(0)
+
+        // 添加星星特效
+        // AMHC.ShowStarsOnUnit(eBZ, nStarLevel)
+
+        // 设置可否攻击
+        this.setAllBZAttack()
+        // 设置可否被攻击
+        this.setAllBeBZAttack(eBZ, false)
+
+        // 触发事件
+        GameRules.EventManager.FireEvent("Event_BZCreate", { entity: eBZ })
+
+        this.setBzLevelUp(eBZ)
+
+        // 同步玩家网表信息
+        this.setNetTableInfo()
+
+        // 同步装备
+        // this.m_eHero.syncItem(eBZ)
+        // 设置共享
+        // ItemShare.setShareAdd(eBZ, this.m_eHero)
+
+
+        // 特效
+    }
+
+    /**设置玩家全部兵卒可否攻击 */
+    setAllBZAttack() {
+
+    }
+
+    /**设置兵卒可否被攻击 */
+    setAllBeBZAttack(eBZ: CDOTA_BaseNPC, bCanBeAtk: boolean) {
+
+    }
+
+    /**更新兵卒等级 */
+    setBzLevelUp(eBZ: CDOTA_BaseNPC) {
+
     }
 }

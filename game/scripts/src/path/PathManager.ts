@@ -62,6 +62,14 @@ export class PathManager {
         return tabPath
     }
 
+    /**获取路径对象 */
+    getPathByID(nID:number){
+        for (let index = 0; index < this.m_tabPaths.length; index++) {
+            if(nID == this.m_tabPaths[index].m_nID)
+                return this.m_tabPaths[index]
+        }
+    }
+
     /**设置玩家网表信息 */
     setNetTableInfo() {
         let tabData: {

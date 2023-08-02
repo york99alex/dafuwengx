@@ -6,7 +6,7 @@ import { AHMC } from "../utils/amhc"
 import { Path } from "./Path"
 
 export class PathDomain extends Path {
-    m_tabENPC: any[] 			// 路径上的全部NPC实体（城池的兵卒）
+    m_tabENPC: CDOTA_BaseNPC[] | any[]			// 路径上的全部NPC实体（城池的兵卒）
     m_eCity: CBaseEntity 			// 建筑点实体
     m_eBanner: CBaseModelEntity           // 横幅旗帜实体
     m_nPrice: number			// 价值
@@ -98,8 +98,8 @@ export class PathDomain extends Path {
             this.m_tabENPC[0].m_bGCLD = null
         }
         oPlayerOwn.setBzAttack(this.m_tabENPC[0])
-        oPlayerOwn.setBzAtker(this.m_tabENPC[0],oPlayer.m_eHero,true)
-        oPlayerOwn.setBzBeAttack(this.m_tabENPC[0],false)
+        oPlayerOwn.setBzAtker(this.m_tabENPC[0], oPlayer.m_eHero, true)
+        oPlayerOwn.setBzBeAttack(this.m_tabENPC[0], false)
 
     }
 
@@ -114,4 +114,83 @@ export class PathDomain extends Path {
     Event_BZLevel() {
 
     }
+
+    /**设置领主 */
+    setOwner(oPlayer: Player, bSetBZ?: boolean) {
+        bSetBZ = bSetBZ || true
+
+        let nOwnerIDLast = this.m_nOwnerID
+        if (oPlayer == null) {
+            this.setState(Constant.TypePathState.None)
+            // 移除领主
+            this.setBanner()
+            this.m_nOwnerID = null
+        } else {
+            // 设置新领主
+            this.setBanner(oPlayer.m_eHero.GetUnitName())
+            this.m_nOwnerID = oPlayer.m_nPlayerID
+            // 占领音效
+            // StartSoundEvent("Custom.AYZZ", oPlayer.m_eHero)
+        }
+        if (nOwnerIDLast) {
+            this.setBuff(GameRules.PlayerManager.getPlayer(nOwnerIDLast))
+        }
+        if (bSetBZ) {
+            this.setBZ()
+        }
+        GameRules.EventManager.FireEvent("Event_PathOwChange", {
+            path: this,
+            nOwnerIDLast: nOwnerIDLast
+        })
+    }
+
+
+    /**设置领地BUFF */
+    setBuff(oPlayer: Player) {
+
+    }
+
+    /**设置起兵 */
+    setBZ() {
+        if (this.m_nOwnerID == null) {
+            // 无领主
+            if (this.m_tabENPC.length > 0)
+                // 有兵卒
+                this.setAllBZDel()
+        } else {
+            // 有领主
+            const oPlayer = GameRules.PlayerManager.getPlayer(this.m_nOwnerID)
+            if (!oPlayer) return
+            if (Constant.GAME_MODE == Constant.GAME_MODE_ONEPATH) {
+                // 单地起兵模式
+                if (GameRules.PlayerManager.m_nRound >= Constant.BZ_OUT_ROUNT) {
+                    if (this.m_tabENPC.length > 0) {
+                        if (oPlayer.m_nPlayerID != this.m_tabENPC[0].GetPlayerOwnerID()) {
+                            this.setAllBZDel()
+                            oPlayer.createBZOnPath(this, 1)
+                        }
+                    } else {
+                        oPlayer.createBZOnPath(this, 1)
+                    }
+                }
+            }
+
+        }
+    }
+
+    /**移除全部兵卒 */
+    setAllBZDel() {
+        for (let i = 0; i < this.m_tabENPC.length; i++) {
+            if (this.m_tabENPC[i] && !this.m_tabENPC[i].IsNull()) {
+                const player = GameRules.PlayerManager.getPlayer(this.m_tabENPC[i].GetPlayerOwnerID())
+                if (player) {
+                    player.removeBz(this.m_tabENPC[i])
+                }
+            } else {
+                delete this.m_tabENPC[i]
+            }
+
+        }
+    }
+
 }

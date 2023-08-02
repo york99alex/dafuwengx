@@ -149,7 +149,7 @@ export class PlayerManager {
     /**
      * getPlayer
     nPlayerID:numbber     */
-    getPlayer(nPlayerID: number) {
+    getPlayer(nPlayerID: number):Player {
         return this.m_tabPlayers[nPlayerID]
     }
 

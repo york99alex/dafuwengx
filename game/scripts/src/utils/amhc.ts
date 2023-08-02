@@ -109,4 +109,28 @@ export class AHMC {
             }
         })
     }
+
+    /**创建单位 */
+    static CreateUnit(unitName: string, origin: Vector, face: number | Vector, owner: CDOTA_BaseNPC, teamNumber: number, callback?: Function) {
+        const unit = CreateUnitByName(unitName, origin, false, null, null, teamNumber)
+        if (unit) {
+            // 设置单位面朝方向
+            if (typeof (face) == "number") {
+                unit.SetAngles(0, face, 0)
+            } else {
+                unit.SetForwardVector(face)
+            }
+
+            // 如果有召唤者
+            if (owner != null){
+                unit.SetOwner(owner)
+                unit.SetControllableByPlayer(owner.GetPlayerOwnerID(),true)
+            }
+        }
+
+        // 回调函数
+        if(callback!=null) callback(unit)
+
+        return unit
+    }
 }

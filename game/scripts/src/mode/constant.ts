@@ -120,15 +120,16 @@ export namespace Constant {
     ]
 
     export const PATH_TO_PRICE = []
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_1] = 300
+    PATH_TO_PRICE[GameMessage.TP_DOMAIN_1] = 200
     PATH_TO_PRICE[GameMessage.TP_DOMAIN_2] = 300
     PATH_TO_PRICE[GameMessage.TP_DOMAIN_3] = 300
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_4] = 300
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_5] = 300
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_6] = 300
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_7] = 300
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_8] = 300
+    PATH_TO_PRICE[GameMessage.TP_DOMAIN_4] = 350
+    PATH_TO_PRICE[GameMessage.TP_DOMAIN_5] = 400
+    PATH_TO_PRICE[GameMessage.TP_DOMAIN_6] = 450
+    PATH_TO_PRICE[GameMessage.TP_DOMAIN_7] = 500
+    PATH_TO_PRICE[GameMessage.TP_DOMAIN_8] = 550
 
+    /**英雄对应横幅旗帜 */
     export const HERO_TO_BANNER = {
         npc_dota_hero_phantom_assassin: 1,
         npc_dota_hero_meepo: 2,
@@ -142,4 +143,23 @@ export namespace Constant {
         npc_dota_hero_undying: 10,
         npc_dota_hero_life_stealer: 11
     }
+
+    /**英雄对应兵卒名 */
+    export const HERO_TO_BZ = {
+        npc_dota_hero_phantom_assassin: "bz_pa_1",
+        npc_dota_hero_meepo: "bz_mibo_1",
+        npc_dota_hero_pudge: "bz_tufu_1",
+        npc_dota_hero_lina: "bz_lina_1",
+        npc_dota_hero_zuus: "bz_zuus_1",
+        npc_dota_hero_axe: "bz_axe_1",
+        npc_dota_hero_techies: "bz_techies_1",
+        npc_dota_hero_bloodseeker: "bz_bloodseeker_1",
+        npc_dota_hero_dragon_knight: "bz_dragon_knight_1",
+        npc_dota_hero_undying: "bz_undying_1",
+        npc_dota_hero_life_stealer: "bz_life_stealer_1"
+    }
+
+
+    /**起兵回合 */
+    export const BZ_OUT_ROUNT = 6
 }

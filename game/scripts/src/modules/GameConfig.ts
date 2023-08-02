@@ -240,8 +240,27 @@ export class GameConfig {
     }
 
     /**处理安营扎寨 */
-    processAYZZ(tabData) {
+    processAYZZ(tabData: Record<any, any>) {
+        // 删除可操作
+        // const tabOprt = this.checkOprt(tabData)
+        // tabOprt.nRequest = tabData.nRequest
 
+        let oPlayer:Player, oPath
+        print("处理安营扎寨")
+
+        // 验证操作
+        if(tabData.nRequest == 1){
+            oPlayer = GameRules.PlayerManager.getPlayer(tabData.nPlayerID)
+            oPath = GameRules.PathManager.getPathByID(3)
+        }
+
+        // 设置玩家领地
+        oPlayer.setMyPathAdd(oPath)
+        // 花费金币
+        oPlayer.setGold(-oPath.m_nPrice)
+        this.showGold(oPlayer,-oPath.m_nPrice)
+
+        // 设置游戏记录
     }
 
     /**处理攻城略地 */
@@ -280,11 +299,10 @@ export class GameConfig {
         for (let index = 0; index < GameRules.PlayerManager.m_tabOprtCan.length; index++) {
             const value = GameRules.PlayerManager.m_tabOprtCan[index];
             // PlayerID:发送网包的玩家ID
-            if (bDel) {
-                GameRules.PlayerManager.m_tabOprtCan = GameRules.PlayerManager.m_tabOprtCan.filter(item => {
-                    item.nPlayerID == tabData.PlayerID &&
-                        item.typeOprt == tabData.typeOprt
-                })
+            if (value.nPlayerID == tabData.PlayerID && value.typeOprt == tabData.typeOprt) {
+                if (bDel) {
+                    delete GameRules.PlayerManager.m_tabOprtCan[index]
+                }
                 return value
             }
         }
@@ -518,6 +536,11 @@ export class GameConfig {
 
     /**设置结算数据 */
     setGameEndData() {
+
+    }
+
+    /**飘金 */
+    showGold(oPlayer:Player,nGold:number){
 
     }
 }

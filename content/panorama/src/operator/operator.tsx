@@ -33,6 +33,29 @@ function Counter() {
           }
         })
       }} />
+
+      <TextButton className="ButtonBevel" text="AYZZ" onactivate={() => {
+        GameEvents.SendCustomGameEventToServer("GM_Operator", {
+          nPlayerID: 0,
+          typeOprt: 2,
+          nRequest: 1,
+          typePath: 0,
+          nPathID: 0,
+          nGold: 0,
+          jPlayerTrade: {
+            nPlayerTrade: {
+              nPlayerTradeID: 0,
+              nGold: 0,
+              arrPath: []
+            },
+            nPlayerBeTrade: {
+              nPlayerBeTradeID: 0,
+              nGold: 0,
+              arrPath: []
+            }
+          }
+        })
+      }} />
     </Panel>
   );
 }
