@@ -6,7 +6,9 @@ import { Constant } from "../mode/constant";
 import { DeathClearing } from "../mode/deathclearing";
 import { GameMessage } from "../mode/gamemessage";
 import { Trade } from "../mode/trade";
+import { Path } from "../path/Path";
 import { PathManager } from "../path/PathManager";
+import { PathDomain } from "../path/pathdomain";
 import { Player } from "../player/player";
 import { PlayerManager } from "../player/playermanager";
 import { EventManager } from "../utils/eventmanager";
@@ -233,8 +235,10 @@ export class GameConfig {
         print("playerID", tabData.nPlayerID)
         GameRules.EventManager.FireEvent("Event_Roll", {
             bIgnore: 0,
-            nNum1: nNum1,
-            nNum2: nNum2,
+            // nNum1: nNum1,
+            // nNum2: nNum2,
+            nNum1: 2,
+            nNum2: 3,
             player: oPlayer
         })
     }
@@ -245,20 +249,19 @@ export class GameConfig {
         // const tabOprt = this.checkOprt(tabData)
         // tabOprt.nRequest = tabData.nRequest
 
-        let oPlayer:Player, oPath
+        let oPlayer: Player, oPath
         print("处理安营扎寨")
 
         // 验证操作
-        if(tabData.nRequest == 1){
+        if (tabData.nRequest == 1) {
             oPlayer = GameRules.PlayerManager.getPlayer(tabData.nPlayerID)
-            oPath = GameRules.PathManager.getPathByID(3)
+            oPath = GameRules.PathManager.getPathByID(4)
         }
-
         // 设置玩家领地
         oPlayer.setMyPathAdd(oPath)
         // 花费金币
         oPlayer.setGold(-oPath.m_nPrice)
-        this.showGold(oPlayer,-oPath.m_nPrice)
+        this.showGold(oPlayer, -oPath.m_nPrice)
 
         // 设置游戏记录
     }
@@ -540,7 +543,7 @@ export class GameConfig {
     }
 
     /**飘金 */
-    showGold(oPlayer:Player,nGold:number){
+    showGold(oPlayer: Player, nGold: number) {
 
     }
 }

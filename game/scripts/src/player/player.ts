@@ -3,6 +3,8 @@ import { Constant } from "../mode/constant"
 import { Path } from "../path/Path"
 import { AHMC } from "../utils/amhc"
 import { PathDomain } from "../path/pathdomain"
+import { reloadable } from "../utils/tstl-utils"
+@reloadable
 export class Player {
 
     m_bRoundFinished: boolean = null			//  此轮中已结束回合
@@ -534,14 +536,20 @@ export class Player {
     }
 
     /**添加占领路径 */
-    setMyPathAdd(path: PathDomain) {
-        if (this.m_bDie || this.isHasPath(path.m_nID)) return
+    setMyPathAdd(path) {
+        print("path.m_nID", path.m_nID)
 
-        if (this.m_tabMyPath[path.m_typePath] != null) {
-            this.m_tabMyPath[path.m_typePath].push(path)
-        } else {
-            this.m_tabMyPath[path.m_typePath] = [path]
+        if (this.m_bDie || this.isHasPath(path.m_nID)) {
+            print("this.m_bDie", this.m_bDie)
+            print("this.isHasPath(path.m_nID)", this.isHasPath(path.m_nID))
+            print("路径已存在")
+            return
         }
+
+        this.m_tabMyPath[path.m_typePath] = this.m_tabMyPath[path.m_typePath] || [];
+        this.m_tabMyPath[path.m_typePath].push(path);
+
+        print("添加占领路径:", path.m_typePath)
 
         // 领地添加领主
         path.setOwner(this)

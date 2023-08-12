@@ -63,9 +63,9 @@ export class PathManager {
     }
 
     /**获取路径对象 */
-    getPathByID(nID:number){
+    getPathByID(nID: number) {
         for (let index = 0; index < this.m_tabPaths.length; index++) {
-            if(nID == this.m_tabPaths[index].m_nID)
+            if (nID == this.m_tabPaths[index].m_nID)
                 return this.m_tabPaths[index]
         }
     }

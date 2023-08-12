@@ -3,8 +3,10 @@ import { Constant } from "../mode/constant"
 import { GameMessage } from "../mode/gamemessage"
 import { Player } from "../player/player"
 import { AHMC } from "../utils/amhc"
+import { reloadable } from "../utils/tstl-utils"
 import { Path } from "./Path"
 
+@reloadable
 export class PathDomain extends Path {
     m_tabENPC: CDOTA_BaseNPC[] | any[]			// 路径上的全部NPC实体（城池的兵卒）
     m_eCity: CBaseEntity 			// 建筑点实体
@@ -20,7 +22,7 @@ export class PathDomain extends Path {
         super(entity)
 
         this.m_eCity = Entities.FindByName(null, "city_" + this.m_nID)
-        this.m_eBanner = Entities.FindByName(null, "bann_" + this.m_nID) as CBaseModelEntity
+        this.m_eBanner = Entities.CreateByClassname("dota_guild_banner_dynamic") as CBaseModelEntity
         this.setBanner()
 
         this.m_nPrice = Constant.PATH_TO_PRICE[this.m_typePath]
@@ -35,9 +37,14 @@ export class PathDomain extends Path {
 
     /** 设置横幅旗帜 */
     setBanner(strHeroName?: string) {
+        // strHeroName为空就表示销毁旗帜
         if (strHeroName == null) {
-            this.m_eBanner.SetOrigin(this.m_eCity.GetOrigin() - Vector(0, 0, 1000) as Vector)
+            if (this.m_eBanner) {
+                this.m_eBanner.Destroy()
+                this.m_eBanner = null
+            }
         } else {
+            if (!this.m_eBanner) this.m_eBanner = Entities.CreateByClassname("dota_guild_banner_dynamic") as CBaseModelEntity
             this.m_eBanner.SetOrigin(this.m_eCity.GetOrigin())
             this.m_eBanner.SetSkin(Constant.HERO_TO_BANNER[strHeroName])
         }
@@ -126,6 +133,8 @@ export class PathDomain extends Path {
             this.setBanner()
             this.m_nOwnerID = null
         } else {
+            print("=====设置领主======")
+            print("oPlayer.m_eHero.GetUnitName()", oPlayer.m_eHero.GetUnitName())
             // 设置新领主
             this.setBanner(oPlayer.m_eHero.GetUnitName())
             this.m_nOwnerID = oPlayer.m_nPlayerID
@@ -138,7 +147,7 @@ export class PathDomain extends Path {
         if (bSetBZ) {
             this.setBZ()
         }
-        GameRules.EventManager.FireEvent("Event_PathOwChange", {
+        GameRules.EventManager.FireEvent("Event_PathOwnChange", {
             path: this,
             nOwnerIDLast: nOwnerIDLast
         })
@@ -152,16 +161,25 @@ export class PathDomain extends Path {
 
     /**设置起兵 */
     setBZ() {
+        print("=====设置起兵======")
         if (this.m_nOwnerID == null) {
+            print(1)
             // 无领主
-            if (this.m_tabENPC.length > 0)
+            if (this.m_tabENPC.length > 0) {
+                print(2)
                 // 有兵卒
                 this.setAllBZDel()
+            }
         } else {
+            print(3)
             // 有领主
             const oPlayer = GameRules.PlayerManager.getPlayer(this.m_nOwnerID)
-            if (!oPlayer) return
+            if (!oPlayer) {
+                print(4)
+                return
+            }
             if (Constant.GAME_MODE == Constant.GAME_MODE_ONEPATH) {
+                print(5)
                 // 单地起兵模式
                 if (GameRules.PlayerManager.m_nRound >= Constant.BZ_OUT_ROUNT) {
                     if (this.m_tabENPC.length > 0) {
