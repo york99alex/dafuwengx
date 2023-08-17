@@ -908,13 +908,19 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 20. GSManager:setState都调整为loop
 
-21.   /**设置结算数据 */
+21. /**设置结算数据 */
 
-      setGameEndData(){
+    setGameEndData(){}
 
-    
+22. ==sendMsg和broadcastMsg的tabData格式==
 
-      }
+23. gamestate的计时器update是0.1调用一次
+
+24. // 监听玩家移动回路径
+
+      onMove如何处理gamestateloop
+
+25. 英雄经验系统/数值
 
 
 
@@ -928,6 +934,29 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 /mode/GameLoop
 
 ![image-20230715174833787](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/15/17-48-33-1cae1a237ad3263414f79f617da3f8a7-image-20230715174833787-1035f1.png)
+
+?:
+
+进入状态方法, 离开状态方法, 状态中的方法呢?
+
+
+
+setState!
+
+
+
+GSWaitOprt_Entry()执行Roll点,调用GameConfig.processRoll()方法{
+
+​	得到roll点后,setState进入GS_Wait 处理超时
+​	设置计时器等待客户端roll点动画结束后触发roll点事件Event_Roll
+
+}
+
+触发Event_Roll回调函数{
+
+​	setState进入GS_Move
+
+}
 
 
 

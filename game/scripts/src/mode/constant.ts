@@ -119,6 +119,9 @@ export namespace Constant {
         DotaTeam.CUSTOM_6,
     ]
 
+    // 每级兵卒等级上限
+    export const BZ_LEVELMAX = [9, 19, 25]
+	    
     export const PATH_TO_PRICE = []
     PATH_TO_PRICE[GameMessage.TP_DOMAIN_1] = 200
     PATH_TO_PRICE[GameMessage.TP_DOMAIN_2] = 300
@@ -161,5 +164,10 @@ export namespace Constant {
 
 
     /**起兵回合 */
-    export const BZ_OUT_ROUNT = 6
+    export const BZ_OUT_ROUND = 6
+
+    export const RoundTip = []
+    RoundTip[Constant.GLOBAL_SHOP_ROUND] = "global_shop"
+    RoundTip[Constant.BZ_OUT_ROUND] = "bz_out"
+
 }

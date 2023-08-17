@@ -6,5 +6,9 @@
         <include src="s2r://panorama/styles/dotastyles.vcss_c"></include>
         <include src="./style.less"></include>
     </styles>
-    <Panel class="root" hittest="false"></Panel>
+    <Panel class="root" hittest="false">
+        <Panel id="Countdown">
+            <Label id="CDLabel" text="0" />
+        </Panel>
+    </Panel>
 </root>

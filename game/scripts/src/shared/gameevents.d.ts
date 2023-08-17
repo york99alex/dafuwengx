@@ -14,10 +14,6 @@
 declare interface CustomGameEventDeclarations {
     c2s_test_event: {};
 
-    Event_Move: {
-        entity: any
-    }
-
     dota_player_used_ability: {
         PlayerID: PlayerID;
         abilityname: string;
@@ -121,5 +117,9 @@ declare interface CustomGameEventDeclarations {
 
     Event_GameStart: {
 
+    }
+
+    S2C_round_tip: {
+        sTip: string
     }
 }

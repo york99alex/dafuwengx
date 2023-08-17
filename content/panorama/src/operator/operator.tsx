@@ -56,6 +56,8 @@ function Counter() {
           }
         })
       }} />
+
+      <Label className='Countdown' text={}/>
     </Panel>
   );
 }

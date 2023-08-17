@@ -5,21 +5,6 @@ export class PlayerManager {
     m_bAllPlayerInit: boolean
     m_tabPlayers: Player[]
     nInit: number // 初始化人数
-    m_typeState = GameMessage.GS_None //游戏状态
-    m_nGameID = -1 // 比赛编号
-    m_nOrderID = -1 // 当前操作玩家ID
-    m_nOrderFirst = -1 // 首操作玩家ID
-    m_nOrderIndex = -1
-    m_nOrderFirstIndex = 1 // 首操作index
-    m_timeOprt = -1 // 回合剩余时限
-    m_nRound = 0 // 当前回合数
-    m_nBaoZi = 0 // 当前玩家豹子次数
-    m_bFinalBattle = false // 终局决战
-    m_tabOprtCan = [] // 当前全部可操作
-    m_tabOprtSend = [] // 当前全部可操作
-    m_tabOprtBroadcast = [] // 当前全部可操作
-    m_tabEnd = [] // 结算数据
-    m_bNoSwap: 1 | 0
     m_tabChangeGold: number[]
     m_nTimeChangeGold: number
     m_typeStateCur: number = GameMessage.GS_None
@@ -87,12 +72,12 @@ export class PlayerManager {
             // 重新发送手牌
             oPlayer.sendHandCardData()
             // 重新发操作
-            for (let i = 0; i < this.m_tabOprtCan.length; i++) {
-                const tabOprt = this.m_tabOprtCan[i]
+            for (let i = 0; i < GameRules.GameConfig.m_tabOprtCan.length; i++) {
+                const tabOprt = GameRules.GameConfig.m_tabOprtCan[i]
                 if (tabOprt.nPlayerID == event.PlayerID) {
                     print("9[LUA]:ReconnectSend===========>>>>>>>>>>>>>>>")
                     DeepPrintTable(tabOprt)
-                    CustomGameEventManager.Send_ServerToPlayer(oPlayer.m_oCDataPlayer, "GM_Operator", tabOprt)
+                    this.sendMsg("GM_Operator", tabOprt, event.PlayerID)
                 }
 
             }
@@ -103,7 +88,7 @@ export class PlayerManager {
 
     // 选择英雄
     onEvent_playerPickHero(event: GameEventProvidedProperties & DotaPlayerPickHeroEvent): void {
-        if (this.m_typeState == GameMessage.PS_None) {
+        if (GameRules.GameConfig.m_typeState == GameMessage.PS_None) {
             print("onEvent_playerPickHero")
             DeepPrintTable(event)
             const eHero = EntIndexToHScript(event.heroindex as EntityIndex) as CDOTA_BaseNPC_Hero
@@ -149,12 +134,20 @@ export class PlayerManager {
     /**
      * getPlayer
     nPlayerID:numbber     */
-    getPlayer(nPlayerID: number):Player {
+    getPlayer(nPlayerID: number): Player {
         return this.m_tabPlayers[nPlayerID]
     }
 
     getPlayerCount() {
         return this.m_tabPlayers.length
+    }
+
+    /**发送事件消息给某玩家 */
+    sendMsg(strMgsID: string, tabData, nPlayerID) {
+        const oPlayer = this.getPlayer(nPlayerID)
+        if (oPlayer) {
+            oPlayer.sendMsg(strMgsID, tabData)
+        }
     }
 
     /**广播事件消息 */

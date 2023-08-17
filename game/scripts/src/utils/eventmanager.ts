@@ -29,13 +29,13 @@ export class EventManager {
      * 注册事件
      * @param event 事件名
      * @param funCallBack 回调函数or函数名,回调返回true立即解注册
-     * @param nFireCount 可以Fire触发的次数,如果值为-1则可以无限触发
      * @param nOrder 优先顺序,数值越大触发回调越优先，默认/null为EVENT_LEVEL_NONE
+     * @param nFireCount 可以Fire触发的次数,默认值为-1则可以无限触发
      * @param bindID 绑定ID 可选 可以指定以某值做ID
      */
-    Register(event: string, funCallBack: Function, oBind: object, nFireCount?: number, nOrder?: number, bindID?: number) {
+    Register(event: string, funCallBack: Function, oBind: object, nOrder?: number, nFireCount?: number, bindID?: number) {
         if (nOrder == null) nOrder = this.EventOrder.EVENT_LEVEL_NONE
-        if (nFireCount == null) nFireCount = 1
+        if (nFireCount == null) nFireCount = -1
         let tab = this.m_tabEvent[event]
         if (tab == null) {
             tab = []

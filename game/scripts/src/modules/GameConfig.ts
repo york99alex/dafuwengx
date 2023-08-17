@@ -1,28 +1,48 @@
-import { CardManager } from "../card/cardmanager";
-import { GameLoop } from "../mode/GameLoop";
-import { HeroSelection } from "../mode/HeroSelection";
-import { Auction } from "../mode/auction";
-import { Constant } from "../mode/constant";
-import { DeathClearing } from "../mode/deathclearing";
-import { GameMessage } from "../mode/gamemessage";
-import { Trade } from "../mode/trade";
-import { Path } from "../path/Path";
-import { PathManager } from "../path/PathManager";
-import { PathDomain } from "../path/pathdomain";
-import { Player } from "../player/player";
-import { PlayerManager } from "../player/playermanager";
-import { EventManager } from "../utils/eventmanager";
-import { reloadable } from "../utils/tstl-utils";
-import { interpret } from "../utils/xstate/xstate-dota";
+import { CardManager } from "../card/cardmanager"
+import { GameLoop } from "../mode/GameLoop"
+import { HeroSelection } from "../mode/HeroSelection"
+import { Auction } from "../mode/auction"
+import { Constant } from "../mode/constant"
+import { DeathClearing } from "../mode/deathclearing"
+import { GameMessage } from "../mode/gamemessage"
+import { Trade } from "../mode/trade"
+import { Path } from "../path/Path"
+import { PathManager } from "../path/PathManager"
+import { PathDomain } from "../path/pathdomain"
+import { Player } from "../player/player"
+import { PlayerManager } from "../player/playermanager"
+import { EventManager } from "../utils/eventmanager"
+import { reloadable } from "../utils/tstl-utils"
+import { interpret } from "../utils/xstate/xstate-dota"
 
 @reloadable
 export class GameConfig {
 
     _DotaState: []
+    m_typeState = GameMessage.GS_None //游戏状态
+    m_nGameID = -1 // 比赛编号
+    m_nOrderID = -1 // 当前操作玩家ID
+    m_nOrderFirst = -1 // 首操作玩家ID
+    m_nOrderIndex = -1
+    m_nOrderFirstIndex = 0 // 首操作index
+    m_timeOprt: number = -1  // 回合剩余时限
+    m_nRound = 0 // 当前回合数
+    m_nBaoZi = 0 // 当前玩家豹子次数
+    m_bFinalBattle = false // 终局决战
+    m_tabEnd = [] // 结算数据
+    m_bNoSwap: 1 | 0
+    m_tabOprtCan: {
+        nPlayerID: number,
+        typeOprt: number,
+        PlayerID: number,
+        nRequest: number
+    }[] // 当前全部可操作
+    m_tabOprtSend = [] // 当前全部可操作
+    m_tabOprtBroadcast = [] // 当前全部可操作
 
     constructor() {
         print("[GameConfig] start...开始配置")
-        SendToServerConsole('dota_max_physical_items_purchase_limit 9999'); // 用来解决物品数量限制问题
+        SendToServerConsole('dota_max_physical_items_purchase_limit 9999') // 用来解决物品数量限制问题
 
         GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.GOODGUYS, 6)
         GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.BADGUYS, 0)
@@ -66,53 +86,53 @@ export class GameConfig {
         GameRules.GetGameModeEntity().SetStickyItemDisabled(true) //隐藏快速购买处的物品
         GameRules.GetGameModeEntity().SetRecommendedItemsDisabled(true) //禁止推荐物品
 
-        // GameRules.SetCustomGameSetupAutoLaunchDelay(3); // 游戏设置时间（默认的游戏设置是最开始的队伍分配）
-        // GameRules.SetCustomGameSetupRemainingTime(3); // 游戏设置剩余时间
-        // GameRules.SetCustomGameSetupTimeout(3); // 游戏设置阶段超时
-        // GameRules.SetHeroSelectionTime(0); // 选择英雄阶段的持续时间
-        // GameRules.SetShowcaseTime(0); // 选完英雄的展示时间
-        // GameRules.SetPreGameTime(0); // 进入游戏后号角吹响前的准备时间
-        // GameRules.SetPostGameTime(30); // 游戏结束后时长
-        // GameRules.SetSameHeroSelectionEnabled(true); // 是否允许选择相同英雄
-        // GameRules.SetStartingGold(0); // 设置初始金钱
-        // GameRules.SetGoldTickTime(0); // 设置工资发放间隔
-        // GameRules.SetGoldPerTick(0); // 设置工资发放数额
-        // GameRules.SetHeroRespawnEnabled(false); // 是否允许英雄重生
-        // GameRules.SetCustomGameAllowMusicAtGameStart(false); // 是否允许游戏开始时的音乐
-        // GameRules.SetCustomGameAllowHeroPickMusic(false); // 是否允许英雄选择阶段的音乐
-        // GameRules.SetCustomGameAllowBattleMusic(false); // 是否允许战斗阶段音乐
-        // GameRules.SetUseUniversalShopMode(true); // 是否启用全地图商店模式（在基地也可以购买神秘商店的物品）* 这个不是设置在任何地方都可以购买，如果要设置这个，需要将购买区域覆盖全地图
-        // GameRules.SetHideKillMessageHeaders(true); // 是否隐藏顶部的英雄击杀信息
+        // GameRules.SetCustomGameSetupAutoLaunchDelay(3) // 游戏设置时间（默认的游戏设置是最开始的队伍分配）
+        // GameRules.SetCustomGameSetupRemainingTime(3) // 游戏设置剩余时间
+        // GameRules.SetCustomGameSetupTimeout(3) // 游戏设置阶段超时
+        // GameRules.SetHeroSelectionTime(0) // 选择英雄阶段的持续时间
+        // GameRules.SetShowcaseTime(0) // 选完英雄的展示时间
+        // GameRules.SetPreGameTime(0) // 进入游戏后号角吹响前的准备时间
+        // GameRules.SetPostGameTime(30) // 游戏结束后时长
+        // GameRules.SetSameHeroSelectionEnabled(true) // 是否允许选择相同英雄
+        // GameRules.SetStartingGold(0) // 设置初始金钱
+        // GameRules.SetGoldTickTime(0) // 设置工资发放间隔
+        // GameRules.SetGoldPerTick(0) // 设置工资发放数额
+        // GameRules.SetHeroRespawnEnabled(false) // 是否允许英雄重生
+        // GameRules.SetCustomGameAllowMusicAtGameStart(false) // 是否允许游戏开始时的音乐
+        // GameRules.SetCustomGameAllowHeroPickMusic(false) // 是否允许英雄选择阶段的音乐
+        // GameRules.SetCustomGameAllowBattleMusic(false) // 是否允许战斗阶段音乐
+        // GameRules.SetUseUniversalShopMode(true) // 是否启用全地图商店模式（在基地也可以购买神秘商店的物品）* 这个不是设置在任何地方都可以购买，如果要设置这个，需要将购买区域覆盖全地图
+        // GameRules.SetHideKillMessageHeaders(true) // 是否隐藏顶部的英雄击杀信息
 
-        // const game: CDOTABaseGameMode = GameRules.GetGameModeEntity();
-        // game.SetRemoveIllusionsOnDeath(true); // 是否在英雄死亡的时候移除幻象
-        // game.SetSelectionGoldPenaltyEnabled(false); // 是否启用选择英雄时的金钱惩罚（超时每秒扣钱）
-        // game.SetLoseGoldOnDeath(false); // 是否在英雄死亡时扣除金钱
-        // game.SetBuybackEnabled(false); // 是否允许买活
-        // game.SetDaynightCycleDisabled(true); // 是否禁用白天黑夜循环
-        // game.SetForceRightClickAttackDisabled(true); // 是否禁用右键攻击
-        // game.SetHudCombatEventsDisabled(true); // 是否禁用战斗事件（左下角的战斗消息）
-        // game.SetCustomGameForceHero(`npc_dota_hero_phoenix`); // 设置强制英雄（会直接跳过英雄选择阶段并直接为所有玩家选择这个英雄）
-        // game.SetUseCustomHeroLevels(true); // 是否启用自定义英雄等级
-        // game.SetCustomHeroMaxLevel(1); // 设置自定义英雄最大等级
+        // const game: CDOTABaseGameMode = GameRules.GetGameModeEntity()
+        // game.SetRemoveIllusionsOnDeath(true) // 是否在英雄死亡的时候移除幻象
+        // game.SetSelectionGoldPenaltyEnabled(false) // 是否启用选择英雄时的金钱惩罚（超时每秒扣钱）
+        // game.SetLoseGoldOnDeath(false) // 是否在英雄死亡时扣除金钱
+        // game.SetBuybackEnabled(false) // 是否允许买活
+        // game.SetDaynightCycleDisabled(true) // 是否禁用白天黑夜循环
+        // game.SetForceRightClickAttackDisabled(true) // 是否禁用右键攻击
+        // game.SetHudCombatEventsDisabled(true) // 是否禁用战斗事件（左下角的战斗消息）
+        // game.SetCustomGameForceHero(`npc_dota_hero_phoenix`) // 设置强制英雄（会直接跳过英雄选择阶段并直接为所有玩家选择这个英雄）
+        // game.SetUseCustomHeroLevels(true) // 是否启用自定义英雄等级
+        // game.SetCustomHeroMaxLevel(1) // 设置自定义英雄最大等级
         // game.SetCustomXPRequiredToReachNextLevel({
         //     // 设置自定义英雄每个等级所需经验，这里的经验是升级到这一级所需要的*总经验）
         //     1: 0,
-        // });
-        // game.SetDaynightCycleDisabled(true); // 是否禁用白天黑夜循环
-        // game.SetDeathOverlayDisabled(true); // 是否禁用死亡遮罩（灰色的遮罩）
+        // })
+        // game.SetDaynightCycleDisabled(true) // 是否禁用白天黑夜循环
+        // game.SetDeathOverlayDisabled(true) // 是否禁用死亡遮罩（灰色的遮罩）
 
         // 设置自定义的队伍人数上限，这里的设置是10个队伍，每个队伍1人
-        // GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.GOODGUYS, 1);
-        // GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.BADGUYS, 1);
-        // for (let team = DotaTeam.CUSTOM_1; team <= DotaTeam.CUSTOM_8; ++team) {
-        //     GameRules.SetCustomGameTeamMaxPlayers(team, 1);
+        // GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.GOODGUYS, 1)
+        // GameRules.SetCustomGameTeamMaxPlayers(DotaTeam.BADGUYS, 1)
+        // for (let team = DotaTeam.CUSTOM_1 team <= DotaTeam.CUSTOM_8 ++team) {
+        //     GameRules.SetCustomGameTeamMaxPlayers(team, 1)
         // }
 
         GameRules.EventManager = new EventManager()
         this.registerEvent()
         this.registerMessage()
-        this.registerThink()
+        this.registerThink()    // 调用GameLoop
 
         // Filter
         // Attributes 属性
@@ -131,14 +151,52 @@ export class GameConfig {
         // Supply
         GameRules.HeroSelection = new HeroSelection()   // 自动选择英雄模块初始化
         GameRules.HeroSelection.init()
-        GameRules.GameLoop = new GameLoop()     // 游戏循环模块启动
-        GameRules.GameLoop.Start()
 
-        GameRules.PlayerManager.m_bNoSwap = string.find(GetMapName(), "no_swap") ? 1 : 0
+        this.m_bNoSwap = string.find(GetMapName(), "no_swap") ? 1 : 0
         CustomNetTables.SetTableValue("GamingTable", "game_mode", {
             typeGameMode: Constant.GAME_MODE,
-            bNoSwap: GameRules.PlayerManager.m_bNoSwap
+            bNoSwap: this.m_bNoSwap
         })
+    }
+
+    /**更新回合操作时限 */
+    updateTimeOprt() {
+        this.m_timeOprt -= 1
+        // 每一秒更新到网表
+        if (this.m_timeOprt % 10 == 0) {
+            CustomNetTables.SetTableValue("GamingTable", "timeOprt", { time: this.m_timeOprt / 10 })
+        }
+    }
+
+    /**发送操作 */
+    sendOprt(tabOprt) {
+        // 添加可操作记录
+        this.m_tabOprtCan.push(tabOprt)
+        this.m_tabOprtSend.push(tabOprt)
+        // 发送消息给操作者
+        GameRules.PlayerManager.sendMsg("GM_Operator", tabOprt, tabOprt.nPlayerID)
+
+        print("1[LUA]:Send======================>>>>>>>>>>>>>>>")
+        DeepPrintTable(tabOprt)
+    }
+
+    /**广播操作 */
+    broadcastOprt(tabOprt) {
+        // 添加可操作记录
+        this.m_tabOprtCan.push(tabOprt)
+        this.m_tabOprtBroadcast.push(tabOprt)
+        // 发送消息给操作者
+        GameRules.PlayerManager.broadcastMsg("GM_Operator", tabOprt)
+    }
+
+    /**设置当前操作玩家ID */
+    setOrder(nOrder: number) {
+        print("GameConfig.setOrder:=====================")
+        print("last order: ", this.m_nOrderID, " cur order: ", nOrder, " first order:", this.m_nOrderFirst)
+        print("GameConfig.setOrder over======================")
+        this.m_nOrderID = nOrder
+        // 同步网表
+        CustomNetTables.SetTableValue("GamingTable", "order", { nPlayerID: nOrder })
     }
 
     //----------事件回调----------
@@ -153,18 +211,18 @@ export class GameConfig {
             nNum1: number
             nNum2: number
             player: Player
-        }) => this.onEvent_Roll(event), this, -1, -1000)
+        }) => this.onEvent_Roll(event), this, -1000)
 
         // 监听攻击导致的金钱变化,无限次
         GameRules.EventManager.Register("Event_ChangeGold_Atk", (event: {
             nGold: number
             player: Player
-        }) => this.onEvent_ChangeGold(event), this, -1)
+        }) => this.onEvent_ChangeGold(event), this)
 
         // 监听玩家死亡,无限次
         GameRules.EventManager.Register("Event_PlayerDie", (event: {
             player: Player
-        }) => this.onEvent_PlayerDie(event), this, -1, -1000)
+        }) => this.onEvent_PlayerDie(event), this, -1000)
     }
 
     //----------消息回调----------
@@ -286,25 +344,72 @@ export class GameConfig {
 
     }
 
+    /**自动处理操作 */
+    autoOprt(typeOprt?: number, oPlayer?: Player) {
+        for (const v of this.m_tabOprtCan) {
+            print("v.typeOprt:", v.typeOprt)
+            print("v.nPlayerID", v.nPlayerID)
+
+            if ((typeOprt == null || v.typeOprt == typeOprt)
+                && (oPlayer == null || v.nPlayerID == oPlayer.m_nPlayerID)) {
+                // 指定玩家
+                v.PlayerID = v.nPlayerID
+                if (GameMessage.TypeOprt.TO_Finish == v.typeOprt) {
+                    // 结束回合
+                    v.nRequest = 1
+                } else if (GameMessage.TypeOprt.TO_Roll == v.typeOprt) {
+                    // roll点
+                    v.nRequest = 1
+                } else if (GameMessage.TypeOprt.TO_AYZZ == v.typeOprt) {
+                    // 安营扎寨，默认不
+                    v.nRequest = 0
+                } else if (GameMessage.TypeOprt.TO_GCLD == v.typeOprt) {
+                    // 攻城略地，默认不
+                    v.nRequest = 0
+                } else if (GameMessage.TypeOprt.TO_TP == v.typeOprt) {
+                    // TP传送，默认不
+                    v.nRequest = 0
+                } else if (GameMessage.TypeOprt.TO_PRISON_OUT == v.typeOprt) {
+                    // 出狱，默认不买活
+                    v.nRequest = 0
+                } else if (GameMessage.TypeOprt.TO_DeathClearing == v.typeOprt) {
+                    v.nRequest = 1
+                } else if (GameMessage.TypeOprt.TO_AtkMonster == v.typeOprt) {
+                    v.nRequest = 0
+                } else if (GameMessage.TypeOprt.TO_RandomCard == v.typeOprt) {
+                    v.nRequest = 0
+                }
+
+                if (v.nRequest != null) {
+                    print("autoOprt", v.typeOprt, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                    this.onMsg_oprt(v)
+                    return this.autoOprt(typeOprt, oPlayer)
+                }
+            }
+        }
+
+
+    }
+
     /**验证操作 */
     checkOprt(tabData, bDel?: boolean) {
         print("checkOprt")
         if (bDel) {
-            GameRules.PlayerManager.m_tabOprtSend = GameRules.PlayerManager.m_tabOprtSend.filter(item => {
+            this.m_tabOprtSend = this.m_tabOprtSend.filter(item => {
                 item.nPlayerID == tabData.PlayerID &&
                     item.typeOprt == tabData.typeOprt
             })
-            GameRules.PlayerManager.m_tabOprtBroadcast = GameRules.PlayerManager.m_tabOprtBroadcast.filter(item => {
+            this.m_tabOprtBroadcast = this.m_tabOprtBroadcast.filter(item => {
                 item.nPlayerID == tabData.PlayerID &&
                     item.typeOprt == tabData.typeOprt
             })
         }
-        for (let index = 0; index < GameRules.PlayerManager.m_tabOprtCan.length; index++) {
-            const value = GameRules.PlayerManager.m_tabOprtCan[index];
+        for (let index = 0; index < this.m_tabOprtCan.length; index++) {
+            const value = this.m_tabOprtCan[index]
             // PlayerID:发送网包的玩家ID
             if (value.nPlayerID == tabData.PlayerID && value.typeOprt == tabData.typeOprt) {
                 if (bDel) {
-                    delete GameRules.PlayerManager.m_tabOprtCan[index]
+                    delete this.m_tabOprtCan[index]
                 }
                 return value
             }
@@ -324,7 +429,12 @@ export class GameConfig {
 
     /**游戏进行时 */
     onThink_update() {
-        // 对于每一个GS状态都持续update进行
+        const state = GameRules.State_Get()
+        if (state == GameState.GAME_IN_PROGRESS) {
+            GameRules.GameLoop.GamestateStart()
+            return
+        }
+        return 0.1
     }
 
     /**玩家死亡 */
@@ -332,7 +442,7 @@ export class GameConfig {
         player: Player
     }) {
         const nAlive = GameRules.PlayerManager.getAlivePlayerCount()
-        GameRules.PlayerManager.m_tabEnd.push({
+        this.m_tabEnd.push({
             steamid64: tostring(PlayerResource.GetSteamID(event.player.m_nPlayerID)),
             rank_num: nAlive + 1,
             heroname: event.player.m_eHero.GetUnitName(),
@@ -342,7 +452,7 @@ export class GameConfig {
         print("nAlive:", nAlive)
         if (nAlive == 2) {
             // 开启决战
-            GameRules.PlayerManager.m_bFinalBattle = true
+            this.m_bFinalBattle = true
             GameRules.EventManager.FireEvent("Event_FinalBattle")
         } else if (nAlive < 2) {
             print("onEvent_PlayerDie:游戏结束")
@@ -352,7 +462,7 @@ export class GameConfig {
             // 添加第一名
             for (const player of GameRules.PlayerManager.m_tabPlayers) {
                 if (GameRules.PlayerManager.isAlivePlayer(player.m_nPlayerID)) {
-                    GameRules.PlayerManager.m_tabEnd.push({
+                    this.m_tabEnd.push({
                         steamid64: tostring(PlayerResource.GetSteamID(player.m_nPlayerID)),
                         rank_num: 1,
                         heroname: player.m_eHero.GetUnitName(),
@@ -370,29 +480,29 @@ export class GameConfig {
             }
 
             print("print PlayerManager.m_tabEnd:")
-            DeepPrintTable(GameRules.PlayerManager.m_tabEnd)
+            DeepPrintTable(this.m_tabEnd)
         }
 
         // 剩余操作出来
-        if (GameRules.PlayerManager.m_nOrderID == event.player.m_nPlayerID
-            && GameRules.PlayerManager.m_typeState != GameMessage.GS_DeathClearing) {
+        if (this.m_nOrderID == event.player.m_nPlayerID
+            && this.m_typeState != GameMessage.GS_DeathClearing) {
             // 移除操作
-            for (let i = 0; i < GameRules.PlayerManager.m_tabOprtCan.length; i++) {
-                delete GameRules.PlayerManager.m_tabOprtCan[i]
+            for (let i = 0; i < this.m_tabOprtCan.length; i++) {
+                delete this.m_tabOprtCan[i]
             }
             if (nAlive > 1) {
                 if (GameRules.PlayerManager.m_typeStateCur != GameMessage.GS_ReadyStart) {
-                    // GSManager:setState(GS_Finished)
+                    GameRules.GameLoop.setState(GameMessage.GS_Finished)
                 }
             }
         }
 
         // 改变首位玩家
-        print("GameRules.PlayerManager.m_nOrderFirst == event.player.m_nPlayerID:", GameRules.PlayerManager.m_nOrderFirst == event.player.m_nPlayerID)
-        if (event.player.m_nPlayerID == GameRules.PlayerManager.m_nOrderFirst) {
-            GameRules.PlayerManager.m_nOrderFirst = this.getNextValidOrder(event.player.m_nPlayerID)
+        print("GameRules.PlayerManager.m_nOrderFirst == event.player.m_nPlayerID:", this.m_nOrderFirst == event.player.m_nPlayerID)
+        if (event.player.m_nPlayerID == this.m_nOrderFirst) {
+            this.m_nOrderFirst = this.getNextValidOrder(event.player.m_nPlayerID)
         }
-        print("self.m_nOrderFirst:", GameRules.PlayerManager.m_nOrderFirst)
+        print("self.m_nOrderFirst:", this.m_nOrderFirst)
 
         // 设置结算
         this.setGameEndData()
@@ -471,12 +581,12 @@ export class GameConfig {
                 // 豹子,发送roll点操作
                 this.broadcastOprt({
                     typeOprt: GameMessage.TypeOprt.TO_Roll,
-                    bPrison: tonumber(Constant.PRISON_BAOZI_COUNT - 1 == GameRules.PlayerManager.m_nBaoZi),
+                    bPrison: tonumber(Constant.PRISON_BAOZI_COUNT - 1 == this.m_nBaoZi),
                     nPlayerID: oPlayer.m_nPlayerID
                 })
                 // 追加时间
-                if (GameRules.PlayerManager.m_timeOprt <= Constant.TIME_BAOZI_YZ) {
-                    GameRules.PlayerManager.m_timeOprt = Constant.TIME_BAOZI_YZ + Constant.TIME_BAOZI_ADD
+                if (this.m_timeOprt <= Constant.TIME_BAOZI_YZ) {
+                    this.m_timeOprt = Constant.TIME_BAOZI_YZ + Constant.TIME_BAOZI_ADD
                 }
                 return
             }
@@ -511,15 +621,6 @@ export class GameConfig {
         }
     }
 
-    /**广播操作 */
-    broadcastOprt(tabOprt) {
-        // 添加可操作记录
-        GameRules.PlayerManager.m_tabOprtCan.push(tabOprt)
-        GameRules.PlayerManager.m_tabOprtBroadcast.push(tabOprt)
-        // 发送消息给操作者
-        GameRules.PlayerManager.broadcastMsg("GM_Operator", tabOprt)
-    }
-
     /**获取下一个有效的操作玩家ID */
     getNextValidOrder(nOrder: number) {
         let nIndex = GameRules.HeroSelection.GetPlayerIDIndex(nOrder)
@@ -534,7 +635,34 @@ export class GameConfig {
     addOrder(nOrder: number) {
         if (nOrder < 1) return this.addOrder(nOrder + GameRules.PlayerManager.getPlayerCount())
         nOrder--
-        return (nOrder % GameRules.PlayerManager.getPlayerCount()) + 1
+        return (nOrder + 1) % GameRules.PlayerManager.getPlayerCount()
+    }
+
+    /**增加轮数 */
+    addRound() {
+        this.m_nRound += 1
+        // 同步网表
+        CustomNetTables.SetTableValue("GamingTable", "round", { nRound: this.m_nRound })
+
+        if (Constant.RoundTip[this.m_nRound]) {
+            CustomGameEventManager.Send_ServerToAllClients("S2C_round_tip", { sTip: "false" })
+        }
+
+        // 触发轮数更新
+        GameRules.EventManager.FireEvent("Event_UpdateRound", { isBegin: true, nRound: this.m_nRound })
+
+        if (Constant.RoundTip[this.m_nRound + 1]) {
+            CustomGameEventManager.Send_ServerToAllClients("S2C_round_tip", { sTip: Constant.RoundTip[this.m_nRound] })
+        }
+
+        // 全图商店
+        if (this.m_nRound == Constant.GLOBAL_SHOP_ROUND) {
+            // 遍历GameRules.Playermanager.m_tabPlayers
+            GameRules.PlayerManager.m_tabPlayers.forEach((oPlayer) => {
+                oPlayer.setBuyState(GameMessage.TBuyItem_SideAndSecret, -1)
+            })
+        }
+        return true
     }
 
     /**设置结算数据 */

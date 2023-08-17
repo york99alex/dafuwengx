@@ -106,19 +106,18 @@ export class Player {
         DeepPrintTable(tabData)
     }
 
-
+    /**注册触发事件 */
     registerEvent(): void {
-        CustomGameEventManager.RegisterListener("Event_OnDamage", (data, event) => this.onEvent_OnDamage(event))
-        CustomGameEventManager.RegisterListener("Event_Atk", (data, event) => this.onEvent_Atk_bzHuiMo())
-        CustomGameEventManager.RegisterListener("Event_PlayerRoundBegin", (data, event) => this.onEvent_PlayerRoundBegin)
-        CustomGameEventManager.RegisterListener("Event_UpdateRound", (data, event) => this.onEvent_UpdateRound)
-        CustomGameEventManager.RegisterListener("Event_Move", (data, event) => this.onEvent_Move)
-        CustomGameEventManager.RegisterListener("Event_PlayerDie", (data, event) => this.onEvent_PlayerDie)
-        CustomGameEventManager.RegisterListener("Event_HeroManaChange", (data, event) => this.onEvent_HeroManaChange)
-        CustomGameEventManager.RegisterListener("Event_UseSkinChange", (data, event) => this.onEvent_UseSkinChange)
-
+        GameRules.EventManager.Register("Event_OnDamage", this.onEvent_OnDamage, this, -987654321)
+        GameRules.EventManager.Register("Event_Atk", this.onEvent_Atk_bzHuiMo, this)
+        GameRules.EventManager.Register("Event_PlayerRoundBegin", this.onEvent_PlayerRoundBegin, this)
+        GameRules.EventManager.Register("Event_UpdateRound", this.onEvent_UpdateRound, this)
+        GameRules.EventManager.Register("Event_Move", this.onEvent_Move, this)
+        GameRules.EventManager.Register("Event_PlayerDie", this.onEvent_PlayerDie, this)
+        GameRules.EventManager.Register("Event_HeroManaChange", this.onEvent_HeroManaChange, this)
     }
 
+    /**受伤 */
     onEvent_OnDamage(event) {
 
     }
@@ -131,8 +130,16 @@ export class Player {
 
     }
 
+    /**游戏回合更新 */
     onEvent_UpdateRound() {
-
+        // 重置玩家回合结束的记录
+        this.setRoundFinished(false)
+        const nRound = GameRules.GameConfig.m_nRound
+        if (nRound > 1) {
+            // 加经验
+            const nAddExp = 1 + math.floor(nRound / 10)
+            this.setExpAdd(nAddExp)
+        }
     }
 
     onEvent_Move() {
@@ -147,8 +154,8 @@ export class Player {
 
     }
 
-    onEvent_UseSkinChange() {
-
+    sendMsg(strMgsID: string, tabData) {
+        // CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
     }
 
     setDisconnect(bVal: boolean) {
@@ -646,6 +653,105 @@ export class Player {
 
     /**更新兵卒等级 */
     setBzLevelUp(eBZ: CDOTA_BaseNPC) {
+        if (eBZ.IsNull()) return
 
+        // 获取要升级的等级
+        let nLevel = Constant.BZ_LEVELMAX[this.getBzStarLevel(eBZ)]
+        if (this.m_eHero.GetLevel() < nLevel) {
+            nLevel = this.m_eHero.GetLevel()
+        }
+        nLevel -= eBZ.GetLevel()
+
+        GameRules.EventManager.FireEvent("Event_BZLevelUp", { eBZ: eBZ, nLevel: nLevel })
+
+        const bLevelDown = nLevel < 0
+
+        // 升级特效
+
+        // 等级变更
+        
+    }
+
+    /**获取兵卒的星级 */
+    getBzStarLevel(eBZ: CDOTA_BaseNPC) {
+        if (eBZ.IsNull()) return
+
+        let strName: string = eBZ.GetUnitName()
+        strName = string.reverse(strName)
+        print("string.reverse(strName):", strName)
+        const nLevel = strName.indexOf('_')
+        if (nLevel != -1) {
+            return nLevel - 1
+        } else {
+            return 0
+        }
+    }
+
+
+    /**设置购物状态 */
+    setBuyState(typeState, nCount: number) {
+        this.m_nBuyItem = nCount
+        this.m_typeBuyState = typeState
+        // 可购物事件
+        GameRules.EventManager.FireEvent("Event_BuyState", { nCount: nCount, typeState: typeState, player: this })
+
+        // 设置网表
+        const keyname = "player_info_" + this.m_nPlayerID as
+            "player_info_0" | "player_info_1" | "player_info_2" | "player_info_3" | "player_info_4" | "player_info_5";
+        // 设置网标
+        const info = CustomNetTables.GetTableValue("GamingTable", keyname)
+        info["nBuyItem"] = this.m_nBuyItem
+        info["typeBuyState"] = this.m_typeBuyState
+        CustomNetTables.SetTableValue("GamingTable", keyname, info)
+    }
+
+    /**设置玩家自己回合结束 */
+    setRoundFinished(bVal) {
+        this.m_bRoundFinished = bVal
+        if (this.m_bRoundFinished) {
+            // 触发玩家回合结束事件
+            GameRules.EventManager.FireEvent("Event_PlayerRoundFinished", this)
+        }
+        // 同步玩家网表信息
+        this.setNetTableInfo()
+    }
+
+    /**增加经验 */
+    setExpAdd(nVal: number) {
+        const nAddExp = nVal
+        const nCurExp = this.m_eHero.GetCurrentXP()
+        const nLevelUpExp = Constant.LEVEL_EXP[this.m_eHero.GetLevel() + 1]
+        this.m_eHero.AddExperience(nAddExp, 0, false, false)
+
+        if (nLevelUpExp && nCurExp + nAddExp >= nLevelUpExp) {
+            // 升级,触发属性变更
+            GameRules.EventManager.FireEvent("Event_SxChange", { entity: this.m_eHero })
+            // 修改回蓝回血为0
+            Timers.CreateTimer(0.1, () => {
+                this.updateRegen0()
+            })
+            // 整化魔法数值
+            Timers.CreateTimer(0.05, () => {
+                this.m_eHero.SetMana(math.floor(this.m_eHero.GetMana() + 0.5))
+            })
+            // 清空技能点
+            this.m_eHero.SetAbilityPoints(0)
+            // 设置技能等级
+            const nLevel = math.floor(this.m_eHero.GetLevel() * 0.1) + 1
+            this.m_eHero.GetAbilityByIndex(0).SetLevel(nLevel)
+            this.m_eHero.GetAbilityByIndex(1).SetLevel(nLevel)
+
+            // 更新全部兵卒等级
+            this.m_tabBz.forEach(eBZ => {
+                this.setBzLevelUp(eBZ)
+            })
+        }
+    }
+
+    updateRegen0() {
+        this.m_eHero.SetBaseManaRegen(0)
+        this.m_eHero.SetBaseManaRegen(-(this.m_eHero.GetManaRegen()))
+        this.m_eHero.SetBaseHealthRegen(0)
+        this.m_eHero.SetBaseHealthRegen(-(this.m_eHero.GetHealthRegen()))
     }
 }

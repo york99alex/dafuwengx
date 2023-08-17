@@ -15,3 +15,21 @@
 "Event_PlayerDie", (event: {
             player: Player
         })
+
+"Event_UpdateRound", { isBegin: boolean, nRound: number }       
+
+"Event_BuyState", { nCount: nCount, typeState: typeState, player: this }
+
+"Event_GameStart"
+
+"Event_PlayerRoundBefore", { typeGameState : GameMessage.GS_Begin }
+
+"Event_FinalBattle"
+
+"Event_PlayerRoundFinished", this
+
+"Event_SxChange", { entity: this.m_eHero }
+
+"Event_BZLevelUp", { eBZ: eBZ, nLevel: nLevel }
+
+"Event_PlayerRoundBegin", { oPlayer: oPlayer, bRoll: true }

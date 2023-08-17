@@ -55,7 +55,7 @@ export class PathDomain extends Path {
         typeGameState: number;
         PlayerID: PlayerID
     }) {
-        if (this.m_nPlayerIDGCLD != GameRules.PlayerManager.m_nOrderID
+        if (this.m_nPlayerIDGCLD != GameRules.GameConfig.m_nOrderID
             || GameMessage.GS_Begin != tabEvent.typeGameState) return
 
         const listenerId = CustomGameEventManager.RegisterListener("Event_PlayerMove", (_, event) => this.onMove(event))
@@ -181,7 +181,7 @@ export class PathDomain extends Path {
             if (Constant.GAME_MODE == Constant.GAME_MODE_ONEPATH) {
                 print(5)
                 // 单地起兵模式
-                if (GameRules.PlayerManager.m_nRound >= Constant.BZ_OUT_ROUNT) {
+                if (GameRules.GameConfig.m_nRound >= Constant.BZ_OUT_ROUND) {
                     if (this.m_tabENPC.length > 0) {
                         if (oPlayer.m_nPlayerID != this.m_tabENPC[0].GetPlayerOwnerID()) {
                             this.setAllBZDel()
