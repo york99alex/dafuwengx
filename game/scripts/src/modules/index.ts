@@ -1,5 +1,6 @@
 import { GameLoop } from '../mode/GameLoop';
 import { HeroSelection } from '../mode/HeroSelection';
+import { Bot } from '../mode/bot';
 import { PathManager } from '../path/PathManager';
 import { PlayerManager } from '../player/playermanager';
 import { EventManager } from '../utils/eventmanager';
@@ -30,9 +31,8 @@ export function ActivateModules() {
         print("[GameRules初始化...]")
         // 初始化所有的GameRules模块
         GameRules.XNetTable = new XNetTable();
-
-        // 如果某个模块不需要在其他地方使用，那么直接在这里使用即可
-        new GameConfig();
+        GameRules.GameConfig = new GameConfig();
+        Bot.init()
 
         // 初始化测试模块xD
         new Debug();

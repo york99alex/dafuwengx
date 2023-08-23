@@ -761,6 +761,8 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
   
 - 神秘法杖改回来
 
+- 
+
 ## 亡国清算逻辑
 
 所有修改的金币时检查是否没钱了:
@@ -831,9 +833,11 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 ## Todo
 
-1. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
+1. auto自动操作死循环
 
-2. player init
+2. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
+
+3. player init
 
    1. ----设置起点路径
 
@@ -847,13 +851,13 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
    ​    this.setPath(GameRules.PathManager.getPathByType(GameMessage.TP_START)[0])
 
-3. 游戏记录模块
+4. 游戏记录模块
 
-4. GameConfig的计时回调registerThink和onThink_update
+5. GameConfig的计时回调registerThink和onThink_update
    如何与GameLoop实现
    思路: 灵活运用 进入状态触发的函数和离开状态触发的函数
 
-5. Path路径管理模块, 以及游戏地图
+6. Path路径管理模块, 以及游戏地图
 
    1. 添加 unit 
 
@@ -876,51 +880,63 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
    4. PathRune
 
-6. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+7. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
 
-7. 兵卒?
+8. 兵卒?
 
-8. 其他模块
+9. 其他模块
 
-9. 英雄技能
+10. 英雄技能
 
-10. Roll点的随机路径平衡机制数值思考
+11. Roll点的随机路径平衡机制数值思考
 
-11. CustomGameEventManager.Send_ServerToPlayer?还是
+12. CustomGameEventManager.Send_ServerToPlayer?还是
 
     Send_ServerToAllClients
 
-12. 检查网表GamingTable的nSumGold总资产计算是否正确
+13. 检查网表GamingTable的nSumGold总资产计算是否正确
 
-13. 增加英雄 const HERO_TO_BANNER 需要调整
+14. 增加英雄 const HERO_TO_BANNER 需要调整
 
-14. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
+15. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
 
-15. _tEventIDGCLD   ?为数组?
+16. _tEventIDGCLD   ?为数组?
 
-16. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
+17. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
 
-17. addon_schinese.txt :		"RandomTip"						"随机英雄"
+18. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
-18. 统一所有英雄移速
+19. 统一所有英雄移速
 
-19. 检查FireEvent的args参数为空的情况
+20. 检查FireEvent的args参数为空的情况
 
-20. GSManager:setState都调整为loop
+21. GSManager:setState都调整为loop
 
-21. /**设置结算数据 */
+22. /**设置结算数据 */
 
     setGameEndData(){}
 
-22. ==sendMsg和broadcastMsg的tabData格式==
+23. ==sendMsg和broadcastMsg的tabData格式==
 
-23. gamestate的计时器update是0.1调用一次
+24. gamestate的计时器update是0.1调用一次
 
-24. // 监听玩家移动回路径
+25. // 监听玩家移动回路径
 
       onMove如何处理gamestateloop
 
-25. 英雄经验系统/数值
+26. 英雄经验系统/数值
+
+
+
+## 调整
+
+-  if (this.nInit == this.getPlayerCount()) {
+
+​          this.nInit == null
+
+​          ==this.m_bAllPlayerInit = true==
+
+​        }
 
 
 

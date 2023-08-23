@@ -35,7 +35,7 @@ export class Player {
     m_nRollMove: number = null			 //  roll点移动的次数（判断入狱给阎刃卡牌）
     m_nMoveDir: number = null			  //  方向	1=正向 -1=逆向
 
-    m_typeState: number = GameMessage.PS_None			//  玩家状态
+    m_nPlayerStater: number = GameMessage.PS_None			//  玩家状态
     m_typeBuyState: number = GameMessage.TBuyItem_None//  购物状态
     m_typeTeam: DotaTeam = null			  //  自定义队伍
 
@@ -80,7 +80,7 @@ export class Player {
         this.m_tabHasCard = []
         this.m_tabUseCard = []
         this.m_tabDelCard = []
-        this.m_typeState = GameMessage.PS_None
+        this.m_nPlayerStater = GameMessage.PS_None
         this.m_nBuyItem = 0
         this.m_typeBuyState = GameMessage.TBuyItem_None
         this.m_bDie = false
@@ -237,7 +237,6 @@ export class Player {
         }
         // 设置起点路径
         this.setPath(GameRules.PathManager.getPathByType(GameMessage.TP_START)[0])
-
 
     }
 
@@ -423,7 +422,7 @@ export class Player {
     setBzAttack(eBz, bCan?: boolean) {
         if (eBz == null) return
         if (bCan == null) {
-            bCan = (this.m_typeState & GameMessage.PS_AtkBZ) !== 0 && (this.m_typeState & GameMessage.PS_InPrison) === 0
+            bCan = (this.m_nPlayerStater & GameMessage.PS_AtkBZ) !== 0 && (this.m_nPlayerStater & GameMessage.PS_InPrison) === 0
         }
 
         for (const value of this.m_tabBz) {
@@ -504,12 +503,24 @@ export class Player {
         })
     }
 
-    /**以前 */
+    /**移动到路径 */
     moveToPath(path: Path, funCallBack?: Function) {
         // 开始移动
-        this.setState()
+        this.setState(GameMessage.PS_Moving)
         this.m_pathMoveStart = this.m_pathCur
+        if (this.m_pathCur != path) {
+            // 触发离开路径
+            GameRules.EventManager.FireEvent("Event_LeavePath", { player: this, path: this.m_pathMoveStart })
+        }
+        // 监听移动经过路径
+        const funPassingPath = (event: { path: Path, entity: CDOTA_BaseNPC }) => {
+            if (event.entity == this.m_eHero) this.setPath(event.path, true)
+        }
+        GameRules.EventManager.Register("Event_PassingPath", funPassingPath)
+        // 设置移动
         GameRules.PathManager.moveToPath(this.m_eHero, path, true, (bSuccess: boolean) => {
+            GameRules.EventManager.UnRegister("Event_PassingPath", funPassingPath)
+            this.setState(-GameMessage.PS_Moving)
             if (bSuccess && !this.m_bDie) {
                 this.setPath(path)
             }
@@ -518,7 +529,8 @@ export class Player {
     }
 
     /**设置玩家状态 */
-    setState() {
+    setState(nPlayerState: number) {
+        this.m_nPlayerStater = nPlayerState
     }
 
     /**获取领地数量 */
@@ -669,7 +681,7 @@ export class Player {
         // 升级特效
 
         // 等级变更
-        
+
     }
 
     /**获取兵卒的星级 */

@@ -58,6 +58,16 @@ declare interface CustomGameEventDeclarations {
         }
     };
 
+    S2C_GM_Operator: {
+        nPlayerID: number
+        typeOprt: number
+    }
+
+    S2C_GM_OperatorFinished: {
+        nNum1: number
+        nNum2: number
+    }
+
     GM_OperatorFinished: {
         nPlayerID: number;
         typeOprt: number;

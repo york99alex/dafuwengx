@@ -8,7 +8,6 @@
     </styles>
     <Panel class="root" hittest="false">
         <Panel id="Countdown">
-            <Label id="CDLabel" text="0" />
         </Panel>
     </Panel>
 </root>

@@ -33,3 +33,13 @@
 "Event_BZLevelUp", { eBZ: eBZ, nLevel: nLevel }
 
 "Event_PlayerRoundBegin", { oPlayer: oPlayer, bRoll: true }
+
+"Event_GSWait_Over"
+
+"Event_LeavePath", { player: this, path: this.m_pathMoveStart }
+
+"Event_PassingPath",(event:{path:Path,entity:CDOTA_BaseNPC})
+
+"Event_OnPath", { path: this,entity: player.m_eHero }
+
+"Event_RollBaoZiJudge", { player: event.player }

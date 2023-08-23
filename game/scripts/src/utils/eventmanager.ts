@@ -33,7 +33,7 @@ export class EventManager {
      * @param nFireCount 可以Fire触发的次数,默认值为-1则可以无限触发
      * @param bindID 绑定ID 可选 可以指定以某值做ID
      */
-    Register(event: string, funCallBack: Function, oBind: object, nOrder?: number, nFireCount?: number, bindID?: number) {
+    Register(event: string, funCallBack: Function, oBind?: object, nOrder?: number, nFireCount?: number, bindID?: number) {
         if (nOrder == null) nOrder = this.EventOrder.EVENT_LEVEL_NONE
         if (nFireCount == null) nFireCount = -1
         let tab = this.m_tabEvent[event]
@@ -49,10 +49,7 @@ export class EventManager {
                     let sortedEvent = Object.values(tab).sort((a, b) => {
                         return a.nOrder - b.nOrder
                     })
-                    this.m_tabEvent[event] = []
-                    sortedEvent.forEach(item => {
-                        this.m_tabEvent[event].push(item)
-                    })
+                    this.m_tabEvent[event] = sortedEvent
                     sortedEvent = null
                 }
                 this.m_tabEventCount[v.nID] = nFireCount
@@ -82,9 +79,7 @@ export class EventManager {
         let sortedEvent = Object.values(this.m_tabEvent[event]).sort((a, b) => {
             return a.nOrder - b.nOrder
         })
-        sortedEvent.forEach(item => {
-            this.m_tabEvent[event].push(item)
-        })
+        this.m_tabEvent[event] = sortedEvent
         sortedEvent = null
 
         return nID
@@ -168,10 +163,13 @@ export class EventManager {
                 try {
                     handler(args)
                     bSuccess = true
+                    print("FireEvent Success==>eventName:", eventName)
                 } catch (error) {
                     print("FireEvent Error==>eventName:", eventName)
                 }
-                bDeleteHandler = bSuccess
+                if (!bSuccess) {
+                    bDeleteHandler = bSuccess
+                }
             } else {
                 bDeleteHandler = true;
             }

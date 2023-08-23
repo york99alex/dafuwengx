@@ -7,7 +7,6 @@ export class PlayerManager {
     nInit: number // 初始化人数
     m_tabChangeGold: number[]
     m_nTimeChangeGold: number
-    m_typeStateCur: number = GameMessage.GS_None
 
     constructor() {
         this.m_bAllPlayerInit = false, // 全部玩家初始化完成
@@ -92,11 +91,16 @@ export class PlayerManager {
             print("onEvent_playerPickHero")
             DeepPrintTable(event)
             const eHero = EntIndexToHScript(event.heroindex as EntityIndex) as CDOTA_BaseNPC_Hero
+            if (event.player > 1) {
+                this.m_tabPlayers[eHero.GetPlayerID()] = new Player(eHero.GetPlayerID())
+            }
             const oPlayer = this.m_tabPlayers[eHero.GetPlayerOwnerID()]
             GameRules.HeroSelection.m_SelectHeroPlayerID.push(eHero.GetPlayerOwnerID())
             if (GameRules.State_Get() != GameState.HERO_SELECTION) {
                 GameRules.HeroSelection.GiveAllPlayersSort()
             }
+            print("oPlayer:", oPlayer)
+            print("oPlayer.__init:", oPlayer.__init)
             if (oPlayer != null && !oPlayer.__init) {
                 oPlayer.m_eHero = eHero
                 oPlayer.initPlayer()
@@ -104,9 +108,7 @@ export class PlayerManager {
                 this.nInit++
                 if (this.nInit == this.getPlayerCount()) {
                     this.nInit == null
-                    Timers.CreateTimer(1, () => {
-                        this.m_bAllPlayerInit = true
-                    })
+                    this.m_bAllPlayerInit = true
                 }
             }
         }
@@ -150,8 +152,13 @@ export class PlayerManager {
         }
     }
 
-    /**广播事件消息 */
-    broadcastMsg(strMgsID: string, tabData) {
+    /**广播请求操作事件消息 */
+    broadcastOperatorMsg(strMgsID: "S2C_GM_Operator", tabData: { nPlayerID: number; typeOprt: number; }) {
+        // CustomGameEventManager.Send_ServerToAllClients(strMgsID, tabData)
+    }
+
+    /**广播请求操作结果事件消息 */
+    broadcastOperatorFinishedMsg(strMgsID: "S2C_GM_OperatorFinished", tabData: { nNum1: number; nNum2: number; }) {
         // CustomGameEventManager.Send_ServerToAllClients(strMgsID, tabData)
     }
 
@@ -170,6 +177,78 @@ export class PlayerManager {
     isAlivePlayer(nPlayerID: number) {
         const player = this.getPlayer(nPlayerID)
         return player && !player.m_bDie
+    }
+
+    /**是否是领地最少的玩家 */
+    isLeastPathPlayer(playerid: number): boolean {
+        const leastPlayers = this.getLeastPathPlayer()
+        return leastPlayers.some(player => player.m_nPlayerID === playerid)
+    }
+
+    /**是否领地最多的玩家 */
+    isMostPathPlayer(playerid: number): boolean {
+        const mostPlayers = this.getMostPathPlayer()
+        return mostPlayers.some(player => player.m_nPlayerID === playerid)
+    }
+
+    /**获取领地最多的玩家的领地数量 */
+    getMostPathCount(): number {
+        let max = 0
+        for (const player of this.m_tabPlayers) {
+            if (this.isAlivePlayer(player.m_nPlayerID)) {
+                const sum = player.getPathCount()
+                if (sum > max) {
+                    max = sum
+                }
+            }
+        }
+        return max
+    }
+
+
+    /**获取领地最多的玩家 */
+    getMostPathPlayer(): Player[] {
+        const max = this.getMostPathCount()
+        const resPlayers: Player[] = []
+        for (const player of this.m_tabPlayers) {
+            if (this.isAlivePlayer(player.m_nPlayerID)) {
+                const sum = player.getPathCount()
+                if (sum == max) {
+                    resPlayers.push(player)
+                }
+            }
+        }
+        return resPlayers
+    }
+
+    /**获取领地最少的玩家的领地数量 */
+    getLeastPathCount(): number {
+        let min = 0
+        for (const player of this.m_tabPlayers) {
+            if (this.isAlivePlayer(player.m_nPlayerID)) {
+                const sum = player.getPathCount()
+                if (sum < min) {
+                    min = sum
+                }
+            }
+        }
+        return min
+    }
+
+
+    /**获取领地最少的玩家 */
+    getLeastPathPlayer(): Player[] {
+        const min = this.getLeastPathCount()
+        const resPlayers: Player[] = []
+        for (const player of this.m_tabPlayers) {
+            if (this.isAlivePlayer(player.m_nPlayerID)) {
+                const sum = player.getPathCount()
+                if (sum == min) {
+                    resPlayers.push(player)
+                }
+            }
+        }
+        return resPlayers
     }
 }
 

@@ -1,4 +1,3 @@
-import { PlayerManager } from "../player/playermanager";
 import { AHMC } from "../utils/amhc";
 import { reloadable } from "../utils/tstl-utils";
 import { Path } from "./Path";
@@ -98,8 +97,9 @@ export class PathManager {
         const oPlayer = GameRules.PlayerManager.getPlayer(entity.GetPlayerID())
         const pathBegin = oPlayer.m_pathCur
         let pathCur = pathBegin
-        let pathNext = this.getNextPath(pathCur, 1)
-        let vNext
+        // 当前路径是否为目的地
+        let pathNext = pathCur == path ? pathCur : this.getNextPath(pathCur, 1)
+        let vNext: Vector
         function getNextPos() {
             if (pathNext == path) {
                 vNext = pathNext.getNilPos(entity)
@@ -112,9 +112,8 @@ export class PathManager {
         entity.MoveToPosition(vNext)
 
         const nEntId = entity.GetEntityIndex()
-
         // 结束上次移动
-        if (this.m_tabMoveData[nEntId] == null) this.moveStop(entity, false)
+        if (this.m_tabMoveData[nEntId]) this.moveStop(entity, false)
         // 新的移动
         const tMoveData = {
             nEntId: nEntId,
@@ -138,7 +137,11 @@ export class PathManager {
             }
             if (nDis < nCheckDis) {
                 // 触发事件: 途径某路径
+                if (pathBegin != pathNext && bEventEnable) {
+                    GameRules.EventManager.FireEvent("Event_PassingPath", { path: pathNext, entity: entity })
+                }
                 if (pathNext == path) {
+                    // 移动结束
                     this.moveStop(entity, true)
                     return null
                 } else {
@@ -155,6 +158,7 @@ export class PathManager {
             entity.MoveToPosition(vNext)
             return 0.1
         })
+        return true
     }
 
     moveStop(entity: CDOTA_BaseNPC_Hero, bSuccess: boolean) {

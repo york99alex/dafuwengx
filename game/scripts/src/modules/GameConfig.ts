@@ -2,6 +2,7 @@ import { CardManager } from "../card/cardmanager"
 import { GameLoop } from "../mode/GameLoop"
 import { HeroSelection } from "../mode/HeroSelection"
 import { Auction } from "../mode/auction"
+import { Bot } from "../mode/bot"
 import { Constant } from "../mode/constant"
 import { DeathClearing } from "../mode/deathclearing"
 import { GameMessage } from "../mode/gamemessage"
@@ -9,6 +10,7 @@ import { Trade } from "../mode/trade"
 import { Path } from "../path/Path"
 import { PathManager } from "../path/PathManager"
 import { PathDomain } from "../path/pathdomain"
+import { PathTP } from "../path/pathtp"
 import { Player } from "../player/player"
 import { PlayerManager } from "../player/playermanager"
 import { EventManager } from "../utils/eventmanager"
@@ -34,11 +36,11 @@ export class GameConfig {
     m_tabOprtCan: {
         nPlayerID: number,
         typeOprt: number,
-        PlayerID: number,
-        nRequest: number
-    }[] // 当前全部可操作
-    m_tabOprtSend = [] // 当前全部可操作
-    m_tabOprtBroadcast = [] // 当前全部可操作
+        nRequest?: number,
+        bPrison?: number
+    }[] = []// 当前全部可操作
+    m_tabOprtSend: { nPlayerID: number, typeOprt: number }[] = [] // 当前全部可操作
+    m_tabOprtBroadcast: { nPlayerID: number, typeOprt: number }[] = [] // 当前全部可操作
 
     constructor() {
         print("[GameConfig] start...开始配置")
@@ -130,6 +132,7 @@ export class GameConfig {
         // }
 
         GameRules.EventManager = new EventManager()
+        GameRules.GameLoop = new GameLoop()
         this.registerEvent()
         this.registerMessage()
         this.registerThink()    // 调用GameLoop
@@ -161,10 +164,13 @@ export class GameConfig {
 
     /**更新回合操作时限 */
     updateTimeOprt() {
-        this.m_timeOprt -= 1
-        // 每一秒更新到网表
-        if (this.m_timeOprt % 10 == 0) {
-            CustomNetTables.SetTableValue("GamingTable", "timeOprt", { time: this.m_timeOprt / 10 })
+        if (this.m_typeState === GameMessage.GS_ReadyStart
+            || this.m_typeState === GameMessage.GS_WaitOperator) {
+            this.m_timeOprt -= 1
+            // 每一秒更新到网表
+            if (this.m_timeOprt % 10 == 0) {
+                CustomNetTables.SetTableValue("GamingTable", "timeOprt", { time: this.m_timeOprt / 10 })
+            }
         }
     }
 
@@ -181,12 +187,14 @@ export class GameConfig {
     }
 
     /**广播操作 */
-    broadcastOprt(tabOprt) {
+    broadcastOprt(tabOprt: { nPlayerID: number, typeOprt: number, bPrison?: number }) {
+        print("广播操作=======================")
+        DeepPrintTable(tabOprt)
         // 添加可操作记录
         this.m_tabOprtCan.push(tabOprt)
         this.m_tabOprtBroadcast.push(tabOprt)
         // 发送消息给操作者
-        GameRules.PlayerManager.broadcastMsg("GM_Operator", tabOprt)
+        GameRules.PlayerManager.broadcastOperatorMsg("S2C_GM_Operator", tabOprt)
     }
 
     /**设置当前操作玩家ID */
@@ -232,13 +240,12 @@ export class GameConfig {
     }
 
     // 操作请求
-    onMsg_oprt(tabData: Record<any, any>) {
+    onMsg_oprt(tabData: { nPlayerID: number, typeOprt: number }) {
         print("[LUA]:Receive=================>>>>>>>>>>>>>>>")
         DeepPrintTable(tabData)
         if (tabData.typeOprt == null) {
             return
         }
-        print("tabData.nPlayerID:", tabData.nPlayerID)
         if (tabData.typeOprt > GameMessage.TypeOprt.TO_Free) {
             if (tabData.typeOprt == GameMessage.TypeOprt.TO_ZBMM) { }
             else if (tabData.typeOprt == GameMessage.TypeOprt.TO_XJGT) { }
@@ -255,8 +262,8 @@ export class GameConfig {
             } else {
                 // 
             }
-        } else {
-            // } else if (this.checkOprt(tabData) != false) {
+            // } else {
+        } else if (this.checkOprt(tabData) != false) {
             if (tabData.typeOprt == GameMessage.TypeOprt.TO_Finish) {
                 this.processFinish(tabData)
             } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_Roll) {
@@ -280,25 +287,102 @@ export class GameConfig {
     }
 
     /**处理回合结束 */
-    processFinish(tabData) {
+    processFinish(tabData: { nPlayerID: number, typeOprt: number }) {
+        print("processFinish====")
+        if (this.m_typeState == GameMessage.GS_Move) return
+        if (this.m_typeState == GameMessage.GS_Wait) return
 
+        GameRules.GameLoop.Timer(() => {
+            GameRules.GameLoop.GameStateService.send("tofinished")
+            return null
+        }, 0)
+        // 删除操作
+        this.checkOprt(tabData, true)
+        const tabOprt = { nRequest: 1 }
+        // 回包
+        GameRules.PlayerManager.sendMsg("S2C_GM_OperatorFinished", tabOprt, tabData.nPlayerID)
+
+        this.autoOprt(null, GameRules.PlayerManager.getPlayer(tabData.nPlayerID))
     }
 
     /**处理roll点 */
-    processRoll(tabData: Record<any, any>) {
+    processRoll(tabData: { nPlayerID: number, typeOprt: number }) {
+        if (this.m_typeState == GameMessage.GS_Move) return
+        if (this.m_typeState == GameMessage.GS_Wait) return
+
         const oPlayer = GameRules.PlayerManager.getPlayer(tabData.nPlayerID)
+        const bInPrison: boolean = 0 < (GameMessage.PS_InPrison & oPlayer.m_nPlayerStater)
+
+        // 有tp和攻城跳过
+        this.autoOprt(GameMessage.TypeOprt.TO_TP)
+        this.autoOprt(GameMessage.TypeOprt.TO_GCLD)
+        this.autoOprt(GameMessage.TypeOprt.TO_AtkMonster)
+
         let nNum1 = RandomInt(1, 6), nNum2 = RandomInt(1, 6)
-        print("nNum1:", nNum1)
-        print("nNum2:", nNum2)
+
+        /**是否可占领 */
+        function checkPath() {
+            if (bInPrison) return
+            const path = GameRules.PathManager.getNextPath(oPlayer.m_pathCur, nNum1 + nNum2)
+            print("checkPath:", (path instanceof PathDomain || path instanceof PathTP) && !path.m_nOwnerID)
+            return (path instanceof PathDomain || path instanceof PathTP) && !path.m_nOwnerID
+        }
+
+        print("roll default: ", nNum1, nNum2)
+
+        // 平衡性算法-领地差值
+        const difference = GameRules.PlayerManager.getMostPathCount() - GameRules.PlayerManager.getLeastPathCount()
+        if (difference > 2) {
+            const randomNum = RandomInt(1, 2)
+            print("roll randomNum: ", randomNum)
+            if (randomNum === 1) {
+                let i = 1
+                const isLeastPathPlayer = GameRules.PlayerManager.isLeastPathPlayer(tabData.nPlayerID)
+                const isMostPathPlayer = GameRules.PlayerManager.isMostPathPlayer(tabData.nPlayerID)
+                while (i < 100) {
+                    if ((isLeastPathPlayer && checkPath()) || (isMostPathPlayer && !checkPath())) {
+                        break
+                    }
+                    nNum1 = RandomInt(1, 6)
+                    nNum2 = RandomInt(1, 6)
+                    i++
+                }
+            }
+
+        }
+
+        // 删除操作
+        this.checkOprt(tabData, true)
+        const tabOprt = {
+            nNum1: nNum1,
+            nNum2: nNum2
+        }
+        // 广播玩家roll点操作
+        // GameRules.PlayerManager.broadcastOperatorFinishedMsg("S2C_GM_OperatorFinished", tabOprt)
+        print("roll final: ", nNum1, nNum2)
         print("playerID", tabData.nPlayerID)
-        GameRules.EventManager.FireEvent("Event_Roll", {
-            bIgnore: 0,
-            // nNum1: nNum1,
-            // nNum2: nNum2,
-            nNum1: 2,
-            nNum2: 3,
-            player: oPlayer
+
+        // 音效
+        // EmitGlobalSound("Custom.Roll.Ing")
+
+        GameRules.GameLoop.GameStateService.send("towait")
+
+        Timers.CreateTimer(1.5, () => {
+            // 设置roll点记录
+            // TODO: GameRecord.setGameRecord()
+
+            GameRules.GameLoop.GameStateService.send("towaitoprt")
+            // 触发roll事件
+            GameRules.EventManager.FireEvent("Event_Roll", {
+                bIgnore: 0,
+                nNum1: nNum1,
+                nNum2: nNum2,
+                // nNum1: 2,
+                // nNum2: 3,
+                player: oPlayer
+            })
         })
+
     }
 
     /**处理安营扎寨 */
@@ -346,14 +430,14 @@ export class GameConfig {
 
     /**自动处理操作 */
     autoOprt(typeOprt?: number, oPlayer?: Player) {
+        print("this.m_tabOprtCan.length:", this.m_tabOprtCan.length)
         for (const v of this.m_tabOprtCan) {
-            print("v.typeOprt:", v.typeOprt)
-            print("v.nPlayerID", v.nPlayerID)
-
-            if ((typeOprt == null || v.typeOprt == typeOprt)
+            print("v.typeOprt:", v.typeOprt, "typeOprt:", typeOprt)
+            print("v.nPlayerID", v.nPlayerID, "oPlayer.m_nPlayerID:", oPlayer?.m_nPlayerID)
+            print("v.nRequest", v.nRequest)
+            if ((typeOprt == null || v.typeOprt == typeOprt)    // 指定操作
                 && (oPlayer == null || v.nPlayerID == oPlayer.m_nPlayerID)) {
-                // 指定玩家
-                v.PlayerID = v.nPlayerID
+                print("验证操作")
                 if (GameMessage.TypeOprt.TO_Finish == v.typeOprt) {
                     // 结束回合
                     v.nRequest = 1
@@ -392,22 +476,16 @@ export class GameConfig {
     }
 
     /**验证操作 */
-    checkOprt(tabData, bDel?: boolean) {
+    checkOprt(tabData: { nPlayerID: number, typeOprt: number }, bDel?: boolean) {
         print("checkOprt")
         if (bDel) {
-            this.m_tabOprtSend = this.m_tabOprtSend.filter(item => {
-                item.nPlayerID == tabData.PlayerID &&
-                    item.typeOprt == tabData.typeOprt
-            })
-            this.m_tabOprtBroadcast = this.m_tabOprtBroadcast.filter(item => {
-                item.nPlayerID == tabData.PlayerID &&
-                    item.typeOprt == tabData.typeOprt
-            })
+            const cdt = (v: { nPlayerID: number, typeOprt: number }) => v.nPlayerID === tabData.nPlayerID && v.typeOprt === tabData.typeOprt
+            this.m_tabOprtSend = this.m_tabOprtSend.filter(value => !cdt(value))
+            this.m_tabOprtBroadcast = this.m_tabOprtBroadcast.filter(value => !cdt(value))
         }
         for (let index = 0; index < this.m_tabOprtCan.length; index++) {
             const value = this.m_tabOprtCan[index]
-            // PlayerID:发送网包的玩家ID
-            if (value.nPlayerID == tabData.PlayerID && value.typeOprt == tabData.typeOprt) {
+            if (value.nPlayerID == tabData.nPlayerID && value.typeOprt == tabData.typeOprt) {
                 if (bDel) {
                     delete this.m_tabOprtCan[index]
                 }
@@ -491,7 +569,7 @@ export class GameConfig {
                 delete this.m_tabOprtCan[i]
             }
             if (nAlive > 1) {
-                if (GameRules.PlayerManager.m_typeStateCur != GameMessage.GS_ReadyStart) {
+                if (GameRules.GameLoop.m_typeStateCur != GameMessage.GS_ReadyStart) {
                     GameRules.GameLoop.setState(GameMessage.GS_Finished)
                 }
             }
@@ -557,15 +635,24 @@ export class GameConfig {
         const oPlayer = GameRules.PlayerManager.getPlayer(event.player.m_nPlayerID)
         const pathDes = GameRules.PathManager.getNextPath(oPlayer.m_pathCur, event.nNum1 + event.nNum2)
 
-        if (interpret(GameRules.GameLoop.GameStateLoop).getState().value == "GSWaitOprt") {
-            GameRules.GameLoop.GameStateService.send("to_move")
+        print("GameRules.GameLoop.getGameState():", GameRules.GameLoop.getGameState())
+        if (GameRules.GameLoop.getGameState() === "GSWaitOprt") {
+            print("改变状态移动tomove")
+            GameRules.GameLoop.Timer(() => {
+                GameRules.GameLoop.GameStateService.send("tomove")
+                return null
+            }, 0)
         }
         oPlayer.moveToPath(pathDes, (bSuccess: boolean) => {
+            print("this.m_typeState:", this.m_typeState)
             // 触发移动结束事件
-            if (oPlayer.m_typeState == GameMessage.GS_Move ||
-                oPlayer.m_typeState == GameMessage.GS_DeathClearing) {
+            if (this.m_typeState === GameMessage.GS_Move ||
+                this.m_typeState === GameMessage.GS_DeathClearing) {
                 // GSMOVE_Exit()结束移动
-                GameRules.GameLoop.GameStateService.send("to_waitopr")
+                GameRules.GameLoop.Timer(() => {
+                    GameRules.GameLoop.GameStateService.send("towaitoprt")
+                    return null
+                }, 0)
             }
             GameRules.EventManager.FireEvent("Event_MoveEnd", { entity: event.player.m_eHero })
             event.player.m_nRollMove++
@@ -575,9 +662,9 @@ export class GameConfig {
             pathDes.onPath(event.player)
 
             // 判断豹子触发
-            const tEventJudge = { player: event.player }
+            GameRules.EventManager.FireEvent("Event_RollBaoZiJudge", { player: event.player })
             if (!event.bIgnore && event.nNum1 == event.nNum2 &&
-                (oPlayer.m_typeState & (GameMessage.PS_InPrison | GameMessage.PS_AtkMonster)) === 0) {
+                (oPlayer.m_nPlayerStater & (GameMessage.PS_InPrison | GameMessage.PS_AtkMonster)) === 0) {
                 // 豹子,发送roll点操作
                 this.broadcastOprt({
                     typeOprt: GameMessage.TypeOprt.TO_Roll,
