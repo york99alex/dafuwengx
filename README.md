@@ -833,7 +833,7 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 ## Todo
 
-1. auto自动操作死循环
+1. 验证操作
 
 2. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
 
@@ -925,6 +925,8 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
       onMove如何处理gamestateloop
 
 26. 英雄经验系统/数值
+
+27. 客户端,前端 请求传输数据缩减
 
 
 

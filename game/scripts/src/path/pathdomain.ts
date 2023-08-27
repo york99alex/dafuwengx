@@ -22,7 +22,7 @@ export class PathDomain extends Path {
         super(entity)
 
         this.m_eCity = Entities.FindByName(null, "city_" + this.m_nID)
-        this.m_eBanner = Entities.CreateByClassname("dota_guild_banner_dynamic") as CBaseModelEntity
+        this.m_eBanner = Entities.FindByName(null, "bann_" + this.m_nID) as CBaseModelEntity
         this.setBanner()
 
         this.m_nPrice = Constant.PATH_TO_PRICE[this.m_typePath]
@@ -39,12 +39,8 @@ export class PathDomain extends Path {
     setBanner(strHeroName?: string) {
         // strHeroName为空就表示销毁旗帜
         if (strHeroName == null) {
-            if (this.m_eBanner) {
-                this.m_eBanner.Destroy()
-                this.m_eBanner = null
-            }
+            this.m_eBanner.SetOrigin(this.m_eCity.GetOrigin() - Vector(0, 0, 1000) as Vector)
         } else {
-            if (!this.m_eBanner) this.m_eBanner = Entities.CreateByClassname("dota_guild_banner_dynamic") as CBaseModelEntity
             this.m_eBanner.SetOrigin(this.m_eCity.GetOrigin())
             this.m_eBanner.SetSkin(Constant.HERO_TO_BANNER[strHeroName])
         }

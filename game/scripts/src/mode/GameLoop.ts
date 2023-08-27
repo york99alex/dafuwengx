@@ -169,7 +169,7 @@ export class GameLoop {
         this.Timer(() => {
             GameRules.GameConfig.updateTimeOprt()
             const timeOprt = GameRules.GameConfig.m_timeOprt
-            print("timeOprt:", timeOprt)
+            // print("timeOprt:", timeOprt)
             if (timeOprt < 0) {
                 // 时间结束,自动操作
                 print("自动操作")

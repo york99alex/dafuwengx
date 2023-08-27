@@ -236,7 +236,7 @@ export class GameConfig {
     //----------消息回调----------
     // 注册消息
     registerMessage() {
-        CustomGameEventManager.RegisterListener("GM_Operator", (_, event) => this.onMsg_oprt(event))
+        CustomGameEventManager.RegisterListener("S2C_GM_Operator", (_, event) => this.onMsg_oprt(event))
     }
 
     // 操作请求
@@ -262,8 +262,9 @@ export class GameConfig {
             } else {
                 // 
             }
-            // } else {
-        } else if (this.checkOprt(tabData) != false) {
+        } else {
+        // } else if (this.checkOprt(tabData) != false) {
+            print("checkOprt====success")
             if (tabData.typeOprt == GameMessage.TypeOprt.TO_Finish) {
                 this.processFinish(tabData)
             } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_Roll) {
@@ -386,19 +387,18 @@ export class GameConfig {
     }
 
     /**处理安营扎寨 */
-    processAYZZ(tabData: Record<any, any>) {
+    processAYZZ(tabData: { nPlayerID: number, typeOprt: number }) {
         // 删除可操作
-        // const tabOprt = this.checkOprt(tabData)
-        // tabOprt.nRequest = tabData.nRequest
+        this.checkOprt(tabData)
 
         let oPlayer: Player, oPath
         print("处理安营扎寨")
 
         // 验证操作
-        if (tabData.nRequest == 1) {
+        // if (tabData.nRequest == 1) {
             oPlayer = GameRules.PlayerManager.getPlayer(tabData.nPlayerID)
             oPath = GameRules.PathManager.getPathByID(4)
-        }
+        // }
         // 设置玩家领地
         oPlayer.setMyPathAdd(oPath)
         // 花费金币
