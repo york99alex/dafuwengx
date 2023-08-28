@@ -102,7 +102,8 @@ module.exports = {
                 // if filename is not set, it will use the name of the entry
                 { import: './hud/layout.xml', type: 'Hud' },
 
-                { import: './operator/operator.xml', type: 'Hud' },
+                { import: './hud/operator/operator.xml', type: 'Hud' },
+                { import: './hud/mode/layout.xml', type: 'Hud' },
 
             ],
         }),

@@ -266,16 +266,6 @@ export class GameLoop {
 
     }
 
-    /**让出当前状态 */
-    yieldState(): any {
-        throw new Error("Method not implemented.");
-    }
-
-    /**恢复挂起的状态 */
-    resumeState(_YieldStateCO: any) {
-        throw new Error("Method not implemented.");
-    }
-
     /**设置当前状态*/
     setState(typeState: number) {
         print("last state: ", GameRules.GameConfig.m_typeState, " cur state: ", typeState)

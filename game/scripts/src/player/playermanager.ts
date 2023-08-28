@@ -2,6 +2,7 @@ import { GameMessage } from "../mode/gamemessage"
 import { Player } from "./player"
 
 export class PlayerManager {
+
     m_bAllPlayerInit: boolean
     m_tabPlayers: Player[]
     nInit: number // 初始化人数
@@ -31,6 +32,7 @@ export class PlayerManager {
         // 玩家聊天
         ListenToGameEvent("player_chat", (event) => this.onEvent_player_chat(event), this)
     }
+    
     // 玩家断线
     onEvent_playerDisconnect(event: GameEventProvidedProperties & PlayerDisconnectEvent) {
         print("onEvent_playerDisconnect")
@@ -78,11 +80,9 @@ export class PlayerManager {
                     DeepPrintTable(tabOprt)
                     this.sendMsg("GM_Operator", tabOprt, event.PlayerID)
                 }
-
             }
         }
         oPlayer.m_nUserID = event.userid
-
     }
 
     // 选择英雄
@@ -145,22 +145,48 @@ export class PlayerManager {
     }
 
     /**发送事件消息给某玩家 */
-    sendMsg(strMgsID: string, tabData, nPlayerID) {
+    sendMsg(strMgsID: string, tabData, nPlayerID: number) {
         const oPlayer = this.getPlayer(nPlayerID)
         if (oPlayer) {
             oPlayer.sendMsg(strMgsID, tabData)
         }
     }
 
-    /**广播请求操作事件消息 */
-    broadcastOperatorMsg(strMgsID: "S2C_GM_Operator", tabData: { nPlayerID: number; typeOprt: number; }) {
-        // CustomGameEventManager.Send_ServerToAllClients(strMgsID, tabData)
+    /**广播事件消息 */
+    broadcastMsg(strMgsID: string, tabData) {
+        switch (strMgsID) {
+            case "GM_Operator":
+                CustomGameEventManager.Send_ServerToAllClients("GM_Operator", tabData)
+                break;
+            case "GM_OperatorFinished":
+                CustomGameEventManager.Send_ServerToAllClients("GM_OperatorFinished", tabData)
+                break
+            case "S2C_GM_HUDErrorMessage":
+                CustomGameEventManager.Send_ServerToAllClients("S2C_GM_HUDErrorMessage", tabData)
+                break;
+            default:
+                print("=========!!!未匹配消息:", strMgsID,"!!!=========")
+                break;
+        }
     }
 
-    /**广播请求操作结果事件消息 */
-    broadcastOperatorFinishedMsg(strMgsID: "S2C_GM_OperatorFinished", tabData: { nNum1: number; nNum2: number; }) {
-        // CustomGameEventManager.Send_ServerToAllClients(strMgsID, tabData)
-    }
+    // /**广播请求操作事件消息 */
+    // broadcastOperatorMsg(strMgsID: "S2C_GM_Operator", tabData: { nPlayerID: number; typeOprt: number; }) {
+    //     // CustomGameEventManager.Send_ServerToAllClients(strMgsID, tabData)
+    // }
+
+    // /**广播请求操作结果事件消息 */
+    // broadcastOperatorFinishedMsg(strMgsID: "S2C_GM_OperatorFinished", tabData: { nNum1: number; nNum2: number; }) {
+    //     CustomGameEventManager.Send_ServerToAllClients(strMgsID, tabData)
+    // }
+
+    // /**广播通知错误信息 */
+    // broadcastErrorMessage(data: {
+    //     type: number,
+    //     message: string
+    // }) {
+    //     CustomGameEventManager.Send_ServerToAllClients("S2C_GM_HUDErrorMessage", data)
+    // }
 
     /**获取存活玩家数量 */
     getAlivePlayerCount() {

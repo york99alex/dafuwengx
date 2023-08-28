@@ -167,6 +167,7 @@ declare interface CustomNetTableDeclarations {
                 z: number
             }
         }[]
+        game_record: any
     }
 
 }

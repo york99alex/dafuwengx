@@ -6,6 +6,8 @@ import { Bot } from "../mode/bot"
 import { Constant } from "../mode/constant"
 import { DeathClearing } from "../mode/deathclearing"
 import { GameMessage } from "../mode/gamemessage"
+import { GameRecord } from "../mode/gamerecord"
+import { HudError } from "../mode/huderror"
 import { Trade } from "../mode/trade"
 import { Path } from "../path/Path"
 import { PathManager } from "../path/PathManager"
@@ -36,6 +38,7 @@ export class GameConfig {
     m_tabOprtCan: {
         nPlayerID: number,
         typeOprt: number,
+        nPathID?: number,
         nRequest?: number,
         bPrison?: number
     }[] = []// 当前全部可操作
@@ -194,7 +197,37 @@ export class GameConfig {
         this.m_tabOprtCan.push(tabOprt)
         this.m_tabOprtBroadcast.push(tabOprt)
         // 发送消息给操作者
-        GameRules.PlayerManager.broadcastOperatorMsg("S2C_GM_Operator", tabOprt)
+        GameRules.PlayerManager.broadcastMsg("GM_Operator", tabOprt)
+    }
+
+    /**验证操作 */
+    checkOprt(tabData: { nPlayerID: number, typeOprt: number }, bDel?: boolean)
+        : {
+            nPlayerID: number,
+            typeOprt: number,
+            nPathID?: number,
+            nRequest?: number,
+            bPrison?: number
+        } | false {
+        print("======start checkOprt======")
+        if (bDel) {
+            const cdt = (v: { nPlayerID: number, typeOprt: number }) => v.nPlayerID === tabData.nPlayerID && v.typeOprt === tabData.typeOprt
+            this.m_tabOprtSend = this.m_tabOprtSend.filter(value => !cdt(value))
+            this.m_tabOprtBroadcast = this.m_tabOprtBroadcast.filter(value => !cdt(value))
+        }
+        for (let index = 0; index < this.m_tabOprtCan.length; index++) {
+            const value = this.m_tabOprtCan[index]
+            if (value.nPlayerID == tabData.nPlayerID && value.typeOprt == tabData.typeOprt) {
+                if (bDel) {
+                    delete this.m_tabOprtCan[index]
+                }
+                print("checkOprt===success, return:")
+                DeepPrintTable(value)
+                return value
+            }
+        }
+        print("checkOprt===false")
+        return false
     }
 
     /**设置当前操作玩家ID */
@@ -236,16 +269,22 @@ export class GameConfig {
     //----------消息回调----------
     // 注册消息
     registerMessage() {
-        CustomGameEventManager.RegisterListener("S2C_GM_Operator", (_, event) => this.onMsg_oprt(event))
+        CustomGameEventManager.RegisterListener("GM_Operator", (_, event) => this.onMsg_oprt(event))
     }
 
     // 操作请求
-    onMsg_oprt(tabData: { nPlayerID: number, typeOprt: number }) {
+    onMsg_oprt(tabData: {
+        nPlayerID: number,
+        typeOprt: number,
+        nPathID?: number,
+        nRequest?: number
+    }) {
         print("[LUA]:Receive=================>>>>>>>>>>>>>>>")
         DeepPrintTable(tabData)
         if (tabData.typeOprt == null) {
             return
         }
+
         if (tabData.typeOprt > GameMessage.TypeOprt.TO_Free) {
             if (tabData.typeOprt == GameMessage.TypeOprt.TO_ZBMM) { }
             else if (tabData.typeOprt == GameMessage.TypeOprt.TO_XJGT) { }
@@ -262,9 +301,8 @@ export class GameConfig {
             } else {
                 // 
             }
-        } else {
-        // } else if (this.checkOprt(tabData) != false) {
-            print("checkOprt====success")
+            // } else {
+        } else if (this.checkOprt(tabData) != false) {
             if (tabData.typeOprt == GameMessage.TypeOprt.TO_Finish) {
                 this.processFinish(tabData)
             } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_Roll) {
@@ -312,7 +350,7 @@ export class GameConfig {
         if (this.m_typeState == GameMessage.GS_Wait) return
 
         const oPlayer = GameRules.PlayerManager.getPlayer(tabData.nPlayerID)
-        const bInPrison: boolean = 0 < (GameMessage.PS_InPrison & oPlayer.m_nPlayerStater)
+        const bInPrison: boolean = 0 < (GameMessage.PS_InPrison & oPlayer.m_nPlayerState)
 
         // 有tp和攻城跳过
         this.autoOprt(GameMessage.TypeOprt.TO_TP)
@@ -387,25 +425,64 @@ export class GameConfig {
     }
 
     /**处理安营扎寨 */
-    processAYZZ(tabData: { nPlayerID: number, typeOprt: number }) {
-        // 删除可操作
-        this.checkOprt(tabData)
-
-        let oPlayer: Player, oPath
+    processAYZZ(tabData: {
+        nPlayerID: number,
+        typeOprt: number,
+        nPathID?: number,
+        nRequest?: number
+    }) {
         print("处理安营扎寨")
+        // 删除可操作
+        const tabOprt = this.checkOprt(tabData) as {
+            nPlayerID: number,
+            typeOprt: number,
+            nPathID?: number,
+            nRequest?: number,
+            bPrison?: number
+        }
+
+        let oPlayer: Player, oPath: PathDomain | PathTP
 
         // 验证操作
-        // if (tabData.nRequest == 1) {
-            oPlayer = GameRules.PlayerManager.getPlayer(tabData.nPlayerID)
-            oPath = GameRules.PathManager.getPathByID(4)
-        // }
-        // 设置玩家领地
-        oPlayer.setMyPathAdd(oPath)
-        // 花费金币
-        oPlayer.setGold(-oPath.m_nPrice)
-        this.showGold(oPlayer, -oPath.m_nPrice)
+        tabOprt.nRequest = (() => {
+            if (tabData.nRequest == 1) {
+                oPlayer = GameRules.PlayerManager.getPlayer(tabOprt.nPlayerID)
+                oPath = GameRules.PathManager.getPathByID(tabOprt.nPathID) as PathDomain | PathTP
+                if (!oPlayer || !oPath) return 100
 
-        // 设置游戏记录
+                if (oPath.m_nPrice > oPlayer.GetGold()) {
+                    // 钱不够提示
+                    HudError.FireDefaultError(tabData.nPlayerID, "Error_NeedGold")
+                    return 2    // 金币不够
+                }
+            }
+            return tabData.nRequest
+        })()
+
+        if (tabOprt.nRequest == 1) {
+            // 广播玩家安营扎寨
+            GameRules.PlayerManager.broadcastMsg("GM_OperatorFinished", tabOprt)
+            // TODO:全地起兵操作
+
+            // 设置玩家领地
+            oPlayer.setMyPathAdd(oPath)
+            // 花费金币
+            oPlayer.setGold(-oPath.m_nPrice)
+            this.showGold(oPlayer, -oPath.m_nPrice)
+
+            // 设置游戏记录
+            GameRecord.setGameRecord(GameMessage.TGameRecord_AYZZ, tabOprt.nPlayerID, {
+                strPathName: "PathName_" + tabOprt.nPathID,
+                nGold: oPath.m_nPrice
+            })
+        } else {
+            // 回包
+            GameRules.PlayerManager.sendMsg("GM_OperatorFinished", tabOprt, tabOprt.nPlayerID)
+        }
+
+        if (tabOprt.nRequest == 0 || tabOprt.nRequest == 1) {
+            this.checkOprt(tabData, true)
+        }
     }
 
     /**处理攻城略地 */
@@ -473,26 +550,6 @@ export class GameConfig {
         }
 
 
-    }
-
-    /**验证操作 */
-    checkOprt(tabData: { nPlayerID: number, typeOprt: number }, bDel?: boolean) {
-        print("checkOprt")
-        if (bDel) {
-            const cdt = (v: { nPlayerID: number, typeOprt: number }) => v.nPlayerID === tabData.nPlayerID && v.typeOprt === tabData.typeOprt
-            this.m_tabOprtSend = this.m_tabOprtSend.filter(value => !cdt(value))
-            this.m_tabOprtBroadcast = this.m_tabOprtBroadcast.filter(value => !cdt(value))
-        }
-        for (let index = 0; index < this.m_tabOprtCan.length; index++) {
-            const value = this.m_tabOprtCan[index]
-            if (value.nPlayerID == tabData.nPlayerID && value.typeOprt == tabData.typeOprt) {
-                if (bDel) {
-                    delete this.m_tabOprtCan[index]
-                }
-                return value
-            }
-        }
-        return false
     }
 
     // ================计时回调================
@@ -664,7 +721,7 @@ export class GameConfig {
             // 判断豹子触发
             GameRules.EventManager.FireEvent("Event_RollBaoZiJudge", { player: event.player })
             if (!event.bIgnore && event.nNum1 == event.nNum2 &&
-                (oPlayer.m_nPlayerStater & (GameMessage.PS_InPrison | GameMessage.PS_AtkMonster)) === 0) {
+                (oPlayer.m_nPlayerState & (GameMessage.PS_InPrison | GameMessage.PS_AtkMonster)) === 0) {
                 // 豹子,发送roll点操作
                 this.broadcastOprt({
                     typeOprt: GameMessage.TypeOprt.TO_Roll,
@@ -725,6 +782,15 @@ export class GameConfig {
         return (nOrder + 1) % GameRules.PlayerManager.getPlayerCount()
     }
 
+    /**飘金 */
+    showGold(oPlayer: Player, nGold: number) {
+        // 通知UI显式花费
+        CustomGameEventManager.Send_ServerToAllClients("S2C_GM_ShowGold", {
+            nGold: nGold,
+            nPlayerID: oPlayer.m_nPlayerID
+        })
+    }
+
     /**增加轮数 */
     addRound() {
         this.m_nRound += 1
@@ -757,8 +823,4 @@ export class GameConfig {
 
     }
 
-    /**飘金 */
-    showGold(oPlayer: Player, nGold: number) {
-
-    }
 }

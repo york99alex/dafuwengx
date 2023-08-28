@@ -833,11 +833,40 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 ## Todo
 
-1. 验证操作
+1. 验证操作:
+   roll到达地方后会触发onPath, 不同类型的地onPath继承方法不一样,这里会调用sendOprt给玩家发送消息弹出提示框,同时添加购买操作
 
-2. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
+2. 检查gameloop是否可以切换   
+    // 监听玩家移动回路径
 
-3. player init
+   ​    const onMove(tabEvent2){
+
+   ​      if(tabEvent2.player == oPlayer){
+
+   ​        // 如果要移动,游戏状态改为移动状态
+
+   ​        GameRules.GameLoop.GameStateService.send("tomove")
+
+3. 攻城检查(攻城/打野可以持续到新的一回合开始)
+   if (tabEvent2.player == oPlayer) {
+
+   ​            // TODO:玩家移动结束，游戏状态恢复
+
+   ​            // GameRules.GameLoop.GameStateService.send("tobegin")
+
+   ​            return true
+
+   ​          }
+
+4. 游戏记录模块 game_record客户端操作, 更新记录面板
+
+5. 分开事件,分开发送
+
+6. 豹子触发有问题
+
+7. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
+
+8. player init
 
    1. ----设置起点路径
 
@@ -851,13 +880,11 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
    ​    this.setPath(GameRules.PathManager.getPathByType(GameMessage.TP_START)[0])
 
-4. 游戏记录模块
-
-5. GameConfig的计时回调registerThink和onThink_update
+9. GameConfig的计时回调registerThink和onThink_update
    如何与GameLoop实现
    思路: 灵活运用 进入状态触发的函数和离开状态触发的函数
 
-6. Path路径管理模块, 以及游戏地图
+10. Path路径管理模块, 以及游戏地图
 
    1. 添加 unit 
 
@@ -880,53 +907,53 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
    4. PathRune
 
-7. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+11. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
 
-8. 兵卒?
+12. 兵卒?
 
-9. 其他模块
+13. 其他模块
 
-10. 英雄技能
+14. 英雄技能
 
-11. Roll点的随机路径平衡机制数值思考
+15. Roll点的随机路径平衡机制数值思考
 
-12. CustomGameEventManager.Send_ServerToPlayer?还是
+16. CustomGameEventManager.Send_ServerToPlayer?还是
 
     Send_ServerToAllClients
 
-13. 检查网表GamingTable的nSumGold总资产计算是否正确
+17. 检查网表GamingTable的nSumGold总资产计算是否正确
 
-14. 增加英雄 const HERO_TO_BANNER 需要调整
+18. 增加英雄 const HERO_TO_BANNER 需要调整
 
-15. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
+19. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
 
-16. _tEventIDGCLD   ?为数组?
+20. _tEventIDGCLD   ?为数组?
 
-17. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
+21. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
 
-18. addon_schinese.txt :		"RandomTip"						"随机英雄"
+22. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
-19. 统一所有英雄移速
+23. 统一所有英雄移速
 
-20. 检查FireEvent的args参数为空的情况
+24. 检查FireEvent的args参数为空的情况
 
-21. GSManager:setState都调整为loop
+25. GSManager:setState都调整为loop
 
-22. /**设置结算数据 */
+26. /**设置结算数据 */
 
     setGameEndData(){}
 
-23. ==sendMsg和broadcastMsg的tabData格式==
+27. ==sendMsg和broadcastMsg的tabData格式==
 
-24. gamestate的计时器update是0.1调用一次
+28. gamestate的计时器update是0.1调用一次
 
-25. // 监听玩家移动回路径
+29. // 监听玩家移动回路径
 
       onMove如何处理gamestateloop
 
-26. 英雄经验系统/数值
+30. 英雄经验系统/数值
 
-27. 客户端,前端 请求传输数据缩减
+31. 客户端,前端 请求传输数据缩减
 
 
 

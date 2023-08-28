@@ -24,11 +24,11 @@ declare interface CustomGameEventDeclarations {
     Event_CurPathChange: {
         playerID: PlayerID
     }
+
     /** 玩家停住某路径 */
     Event_JoinPath: {
         playerID: PlayerID
     }
-
 
     Event_TO_SendDeathClearing: {
         nPlayerId: PlayerID
@@ -37,14 +37,14 @@ declare interface CustomGameEventDeclarations {
     GM_Operator: {
         nPlayerID: number;
         typeOprt: number;
-        nRequest: number;
+        nRequest?: number;
         // 路径
-        typePath: number;
-        nPathID: number;
+        typePath?: number;
+        nPathID?: number;
         // 出狱
-        nGold: number;
+        nGold?: number;
         // 交易
-        jPlayerTrade: {
+        jPlayerTrade?: {
             nPlayerTrade: {
                 nPlayerTradeID: number
                 nGold: number
@@ -56,16 +56,6 @@ declare interface CustomGameEventDeclarations {
                 arrPath: number[]
             }
         }
-    };
-
-    S2C_GM_Operator: {
-        nPlayerID: number
-        typeOprt: number
-    }
-
-    S2C_GM_OperatorFinished: {
-        nNum1: number
-        nNum2: number
     }
 
     GM_OperatorFinished: {
@@ -85,37 +75,28 @@ declare interface CustomGameEventDeclarations {
         nPosZ: number;
     };
 
-    GM_CardAdd: {
-        nPlayerID: number;
-        json: {
-            nCardID: number;
-            typeCard: number;
-            typeCast: number;
-            nManaCost: number;
-        }[];
-    };
+    // S2C_GM_Operator: {
+    //     nPlayerID: number
+    //     typeOprt: number
+    // }
 
-    GM_CardUpdata: {
-        nPlayerID: number;
-        json: {
-            nCardID: number;
-            typeCard: number;
-            typeCast: number;
-            nManaCost: number;
-        }[];
-    };
+    // S2C_GM_OperatorFinished: {
+    //     nNum1: number
+    //     nNum2: number
+    // }
 
-    GM_CardInfo: {
-        tabCardInfo: any;
-    };
+    S2C_GM_HUDErrorMessage: {
+        type: number,
+        message: string,
+        nPlayerID?: number
+    }
+
 
     Event_PlayerRoundBefore: {
         typeGameState: number
     }
 
-    Event_PlayerMove: {
-        player: any
-    }
+
 
     Event_BZCanAtk: {
         entity: any
@@ -132,4 +113,11 @@ declare interface CustomGameEventDeclarations {
     S2C_round_tip: {
         sTip: string
     }
+
+    /**飘金,通知客户端UI */
+    S2C_GM_ShowGold: {
+        nGold: number
+        nPlayerID: number
+    }
+
 }

@@ -9,14 +9,14 @@ function Counter() {
     <Panel style={{ flowChildren: 'down' }}>
       <Label className='Countdown' text={`Count: ${timeOprt.time ?? 0}`} />
       <TextButton className="ButtonBevel" text="Roll" onactivate={() => {
-        GameEvents.SendCustomGameEventToServer("S2C_GM_Operator", {
+        GameEvents.SendCustomGameEventToServer("GM_Operator", {
           nPlayerID: Players.GetLocalPlayer(),
           typeOprt: 1
         })
       }} />
 
       <TextButton className="ButtonBevel" text="AYZZ" onactivate={() => {
-        GameEvents.SendCustomGameEventToServer("S2C_GM_Operator", {
+        GameEvents.SendCustomGameEventToServer("GM_Operator", {
           nPlayerID: Players.GetLocalPlayer(),
           typeOprt: 2
         })

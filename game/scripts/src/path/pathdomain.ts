@@ -1,4 +1,3 @@
-import { GameLoop } from "../mode/GameLoop"
 import { Constant } from "../mode/constant"
 import { GameMessage } from "../mode/gamemessage"
 import { Player } from "../player/player"
@@ -29,10 +28,71 @@ export class PathDomain extends Path {
 
         this.m_tabENPC = []
 
-        CustomGameEventManager.RegisterListener("Event_PlayerRoundBefore", (_, event) => this.onEvent_PlayerRoundBefore(event))
-        CustomGameEventManager.RegisterListener("Event_FinalBattle", () => this.Event_FinalBattle())
-        CustomGameEventManager.RegisterListener("Event_PlayerDie", () => this.Event_PlayerDie())
-        CustomGameEventManager.RegisterListener("Event_BZLevel", () => this.Event_BZLevel())
+        GameRules.EventManager.Register("Event_PlayerRoundBefore", (_, event) => this.onEvent_PlayerRoundBefore(event), this, -987654321)
+        GameRules.EventManager.Register("Event_FinalBattle", () => this.Event_FinalBattle())
+        GameRules.EventManager.Register("Event_PlayerDie", () => this.Event_PlayerDie(), this, 10000)
+        GameRules.EventManager.Register("Event_BZLevel", () => this.Event_BZLevel())
+    }
+
+    /**触发路径 */
+    onPath(player: Player): void {
+        super.onPath(player)
+
+        if (this.m_nOwnerID == null) {
+            // 无主之地,发送安营扎寨操作
+            const tabOprt = {
+                nPlayerID: player.m_nPlayerID,
+                typeOprt: GameMessage.TypeOprt.TO_AYZZ,
+                typePath: this.m_typePath,
+                nPathID: this.m_nID
+            }
+            // 操作前处理上一个(如果有的话)
+            GameRules.GameConfig.autoOprt(tabOprt.typeOprt, player)
+            GameRules.GameConfig.sendOprt(tabOprt)
+        } else if (this.m_nOwnerID != player.m_nPlayerID) {
+            // 非己方城池
+            const playerOwn = GameRules.PlayerManager.getPlayer(this.m_nOwnerID)
+            // 领主未进监狱
+            if (0 === (GameMessage.PS_InPrison & playerOwn.m_nPlayerState)) {
+                if (this.m_tabENPC.length == 0) {
+                    // 交过路费
+                    const nGold = math.floor(this.m_nPrice * Constant.PATH_TOLL_RATE)
+                    player.giveGold(nGold, playerOwn)
+                    GameRules.GameConfig.showGold(playerOwn, nGold)
+                    GameRules.GameConfig.showGold(player, -nGold)
+                    // TODO:给钱音效
+                    // EmitGlobalSound()
+                } else {
+                    // 有兵卒的城池,发送攻城略地操作
+                    if (this.m_tabENPC[0].IsInvisible()
+                        || this.m_tabENPC[0].IsStunned()) {
+                        // 兵卒隐身,眩晕无法攻城
+                        return
+                    }
+                    const tabEvent = {
+                        entity: player.m_eHero,
+                        path: this,
+                        bIgnore: false
+                    }
+                    GameRules.EventManager.FireEvent("Event_GCLDReady", tabEvent)
+                    if(tabEvent.bIgnore) return
+                    const tabOprt = {
+                        nPlayerID: player.m_nPlayerID,
+                        typeOprt: GameMessage.TypeOprt.TO_GCLD,
+                        typePath: this.m_typePath,
+                        nPathID: this.m_nID
+                    }
+                    // 操作前处理上一个(如果有的话)
+                    GameRules.GameConfig.autoOprt(tabOprt.typeOprt, player)
+                    GameRules.GameConfig.sendOprt(tabOprt)
+                    GameRules.EventManager.Register("Event_CurPathChange", (event) => {
+                        if(event.player == player && this != player.m_pathCur){
+                            GameRules.GameConfig.autoOprt(GameMessage.TypeOprt.TO_GCLD, player)
+                        }
+                    })
+                }
+            }
+        }
     }
 
     /** 设置横幅旗帜 */
@@ -54,27 +114,28 @@ export class PathDomain extends Path {
         if (this.m_nPlayerIDGCLD != GameRules.GameConfig.m_nOrderID
             || GameMessage.GS_Begin != tabEvent.typeGameState) return
 
-        const listenerId = CustomGameEventManager.RegisterListener("Event_PlayerMove", (_, event) => this.onMove(event))
-        this.atkCityEnd(false)
-        CustomGameEventManager.UnregisterListener(listenerId);
-    }
-
-    // 监听玩家移动回路径
-    onMove(event: { player: any; PlayerID: PlayerID }) {
         const oPlayer = GameRules.PlayerManager.getPlayer(this.m_nPlayerIDGCLD)
-        if (event.player == oPlayer) {
-            // 如果要移动,游戏状态改为移动状态
-            this._YieldStateCO = GameRules.GameLoop.yieldState()
-            GameRules.GameLoop.setState(GameMessage.GS_Move)
-            CustomGameEventManager.RegisterListener("Event_PlayerMoveEnd", (event3) => {
-                if (event.player == oPlayer) {
-                    // 移动结束,游戏状态恢复
-                    GameRules.GameLoop.resumeState(this._YieldStateCO);
-                    return true
-                }
-            })
+
+        // 监听玩家移动回路径
+        function onMove(tabEvent2) {
+            if (tabEvent2.player == oPlayer) {
+                // 如果要移动,游戏状态改为移动状态
+                GameRules.GameLoop.GameStateService.send("tomove")
+                GameRules.EventManager.Register("Event_PlayerMoveEnd", (event3) => {
+                    if (tabEvent2.player == oPlayer) {
+                        // TODO:玩家移动结束，游戏状态恢复
+                        //(攻城/打野可以持续到新的一回合开始)
+                        // GameRules.GameLoop.GameStateService.send("tobegin")
+                        return true
+                    }
+                })
+            }
+            return true
         }
-        return true;
+
+        GameRules.EventManager.Register("Event_PlayerMove", onMove)
+        this.atkCityEnd(false)
+        GameRules.EventManager.UnRegister("Event_PlayerMove", onMove)
     }
 
     /**玩家攻城结束 */

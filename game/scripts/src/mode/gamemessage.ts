@@ -86,4 +86,35 @@ export namespace GameMessage {
         , TO_UseCard: 1010       // 使用卡牌
         , TO_MultTrade: 1011     // 屏蔽交易玩家
     }
+
+    // 游戏记录类型
+    export const TGameRecord_Roll = 0        // roll点
+    export const TGameRecord_AYZZ = 1        // 安营扎寨
+    export const TGameRecord_GCLD = 2        // 攻城略地
+    export const TGameRecord_YJXR = 3        // 养精蓄锐
+    export const TGameRecord_OnRune = 4      // 激活神符
+    export const TGameRecord_Treasure = 5    // 秘藏探索
+    export const TGameRecord_TP = 6          // TP传送
+    export const TGameRecord_Trede = 7       // 交易
+    export const TGameRecord_InPrison = 8    // 进监狱(踩入)
+    export const TGameRecord_OutPrisonByGold = 9     // 出监狱(买活)
+    export const TGameRecord_OutPrisonByRoll = 10    // 出监狱(豹子)
+    export const TGameRecord_InPrisonByRoll = 11      // 进监狱(豹子)
+    export const TGameRecord_GoldDel = 12            // 扣钱
+    export const TGameRecord_GoldAdd = 13            // 加钱
+    export const TGameRecord_SendAuction = 14        // 发起拍卖
+    export const TGameRecord_BidAuction = 15         // 竞价
+    export const TGameRecord_FinishAuction = 16      // 完成拍卖
+    export const TGameRecord_XJ = 17                 // 解甲归田
+    export const TGameRecord_ChangeGold_Move = 18    // 移动时的金钱变化
+    export const TGameRecord_AtkMonster = 19     // 刷野战利品统计
+    export const TGameRecord_GCLD_Fail = 20      // 攻城略地失败
+    export const TGameRecord_GCLD_Win = 21       // 攻城略地成功
+    export const TGameRecord_OUTBZ = 22          // 起兵
+    export const TGameRecord_UseCard = 23        // 使用卡牌
+    export const TGameRecord_UseCardTarget = 24  // 使用卡牌（对目标）
+    export const TGameRecord_NoAuction = 25  // 无人竞拍
+    export const TGameRecord_DisconnetOutTime = 26  // 掉线超时
+    export const TGameRecord_InPrisonByStart = 27  // 地狱使者，开局入狱
+    export const TGameRecord_String = 1000       // 纯文本记录
 }

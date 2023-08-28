@@ -1,7 +1,9 @@
 import { AHMC } from "../utils/amhc";
 import { reloadable } from "../utils/tstl-utils";
 import { Path } from "./Path";
+import { PathDomain } from "./pathdomain";
 import { PathFactory } from "./pathfactory";
+import { PathTP } from "./pathtp";
 
 @reloadable
 export class PathManager {

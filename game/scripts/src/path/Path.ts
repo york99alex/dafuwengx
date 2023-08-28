@@ -130,7 +130,7 @@ export class Path {
         return this.m_entity.GetAbsOrigin()
     }
 
-    // 触发到达路径
+    // 触发路径
     onPath(player: Player) {
         GameRules.EventManager.FireEvent("Event_OnPath", {
             path: this,

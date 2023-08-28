@@ -35,7 +35,7 @@ export class Player {
     m_nRollMove: number = null			 //  roll点移动的次数（判断入狱给阎刃卡牌）
     m_nMoveDir: number = null			  //  方向	1=正向 -1=逆向
 
-    m_nPlayerStater: number = GameMessage.PS_None			//  玩家状态
+    m_nPlayerState: number = GameMessage.PS_None			//  玩家状态
     m_typeBuyState: number = GameMessage.TBuyItem_None//  购物状态
     m_typeTeam: DotaTeam = null			  //  自定义队伍
 
@@ -80,7 +80,7 @@ export class Player {
         this.m_tabHasCard = []
         this.m_tabUseCard = []
         this.m_tabDelCard = []
-        this.m_nPlayerStater = GameMessage.PS_None
+        this.m_nPlayerState = GameMessage.PS_None
         this.m_nBuyItem = 0
         this.m_typeBuyState = GameMessage.TBuyItem_None
         this.m_bDie = false
@@ -155,7 +155,17 @@ export class Player {
     }
 
     sendMsg(strMgsID: string, tabData) {
-        // CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
+        switch (strMgsID) {
+            case "GM_OperatorFinished":
+                CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
+                break;
+            case "S2C_GM_HUDErrorMessage":
+                CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
+                break;
+            default:
+                print("=========!!!未匹配消息:", strMgsID,"!!!=========")
+                break;
+        }
     }
 
     setDisconnect(bVal: boolean) {
@@ -300,6 +310,10 @@ export class Player {
         // DeepPrintTable(CustomNetTables.GetTableValue("GamingTable", keyname))
     }
 
+    GetGold(){
+        return this.m_nGold
+    }
+
     /**
      * 设置金钱
      * @param nGold 
@@ -326,6 +340,13 @@ export class Player {
         Timers.CreateTimer(0.1, () => {
             this.setSumGold()
         })
+    }
+
+    /**给其他玩家金钱 */
+    giveGold(nGold:number,player:Player){
+        this.m_nLastAtkPlayerID = player.m_nPlayerID
+        this.setGold(-nGold)
+        player.setGold(nGold)
     }
 
     /** 设置总资产 */
@@ -422,7 +443,7 @@ export class Player {
     setBzAttack(eBz, bCan?: boolean) {
         if (eBz == null) return
         if (bCan == null) {
-            bCan = (this.m_nPlayerStater & GameMessage.PS_AtkBZ) !== 0 && (this.m_nPlayerStater & GameMessage.PS_InPrison) === 0
+            bCan = (this.m_nPlayerState & GameMessage.PS_AtkBZ) !== 0 && (this.m_nPlayerState & GameMessage.PS_InPrison) === 0
         }
 
         for (const value of this.m_tabBz) {
@@ -530,7 +551,7 @@ export class Player {
 
     /**设置玩家状态 */
     setState(nPlayerState: number) {
-        this.m_nPlayerStater = nPlayerState
+        this.m_nPlayerState = nPlayerState
     }
 
     /**获取领地数量 */
