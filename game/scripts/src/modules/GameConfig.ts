@@ -215,14 +215,17 @@ export class GameConfig {
             this.m_tabOprtSend = this.m_tabOprtSend.filter(value => !cdt(value))
             this.m_tabOprtBroadcast = this.m_tabOprtBroadcast.filter(value => !cdt(value))
         }
-        for (let index = 0; index < this.m_tabOprtCan.length; index++) {
-            const value = this.m_tabOprtCan[index]
+        for (let value of this.m_tabOprtCan) {
             if (value.nPlayerID == tabData.nPlayerID && value.typeOprt == tabData.typeOprt) {
                 if (bDel) {
-                    delete this.m_tabOprtCan[index]
+                    print("checkOprt delete:==========")
+                    DeepPrintTable(value)
+                    print("delete=====================")
+                    this.m_tabOprtCan = this.m_tabOprtCan.filter(v => v !== value)
                 }
                 print("checkOprt===success, return:")
                 DeepPrintTable(value)
+                print("checkOprt===================")
                 return value
             }
         }
@@ -339,7 +342,7 @@ export class GameConfig {
         this.checkOprt(tabData, true)
         const tabOprt = { nRequest: 1 }
         // 回包
-        GameRules.PlayerManager.sendMsg("S2C_GM_OperatorFinished", tabOprt, tabData.nPlayerID)
+        GameRules.PlayerManager.sendMsg("GM_OperatorFinished", tabOprt, tabData.nPlayerID)
 
         this.autoOprt(null, GameRules.PlayerManager.getPlayer(tabData.nPlayerID))
     }
@@ -508,10 +511,7 @@ export class GameConfig {
     /**自动处理操作 */
     autoOprt(typeOprt?: number, oPlayer?: Player) {
         print("this.m_tabOprtCan.length:", this.m_tabOprtCan.length)
-        for (const v of this.m_tabOprtCan) {
-            print("v.typeOprt:", v.typeOprt, "typeOprt:", typeOprt)
-            print("v.nPlayerID", v.nPlayerID, "oPlayer.m_nPlayerID:", oPlayer?.m_nPlayerID)
-            print("v.nRequest", v.nRequest)
+        for (let v of this.m_tabOprtCan) {
             if ((typeOprt == null || v.typeOprt == typeOprt)    // 指定操作
                 && (oPlayer == null || v.nPlayerID == oPlayer.m_nPlayerID)) {
                 print("验证操作")
@@ -541,8 +541,12 @@ export class GameConfig {
                     v.nRequest = 0
                 }
 
+                print("v.typeOprt:", v.typeOprt, "typeOprt:", typeOprt)
+                print("v.nPlayerID", v.nPlayerID, "oPlayer.m_nPlayerID:", oPlayer?.m_nPlayerID)
+                print("v.nRequest", v.nRequest)
+
                 if (v.nRequest != null) {
-                    print("autoOprt", v.typeOprt, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                    print("autoOprt v.typeOprt: ", v.typeOprt, "~~~~~~~~~~~~~~~~~~~~")
                     this.onMsg_oprt(v)
                     return this.autoOprt(typeOprt, oPlayer)
                 }
@@ -741,9 +745,6 @@ export class GameConfig {
                 nPlayerID: oPlayer.m_nPlayerID
             })
         })
-
-
-
     }
 
     onEvent_game_rules_state_change(): void {

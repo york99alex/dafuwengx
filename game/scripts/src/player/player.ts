@@ -156,6 +156,9 @@ export class Player {
 
     sendMsg(strMgsID: string, tabData) {
         switch (strMgsID) {
+            case "GM_Operator":
+                CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
+                break;
             case "GM_OperatorFinished":
                 CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
                 break;
@@ -163,7 +166,7 @@ export class Player {
                 CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
                 break;
             default:
-                print("=========!!!未匹配消息:", strMgsID,"!!!=========")
+                print("====player.sendMsg====!!!未匹配消息:", strMgsID,"!!!=========")
                 break;
         }
     }

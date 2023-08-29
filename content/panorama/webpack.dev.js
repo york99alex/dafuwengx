@@ -103,6 +103,7 @@ module.exports = {
                 { import: './hud/layout.xml', type: 'Hud' },
 
                 { import: './hud/operator/operator.xml', type: 'Hud' },
+                { import: './hud/oprtTip/layout.xml', type: 'Hud' },
                 { import: './hud/mode/layout.xml', type: 'Hud' },
 
             ],

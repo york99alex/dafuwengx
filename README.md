@@ -833,10 +833,12 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 ## Todo
 
-1. 验证操作:
+1. dafuwengx回合结束不进入下一个, 倒计时保持为0
+
+2. 验证操作:
    roll到达地方后会触发onPath, 不同类型的地onPath继承方法不一样,这里会调用sendOprt给玩家发送消息弹出提示框,同时添加购买操作
 
-2. 检查gameloop是否可以切换   
+3. 检查gameloop是否可以切换   
     // 监听玩家移动回路径
 
    ​    const onMove(tabEvent2){
@@ -847,7 +849,7 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
    ​        GameRules.GameLoop.GameStateService.send("tomove")
 
-3. 攻城检查(攻城/打野可以持续到新的一回合开始)
+4. 攻城检查(攻城/打野可以持续到新的一回合开始)
    if (tabEvent2.player == oPlayer) {
 
    ​            // TODO:玩家移动结束，游戏状态恢复
@@ -858,15 +860,17 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
    ​          }
 
-4. 游戏记录模块 game_record客户端操作, 更新记录面板
+5. 游戏记录模块 game_record客户端操作, 更新记录面板
 
-5. 分开事件,分开发送
+6. 分开事件,分开发送
 
-6. 豹子触发有问题
+7. 豹子触发有问题
 
-7. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
+8. PlaySort与机器人的情况有点问题,总是021
 
-8. player init
+9. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
+
+10. player init
 
    1. ----设置起点路径
 
@@ -880,80 +884,80 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
    ​    this.setPath(GameRules.PathManager.getPathByType(GameMessage.TP_START)[0])
 
-9. GameConfig的计时回调registerThink和onThink_update
-   如何与GameLoop实现
-   思路: 灵活运用 进入状态触发的函数和离开状态触发的函数
+11. GameConfig的计时回调registerThink和onThink_update
+    如何与GameLoop实现
+    思路: 灵活运用 进入状态触发的函数和离开状态触发的函数
 
-10. Path路径管理模块, 以及游戏地图
+12. Path路径管理模块, 以及游戏地图
 
-   1. 添加 unit 
+    1. 添加 unit 
 
-   2. 	"path_17_diao"
-         	{
-         		"BaseClass"		"npc_dota_creature"
-         		"Model"			"models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
-         		"ModelScale"	"1"
-         		"Ability1"	"jiaoxie"
-         		"Ability2"	"no_bar"
-         		// "Ability3"	"no_collision"
-         		"Ability4"	"magic_immune"
-         		"Ability5"	"physical_immune"
-         		"Ability6"	"no_all_select"
-         		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
-         		"StatusHealth"	"1"
-         	}
+    2. 	"path_17_diao"
+          	{
+          		"BaseClass"		"npc_dota_creature"
+          		"Model"			"models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
+          		"ModelScale"	"1"
+          		"Ability1"	"jiaoxie"
+          		"Ability2"	"no_bar"
+          		// "Ability3"	"no_collision"
+          		"Ability4"	"magic_immune"
+          		"Ability5"	"physical_immune"
+          		"Ability6"	"no_all_select"
+          		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+          		"StatusHealth"	"1"
+          	}
 
-   3. setDiaoGesture 雕哥施法检查
+    3. setDiaoGesture 雕哥施法检查
 
-   4. PathRune
+    4. PathRune
 
-11. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+13. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
 
-12. 兵卒?
+14. 兵卒?
 
-13. 其他模块
+15. 其他模块
 
-14. 英雄技能
+16. 英雄技能
 
-15. Roll点的随机路径平衡机制数值思考
+17. Roll点的随机路径平衡机制数值思考
 
-16. CustomGameEventManager.Send_ServerToPlayer?还是
+18. CustomGameEventManager.Send_ServerToPlayer?还是
 
     Send_ServerToAllClients
 
-17. 检查网表GamingTable的nSumGold总资产计算是否正确
+19. 检查网表GamingTable的nSumGold总资产计算是否正确
 
-18. 增加英雄 const HERO_TO_BANNER 需要调整
+20. 增加英雄 const HERO_TO_BANNER 需要调整
 
-19. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
+21. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
 
-20. _tEventIDGCLD   ?为数组?
+22. _tEventIDGCLD   ?为数组?
 
-21. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
+23. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
 
-22. addon_schinese.txt :		"RandomTip"						"随机英雄"
+24. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
-23. 统一所有英雄移速
+25. 统一所有英雄移速
 
-24. 检查FireEvent的args参数为空的情况
+26. 检查FireEvent的args参数为空的情况
 
-25. GSManager:setState都调整为loop
+27. GSManager:setState都调整为loop
 
-26. /**设置结算数据 */
+28. /**设置结算数据 */
 
     setGameEndData(){}
 
-27. ==sendMsg和broadcastMsg的tabData格式==
+29. ==sendMsg和broadcastMsg的tabData格式==
 
-28. gamestate的计时器update是0.1调用一次
+30. gamestate的计时器update是0.1调用一次
 
-29. // 监听玩家移动回路径
+31. // 监听玩家移动回路径
 
       onMove如何处理gamestateloop
 
-30. 英雄经验系统/数值
+32. 英雄经验系统/数值
 
-31. 客户端,前端 请求传输数据缩减
+33. 客户端,前端 请求传输数据缩减
 
 
 

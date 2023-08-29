@@ -6,5 +6,9 @@
         <include src="s2r://panorama/styles/dotastyles.vcss_c" />
         <!-- <include src="./styles.less" /> -->
     </styles>
-    <Panel class="root" hittest="false" />
+    <Panel class="root" hittest="false" >
+        <Panel id="OprtTip">
+            
+        </Panel>
+    <Panel/>
 </root>

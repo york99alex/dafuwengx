@@ -120,7 +120,7 @@ export class PathDomain extends Path {
         function onMove(tabEvent2) {
             if (tabEvent2.player == oPlayer) {
                 // 如果要移动,游戏状态改为移动状态
-                GameRules.GameLoop.GameStateService.send("tomove")
+                // GameRules.GameLoop.GameStateService.send("tomove")
                 GameRules.EventManager.Register("Event_PlayerMoveEnd", (event3) => {
                     if (tabEvent2.player == oPlayer) {
                         // TODO:玩家移动结束，游戏状态恢复
