@@ -7,7 +7,5 @@
         <include src="./style.less"></include>
     </styles>
     <Panel class="root" hittest="false">
-        <Panel id="Countdown">
-        </Panel>
     </Panel>
 </root>

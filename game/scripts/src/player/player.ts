@@ -174,7 +174,7 @@ export class Player {
     setDisconnect(bVal: boolean) {
         const keyname = "player_info_" + this.m_nPlayerID as
             "player_info_0" | "player_info_1" | "player_info_2" | "player_info_3" | "player_info_4" | "player_info_5";
-        // 设置网标
+        // 设置网表
         const info = CustomNetTables.GetTableValue("GamingTable", keyname)
         info["bDisconnect"] = (bVal ? 1 : 0)
         CustomNetTables.SetTableValue("GamingTable", keyname, info)

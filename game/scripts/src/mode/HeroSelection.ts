@@ -46,8 +46,8 @@ export class HeroSelection {
     /** 随机回合顺序 */
     GiveAllPlayersSort() {
         this.m_PlayersSort = this.m_SelectHeroPlayerID.concat(this.m_RandomHeroPlayerID)
-        for (let index = 0; index < this.m_PlayersSort.length; index++) {
-            const idx = Math.floor(Math.random() * (this.m_PlayersSort.length - 1))
+        for (let index = this.m_PlayersSort.length - 1; index > 0; index--) {
+            const idx = RandomInt(0, index)
             const temp = this.m_PlayersSort[idx]
             this.m_PlayersSort[idx] = this.m_PlayersSort[index]
             this.m_PlayersSort[index] = temp

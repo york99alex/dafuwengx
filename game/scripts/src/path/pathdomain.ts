@@ -49,6 +49,7 @@ export class PathDomain extends Path {
             // 操作前处理上一个(如果有的话)
             GameRules.GameConfig.autoOprt(tabOprt.typeOprt, player)
             GameRules.GameConfig.sendOprt(tabOprt)
+            print("======发送安营扎寨操作======")
         } else if (this.m_nOwnerID != player.m_nPlayerID) {
             // 非己方城池
             const playerOwn = GameRules.PlayerManager.getPlayer(this.m_nOwnerID)
@@ -75,7 +76,7 @@ export class PathDomain extends Path {
                         bIgnore: false
                     }
                     GameRules.EventManager.FireEvent("Event_GCLDReady", tabEvent)
-                    if(tabEvent.bIgnore) return
+                    if (tabEvent.bIgnore) return
                     const tabOprt = {
                         nPlayerID: player.m_nPlayerID,
                         typeOprt: GameMessage.TypeOprt.TO_GCLD,
@@ -86,7 +87,7 @@ export class PathDomain extends Path {
                     GameRules.GameConfig.autoOprt(tabOprt.typeOprt, player)
                     GameRules.GameConfig.sendOprt(tabOprt)
                     GameRules.EventManager.Register("Event_CurPathChange", (event) => {
-                        if(event.player == player && this != player.m_pathCur){
+                        if (event.player == player && this != player.m_pathCur) {
                             GameRules.GameConfig.autoOprt(GameMessage.TypeOprt.TO_GCLD, player)
                         }
                     })
@@ -97,12 +98,13 @@ export class PathDomain extends Path {
 
     /** 设置横幅旗帜 */
     setBanner(strHeroName?: string) {
-        // strHeroName为空就表示销毁旗帜
+        // strHeroName为空就表示隐藏旗帜
         if (strHeroName == null) {
             this.m_eBanner.SetOrigin(this.m_eCity.GetOrigin() - Vector(0, 0, 1000) as Vector)
         } else {
             this.m_eBanner.SetOrigin(this.m_eCity.GetOrigin())
-            this.m_eBanner.SetSkin(Constant.HERO_TO_BANNER[strHeroName])
+            print("SetSkin====strHeroName:", strHeroName)
+            this.m_eBanner.SetSkin(Constant.HERO_TO_BANNER[strHeroName] + 1)
         }
     }
 
@@ -220,23 +222,23 @@ export class PathDomain extends Path {
     setBZ() {
         print("=====设置起兵======")
         if (this.m_nOwnerID == null) {
-            print(1)
+            print("setBZ===1")
             // 无领主
             if (this.m_tabENPC.length > 0) {
-                print(2)
+                print("setBZ===2")
                 // 有兵卒
                 this.setAllBZDel()
             }
         } else {
-            print(3)
+            print("setBZ===3")
             // 有领主
             const oPlayer = GameRules.PlayerManager.getPlayer(this.m_nOwnerID)
             if (!oPlayer) {
-                print(4)
+                print("setBZ===4")
                 return
             }
             if (Constant.GAME_MODE == Constant.GAME_MODE_ONEPATH) {
-                print(5)
+                print("setBZ===5")
                 // 单地起兵模式
                 if (GameRules.GameConfig.m_nRound >= Constant.BZ_OUT_ROUND) {
                     if (this.m_tabENPC.length > 0) {
@@ -247,6 +249,25 @@ export class PathDomain extends Path {
                     } else {
                         oPlayer.createBZOnPath(this, 1)
                     }
+                    this.setBanner()
+                    this.setBuff(oPlayer)
+                } else {
+                    // 监听起兵回合
+                    GameRules.EventManager.Register("Event_UpdateRound", () => {
+                        if (GameRules.GameConfig.m_nRound >= Constant.BZ_OUT_ROUND) {
+                            if (!GameRules.GameConfig.m_bOutBZ) {
+                                GameRules.GameConfig.m_bOutBZ = true
+                                print("======起兵=======")
+                                EmitGlobalSound("Custom.AYZZ.All")
+                                if (this.m_nOwnerID == oPlayer.m_nPlayerID && !this.m_tabENPC[0]) {
+                                    oPlayer.createBZOnPath(this, 1)
+                                    this.setBanner()
+                                    this.setBuff(oPlayer)
+                                }
+                                return true
+                            }
+                        }
+                    })
                 }
             }
 

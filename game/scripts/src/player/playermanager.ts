@@ -6,8 +6,6 @@ export class PlayerManager {
     m_bAllPlayerInit: boolean
     m_tabPlayers: Player[]
     nInit: number // 初始化人数
-    m_tabChangeGold: number[]
-    m_nTimeChangeGold: number
 
     constructor() {
         this.m_bAllPlayerInit = false, // 全部玩家初始化完成
@@ -32,7 +30,7 @@ export class PlayerManager {
         // 玩家聊天
         ListenToGameEvent("player_chat", (event) => this.onEvent_player_chat(event), this)
     }
-    
+
     // 玩家断线
     onEvent_playerDisconnect(event: GameEventProvidedProperties & PlayerDisconnectEvent) {
         print("onEvent_playerDisconnect")
@@ -126,7 +124,7 @@ export class PlayerManager {
     onEvent_dota_player_used_ability(event: GameEventProvidedProperties & DotaPlayerUsedAbilityEvent): void {
         print("onEvent_dota_player_used_ability")
         DeepPrintTable(event)
-        CustomGameEventManager.Send_ServerToPlayer(PlayerResource.GetPlayer(event.PlayerID), "dota_player_used_ability", event)
+        GameRules.EventManager.FireEvent("dota_player_used_ability", event)
     }
 
     // 玩家聊天
@@ -138,6 +136,18 @@ export class PlayerManager {
     nPlayerID:numbber     */
     getPlayer(nPlayerID: number): Player {
         return this.m_tabPlayers[nPlayerID]
+    }
+
+    /**
+     * 获取玩家对象
+     * @param steamid64 string
+     * @returns Player
+     */
+    getPlayerBySteamID64(steamid64: string): Player {
+        for (const player of this.m_tabPlayers) {
+            if (steamid64 == tostring(PlayerResource.GetSteamID(player.m_nPlayerID)))
+                return player
+        }
     }
 
     getPlayerCount() {
@@ -165,7 +175,7 @@ export class PlayerManager {
                 CustomGameEventManager.Send_ServerToAllClients("S2C_GM_HUDErrorMessage", tabData)
                 break;
             default:
-                print("====playermanager.broadcastMsg=====!!!未匹配消息:", strMgsID,"!!!=========")
+                print("====playermanager.broadcastMsg=====!!!未匹配消息:", strMgsID, "!!!=========")
                 break;
         }
     }
@@ -200,7 +210,7 @@ export class PlayerManager {
     }
 
     /**玩家是否存活 */
-    isAlivePlayer(nPlayerID: number) {
+    isAlivePlayer(nPlayerID: number): boolean {
         const player = this.getPlayer(nPlayerID)
         return player && !player.m_bDie
     }

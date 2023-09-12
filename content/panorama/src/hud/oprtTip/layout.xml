@@ -4,11 +4,8 @@
     </scripts>
     <styles>
         <include src="s2r://panorama/styles/dotastyles.vcss_c" />
-        <!-- <include src="./styles.less" /> -->
+        <include src="./style.less" />
     </styles>
-    <Panel class="root" hittest="false" >
-        <Panel id="OprtTip">
-            
-        </Panel>
-    <Panel/>
+    <Panel class="root" hittest="false">
+    </Panel>
 </root>

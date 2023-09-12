@@ -36,7 +36,7 @@ declare interface CustomNetTableDeclarations {
             nPathCurID: number
             nSteamID64: number
             nSteamID32: any
-            tabPathHasBZ
+            tabPathHasBZ: any
             tabPath: any
             nCard: number
             nCDSub: number
@@ -47,7 +47,7 @@ declare interface CustomNetTableDeclarations {
             typeBuyState: number
             bDeathClearing: 1 | 0
             nOprtOrder: number
-            tMuteTradePlayers
+            tMuteTradePlayers: any
             typeTeam: number
         }
         player_info_1: {
@@ -58,7 +58,7 @@ declare interface CustomNetTableDeclarations {
             nPathCurID: number
             nSteamID64: number
             nSteamID32: any
-            tabPathHasBZ
+            tabPathHasBZ: any
             tabPath: any
             nCard: number
             nCDSub: number
@@ -69,7 +69,7 @@ declare interface CustomNetTableDeclarations {
             typeBuyState: number
             bDeathClearing: 1 | 0
             nOprtOrder: number
-            tMuteTradePlayers
+            tMuteTradePlayers: any
             typeTeam: number
         }
         player_info_2: {
@@ -80,7 +80,7 @@ declare interface CustomNetTableDeclarations {
             nPathCurID: number
             nSteamID64: number
             nSteamID32: any
-            tabPathHasBZ
+            tabPathHasBZ: any
             tabPath: any
             nCard: number
             nCDSub: number
@@ -91,7 +91,7 @@ declare interface CustomNetTableDeclarations {
             typeBuyState: number
             bDeathClearing: 1 | 0
             nOprtOrder: number
-            tMuteTradePlayers
+            tMuteTradePlayers: any
             typeTeam: number
         }
         player_info_3: {
@@ -102,7 +102,7 @@ declare interface CustomNetTableDeclarations {
             nPathCurID: number
             nSteamID64: number
             nSteamID32: any
-            tabPathHasBZ
+            tabPathHasBZ: any
             tabPath: any
             nCard: number
             nCDSub: number
@@ -113,7 +113,7 @@ declare interface CustomNetTableDeclarations {
             typeBuyState: number
             bDeathClearing: 1 | 0
             nOprtOrder: number
-            tMuteTradePlayers
+            tMuteTradePlayers: any
             typeTeam: number
         }
         player_info_4: {
@@ -124,7 +124,7 @@ declare interface CustomNetTableDeclarations {
             nPathCurID: number
             nSteamID64: number
             nSteamID32: any
-            tabPathHasBZ
+            tabPathHasBZ: any
             tabPath: any
             nCard: number
             nCDSub: number
@@ -135,7 +135,7 @@ declare interface CustomNetTableDeclarations {
             typeBuyState: number
             bDeathClearing: 1 | 0
             nOprtOrder: number
-            tMuteTradePlayers
+            tMuteTradePlayers: any
             typeTeam: number
         }
         player_info_5: {
@@ -146,7 +146,7 @@ declare interface CustomNetTableDeclarations {
             nPathCurID: number
             nSteamID64: number
             nSteamID32: any
-            tabPathHasBZ
+            tabPathHasBZ: any
             tabPath: any
             nCard: number
             nCDSub: number
@@ -157,7 +157,7 @@ declare interface CustomNetTableDeclarations {
             typeBuyState: number
             bDeathClearing: 1 | 0
             nOprtOrder: number
-            tMuteTradePlayers
+            tMuteTradePlayers: any
             typeTeam: number
         }
         path_info: {
@@ -170,4 +170,60 @@ declare interface CustomNetTableDeclarations {
         game_record: any
     }
 
+    EndTable: {
+        player_info_0: {
+            nDamageBZ: number,
+            nDamageHero: number,
+            nGCLD: number,
+            nGoldMax: number,
+            nKill: number,
+            nRank: number,
+            nReward: 0,
+        }
+        player_info_1: {
+            nDamageBZ: number,
+            nDamageHero: number,
+            nGCLD: number,
+            nGoldMax: number,
+            nKill: number,
+            nRank: number,
+            nReward: 0,
+        }
+        player_info_2: {
+            nDamageBZ: number,
+            nDamageHero: number,
+            nGCLD: number,
+            nGoldMax: number,
+            nKill: number,
+            nRank: number,
+            nReward: 0,
+        }
+        player_info_3: {
+            nDamageBZ: number,
+            nDamageHero: number,
+            nGCLD: number,
+            nGoldMax: number,
+            nKill: number,
+            nRank: number,
+            nReward: 0,
+        }
+        player_info_4: {
+            nDamageBZ: number,
+            nDamageHero: number,
+            nGCLD: number,
+            nGoldMax: number,
+            nKill: number,
+            nRank: number,
+            nReward: 0,
+        }
+        player_info_5: {
+            nDamageBZ: number,
+            nDamageHero: number,
+            nGCLD: number,
+            nGoldMax: number,
+            nKill: number,
+            nRank: number,
+            nReward: 0,
+        }
+    }
 }

@@ -1,4 +1,6 @@
 import { Constant } from "../mode/constant";
+import { GameMessage } from "../mode/gamemessage";
+import { Player } from "../player/player";
 import { Path } from "./Path";
 
 /**TP传送点路径 */
@@ -20,14 +22,59 @@ export class PathTP extends Path {
 
     /** 设置横幅旗帜 */
     setBanner(strHeroName?: string) {
-        // strHeroName为空就表示销毁旗帜
+        // strHeroName为空就表示隐藏旗帜
         if (strHeroName == null) {
-            if (this.m_eBanner) {
-                this.m_eBanner.SetOrigin(this.m_eCity.GetOrigin() - Vector(0, 0, 1000) as Vector)
-            }
+            this.m_eBanner.SetOrigin(this.m_eCity.GetOrigin() - Vector(0, 0, 1000) as Vector)
         } else {
             this.m_eBanner.SetOrigin(this.m_eCity.GetOrigin())
-            this.m_eBanner.SetSkin(Constant.HERO_TO_BANNER[strHeroName])
+            this.m_eBanner.SetSkin(Constant.HERO_TO_BANNER[strHeroName] + 1)
+        }
+    }
+
+    onPath(player: Player): void {
+        super.onPath(player)
+
+        if (this.m_nOwnerID == null) {
+            // 无主之地,发送安营扎寨操作
+            const tabOprt = {
+                nPlayerID: player.m_nPlayerID,
+                typeOprt: GameMessage.TypeOprt.TO_AYZZ,
+                typePath: this.m_typePath,
+                nPathID: this.m_nID
+            }
+            // 操作前处理上一个(如果有的话)
+            GameRules.GameConfig.autoOprt(tabOprt.typeOprt, player)
+            GameRules.GameConfig.sendOprt(tabOprt)
+            print("======发送安营扎寨操作======")
+        } else if (player.m_nPlayerID == this.m_nOwnerID) {
+            // 己方TP点,给传送卡牌
+            // TODO: player:setCardAdd(card)
+        } else {
+            // 敌方TP点,交过路费
+            const playerOwn = GameRules.PlayerManager.getPlayer(this.m_nOwnerID)
+            // 领主未进监狱
+            if (0 === (GameMessage.PS_InPrison & playerOwn.m_nPlayerState)) {
+                const nGold = Constant.PATH_TOLL_TP[playerOwn.m_tabMyPath[this.m_typePath].length - 1]
+                player.giveGold(nGold, playerOwn)
+                GameRules.GameConfig.showGold(playerOwn, nGold)
+                GameRules.GameConfig.showGold(player, -nGold)
+                // TODO:给钱音效
+                // EmitGlobalSound()
+            }
+        }
+    }
+
+    setOwner(player: Player) {
+        if (player == null) {
+            this.setState(Constant.TypePathState.None)
+            this.setBanner()
+            this.m_nOwnerID = null
+        } else {
+            // TODO:占领音效
+            // EmitGlobalSound("Custom.AYZZ")
+
+            this.setBanner(player.m_eHero.GetUnitName())
+            this.m_nOwnerID = player.m_nPlayerID
         }
     }
 }

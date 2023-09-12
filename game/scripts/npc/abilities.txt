@@ -40,7 +40,7 @@
 		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
 	}
 	"phantom_assassin_coup_de_grace" {
-		"BaseClass" "ability_datadriven"
+		"BaseClass" "phantom_assassin_coup_de_grace"
 		"AbilityValues" {
 		}
 		"AbilityTextureName" "phantom_assassin_coup_de_grace"

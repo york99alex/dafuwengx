@@ -833,13 +833,25 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 ## Todo
 
-1. dafuwengx回合结束不进入下一个, 倒计时保持为0
+1. bIgnore是什么
 
-2. 验证操作:
+2. path创建兵卒
+
+3. 全才英雄兵卒的创建, 攻击力加成
+
+4. 重做修改属性的方法, 主要是蓝量, 
+
+   1. 选择英雄
+
+   2. 升级
+
+   3. 监听装备事件
+
+5. 验证操作:
    roll到达地方后会触发onPath, 不同类型的地onPath继承方法不一样,这里会调用sendOprt给玩家发送消息弹出提示框,同时添加购买操作
 
-3. 检查gameloop是否可以切换   
-    // 监听玩家移动回路径
+6. 检查gameloop是否可以切换   
+   // 监听玩家移动回路径
 
    ​    const onMove(tabEvent2){
 
@@ -849,7 +861,7 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
    ​        GameRules.GameLoop.GameStateService.send("tomove")
 
-4. 攻城检查(攻城/打野可以持续到新的一回合开始)
+7. 攻城检查(攻城/打野可以持续到新的一回合开始)
    if (tabEvent2.player == oPlayer) {
 
    ​            // TODO:玩家移动结束，游戏状态恢复
@@ -860,19 +872,20 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
    ​          }
 
-5. 游戏记录模块 game_record客户端操作, 更新记录面板
+8. 游戏记录模块 game_record客户端操作, 更新记录面板
 
-6. 分开事件,分开发送
+9. 分开事件,分开发送
 
-7. 豹子触发有问题
+10. 豹子触发有问题
 
-8. PlaySort与机器人的情况有点问题,总是021
+11. ~~PlaySort与机器人的情况有点问题,总是021~~
+    注意使用RandInt方法来生成随机数,不要用Math.random
 
-9. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
+12. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
 
-10. player init
+13. player init
 
-   1. ----设置起点路径
+   14. ----设置起点路径
 
      self:setPath(PathManager:getPathByType(TP_START)[1])
    /**玩家攻城结束 */

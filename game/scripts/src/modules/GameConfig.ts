@@ -1,23 +1,25 @@
+import { AbilityManager } from "../ability/abilitymanager"
 import { CardManager } from "../card/cardmanager"
+import { Attribute } from "../mechanics/attribute"
 import { GameLoop } from "../mode/GameLoop"
 import { HeroSelection } from "../mode/HeroSelection"
 import { Auction } from "../mode/auction"
 import { Bot } from "../mode/bot"
 import { Constant } from "../mode/constant"
 import { DeathClearing } from "../mode/deathclearing"
+import { Filters } from "../mode/filters"
 import { GameMessage } from "../mode/gamemessage"
 import { GameRecord } from "../mode/gamerecord"
 import { HudError } from "../mode/huderror"
 import { Trade } from "../mode/trade"
-import { Path } from "../path/Path"
 import { PathManager } from "../path/PathManager"
 import { PathDomain } from "../path/pathdomain"
 import { PathTP } from "../path/pathtp"
 import { Player } from "../player/player"
 import { PlayerManager } from "../player/playermanager"
 import { EventManager } from "../utils/eventmanager"
+import { ParaAdjuster } from "../utils/paraadjuster"
 import { reloadable } from "../utils/tstl-utils"
-import { interpret } from "../utils/xstate/xstate-dota"
 
 @reloadable
 export class GameConfig {
@@ -33,7 +35,13 @@ export class GameConfig {
     m_nRound = 0 // 当前回合数
     m_nBaoZi = 0 // 当前玩家豹子次数
     m_bFinalBattle = false // 终局决战
-    m_tabEnd = [] // 结算数据
+    m_tabEnd: {
+        steamid64: string,
+        rank_num: number,
+        hero_name: string,
+        time_game: number,
+        is_abandon: boolean
+    }[] = [] // 结算数据
     m_bNoSwap: 1 | 0
     m_tabOprtCan: {
         nPlayerID: number,
@@ -44,6 +52,9 @@ export class GameConfig {
     }[] = []// 当前全部可操作
     m_tabOprtSend: { nPlayerID: number, typeOprt: number }[] = [] // 当前全部可操作
     m_tabOprtBroadcast: { nPlayerID: number, typeOprt: number }[] = [] // 当前全部可操作
+    m_tabChangeGold: number[]
+    m_nTimeChangeGold: number
+    m_bOutBZ: boolean   // 是否起兵
 
     constructor() {
         print("[GameConfig] start...开始配置")
@@ -140,14 +151,14 @@ export class GameConfig {
         this.registerMessage()
         this.registerThink()    // 调用GameLoop
 
-        // Filter
-        // Attributes 属性
-        // ParaAdjuster 平衡性常数
+        Filters.init()  // 过滤器
+        Attribute.init()    // 兵卒属性
+        ParaAdjuster.init()// 平衡性常数, 注册事件智力不加蓝
         GameRules.PlayerManager = new PlayerManager()    // 玩家管理模块初始化
         GameRules.PlayerManager.init()
         GameRules.PathManager = new PathManager()    // 路径管理模块初始化
         GameRules.PathManager.init()
-        // Ability
+        AbilityManager.init()   // 技能模块
         // Card
         // Trade
         // Auction
@@ -249,7 +260,7 @@ export class GameConfig {
         // 游戏状态变更
         ListenToGameEvent("game_rules_state_change", () => this.onEvent_game_rules_state_change(), undefined)
 
-        // 监听Roll点事件,无限次
+        // 监听Roll点事件
         GameRules.EventManager.Register("Event_Roll", (event: {
             bIgnore: 0 | 1
             nNum1: number
@@ -257,13 +268,13 @@ export class GameConfig {
             player: Player
         }) => this.onEvent_Roll(event), this, -1000)
 
-        // 监听攻击导致的金钱变化,无限次
+        // 监听攻击导致的金钱变化
         GameRules.EventManager.Register("Event_ChangeGold_Atk", (event: {
             nGold: number
             player: Player
         }) => this.onEvent_ChangeGold(event), this)
 
-        // 监听玩家死亡,无限次
+        // 监听玩家死亡
         GameRules.EventManager.Register("Event_PlayerDie", (event: {
             player: Player
         }) => this.onEvent_PlayerDie(event), this, -1000)
@@ -373,25 +384,25 @@ export class GameConfig {
         print("roll default: ", nNum1, nNum2)
 
         // 平衡性算法-领地差值
-        const difference = GameRules.PlayerManager.getMostPathCount() - GameRules.PlayerManager.getLeastPathCount()
-        if (difference > 2) {
-            const randomNum = RandomInt(1, 2)
-            print("roll randomNum: ", randomNum)
-            if (randomNum === 1) {
-                let i = 1
-                const isLeastPathPlayer = GameRules.PlayerManager.isLeastPathPlayer(tabData.nPlayerID)
-                const isMostPathPlayer = GameRules.PlayerManager.isMostPathPlayer(tabData.nPlayerID)
-                while (i < 100) {
-                    if ((isLeastPathPlayer && checkPath()) || (isMostPathPlayer && !checkPath())) {
-                        break
-                    }
-                    nNum1 = RandomInt(1, 6)
-                    nNum2 = RandomInt(1, 6)
-                    i++
-                }
-            }
+        // const difference = GameRules.PlayerManager.getMostPathCount() - GameRules.PlayerManager.getLeastPathCount()
+        // if (difference > 2) {
+        //     const randomNum = RandomInt(1, 2)
+        //     print("roll randomNum: ", randomNum)
+        //     if (randomNum === 1) {
+        //         let i = 1
+        //         const isLeastPathPlayer = GameRules.PlayerManager.isLeastPathPlayer(tabData.nPlayerID)
+        //         const isMostPathPlayer = GameRules.PlayerManager.isMostPathPlayer(tabData.nPlayerID)
+        //         while (i < 100) {
+        //             if ((isLeastPathPlayer && checkPath()) || (isMostPathPlayer && !checkPath())) {
+        //                 break
+        //             }
+        //             nNum1 = RandomInt(1, 6)
+        //             nNum2 = RandomInt(1, 6)
+        //             i++
+        //         }
+        //     }
 
-        }
+        // }
 
         // 删除操作
         this.checkOprt(tabData, true)
@@ -584,7 +595,7 @@ export class GameConfig {
         this.m_tabEnd.push({
             steamid64: tostring(PlayerResource.GetSteamID(event.player.m_nPlayerID)),
             rank_num: nAlive + 1,
-            heroname: event.player.m_eHero.GetUnitName(),
+            hero_name: event.player.m_eHero.GetUnitName(),
             time_game: math.floor(GameRules.GetGameTime()),
             is_abandon: event.player.m_bAbandon
         })
@@ -604,21 +615,23 @@ export class GameConfig {
                     this.m_tabEnd.push({
                         steamid64: tostring(PlayerResource.GetSteamID(player.m_nPlayerID)),
                         rank_num: 1,
-                        heroname: player.m_eHero.GetUnitName(),
+                        hero_name: player.m_eHero.GetUnitName(),
                         time_game: math.floor(GameRules.GetGameTime()),
                         is_abandon: player.m_bAbandon
                     })
                     break
                 } else {
+                    print("======第一名结算异常======")
                     print("steamid64:", tostring(PlayerResource.GetSteamID(event.player.m_nPlayerID)))
                     print("rank_num: 1")
                     print("heroname:", event.player.m_eHero.GetUnitName())
                     print("time_game:", math.floor(GameRules.GetGameTime()))
                     print("is_abandon:", player.m_bAbandon)
+                    print("=========================")
                 }
             }
 
-            print("print PlayerManager.m_tabEnd:")
+            print("print GameConfig.m_tabEnd:")
             DeepPrintTable(this.m_tabEnd)
         }
 
@@ -627,7 +640,8 @@ export class GameConfig {
             && this.m_typeState != GameMessage.GS_DeathClearing) {
             // 移除操作
             for (let i = 0; i < this.m_tabOprtCan.length; i++) {
-                delete this.m_tabOprtCan[i]
+                this.m_tabOprtCan = this.m_tabOprtCan.filter(v =>
+                    v.nPlayerID !== event.player.m_nPlayerID)
             }
             if (nAlive > 1) {
                 if (GameRules.GameLoop.m_typeStateCur != GameMessage.GS_ReadyStart) {
@@ -637,8 +651,9 @@ export class GameConfig {
         }
 
         // 改变首位玩家
-        print("GameRules.PlayerManager.m_nOrderFirst == event.player.m_nPlayerID:", this.m_nOrderFirst == event.player.m_nPlayerID)
-        if (event.player.m_nPlayerID == this.m_nOrderFirst) {
+        print("this.m_nOrderFirst == event.player.m_nPlayerID:",
+            this.m_nOrderFirst == event.player.m_nPlayerID)
+        if (this.m_nOrderFirst == event.player.m_nPlayerID) {
             this.m_nOrderFirst = this.getNextValidOrder(event.player.m_nPlayerID)
         }
         print("self.m_nOrderFirst:", this.m_nOrderFirst)
@@ -654,31 +669,28 @@ export class GameConfig {
         nGold: number
         player: Player
     }) {
-        let tabChangeGold: number[]
-        tabChangeGold = GameRules.PlayerManager.m_tabChangeGold
-        if (!tabChangeGold) {
-            tabChangeGold = []
+        if (!this.m_tabChangeGold) {
+            this.m_tabChangeGold = []
         }
-        if (!tabChangeGold[event.player.m_nPlayerID]) {
-            tabChangeGold[event.player.m_nPlayerID] = 0
+        if (!this.m_tabChangeGold[event.player.m_nPlayerID]) {
+            this.m_tabChangeGold[event.player.m_nPlayerID] = 0
         }
-        tabChangeGold[event.player.m_nPlayerID] += event.nGold
-        CustomNetTables.SetTableValue("GamingTable", "change_gold", tabChangeGold)
+        this.m_tabChangeGold[event.player.m_nPlayerID] += event.nGold
+        CustomNetTables.SetTableValue("GamingTable", "change_gold", this.m_tabChangeGold)
         print("[network-changeGold]==============================")
-        DeepPrintTable(tabChangeGold)
+        DeepPrintTable(this.m_tabChangeGold)
 
         // 设置2秒后清除
-        if (!GameRules.PlayerManager.m_nTimeChangeGold) {
+        if (!this.m_nTimeChangeGold) {
             Timers.CreateTimer(0.1, () => {
-                GameRules.PlayerManager.m_nTimeChangeGold--
-                if (GameRules.PlayerManager.m_nTimeChangeGold > 0) return 0.1
-                tabChangeGold = null
-                GameRules.PlayerManager.m_tabChangeGold = null
-                GameRules.PlayerManager.m_nTimeChangeGold = null
+                this.m_nTimeChangeGold--
+                if (this.m_nTimeChangeGold > 0) return 0.1
+                this.m_nTimeChangeGold = null
+                this.m_tabChangeGold = null
                 CustomNetTables.SetTableValue("GamingTable", "change_gold", {})
             })
         }
-        GameRules.PlayerManager.m_nTimeChangeGold = 20
+        this.m_nTimeChangeGold = 20
     }
 
     /**玩家roll点后移动 */
@@ -795,6 +807,7 @@ export class GameConfig {
     /**增加轮数 */
     addRound() {
         this.m_nRound += 1
+        print("===回合数增加===this.m_nRound:", this.m_nRound)
         // 同步网表
         CustomNetTables.SetTableValue("GamingTable", "round", { nRound: this.m_nRound })
 
@@ -821,7 +834,25 @@ export class GameConfig {
 
     /**设置结算数据 */
     setGameEndData() {
+        print("设置结算数据")
+        for (const value of this.m_tabEnd) {
+            const player = GameRules.PlayerManager.getPlayerBySteamID64(value.steamid64)
+            if (player) {
+                player.m_nRank = value.rank_num
+                const keyname = "player_info_" + player.m_nPlayerID as
+                    "player_info_0" | "player_info_1" | "player_info_2" | "player_info_3" | "player_info_4" | "player_info_5";
 
+                CustomNetTables.SetTableValue("EndTable", keyname, {
+                    nDamageBZ: player.m_nDamageBZ,
+                    nDamageHero: player.m_nDamageHero,
+                    nGCLD: player.m_nGCLD,
+                    nGoldMax: player.m_nGoldMax,
+                    nKill: player.m_nKill,
+                    nRank: value.rank_num,
+                    nReward: 0
+                })
+            }
+        }
     }
 
 }

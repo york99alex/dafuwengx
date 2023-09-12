@@ -121,7 +121,7 @@ export namespace Constant {
 
     // 每级兵卒等级上限
     export const BZ_LEVELMAX = [9, 19, 25]
-	    
+
     export const PATH_TO_PRICE = []
     PATH_TO_PRICE[GameMessage.TP_DOMAIN_1] = 200
     PATH_TO_PRICE[GameMessage.TP_DOMAIN_2] = 300
@@ -131,6 +131,7 @@ export namespace Constant {
     PATH_TO_PRICE[GameMessage.TP_DOMAIN_6] = 450
     PATH_TO_PRICE[GameMessage.TP_DOMAIN_7] = 500
     PATH_TO_PRICE[GameMessage.TP_DOMAIN_8] = 550
+    PATH_TO_PRICE[GameMessage.TP_TP] = 200
 
     /**英雄对应横幅旗帜 */
     export const HERO_TO_BANNER = {
@@ -164,10 +165,23 @@ export namespace Constant {
 
 
     /**起兵回合 */
-    export const BZ_OUT_ROUND = 6
+    export const BZ_OUT_ROUND = 3
 
     export const RoundTip = []
     RoundTip[Constant.GLOBAL_SHOP_ROUND] = "global_shop"
     RoundTip[Constant.BZ_OUT_ROUND] = "bz_out"
+
+    /**兵卒属性效果 */
+    export const ATTRIBUTE = {
+        STRENGTH_HP: 20,
+        STRENGTH_HP_REGEN: 0.1,
+        AGILITY_ATTACK_SPEED: 1,
+        AGILITY_PHYSICAL_ARMOR: 0.17,
+        INTELLIGENCE_MANA: 0,
+        INTELLIGENCE_MANA_REGEN: 0,
+        INTELLIGENCE_MAGICAL_RESISTANCE: 0.1,
+        PRIMARY_ATTACK_DAMAGE: 1,
+        ALL_ATTACK_DAMAGE: 0.6
+    }
 
 }

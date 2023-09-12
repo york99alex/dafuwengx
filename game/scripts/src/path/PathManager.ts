@@ -43,7 +43,7 @@ export class PathManager {
         for (let index = 0; index < this.m_tabPaths.length; index++) {
             if (this.m_tabPaths[index] == pathCur) {
                 let nIndex = index + nDis
-                if (nIndex > this.m_tabPaths.length)
+                if (nIndex > this.m_tabPaths.length - 1)
                     nIndex = nIndex % this.m_tabPaths.length
                 else if (nIndex <= 0)
                     nIndex += this.m_tabPaths.length
