@@ -594,7 +594,45 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 
 
+## TS的Modifier
 
+
+
+
+
+## React
+
+视频教程: [尚硅谷React教程（2022加更，B站超火react教程）](https://www.bilibili.com/video/BV1wy4y1D7JT?spm_id_from=333.1245.0.0)
+
+笔记: https://github.com/xzlaptt/React
+
+
+
+### 函数式组件写法
+
+```tsx
+/**
+ * export导出, 作为组件再别处调用
+ */
+export const OprtTip = () => {
+	return <Pannel></Pannel>
+}
+
+// 调用:
+render(<OprtTip />, $.GetContextPanel())
+```
+
+### 解构赋值
+
+const {value} = props
+
+### ES6扩展运算符
+
+灵活运用
+
+### 一些注意
+
+- 尽量不要在需要回调的地方写内联函数, 应写绑定函数
 
 
 
@@ -837,55 +875,83 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 2. path创建兵卒
 
-3. 全才英雄兵卒的创建, 攻击力加成
+3. 在起兵回合时创建的旗帜, 起兵回合后, 监听起兵 有问题
+   检查触发情况?触发条件? 单开暂时未发现
 
-4. 重做修改属性的方法, 主要是蓝量, 
+4.   m_bBattle: boolean = null
 
-   1. 选择英雄
+     m_bGCLD: boolean = null
+   由player定义, 注意检测兵卒是否可用问题
 
-   2. 升级
+5. 实现CamerManage的前端部分
+   检查pa一技能使用后镜头是否正确移动
 
-   3. 监听装备事件
+6. Player.setState重写
 
-5. 验证操作:
-   roll到达地方后会触发onPath, 不同类型的地onPath继承方法不一样,这里会调用sendOprt给玩家发送消息弹出提示框,同时添加购买操作
+7. AbilityManager.setRoundCD
 
-6. 检查gameloop是否可以切换   
-   // 监听玩家移动回路径
+8. 关闭以下前端页面:
 
-   ​    const onMove(tabEvent2){
+   1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
 
-   ​      if(tabEvent2.player == oPlayer){
+   2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
 
-   ​        // 如果要移动,游戏状态改为移动状态
+   3. Label id="AbilityBuildComment"  #AbilityBuildComment
 
-   ​        GameRules.GameLoop.GameStateService.send("tomove")
+9. 新回合开始要关闭前端操作面板
 
-7. 攻城检查(攻城/打野可以持续到新的一回合开始)
-   if (tabEvent2.player == oPlayer) {
+10. ~~兵卒朝向问题~~
+   ![image-20230913000529288](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/09/13/00-09-15-182733ea3269c416cc9e18bc2319a331-image-20230913000529288-b0946f.png)
 
-   ​            // TODO:玩家移动结束，游戏状态恢复
+11. 全才英雄兵卒的创建, 攻击力加成
 
-   ​            // GameRules.GameLoop.GameStateService.send("tobegin")
+12. 重做修改属性的方法, 主要是蓝量, 
 
-   ​            return true
+    1. 选择英雄
 
-   ​          }
+    2. 升级
 
-8. 游戏记录模块 game_record客户端操作, 更新记录面板
+    3. 监听装备事件
 
-9. 分开事件,分开发送
+13. 验证操作:
+    roll到达地方后会触发onPath, 不同类型的地onPath继承方法不一样,这里会调用sendOprt给玩家发送消息弹出提示框,同时添加购买操作
 
-10. 豹子触发有问题
+14. 检查gameloop是否可以切换   
+    // 监听玩家移动回路径
 
-11. ~~PlaySort与机器人的情况有点问题,总是021~~
+    ​    const onMove(tabEvent2){
+
+    ​      if(tabEvent2.player == oPlayer){
+
+    ​        // 如果要移动,游戏状态改为移动状态
+
+    ​        GameRules.GameLoop.GameStateService.send("tomove")
+
+15. 攻城检查(攻城/打野可以持续到新的一回合开始)
+    if (tabEvent2.player == oPlayer) {
+
+    ​            // TODO:玩家移动结束，游戏状态恢复
+
+    ​            // GameRules.GameLoop.GameStateService.send("tobegin")
+
+    ​            return true
+
+    ​          }
+
+16. 游戏记录模块 game_record客户端操作, 更新记录面板
+
+17. 分开事件,分开发送
+
+18. 豹子触发有问题
+
+19. ~~PlaySort与机器人的情况有点问题,总是021~~
     注意使用RandInt方法来生成随机数,不要用Math.random
 
-12. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
+20. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
 
-13. player init
+21. player init
 
-   14. ----设置起点路径
+   22. ----设置起点路径
 
      self:setPath(PathManager:getPathByType(TP_START)[1])
    /**玩家攻城结束 */
@@ -1027,6 +1093,12 @@ GSWaitOprt_Entry()执行Roll点,调用GameConfig.processRoll()方法{
 ## 英雄设计
 
 - 幽鬼(冠名:qwerty-)
+- PA 幻影刺客 phantom_assassin
+  - 1技能 闪烁突袭 Ability_phantom_strike
+    选中一名英雄, 位移到他身边, 攻击1/2/3次
+    ==判断是否施法目标是否合理, 非bz单位等??==
+  - 
+
 
 
 

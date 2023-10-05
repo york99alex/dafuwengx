@@ -120,4 +120,10 @@ declare interface CustomGameEventDeclarations {
         nPlayerID: number
     }
 
+    GM_CameraCtrl: {
+        pos: Vector
+        lerp: number
+        nPlayerID?: number
+    }
+
 }

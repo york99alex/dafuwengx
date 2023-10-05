@@ -27,8 +27,8 @@ export class GameConfig {
     _DotaState: []
     m_typeState = GameMessage.GS_None //游戏状态
     m_nGameID = -1 // 比赛编号
-    m_nOrderID = -1 // 当前操作玩家ID
-    m_nOrderFirst = -1 // 首操作玩家ID
+    m_nOrderID: PlayerID = -1 // 当前操作玩家ID
+    m_nOrderFirst: PlayerID = -1 // 首操作玩家ID
     m_nOrderIndex = -1
     m_nOrderFirstIndex = 0 // 首操作index
     m_timeOprt: number = -1  // 回合剩余时限
@@ -245,7 +245,7 @@ export class GameConfig {
     }
 
     /**设置当前操作玩家ID */
-    setOrder(nOrder: number) {
+    setOrder(nOrder: PlayerID) {
         print("GameConfig.setOrder:=====================")
         print("last order: ", this.m_nOrderID, " cur order: ", nOrder, " first order:", this.m_nOrderFirst)
         print("GameConfig.setOrder over======================")

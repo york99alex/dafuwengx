@@ -174,6 +174,9 @@ export class PlayerManager {
             case "S2C_GM_HUDErrorMessage":
                 CustomGameEventManager.Send_ServerToAllClients("S2C_GM_HUDErrorMessage", tabData)
                 break;
+            case "GM_CameraCtrl":
+                CustomGameEventManager.Send_ServerToAllClients("GM_CameraCtrl", tabData)
+                break;
             default:
                 print("====playermanager.broadcastMsg=====!!!未匹配消息:", strMgsID, "!!!=========")
                 break;
@@ -207,6 +210,27 @@ export class PlayerManager {
             }
         }
         return nCount
+    }
+
+    /**找到距离我最近路径的玩家 */
+    findClosePlayer(oPlayer: Player, funFilter: Function, nOffset: number): Player {
+        let pathCur = oPlayer.m_pathCur
+        if (nOffset) {
+            pathCur = GameRules.PathManager.getNextPath(pathCur, nOffset)
+        }
+
+        let oReturn: Player = null
+        let nMin = -1
+        for (const player of this.m_tabPlayers) {
+            const nDis = GameRules.PathManager.getPathDistance(pathCur, player.m_pathCur)
+            if (nDis < nMin || nMin == -1) {
+                if (funFilter(player)) {
+                    nMin = nDis
+                    oReturn = player
+                }
+            }
+        }
+        return oReturn
     }
 
     /**玩家是否存活 */

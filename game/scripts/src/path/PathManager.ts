@@ -71,6 +71,33 @@ export class PathManager {
         }
     }
 
+    /**获取A路径到B路径的路径距离 */
+    getPathDistance(oPathBegin: Path, oPathEnd: Path, bReverse?: boolean) {
+        if (oPathBegin == oPathEnd) return 0
+
+        let nDis = 0
+
+        for (let i = 0; i < this.m_tabPaths.length; i++) {
+            if (oPathBegin == this.m_tabPaths[i]) {
+                for (let j = 0; j < this.m_tabPaths.length; j++) {
+                    if (oPathEnd == this.m_tabPaths[j]) {
+                        if (bReverse) {
+                            nDis = i - j
+                        } else {
+                            nDis = j - i
+                        }
+                        if (nDis < 0) {
+                            nDis += this.m_tabPaths.length
+                        }
+                        break
+                    }
+                }
+                break
+            }
+        }
+        return nDis
+    }
+
     /**设置玩家网表信息 */
     setNetTableInfo() {
         let tabData: {

@@ -57,6 +57,8 @@ export class Player {
     m_tabDelCard = null			//  已移除的卡牌
     m_tCourier = null			  //  信使
     __init: boolean = false            // 
+    m_bBattle: boolean = null
+    m_bGCLD: boolean = null
 
 
     constructor(nPlayerID: PlayerID) {
@@ -92,6 +94,8 @@ export class Player {
         this.m_tMuteTradePlayers = []
         this.m_eHero = null
         this.m_tCourier = []
+        this.m_bBattle = false
+        this.m_bGCLD = false
 
         PlayerResource.SetCustomTeamAssignment(nPlayerID, DotaTeam.GOODGUYS)
         this.registerEvent()
@@ -165,8 +169,11 @@ export class Player {
             case "S2C_GM_HUDErrorMessage":
                 CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
                 break;
+            case "GM_CameraCtrl":
+                CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
+                break;
             default:
-                print("====player.sendMsg====!!!未匹配消息:", strMgsID,"!!!=========")
+                print("====player.sendMsg====!!!未匹配消息:", strMgsID, "!!!=========")
                 break;
         }
     }
@@ -313,7 +320,7 @@ export class Player {
         // DeepPrintTable(CustomNetTables.GetTableValue("GamingTable", keyname))
     }
 
-    GetGold(){
+    GetGold() {
         return this.m_nGold
     }
 
@@ -346,7 +353,7 @@ export class Player {
     }
 
     /**给其他玩家金钱 */
-    giveGold(nGold:number,player:Player){
+    giveGold(nGold: number, player: Player) {
         this.m_nLastAtkPlayerID = player.m_nPlayerID
         this.setGold(-nGold)
         player.setGold(nGold)

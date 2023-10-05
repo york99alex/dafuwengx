@@ -122,15 +122,84 @@ export class AHMC {
             }
 
             // 如果有召唤者
-            if (owner != null){
+            if (owner != null) {
                 unit.SetOwner(owner)
-                unit.SetControllableByPlayer(owner.GetPlayerOwnerID(),true)
+                unit.SetControllableByPlayer(owner.GetPlayerOwnerID(), true)
             }
         }
 
         // 回调函数
-        if(callback!=null) callback(unit)
+        if (callback != null) callback(unit)
 
         return unit
+    }
+
+    /**创建带有计时器的特效，计时器结束删除特效，并有一个callback函数 */
+    static CreateParticle(particleName: string, particleAttach: number, immediately: boolean, owningEntity: CBaseEntity | null, duration: number, callback?: Function) {
+        if (AHMC.IsAlive(owningEntity) == null) {
+            error("AMHC:CreateParticle param 3: not valid entity", 2)
+        }
+
+        const p = ParticleManager.CreateParticle(particleName, particleAttach, owningEntity)
+
+        if (duration) {
+            const time = GameRules.GetGameTime()
+            this.Timer(particleName, () => {
+                if (GameRules.GetGameTime() - time >= duration) {
+                    ParticleManager.DestroyParticle(p, immediately)
+                    if (callback != null) callback()
+                    return null
+                }
+
+                return 0.01
+            }, 0)
+        }
+        return p
+    }
+
+    static Timer(name: string, fun: Function, delay: number, entity?: CBaseEntity) {
+        delay = delay || 0
+        let ent = null
+        if (entity != null) {
+            if (this.IsAlive(entity) == null) {
+                error("AMHC:Timer param 3: not valid entity", 2)
+            }
+            ent = entity
+        } else {
+            ent = GameRules.GetGameModeEntity()
+        }
+
+        const time = GameRules.GetGameTime()
+        ent.SetContextThink(DoUniqueString(name), () => {
+            if (GameRules.GetGameTime() - time >= delay) {
+                ent.SetContextThink(DoUniqueString(name), () => {
+                    if (!GameRules.IsGamePaused()) {
+                        return fun()
+                    }
+
+                    return 0.01
+                }, 0)
+                return null
+            }
+
+            return 0.01
+        }, 0)
+    }
+
+
+
+    /**
+     * 
+     * @param entity CDOTA_BaseNPC
+     * @returns 返回true有效且存活, 返回false有效但死亡, 返回null无效实体
+     */
+    static IsAlive(entity: CBaseEntity) {
+        if (IsValidEntity(entity)) {
+            if (entity.IsAlive()) {
+                return true
+            }
+            return false
+        }
+        return null
     }
 }

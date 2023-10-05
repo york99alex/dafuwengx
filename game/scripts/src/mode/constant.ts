@@ -165,7 +165,7 @@ export namespace Constant {
 
 
     /**起兵回合 */
-    export const BZ_OUT_ROUND = 3
+    export const BZ_OUT_ROUND = 6
 
     export const RoundTip = []
     RoundTip[Constant.GLOBAL_SHOP_ROUND] = "global_shop"

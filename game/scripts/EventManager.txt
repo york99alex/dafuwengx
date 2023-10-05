@@ -43,3 +43,5 @@
 "Event_OnPath", { path: this,entity: player.m_eHero }
 
 "Event_RollBaoZiJudge", { player: event.player }
+
+"Event_HeroManaChange", { player : oPlayer, oAblt : this }

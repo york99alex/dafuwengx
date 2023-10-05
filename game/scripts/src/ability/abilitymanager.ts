@@ -1,3 +1,7 @@
+import { Player } from "../player/player"
+import { BaseAbility } from "../utils/dota_ts_adapter"
+import { Ability_phantom_strike } from "./phantom_assassin/Ability_phantom_strike"
+
 export class AbilityManager {
 
     static m_tabNullAbltCD
@@ -15,12 +19,24 @@ export class AbilityManager {
     }
 
     static onNPCFirstSpawned(event: GameEventProvidedProperties & NpcSpawnedEvent): void {
-        // const spawnedUnit = EntIndexToHScript(event.entindex as EntityIndex) as CDOTA_BaseNPC
+        const spawnedUnit = EntIndexToHScript(event.entindex as EntityIndex) as CDOTA_BaseNPC
         // if (spawnedUnit == null) return
         // // 添加默认modifier
         // const tData = KeyValues.UnitsKv[spawnedUnit.GetUnitName()]
         // if (tData != null && tData.AmbientModifiers != null && tData.AmbientModifiers != "") {
-            
+
         // }
+
+        print("spawnedUnit.GetUnitName():", spawnedUnit.GetUnitName())
+        if (spawnedUnit.GetUnitName() == "npc_dota_hero_phantom_assassin") {
+            const ability2 = spawnedUnit.GetAbilityByIndex(0)
+            print("ability2.GetAbilityName():", ability2.GetAbilityName())
+            DeepPrintTable(ability2.GetAbilityKeyValues())
+        }
+    }
+
+    static setRoundCD(oPlayer: Player, ability: BaseAbility) {
+        // TODO:
+        
     }
 }

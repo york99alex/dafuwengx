@@ -60,6 +60,12 @@
 		"ModelScale" "0.7000"
 		"Creature" {
 			"AttachWearables" {
+				"1" { "ItemDef" "6872" }
+				"2" { "ItemDef" "14948" }
+				"3" { "ItemDef" "18450" }
+				"4" { "ItemDef" "18451" }
+				"5" { "ItemDef" "13478" }
+				"6" { "ItemDef" "18455" }
 			}
 		}
 		"SoundSet" "Hero_PhantomAssassin"
@@ -77,18 +83,22 @@
 		"MovementTurnRate" "0.4000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"ArmorPhysical" "1"
 		"MagicalResistance" "25"
 		"StatusHealth" "200"
 		"StatusHealthRegen" "0"
 		"StatusMana" "100"
 		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
 		"AttackDamageMin" "24"
 		"AttackDamageMax" "26"
 		"AttackRate" "1.7000"
 		"AttackAnimationPoint" "0.3000"
 		"AttackRange" "300"
 		"RingRadius" "60"
+		"Level" "1"
 		"HasInventory" "1"
 		"AttributePrimary" "DOTA_ATTRIBUTE_AGILITY"
 		"AttributeBaseStrength" "21"
@@ -106,6 +116,12 @@
 		"ModelScale" "0.8000"
 		"Creature" {
 			"AttachWearables" {
+				"1" { "ItemDef" "6872" }
+				"2" { "ItemDef" "14948" }
+				"3" { "ItemDef" "18450" }
+				"4" { "ItemDef" "18451" }
+				"5" { "ItemDef" "13478" }
+				"6" { "ItemDef" "18455" }
 			}
 		}
 		"SoundSet" "Hero_PhantomAssassin"
@@ -123,18 +139,22 @@
 		"MovementTurnRate" "0.4000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"ArmorPhysical" "1"
 		"MagicalResistance" "25"
 		"StatusHealth" "200"
 		"StatusHealthRegen" "0"
 		"StatusMana" "100"
 		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
 		"AttackDamageMin" "24"
 		"AttackDamageMax" "26"
 		"AttackRate" "1.7000"
 		"AttackAnimationPoint" "0.3000"
 		"AttackRange" "300"
 		"RingRadius" "60"
+		"Level" "1"
 		"HasInventory" "1"
 		"AttributePrimary" "DOTA_ATTRIBUTE_AGILITY"
 		"AttributeBaseStrength" "21"
@@ -152,6 +172,12 @@
 		"ModelScale" "0.9000"
 		"Creature" {
 			"AttachWearables" {
+				"1" { "ItemDef" "6872" }
+				"2" { "ItemDef" "14948" }
+				"3" { "ItemDef" "18450" }
+				"4" { "ItemDef" "18451" }
+				"5" { "ItemDef" "13478" }
+				"6" { "ItemDef" "18455" }
 			}
 		}
 		"SoundSet" "Hero_PhantomAssassin"
@@ -169,18 +195,22 @@
 		"MovementTurnRate" "0.4000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"ArmorPhysical" "1"
 		"MagicalResistance" "25"
 		"StatusHealth" "200"
 		"StatusHealthRegen" "0"
 		"StatusMana" "100"
 		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
 		"AttackDamageMin" "24"
 		"AttackDamageMax" "26"
 		"AttackRate" "1.7000"
 		"AttackAnimationPoint" "0.3000"
 		"AttackRange" "300"
 		"RingRadius" "60"
+		"Level" "1"
 		"HasInventory" "1"
 		"AttributePrimary" "DOTA_ATTRIBUTE_AGILITY"
 		"AttributeBaseStrength" "21"

@@ -259,13 +259,13 @@ export class PathDomain extends Path {
                                 GameRules.GameConfig.m_bOutBZ = true
                                 print("======起兵=======")
                                 EmitGlobalSound("Custom.AYZZ.All")
-                                if (this.m_nOwnerID == oPlayer.m_nPlayerID && !this.m_tabENPC[0]) {
-                                    oPlayer.createBZOnPath(this, 1)
-                                    this.setBanner()
-                                    this.setBuff(oPlayer)
-                                }
-                                return true
                             }
+                            if (this.m_nOwnerID == oPlayer.m_nPlayerID && !this.m_tabENPC[0]) {
+                                oPlayer.createBZOnPath(this, 1)
+                                this.setBanner()
+                                this.setBuff(oPlayer)
+                            }
+                            return true
                         }
                     })
                 }
