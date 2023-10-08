@@ -15,18 +15,21 @@ export class Filters {
         GameMode.SetTrackingProjectileFilter(() => true, this)
     }
 
-    static DamageFilter(event: DamageFilterEvent): boolean {
+    static DamageFilter(event): boolean {
         // 触发攻击事件
         GameRules.EventManager.FireEvent("Event_Atk", event)
         // 触发被攻击事件
         GameRules.EventManager.FireEvent("Event_BeAtk", event)
+        if(event.bIgnore){
+            return false    // 忽略订单
+        }
         // 触发受伤事件
         GameRules.EventManager.FireEvent("Event_OnDamage", event)
         return true
     }
 
-    static ExecuteOrderFilter(event: ExecuteOrderFilterEvent): boolean {
-
+    static ExecuteOrderFilter(event): boolean {
+        print("ExecuteOrderFilter===执行命令过滤")
         DeepPrintTable(event)
         /**
          * 命令常量
@@ -106,8 +109,8 @@ export class Filters {
             GameRules.EventManager.FireEvent("Event_ItemGive", event)
         }
 
-        // if (event.bIgnore)
-        //     return false
+        if (event.bIgnore)
+            return false
 
         return true
     }

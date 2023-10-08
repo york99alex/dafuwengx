@@ -13,19 +13,32 @@ export namespace GameMessage {
 
     //  玩家状态
     export const PS_None = 0
-    export const PS_Moving = 1               //  移动中
-    export const PS_AtkBZ = 2                //  兵卒可攻击
-    export const PS_AtkHero = 4              //  英雄可攻击
-    export const PS_MagicImmune = 8          //  魔免
-    export const PS_PhysicalImmune = 16      //  物免
-    export const PS_AbilityImmune = 32       //  技能免疫
-    export const PS_Rooted = 64              //  禁止移动
-    export const PS_Trading = 128            //  交易中
-    export const PS_Die = 256                //  死亡
-    export const PS_InPrison = 512           //  入狱
-    export const PS_AtkMonster = 1024        //  刷野
-    export const PS_Pass = 2048              //  跳过回合(被眩晕，睡眠等)
-    export const PS_Invis = 4096             //  隐身
+    /**移动中*/
+    export const PS_Moving = 1
+    /**兵卒可攻击*/
+    export const PS_AtkBZ = 2
+    /**英雄可攻击*/
+    export const PS_AtkHero = 4
+    /**魔免*/
+    export const PS_MagicImmune = 8
+    /**物免*/
+    export const PS_PhysicalImmune = 16
+    /**技能免疫*/
+    export const PS_AbilityImmune = 32
+    /**禁止移动*/
+    export const PS_Rooted = 64
+    /**交易中*/
+    export const PS_Trading = 128
+    /**死亡*/
+    export const PS_Die = 256
+    /**入狱*/
+    export const PS_InPrison = 512
+    /**刷野*/
+    export const PS_AtkMonster = 1024
+    /**跳过回合(被眩晕，睡眠等)*/
+    export const PS_Pass = 2048
+    /**隐身*/
+    export const PS_Invis = 4096
 
 
     //  购物状态

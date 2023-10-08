@@ -31,10 +31,10 @@ state GameState {
     GSWaitOprt --> GSWait : Roll点移动时进入GSWait
     GSWait --> GSWaitOprt : Roll结束回到GSWaitOprt\n同时触发Event_Roll事件(移动和是否出狱)
     GSWait : Wait超时回到上一个状态
-    GSWaitOprt --> GSMove : Roll后准备移动setState(GSMove)\nEvent_Roll触发移动事件Event_Move
+    GSWaitOprt --> GSMove : Roll后准备移动setGameState(GSMove)\nEvent_Roll触发移动事件Event_Move
     GSMove --> GSWaitOprt : 如果处于亡国清算则回到GSWaitOprt
     GSMove : moveToPath()方法进行移动\n触发路径判断功能\n触发豹子判断和事件Event_RollBaoZiJudge\n豹子Roll点和追加事件\n操作完成结束回合
-    GSMove --> GSFinished : setState(GSFinished)
+    GSMove --> GSFinished : setGameState(GSFinished)
     GSFinished : Player:setRoundFinished设置玩家自己回合结束\n触发玩家回合结束事件Event_PlayerRoundFinished\n同步玩家网表信息setNetTableInfo
     GSFinished --> GSBegin : 增加回合数\n准备进入GSBegin
     [*] --> GSDeathClearing : 任意State如果设置金钱时检查金钱小于0\n则触发亡国清算事件

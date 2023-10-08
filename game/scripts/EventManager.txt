@@ -45,3 +45,21 @@
 "Event_RollBaoZiJudge", { player: event.player }
 
 "Event_HeroManaChange", { player : oPlayer, oAblt : this }
+
+"Event_OnDamage", {}
+
+"Event_BZHuiMo", 
+
+"Event_RootedDisable", { player: this }
+
+"Event_BZCanAtk", { eBZ: v }
+
+"Event_BZCantAtk", { eBZ: v }
+
+"Event_PlayerPass", { player: this }
+
+"Event_PlayerPassEnd", { player: this }
+
+"Event_PlayerInvis", { player: this }
+
+"Event_PlayerInvisEnd", { player: this }

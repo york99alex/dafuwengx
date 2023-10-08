@@ -4,7 +4,6 @@ import { Attribute } from "../mechanics/attribute"
 import { GameLoop } from "../mode/GameLoop"
 import { HeroSelection } from "../mode/HeroSelection"
 import { Auction } from "../mode/auction"
-import { Bot } from "../mode/bot"
 import { Constant } from "../mode/constant"
 import { DeathClearing } from "../mode/deathclearing"
 import { Filters } from "../mode/filters"
@@ -645,7 +644,7 @@ export class GameConfig {
             }
             if (nAlive > 1) {
                 if (GameRules.GameLoop.m_typeStateCur != GameMessage.GS_ReadyStart) {
-                    GameRules.GameLoop.setState(GameMessage.GS_Finished)
+                    GameRules.GameLoop.setGameState(GameMessage.GS_Finished)
                 }
             }
         }

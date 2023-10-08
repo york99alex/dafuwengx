@@ -39,7 +39,7 @@ export class Path {
         }
 
         this.initNilPos()
-        this.setState(Constant.TypePathState.None)
+        this.setPathState(Constant.TypePathState.None)
     }
 
 
@@ -113,7 +113,7 @@ export class Path {
         })
     }
 
-    setState(typeState: number) {
+    setPathState(typeState: number) {
         this.m_typeState = typeState
     }
 

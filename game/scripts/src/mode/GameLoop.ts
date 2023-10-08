@@ -95,7 +95,7 @@ export class GameLoop {
     GSNone_Exit() { }
 
     GSReadyStart_Entry() {
-        this.setState(GameMessage.GS_ReadyStart)
+        this.setGameState(GameMessage.GS_ReadyStart)
         print("GameState_GSReadyStart_Entry")
         GameRules.GameConfig.m_timeOprt = 50
         this.Timer(() => {
@@ -127,7 +127,7 @@ export class GameLoop {
     }
 
     GSBegin_Entry() {
-        this.setState(GameMessage.GS_Begin)
+        this.setGameState(GameMessage.GS_Begin)
         print("GameState_GSBegin_Entry")
         // 通知当前玩家回合开始
         const oPlayer = GameRules.PlayerManager.getPlayer(GameRules.GameConfig.m_nOrderID)
@@ -164,7 +164,7 @@ export class GameLoop {
     GSBegin_Exit() { }
 
     GSWaitOprt_Entry() {
-        this.setState(GameMessage.GS_WaitOperator)
+        this.setGameState(GameMessage.GS_WaitOperator)
         print("GameState_GSWaitOprt_Entry")
         this.Timer(() => {
             GameRules.GameConfig.updateTimeOprt()
@@ -194,7 +194,7 @@ export class GameLoop {
     }
 
     GSWait_Entry() {
-        this.setState(GameMessage.GS_Wait)
+        this.setGameState(GameMessage.GS_Wait)
         print("GameState_GSWait_Entry")
         this.m_timeWait = 100
         Timers.CreateTimer(0,()=>{
@@ -213,7 +213,7 @@ export class GameLoop {
     }
 
     GSMove_Entry() {
-        this.setState(GameMessage.GS_Move)
+        this.setGameState(GameMessage.GS_Move)
         print("GameState_GSMove_Entry")
     }
 
@@ -230,7 +230,7 @@ export class GameLoop {
     }
 
     GSFinished_Entry() {
-        this.setState(GameMessage.GS_Finished)
+        this.setGameState(GameMessage.GS_Finished)
         print("GameState_GSFinished_Entry")
         const oPlayer = GameRules.PlayerManager.getPlayer(GameRules.GameConfig.m_nOrderID)
         oPlayer.setRoundFinished(true)
@@ -267,7 +267,7 @@ export class GameLoop {
     }
 
     /**设置当前状态*/
-    setState(typeState: number) {
+    setGameState(typeState: number) {
         print("last state: ", GameRules.GameConfig.m_typeState, " cur state: ", typeState)
         this.m_typeStateLast = GameRules.GameConfig.m_typeState
         this.m_typeStateCur = typeState

@@ -66,7 +66,7 @@ export class PathTP extends Path {
 
     setOwner(player: Player) {
         if (player == null) {
-            this.setState(Constant.TypePathState.None)
+            this.setPathState(Constant.TypePathState.None)
             this.setBanner()
             this.m_nOwnerID = null
         } else {

@@ -91,20 +91,21 @@ export class Ability_phantom_strike extends TSBaseAbility {
         // 攻击
         const typeTeam = oPlayerTarget.m_eHero.GetTeamNumber()
         oPlayerTarget.m_eHero.SetTeam(DotaTeam.BADGUYS)
-        oPlayer.setState(GameMessage.PS_AtkHero)
+        oPlayer.setPlayerState(GameMessage.PS_AtkHero)
         Timers.CreateTimer(0.5, () => {
             oPlayer.m_eHero.MoveToTargetToAttack(oPlayerTarget.m_eHero)
 
             // 攻击结束移动到目标所在路径
             let tEventID = []
             function atkEnd() {
+                print("进入atkEnd()======幻影突袭")
                 if (tEventID) {
                     for (const ID of tEventID) {
                         GameRules.EventManager.UnRegisterByID(ID)
                     }
                     tEventID = null
                     oPlayerTarget.m_eHero.SetTeam(typeTeam)
-                    oPlayer.setState(-GameMessage.PS_AtkHero)
+                    oPlayer.setPlayerState(-GameMessage.PS_AtkHero)
                     oPlayer.moveToPath(oPlayerTarget.m_pathCur)
                 }
             }

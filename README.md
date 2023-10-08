@@ -878,19 +878,23 @@ const {value} = props
 3. 在起兵回合时创建的旗帜, 起兵回合后, 监听起兵 有问题
    检查触发情况?触发条件? 单开暂时未发现
 
-4.   m_bBattle: boolean = null
+4. m_bBattle: boolean = null
 
-     m_bGCLD: boolean = null
+   m_bGCLD: boolean = null
    由player定义, 注意检测兵卒是否可用问题
 
 5. 实现CamerManage的前端部分
    检查pa一技能使用后镜头是否正确移动
 
-6. Player.setState重写
+6. huderror前端部分实现
 
-7. AbilityManager.setRoundCD
+7. Player.setState重写
 
-8. 关闭以下前端页面:
+8. AbilityManager.setRoundCD
+
+9. 在一个合适的时机通过后端事件通知前端关闭操作提示框
+
+10. 关闭以下前端页面:
 
    1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
 
@@ -898,14 +902,13 @@ const {value} = props
 
    3. Label id="AbilityBuildComment"  #AbilityBuildComment
 
-9. 新回合开始要关闭前端操作面板
+11. 新回合开始要关闭前端操作面板
 
-10. ~~兵卒朝向问题~~
-   ![image-20230913000529288](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/09/13/00-09-15-182733ea3269c416cc9e18bc2319a331-image-20230913000529288-b0946f.png)
+12. ~~兵卒朝向问题~~
 
-11. 全才英雄兵卒的创建, 攻击力加成
+13. 全才英雄兵卒的创建, 攻击力加成
 
-12. 重做修改属性的方法, 主要是蓝量, 
+14. 重做修改属性的方法, 主要是蓝量, 
 
     1. 选择英雄
 
@@ -913,10 +916,10 @@ const {value} = props
 
     3. 监听装备事件
 
-13. 验证操作:
+15. 验证操作:
     roll到达地方后会触发onPath, 不同类型的地onPath继承方法不一样,这里会调用sendOprt给玩家发送消息弹出提示框,同时添加购买操作
 
-14. 检查gameloop是否可以切换   
+16. 检查gameloop是否可以切换   
     // 监听玩家移动回路径
 
     ​    const onMove(tabEvent2){
@@ -927,7 +930,7 @@ const {value} = props
 
     ​        GameRules.GameLoop.GameStateService.send("tomove")
 
-15. 攻城检查(攻城/打野可以持续到新的一回合开始)
+17. 攻城检查(攻城/打野可以持续到新的一回合开始)
     if (tabEvent2.player == oPlayer) {
 
     ​            // TODO:玩家移动结束，游戏状态恢复
@@ -938,20 +941,20 @@ const {value} = props
 
     ​          }
 
-16. 游戏记录模块 game_record客户端操作, 更新记录面板
+18. 游戏记录模块 game_record客户端操作, 更新记录面板
 
-17. 分开事件,分开发送
+19. 分开事件,分开发送
 
-18. 豹子触发有问题
+20. 豹子触发有问题
 
-19. ~~PlaySort与机器人的情况有点问题,总是021~~
+21. ~~PlaySort与机器人的情况有点问题,总是021~~
     注意使用RandInt方法来生成随机数,不要用Math.random
 
-20. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
+22. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
 
-21. player init
+23. player init
 
-   22. ----设置起点路径
+   24. ----设置起点路径
 
      self:setPath(PathManager:getPathByType(TP_START)[1])
    /**玩家攻城结束 */
@@ -1040,7 +1043,7 @@ const {value} = props
 
 
 
-## 调整
+## 注意/调整
 
 -  if (this.nInit == this.getPlayerCount()) {
 
@@ -1049,6 +1052,8 @@ const {value} = props
 ​          ==this.m_bAllPlayerInit = true==
 
 ​        }
+
+- m_bBattle 对于玩家的英雄来说附在了Player上, 对于兵卒单位来说附在了兵卒上(dota_npc)
 
 
 
@@ -1069,7 +1074,7 @@ const {value} = props
 
 
 
-setState!
+setGameState!
 
 
 

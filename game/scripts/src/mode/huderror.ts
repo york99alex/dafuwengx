@@ -16,7 +16,6 @@ export class HudError {
             data.nPlayerID = nPlayerID
             this.SendToPlayer(data)
         }
-
     }
 
     static SendToAllPlayer(data: {

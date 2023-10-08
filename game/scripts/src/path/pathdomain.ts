@@ -187,7 +187,7 @@ export class PathDomain extends Path {
 
         let nOwnerIDLast = this.m_nOwnerID
         if (oPlayer == null) {
-            this.setState(Constant.TypePathState.None)
+            this.setPathState(Constant.TypePathState.None)
             // 移除领主
             this.setBanner()
             this.m_nOwnerID = null
