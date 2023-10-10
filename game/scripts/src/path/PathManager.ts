@@ -52,6 +52,19 @@ export class PathManager {
         }
     }
 
+    getClosePath(vLoc: Vector): Path {
+        let path: Path = null
+        let nMin: number = null
+        for (const value of this.m_tabPaths) {
+            const nDis = (vLoc - value.m_entity.GetOrigin() as Vector).Length2D()
+            if (nMin == null || nMin > nDis) {
+                path = value
+                nMin = nDis
+            }
+        }
+        return path
+    }
+
     /** 获取路径对象 */
     getPathByType(type: number) {
         let tabPath: Path[] = []

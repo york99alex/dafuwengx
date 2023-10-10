@@ -63,3 +63,9 @@
 "Event_PlayerInvis", { player: this }
 
 "Event_PlayerInvisEnd", { player: this }
+
+"Event_LastCDChange", {
+                    strAbltName: strName,
+                    entity: eCaster,
+                    nCD: nCD
+                }

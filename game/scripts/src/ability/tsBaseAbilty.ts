@@ -1,12 +1,21 @@
 import { GameMessage } from "../mode/gamemessage"
+import { Path } from "../path/Path"
 
 export interface TSBaseAbility extends CDOTA_Ability_Lua { }
 export class TSBaseAbility {
 
-    m_strCastError: string = null
-    m_tBaseManaCost: number[] = null
-    m_tBaseCooldown: number[] = null
+    // 施法错误信息
+    m_strCastError: string
+    // 施法基础耗蓝
+    m_tBaseManaCost: number[]
+    // 施法基础冷却
+    m_tBaseCooldown: number[]
+    // 是否初始化(升级等情况也会初始化)
     m_bInit: boolean = null
+    // 选择目标地点
+    m_vPosTarget?: Vector
+    // 选择目标路径
+    m_pathTarget?: Path
 
     constructor() {
         this.m_bInit = true
@@ -130,6 +139,12 @@ export class TSBaseAbility {
      */
     isCanCast(eTarget?: CDOTA_BaseNPC): boolean {
         if (GameRules.GameConfig != null) {
+
+            // 准备阶段不能施法
+            if(GameRules.GameConfig.m_nRound == 0) {
+                this.m_strCastError = "AbilityError_Round0"
+                return false
+            }
 
             // 非自己阶段不能施法
             if (!this.isCanCastOtherRound() && this.GetCaster().GetPlayerOwnerID() != GameRules.GameConfig.m_nOrderID) {

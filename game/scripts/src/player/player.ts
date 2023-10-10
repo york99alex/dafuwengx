@@ -276,6 +276,44 @@ export class Player {
         }
     }
 
+    /**全军查找物品 */
+    getItemFromAllByName(itemName: string, itemIgnore) {
+        let item = this.get09ItemByName(itemName, itemIgnore)
+        if(item){
+            return item
+        }
+        for (const v of this.m_tabBz) {
+            item = v.get09ItemByName(itemName, itemIgnore)
+            if (item) {
+                return item
+            }
+        }
+    }
+
+    /**获取单位物品栏6格中的物品用名字 */
+    get06ItemByName(sName: string, itemIgnore) {
+        for (let i = 0; i < 6; i++) {
+            const item = this.m_eHero.GetItemInSlot(i)
+            if (item && item != itemIgnore && !item.IsNull() && item.GetAbilityName() == sName){
+                return item
+            }
+        }
+    }
+
+    /**获取单位物品栏加背包9格中的物品用名字 */
+    get09ItemByName(sName: string, itemIgnore) {
+        if (IsValidEntity(this.m_eHero)) {
+            for (let i = 0; i < 9; i++) {
+                const item = this.m_eHero.GetItemInSlot(i)
+                if (item && item != itemIgnore && !item.IsNull() && item.GetAbilityName() == sName){
+                    return item
+                }
+            }
+        }
+    }
+
+
+    /**设置断线 */
     setDisconnect(bVal: boolean) {
         const keyname = "player_info_" + this.m_nPlayerID as
             "player_info_0" | "player_info_1" | "player_info_2" | "player_info_3" | "player_info_4" | "player_info_5";

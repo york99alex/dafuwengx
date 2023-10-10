@@ -13,38 +13,34 @@ import { TSBaseAbility } from "../tsBaseAbilty";
     "DOTA_Tooltip_ability_Ability_phantom_strike_range" "施法范围 :"
     "AbilityValues" {
         "attack_times" "1 2 3"
-        "range" "900 1600 2000"
+        "range" "1000 1600 2000"
     }
  */
 @registerAbility()
 export class Ability_phantom_strike extends TSBaseAbility {
 
-    constructor() {
-        super()
-        print("constructor()======幻影突袭")
-    }
 
     /**
      * 选择无目标时
      */
-    CastFilterResult(): UnitFilterResult {
-        if (!this.isCanCast()) {
-            return UnitFilterResult.FAIL_CUSTOM
-        }
-        if (GameRules.PlayerManager != null) {
-            // 如果是玩家英雄
-            const oPlayer = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID())
-            if (oPlayer != null) {
-                // 获取前进区域最近玩家
-                if (GameRules.PlayerManager.findClosePlayer(oPlayer, this.filterTarget, -1) == null) {
-                    // 没有有效攻击目标
-                    this.m_strCastError = "AbilityError_NoTarget"
-                    return UnitFilterResult.FAIL_CUSTOM
-                }
-            }
-        }
-        return UnitFilterResult.SUCCESS
-    }
+    // CastFilterResult(): UnitFilterResult {
+    //     if (!this.isCanCast()) {
+    //         return UnitFilterResult.FAIL_CUSTOM
+    //     }
+    //     if (GameRules.PlayerManager != null) {
+    //         // 如果是玩家英雄
+    //         const oPlayer = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID())
+    //         if (oPlayer != null) {
+    //             // 获取前进区域最近玩家
+    //             if (GameRules.PlayerManager.findClosePlayer(oPlayer, this.filterTarget, -1) == null) {
+    //                 // 没有有效攻击目标
+    //                 this.m_strCastError = "AbilityError_NoTarget"
+    //                 return UnitFilterResult.FAIL_CUSTOM
+    //             }
+    //         }
+    //     }
+    //     return UnitFilterResult.SUCCESS
+    // }
 
     /**选择目标时 */
     CastFilterResultTarget(target: CDOTA_BaseNPC): UnitFilterResult {
@@ -54,6 +50,13 @@ export class Ability_phantom_strike extends TSBaseAbility {
         // 不能是自己
         if (target.GetPlayerOwnerID() == this.GetCaster().GetPlayerOwnerID()) {
             this.m_strCastError = "AbilityError_SelfCant"
+            return UnitFilterResult.FAIL_CUSTOM
+        }
+        // 判断范围
+        const nRange = this.GetSpecialValueFor("range")
+        const nDis = (target.GetAbsOrigin() - this.GetCaster().GetAbsOrigin() as Vector).Length2D()
+        if (nDis > nRange) {
+            this.m_strCastError = "AbilityError_Range"
             return UnitFilterResult.FAIL_CUSTOM
         }
         return UnitFilterResult.SUCCESS
@@ -92,6 +95,8 @@ export class Ability_phantom_strike extends TSBaseAbility {
         const typeTeam = oPlayerTarget.m_eHero.GetTeamNumber()
         oPlayerTarget.m_eHero.SetTeam(DotaTeam.BADGUYS)
         oPlayer.setPlayerState(GameMessage.PS_AtkHero)
+        const attack_times = this.GetSpecialValueFor("attack_times")
+        let i = 1
         Timers.CreateTimer(0.5, () => {
             oPlayer.m_eHero.MoveToTargetToAttack(oPlayerTarget.m_eHero)
 
@@ -99,7 +104,8 @@ export class Ability_phantom_strike extends TSBaseAbility {
             let tEventID = []
             function atkEnd() {
                 print("进入atkEnd()======幻影突袭")
-                if (tEventID) {
+                print("attack_times == i:", i)
+                if (i == attack_times && tEventID) {
                     for (const ID of tEventID) {
                         GameRules.EventManager.UnRegisterByID(ID)
                     }
@@ -113,11 +119,13 @@ export class Ability_phantom_strike extends TSBaseAbility {
             tEventID.push(GameRules.EventManager.Register("Event_Atk", (tEvent) => {
                 if (tEvent.entindex_attacker_const == oPlayer.m_eHero.GetEntityIndex()) {
                     atkEnd()
+                    i++
                     return true
                 }
             }))
-            Timers.CreateTimer(oPlayer.m_eHero.GetAttackAnimationPoint() * (this.GetSpecialValueFor("attack_times") + 0.9), () => atkEnd())
+            Timers.CreateTimer(oPlayer.m_eHero.GetAttackAnimationPoint() * 1.9, () => atkEnd())
         })
+
 
         // 触发耗蓝
         GameRules.EventManager.FireEvent("Event_HeroManaChange", { player: oPlayer, oAblt: this })
