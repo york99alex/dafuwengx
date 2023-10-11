@@ -1,9 +1,15 @@
-import { Path } from "../path/Path";
+import { PathDomain } from "../path/pathdomain";
+import { BaseAbility } from "../utils/dota_ts_adapter";
 
 export interface CDOTA_BaseNPC_BZ extends CDOTA_BaseNPC { }
+/**自定义兵卒类,继承CDOTA_BaseNPC */
 export class CDOTA_BaseNPC_BZ {
-    m_path: Path;
-    m_eAtkTarget: null;
+    m_path: PathDomain
+    m_eAtkTarget: CDOTA_BaseNPC_Hero
+    m_bAbltBZ: BaseAbility
+    m_bBattle: boolean
+    m_tabAtker: CDOTA_BaseNPC_Hero[]
+    _ctrlBzAtk_thinkID: string
 
     /**获取单位物品栏6格中的物品用名字 */
     get06ItemByName(sName: string, itemIgnore?) {
@@ -26,4 +32,5 @@ export class CDOTA_BaseNPC_BZ {
             }
         }
     }
+
 }

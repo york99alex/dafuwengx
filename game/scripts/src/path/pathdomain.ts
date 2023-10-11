@@ -182,7 +182,7 @@ export class PathDomain extends Path {
     }
 
     /**设置领主 */
-    setOwner(oPlayer: Player, bSetBZ?: boolean) {
+    setOwner(oPlayer?: Player, bSetBZ?: boolean) {
         bSetBZ = bSetBZ || true
 
         let nOwnerIDLast = this.m_nOwnerID

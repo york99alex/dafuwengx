@@ -894,21 +894,25 @@ const {value} = props
 
 9. 在一个合适的时机通过后端事件通知前端关闭操作提示框
 
-10. 关闭以下前端页面:
+10. 检查setPlayerMuteTrade能否生效
 
-   1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
+11. 关闭以下前端页面:
 
-   2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
+    1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
 
-   3. Label id="AbilityBuildComment"  #AbilityBuildComment
+    2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
 
-11. 新回合开始要关闭前端操作面板
+    3. Label id="AbilityBuildComment"  #AbilityBuildComment
 
-12. ~~兵卒朝向问题~~
+12. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
 
-13. 全才英雄兵卒的创建, 攻击力加成
+13. ~~兵卒朝向问题~~
 
-14. 重做修改属性的方法, 主要是蓝量, 
+14. 全才英雄兵卒的创建, 攻击力加成
+
+15. setKillCountAdd源码逻辑是否合理
+
+16. 重做修改属性的方法, 主要是蓝量, 
 
     1. 选择英雄
 
@@ -916,10 +920,10 @@ const {value} = props
 
     3. 监听装备事件
 
-15. 验证操作:
+17. 验证操作:
     roll到达地方后会触发onPath, 不同类型的地onPath继承方法不一样,这里会调用sendOprt给玩家发送消息弹出提示框,同时添加购买操作
 
-16. 检查gameloop是否可以切换   
+18. 检查gameloop是否可以切换   
     // 监听玩家移动回路径
 
     ​    const onMove(tabEvent2){
@@ -930,7 +934,7 @@ const {value} = props
 
     ​        GameRules.GameLoop.GameStateService.send("tomove")
 
-17. 攻城检查(攻城/打野可以持续到新的一回合开始)
+19. 攻城检查(攻城/打野可以持续到新的一回合开始)
     if (tabEvent2.player == oPlayer) {
 
     ​            // TODO:玩家移动结束，游戏状态恢复
@@ -941,20 +945,20 @@ const {value} = props
 
     ​          }
 
-18. 游戏记录模块 game_record客户端操作, 更新记录面板
+20. 游戏记录模块 game_record客户端操作, 更新记录面板
 
-19. 分开事件,分开发送
+21. 分开事件,分开发送
 
-20. 豹子触发有问题
+22. 豹子触发有问题
 
-21. ~~PlaySort与机器人的情况有点问题,总是021~~
+23. ~~PlaySort与机器人的情况有点问题,总是021~~
     注意使用RandInt方法来生成随机数,不要用Math.random
 
-22. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
+24. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
 
-23. player init
+25. player init
 
-   24. ----设置起点路径
+   26. ----设置起点路径
 
      self:setPath(PathManager:getPathByType(TP_START)[1])
    /**玩家攻城结束 */
@@ -1054,6 +1058,22 @@ const {value} = props
 ​        }
 
 - m_bBattle 对于玩家的英雄来说附在了Player上, 对于兵卒单位来说附在了兵卒上(dota_npc)
+
+- state: 
+
+  - setPlayerState 设置玩家状态, 指示位标识计算
+
+  - setGameState 设置回合状态
+
+    ```typescript
+    GameRules.GameLoop.Timer(() => {
+    	GameRules.GameLoop.GameStateService.send("towaitoprt")
+    	return null
+    }, 0)
+    ```
+
+    
+
 
 
 

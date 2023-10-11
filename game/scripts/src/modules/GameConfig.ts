@@ -14,7 +14,7 @@ import { Trade } from "../mode/trade"
 import { PathManager } from "../path/PathManager"
 import { PathDomain } from "../path/pathdomain"
 import { PathTP } from "../path/pathtp"
-import { Player } from "../player/player"
+import { Player, player_info } from "../player/player"
 import { PlayerManager } from "../player/playermanager"
 import { EventManager } from "../utils/eventmanager"
 import { ParaAdjuster } from "../utils/paraadjuster"
@@ -838,8 +838,7 @@ export class GameConfig {
             const player = GameRules.PlayerManager.getPlayerBySteamID64(value.steamid64)
             if (player) {
                 player.m_nRank = value.rank_num
-                const keyname = "player_info_" + player.m_nPlayerID as
-                    "player_info_0" | "player_info_1" | "player_info_2" | "player_info_3" | "player_info_4" | "player_info_5";
+                const keyname = "player_info_" + player.m_nPlayerID as player_info
 
                 CustomNetTables.SetTableValue("EndTable", keyname, {
                     nDamageBZ: player.m_nDamageBZ,

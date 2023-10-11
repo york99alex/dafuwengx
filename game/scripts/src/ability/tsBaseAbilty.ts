@@ -1,5 +1,6 @@
 import { GameMessage } from "../mode/gamemessage"
 import { Path } from "../path/Path"
+import { player_info } from "../player/player"
 
 export interface TSBaseAbility extends CDOTA_Ability_Lua { }
 export class TSBaseAbility {
@@ -63,8 +64,7 @@ export class TSBaseAbility {
         // 获取冷却缩减
         let nCDSub = 0
         if (this.isCanCDSub()) {
-            const keyname = "player_info_" + this.GetCaster().GetPlayerOwnerID() as
-                "player_info_0" | "player_info_1" | "player_info_2" | "player_info_3" | "player_info_4" | "player_info_5";
+            const keyname = "player_info_" + this.GetCaster().GetPlayerOwnerID() as player_info
             const tabPlayerInfo = CustomNetTables.GetTableValue("GamingTable", keyname)
             if (tabPlayerInfo && tabPlayerInfo.nCDSub) {
                 nCDSub = tabPlayerInfo.nCDSub
@@ -98,8 +98,7 @@ export class TSBaseAbility {
         // 获取冷却缩减
         let nManaSub = 0
         if (this.isCanManaSub()) {
-            const keyname = "player_info_" + this.GetCaster().GetPlayerOwnerID() as
-                "player_info_0" | "player_info_1" | "player_info_2" | "player_info_3" | "player_info_4" | "player_info_5";
+            const keyname = "player_info_" + this.GetCaster().GetPlayerOwnerID() as player_info
             const tabPlayerInfo = CustomNetTables.GetTableValue("GamingTable", keyname)
             if (tabPlayerInfo && tabPlayerInfo.nManaSub) {
                 nManaSub = tabPlayerInfo.nManaSub

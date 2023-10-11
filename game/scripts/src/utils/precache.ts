@@ -8,6 +8,7 @@ export default function Precache(context: CScriptPrecacheContext) {
             // 'soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts',
             // '***.vmdl',
             'particles/units/heroes/hero_phantom_assassin/phantom_assassin_loadout.vpcf',
+            'particles/generic_hero_status/hero_levelup.vpcf',
         ],
         context
     );
@@ -69,7 +70,7 @@ function precacheUnits(unitNamesList: string[], context?: CScriptPrecacheContext
         });
     } else {
         unitNamesList.forEach(unitName => {
-            PrecacheUnitByNameAsync(unitName, () => {});
+            PrecacheUnitByNameAsync(unitName, () => { });
         });
     }
 }

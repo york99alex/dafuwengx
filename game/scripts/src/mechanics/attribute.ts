@@ -1,4 +1,4 @@
-interface CDOTA_NPC_BZ extends CDOTA_BaseNPC_Hero {
+export interface CDOTA_BaseNPC_BZ extends CDOTA_BaseNPC_Hero {
     LevelUp: (this: any, bPlayEffects: any, bLevelDown: any) => void
     _updateIntellect: (this: any) => void
     _updateAgility: (this: any) => void
@@ -44,7 +44,7 @@ export class Attribute {
         }
     }
 
-    static Register(hUnit: CDOTA_NPC_BZ) {
+    static Register(hUnit: CDOTA_BaseNPC_BZ) {
         const sHereName = hUnit.GetUnitName()
         const tData = KeyValues.UnitsKv[sHereName]
 

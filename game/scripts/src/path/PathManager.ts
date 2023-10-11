@@ -1,3 +1,4 @@
+import { Constant } from "../mode/constant";
 import { AHMC } from "../utils/amhc";
 import { reloadable } from "../utils/tstl-utils";
 import { Path } from "./Path";
@@ -198,6 +199,76 @@ export class PathManager {
                 }
             }
             entity.MoveToPosition(vNext)
+            return 0.1
+        })
+        return true
+    }
+
+    /**坐标寻路移动 */
+    moveToPos(entity: CDOTA_BaseNPC_Hero, location: Vector, funCallBack: Function) {
+        if (!IsValidEntity(entity)) {
+            return
+        }
+        // 验证能否到达
+        if (!entity.HasFlyMovementCapability() && !GridNav.CanFindPath(entity.GetAbsOrigin(), location)) {
+            if (funCallBack) {
+                funCallBack(false)
+            }
+            return
+        }
+        location = Vector(location.x, location.y, entity.GetAbsOrigin().z)
+
+        // 防卡死功能
+        let nTimeKasi = 0
+        let vLocLast = null
+        function judgeKasi() {
+            if (vLocLast == entity.GetAbsOrigin()) {
+                nTimeKasi += 1
+                if (nTimeKasi >= Constant.TIME_MOVEKASI) {
+                    // 超过时间,直接设置到目的地
+                    entity.SetAbsOrigin(location)
+                    FindClearSpaceForUnit(entity, entity.GetAbsOrigin(), true)
+                    this.moveStop(entity, true)
+                    return false
+                }
+            } else {
+                vLocLast = entity.GetAbsOrigin()
+            }
+            return false
+        }
+
+        const nEntId = entity.GetEntityIndex()
+
+        // 结束上一次移动
+        if (this.m_tabMoveData[nEntId]) this.moveStop(entity, false)
+
+        // 新的移动
+        const tMoveData = {
+            nEntId: nEntId,
+            funCallBack: funCallBack
+        }
+        this.m_tabMoveData[nEntId] = tMoveData
+
+        // 设置计时器监听移动结束，触发回调
+        Timers.CreateTimer(() => {
+            if (tMoveData != this.m_tabMoveData[nEntId]) return
+            if (!IsValidEntity(entity) || !entity.IsAlive()) {
+                this.moveStop(entity, false)
+                return
+            }
+            const nDis = (entity.GetAbsOrigin() - location as Vector).Length2D()
+
+            let nCheckDis = 30
+            nCheckDis = entity.GetIdealSpeed() * 0.35 - 75
+            if (nCheckDis < 30) {
+                nCheckDis = 30
+            }
+            if (nCheckDis < nDis || judgeKasi()) {
+                // 移动结束
+                this.moveStop(entity, true)
+                return null
+            }
+            entity.MoveToPosition(location)
             return 0.1
         })
         return true

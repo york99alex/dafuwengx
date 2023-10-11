@@ -44,7 +44,9 @@
 
 "Event_RollBaoZiJudge", { player: event.player }
 
-"Event_HeroManaChange", { player : oPlayer, oAblt : this }
+"Event_HeroManaChange", { player : oPlayer, oAblt : ability }
+
+"Event_HeroManaChange", { player: this }
 
 "Event_OnDamage", {}
 
@@ -69,3 +71,7 @@
                     entity: eCaster,
                     nCD: nCD
                 }
+
+"Event_BZDestroy", { entity: eBZ }
+
+"Event_BZLevel", { eBZNew: eBZNew, eBZ: eBZ }
