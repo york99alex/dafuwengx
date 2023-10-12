@@ -1,4 +1,5 @@
 import { GameMessage } from "../mode/gamemessage"
+import { Path } from "../path/Path"
 import { Player } from "./player"
 
 export class PlayerManager {
@@ -231,6 +232,37 @@ export class PlayerManager {
             }
         }
         return oReturn
+    }
+
+    /**找到目标领地范围格数内的玩家 */
+    findRangePlayer(tabPlayer: Player[], pathTarger: Path, nRange?: number, nOffset?: number, funFilter?: Function): void {
+        if (!funFilter) {
+            funFilter = () => {
+                return true
+            }
+        }
+
+        nOffset = nOffset ?? 0
+        nRange = nRange ?? 1
+        if (nRange > GameRules.PathManager.m_tabPaths.length) {
+            nRange = GameRules.PathManager.m_tabPaths.length
+        }
+
+        const nBeginID = pathTarger.m_nID - math.floor((nRange - 1) * 0.5) + nOffset
+        for (let i = nBeginID + nRange - 1; i >= nBeginID; i--) {
+            let nID = i
+            if (nID > GameRules.PathManager.m_tabPaths.length) {
+                nID %= GameRules.PathManager.m_tabPaths.length
+            } else if (nID <= 0) {
+                nID += GameRules.PathManager.m_tabPaths.length
+            }
+
+            for (const v of this.m_tabPlayers) {
+                if (nID == v.m_pathCur.m_nID && funFilter(v)) {
+                    tabPlayer.push(v)
+                }
+            }
+        }
     }
 
     /**玩家是否存活 */

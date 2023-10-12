@@ -9,6 +9,8 @@ export default function Precache(context: CScriptPrecacheContext) {
             // '***.vmdl',
             'particles/units/heroes/hero_phantom_assassin/phantom_assassin_loadout.vpcf',
             'particles/generic_hero_status/hero_levelup.vpcf',
+            'particles/units/heroes/hero_meepo/meepo_poof_start.vpcf',
+            'particles/units/heroes/hero_meepo/meepo_loadout.vpcf',
         ],
         context
     );

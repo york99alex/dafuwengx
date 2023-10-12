@@ -1,3 +1,5 @@
+import { TSBaseAbility } from "../ability/tsBaseAbilty"
+
 export class AHMC {
     // 写一些方法类,有AMHC之前的lua代码翻译过来,也有自定义工具方法
 
@@ -186,8 +188,6 @@ export class AHMC {
         }, 0)
     }
 
-
-
     /**
      * 
      * @param entity CDOTA_BaseNPC
@@ -201,5 +201,40 @@ export class AHMC {
             return false
         }
         return null
+    }
+
+    /**
+     * --伤害API简化
+     * @param attacker CDOTA_BaseNPC
+     * @param victim CDOTA_BaseNPC
+     * @param damage number
+     * @param damageType DamageTypes
+     * @param ability TSBaseAbility
+     * @param scale number
+     * @param tData 可选
+     */
+    static Damage(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC, damage: number, damageType: DamageTypes, ability: TSBaseAbility, scale?: number, tData?) {
+        if (this.IsAlive(attacker) != true || this.IsAlive(victim) != true) {
+            return null
+        }
+        scale = scale ?? 1
+        if (scale < 0) scale = 1
+
+        const tEntID = GameRules.EventManager.Register("Event_Atk", (event) => {
+            if (ability) {
+                event.ability = ability
+            }
+            if (tData) {
+                // TODO:
+            }
+        }, null, 987654321)
+        ApplyDamage({
+            victim: victim,
+            attacker: attacker,
+            damage: damage * scale,
+            damage_type: damageType,
+            ability: ability
+        })
+        GameRules.EventManager.UnRegisterByID(tEntID, "Event_Atk")
     }
 }

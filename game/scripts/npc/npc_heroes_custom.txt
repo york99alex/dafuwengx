@@ -62,7 +62,7 @@
 		// 技能槽数量，最低4个，最高为6个，单位可以同时拥有最多16个技能
 		"AbilityLayout"	"2"
 		"Ability1"	"Ability_meepo_poof"
-		"Ability2"	"meepo_ransack"
+		"Ability2"	"Ability_meepo_ransack"
 		"Ability3"	""
 		"Ability4"	""
 		"Ability5"	""

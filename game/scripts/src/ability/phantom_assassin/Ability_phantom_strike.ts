@@ -1,4 +1,3 @@
-import { CardManager } from "../../card/cardmanager";
 import { CameraManage } from "../../mode/CameraManage";
 import { GameMessage } from "../../mode/gamemessage";
 import { Player } from "../../player/player";
@@ -8,6 +7,7 @@ import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
 /**
  * // 技能：幻影突袭    英雄：幻影刺客 PA
+    "DOTA_Tooltip_ability_Ability_phantom_strike" "幻影突袭"
     "DOTA_Tooltip_ability_Ability_phantom_strike_Description" "闪烁到一个目标身边，并攻击%attack_times%次。"
     "DOTA_Tooltip_ability_Ability_phantom_strike_attack_times" "攻击次数 :"
     "DOTA_Tooltip_ability_Ability_phantom_strike_range" "施法范围 :"

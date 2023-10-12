@@ -1,2 +1,11 @@
-﻿Tokens,English,SChinese
-addon_game_name,Big General Monopoly,擎天阁大富翁
+﻿Tokens,SChinese,English
+addon_game_name,擎天阁大富翁,Big General Monopoly
+DOTA_Tooltip_ability_Ability_phantom_strike,幻影突袭,
+DOTA_Tooltip_ability_Ability_phantom_strike_Description,闪烁到一个目标身边，并攻击%attack_times%次。,
+DOTA_Tooltip_ability_Ability_phantom_strike_attack_times,攻击次数 :,
+DOTA_Tooltip_ability_Ability_phantom_strike_range,施法范围 :,
+DOTA_Tooltip_ability_Ability_meepo_ransack,洗劫,
+DOTA_Tooltip_ability_Ability_meepo_ransack_Description,每次攻击从敌人身体汲取神秘的能量，以永久提升忽悠伤害,
+DOTA_Tooltip_ability_Ability_meepo_ransack_addsh,伤害提升 :,
+DOTA_Tooltip_Modifier_Ability_meepo_ransack,洗劫,
+DOTA_Tooltip_Modifier_Ability_meepo_ransack_Description,伤害提升,

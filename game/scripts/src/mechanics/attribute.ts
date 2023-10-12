@@ -1,30 +1,4 @@
-export interface CDOTA_BaseNPC_BZ extends CDOTA_BaseNPC_Hero {
-    LevelUp: (this: any, bPlayEffects: any, bLevelDown: any) => void
-    _updateIntellect: (this: any) => void
-    _updateAgility: (this: any) => void
-    _updateStrength: (this: any) => void
-    nPrimaryAttribute: number
-    fStrength: number,
-    fBaseStrength: number,
-    fStrengthGain: number,
-    fAgility: number,
-    fBaseAgility: number,
-    fAgilityGain: number,
-    fIntellect: number,
-    fBaseIntellect: number,
-    fIntellectGain: number,
-    hStrModifier: CDOTA_Buff,
-    hAgiModifier: CDOTA_Buff,
-    hIntModifier: CDOTA_Buff,
-    hBaseStrModifier: CDOTA_Buff,
-    hBaseAgiModifier: CDOTA_Buff,
-    hBaseIntModifier: CDOTA_Buff,
-    hPrimaryAttributeModifier: CDOTA_Buff,
-    ModifyStrength(newStrength: number, bIsBase?: boolean): void
-    ModifyAgility(newAgility: number, bIsBase?: boolean): void
-    ModifyIntellect(newIntellect: number, bIsBase?: boolean): void
-
-}
+import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
 
 const tPrimaryAttributes = {
     DOTA_ATTRIBUTE_STRENGTH: Attributes.STRENGTH,
@@ -218,5 +192,5 @@ export class Attribute {
         }
     }
 
-    
+
 }

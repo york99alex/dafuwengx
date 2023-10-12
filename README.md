@@ -574,6 +574,12 @@ https://www.jiyik.com/tm/xwzj/web_834.html
 
 
 
+### 引入第三方库
+
+https://www.npmjs.com/
+
+[第三方库的使用与typescript_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1n44y1e7B4?p=3)
+
 
 
 ## 编写技能
@@ -630,7 +636,43 @@ const {value} = props
 
 灵活运用
 
-### 一些注意
+### 组件间通信
+
+例如: App为根组件, 包含Header List两个子组件, 
+
+通过Header子组件获取到一个值要传递给List
+
+```tsx
+export const Hearder = ()=>{
+    handleKeyUp = (event)=>{
+        this.props.addTodo(event.Code)
+	}
+    
+    render () {
+        return <input onKeyUp = {this.handleKeyUp} />
+    }
+}
+```
+
+先通过 App根组件中, 给Header组件定义时传入一个函数:
+
+```tsx
+export const App = () => {	// 根组件
+    addTodo = (data)=>{
+        // data就能接收到Hearder里调用this.props.addTodo(event.Code)传入的event.Code参数
+    }
+    
+    render(){
+        return <Header addTodo={this.addTodo}/>
+    }
+}
+```
+
+这就实现了子组件给父组件传递消息
+
+
+
+### 注意
 
 - 尽量不要在需要回调的地方写内联函数, 应写绑定函数
 
@@ -1112,6 +1154,10 @@ GSWaitOprt_Entry()执行Roll点,调用GameConfig.processRoll()方法{
 }
 
 
+
+### 记录所有状态切换情况
+
+米波施放忽悠时进入GS_Wait, 释放结束后回到GS_WaitOprt
 
 
 
