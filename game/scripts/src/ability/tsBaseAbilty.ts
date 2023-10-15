@@ -1,6 +1,9 @@
 import { GameMessage } from "../mode/gamemessage"
 import { Path } from "../path/Path"
+import { PathManager } from "../path/PathManager"
+import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
 import { player_info } from "../player/player"
+import { AbilityManager } from "./abilitymanager"
 
 export interface TSBaseAbility extends CDOTA_Ability_Lua { }
 export class TSBaseAbility {
@@ -17,6 +20,11 @@ export class TSBaseAbility {
     m_vPosTarget?: Vector
     // 选择目标路径
     m_pathTarget?: Path
+    // 技能标识时间
+    timeAbltMark?: number
+    // 技能标识特效
+    tabAbltMarkPtcl?: ParticleID[]
+
 
     constructor() {
         this.m_bInit = true
@@ -46,6 +54,32 @@ export class TSBaseAbility {
         print("===TSBaseAbility.constructor===")
         DeepPrintTable(this.m_tBaseManaCost)
         DeepPrintTable(this.m_tBaseCooldown)
+    }
+
+    /**
+     * 自定义目标单位错误
+     * @param target 目标单位
+     * @returns 本地化键值
+     */
+    GetCustomCastErrorTarget(target: CDOTA_BaseNPC): string {
+        return this.m_strCastError
+    }
+
+    /**
+     * 自定义目标地点错误
+     * @param location 目标地点vector
+     * @returns 本地化键值
+     */
+    GetCustomCastErrorLocation(location: Vector): string {
+        return this.m_strCastError
+    }
+
+    /**
+     * 自定义无目标错误
+     * @returns 本地化键值
+     */
+    GetCustomCastError(): string {
+        return this.m_strCastError
     }
 
     /**当技能升级时 */
@@ -85,6 +119,36 @@ export class TSBaseAbility {
             if (this.m_tBaseCooldown[nLevel - 1] && nCDSub < this.m_tBaseCooldown[nLevel - 1]) {
                 return this.m_tBaseCooldown[nLevel - 1] - nCDSub
             }
+        }
+        return 0
+    }
+
+
+    /**
+     * 定义技能的施法距离
+     * @param location 
+     * @param target 
+     */
+    GetCastRange(location: Vector, target: CDOTA_BaseNPC | undefined): number {
+        if (IsClient()) {
+            let nRange = this.GetSpecialValueFor("range")
+            if (!nRange || nRange < 0) {
+                nRange = 0
+            }
+            const keyname = "player_info_" + this.GetCaster().GetPlayerOwnerID() as player_info
+            const tabPlayerInfo = CustomNetTables.GetTableValue("GamingTable", keyname)
+            if (!tabPlayerInfo) {
+                return
+            }
+
+            const nOffset = this.GetSpecialValueFor("offset")
+            let tabPathID = []
+            let nPathID = PathManager.getNextPathID(tabPlayerInfo.nPathCurID, -math.floor((nRange - 1) * 0.5) + nOffset)
+            for (let i = 0; i < nRange; i++) {
+                tabPathID.push(nPathID)
+                nPathID = PathManager.getNextPathID(nPathID, 1)
+            }
+            AbilityManager.showAbltMark(this, this.GetCaster(), tabPathID)
         }
         return 0
     }
@@ -133,6 +197,65 @@ export class TSBaseAbility {
         return true
     }
 
+
+    ai() {
+        if (IsClient()) {
+            return
+        }
+        // 监听兵卒可攻击
+        GameRules.EventManager.Register("Event_BZCanAtk", (event) => {
+            if (this.IsNull()) {
+                return true
+            }
+            if (this.GetCaster() != event.entity) {
+                return
+            }
+            if (!AbilityManager.isCanOnAblt(this.GetCaster())) {
+                return
+            }
+
+            const nManaCast = this.GetManaCost(this.GetLevel() - 1)
+
+            // 持续进行施法判断
+            const tEventID = []
+            tEventID.push(GameRules.EventManager.Register("Event_BZCastAblt", (tEvent) => {
+                if (tEvent.ablt == this) {
+                    tEvent.bIgnore = false
+                }
+            }))
+
+            const strTimerName = Timers.CreateTimer(() => {
+                if (IsValidEntity(this)) {
+                    if (IsValidEntity((this.GetCaster() as CDOTA_BaseNPC_BZ).m_eAtkTarget)
+                        && this.IsCooldownReady()
+                        && this.GetCaster().GetMana() == nManaCast) {
+                        // 蓝满了放技能
+                        ExecuteOrderFromTable({
+                            UnitIndex: this.GetCaster().GetEntityIndex(),
+                            OrderType: UnitOrder.CAST_NO_TARGET,
+                            TargetIndex: null,
+                            AbilityIndex: this.GetEntityIndex(),
+                            Position: null,
+                            Queue: false
+                        })
+                    }
+                    return 0.1
+                }
+            })
+
+            // 监听攻击结束
+            tEventID.push(GameRules.EventManager.Register("Event_BZCantAtk", (tEventCantAtk) => {
+                if (this.IsNull() || this.GetCaster() == tEventCantAtk.entity) {
+                    Timers.RemoveTimer(strTimerName)
+                    for (const v of tEventID) {
+                        GameRules.EventManager.UnRegisterByID(v)
+                    }
+                    return true
+                }
+            }))
+        })
+    }
+
     /**
      * 通用判断技能施法
      */
@@ -140,14 +263,14 @@ export class TSBaseAbility {
         if (GameRules.GameConfig != null) {
 
             // 准备阶段不能施法
-            if(GameRules.GameConfig.m_nRound == 0) {
+            if (GameRules.GameConfig.m_nRound == 0) {
                 this.m_strCastError = "AbilityError_Round0"
                 return false
             }
 
             // 非自己阶段不能施法
             if (!this.isCanCastOtherRound() && this.GetCaster().GetPlayerOwnerID() != GameRules.GameConfig.m_nOrderID) {
-                this.m_strCastError = "AbilityError_SelfRound"
+                this.m_strCastError = "AbilityError_NotSelfRound"
                 return false
             }
             // 移动阶段不能施法
@@ -250,7 +373,7 @@ export class TSBaseAbility {
             return false
         }
 
-        if (this.m_strCastError != "ERROR") {
+        if (this.m_strCastError == "ERROR") {
             return false
         }
         return true

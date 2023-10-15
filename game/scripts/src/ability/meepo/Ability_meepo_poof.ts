@@ -13,7 +13,6 @@ import { TSBaseAbility } from "../tsBaseAbilty";
     "DOTA_Tooltip_ability_Ability_meepo_poof_range"			"作用格数 :"
     "DOTA_Tooltip_ability_Ability_meepo_poof_poof_damage"	"忽悠伤害 :"
     "AbilityError_not_meepo"								"目标不是米波"
-    "AbilityError_meepo_poof_2"								"目标只是个幻象"
  */
 @registerAbility()
 export class Ability_meepo_poof extends TSBaseAbility {

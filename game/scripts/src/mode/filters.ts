@@ -29,8 +29,6 @@ export class Filters {
     }
 
     static ExecuteOrderFilter(event): boolean {
-        print("ExecuteOrderFilter===执行命令过滤")
-        DeepPrintTable(event)
         /**
          * 命令常量
          *  DOTA_UNIT_ORDER_NONE = 0

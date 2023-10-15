@@ -165,20 +165,6 @@ export class Player {
         // 设置起点路径
         this.setPath(GameRules.PathManager.getPathByType(GameMessage.TP_START)[0])
 
-        // 魔法修改触发事件
-        this.m_eHero.SpendMana = (nMana: number, ability: BaseAbility) => {
-            this.m_eHero.SpendMana(nMana, ability)
-            GameRules.EventManager.FireEvent("Event_HeroManaChange", { player: this, oAblt: ability })
-        }
-        this.m_eHero.GiveMana = (nMana: number) => {
-            this.m_eHero.GiveMana(nMana)
-            GameRules.EventManager.FireEvent("Event_HeroManaChange", { player: this })
-        }
-        this.m_eHero.SetMana = (nMana: number) => {
-            this.m_eHero.SetMana(nMana)
-            GameRules.EventManager.FireEvent("Event_HeroManaChange", { player: this })
-        }
-
         // 玩家死亡杀死英雄
         if (this.m_bDie) {
             this.m_eHero.SetRespawnsDisabled(true)
@@ -1259,7 +1245,6 @@ export class Player {
         // 设置网表
         const keyname = "player_info_" + this.m_nPlayerID as player_info
         const info = CustomNetTables.GetTableValue("GamingTable", keyname)
-        // TODO: 源码为 = nValue 检查是否合理
         info.nKill = this.m_nKill
         CustomNetTables.SetTableValue("GamingTable", keyname, info)
     }

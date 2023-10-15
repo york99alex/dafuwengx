@@ -42,6 +42,10 @@ export class Ability_phantom_strike extends TSBaseAbility {
     //     return UnitFilterResult.SUCCESS
     // }
 
+    GetCastRange(location: Vector, target: CDOTA_BaseNPC): number {
+        return this.GetSpecialValueFor("range")
+    }
+
     /**选择目标时 */
     CastFilterResultTarget(target: CDOTA_BaseNPC): UnitFilterResult {
         if (!this.isCanCast(target)) {

@@ -11,6 +11,9 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/generic_hero_status/hero_levelup.vpcf',
             'particles/units/heroes/hero_meepo/meepo_poof_start.vpcf',
             'particles/units/heroes/hero_meepo/meepo_loadout.vpcf',
+            'particles/base_attacks/generic_projectile_launch.vpcf',
+            'particles/econ/items/pudge/pudge_trapper_beam_chain/pudge_nx_meathook.vpcf',
+            'particles/units/heroes/hero_pudge/pudge_rot.vpcf',
         ],
         context
     );

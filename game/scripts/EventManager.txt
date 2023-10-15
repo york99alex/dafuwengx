@@ -75,3 +75,5 @@
 "Event_BZDestroy", { entity: eBZ }
 
 "Event_BZLevel", { eBZNew: eBZNew, eBZ: eBZ }
+
+"EventMove", { entity: event.player.m_eHero }

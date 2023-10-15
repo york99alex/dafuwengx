@@ -137,7 +137,7 @@ export class AHMC {
     }
 
     /**创建带有计时器的特效，计时器结束删除特效，并有一个callback函数 */
-    static CreateParticle(particleName: string, particleAttach: number, immediately: boolean, owningEntity: CBaseEntity | null, duration: number, callback?: Function) {
+    static CreateParticle(particleName: string, particleAttach: number, immediately: boolean, owningEntity: CBaseEntity | null, duration?: number, callback?: Function) {
         if (AHMC.IsAlive(owningEntity) == null) {
             error("AMHC:CreateParticle param 3: not valid entity", 2)
         }

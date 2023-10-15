@@ -37,6 +37,7 @@ export class PathManager {
             // 同步网标路径信息
             this.setNetTableInfo()
         }
+        print("=====PathManager init完成==========")
     }
 
     /** 获取当前路径的下个路径 */
@@ -51,6 +52,18 @@ export class PathManager {
                 return this.m_tabPaths[nIndex]
             }
         }
+    }
+
+    /**获取下个路径ID */
+    static getNextPathID(nCurID: number, nDis: number): number {
+        let nIndex = nCurID + nDis
+        const nCount = 40
+        if (nIndex > nCount) {
+            nIndex %= nCount
+        } else if (nIndex <= 0) {
+            nIndex += nCount
+        }
+        return nIndex
     }
 
     getClosePath(vLoc: Vector): Path {

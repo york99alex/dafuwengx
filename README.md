@@ -913,12 +913,12 @@ export const App = () => {	// 根组件
 
 ## Todo
 
-1. bIgnore是什么
+1. ~~bIgnore是什么~~
 
-2. path创建兵卒
+2. ~~path创建兵卒~~
 
-3. 在起兵回合时创建的旗帜, 起兵回合后, 监听起兵 有问题
-   检查触发情况?触发条件? 单开暂时未发现
+3. ~~在起兵回合时创建的旗帜, 起兵回合后, 监听起兵 有问题~~
+   ~~检查触发情况?触发条件? 单开暂时未发现~~
 
 4. m_bBattle: boolean = null
 
@@ -934,11 +934,14 @@ export const App = () => {	// 根组件
 
 8. AbilityManager.setRoundCD
 
-9. 在一个合适的时机通过后端事件通知前端关闭操作提示框
+9. 因为在unit kv表中给兵卒的ConsideredHero键值为1, 测试IsRealHero是否能判断是英雄还是兵卒?
+   可以通过IsRealHero判断是否时兵卒
 
-10. 检查setPlayerMuteTrade能否生效
+10. 在一个合适的时机通过后端事件通知前端关闭操作提示框
 
-11. 关闭以下前端页面:
+11. 检查setPlayerMuteTrade能否生效
+
+12. 关闭以下前端页面:
 
     1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
 
@@ -946,15 +949,29 @@ export const App = () => {	// 根组件
 
     3. Label id="AbilityBuildComment"  #AbilityBuildComment
 
-12. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
+13. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
 
-13. ~~兵卒朝向问题~~
+14. ~~兵卒朝向问题~~
 
-14. 全才英雄兵卒的创建, 攻击力加成
+15. 全才英雄兵卒的创建, 攻击力加成
 
-15. setKillCountAdd源码逻辑是否合理
+16. player // 魔法修改触发事件会导致栈溢出stackoverflow 重写
 
-16. 重做修改属性的方法, 主要是蓝量, 
+17. 翻译所有this.m_strCastError
+
+18. 检测屠夫钩子对bkb
+
+19. 屠夫兵卒无法攻击 FireEvent Error==>eventName:    Event_BZCreate
+
+20. ~~setKillCountAdd源码逻辑是否合理~~
+
+21. 重写了技能tsbaseability的GetCastRange
+
+    - 需要分清不同技能的情况
+    - 默认重写的tsbaseability中的getcastrange是以路径ID为距离计算返回的整数
+    - 如果分情况需要再对应的技能里重写getcastrange
+
+22. 重做修改属性的方法, 主要是蓝量, 
 
     1. 选择英雄
 
@@ -962,10 +979,10 @@ export const App = () => {	// 根组件
 
     3. 监听装备事件
 
-17. 验证操作:
+23. 验证操作:
     roll到达地方后会触发onPath, 不同类型的地onPath继承方法不一样,这里会调用sendOprt给玩家发送消息弹出提示框,同时添加购买操作
 
-18. 检查gameloop是否可以切换   
+24. 检查gameloop是否可以切换   
     // 监听玩家移动回路径
 
     ​    const onMove(tabEvent2){
@@ -976,7 +993,7 @@ export const App = () => {	// 根组件
 
     ​        GameRules.GameLoop.GameStateService.send("tomove")
 
-19. 攻城检查(攻城/打野可以持续到新的一回合开始)
+25. 攻城检查(攻城/打野可以持续到新的一回合开始)
     if (tabEvent2.player == oPlayer) {
 
     ​            // TODO:玩家移动结束，游戏状态恢复
@@ -987,105 +1004,90 @@ export const App = () => {	// 根组件
 
     ​          }
 
-20. 游戏记录模块 game_record客户端操作, 更新记录面板
+26. 游戏记录模块 game_record客户端操作, 更新记录面板
 
-21. 分开事件,分开发送
+27. 分开事件,分开发送
 
-22. 豹子触发有问题
+28. 豹子触发有问题
 
-23. ~~PlaySort与机器人的情况有点问题,总是021~~
+29. ~~PlaySort与机器人的情况有点问题,总是021~~
     注意使用RandInt方法来生成随机数,不要用Math.random
 
-24. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
+30. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
 
-25. player init
+31. player init
 
-   26. ----设置起点路径
+32. ~~设置起点路径~~
+    ~~self:setPath(PathManager:getPathByType(TP_START)[1])~~
 
-     self:setPath(PathManager:getPathByType(TP_START)[1])
-   /**玩家攻城结束 */
+33. 玩家攻城结束 待验证
+    atkCityEnd(bWin: boolean, bMoveBack?: boolean) 
 
-     atkCityEnd(bWin: boolean, bMoveBack?: boolean) 
+34. ~~GameConfig的计时回调registerThink和onThink_update~~
+    ~~如何与GameLoop实现~~
+    ~~思路: 灵活运用 进入状态触发的函数和离开状态触发的函数~~
 
-   测试player.init    
-   // 设置起点路径
+35. Path路径管理模块, 以及游戏地图
 
-   ​    this.setPath(GameRules.PathManager.getPathByType(GameMessage.TP_START)[0])
+36. 添加 unit 
 
-11. GameConfig的计时回调registerThink和onThink_update
-    如何与GameLoop实现
-    思路: 灵活运用 进入状态触发的函数和离开状态触发的函数
+    1. "path_17_diao"
+        	{
+        		"BaseClass"		"npc_dota_creature"
+        		"Model"			"models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
+        		"ModelScale"	"1"
+        		"Ability1"	"jiaoxie"
+        		"Ability2"	"no_bar"
+        		// "Ability3"	"no_collision"
+        		"Ability4"	"magic_immune"
+        		"Ability5"	"physical_immune"
+        		"Ability6"	"no_all_select"
+        		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+        		"StatusHealth"	"1"
+        	}
 
-12. Path路径管理模块, 以及游戏地图
+37. setDiaoGesture 雕哥施法检查
 
-    1. 添加 unit 
+38. PathRune
 
-    2. 	"path_17_diao"
-          	{
-          		"BaseClass"		"npc_dota_creature"
-          		"Model"			"models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
-          		"ModelScale"	"1"
-          		"Ability1"	"jiaoxie"
-          		"Ability2"	"no_bar"
-          		// "Ability3"	"no_collision"
-          		"Ability4"	"magic_immune"
-          		"Ability5"	"physical_immune"
-          		"Ability6"	"no_all_select"
-          		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
-          		"StatusHealth"	"1"
-          	}
+39. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
 
-    3. setDiaoGesture 雕哥施法检查
+40. ~~兵卒~~ player\CDOTA_BaseNPC_BZ.ts
 
-    4. PathRune
+41. Roll点的随机路径平衡机制数值思考
 
-13. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+42. 检查网表GamingTable的nSumGold总资产计算是否正确
 
-14. 兵卒?
+43. 增加英雄 const HERO_TO_BANNER 需要调整
 
-15. 其他模块
+44. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
 
-16. 英雄技能
+45. _tEventIDGCLD   ?为数组?
 
-17. Roll点的随机路径平衡机制数值思考
+46. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
 
-18. CustomGameEventManager.Send_ServerToPlayer?还是
+47. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
-    Send_ServerToAllClients
+48. 统一所有英雄移速 ?
 
-19. 检查网表GamingTable的nSumGold总资产计算是否正确
+49. 检查FireEvent的args参数为空的情况
 
-20. 增加英雄 const HERO_TO_BANNER 需要调整
+50. ~~GSManager:setState都调整为loop~~ GameLoop.setGameState
 
-21. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
-
-22. _tEventIDGCLD   ?为数组?
-
-23. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
-
-24. addon_schinese.txt :		"RandomTip"						"随机英雄"
-
-25. 统一所有英雄移速
-
-26. 检查FireEvent的args参数为空的情况
-
-27. GSManager:setState都调整为loop
-
-28. /**设置结算数据 */
-
+51. /**设置结算数据 */
     setGameEndData(){}
 
-29. ==sendMsg和broadcastMsg的tabData格式==
+52. ~~==sendMsg和broadcastMsg的tabData格式==~~
 
-30. gamestate的计时器update是0.1调用一次
+53. ~~gamestate的计时器update是0.1调用一次~~
 
-31. // 监听玩家移动回路径
+54. ~~// 监听玩家移动回路径~~
 
-      onMove如何处理gamestateloop
+55. ~~onMove如何处理gamestateloop~~
 
-32. 英雄经验系统/数值
+11. 英雄经验系统/数值
 
-33. 客户端,前端 请求传输数据缩减
+12. 客户端,前端 请求传输数据缩减
 
 
 
@@ -1164,11 +1166,18 @@ GSWaitOprt_Entry()执行Roll点,调用GameConfig.processRoll()方法{
 ## 英雄设计
 
 - 幽鬼(冠名:qwerty-)
-- PA 幻影刺客 phantom_assassin
+- 幻影刺客 phantom_assassin
   - 1技能 闪烁突袭 Ability_phantom_strike
     选中一名英雄, 位移到他身边, 攻击1/2/3次
     ==判断是否施法目标是否合理, 非bz单位等??==
-  - 
+  - 2技能 原生数据驱动大招, 持续时间 160秒
+  - 兵卒技能  原生数据驱动大招, 持续时间 160秒
+- 米波 meepo
+  - 1技能 忽悠
+  - 2技能 洗劫 平a增加层数可增加忽悠伤害
+  - 兵卒技能 洗劫
+
+- 
 
 
 

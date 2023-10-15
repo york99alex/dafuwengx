@@ -22,7 +22,7 @@ export namespace Constant {
     // 选择英雄时间  /1s
     export const TIME_SELECTHERO: number = 60
     // 回合操作时限  /0.1s
-    export const TIME_OPERATOR: number = 201
+    export const TIME_OPERATOR: number = 101
     // 回合操作时限（掉线）  /0.1s
     export const TIME_OPERATOR_DISCONNECT: number = 51
     // 豹子加时阈值  /0.1s
@@ -151,8 +151,8 @@ export namespace Constant {
     /**英雄对应兵卒名 */
     export const HERO_TO_BZ = {
         npc_dota_hero_phantom_assassin: "bz_pa_1",
-        npc_dota_hero_meepo: "bz_mibo_1",
-        npc_dota_hero_pudge: "bz_tufu_1",
+        npc_dota_hero_meepo: "bz_meepo_1",
+        npc_dota_hero_pudge: "bz_pudge_1",
         npc_dota_hero_lina: "bz_lina_1",
         npc_dota_hero_zuus: "bz_zuus_1",
         npc_dota_hero_axe: "bz_axe_1",

@@ -702,7 +702,7 @@ export class GameConfig {
         if (event.bIgnore == 1) return
 
         // 触发移动事件
-        GameRules.EventManager.FireEvent("EventMove", { entity: event.player.m_eHero })
+        GameRules.EventManager.FireEvent("Event_Move", { entity: event.player.m_eHero })
 
         const oPlayer = GameRules.PlayerManager.getPlayer(event.player.m_nPlayerID)
         const pathDes = GameRules.PathManager.getNextPath(oPlayer.m_pathCur, event.nNum1 + event.nNum2)

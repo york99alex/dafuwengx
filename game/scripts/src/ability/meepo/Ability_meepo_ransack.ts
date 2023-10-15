@@ -4,7 +4,7 @@ import { TSBaseAbility } from "../tsBaseAbilty";
 
 /**
     "DOTA_Tooltip_ability_Ability_meepo_ransack"					    "洗劫"
-    "DOTA_Tooltip_ability_Ability_meepo_ransack_Description"			"每次攻击从敌人身体汲取神秘的能量，以永久提升忽悠伤害"
+    "DOTA_Tooltip_ability_Ability_meepo_ransack_Description"			"每次攻击从敌人身体汲取神秘的能量，以永久提升忽悠伤害。"
     "DOTA_Tooltip_ability_Ability_meepo_ransack_addsh"					"伤害提升 :"
     "DOTA_Tooltip_Modifier_Ability_meepo_ransack"						"洗劫"
     "DOTA_Tooltip_Modifier_Ability_meepo_ransack_Description"			"伤害提升"

@@ -1,6 +1,7 @@
 import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
 import { Player } from "../player/player"
 import { BaseAbility, BaseItem } from "../utils/dota_ts_adapter"
+import { TSBaseAbility } from "./tsBaseAbilty"
 
 export class AbilityManager {
 
@@ -166,5 +167,48 @@ export class AbilityManager {
             onCDEnd()
             return null
         })
+    }
+
+    /**显示技能范围标识 */
+    static showAbltMark(ability: TSBaseAbility, entity: CDOTA_BaseNPC, tabPathID: number[]) {
+        if (ability.timeAbltMark && GameRules.GetDOTATime(false, true) - ability.timeAbltMark < 1) {
+            return
+        }
+        const tabPath = CustomNetTables.GetTableValue("GamingTable", "path_info")
+        if (!tabPath) {
+            return
+        }
+
+        if (ability.tabAbltMarkPtcl) {
+            for (const v of ability.tabAbltMarkPtcl) {
+                ParticleManager.DestroyParticle(v, false)
+            }
+        }
+        ability.tabAbltMarkPtcl = []
+        ability.timeAbltMark = GameRules.GetDOTATime(false, true)
+
+        // 特效
+        for (const pathID of tabPathID) {
+            const tabPathInfo = tabPath[tostring(pathID)]
+            if (tabPathInfo) {
+                const vPos = Vector(tabPathInfo.vPos.x, tabPathInfo.vPos.y, tabPathInfo.vPos.z)
+                const nPtclID = ParticleManager.CreateParticle("particles/base_attacks/generic_projectile_launch.vpcf"
+                    , ParticleAttachment.POINT, entity)
+                ParticleManager.SetParticleControl(nPtclID, 0, vPos)
+                ability.tabAbltMarkPtcl.push(nPtclID)
+            }
+        }
+    }
+
+    /**兵卒能否放技能 */
+    static isCanOnAblt(eBZ: CDOTA_BaseNPC): boolean {
+        const tabBuffs = eBZ.FindAllModifiers()
+        for (const buff of tabBuffs) {
+            const strBuff = buff.GetName().split("_").pop() ?? ""
+            if(strBuff == "chenmo"){
+                return false
+            }
+        }   
+        return true     
     }
 }

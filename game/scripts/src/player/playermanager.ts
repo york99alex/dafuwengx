@@ -125,6 +125,8 @@ export class PlayerManager {
     onEvent_dota_player_used_ability(event: GameEventProvidedProperties & DotaPlayerUsedAbilityEvent): void {
         print("onEvent_dota_player_used_ability")
         DeepPrintTable(event)
+        GameRules.EventManager.FireEvent("Event_HeroManaChange", { player: this
+            , oAblt: this.getPlayer(event.PlayerID).m_eHero.FindAbilityByName(event.abilityname) })
         GameRules.EventManager.FireEvent("dota_player_used_ability", event)
     }
 
@@ -263,6 +265,30 @@ export class PlayerManager {
                 }
             }
         }
+    }
+
+    /**找到随机N个玩家 */
+    findRandomPlayer(nCount: number, funFilter: Function): Player[] {
+        nCount = nCount ?? 1
+        if (!funFilter) {
+            funFilter = () => {
+                return true
+            }
+        }
+
+        const tabPlayer: Player[] = []
+        for (const player of this.m_tabPlayers) {
+            tabPlayer.push(player)
+        }
+        for (let i = tabPlayer.length; i > 0; i--) {
+            if (!funFilter(tabPlayer[i])) {
+                tabPlayer.splice(i, 1)
+            }
+        }
+        while (tabPlayer.length > nCount) {
+            tabPlayer.splice(RandomInt(1, tabPlayer.length), 1)
+        }
+        return tabPlayer
     }
 
     /**玩家是否存活 */
