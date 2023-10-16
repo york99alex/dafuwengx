@@ -16,6 +16,7 @@ import { PathDomain } from "../path/pathdomain"
 import { PathTP } from "../path/pathtp"
 import { Player, player_info } from "../player/player"
 import { PlayerManager } from "../player/playermanager"
+import { AHMC } from "../utils/amhc"
 import { EventManager } from "../utils/eventmanager"
 import { ParaAdjuster } from "../utils/paraadjuster"
 import { reloadable } from "../utils/tstl-utils"
@@ -211,14 +212,7 @@ export class GameConfig {
     }
 
     /**验证操作 */
-    checkOprt(tabData: { nPlayerID: number, typeOprt: number }, bDel?: boolean)
-        : {
-            nPlayerID: number,
-            typeOprt: number,
-            nPathID?: number,
-            nRequest?: number,
-            bPrison?: number
-        } | false {
+    checkOprt(tabData: { nPlayerID: number, typeOprt: number }, bDel?: boolean) {
         print("======start checkOprt======")
         if (bDel) {
             const cdt = (v: { nPlayerID: number, typeOprt: number }) => v.nPlayerID === tabData.nPlayerID && v.typeOprt === tabData.typeOprt
@@ -251,6 +245,28 @@ export class GameConfig {
         this.m_nOrderID = nOrder
         // 同步网表
         CustomNetTables.SetTableValue("GamingTable", "order", { nPlayerID: nOrder })
+    }
+
+    /**跳过投骰子 */
+    skipRoll(nPlayerID: number) {
+        print("nPlayerID: ", nPlayerID, "  skipRoll~~~~~~~~~~~~~~~~~~~~")
+        const tabOprt = {
+            typeOprt: GameMessage.TypeOprt.TO_Roll,
+            PlayerID: nPlayerID,
+            nPlayerID: nPlayerID,
+            nNum1: 0,
+            nNum2: 0
+        }
+        DeepPrintTable(this.m_tabOprtCan)
+        if (GameRules.GameConfig.checkOprt(tabOprt, true)) {
+            GameRules.PlayerManager.broadcastMsg("GM_OperatorFinished", tabOprt)
+            // 发送操作, 完成回合
+            GameRules.GameConfig.broadcastOprt({
+                typeOprt: GameMessage.TypeOprt.TO_Finish,
+                nPlayerID: nPlayerID,
+            })
+            DeepPrintTable(this.m_tabOprtCan)
+        }
     }
 
     //----------事件回调----------
@@ -499,8 +515,63 @@ export class GameConfig {
     }
 
     /**处理攻城略地 */
-    processGCLD(tabData) {
+    processGCLD(tabData: {
+        nPlayerID: number,
+        typeOprt: number,
+        nPathID?: number,
+        nRequest?: number
+    }) {
+        // 删除可操作
+        const tabOprt = this.checkOprt(tabData, true)
+        tabOprt["nRequest"] = tabData.nRequest
 
+        let path: PathDomain
+
+        // 验证操作
+        tabOprt["nRequest"] = () => {
+            if (tabData.nRequest == 1) {
+                path = GameRules.PathManager.getPathByID(tabOprt["nPathID"]) as PathDomain
+                if (!path) {
+                    return 100
+                }
+
+                if (path.m_nOwnerID == tabOprt["nPlayerID"]) {
+                    HudError.FireLocalizeError(tabData.nPlayerID, "Error_CantGCLD_Self")
+                    return 2    // 自己领地
+                } else if (path.m_nPlayerIDGCLD) {
+                    HudError.FireLocalizeError(tabData.nPlayerID, "Error_CantGCLD_Battling")
+                    return 3    // 已在攻城中
+                } else if (path.m_tabENPC && AHMC.IsValid(path.m_tabENPC[0]) && path.m_tabENPC[0].IsStunned()) {
+                    HudError.FireLocalizeError(tabData.nPlayerID, "Error_CantGCLD_Stunned")
+                    return 4    // 目标眩晕
+                } else if (GameRules.GameConfig.m_typeState == GameMessage.GS_Wait) {
+                    HudError.FireLocalizeError(tabData.nPlayerID, "LuaAbilityError_Wait")
+                    return 5    // 等待中
+                }
+                const playerBe = GameRules.PlayerManager.getPlayer(path.m_nOwnerID)
+                if (playerBe && 0 < bit.band(GameMessage.PS_InPrison, playerBe.m_nPlayerState)) {
+                    HudError.FireLocalizeError(tabData.nPlayerID, "Error_CantGCLD_InPrison")
+                    return 6    // 在监狱
+                }
+            }
+            return tabData.nRequest
+        }
+
+        if (tabOprt["nRequest"] == 1) {
+            // 广播玩家攻城略地
+            GameRules.PlayerManager.broadcastMsg("GM_OperatorFinished", tabOprt)
+            // 玩家攻城
+            path.atkCity(GameRules.PlayerManager.getPlayer(tabOprt["nPlayerID"]))
+
+            this.skipRoll(tabOprt["nPlayerID"])
+        } else {
+            // 回包
+            GameRules.PlayerManager.sendMsg("GM_OperatorFinished", tabOprt, tabOprt["nPlayerID"])
+        }
+
+        if (tabOprt["nRequest"] == 0 || tabOprt["nRequest"] == 1) {
+            this.checkOprt(tabData, true)
+        }
     }
 
     /**处理TP传送 */
@@ -783,6 +854,19 @@ export class GameConfig {
         nIndex = this.addOrder(nIndex + 1)
         if (!GameRules.PlayerManager.isAlivePlayer(GameRules.HeroSelection.m_PlayersSort[nIndex])) {
             return this.getNextValidOrder(GameRules.HeroSelection.m_PlayersSort[nIndex])
+        }
+        return GameRules.HeroSelection.m_PlayersSort[nIndex]
+    }
+
+    /**获取上一个有效的操作玩家ID */
+    getLastValidOrder(nOrder: number) {
+        let nIndex = GameRules.HeroSelection.GetPlayerIDIndex(nOrder)
+        if (!nIndex) {
+            return this.getLastValidOrder(GameRules.HeroSelection.m_PlayersSort[nIndex])
+        }
+        nIndex = this.addOrder(nIndex - 1)
+        if (!GameRules.PlayerManager.isAlivePlayer(GameRules.HeroSelection.m_PlayersSort[nIndex])) {
+            return this.getLastValidOrder(GameRules.HeroSelection.m_PlayersSort[nIndex])
         }
         return GameRules.HeroSelection.m_PlayersSort[nIndex]
     }

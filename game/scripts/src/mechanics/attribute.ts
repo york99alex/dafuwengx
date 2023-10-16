@@ -1,3 +1,4 @@
+import { KeyValues } from "../kv"
 import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
 
 const tPrimaryAttributes = {
@@ -10,7 +11,7 @@ const tPrimaryAttributes = {
 export class Attribute {
 
     static init() {
-        GameRules.EventManager.Register("Event_BZCreate", (event) => this.OnNPCFirstSpawned(event), this, 987654321)
+        GameRules.EventManager.Register("Event_BZCreate", (event) => Attribute.OnNPCFirstSpawned(event), Attribute, 987654321)
     }
     static OnNPCFirstSpawned(event) {
         if (event.entity) {

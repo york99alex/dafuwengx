@@ -568,11 +568,357 @@
 		"AttributeBaseIntelligence" "14"
 		"AttributeIntelligenceGain" "2.5000"
 	}
-
-
-
-
-
-
+	"bz_lina_1" {
+		"Searchable" "1"
+		"Cost" "1"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/lina/lina.vmdl"
+		"ModelScale" "0.7000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "318" }
+				"2" { "ItemDef" "319" }
+				"3" { "ItemDef" "320" }
+				"4" { "ItemDef" "321" }
+				"5" { "ItemDef" "504" }
+			}
+		}
+		"SoundSet" "Hero_Lina"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_lina.vsndevts"
+		"Ability1" "Ability_BZ_lina_dragon_slave"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "290"
+		"MovementTurnRate" "0.6000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "1"
+		"MagicalResistance" "24"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "21"
+		"AttackDamageMax" "33"
+		"AttackRate" "1.6000"
+		"AttackAnimationPoint" "0.7500"
+		"AttackAcquisitionRange" "800"
+		"AttackRange" "400"
+		"RingRadius" "60"
+		"ProjectileModel" "particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+		"ProjectileSpeed" "1000"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength" "20"
+		"AttributeStrengthGain" "1.2000"
+		"AttributeBaseAgility" "30"
+		"AttributeAgilityGain" "2.7000"
+		"AttributeBaseIntelligence" "23"
+		"AttributeIntelligenceGain" "0.8000"
+	}
+	"bz_lina_11" {
+		"Searchable" "1"
+		"Cost" "2"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/lina/lina.vmdl"
+		"ModelScale" "0.8000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "4757" }
+				"2" { "ItemDef" "5931" }
+				"3" { "ItemDef" "5932" }
+				"4" { "ItemDef" "5933" }
+				"5" { "ItemDef" "504" }
+			}
+		}
+		"SoundSet" "Hero_Lina"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_lina.vsndevts"
+		"Ability1" "Ability_BZ_lina_dragon_slave"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "290"
+		"MovementTurnRate" "0.6000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "1"
+		"MagicalResistance" "24"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "21"
+		"AttackDamageMax" "33"
+		"AttackRate" "1.6000"
+		"AttackAnimationPoint" "0.7500"
+		"AttackAcquisitionRange" "800"
+		"AttackRange" "400"
+		"RingRadius" "60"
+		"ProjectileModel" "particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+		"ProjectileSpeed" "1000"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength" "20"
+		"AttributeStrengthGain" "2.2000"
+		"AttributeBaseAgility" "30"
+		"AttributeAgilityGain" "3.7000"
+		"AttributeBaseIntelligence" "23"
+		"AttributeIntelligenceGain" "1.8000"
+	}
+	"bz_lina_111" {
+		"Searchable" "1"
+		"Cost" "3"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/lina/lina.vmdl"
+		"ModelScale" "0.9000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "8004" }
+				"2" { "ItemDef" "4794" }
+				"3" { "ItemDef" "7717" }
+				"4" { "ItemDef" "7716" }
+				"5" { "ItemDef" "504" }
+			}
+		}
+		"SoundSet" "Hero_Lina"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_lina.vsndevts"
+		"Ability1" "Ability_BZ_lina_dragon_slave"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "290"
+		"MovementTurnRate" "0.6000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "1"
+		"MagicalResistance" "24"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "21"
+		"AttackDamageMax" "33"
+		"AttackRate" "1.6000"
+		"AttackAnimationPoint" "0.7500"
+		"AttackAcquisitionRange" "800"
+		"AttackRange" "400"
+		"RingRadius" "60"
+		"ProjectileModel" "particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+		"ProjectileSpeed" "1000"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength" "20"
+		"AttributeStrengthGain" "3.2000"
+		"AttributeBaseAgility" "30"
+		"AttributeAgilityGain" "4.7000"
+		"AttributeBaseIntelligence" "23"
+		"AttributeIntelligenceGain" "2.8000"
+	}
+	"bz_zuus_1" {
+		"Searchable" "1"
+		"Cost" "1"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/zeus/zeus.vmdl"
+		"ModelScale" "0.7000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "8632" }
+				"2" { "ItemDef" "605" }
+				"3" { "ItemDef" "607" }
+				"4" { "ItemDef" "606" }
+				"5" { "ItemDef" "8692" }
+				"6" { "ItemDef" "604" }
+				"7" { "ItemDef" "593" }
+			}
+		}
+		"SoundSet" "Hero_zuus"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_zuus.vsndevts"
+		"Ability1" "Ability_BZ_zuus_lightning_bolt"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "295"
+		"MovementTurnRate" "0.6000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "1"
+		"MagicalResistance" "24"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "33"
+		"AttackDamageMax" "41"
+		"AttackRate" "1.7000"
+		"AttackAnimationPoint" "0.4500"
+		"AttackAcquisitionRange" "800"
+		"AttackRange" "400"
+		"RingRadius" "60"
+		"ProjectileModel" "particles/units/heroes/hero_zuus/zuus_base_attack.vpcf"
+		"ProjectileSpeed" "1100"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength" "21"
+		"AttributeStrengthGain" "1.1000"
+		"AttributeBaseAgility" "21"
+		"AttributeAgilityGain" "2.3000"
+		"AttributeBaseIntelligence" "11"
+		"AttributeIntelligenceGain" "0.2000"
+	}
+	"bz_zuus_11" {
+		"Searchable" "1"
+		"Cost" "2"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/zeus/zeus.vmdl"
+		"ModelScale" "0.8000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "8069" }
+				"2" { "ItemDef" "605" }
+				"3" { "ItemDef" "9037" }
+				"4" { "ItemDef" "9038" }
+				"5" { "ItemDef" "9052" }
+				"6" { "ItemDef" "5412" }
+			}
+		}
+		"SoundSet" "Hero_zuus"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_zuus.vsndevts"
+		"Ability1" "Ability_BZ_zuus_lightning_bolt"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "295"
+		"MovementTurnRate" "0.6000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "1"
+		"MagicalResistance" "24"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "33"
+		"AttackDamageMax" "41"
+		"AttackRate" "1.7000"
+		"AttackAnimationPoint" "0.4500"
+		"AttackAcquisitionRange" "800"
+		"AttackRange" "400"
+		"RingRadius" "60"
+		"ProjectileModel" "particles/units/heroes/hero_zuus/zuus_base_attack.vpcf"
+		"ProjectileSpeed" "1100"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength" "21"
+		"AttributeStrengthGain" "2.1000"
+		"AttributeBaseAgility" "21"
+		"AttributeAgilityGain" "3.3000"
+		"AttributeBaseIntelligence" "11"
+		"AttributeIntelligenceGain" "1.2000"
+	}
+	"bz_zuus_111" {
+		"Searchable" "1"
+		"Cost" "3"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/zeus/zeus.vmdl"
+		"ModelScale" "0.9000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "8069" }
+				"2" { "ItemDef" "605" }
+				"3" { "ItemDef" "9037" }
+				"4" { "ItemDef" "12323" }
+				"5" { "ItemDef" "6914" }
+				"6" { "ItemDef" "5412" }
+			}
+		}
+		"SoundSet" "Hero_zuus"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_zuus.vsndevts"
+		"Ability1" "Ability_BZ_zuus_lightning_bolt"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "295"
+		"MovementTurnRate" "0.6000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "1"
+		"MagicalResistance" "24"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "33"
+		"AttackDamageMax" "41"
+		"AttackRate" "1.7000"
+		"AttackAnimationPoint" "0.4500"
+		"AttackAcquisitionRange" "800"
+		"AttackRange" "400"
+		"RingRadius" "60"
+		"ProjectileModel" "particles/units/heroes/hero_zuus/zuus_base_attack.vpcf"
+		"ProjectileSpeed" "1100"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength" "21"
+		"AttributeStrengthGain" "3.1000"
+		"AttributeBaseAgility" "21"
+		"AttributeAgilityGain" "4.3000"
+		"AttributeBaseIntelligence" "11"
+		"AttributeIntelligenceGain" "2.2000"
+	}
 
 }

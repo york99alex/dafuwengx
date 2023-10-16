@@ -57,8 +57,6 @@ export class PlayerManager {
 
     // 玩家连接
     onEvent_playerConnectFull(event: GameEventProvidedProperties & PlayerConnectFullEvent) {
-        print("onEvent_playerConnectFull")
-        DeepPrintTable(event)
         if (event.userid < 0) return
         let oPlayer = GameRules.PlayerManager.getPlayer(event.PlayerID)
         if (oPlayer == null) {

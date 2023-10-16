@@ -12,7 +12,7 @@ export class PathDomain_6 extends PathDomain {
         let tabPath = GameRules.PathManager.getPathByType(this.m_typePath)
         if (tabPath.length != 1) return
         // 创建雕哥
-        CustomGameEventManager.RegisterListener("Event_GameStart", () => {
+        GameRules.EventManager.Register("Event_GameStart", () => {
             tabPath = GameRules.PathManager.getPathByType(this.m_typePath)
             AHMC.CreateUnitAsync("path_17_diao",
                 (this.m_eCity.GetOrigin() - (this.m_eCity.GetForwardVector() * 200)) as Vector,

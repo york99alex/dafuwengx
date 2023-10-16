@@ -49,11 +49,14 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
                 if (playerTarget && 0 < bit.band(playerTarget.m_nPlayerState, GameMessage.PS_AbilityImmune)) {
                     return UnitFilterResult.FAIL_CUSTOM // 技能免疫
                 }
-                GameRules.EventManager.FireEvent("Event_BZCastAblt", {
+                const event = {
                     ablt: this,
                     bIgnore: true
-                })
-                return UnitFilterResult.SUCCESS
+                }
+                GameRules.EventManager.FireEvent("Event_BZCastAblt", event)
+                if (!event.bIgnore) {
+                    return UnitFilterResult.SUCCESS
+                }
             }
         }
         this.m_strCastError = "AbilityError_BZ"

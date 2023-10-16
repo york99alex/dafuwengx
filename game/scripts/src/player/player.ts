@@ -271,7 +271,7 @@ export class Player {
         CustomNetTables.SetTableValue("GamingTable", keyname, info)
 
         if ((lastnGold >= 0) != (nGold >= 0)) {
-            CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, "Event_TO_SendDeathClearing", { nPlayerId: this.m_nPlayerID })
+            GameRules.EventManager.FireEvent("Event_TO_SendDeathClearing", { nPlayerId: this.m_nPlayerID })
         }
 
         Timers.CreateTimer(0.1, () => {
@@ -367,7 +367,7 @@ export class Player {
     /**设置玩家状态 */
     setPlayerState(playerState: number) {
         if (playerState > 0) {
-            let newState = bit.bor(playerState, this.m_nPlayerState)
+            const newState = bit.bor(playerState, this.m_nPlayerState)
             playerState = newState - this.m_nPlayerState
             this.m_nPlayerState = newState
         } else {
@@ -631,16 +631,12 @@ export class Player {
         if (this.m_pathCur != path) {
             // 触发当前路径变更
             this.m_pathCur = path
-            CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, "Event_CurPathChange", {
-                playerID: this.m_nPlayerID
-            })
+            GameRules.EventManager.FireEvent("Event_CurPathChange", { player: this })
         }
         this.m_pathCur = path
 
         if (!bPass || bPass == null) {
-            CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, "Event_JoinPath", {
-                playerID: this.m_nPlayerID
-            })
+            GameRules.EventManager.FireEvent("Event_JoinPath", { player: this })
         }
         // 同步玩家网表信息
         this.setNetTableInfo()
@@ -793,7 +789,7 @@ export class Player {
         // 重置蓝量
         eBZ.SetMana(0)
 
-        // 添加星星特效 TODO:
+        // 添加星星特效 TODO:hPrimaryAttributeModifier
         // AMHC.ShowStarsOnUnit(eBZ, nStarLevel)
 
         // 设置可否攻击
@@ -963,9 +959,8 @@ export class Player {
     setBzAttack(eBz: CDOTA_BaseNPC_BZ, bCan?: boolean) {
         if (eBz == null) return
         if (bCan == null) {
-            bCan = (this.m_nPlayerState & GameMessage.PS_AtkBZ) !== 0 && (this.m_nPlayerState & GameMessage.PS_InPrison) === 0
+            bCan = (0 < (this.m_nPlayerState & GameMessage.PS_AtkBZ)) && ((this.m_nPlayerState & GameMessage.PS_InPrison) == 0)
         }
-
         for (const value of this.m_tabBz) {
             if (value == eBz) {
                 if (bCan) {
@@ -973,13 +968,13 @@ export class Player {
                     value.SetControllableByPlayer(-1, true)
                     // 攻击时需要为敌方
                     value.SetTeam(DotaTeam.BADGUYS)
-                    CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, "Event_BZCanAtk", { entity: value })
+                    GameRules.EventManager.FireEvent("Event_BZCanAtk", { entity: value })
                 } else {
                     AHMC.AddAbilityAndSetLevel(value, "jiaoxie")
                     if (!this.m_bDisconnect) value.SetControllableByPlayer(this.m_nPlayerID, true)
                     value.SetTeam(DotaTeam.GOODGUYS)
                     value.m_eAtkTarget = null
-                    CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, "Event_BZCantAtk", { entity: value })
+                    GameRules.EventManager.FireEvent("Event_BZCantAtk", { entity: value })
                 }
                 return
             }
@@ -988,9 +983,12 @@ export class Player {
 
     /**设置玩家全部兵卒可否攻击 */
     setAllBZAttack() {
+        print("===setAllBZAttack===this.m_nPlayerState:", this.m_nPlayerState)
+        print("===setAllBZAttack===band1:", bit.band(this.m_nPlayerState, GameMessage.PS_AtkBZ))
+        print("===setAllBZAttack===band2:", bit.band(this.m_nPlayerState, GameMessage.PS_InPrison))
         const bCan = bit.band(this.m_nPlayerState, GameMessage.PS_AtkBZ) > 0
             && bit.band(this.m_nPlayerState, GameMessage.PS_InPrison) == 0
-
+        print("===setAllBZAttack===bCan:", bCan)
         function filter(eBZ: CDOTA_BaseNPC_BZ) {
             return !eBZ.m_bBattle   // 忽略战斗中的兵卒
         }
@@ -1000,7 +998,7 @@ export class Player {
                 if (IsValidEntity(v) && filter(v)) {
                     v.SetControllableByPlayer(-1, true)  // 攻击时不能控制
                     v.SetTeam(DotaTeam.BADGUYS) // 攻击时需要为敌方
-                    GameRules.EventManager.FireEvent("Event_BZCanAtk", { eBZ: v })  // 触发兵卒可攻击事件
+                    GameRules.EventManager.FireEvent("Event_BZCanAtk", { entity: v })  // 触发兵卒可攻击事件
                 }
             }
         } else {
@@ -1009,10 +1007,10 @@ export class Player {
                     AHMC.AddAbilityAndSetLevel(v, "jiaoxie")
                     if (!this.m_bDisconnect) {
                         v.SetControllableByPlayer(this.m_nPlayerID, true)
-                        v.SetTeam(DotaTeam.GOODGUYS)
-                        v.m_eAtkTarget = null
-                        GameRules.EventManager.FireEvent("Event_BZCantAtk", { eBZ: v })  //触发兵卒不可攻击事件
                     }
+                    v.SetTeam(DotaTeam.GOODGUYS)
+                    v.m_eAtkTarget = null
+                    GameRules.EventManager.FireEvent("Event_BZCantAtk", { entity: v })  //触发兵卒不可攻击事件
                 }
             }
         }
@@ -1026,7 +1024,8 @@ export class Player {
         if (bDel) {
             AHMC.removeAll(eBz.m_tabAtker, eAtaker)
         } else {
-            if (eBz.m_tabAtker.indexOf(eAtaker) == -1) eBz.m_tabAtker.push(eAtaker)
+            if (eBz.m_tabAtker.indexOf(eAtaker) == -1)
+                eBz.m_tabAtker.push(eAtaker)
             this.ctrlBzAtk(eBz)
         }
     }
@@ -1060,7 +1059,7 @@ export class Player {
             if (eBz && !eBz.IsNull()) {
                 // 获取在攻击范围的玩家
                 for (const value of eBz.m_tabAtker) {
-                    const nDis = (value.GetAbsOrigin() - eBz.GetAbsOrigin().Length())
+                    const nDis = (value.GetAbsOrigin() - eBz.GetAbsOrigin() as Vector).Length()
                     const nRange = eBz.Script_GetAttackRange()
                     if (nDis <= nRange) {
                         // 达到攻击距离
@@ -1452,8 +1451,70 @@ export class Player {
         }
     }
 
-    onEvent_Move(event) {
+    /**玩家移动 */
+    onEvent_Move(event: { entity: CDOTA_BaseNPC_Hero }) {
+        if (event.entity != this.m_eHero) {
+            // 其他玩家在移动
+            const tEventID: number[] = []
 
+            // 设置兵卒攻击,英雄魔免物免
+            let nState = GameMessage.PS_AtkBZ
+            if (0 == bit.band(GameMessage.PS_AtkMonster + GameMessage.PS_AtkHero), this.m_nPlayerState) {
+                nState += GameMessage.PS_PhysicalImmune
+            } else {
+                tEventID.push(GameRules.EventManager.Register("Event_GCLDEnd", (tEvent) => {
+                    if (tEvent.entity == this.m_eHero) {
+                        nState += GameMessage.PS_PhysicalImmune
+                        this.setPlayerState(GameMessage.PS_PhysicalImmune)
+                        return true
+                    }
+                }))
+                tEventID.push(GameRules.EventManager.Register("Event_AtkMosterEnd", (tEvent) => {
+                    if (tEvent.entity == this.m_eHero) {
+                        nState += GameMessage.PS_PhysicalImmune
+                        this.setPlayerState(GameMessage.PS_PhysicalImmune)
+                        return true
+                    }
+                }))
+            }
+            this.setPlayerState(nState)
+
+            // 设置兵卒攻击目标
+            this.setAllBzAtker(event.entity, false)
+            // 监听兵卒创建继续设置目标
+            tEventID.push(GameRules.EventManager.Register("Event_BZCreate", (tEvent) => {
+                if (tEvent.entity.GetPlayerOwnerID() == this.m_nPlayerID
+                    && 0 < bit.band(GameMessage.PS_AtkBZ, this.m_nPlayerState)) {
+                    this.setBzAtker(tEvent.entity, event.entity, false)
+                }
+            }))
+
+            // 监听移动结束: 结束攻击
+            GameRules.EventManager.Register("Event_MoveEnd", () => {
+                this.setPlayerState(-nState)
+                this.setAllBzAtker(event.entity, true)
+                GameRules.EventManager.UnRegisterByIDs(tEventID)
+                return true
+            })
+        } else {
+            // 自己移动, 记录移动中金币的变化
+            let nGold = 0
+            function onEvent_ChangeGold(goldEvent: { nGold: number, player: Player }) {
+                if (goldEvent.player == this) {
+                    nGold += goldEvent.nGold
+                }
+            }
+            GameRules.EventManager.Register("Event_ChangeGold_Atk", (goldEvent: { nGold: number, player: Player }) => onEvent_ChangeGold(goldEvent))
+            GameRules.EventManager.Register("Event_MoveEnd", (moveEndEvent: { entity: CDOTA_BaseNPC_Hero }) => {
+                if (moveEndEvent.entity == this.m_eHero) {
+                    GameRules.EventManager.UnRegister("Event_ChangeGold_Atk", (goldEvent: { nGold: number, player: Player }) => onEvent_ChangeGold(goldEvent))
+                    if (nGold != 0) {
+                        // TODO: GameRecord.setGameRecord 游戏记录
+                    }
+                    return true
+                }
+            })
+        }
     }
 
     onEvent_PlayerDie(event) {

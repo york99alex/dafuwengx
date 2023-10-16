@@ -54,9 +54,9 @@
 
 "Event_RootedDisable", { player: this }
 
-"Event_BZCanAtk", { eBZ: v }
+"Event_BZCanAtk", { entity: v }
 
-"Event_BZCantAtk", { eBZ: v }
+"Event_BZCantAtk", { entity: v }
 
 "Event_PlayerPass", { player: this }
 
@@ -76,4 +76,10 @@
 
 "Event_BZLevel", { eBZNew: eBZNew, eBZ: eBZ }
 
-"EventMove", { entity: event.player.m_eHero }
+"Event_Move", { entity: event.player.m_eHero }
+
+"Event_MoveEnd", { entity: event.player.m_eHero }
+
+"Event_BZCreate", { entity: eBZ }
+
+"Event_BZCastAblt", {ablt: this, bIgnore: true}

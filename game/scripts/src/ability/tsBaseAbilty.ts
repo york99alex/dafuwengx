@@ -3,10 +3,10 @@ import { Path } from "../path/Path"
 import { PathManager } from "../path/PathManager"
 import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
 import { player_info } from "../player/player"
+import { BaseAbility } from "../utils/dota_ts_adapter"
 import { AbilityManager } from "./abilitymanager"
 
-export interface TSBaseAbility extends CDOTA_Ability_Lua { }
-export class TSBaseAbility {
+export class TSBaseAbility extends BaseAbility {
 
     // 施法错误信息
     m_strCastError: string
@@ -25,8 +25,8 @@ export class TSBaseAbility {
     // 技能标识特效
     tabAbltMarkPtcl?: ParticleID[]
 
-
     constructor() {
+        super()
         this.m_bInit = true
         this.m_tBaseManaCost = []
         this.m_tBaseCooldown = []
@@ -130,26 +130,24 @@ export class TSBaseAbility {
      * @param target 
      */
     GetCastRange(location: Vector, target: CDOTA_BaseNPC | undefined): number {
-        if (IsClient()) {
-            let nRange = this.GetSpecialValueFor("range")
-            if (!nRange || nRange < 0) {
-                nRange = 0
-            }
-            const keyname = "player_info_" + this.GetCaster().GetPlayerOwnerID() as player_info
-            const tabPlayerInfo = CustomNetTables.GetTableValue("GamingTable", keyname)
-            if (!tabPlayerInfo) {
-                return
-            }
-
-            const nOffset = this.GetSpecialValueFor("offset")
-            let tabPathID = []
-            let nPathID = PathManager.getNextPathID(tabPlayerInfo.nPathCurID, -math.floor((nRange - 1) * 0.5) + nOffset)
-            for (let i = 0; i < nRange; i++) {
-                tabPathID.push(nPathID)
-                nPathID = PathManager.getNextPathID(nPathID, 1)
-            }
-            AbilityManager.showAbltMark(this, this.GetCaster(), tabPathID)
+        let nRange = this.GetSpecialValueFor("range")
+        if (!nRange || nRange < 0) {
+            nRange = 0
         }
+        const keyname = "player_info_" + this.GetCaster().GetPlayerOwnerID() as player_info
+        const tabPlayerInfo = CustomNetTables.GetTableValue("GamingTable", keyname)
+        if (!tabPlayerInfo) {
+            return
+        }
+
+        const nOffset = this.GetSpecialValueFor("offset")
+        let tabPathID = []
+        let nPathID = PathManager.getNextPathID(tabPlayerInfo.nPathCurID, -math.floor((nRange - 1) * 0.5) + nOffset)
+        for (let i = 0; i < nRange; i++) {
+            tabPathID.push(nPathID)
+            nPathID = PathManager.getNextPathID(nPathID, 1)
+        }
+        AbilityManager.showAbltMark(this, this.GetCaster(), tabPathID)
         return 0
     }
 
@@ -197,25 +195,23 @@ export class TSBaseAbility {
         return true
     }
 
-
     ai() {
         if (IsClient()) {
             return
         }
         // 监听兵卒可攻击
-        GameRules.EventManager.Register("Event_BZCanAtk", (event) => {
+        GameRules.EventManager.Register("Event_BZCanAtk", (event: { entity: CDOTA_BaseNPC_BZ }) => {
             if (this.IsNull()) {
                 return true
             }
-            if (this.GetCaster() != event.entity) {
+            if (super.GetCaster() != event.entity) {
                 return
             }
-            if (!AbilityManager.isCanOnAblt(this.GetCaster())) {
+            if (!AbilityManager.isCanOnAblt(super.GetCaster())) {
                 return
             }
 
             const nManaCast = this.GetManaCost(this.GetLevel() - 1)
-
             // 持续进行施法判断
             const tEventID = []
             tEventID.push(GameRules.EventManager.Register("Event_BZCastAblt", (tEvent) => {
@@ -223,15 +219,14 @@ export class TSBaseAbility {
                     tEvent.bIgnore = false
                 }
             }))
-
             const strTimerName = Timers.CreateTimer(() => {
                 if (IsValidEntity(this)) {
-                    if (IsValidEntity((this.GetCaster() as CDOTA_BaseNPC_BZ).m_eAtkTarget)
+                    if (IsValidEntity((super.GetCaster() as CDOTA_BaseNPC_BZ).m_eAtkTarget)
                         && this.IsCooldownReady()
-                        && this.GetCaster().GetMana() == nManaCast) {
+                        && super.GetCaster().GetMana() == nManaCast) {
                         // 蓝满了放技能
                         ExecuteOrderFromTable({
-                            UnitIndex: this.GetCaster().GetEntityIndex(),
+                            UnitIndex: super.GetCaster().GetEntityIndex(),
                             OrderType: UnitOrder.CAST_NO_TARGET,
                             TargetIndex: null,
                             AbilityIndex: this.GetEntityIndex(),
@@ -242,10 +237,9 @@ export class TSBaseAbility {
                     return 0.1
                 }
             })
-
             // 监听攻击结束
             tEventID.push(GameRules.EventManager.Register("Event_BZCantAtk", (tEventCantAtk) => {
-                if (this.IsNull() || this.GetCaster() == tEventCantAtk.entity) {
+                if (this.IsNull() || super.GetCaster() == tEventCantAtk.entity) {
                     Timers.RemoveTimer(strTimerName)
                     for (const v of tEventID) {
                         GameRules.EventManager.UnRegisterByID(v)

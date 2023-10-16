@@ -167,6 +167,10 @@ export namespace Constant {
     /**起兵回合 */
     export const BZ_OUT_ROUND = 2
 
+    /**地图拐角处 */
+    export const PATH_VERTEX = [1, 11, 21, 31]
+
+    /**回合提示 */
     export const RoundTip = []
     RoundTip[Constant.GLOBAL_SHOP_ROUND] = "global_shop"
     RoundTip[Constant.BZ_OUT_ROUND] = "bz_out"

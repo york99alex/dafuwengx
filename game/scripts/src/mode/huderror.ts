@@ -18,6 +18,10 @@ export class HudError {
         }
     }
 
+    static FireLocalizeError(nPlayerID: number, val, tabKV?) {
+        //TODO:
+    }
+
     static SendToAllPlayer(data: {
         type: number,
         message: string

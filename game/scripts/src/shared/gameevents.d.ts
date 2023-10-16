@@ -91,25 +91,6 @@ declare interface CustomGameEventDeclarations {
         nPlayerID?: number
     }
 
-
-    Event_PlayerRoundBefore: {
-        typeGameState: number
-    }
-
-
-
-    Event_BZCanAtk: {
-        entity: any
-    }
-
-    Event_BZCantAtk: {
-        entity: any
-    }
-
-    Event_GameStart: {
-
-    }
-
     S2C_round_tip: {
         sTip: string
     }

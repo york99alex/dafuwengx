@@ -191,8 +191,8 @@ export class AbilityManager {
         for (const pathID of tabPathID) {
             const tabPathInfo = tabPath[tostring(pathID)]
             if (tabPathInfo) {
-                const vPos = Vector(tabPathInfo.vPos.x, tabPathInfo.vPos.y, tabPathInfo.vPos.z)
-                const nPtclID = ParticleManager.CreateParticle("particles/base_attacks/generic_projectile_launch.vpcf"
+                const vPos = Vector(tabPathInfo.vPos.x, tabPathInfo.vPos.y, tabPathInfo.vPos.z + 50)
+                const nPtclID = ParticleManager.CreateParticle("particles/units/heroes/hero_dark_willow/dark_willow_wisp_spell_marker_ring.vpcf"
                     , ParticleAttachment.POINT, entity)
                 ParticleManager.SetParticleControl(nPtclID, 0, vPos)
                 ability.tabAbltMarkPtcl.push(nPtclID)
@@ -200,15 +200,81 @@ export class AbilityManager {
         }
     }
 
+    static updataBZBuffByCreate(player: Player, ability: BaseAbility, funOnBuffApply?: Function) {
+        // 监听兵卒创建
+        function f(event: { entity: CDOTA_BaseNPC_BZ }) {
+            if (event.entity.GetPlayerOwnerID() == player.m_nPlayerID) {
+                // 给升级的兵卒添加buff
+                if (ability && ability.IsNull()) {
+                    return true
+                }
+                if (funOnBuffApply) {
+                    return funOnBuffApply(event.entity)
+                }
+            }
+        }
+        GameRules.EventManager.Register("Event_BZCreate", () => f)
+        return () => GameRules.EventManager.UnRegister("Event_BZCreate", () => f)
+    }
+
     /**兵卒能否放技能 */
     static isCanOnAblt(eBZ: CDOTA_BaseNPC): boolean {
         const tabBuffs = eBZ.FindAllModifiers()
+        print("===isCanOnAblt===1===")
         for (const buff of tabBuffs) {
             const strBuff = buff.GetName().split("_").pop() ?? ""
-            if(strBuff == "chenmo"){
+            if (strBuff == "chenmo") {
+                print("===isCanOnAblt===2===")
                 return false
             }
-        }   
-        return true     
+        }
+        print("===isCanOnAblt===3===")
+        return true
+    }
+
+    static judgeBuffRound(casterPlayerID: number, buff: any, funChange?: Function) {
+        if (!buff || !buff.m_nROund || buff.m_nROund < 1) {
+            return
+        }
+        GameRules.EventManager.Register("Event_PlayerRoundFinished", (playerF: Player) => {
+            if (playerF.m_nPlayerID == GameRules.GameConfig.getLastValidOrder(casterPlayerID)) {
+                // 一轮结束
+                buff.m_nRound -= 1
+                if (funChange) {
+                    funChange()
+                }
+                if (buff.m_nRound <= 0) {
+                    if (IsValidEntity(buff)) {
+                        buff.Destroy()
+                    }
+                    return true
+                }
+            }
+        })
+    }
+
+    static setCopyBuff(strBuff: string, eTarget: CDOTA_BaseNPC, eCaster: CDOTA_BaseNPC, ability: BaseAbility, tBuffData?: object, bStack?: boolean, oBuffOld?) {
+        let oBuff
+        if (IsValidEntity(eTarget)) {
+            oBuff = eTarget.FindModifierByNameAndCaster(strBuff, eCaster)
+        }
+        if (!oBuff) {
+            oBuff = eTarget.AddNewModifier(eCaster, ability, strBuff, tBuffData)
+            if (oBuff) {
+                oBuff.copyBfToEnt = (_, e) => {
+                    return AbilityManager.setCopyBuff(strBuff, e, eCaster, ability, tBuffData, bStack, oBuffOld)
+                }
+                if (oBuffOld) {
+                    oBuff.m_nRound = oBuffOld.m_nRound
+                    oBuff.SetStackCount(oBuffOld.GetStackCount())
+                }
+            }
+        } else if (bStack) {
+            if (oBuff.GetStackCount() == 0) {
+                oBuff.SetStackCount(1)
+            }
+            oBuff.IncrementStackCount()
+        }
+        return oBuff
     }
 }

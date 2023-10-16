@@ -7,6 +7,7 @@ import { Path } from "./Path"
 
 @reloadable
 export class PathDomain extends Path {
+
     m_tabENPC: CDOTA_BaseNPC[] | any[]			// 路径上的全部NPC实体（城池的兵卒）
     m_eCity: CBaseEntity 			// 建筑点实体
     m_eBanner: CBaseModelEntity           // 横幅旗帜实体
@@ -14,8 +15,7 @@ export class PathDomain extends Path {
     m_nOwnerID: number			// 领主玩家ID
     m_nPlayerIDGCLD: number		// 正在攻城玩家ID
     m_nPtclIDGCLD: ParticleID		// 攻城特效ID
-    private _YieldStateCO: any
-    private _tEventIDGCLD: CustomGameEventListenerID[]
+    private _tEventIDGCLD: number[]
 
     constructor(entity: CBaseEntity) {
         super(entity)
@@ -140,6 +140,11 @@ export class PathDomain extends Path {
         GameRules.EventManager.UnRegister("Event_PlayerMove", onMove)
     }
 
+    /**玩家攻城 */
+    atkCity(oPlayer: Player) {
+        //TODO:
+    }
+
     /**玩家攻城结束 */
     atkCityEnd(bWin: boolean, bMoveBack?: boolean) {
         if (bWin == null) bWin = false
@@ -155,10 +160,9 @@ export class PathDomain extends Path {
         StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
 
         // 解除事件
-        for (let value of this._tEventIDGCLD) {
-            CustomGameEventManager.UnregisterListener(value)
-        }
+        GameRules.EventManager.UnRegisterByIDs(this._tEventIDGCLD)
         this._tEventIDGCLD = null
+
         if (this.m_tabENPC.length > 0 && AHMC.IsValid(this.m_tabENPC[0])) {
             this.m_tabENPC[0].m_bBattle = null
             this.m_tabENPC[0].m_bGCLD = null

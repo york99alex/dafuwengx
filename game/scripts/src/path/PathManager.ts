@@ -79,6 +79,48 @@ export class PathManager {
         return path
     }
 
+    /** 获取路径前方后方的尽头拐角点 */
+    getVertexPath(pathCur: Path) {
+        const [q, h] = PathManager.getVertexPathID(pathCur.m_nID)
+        return [GameRules.PathManager.getPathByID(q), GameRules.PathManager.getPathByID(h)]
+    }
+
+    /**获取路径前方后方的尽头拐角点路径ID */
+    static getVertexPathID(nCurID: number) {
+        function isQ(nQ: number, nH: number) {
+            for (let i = 0; i < Constant.PATH_VERTEX.length; i++) {
+                if (nQ == Constant.PATH_VERTEX[i]) {
+                    if (i > 0) {
+                        return nH == Constant.PATH_VERTEX[i - 1]
+                    } else {
+                        return nH == Constant.PATH_VERTEX[Constant.PATH_VERTEX.length - 1]
+                    }
+                }
+            }
+            return false
+        }
+
+        let q: number, h: number
+        for (let i = 0; i < Constant.PATH_VERTEX.length; i++) {
+            if (nCurID > Constant.PATH_VERTEX[i]) {
+                if (!h || isQ(Constant.PATH_VERTEX[i], h)) {
+                    h = Constant.PATH_VERTEX[i]
+                }
+            } else if (nCurID < Constant.PATH_VERTEX[i]) {
+                if (!q || isQ(q, Constant.PATH_VERTEX[i])) {
+                    q = Constant.PATH_VERTEX[i]
+                }
+            }
+        }
+        if (!q) {
+            q = Constant.PATH_VERTEX[0]
+        }
+        if (!h) {
+            h = Constant.PATH_VERTEX[Constant.PATH_VERTEX.length - 1]
+        }
+        return [q, h]
+    }
+
     /** 获取路径对象 */
     getPathByType(type: number) {
         let tabPath: Path[] = []

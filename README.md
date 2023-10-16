@@ -1013,23 +1013,19 @@ export const App = () => {	// 根组件
 29. ~~PlaySort与机器人的情况有点问题,总是021~~
     注意使用RandInt方法来生成随机数,不要用Math.random
 
-30. 设置领主,买地测试   setOwner(oPlayer: Player, bSetBZ?: boolean) {
-
-31. player init
-
-32. ~~设置起点路径~~
+30. ~~设置起点路径~~
     ~~self:setPath(PathManager:getPathByType(TP_START)[1])~~
 
-33. 玩家攻城结束 待验证
+31. 玩家攻城结束 待验证 还是有问题会造成
     atkCityEnd(bWin: boolean, bMoveBack?: boolean) 
 
-34. ~~GameConfig的计时回调registerThink和onThink_update~~
+32. ~~GameConfig的计时回调registerThink和onThink_update~~
     ~~如何与GameLoop实现~~
     ~~思路: 灵活运用 进入状态触发的函数和离开状态触发的函数~~
 
-35. Path路径管理模块, 以及游戏地图
+33. Path路径管理模块, 以及游戏地图
 
-36. 添加 unit 
+34. 添加 unit 
 
     1. "path_17_diao"
         	{
@@ -1046,48 +1042,72 @@ export const App = () => {	// 根组件
         		"StatusHealth"	"1"
         	}
 
-37. setDiaoGesture 雕哥施法检查
+35. setDiaoGesture 雕哥施法检查
 
-38. PathRune
+36. PathRune
 
-39. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+37. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
 
-40. ~~兵卒~~ player\CDOTA_BaseNPC_BZ.ts
+38. ==兵卒 player\CDOTA_BaseNPC_BZ.ts==
+    整合 mechanics\attribute.ts
 
-41. Roll点的随机路径平衡机制数值思考
+39. Roll点的随机路径平衡机制数值思考
 
-42. 检查网表GamingTable的nSumGold总资产计算是否正确
+40. 检查网表GamingTable的nSumGold总资产计算是否正确
 
-43. 增加英雄 const HERO_TO_BANNER 需要调整
+41. 增加英雄 const HERO_TO_BANNER 需要调整
 
-44. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
+42. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
 
-45. _tEventIDGCLD   ?为数组?
+43. _tEventIDGCLD   ?为数组?
 
-46. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
+44. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
 
-47. addon_schinese.txt :		"RandomTip"						"随机英雄"
+45. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
-48. 统一所有英雄移速 ?
+46. 统一所有英雄移速 ?
 
-49. 检查FireEvent的args参数为空的情况
+47. 检查FireEvent的args参数为空的情况
 
-50. ~~GSManager:setState都调整为loop~~ GameLoop.setGameState
+48. ~~GSManager:setState都调整为loop~~ GameLoop.setGameState
 
-51. /**设置结算数据 */
+49. /**设置结算数据 */
     setGameEndData(){}
 
-52. ~~==sendMsg和broadcastMsg的tabData格式==~~
+50. ~~==sendMsg和broadcastMsg的tabData格式==~~
 
-53. ~~gamestate的计时器update是0.1调用一次~~
+51. ~~gamestate的计时器update是0.1调用一次~~
 
-54. ~~// 监听玩家移动回路径~~
+52. ~~// 监听玩家移动回路径~~
 
-55. ~~onMove如何处理gamestateloop~~
+53. ~~onMove如何处理gamestateloop~~
 
-11. 英雄经验系统/数值
+54. 英雄经验系统/数值
 
-12. 客户端,前端 请求传输数据缩减
+55. 客户端,前端 请求传输数据缩减
+
+56. 考虑把莉娜的兵卒技能换成光击阵
+
+57. 验证AMHC.Damage
+    ```
+                if (tData) {
+                    for (const v of tData) {
+                        event.push(v)
+                    }
+                }
+    ```
+
+    
+
+58. HudError:FireLocalizeError
+
+59. PathDomain.  atkCity(oPlayer: Player) {
+
+60. ==核心机制设计==:
+
+    1. 玩家移动时兵卒攻击不会造成扣血
+
+61. 金币有bug player.onEvent_OnDamage{} 效果未生效
 
 
 
@@ -1116,7 +1136,32 @@ export const App = () => {	// 根组件
     }, 0)
     ```
 
-    
+- copyBfToEnt
+
+  - oBuff.m_nRound
+
+- 所有兵卒的m_bBZ可以用IsRealHero() 来判断
+
+  
+
+
+
+## 编写一个新英雄的过程
+
+1. npc_heroes_custom.txt 定义英雄
+2. npc_abilities_custom.txt 定义技能(x模板里用kv.excel的abilities)
+3. 实现lua技能的对应的script代码
+4. npc_units_custom.txt 定义英雄对应的兵卒(x模板里用kv.excel的minions)
+
+     - !! 并在constant.ts中给HERO_TO_BANNER和HERO_TO_BZ数组添加对应内容
+
+     - !! 还要更改旗帜模型的skin设置, 添加新英雄头像, 重新编译地图
+
+     - 注意: 可能还要给兵卒单独定义和编写技能
+
+5. 本地化 resource\addon_english.txt resource\addon_schinese.txt
+   X模板编写 resource\addon.csv
+
 
 
 

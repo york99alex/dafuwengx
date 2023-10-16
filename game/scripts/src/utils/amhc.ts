@@ -225,7 +225,9 @@ export class AHMC {
                 event.ability = ability
             }
             if (tData) {
-                // TODO:
+                for (const v of tData) {
+                    event.push(v)
+                }
             }
         }, null, 987654321)
         ApplyDamage({
