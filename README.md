@@ -930,12 +930,14 @@ export const App = () => {	// 根组件
 
 6. huderror前端部分实现
 
-7. Player.setState重写
+7. ~~Player.setState重写~~
 
-8. AbilityManager.setRoundCD
+   - 遗留问题: BKB魔法免疫问题
 
-9. 因为在unit kv表中给兵卒的ConsideredHero键值为1, 测试IsRealHero是否能判断是英雄还是兵卒?
-   可以通过IsRealHero判断是否时兵卒
+8. ~~AbilityManager.setRoundCD~~
+
+9. ~~因为在unit kv表中给兵卒的ConsideredHero键值为1, 测试IsRealHero是否能判断是英雄还是兵卒?~~
+   可以通过IsRealHero判断是否是兵卒
 
 10. 在一个合适的时机通过后端事件通知前端关闭操作提示框
 
@@ -1109,6 +1111,18 @@ export const App = () => {	// 根组件
 
 61. 金币有bug player.onEvent_OnDamage{} 效果未生效
 
+62. ~~Sc~~ript Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
+    ~~stack traceback:~~
+    ~~[C]: in function '__index'~~
+
+    - 通过  if (IsClient())  return 解决
+      但是为什么? 原因? 如何理解
+
+63. 兵卒生成还是有问题
+    不能在合适的阶段正确攻击
+
+64. 
+
 
 
 ## 注意/调整
@@ -1211,18 +1225,41 @@ GSWaitOprt_Entry()执行Roll点,调用GameConfig.processRoll()方法{
 ## 英雄设计
 
 - 幽鬼(冠名:qwerty-)
-- 幻影刺客 phantom_assassin
+- 幻影刺客 npc_dota_hero_phantom_assassin
   - 1技能 闪烁突袭 Ability_phantom_strike
     选中一名英雄, 位移到他身边, 攻击1/2/3次
     ==判断是否施法目标是否合理, 非bz单位等??==
   - 2技能 原生数据驱动大招, 持续时间 160秒
   - 兵卒技能  原生数据驱动大招, 持续时间 160秒
-- 米波 meepo
+- 米波 npc_dota_hero_meepo
   - 1技能 忽悠
   - 2技能 洗劫 平a增加层数可增加忽悠伤害
   - 兵卒技能 洗劫
 
-- 
+- 屠夫 npc_dota_hero_pudge
+  - 1技能 肉钩
+  - 2技能 腐烂
+  - 兵卒技能 腐烂
+
+- 火女 npc_dota_hero_lina
+  - 1技能 龙破斩
+  - 2技能 光击阵
+  - 兵卒技能 光击阵
+
+- 宙斯 npc_dota_hero_zuus
+  - 1技能 弧形闪电
+
+  - 2技能 雷击
+
+  - 兵卒技能 雷击
+
+- 斧王 npc_dota_hero_axe
+  - 1技能 战斗饥渴
+
+  - 2技能 反击螺旋
+
+  - 兵卒技能 反击螺旋
+
 
 
 

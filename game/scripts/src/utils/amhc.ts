@@ -1,5 +1,3 @@
-import { TSBaseAbility } from "../ability/tsBaseAbilty"
-
 export class AHMC {
     // 写一些方法类,有AMHC之前的lua代码翻译过来,也有自定义工具方法
 
@@ -209,11 +207,11 @@ export class AHMC {
      * @param victim CDOTA_BaseNPC
      * @param damage number
      * @param damageType DamageTypes
-     * @param ability TSBaseAbility
+     * @param ability BaseAbility
      * @param scale number
      * @param tData 可选
      */
-    static Damage(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC, damage: number, damageType: DamageTypes, ability: TSBaseAbility, scale?: number, tData?) {
+    static Damage(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC, damage: number, damageType: DamageTypes, ability: CDOTABaseAbility, scale?: number, tData?) {
         if (this.IsAlive(attacker) != true || this.IsAlive(victim) != true) {
             return null
         }

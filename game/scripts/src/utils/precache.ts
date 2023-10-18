@@ -20,6 +20,7 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf',
             'particles/units/heroes/hero_zuus/zuus_thundergods_wrath.vpcf',
             'particles/econ/items/zeus/lightning_weapon_fx/zuus_lb_cfx_il.vpcf',
+            'particles/units/heroes/hero_axe/axe_battle_hunger.vpcf',
         ],
         context
     );

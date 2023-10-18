@@ -445,9 +445,9 @@
 		"AttributePrimary" "DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength" "25"
 		"AttributeStrengthGain" "3"
-		"AttributeBaseAgility" "16"
+		"AttributeBaseAgility" "14"
 		"AttributeAgilityGain" "0.5000"
-		"AttributeBaseIntelligence" "14"
+		"AttributeBaseIntelligence" "16"
 		"AttributeIntelligenceGain" "0.5000"
 	}
 	"bz_pudge_11" {
@@ -504,9 +504,9 @@
 		"AttributePrimary" "DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength" "25"
 		"AttributeStrengthGain" "4"
-		"AttributeBaseAgility" "16"
+		"AttributeBaseAgility" "14"
 		"AttributeAgilityGain" "1.5000"
-		"AttributeBaseIntelligence" "14"
+		"AttributeBaseIntelligence" "16"
 		"AttributeIntelligenceGain" "1.5000"
 	}
 	"bz_pudge_111" {
@@ -563,9 +563,9 @@
 		"AttributePrimary" "DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength" "25"
 		"AttributeStrengthGain" "5"
-		"AttributeBaseAgility" "16"
+		"AttributeBaseAgility" "14"
 		"AttributeAgilityGain" "2.5000"
-		"AttributeBaseIntelligence" "14"
+		"AttributeBaseIntelligence" "16"
 		"AttributeIntelligenceGain" "2.5000"
 	}
 	"bz_lina_1" {
@@ -621,10 +621,10 @@
 		"AttributePrimary" "DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength" "20"
 		"AttributeStrengthGain" "1.2000"
-		"AttributeBaseAgility" "30"
-		"AttributeAgilityGain" "2.7000"
-		"AttributeBaseIntelligence" "23"
-		"AttributeIntelligenceGain" "0.8000"
+		"AttributeBaseAgility" "23"
+		"AttributeAgilityGain" "0.8000"
+		"AttributeBaseIntelligence" "30"
+		"AttributeIntelligenceGain" "2.7000"
 	}
 	"bz_lina_11" {
 		"Searchable" "1"
@@ -679,10 +679,10 @@
 		"AttributePrimary" "DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength" "20"
 		"AttributeStrengthGain" "2.2000"
-		"AttributeBaseAgility" "30"
-		"AttributeAgilityGain" "3.7000"
-		"AttributeBaseIntelligence" "23"
-		"AttributeIntelligenceGain" "1.8000"
+		"AttributeBaseAgility" "23"
+		"AttributeAgilityGain" "1.8000"
+		"AttributeBaseIntelligence" "30"
+		"AttributeIntelligenceGain" "3.7000"
 	}
 	"bz_lina_111" {
 		"Searchable" "1"
@@ -737,10 +737,10 @@
 		"AttributePrimary" "DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength" "20"
 		"AttributeStrengthGain" "3.2000"
-		"AttributeBaseAgility" "30"
-		"AttributeAgilityGain" "4.7000"
-		"AttributeBaseIntelligence" "23"
-		"AttributeIntelligenceGain" "2.8000"
+		"AttributeBaseAgility" "23"
+		"AttributeAgilityGain" "2.8000"
+		"AttributeBaseIntelligence" "30"
+		"AttributeIntelligenceGain" "4.7000"
 	}
 	"bz_zuus_1" {
 		"Searchable" "1"
@@ -797,10 +797,10 @@
 		"AttributePrimary" "DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength" "21"
 		"AttributeStrengthGain" "1.1000"
-		"AttributeBaseAgility" "21"
-		"AttributeAgilityGain" "2.3000"
-		"AttributeBaseIntelligence" "11"
-		"AttributeIntelligenceGain" "0.2000"
+		"AttributeBaseAgility" "11"
+		"AttributeAgilityGain" "0.2000"
+		"AttributeBaseIntelligence" "21"
+		"AttributeIntelligenceGain" "2.3000"
 	}
 	"bz_zuus_11" {
 		"Searchable" "1"
@@ -856,10 +856,10 @@
 		"AttributePrimary" "DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength" "21"
 		"AttributeStrengthGain" "2.1000"
-		"AttributeBaseAgility" "21"
-		"AttributeAgilityGain" "3.3000"
-		"AttributeBaseIntelligence" "11"
-		"AttributeIntelligenceGain" "1.2000"
+		"AttributeBaseAgility" "11"
+		"AttributeAgilityGain" "1.2000"
+		"AttributeBaseIntelligence" "21"
+		"AttributeIntelligenceGain" "3.3000"
 	}
 	"bz_zuus_111" {
 		"Searchable" "1"
@@ -915,10 +915,178 @@
 		"AttributePrimary" "DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength" "21"
 		"AttributeStrengthGain" "3.1000"
-		"AttributeBaseAgility" "21"
-		"AttributeAgilityGain" "4.3000"
-		"AttributeBaseIntelligence" "11"
-		"AttributeIntelligenceGain" "2.2000"
+		"AttributeBaseAgility" "11"
+		"AttributeAgilityGain" "2.2000"
+		"AttributeBaseIntelligence" "21"
+		"AttributeIntelligenceGain" "4.3000"
 	}
-
+	"bz_axe_1" {
+		"Searchable" "1"
+		"Cost" "1"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/axe/axe.vmdl"
+		"ModelScale" "0.7000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "2" }
+				"2" { "ItemDef" "3" }
+				"3" { "ItemDef" "4" }
+				"4" { "ItemDef" "5" }
+			}
+		}
+		"SoundSet" "Hero_Axe"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_axe.vsndevts"
+		"Ability1" "Ability_axe_helix_counter"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "295"
+		"MovementTurnRate" "0.6000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "-1"
+		"MagicalResistance" "24"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "27"
+		"AttackDamageMax" "31"
+		"AttackRate" "1.7000"
+		"AttackAnimationPoint" "0.5000"
+		"AttackAcquisitionRange" "600"
+		"AttackRange" "300"
+		"RingRadius" "60"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength" "25"
+		"AttributeStrengthGain" "2.4000"
+		"AttributeBaseAgility" "20"
+		"AttributeAgilityGain" "1.2000"
+		"AttributeBaseIntelligence" "18"
+		"AttributeIntelligenceGain" "0.6000"
+	}
+	"bz_axe_11" {
+		"Searchable" "1"
+		"Cost" "2"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/axe/axe.vmdl"
+		"ModelScale" "0.8000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "5106" }
+				"2" { "ItemDef" "5107" }
+				"3" { "ItemDef" "5108" }
+				"4" { "ItemDef" "5109" }
+				"5" { "ItemDef" "4364" }
+				"6" { "ItemDef" "4528" }
+			}
+		}
+		"SoundSet" "Hero_Axe"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_axe.vsndevts"
+		"Ability1" "Ability_axe_helix_counter"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "295"
+		"MovementTurnRate" "0.6000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "-1"
+		"MagicalResistance" "24"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "27"
+		"AttackDamageMax" "31"
+		"AttackRate" "1.7000"
+		"AttackAnimationPoint" "0.5000"
+		"AttackAcquisitionRange" "600"
+		"AttackRange" "300"
+		"RingRadius" "60"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength" "25"
+		"AttributeStrengthGain" "3.4000"
+		"AttributeBaseAgility" "20"
+		"AttributeAgilityGain" "2.2000"
+		"AttributeBaseIntelligence" "18"
+		"AttributeIntelligenceGain" "1.6000"
+	}
+	"bz_axe_111" {
+		"Searchable" "1"
+		"Cost" "3"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/axe/axe.vmdl"
+		"ModelScale" "0.9000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "8468" }
+				"2" { "ItemDef" "7766" }
+				"3" { "ItemDef" "7214" }
+				"4" { "ItemDef" "6605" }
+				"5" { "ItemDef" "5675" }
+				"6" { "ItemDef" "4528" }
+			}
+		}
+		"SoundSet" "Hero_Axe"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_axe.vsndevts"
+		"Ability1" "Ability_axe_helix_counter"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "295"
+		"MovementTurnRate" "0.6000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "-1"
+		"MagicalResistance" "24"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "27"
+		"AttackDamageMax" "31"
+		"AttackRate" "1.7000"
+		"AttackAnimationPoint" "0.5000"
+		"AttackAcquisitionRange" "600"
+		"AttackRange" "300"
+		"RingRadius" "60"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength" "25"
+		"AttributeStrengthGain" "4.4000"
+		"AttributeBaseAgility" "20"
+		"AttributeAgilityGain" "3.2000"
+		"AttributeBaseIntelligence" "18"
+		"AttributeIntelligenceGain" "2.6000"
+	}
 }

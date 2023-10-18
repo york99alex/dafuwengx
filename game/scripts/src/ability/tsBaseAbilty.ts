@@ -348,7 +348,7 @@ export class TSBaseAbility extends BaseAbility {
             if (eTarget.IsIllusion() && !this.isCanCastIllusion()) {
                 // 不能是幻象
                 this.m_strCastError = "AbilityError_IllusionsCant"
-            } else if (this.isCanCastHero()) {
+            } else if (!this.isCanCastHero()) {
                 // 不能是英雄
                 this.m_strCastError = "AbilityError_HeroCant"
             }

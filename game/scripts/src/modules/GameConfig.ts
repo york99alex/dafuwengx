@@ -174,6 +174,7 @@ export class GameConfig {
             typeGameMode: Constant.GAME_MODE,
             bNoSwap: this.m_bNoSwap
         })
+        print("===New GameConfig===Down===")
     }
 
     /**更新回合操作时限 */
