@@ -2,10 +2,9 @@ import { GameMessage } from "../mode/gamemessage"
 import { Constant } from "../mode/constant"
 import { Path } from "../path/Path"
 import { AHMC } from "../utils/amhc"
-import { PathDomain } from "../path/pathdomain"
+import { PathDomain } from "../path/pathsdomain/pathdomain"
 import { reloadable } from "../utils/tstl-utils"
 import { CDOTA_BaseNPC_BZ } from "./CDOTA_BaseNPC_BZ"
-import { BaseAbility } from "../utils/dota_ts_adapter"
 
 export type player_info = "player_info_0" | "player_info_1" | "player_info_2" | "player_info_3" | "player_info_4" | "player_info_5"
 
@@ -30,7 +29,7 @@ export class Player {
     m_nManaSub: number = null			  //  耗魔减缩固值
     m_nLastAtkPlayerID: number = null	  //  最后攻击我的玩家ID
     m_nKill: number = null				 //  击杀数
-    m_nGCLD: number = null				 //  攻城数
+    m_nGCLD: number				 //  攻城数
     m_nDamageHero: number = null		   //  英雄伤害
     m_nDamageBZ: number = null			 //  兵卒伤害
     m_nGoldMax: number = null			  //  巅峰资产数
@@ -62,8 +61,7 @@ export class Player {
     m_tabDelCard = null			//  已移除的卡牌
     m_tCourier = null			  //  信使
     __init: boolean = false            // 
-    m_bBattle: boolean = null
-    m_bGCLD: boolean = null
+    m_bGCLD: boolean        // 玩家英雄是否在攻城
     private _setState_Invis_onUsedAbltID: number
 
 
@@ -100,8 +98,6 @@ export class Player {
         this.m_tMuteTradePlayers = []
         this.m_eHero = null
         this.m_tCourier = []
-        this.m_bBattle = false
-        this.m_bGCLD = false
 
         PlayerResource.SetCustomTeamAssignment(nPlayerID, DotaTeam.GOODGUYS)
         this.registerEvent()
@@ -384,7 +380,7 @@ export class Player {
             // 设置英雄可否攻击
             let bCan: boolean = bit.band(this.m_nPlayerState, GameMessage.PS_AtkHero) > 0
             this.setHeroCanAttack(bCan)
-            this.m_bBattle = bCan
+            this.m_bGCLD = bCan
             if (bCan) {
                 // 攻击移除隐身状态
                 this.setPlayerState(-GameMessage.PS_Invis)
@@ -1090,7 +1086,7 @@ export class Player {
         print("string.reverse(strName):", strName)
         const nLevel = strName.indexOf('_')
         if (nLevel != -1) {
-            return nLevel - 1
+            return nLevel
         } else {
             return 0
         }
@@ -1248,6 +1244,15 @@ export class Player {
         CustomNetTables.SetTableValue("GamingTable", keyname, info)
     }
 
+    /**增加攻城数 */
+    setGCLDCountAdd(nValue: number) {
+        this.m_nGCLD += nValue
+        // 设置网表
+        const keyname = "player_info_" + this.m_nPlayerID as player_info
+        const info = CustomNetTables.GetTableValue("GamingTable", keyname)
+        info.nGCLD = this.m_nGCLD
+        CustomNetTables.SetTableValue("GamingTable", keyname, info)
+    }
 
     /**设置购物状态 */
     setBuyState(typeState: number, nCount: number) {
@@ -1387,7 +1392,7 @@ export class Player {
                 }
 
                 // 是否扣血
-                if (oAttacker.GetClassname() == "npc_dota_creature") {
+                if (!oAttacker.IsRealHero()) {
                     // 兵卒攻击不扣血
                     if (!oPlayerAtk.m_bGCLD) {
                         print("非攻城略地,兵卒攻击不扣血 damage = 0")

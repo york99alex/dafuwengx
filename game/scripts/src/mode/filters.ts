@@ -15,12 +15,19 @@ export class Filters {
         GameMode.SetTrackingProjectileFilter(() => true, this)
     }
 
-    static DamageFilter(event): boolean {
+    static DamageFilter(event: {
+        entindex_attacker_const: EntityIndex;
+        entindex_victim_const: EntityIndex;
+        entindex_inflictor_const?: EntityIndex;
+        damagetype_const: DamageTypes;
+        damage: number;
+        bIgnore?: boolean;
+    }): boolean {
         // 触发攻击事件
         GameRules.EventManager.FireEvent("Event_Atk", event)
         // 触发被攻击事件
         GameRules.EventManager.FireEvent("Event_BeAtk", event)
-        if(event.bIgnore){
+        if (event.bIgnore) {
             return false    // 忽略订单
         }
         // 触发受伤事件
@@ -28,7 +35,20 @@ export class Filters {
         return true
     }
 
-    static ExecuteOrderFilter(event): boolean {
+    static ExecuteOrderFilter(event: {
+        units: Record<string, EntityIndex>;
+        entindex_target: EntityIndex;
+        entindex_ability: EntityIndex;
+        issuer_player_id_const: PlayerID;
+        sequence_number_const: number;
+        queue: 0 | 1;
+        position_x: number;
+        order_type: UnitOrder;
+        position_y: number;
+        position_z: number;
+        shop_item_name: string;
+        bIgnore?: boolean
+    }): boolean {
         /**
          * 命令常量
          *  DOTA_UNIT_ORDER_NONE = 0

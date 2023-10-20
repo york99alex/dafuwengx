@@ -165,6 +165,9 @@ export class PlayerManager {
 
     /**广播事件消息 */
     broadcastMsg(strMgsID: string, tabData) {
+        print("=====broadcastMsg=====tabData:")
+        DeepPrintTable(tabData)
+        print("==============================")
         switch (strMgsID) {
             case "GM_Operator":
                 CustomGameEventManager.Send_ServerToAllClients("GM_Operator", tabData)

@@ -122,6 +122,12 @@ export namespace Constant {
     // 每级兵卒等级上限
     export const BZ_LEVELMAX = [9, 19, 25]
 
+    /**每级兵卒攻城失败金币 */
+    export const GCLD_GOLD = [0, 100, 200, 300]
+
+    /**攻城兵卒经验 */
+    export const GCLD_EXP = [0, 1, 2, 3]
+
     export const PATH_TO_PRICE = []
     PATH_TO_PRICE[GameMessage.TP_DOMAIN_1] = 200
     PATH_TO_PRICE[GameMessage.TP_DOMAIN_2] = 300

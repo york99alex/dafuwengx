@@ -1,0 +1,236 @@
+{
+	Custom.Roll.Ing = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/rolling.vsnd",
+		]
+		volume = "3.000000"
+		vsnd_duration = 1.593469
+	}
+	Custom.Time.Urgent = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/addons/conquest/capture_point_timer_hallow.vsnd",
+		]
+		volume = "3.000000"
+		vsnd_duration = 1.248005
+	}
+	Custom.Time.Finish = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/addons/conquest/capture_point_timer.vsnd",
+		]
+		volume = "5.000000"
+		vsnd_duration = 1.500068
+	}
+	Custom.AYZZ = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/music/custom_games/stingers/dire_capture.vsnd",
+		]
+		volume = "3.000000"
+		vsnd_duration = 5.020709
+	}
+	Custom.AYZZ.All = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/addons/conquest/stinger_radiant_hallow.vsnd",
+		]
+		volume = "3.000000"
+		vsnd_duration = 3.469161
+	}
+	Custom.AYZZ.18 = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/levelup.vsnd",
+			"sounds/ui/levelup_female.vsnd",
+			"sounds/ui/levelup_male.vsnd",
+		]
+		volume = "5.000000"
+		vsnd_duration = 2.460771
+	}
+	Custom.GCLD.Begin = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/spin_music.vsnd",
+		]
+		volume = "5.000000"
+		vsnd_duration = 11.228299
+	}
+	Custom.GCLD.End = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/spin_music_end.vsnd",
+		]
+		volume = "5.000000"
+		vsnd_duration = 5.991292
+	}
+	Custom.Gold.Buy = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/buy.vsnd",
+		]
+		volume = "2.500000"
+		vsnd_duration = 1.180680
+	}
+	Custom.Gold.Sell = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/coins.vsnd",
+		]
+		volume = "1.500000"
+		vsnd_duration = 1.589909
+	}
+	Custom.Gold.SellBig = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/coins_big.vsnd",
+		]
+		volume = "2.500000"
+		vsnd_duration = 1.968277
+	}
+	Custom.TP.Begin = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/portal_loop.vsnd",
+			"sounds/ui/portal_loop_alt.vsnd",
+		]
+		volume = "2.500000"
+		vsnd_duration = 4.053333
+	}
+	Custom.TP.End = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/portal_appear.vsnd",
+			"sounds/ui/portal_disappear.vsnd",
+		]
+		volume = "2.500000"
+		vsnd_duration = 2.556077
+	}
+	Custom.Treasure.Begin = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/inventory/treasure_unlock.vsnd",
+		]
+		volume = "2.500000"
+		vsnd_duration = 1.135419
+	}
+	Custom.Treasure.Channel = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/treasure_underscore_lp.vsnd",
+		]
+		volume = "2.500000"
+		vsnd_duration = 17.824604
+	}
+	Custom.Treasure.End = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/inventory/treasure_reveal.vsnd",
+		]
+		volume = "2.500000"
+		vsnd_duration = 2.274921
+	}
+	Custom.Silence.Ablt = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/weapons/silence.vsnd",
+		]
+		volume = "1.000000"
+		vsnd_duration = 1.045896
+	}
+	Custom.Killed = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/music/valve_dota_001/music/killed.vsnd",
+		]
+		volume = "2.000000"
+		vsnd_duration = 92.604080
+	}
+	Custom.Respawn = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/music/valve_dota_001/stingers/respawn.vsnd",
+		]
+		volume = "1.000000"
+		vsnd_duration = 9.404081
+	}
+	Custom.HandbookOpen = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/economy/rylais_wheel_spin_click_01.vsnd",
+		]
+		volume = "0.500000"
+		vsnd_duration = 0.324104
+	}
+	Custom.HandbookClose = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/panorama/panorama_settings_slide_out_01.vsnd",
+		]
+		volume = "0.500000"
+		vsnd_duration = 1.261973
+	}
+	Custom.OpenBox_1 = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/inventory/treasure_unlock.vsnd",
+		]
+		volume = "0.500000"
+		vsnd_duration = 1.135419
+	}
+	Custom.OpenBox_2 = 
+	{
+		type = "dota_src1_2d"
+		vsnd_files = 
+		[
+			"sounds/ui/treasure_01.vsnd",
+		]
+		volume = "0.500000"
+		vsnd_duration = 3.376009
+	}
+}

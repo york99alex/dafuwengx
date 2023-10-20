@@ -1,5 +1,5 @@
 import { GameMessage } from "../../mode/gamemessage";
-import { PathDomain } from "../../path/pathdomain";
+import { PathDomain } from "../../path/pathsdomain/pathdomain";
 import { AHMC } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { TSBaseAbility } from "../tsBaseAbilty";

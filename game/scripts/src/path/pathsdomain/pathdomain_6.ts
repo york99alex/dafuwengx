@@ -1,5 +1,4 @@
-import { AHMC } from "../utils/amhc";
-import { PathManager } from "./PathManager";
+import { AHMC } from "../../utils/amhc";
 import { PathDomain } from "./pathdomain";
 
 /**领土路径-鵰巢 */

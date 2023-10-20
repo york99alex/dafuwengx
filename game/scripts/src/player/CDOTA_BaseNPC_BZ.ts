@@ -1,4 +1,4 @@
-import { PathDomain } from "../path/pathdomain";
+import { PathDomain } from "../path/pathsdomain/pathdomain";
 import { BaseAbility } from "../utils/dota_ts_adapter";
 
 export interface CDOTA_BaseNPC_BZ extends CDOTA_BaseNPC_Hero {

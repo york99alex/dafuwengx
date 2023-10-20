@@ -343,4 +343,38 @@
 		"AbilityCastRange" "300"
 		"AbilityCastAnimation" "ACT_DOTA_CAST_ABILITY_3"
 	}
+	"path_12" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/path/path_12"
+		"AbilityValues" {
+			"hujia" "10 15 20"
+			"mokang" "15 20 25"
+		}
+		"MaxLevel" "3"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" "path_12"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
+	}
+	"path_13_hujia" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/path/path_13_huija"
+		"AbilityValues" {
+			"ignore_armor" "15 25 35"
+		}
+		"MaxLevel" "3"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" "path_13"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
+	}
+	"path_13_mokang" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/path/path_13_mokang"
+		"AbilityValues" {
+			"ignore_resistance" "15 25 35"
+		}
+		"MaxLevel" "3"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" "path_13"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
+	}
 }

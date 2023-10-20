@@ -1,5 +1,4 @@
 import { GameMessage } from "../mode/gamemessage";
-import { GameConfig } from "../modules/GameConfig";
 import { Player } from "../player/player";
 import { Path } from "./Path";
 

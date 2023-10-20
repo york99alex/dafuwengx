@@ -49,6 +49,14 @@
 "Event_HeroManaChange", { player: this }
 
 "Event_OnDamage", {}
+                {
+        entindex_attacker_const: EntityIndex;
+        entindex_victim_const: EntityIndex;
+        entindex_inflictor_const?: EntityIndex;
+        damagetype_const: DamageTypes;
+        damage: number;
+        bIgnore?: boolean;
+    }
 
 "Event_BZHuiMo", 
 
@@ -83,3 +91,31 @@
 "Event_BZCreate", { entity: eBZ }
 
 "Event_BZCastAblt", {ablt: this, bIgnore: true}
+
+"Event_CurPathChange", { player: this }
+
+"Event_PathOwnChange", {
+            path: this,
+            nOwnerIDLast: nOwnerIDLast
+        }
+
+"Event_PathBuffDel", { oPlayer: oPlayer, path: this, sBuffName: strBuffName }
+
+"Event_GCLD", {
+            entity: oPlayer.m_eHero,
+            path: this
+        }
+
+"Event_ActionStop", { 
+            entity: CDOTA_BaseNPC,
+            bMoveBack?: boolean
+        }
+
+"Event_GCLDEnd", {
+            entity: oPlayer.m_eHero,
+            path: this,
+            bWin: bWin,
+            bSwap: true
+        }
+
+"Event_PlayerMoveEnd", { player: Player }

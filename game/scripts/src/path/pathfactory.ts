@@ -1,9 +1,9 @@
 import { GameMessage } from "../mode/gamemessage"
 import { Path } from "./Path";
-import { PathDomain } from "./pathdomain";
-import { PathDomain_2 } from "./pathdomain_2";
-import { PathDomain_6 } from "./pathdomain_6";
-import { PathDomain_7 } from "./pathdomain_7";
+import { PathDomain } from "./pathsdomain/pathdomain";
+import { PathDomain_2 } from "./pathsdomain/pathdomain_2";
+import { PathDomain_6 } from "./pathsdomain/pathdomain_6";
+import { PathDomain_7 } from "./pathsdomain/pathdomain_7";
 import { PathMonster } from "./pathmonster";
 import { PathPrison } from "./pathprison";
 import { PathRune } from "./pathrune";

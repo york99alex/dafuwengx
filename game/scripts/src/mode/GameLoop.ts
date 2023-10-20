@@ -8,6 +8,7 @@ export class GameLoop {
     m_typeStateCur: number = GameMessage.GS_None
     m_typeStateLast: number = null
     m_thinkName: string = null
+    m_bRoundBefore: boolean
 
 
     GameStateService: StateMachine.Service<object, EventObject, {
@@ -23,12 +24,13 @@ export class GameLoop {
         states: {
             GSNone: { on: { toreadystart: "GSReadyStart" }, entry: "GSNone_Entry", exit: "GSNone_Exit" },
             GSReadyStart: { on: { tobegin: "GSBegin" }, entry: "GSReadyStart_Entry", exit: "GSReadyStart_Exit" },
+            GSRoundBefore: { on: { tobegin: "GSBegin", tomove: "GSMove" }, entry: "GSRoundBefore_Entry", exit: "GSRoundBefore_Exit" },
             GSSupply: { on: { tobegin: "GSBegin" }, entry: "GSSupply_Entry", exit: "GSSupply_Exit" },
             GSBegin: { on: { towaitoprt: "GSWaitOprt", tofinished: "GSFinished" }, entry: "GSBegin_Entry", exit: "GSBegin_Exit" },
             GSWaitOprt: { on: { tomove: "GSMove", towait: "GSWait", tofinished: "GSFinished" }, entry: "GSWaitOprt_Entry", exit: "GSWaitOprt_Exit" },
             GSWait: { on: { towaitoprt: "GSWaitOprt" }, entry: "GSWait_Entry", exit: "GSWait_Exit" },
-            GSMove: { on: { towaitoprt: "GSWaitOprt" }, entry: "GSMove_Entry", exit: "GSMove_Exit" },
-            GSFinished: { on: { tobegin: "GSBegin" }, entry: "GSFinished_Entry", exit: "GSFinished_Exit" },
+            GSMove: { on: { towaitoprt: "GSWaitOprt", toRoundBefore: "GSRoundBefore" }, entry: "GSMove_Entry", exit: "GSMove_Exit" },
+            GSFinished: { on: { toRoundBefore: "GSRoundBefore" }, entry: "GSFinished_Entry", exit: "GSFinished_Exit" },
             GSDeathClearing: { entry: "GSDeathClearing_Entry", exit: "GSDeathClearing_Exit" }
         }
     }, {
@@ -37,6 +39,8 @@ export class GameLoop {
             GSNone_Exit: () => this.GSNone_Exit(),
             GSReadyStart_Entry: () => this.GSReadyStart_Entry(),
             GSReadyStart_Exit: () => this.GSReadyStart_Exit(),
+            GSRoundBefore_Entry: () => this.GSRoundBefore_Entry(),
+            GSRoundBefore_Exit: () => this.GSRoundBefore_Exit(),
             GSSupply_Entry: () => this.GSSupply_Entry(),
             GSSupply_Exit: () => this.GSSupply_Exit(),
             GSBegin_Entry: () => this.GSBegin_Entry(),
@@ -126,6 +130,20 @@ export class GameLoop {
         GameRules.EventManager.FireEvent("Event_PlayerRoundBefore", { typeGameState: GameMessage.GS_Begin })
     }
 
+    /**玩家回合开始阶段Entry */
+    GSRoundBefore_Entry() {
+        this.Timer(() => {
+            if (!this.m_bRoundBefore)
+                this.GameStateService.send("tobegin")
+            return null
+        }, 1)
+    }
+
+    /**玩家回合开始阶段Exit */
+    GSRoundBefore_Exit() {
+        this.m_bRoundBefore = null
+    }
+
     GSBegin_Entry() {
         this.setGameState(GameMessage.GS_Begin)
         print("GameState_GSBegin_Entry")
@@ -176,28 +194,28 @@ export class GameLoop {
                 GameRules.GameConfig.autoOprt()
                 return
             } else if (timeOprt == 0) {
-                // EmitGlobalSound("Custom.Time.Finish")
-            } else if (timeOprt == 51) {
-                GameRules.GameConfig.updateTimeOprt()
-                // EmitGlobalSound("Custom.Time.Urgent")
-
-                // 默认自动操作roll点
-                GameRules.GameConfig.autoOprt(GameMessage.TypeOprt.TO_Roll)
+                EmitGlobalSound("Custom.Time.Finish")
+            } else if (0 < timeOprt && timeOprt < 51) {
+                if (timeOprt % 10 == 0) {
+                    EmitGlobalSound("Custom.Time.Urgent")
+                    // 默认自动操作roll点
+                    GameRules.GameConfig.autoOprt(GameMessage.TypeOprt.TO_Roll)
+                }
             }
             return 0.1
         }, 0)
-        // 通过Roll点进入下一状态
+        // End: 通过Roll点进入下一状态
     }
 
     GSWaitOprt_Exit() {
-
+        print("GameState_GSWaitOprt_Exit")
     }
 
     GSWait_Entry() {
         this.setGameState(GameMessage.GS_Wait)
         print("GameState_GSWait_Entry")
         this.m_timeWait = 100
-        Timers.CreateTimer(0,()=>{
+        Timers.CreateTimer(0, () => {
             print(this.m_timeWait -= 1)
             if (this.m_typeStateCur != GameMessage.GS_Wait || this.m_timeWait <= 0) {
                 // wait超时，回到上个操作
@@ -213,12 +231,14 @@ export class GameLoop {
     }
 
     GSMove_Entry() {
+        this.m_bRoundBefore = true
         this.setGameState(GameMessage.GS_Move)
         print("GameState_GSMove_Entry")
     }
 
     GSMove_Exit() {
         GameRules.EventManager.FireEvent("Event_GSMove_Over")
+        this.m_bRoundBefore = null
     }
 
     GSSupply_Entry() {
@@ -240,11 +260,11 @@ export class GameLoop {
         GameRules.GameConfig.m_nBaoZi = 0
 
         this.Timer(() => {
-            this.GameStateService.send("tobegin")
+            this.GameStateService.send("toRoundBefore")
             return null
         }, 0)
     }
-    
+
     GSFinished_Exit() {
         // 新的回合准备
         const oPlayer = GameRules.PlayerManager.getPlayer(GameRules.GameConfig.m_nOrderID)
@@ -259,11 +279,31 @@ export class GameLoop {
         }
     }
 
-    GSDeathClearing_Exit() {
-
-    }
     GSDeathClearing_Entry() {
+        this.setGameState(GameMessage.GS_DeathClearing)
+        print("GameState_GSDeathClearing_Entry")
+        print("=========DeathClearing=========")
+        this.Timer(() => {
+            GameRules.GameConfig.updateTimeOprt()
+            const timeOprt = GameRules.GameConfig.m_timeOprt
+            // print("timeOprt:", timeOprt)
+            if (timeOprt < 0) {
+                // 时间结束,自动操作
+                print("自动操作")
+                GameRules.GameConfig.autoOprt()
+                return
+            } else if (timeOprt == 0) {
+                EmitGlobalSound("Custom.Time.Finish")
+            } else if (0 < timeOprt && timeOprt < 51) {
+                if (timeOprt % 10 == 0)
+                    EmitGlobalSound("Custom.Time.Urgent")
+            }
+            return 0.1
+        }, 0)
+    }
 
+    GSDeathClearing_Exit() {
+        //TODO: 死亡清算?
     }
 
     /**设置当前状态*/

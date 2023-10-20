@@ -21,6 +21,9 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/units/heroes/hero_zuus/zuus_thundergods_wrath.vpcf',
             'particles/econ/items/zeus/lightning_weapon_fx/zuus_lb_cfx_il.vpcf',
             'particles/units/heroes/hero_axe/axe_battle_hunger.vpcf',
+            'soundevents/custom_sounds.vsndevts',
+            'particles/units/heroes/hero_legion_commander/legion_commander_duel_victory.vpcf',
+            
         ],
         context
     );

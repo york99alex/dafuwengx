@@ -106,7 +106,7 @@ export class Ability_lina_light_strike_array extends TSBaseAbility {
                 , player.m_eHero, this.GetCaster(), this)
             // 兵卒创建更新buff
             if (buff) {
-                buff.unUpdataBZBuffByCreate = AbilityManager.updataBZBuffByCreate(player, null, (eBZ: CDOTA_BaseNPC_BZ) => {
+                buff.unupdateBZBuffByCreate = AbilityManager.updateBZBuffByCreate(player, null, (eBZ: CDOTA_BaseNPC_BZ) => {
                     AbilityManager.setCopyBuff("modifier_Ability_lina_light_strike_array"
                         , eBZ, this.GetCaster(), this)
                 })
@@ -160,8 +160,8 @@ export class modifier_Ability_lina_light_strike_array extends BaseModifier {
     }
 
     OnDestroy(): void {
-        if ((this as any).unUpdataBZBuffByCreate) {
-            (this as any).unUpdataBZBuffByCreate()
+        if ((this as any).unupdateBZBuffByCreate) {
+            (this as any).unupdateBZBuffByCreate()
         }
     }
 

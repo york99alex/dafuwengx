@@ -12,7 +12,7 @@ import { GameRecord } from "../mode/gamerecord"
 import { HudError } from "../mode/huderror"
 import { Trade } from "../mode/trade"
 import { PathManager } from "../path/PathManager"
-import { PathDomain } from "../path/pathdomain"
+import { PathDomain } from "../path/pathsdomain/pathdomain"
 import { PathTP } from "../path/pathtp"
 import { Player, player_info } from "../player/player"
 import { PlayerManager } from "../player/playermanager"
@@ -400,39 +400,37 @@ export class GameConfig {
         print("roll default: ", nNum1, nNum2)
 
         // 平衡性算法-领地差值
-        // const difference = GameRules.PlayerManager.getMostPathCount() - GameRules.PlayerManager.getLeastPathCount()
-        // if (difference > 2) {
-        //     const randomNum = RandomInt(1, 2)
-        //     print("roll randomNum: ", randomNum)
-        //     if (randomNum === 1) {
-        //         let i = 1
-        //         const isLeastPathPlayer = GameRules.PlayerManager.isLeastPathPlayer(tabData.nPlayerID)
-        //         const isMostPathPlayer = GameRules.PlayerManager.isMostPathPlayer(tabData.nPlayerID)
-        //         while (i < 100) {
-        //             if ((isLeastPathPlayer && checkPath()) || (isMostPathPlayer && !checkPath())) {
-        //                 break
-        //             }
-        //             nNum1 = RandomInt(1, 6)
-        //             nNum2 = RandomInt(1, 6)
-        //             i++
-        //         }
-        //     }
+        const difference = GameRules.PlayerManager.getMostPathCount() - GameRules.PlayerManager.getLeastPathCount()
+        if (difference > 2) {
+            const randomNum = RandomInt(1, 2)
+            print("roll randomNum: ", randomNum)
+            if (randomNum === 1) {
+                let i = 1
+                const isLeastPathPlayer = GameRules.PlayerManager.isLeastPathPlayer(tabData.nPlayerID)
+                const isMostPathPlayer = GameRules.PlayerManager.isMostPathPlayer(tabData.nPlayerID)
+                while (i < 100) {
+                    if ((isLeastPathPlayer && checkPath()) || (isMostPathPlayer && !checkPath())) {
+                        break
+                    }
+                    nNum1 = RandomInt(1, 6)
+                    nNum2 = RandomInt(1, 6)
+                    i++
+                }
+            }
 
-        // }
+        }
 
         // 删除操作
-        this.checkOprt(tabData, true)
-        const tabOprt = {
-            nNum1: nNum1,
-            nNum2: nNum2
-        }
+        const tabOprt = this.checkOprt(tabData, true)
+        tabOprt["nNum1"] = nNum1
+        tabOprt["nNum2"] = nNum2
         // 广播玩家roll点操作
-        // GameRules.PlayerManager.broadcastOperatorFinishedMsg("S2C_GM_OperatorFinished", tabOprt)
+        GameRules.PlayerManager.broadcastMsg("GM_OperatorFinished", tabOprt)
         print("roll final: ", nNum1, nNum2)
         print("playerID", tabData.nPlayerID)
 
         // 音效
-        // EmitGlobalSound("Custom.Roll.Ing")
+        EmitGlobalSound("Custom.Roll.Ing")
 
         GameRules.GameLoop.GameStateService.send("towait")
 

@@ -120,7 +120,7 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
                                 AHMC.Damage(this.GetCaster(), v, this.GetSpecialValueFor("damage"), this.GetAbilityDamageType()
                                     , this, 1, { bIgnoreBZHuiMo: true })
                                 const nTime = this.GetSpecialValueFor("time_damage")
-                                v.AddNewModifier(this.GetCaster(), this, "modifier_Ability_pudge_rot_debuff"
+                                v.AddNewModifier(this.GetCaster(), this, modifier_Ability_pudge_rot_debuff.name
                                     , { duration: nTime })
                                 tabDamageCD[v.GetEntityIndex()] = true
                                 Timers.CreateTimer(nTime, () => {

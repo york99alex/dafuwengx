@@ -102,7 +102,7 @@ export class Ability_pudge_rot extends TSBaseAbility {
                 bMoveEnd = true
                 if (this.GetCaster().GetMana() == 0) {
                     // 魔法耗尽, 结束技能
-                    if(this.m_tabPtclID.length > 0) {
+                    if (this.m_tabPtclID.length > 0) {
                         this.OnSpellStart()
                     }
                 }
@@ -134,7 +134,7 @@ export class Ability_pudge_rot extends TSBaseAbility {
 
                 // 范围内对敌人造成伤害
                 AHMC.Damage(this.GetCaster(), enemy, nDamage, this.GetAbilityDamageType(), this)
-                enemy.AddNewModifier(this.GetCaster(), this, "modifier_Ability_pudge_rot_debuff", null)
+                enemy.AddNewModifier(this.GetCaster(), this, modifier_Ability_pudge_rot_debuff.name, null)
 
                 // 检测耗蓝
                 if (!bUseMana) {

@@ -303,7 +303,7 @@ export class TSBaseAbility extends BaseAbility {
                 }
             }
 
-            if (!this.isCanCastAtk() && oPlayer.m_bBattle) {
+            if (!this.isCanCastAtk() && oPlayer.m_bGCLD) {
                 this.m_strCastError = "AbilityError_Battle"
                 return false
             }

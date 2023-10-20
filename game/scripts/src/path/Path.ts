@@ -1,7 +1,5 @@
 import { Constant } from "../mode/constant"
 import { Player } from "../player/player"
-import { EventManager } from "../utils/eventmanager"
-import { PathManager } from "./PathManager"
 
 export class Path {
     m_nID: number 					// 路径ID
@@ -124,6 +122,16 @@ export class Path {
             if (v.entity == null) {
                 // 空位置
                 v.entity = entity
+                return v.vPos
+            }
+        }
+        return this.m_entity.GetAbsOrigin()
+    }
+
+    /**获得单位已经占用的位置 */
+    getUsedPos(entity: CDOTA_BaseNPC_Hero) {
+        for (const v of this.m_tabPos) {
+            if (entity == v.entity) {
                 return v.vPos
             }
         }

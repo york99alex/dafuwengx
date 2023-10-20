@@ -2,6 +2,7 @@ import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
 import { Player } from "../player/player"
 import { BaseAbility, BaseItem } from "../utils/dota_ts_adapter"
 import { TSBaseAbility } from "./tsBaseAbilty"
+import { modifier_fix_damage } from "../modifiers/modifier_fix_damage"
 
 export class AbilityManager {
 
@@ -21,19 +22,21 @@ export class AbilityManager {
 
     static onNPCFirstSpawned(event: GameEventProvidedProperties & NpcSpawnedEvent): void {
         const spawnedUnit = EntIndexToHScript(event.entindex as EntityIndex) as CDOTA_BaseNPC
-        // if (spawnedUnit == null) return
+        if (spawnedUnit == null) return
         // // 添加默认modifier
         // const tData = KeyValues.UnitsKv[spawnedUnit.GetUnitName()]
         // if (tData != null && tData.AmbientModifiers != null && tData.AmbientModifiers != "") {
 
         // }
 
-        // print("spawnedUnit.GetUnitName():", spawnedUnit.GetUnitName())
-        // if (spawnedUnit.GetUnitName() == "npc_dota_hero_phantom_assassin") {
-        //     const ability2 = spawnedUnit.GetAbilityByIndex(0)
-        //     print("ability2.GetAbilityName():", ability2.GetAbilityName())
-        //     DeepPrintTable(ability2.GetAbilityKeyValues())
-        // }
+        // 注册修正伤害(实现无视河道魔抗buff)
+        spawnedUnit.AddNewModifier(spawnedUnit, null, modifier_fix_damage.name, null)
+        Timers.CreateTimer(() => {
+            print("====onNPCFirstSpawned FindAllModifiers===")
+            DeepPrintTable(spawnedUnit.FindAllModifiers())
+            print("=========FindAllModifiers End============")
+        }, 0.1)
+
     }
 
     /**设置回合CD */
@@ -200,7 +203,7 @@ export class AbilityManager {
         }
     }
 
-    static updataBZBuffByCreate(player: Player, ability: BaseAbility, funOnBuffApply?: Function) {
+    static updateBZBuffByCreate(player: Player, ability: CDOTABaseAbility, funOnBuffApply?: Function) {
         // 监听兵卒创建
         function f(event: { entity: CDOTA_BaseNPC_BZ }) {
             if (event.entity.GetPlayerOwnerID() == player.m_nPlayerID) {
