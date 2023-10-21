@@ -1,7 +1,5 @@
 import { BaseModifier } from "../utils/dota_ts_adapter";
 
-
-
 export function AddModifierEvents(modifier_event: ModifierFunction, modifier: BaseModifier, hUnit: CDOTA_BaseNPC) {
     if (hUnit != null) {
         if (hUnit["tModifierEvents"] == null) {

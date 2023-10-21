@@ -58,7 +58,13 @@
         bIgnore?: boolean;
     }
 
-"Event_BZHuiMo", 
+"Event_HeroHuiMoByRound", event: { oPlayer: Player, nHuiMo: number }
+
+"Event_BZHuiMo", event: {
+                    eBz: CDOTA_BaseNPC_BZ,
+                    nHuiMoSum: number,
+                    getBaseHuiMo: Function
+                }
 
 "Event_RootedDisable", { player: this }
 
@@ -75,9 +81,9 @@
 "Event_PlayerInvisEnd", { player: this }
 
 "Event_LastCDChange", {
-                    strAbltName: strName,
-                    entity: eCaster,
-                    nCD: nCD
+                    strAbltName: string,
+                    entity: CDOTA_BaseNPC_Hero,
+                    nCD: number
                 }
 
 "Event_BZDestroy", { entity: eBZ }
@@ -119,3 +125,11 @@
         }
 
 "Event_PlayerMoveEnd", { player: Player }
+
+"dota_player_used_ability", { caster_entindex: EntityIndex, abilityname: string }
+
+"Event_LastCDChange", {
+                                    strAbltName: event.abilityname,
+                                    entity: entity,
+                                    nCD: 0
+                                }

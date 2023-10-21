@@ -377,4 +377,44 @@
 		"AbilityTextureName" "path_13"
 		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
 	}
+	"path_14" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/path/path_14"
+		"AbilityValues" {
+			"time" "1 1.5 2"
+			"chance" "25"
+		}
+		"MaxLevel" "3"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" "path_14"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
+	}
+	"path_15" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/path/path_15"
+		"AbilityValues" {
+			"gongsu" "20 50 100"
+			"yisu" "10 20 40"
+		}
+		"MaxLevel" "3"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" "path_15"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
+	}
+	"path_16" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/path/path_16"
+		"AbilityValues" {
+			"shangxian" "1 2 4"
+			"huimo" "1"
+			"huimo_bz" "10 20 40"
+			"no_mana_chance" "15 25 40"
+			"no_cd_chance" "0 20 40"
+			"spell_amp" "10 20 30"
+		}
+		"MaxLevel" "3"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" "path_16"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
+	}
 }

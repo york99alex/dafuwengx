@@ -45,7 +45,7 @@ export class modifier_path_13_mokang_L1 extends BaseModifier {
         if (this.key) {
             SetIgnoreMagicResistanceValue(this.GetParent(), null, this.key)
         }
-        this.GetParent().RemoveModifierByName("modifier_ignore_armor")
+        this.GetParent().RemoveModifierByName(modifier_ignore_armor.name)
         if (this.oPlayer) {
             for (const eBZ of this.oPlayer.m_tabBz) {
                 if (IsValidEntity(eBZ)) {

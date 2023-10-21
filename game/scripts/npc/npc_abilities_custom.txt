@@ -78,4 +78,293 @@
 			}
 		}
 	}
+	// 智力加成魔法修正
+    "ability_mana_modifier"
+    {
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "BaseClass"                     "ability_datadriven"
+
+        "Modifiers"
+        {
+            "modifier_mana_mod_1"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "1"
+                }
+            }
+            "modifier_mana_mod_2"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "2"
+                }
+            }
+            "modifier_mana_mod_4"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "4"
+                }
+            }
+            "modifier_mana_mod_8"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "8"
+                }
+            }
+            "modifier_mana_mod_16"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "16"
+                }
+            }
+            "modifier_mana_mod_32"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "32"
+                }
+            }
+            "modifier_mana_mod_64"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "64"
+                }
+            }
+            "modifier_mana_mod_128"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "128"
+                }
+            }
+            "modifier_mana_mod_256"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "256"
+                }
+            }
+            "modifier_mana_mod_512"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "512"
+                }
+            }
+            "modifier_mana_mod_neg_1"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "-1"
+                }
+            }
+            "modifier_mana_mod_neg_2"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "-2"
+                }
+            }
+            "modifier_mana_mod_neg_4"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "-4"
+                }
+            }
+            "modifier_mana_mod_neg_8"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "-8"
+                }
+            }
+            "modifier_mana_mod_neg_16"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "-16"
+                }
+            }
+            "modifier_mana_mod_neg_32"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "-32"
+                }
+            }
+            "modifier_mana_mod_neg_64"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "-64"
+                }
+            }
+            "modifier_mana_mod_neg_128"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "-128"
+                }
+            }
+            "modifier_mana_mod_neg_256"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "-256"
+                }
+            }
+            "modifier_mana_mod_neg_512"
+            {
+                "IsHidden"              "1"
+				"Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "-512"
+                }
+            }
+        }
+    }
+	// 最大魔法值修正buff
+	"mana_max"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"modifier_mana_max_mod_1"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "1"
+                }
+            }
+            "modifier_mana_max_mod_2"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "2"
+                }
+            }
+            "modifier_mana_max_mod_4"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "4"
+                }
+            }
+            "modifier_mana_max_mod_8"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "8"
+                }
+            }
+            "modifier_mana_max_mod_16"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "16"
+                }
+            }
+            "modifier_mana_max_mod_32"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "32"
+                }
+            }
+            "modifier_mana_max_mod_64"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "64"
+                }
+            }
+            "modifier_mana_max_mod_128"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "128"
+                }
+            }
+            "modifier_mana_max_mod_256"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "256"
+                }
+            }
+            "modifier_mana_max_mod_512"
+            {
+                "IsHidden"              "1"
+                "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_MANA_BONUS"    "512"
+                }
+            }
+		}
+	}
 }

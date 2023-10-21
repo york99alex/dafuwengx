@@ -23,6 +23,13 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/units/heroes/hero_axe/axe_battle_hunger.vpcf',
             'soundevents/custom_sounds.vsndevts',
             'particles/units/heroes/hero_legion_commander/legion_commander_duel_victory.vpcf',
+            'particles/econ/items/windrunner/windrunner_ti6/windrunner_spell_powershot_ti6_arc_b.vpcf',
+            'particles/econ/items/shadow_shaman/shadow_shaman_ti8/shadow_shaman_ti8_ether_shock_target_snakes.vpcf',
+            'particles/custom/path_ablt/path_ablt_nocdmana_1.vpcf',
+            'particles/custom/path_ablt/path_ablt_nocdmana_2.vpcf',
+            'particles/custom/path_ablt/path_ablt_nocdmana_21.vpcf',
+            'particles/custom/path_ablt/path_ablt_nocdmana_3.vpcf',
+            'particles/custom/path_ablt/path_ablt_nocdmana_31.vpcf',
             
         ],
         context

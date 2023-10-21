@@ -1132,6 +1132,46 @@ export class Player {
         }
     }
 
+    /**设置英雄魔法上限 */
+    setMaxMana(nValue: number) {
+        // 不影响当前魔法值
+        const nManaCur = this.m_eHero.GetMana()
+
+        // 添加修改魔法上限的buff
+        AHMC.RemoveAbilityAndModifier(this.m_eHero, "mana_max")
+        const ability = this.m_eHero.AddAbility("mana_max") as CDOTA_Ability_DataDriven
+
+        // 删除之前
+        for (const v of this.m_eHero.FindAllModifiers()) {
+            if (v.GetName().indexOf("modifier_mana_max_mod_") != -1) {
+                this.m_eHero.RemoveModifierByName(v.GetName())
+            }
+        }
+
+        // 二进制表
+        const bitTable = [512, 256, 128, 64, 32, 16, 8, 4, 2, 1]
+        // 如果有很大的数据，大于1023，那么增加N个512先干到512以下
+        if (nValue > 1023) {
+            const out_count = math.floor(nValue / 512)
+            for (let i = 1; i <= out_count; i++) {
+                ability.ApplyDataDrivenModifier(this.m_eHero, this.m_eHero, "modifier_mana_max_mod_512", null)
+            }
+            nValue -= out_count * 512
+        }
+        // 循环增加Modifier，最终增加到正确个数的Modifier
+        for (let p = 0; p < bitTable.length; p++) {
+            const val = bitTable[p]
+            const count = math.floor(nValue / val)
+            if (count >= 1) {
+                ability.ApplyDataDrivenModifier(this.m_eHero, this.m_eHero, "modifier_mana_max_mod_" + val, null)
+                nValue -= val
+            }
+        }
+
+        this.m_eHero.RemoveAbility(ability.GetAbilityName())
+        this.m_eHero.SetMana(nManaCur)
+    }
+
     /**添加当前血量 */
     addHealth(nValue: number) {
         this.m_eHero.SetHealth(this.m_eHero.GetHealth() + nValue)

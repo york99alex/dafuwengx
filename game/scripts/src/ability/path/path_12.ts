@@ -67,6 +67,7 @@ export class modifier_path_12_L1 extends BaseModifier {
         // 给玩家全部兵卒buff
         Timers.CreateTimer(0.1, () => {
             if (IsValidEntity(this) && IsValidEntity(this.GetAbility())) {
+                this.sBuffName = this.GetName()
                 for (const eBZ of this.oPlayer.m_tabBz) {
                     eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
                 }

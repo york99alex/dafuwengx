@@ -154,6 +154,7 @@ export class GameConfig {
         Filters.init()  // 过滤器
         Attribute.init()    // 兵卒属性
         ParaAdjuster.init()// 平衡性常数, 注册事件智力不加蓝
+        ParaAdjuster.SetIntToMana(0)
         GameRules.PlayerManager = new PlayerManager()    // 玩家管理模块初始化
         GameRules.PlayerManager.init()
         GameRules.PathManager = new PathManager()    // 路径管理模块初始化
