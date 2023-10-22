@@ -12,7 +12,7 @@ import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 @registerAbility()
 export class path_13_hujia extends TSBaseAbility {
     GetIntrinsicModifierName() {
-        return "modifier_" + this.GetAbilityName() + "_L" + this.GetLevel()
+        return "modifier_" + this.GetAbilityName() + "_l" + this.GetLevel()
     }
 }
 
@@ -20,7 +20,7 @@ export class path_13_hujia extends TSBaseAbility {
  * 路径技能：河道寒流减甲
  */
 @registerModifier()
-export class modifier_path_13_hujia_L1 extends BaseModifier {
+export class modifier_path_13_hujia_l1 extends BaseModifier {
     oPlayer: Player
     unUpdateBZBuffByCreate: Function
     ignore_armor: number
@@ -93,7 +93,7 @@ export class modifier_path_13_hujia_L1 extends BaseModifier {
 }
 
 @registerModifier()
-export class modifier_path_13_hujia_L2 extends modifier_path_13_hujia_L1 { }
+export class modifier_path_13_hujia_l2 extends modifier_path_13_hujia_l1 { }
 
 @registerModifier()
-export class modifier_path_13_hujia_L3 extends modifier_path_13_hujia_L1 { }
+export class modifier_path_13_hujia_l3 extends modifier_path_13_hujia_l1 { }

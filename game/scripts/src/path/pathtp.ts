@@ -1,5 +1,5 @@
 import { Constant } from "../mode/constant";
-import { GameMessage } from "../mode/gamemessage";
+import { PS_InPrison, TypeOprt } from "../mode/gamemessage";
 import { Player } from "../player/player";
 import { Path } from "./Path";
 
@@ -38,7 +38,7 @@ export class PathTP extends Path {
             // 无主之地,发送安营扎寨操作
             const tabOprt = {
                 nPlayerID: player.m_nPlayerID,
-                typeOprt: GameMessage.TypeOprt.TO_AYZZ,
+                typeOprt: TypeOprt.TO_AYZZ,
                 typePath: this.m_typePath,
                 nPathID: this.m_nID
             }
@@ -53,7 +53,7 @@ export class PathTP extends Path {
             // 敌方TP点,交过路费
             const playerOwn = GameRules.PlayerManager.getPlayer(this.m_nOwnerID)
             // 领主未进监狱
-            if (0 === (GameMessage.PS_InPrison & playerOwn.m_nPlayerState)) {
+            if (0 === (PS_InPrison & playerOwn.m_nPlayerState)) {
                 const nGold = Constant.PATH_TOLL_TP[playerOwn.m_tabMyPath[this.m_typePath].length - 1]
                 player.giveGold(nGold, playerOwn)
                 GameRules.GameConfig.showGold(playerOwn, nGold)

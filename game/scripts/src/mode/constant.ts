@@ -1,4 +1,4 @@
-import { GameMessage } from "./gamemessage"
+import { TP_DOMAIN_1, TP_DOMAIN_2, TP_DOMAIN_3, TP_DOMAIN_4, TP_DOMAIN_5, TP_DOMAIN_6, TP_DOMAIN_7, TP_DOMAIN_8, TP_TP } from "./gamemessage"
 
 export namespace Constant {
     export const TESTHELP_ALLPATH: boolean = false  // 占领全部地
@@ -120,7 +120,7 @@ export namespace Constant {
     ]
 
     // 每级兵卒等级上限
-    export const BZ_LEVELMAX = [9, 19, 25]
+    export const BZ_LEVELMAX = [, 9, 19, 25]
 
     /**每级兵卒攻城失败金币 */
     export const GCLD_GOLD = [0, 100, 200, 300]
@@ -129,15 +129,15 @@ export namespace Constant {
     export const GCLD_EXP = [0, 1, 2, 3]
 
     export const PATH_TO_PRICE = []
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_1] = 200
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_2] = 300
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_3] = 300
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_4] = 350
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_5] = 400
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_6] = 450
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_7] = 500
-    PATH_TO_PRICE[GameMessage.TP_DOMAIN_8] = 550
-    PATH_TO_PRICE[GameMessage.TP_TP] = 200
+    PATH_TO_PRICE[TP_DOMAIN_1] = 200
+    PATH_TO_PRICE[TP_DOMAIN_2] = 300
+    PATH_TO_PRICE[TP_DOMAIN_3] = 300
+    PATH_TO_PRICE[TP_DOMAIN_4] = 350
+    PATH_TO_PRICE[TP_DOMAIN_5] = 400
+    PATH_TO_PRICE[TP_DOMAIN_6] = 450
+    PATH_TO_PRICE[TP_DOMAIN_7] = 500
+    PATH_TO_PRICE[TP_DOMAIN_8] = 550
+    PATH_TO_PRICE[TP_TP] = 200
 
     /**英雄对应横幅旗帜 */
     export const HERO_TO_BANNER = {

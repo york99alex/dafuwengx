@@ -1,5 +1,5 @@
 import { CameraManage } from "../../mode/CameraManage";
-import { GameMessage } from "../../mode/gamemessage";
+import { PS_AtkHero, PS_AtkMonster, PS_InPrison, PS_Invis } from "../../mode/gamemessage";
 import { Player } from "../../player/player";
 import { AHMC } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
@@ -98,7 +98,7 @@ export class Ability_phantom_strike extends TSBaseAbility {
         // 攻击
         const typeTeam = oPlayerTarget.m_eHero.GetTeamNumber()
         oPlayerTarget.m_eHero.SetTeam(DotaTeam.BADGUYS)
-        oPlayer.setPlayerState(GameMessage.PS_AtkHero)
+        oPlayer.setPlayerState(PS_AtkHero)
         const attack_times = this.GetSpecialValueFor("attack_times")
         let i = 1
         Timers.CreateTimer(0.5, () => {
@@ -115,7 +115,7 @@ export class Ability_phantom_strike extends TSBaseAbility {
                     }
                     tEventID = null
                     oPlayerTarget.m_eHero.SetTeam(typeTeam)
-                    oPlayer.setPlayerState(-GameMessage.PS_AtkHero)
+                    oPlayer.setPlayerState(-PS_AtkHero)
                     oPlayer.moveToPath(oPlayerTarget.m_pathCur)
                 }
             }
@@ -142,10 +142,10 @@ export class Ability_phantom_strike extends TSBaseAbility {
         if (player.m_eHero == this.GetCaster()   // 自身
             || !this.checkTarget(player.m_eHero)
             || 0 < bit.band(
-                GameMessage.PS_InPrison       // 入狱
-                + GameMessage.PS_Invis          // 隐身
-                + GameMessage.PS_AtkHero
-                + GameMessage.PS_AtkMonster
+                PS_InPrison       // 入狱
+                + PS_Invis          // 隐身
+                + PS_AtkHero
+                + PS_AtkMonster
                 , player.m_nPlayerState)) {
             return false
         }

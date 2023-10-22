@@ -1,4 +1,4 @@
-import { GameMessage } from "../../mode/gamemessage";
+import { TP_DOMAIN_4 } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
@@ -11,7 +11,7 @@ import { TSBaseAbility } from "../tsBaseAbilty";
 @registerAbility()
 export class path_15 extends TSBaseAbility {
     GetIntrinsicModifierName() {
-        return "modifier_" + this.GetAbilityName() + "_L" + this.GetLevel()
+        return "modifier_" + this.GetAbilityName() + "_l" + this.GetLevel()
     }
 }
 
@@ -19,7 +19,7 @@ export class path_15 extends TSBaseAbility {
  * 路径技能：夜魇
  */
 @registerModifier()
-export class modifier_path_15_L1 extends BaseModifier {
+export class modifier_path_15_l1 extends BaseModifier {
     oPlayer: Player
     unUpdateBZBuffByCreate: Function
     tEventID: number[]
@@ -77,7 +77,7 @@ export class modifier_path_15_L1 extends BaseModifier {
             if (IsValidEntity(this) && IsValidEntity(this.GetAbility())) {
                 for (const eBZ of this.oPlayer.m_tabBz) {
                     const oBuff = eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
-                    if (oBuff && 3 == this.GetAbility().GetLevel() && GameMessage.TP_DOMAIN_4 == eBZ.m_path.m_typePath) {
+                    if (oBuff && 3 == this.GetAbility().GetLevel() && TP_DOMAIN_4 == eBZ.m_path.m_typePath) {
                         oBuff.SetStackCount(2)
                         eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), modifier_path_15_chenmo.name, {})
                     }
@@ -86,7 +86,7 @@ export class modifier_path_15_L1 extends BaseModifier {
                 this.unUpdateBZBuffByCreate = AbilityManager.updateBZBuffByCreate(this.oPlayer, this.GetAbility(), (eBZ: CDOTA_BaseNPC_BZ) => {
                     if (IsValidEntity(eBZ)) {
                         const oBuff = eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
-                        if (oBuff && 3 == this.GetAbility().GetLevel() && GameMessage.TP_DOMAIN_4 == eBZ.m_path.m_typePath) {
+                        if (oBuff && 3 == this.GetAbility().GetLevel() && TP_DOMAIN_4 == eBZ.m_path.m_typePath) {
                             oBuff.SetStackCount(2)
                             eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), modifier_path_15_chenmo.name, {})
                         }
@@ -110,13 +110,13 @@ export class modifier_path_15_L1 extends BaseModifier {
 }
 
 @registerModifier()
-export class modifier_path_15_L2 extends BaseModifier { }
+export class modifier_path_15_l2 extends modifier_path_15_l1 { }
 
 @registerModifier()
-export class modifier_path_15_L3 extends BaseModifier { }
+export class modifier_path_15_l3 extends modifier_path_15_l1 { }
 
 @registerModifier()
-export class modifier_path_15_chenmo extends BaseModifier { 
+export class modifier_path_15_chenmo extends BaseModifier {
     IsDebuff(): boolean {
         return true
     }

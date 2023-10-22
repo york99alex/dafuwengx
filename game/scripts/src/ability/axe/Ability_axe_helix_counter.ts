@@ -1,4 +1,4 @@
-import { GameMessage } from "../../mode/gamemessage";
+import { PS_AtkHero, PS_AtkMonster } from "../../mode/gamemessage";
 import { PathDomain } from "../../path/pathsdomain/pathdomain";
 import { AHMC } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
@@ -44,7 +44,7 @@ export class modifier_Ability_axe_helix_counter extends BaseModifier {
     }
 
     OnAttackLanded(event: ModifierAttackEvent): void {
-        if(event.target != this.GetParent()) {
+        if (event.target != this.GetParent()) {
             return
         }
         const ability = this.GetAbility()
@@ -77,7 +77,7 @@ export class modifier_Ability_axe_helix_counter extends BaseModifier {
             // 施法者英雄
             const oPlayer = GameRules.PlayerManager.getPlayer(caster.GetPlayerOwnerID())
             if (oPlayer) {
-                if (0 < bit.band(GameMessage.PS_AtkMonster, oPlayer.m_nPlayerState)) {
+                if (0 < bit.band(PS_AtkMonster, oPlayer.m_nPlayerState)) {
                     // 施法者打野只伤害野怪
                     tab = FindUnitsInRadius(
                         DotaTeam.NEUTRALS,
@@ -89,7 +89,7 @@ export class modifier_Ability_axe_helix_counter extends BaseModifier {
                         UnitTargetFlags.NONE,
                         FindOrder.ANY,
                         false)
-                } else if (0 < bit.band(GameMessage.PS_AtkHero, oPlayer.m_nPlayerState)) {
+                } else if (0 < bit.band(PS_AtkHero, oPlayer.m_nPlayerState)) {
                     // 施法者攻城只伤害攻城兵卒,和攻击者
                     if ((oPlayer.m_pathCur as PathDomain).m_tabENPC) {
                         tab = [event.attacker]

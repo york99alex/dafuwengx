@@ -38,8 +38,8 @@
 		"ID" "5191"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityTextureName" "phantom_assassin_phantom_strike"
-		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_TEAM_NONE"
-		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_NONE"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
 		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilitySound" "Hero_PhantomAssassin.Strike.Start"
 		"AbilityCastRange" "900 1600 2000"
@@ -292,6 +292,30 @@
 		"AbilityCastPoint" "0.4000"
 		"AbilityCastAnimation" "ACT_DOTA_CAST_ABILITY_2"
 	}
+	"Ability_BZ_zuus_lightning_bolt" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/zuus/Ability_BZ_zuus_lightning_bolt"
+		"AbilityValues" {
+			"damage" "175 225 275"
+		}
+		"MaxLevel" "3"
+		"RequiredLevel" "0"
+		"LevelsBetweenUpgrades" "10"
+		"AbilityCooldown" "100"
+		"AbilityManaCost" "1"
+		"ID" "5111"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName" "zuus_lightning_bolt"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED | DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilitySound" "Hero_Zuus.LightningBolt"
+		"AbilityCastPoint" "0.4000"
+		"AbilityCastAnimation" "ACT_DOTA_CAST_ABILITY_2"
+		"AbilityModifierSupportValue" "0.1000"
+	}
 	"Ability_axe_battle_hunger" {
 		"BaseClass" "ability_lua"
 		"ScriptFile" "ability/axe/Ability_axe_battle_hunger"
@@ -357,7 +381,7 @@
 	}
 	"path_13_hujia" {
 		"BaseClass" "ability_lua"
-		"ScriptFile" "ability/path/path_13_huija"
+		"ScriptFile" "ability/path/path_13_hujia"
 		"AbilityValues" {
 			"ignore_armor" "15 25 35"
 		}
@@ -415,6 +439,29 @@
 		"MaxLevel" "3"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName" "path_16"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
+	}
+	"path_17" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/path/path_17"
+		"AbilityValues" {
+			"jiansu" "-10 -20 -40"
+			"damage" "30"
+		}
+		"MaxLevel" "3"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" "path_17"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
+	}
+	"path_18" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/path/path_18"
+		"AbilityValues" {
+			"damage" "1000 2000 4000"
+		}
+		"MaxLevel" "3"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" "path_18"
 		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
 	}
 }

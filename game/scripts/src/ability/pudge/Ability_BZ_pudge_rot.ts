@@ -1,4 +1,4 @@
-import { GameMessage } from "../../mode/gamemessage";
+import { PS_AbilityImmune } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { AHMC } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
@@ -46,7 +46,7 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
             if (IsValidEntity(this.GetCaster().m_eAtkTarget)) {
                 this.m_eTarget = this.GetCaster().m_eAtkTarget
                 const playerTarget = GameRules.PlayerManager.getPlayer(this.m_eTarget.GetPlayerOwnerID())
-                if (playerTarget && 0 < bit.band(playerTarget.m_nPlayerState, GameMessage.PS_AbilityImmune)) {
+                if (playerTarget && 0 < bit.band(playerTarget.m_nPlayerState, PS_AbilityImmune)) {
                     return UnitFilterResult.FAIL_CUSTOM // 技能免疫
                 }
                 const event = {

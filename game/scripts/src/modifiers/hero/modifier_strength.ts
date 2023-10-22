@@ -2,7 +2,7 @@ import { Constant } from "../../mode/constant";
 import { BaseModifier, registerModifier } from "../../utils/dota_ts_adapter";
 
 @registerModifier()
-class modifier_strength extends BaseModifier {
+export class modifier_strength extends BaseModifier {
 
     IsHidden(): boolean {
         return true

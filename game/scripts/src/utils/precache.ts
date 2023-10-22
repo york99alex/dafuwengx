@@ -30,7 +30,12 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/custom/path_ablt/path_ablt_nocdmana_21.vpcf',
             'particles/custom/path_ablt/path_ablt_nocdmana_3.vpcf',
             'particles/custom/path_ablt/path_ablt_nocdmana_31.vpcf',
-            
+            'models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl',
+            'particles/neutral_fx/tornado_ambient.vpcf',
+            'particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_purification_ti6_immortal.vpcf',
+            'particles/water_impact/water_splash_03.vpcf',
+            'particles/water_impact/water_splash_02.vpcf',
+            'particles/water_impact/water_splash_01.vpcf',
         ],
         context
     );

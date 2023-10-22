@@ -1,4 +1,4 @@
-import { GameMessage } from "../mode/gamemessage";
+import { TP_MONSTER_1, TP_MONSTER_2, TP_MONSTER_3, TypeOprt } from "../mode/gamemessage";
 import { Player } from "../player/player";
 import { Path } from "./Path";
 
@@ -30,13 +30,13 @@ export class PathMonster extends Path {
         this.m_tabMonsterInfo = []
         // TODO:处理野怪类型,给m_tabMonsterInfo赋值
         switch (this.m_typePath) {
-            case GameMessage.TP_MONSTER_1:
+            case TP_MONSTER_1:
 
                 break;
-            case GameMessage.TP_MONSTER_2:
+            case TP_MONSTER_2:
 
                 break;
-            case GameMessage.TP_MONSTER_3:
+            case TP_MONSTER_3:
 
                 break;
             default:
@@ -52,16 +52,16 @@ export class PathMonster extends Path {
         if (this.m_tabEMonster.length == 0) return
 
         // 操作前处理上一个(如果有的话)
-        GameRules.GameConfig.autoOprt(GameMessage.TypeOprt.TO_AtkMonster, oPlayer)
+        GameRules.GameConfig.autoOprt(TypeOprt.TO_AtkMonster, oPlayer)
         GameRules.GameConfig.sendOprt({
             nPlayerID: oPlayer.m_nPlayerID,
-            typeOprt: GameMessage.TypeOprt.TO_AtkMonster,
+            typeOprt: TypeOprt.TO_AtkMonster,
             typePath: this.m_typePath,
             nPathID: this.m_nID
         })
         GameRules.EventManager.Register("Event_CurPathChange", (event) => {
             if (event.player == oPlayer && this != oPlayer.m_pathCur) {
-                GameRules.GameConfig.autoOprt(GameMessage.TypeOprt.TO_AtkMonster, oPlayer)
+                GameRules.GameConfig.autoOprt(TypeOprt.TO_AtkMonster, oPlayer)
             }
         })
     }
@@ -74,16 +74,16 @@ export class PathMonster extends Path {
         GameRules.EventManager.Register("Event_PlayerDie", () => this.onEvent_PlayerDie(), this)
         GameRules.EventManager.Register("Event_Atk", () => this.Event_Atk(), this)
 
-        if (this.m_typePath == GameMessage.TP_MONSTER_2
-            || this.m_typePath == GameMessage.TP_MONSTER_3) {
+        if (this.m_typePath == TP_MONSTER_2
+            || this.m_typePath == TP_MONSTER_3) {
             GameRules.EventManager.Register("Event_UpdateRound", () => {
-                if(GameRules.GameConfig.m_nRound == 5 *(this.m_typePath - GameMessage.TP_MONSTER_2 + 1)){
+                if (GameRules.GameConfig.m_nRound == 5 * (this.m_typePath - TP_MONSTER_2 + 1)) {
                     this.spawnMonster()
                     return true
                 }
             }, this)
-        }else{
-            GameRules.EventManager.Register("Event_GameStart",()=>{
+        } else {
+            GameRules.EventManager.Register("Event_GameStart", () => {
                 this.spawnMonster()
                 return true
             })
@@ -109,7 +109,7 @@ export class PathMonster extends Path {
     }
 
     /**刷新野怪 */
-    spawnMonster(){
-        
+    spawnMonster() {
+
     }
 }

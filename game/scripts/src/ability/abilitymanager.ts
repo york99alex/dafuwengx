@@ -31,12 +31,6 @@ export class AbilityManager {
 
         // 注册修正伤害(实现无视河道魔抗buff)
         spawnedUnit.AddNewModifier(spawnedUnit, null, modifier_fix_damage.name, null)
-        Timers.CreateTimer(() => {
-            print("====onNPCFirstSpawned FindAllModifiers===")
-            DeepPrintTable(spawnedUnit.FindAllModifiers())
-            print("=========FindAllModifiers End============")
-        }, 0.1)
-
     }
 
     /**设置回合CD */
@@ -280,4 +274,44 @@ export class AbilityManager {
         }
         return oBuff
     }
+}
+
+export function onAblt_yjxr(event: {
+    caster: CDOTA_BaseNPC_BZ,
+    ability: CDOTABaseAbility
+}) {
+    print("===onAblt_yjxr===")
+    let unit = event.caster
+    const ability = event.ability
+    const nGold = ability.GetGoldCost(ability.GetLevel() - 1)
+    // 升级
+    const oPlayer = GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID())
+    unit = oPlayer.setBzStarLevelUp(unit, 1)
+
+    oPlayer.setGold(-nGold)
+    // 通知UI显示花费
+    GameRules.GameConfig.showGold(oPlayer, -nGold)
+
+    // 设置游戏记录
+    // TODO: GameRecord
+}
+
+export function onAblt_xj(event: {
+    caster: CDOTA_BaseNPC_BZ,
+    ability: CDOTABaseAbility
+}) {
+    print("===onAblt_xj===")
+    let unit = event.caster
+    const ability = event.ability
+    const nGold = ability.GetGoldCost(ability.GetLevel() - 1)
+    // 降级
+    const oPlayer = GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID())
+    unit = oPlayer.setBzStarLevelUp(unit, -1)
+    // 还钱
+    oPlayer.setGold(-nGold)
+    // 通知UI显示花费
+    GameRules.GameConfig.showGold(oPlayer, -nGold)
+
+    // 设置游戏记录
+    // TODO: GameRecord
 }

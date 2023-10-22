@@ -79,3 +79,105 @@ DOTA_Tooltip_ability_Ability_axe_helix_counter_radius,半径 :,
 DOTA_Tooltip_ability_Ability_axe_helix_counter_trigger_attacks,触发次数 :,
 DOTA_Tooltip_ability_Ability_axe_helix_counter_damage,伤害 :,
 DOTA_Tooltip_Modifier_Ability_axe_helix_counter,反击螺旋,
+bz_pa_1,幻影刺客★,PA★
+bz_pa_11,幻影刺客★★,PA★★
+bz_pa_111,幻影刺客★★★,PA★★★
+bz_meepo_1,米波★,Meepo★
+bz_meepo_11,米波★★,Meepo★★
+bz_meepo_111,米波★★★,Meepo★★★
+bz_pudge_1,帕吉★,Pudge★
+bz_pudge_11,帕吉★★,Pudge★★
+bz_pudge_111,帕吉★★★,Pudge★★★
+bz_lina_1,莉娜★,Lina★
+bz_lina_11,莉娜★★,Lina★★
+bz_lina_111,莉娜★★★,Lina★★★
+bz_zuus_1,宙斯★,Zuus★
+bz_zuus_11,宙斯★★,Zuus★★
+bz_zuus_111,宙斯★★★,Zuus★★★
+bz_axe_1,斧王★,Axe★
+bz_axe_11,斧王★★,Axe★★
+bz_axe_111,斧王★★★,Axe★★★
+DOTA_Tooltip_ability_yjxr_12,养精蓄锐
+DOTA_Tooltip_ability_yjxr_12_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_12_Lore,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_12_goldcost,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_12_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_13,养精蓄锐
+DOTA_Tooltip_ability_yjxr_13_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_13_Lore,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_13_goldcost,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_13_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_14,养精蓄锐
+DOTA_Tooltip_ability_yjxr_14_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_14_Lore,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_14_goldcost,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_14_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_15,养精蓄锐
+DOTA_Tooltip_ability_yjxr_15_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_15_Lore,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_15_goldcost,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_15_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_16,养精蓄锐
+DOTA_Tooltip_ability_yjxr_16_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_16_Lore,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_16_goldcost,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_16_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_17,养精蓄锐
+DOTA_Tooltip_ability_yjxr_17_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_17_Lore,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_17_goldcost,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_17_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_18,养精蓄锐
+DOTA_Tooltip_ability_yjxr_18_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_18_Lore,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_18_goldcost,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_18_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_19,养精蓄锐
+DOTA_Tooltip_ability_yjxr_19_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_19_Lore,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_19_goldcost,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_19_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_12,解甲归田
+DOTA_Tooltip_ability_xj_12_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_12_Description,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_12_Lore,
+DOTA_Tooltip_ability_xj_12_goldcost,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_13,解甲归田
+DOTA_Tooltip_ability_xj_13_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_13_Description,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_13_Lore,
+DOTA_Tooltip_ability_xj_13_goldcost,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_14,解甲归田
+DOTA_Tooltip_ability_xj_14_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_14_Description,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_14_Lore,
+DOTA_Tooltip_ability_xj_14_goldcost,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_15,解甲归田
+DOTA_Tooltip_ability_xj_15_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_15_Description,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_15_Lore,
+DOTA_Tooltip_ability_xj_15_goldcost,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_16,解甲归田
+DOTA_Tooltip_ability_xj_16_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_16_Description,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_16_Lore,
+DOTA_Tooltip_ability_xj_16_goldcost,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_17,解甲归田
+DOTA_Tooltip_ability_xj_17_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_17_Description,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_17_Lore,
+DOTA_Tooltip_ability_xj_17_goldcost,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_18,解甲归田
+DOTA_Tooltip_ability_xj_18_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_18_Description,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_18_Lore,
+DOTA_Tooltip_ability_xj_18_goldcost,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_19,解甲归田
+DOTA_Tooltip_ability_xj_19_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_19_Description,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_19_Lore,
+DOTA_Tooltip_ability_xj_19_goldcost,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_yjxr_max,养精蓄锐
+DOTA_Tooltip_ability_yjxr_max_Description,顶级兵卒
+DOTA_Tooltip_ability_yjxr_max_Lore,我感觉人生已经到达了巅峰!!!
+DOTA_Tooltip_ability_yjxr_max_level_max,<font color='#FF0000'>封顶等级 :</font>

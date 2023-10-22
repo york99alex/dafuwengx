@@ -1,4 +1,3 @@
-export namespace GameMessage {
     //  游戏状态
     export const GS_None = 0
     export const GS_Begin = 1
@@ -154,4 +153,3 @@ export namespace GameMessage {
     export const TGameRecord_DisconnetOutTime = 26  // 掉线超时
     export const TGameRecord_InPrisonByStart = 27  // 地狱使者，开局入狱
     export const TGameRecord_String = 1000       // 纯文本记录
-}

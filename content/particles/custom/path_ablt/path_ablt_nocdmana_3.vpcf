@@ -129,7 +129,7 @@
 		},
 		
 		{
-			m_ChildRef = resource:"particles/custom/path_ablt_nocdmana_2.vpcf"
+			m_ChildRef = resource:"particles/custom/path_ablt/path_ablt_nocdmana_2.vpcf"
 			m_bDisableChild = true
 		},
 		

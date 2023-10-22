@@ -1,4 +1,4 @@
-import { GameMessage } from "../../mode/gamemessage";
+import { PS_AbilityImmune } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { AHMC } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
@@ -29,7 +29,7 @@ export class Ability_BZ_lina_dragon_slave extends TSBaseAbility {
         if (IsValidEntity((this.GetCaster() as CDOTA_BaseNPC_BZ).m_eAtkTarget)) {
             this.m_eTarget = (this.GetCaster() as CDOTA_BaseNPC_BZ).m_eAtkTarget
             const playerTarget = GameRules.PlayerManager.getPlayer(this.m_eTarget.GetPlayerOwnerID())
-            if (playerTarget && 0 < bit.band(GameMessage.PS_AbilityImmune, playerTarget.m_nPlayerState)) {
+            if (playerTarget && 0 < bit.band(PS_AbilityImmune, playerTarget.m_nPlayerState)) {
                 return UnitFilterResult.FAIL_CUSTOM     // 技能免疫
             }
             const event = {

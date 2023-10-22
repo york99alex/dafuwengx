@@ -1,11 +1,11 @@
 import { EventObject, StateMachine, createMachine, interpret } from "../utils/xstate/xstate-dota";
 import { Constant } from "./constant";
-import { GameMessage } from "./gamemessage";
+import { GS_Begin, GS_DeathClearing, GS_Finished, GS_Move, GS_None, GS_ReadyStart, GS_Wait, GS_WaitOperator, TypeOprt } from "./gamemessage";
 
 export class GameLoop {
 
     m_timeWait: number = 0
-    m_typeStateCur: number = GameMessage.GS_None
+    m_typeStateCur: number = GS_None
     m_typeStateLast: number = null
     m_thinkName: string = null
     m_bRoundBefore: boolean
@@ -99,7 +99,7 @@ export class GameLoop {
     GSNone_Exit() { }
 
     GSReadyStart_Entry() {
-        this.setGameState(GameMessage.GS_ReadyStart)
+        this.setGameState(GS_ReadyStart)
         print("GameState_GSReadyStart_Entry")
         GameRules.GameConfig.m_timeOprt = 50
         this.Timer(() => {
@@ -127,7 +127,7 @@ export class GameLoop {
     }
 
     GSReadyStart_Exit() {
-        GameRules.EventManager.FireEvent("Event_PlayerRoundBefore", { typeGameState: GameMessage.GS_Begin })
+        GameRules.EventManager.FireEvent("Event_PlayerRoundBefore", { typeGameState: GS_Begin })
     }
 
     /**玩家回合开始阶段Entry */
@@ -145,7 +145,7 @@ export class GameLoop {
     }
 
     GSBegin_Entry() {
-        this.setGameState(GameMessage.GS_Begin)
+        this.setGameState(GS_Begin)
         print("GameState_GSBegin_Entry")
         // 通知当前玩家回合开始
         const oPlayer = GameRules.PlayerManager.getPlayer(GameRules.GameConfig.m_nOrderID)
@@ -163,7 +163,7 @@ export class GameLoop {
         // 广播roll点操作
         const tabOprt = {
             nPlayerID: GameRules.GameConfig.m_nOrderID,
-            typeOprt: GameMessage.TypeOprt.TO_Roll
+            typeOprt: TypeOprt.TO_Roll
         }
         DeepPrintTable(tabOprt)
         GameRules.GameConfig.broadcastOprt(tabOprt)
@@ -182,7 +182,7 @@ export class GameLoop {
     GSBegin_Exit() { }
 
     GSWaitOprt_Entry() {
-        this.setGameState(GameMessage.GS_WaitOperator)
+        this.setGameState(GS_WaitOperator)
         print("GameState_GSWaitOprt_Entry")
         this.Timer(() => {
             GameRules.GameConfig.updateTimeOprt()
@@ -199,7 +199,7 @@ export class GameLoop {
                 if (timeOprt % 10 == 0) {
                     EmitGlobalSound("Custom.Time.Urgent")
                     // 默认自动操作roll点
-                    GameRules.GameConfig.autoOprt(GameMessage.TypeOprt.TO_Roll)
+                    GameRules.GameConfig.autoOprt(TypeOprt.TO_Roll)
                 }
             }
             return 0.1
@@ -212,12 +212,12 @@ export class GameLoop {
     }
 
     GSWait_Entry() {
-        this.setGameState(GameMessage.GS_Wait)
+        this.setGameState(GS_Wait)
         print("GameState_GSWait_Entry")
         this.m_timeWait = 100
         Timers.CreateTimer(0, () => {
             print(this.m_timeWait -= 1)
-            if (this.m_typeStateCur != GameMessage.GS_Wait || this.m_timeWait <= 0) {
+            if (this.m_typeStateCur != GS_Wait || this.m_timeWait <= 0) {
                 // wait超时，回到上个操作
                 this.GameStateService.send("towaitopr")
                 return
@@ -232,7 +232,7 @@ export class GameLoop {
 
     GSMove_Entry() {
         this.m_bRoundBefore = true
-        this.setGameState(GameMessage.GS_Move)
+        this.setGameState(GS_Move)
         print("GameState_GSMove_Entry")
     }
 
@@ -250,7 +250,7 @@ export class GameLoop {
     }
 
     GSFinished_Entry() {
-        this.setGameState(GameMessage.GS_Finished)
+        this.setGameState(GS_Finished)
         print("GameState_GSFinished_Entry")
         const oPlayer = GameRules.PlayerManager.getPlayer(GameRules.GameConfig.m_nOrderID)
         oPlayer.setRoundFinished(true)
@@ -275,12 +275,12 @@ export class GameLoop {
         }
 
         if (isBegin) {
-            GameRules.EventManager.FireEvent("Event_PlayerRoundBefore", { typeGameState: GameMessage.GS_Begin })
+            GameRules.EventManager.FireEvent("Event_PlayerRoundBefore", { typeGameState: GS_Begin })
         }
     }
 
     GSDeathClearing_Entry() {
-        this.setGameState(GameMessage.GS_DeathClearing)
+        this.setGameState(GS_DeathClearing)
         print("GameState_GSDeathClearing_Entry")
         print("=========DeathClearing=========")
         this.Timer(() => {

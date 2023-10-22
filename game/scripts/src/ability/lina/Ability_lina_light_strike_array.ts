@@ -1,4 +1,4 @@
-import { GameMessage } from "../../mode/gamemessage";
+import { PS_AbilityImmune, PS_AtkMonster, PS_Die, PS_InPrison } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
 import { AHMC } from "../../utils/amhc";
@@ -84,7 +84,7 @@ export class Ability_lina_light_strike_array extends TSBaseAbility {
         GameRules.PlayerManager.findRangePlayer(tabPlayer, this.m_pathTarget, nRange, null, (player: Player) => {
             if (player == oPlayer
                 || !this.checkTarget(player.m_eHero)
-                || 0 < bit.band(GameMessage.PS_AbilityImmune + GameMessage.PS_Die + GameMessage.PS_InPrison + GameMessage.PS_AtkMonster, player.m_nPlayerState)) {
+                || 0 < bit.band(PS_AbilityImmune + PS_Die + PS_InPrison + PS_AtkMonster, player.m_nPlayerState)) {
                 return false
             }
             return true

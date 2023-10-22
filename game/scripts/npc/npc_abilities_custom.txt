@@ -25,6 +25,24 @@
 		}
 	}
 
+	"no_bar"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"modifier_no_bar"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+
 	"magic_immune"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -56,6 +74,24 @@
 				"States"
 				{
 					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+
+	"no_all_select"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"modifier_no_all_select"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}
@@ -365,6 +401,433 @@
                     "MODIFIER_PROPERTY_MANA_BONUS"    "512"
                 }
             }
+		}
+	}
+
+    //===========================================
+	// 路径兵卒升级(yjxr),降级(xj)技能
+	//===========================================
+    "yjxr_12"
+	{
+		"BaseClass" 				"ability_lua"
+		"ScriptFile"				"ability/yjxr/yjxr_12"
+		"AbilityTextureName"		"a_yjxr"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"500 1000"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"500 1000"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+	}
+	"yjxr_13"
+	{
+		"BaseClass" 				"ability_lua"
+		"ScriptFile"				"ability/yjxr/yjxr_13"
+		"AbilityTextureName"		"a_yjxr"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"1000 1500"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"1000 1500"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+	}
+	"yjxr_14"
+	{
+		"BaseClass" 				"ability_lua"
+		"ScriptFile"				"ability/yjxr/yjxr_14"
+		"AbilityTextureName"		"a_yjxr"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"500 1000"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"500 1000"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+	}
+	"yjxr_15"
+	{
+		"BaseClass" 				"ability_lua"
+		"ScriptFile"				"ability/yjxr/yjxr_15"
+		"AbilityTextureName"		"a_yjxr"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"500 1000"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"500 1000"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+	}
+	"yjxr_16"
+	{
+		"BaseClass" 				"ability_lua"
+		"ScriptFile"				"ability/yjxr/yjxr_16"
+		"AbilityTextureName"		"a_yjxr"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"500 1000"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"500 1000"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+
+	}
+	"yjxr_17"
+	{
+		"BaseClass" 				"ability_lua"
+		"ScriptFile"				"ability/yjxr/yjxr_17"
+		"AbilityTextureName"		"a_yjxr"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"500 1000"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"500 1000"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+	}
+	"yjxr_18"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"ability/yjxr/yjxr_18"
+		"AbilityTextureName"		"a_yjxr"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"1000 2000"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"1000 2000"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+	}
+	"xj_12"
+	{
+		"BaseClass" 				"ability_lua"
+		"ScriptFile"				"ability/xj/xj_12"
+		"AbilityTextureName"		"a_xj"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"0 -250 -500"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"0 250 500"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+	}
+	"xj_13"
+	{
+		"BaseClass" 				"ability_lua"
+		"ScriptFile"				"ability/xj/xj_13"
+		"AbilityTextureName"		"a_xj"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"0 -500 -750"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"0 500 750"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+	}
+	"xj_14"
+	{
+		"BaseClass" 				"ability_lua"
+		"ScriptFile"				"ability/xj/xj_14"
+		"AbilityTextureName"		"a_xj"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"0 -250 -500"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"0 250 500"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+	}
+	"xj_15"
+	{
+		"BaseClass" 				"ability_lua"
+		"ScriptFile"				"ability/xj/xj_15"
+		"AbilityTextureName"		"a_xj"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"0 -250 -500"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"0 250 500"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+	}
+	"xj_16"
+	{
+		"BaseClass" 				"ability_lua"
+		"ScriptFile"				"ability/xj/xj_16"
+		"AbilityTextureName"		"a_xj"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"0 -250 -500"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"0 250 500"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+	}
+	"xj_17"
+	{
+		"BaseClass" 				"ability_lua"
+		"ScriptFile"				"ability/xj/xj_17"
+		"AbilityTextureName"		"a_xj"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"0 -250 -500"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"0 250 500"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+	}
+	"xj_18"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"ability/xj/xj_18"
+		"AbilityTextureName"		"a_xj"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"MaxLevel"					"3"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCooldown"			"0.2"
+		"AbilityManaCost"			"0"
+		"AbilityGoldCost"			"0 -500 -1000"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goldcost"			"0 500 1000"
+			}
+		}
+
+		"AbilitySound"				"Hero_Omniknight.GuardianAngel"
+	}
+	"yjxr_max"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"a_yjxr_max"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"				"3"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"level_max"				"9 19 25"
+			}
 		}
 	}
 }

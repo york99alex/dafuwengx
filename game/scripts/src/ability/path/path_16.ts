@@ -1,4 +1,3 @@
-import { GameMessage } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
 import { AHMC } from "../../utils/amhc";
@@ -12,7 +11,7 @@ import { TSBaseAbility } from "../tsBaseAbilty";
 @registerAbility()
 export class path_16 extends TSBaseAbility {
     GetIntrinsicModifierName() {
-        return "modifier_" + this.GetAbilityName() + "_L" + this.GetLevel()
+        return "modifier_" + this.GetAbilityName() + "_l" + this.GetLevel()
     }
 }
 
@@ -20,7 +19,7 @@ export class path_16 extends TSBaseAbility {
  * 路径技能：龙谷
  */
 @registerModifier()
-export class modifier_path_16_L1 extends BaseModifier {
+export class modifier_path_16_l1 extends BaseModifier {
     oPlayer: Player
     unUpdateBZBuffByCreate: Function
     tEventID: number[]
@@ -178,8 +177,8 @@ export class modifier_path_16_L1 extends BaseModifier {
 }
 
 @registerModifier()
-export class modifier_path_16_L2 extends BaseModifier {}
+export class modifier_path_16_l2 extends modifier_path_16_l1 {}
 
 @registerModifier()
-export class modifier_path_16_L3 extends BaseModifier {}
+export class modifier_path_16_l3 extends modifier_path_16_l1 {}
 

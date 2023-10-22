@@ -1,4 +1,4 @@
-import { GameMessage } from "../mode/gamemessage"
+import { GS_DeathClearing, GS_Move, GS_Supply, GS_Wait, PS_AtkHero, PS_Die, PS_InPrison } from "../mode/gamemessage"
 import { Path } from "../path/Path"
 import { PathManager } from "../path/PathManager"
 import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
@@ -51,9 +51,6 @@ export class TSBaseAbility extends BaseAbility {
                 }
             }
         }
-        print("===TSBaseAbility.constructor===")
-        DeepPrintTable(this.m_tBaseManaCost)
-        DeepPrintTable(this.m_tBaseCooldown)
     }
 
     /**
@@ -268,22 +265,22 @@ export class TSBaseAbility extends BaseAbility {
                 return false
             }
             // 移动阶段不能施法
-            if (!this.isCanCastMove() && GameRules.GameConfig.m_typeState == GameMessage.GS_Move) {
+            if (!this.isCanCastMove() && GameRules.GameConfig.m_typeState == GS_Move) {
                 this.m_strCastError = "AbilityError_Move"
                 return false
             }
             // 补给阶段不能施法
-            if (!this.isCanCastSupply() && GameRules.GameConfig.m_typeState == GameMessage.GS_Supply) {
+            if (!this.isCanCastSupply() && GameRules.GameConfig.m_typeState == GS_Supply) {
                 this.m_strCastError = "AbilityError_Supply"
                 return false
             }
             // 亡国阶段不能施法
-            if (GameRules.GameConfig.m_typeState == GameMessage.GS_DeathClearing) {
+            if (GameRules.GameConfig.m_typeState == GS_DeathClearing) {
                 this.m_strCastError = "AbilityError_DeathClearing"
                 return false
             }
             // 等待阶段不能施法
-            if (GameRules.GameConfig.m_typeState == GameMessage.GS_Wait) {
+            if (GameRules.GameConfig.m_typeState == GS_Wait) {
                 this.m_strCastError = "AbilityError_Wait"
                 return false
             }
@@ -292,12 +289,12 @@ export class TSBaseAbility extends BaseAbility {
             const oPlayer = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID())
             if (oPlayer != null) {
                 // 在监狱不能施法
-                if (!this.isCanCastInPrison() && (GameMessage.PS_InPrison & oPlayer.m_nPlayerState) > 0) {
+                if (!this.isCanCastInPrison() && (PS_InPrison & oPlayer.m_nPlayerState) > 0) {
                     this.m_strCastError = "AbilityError_InPrison"
                     return false
                 }
                 // 在英雄攻击时不能施法
-                if (!this.isCanCastHeroAtk() && (GameMessage.PS_AtkHero & oPlayer.m_nPlayerState) > 0) {
+                if (!this.isCanCastHeroAtk() && (PS_AtkHero & oPlayer.m_nPlayerState) > 0) {
                     this.m_strCastError = "AbilityError_Battle"
                     return false
                 }
@@ -333,11 +330,11 @@ export class TSBaseAbility extends BaseAbility {
         const oPlayer = GameRules.PlayerManager.getPlayer(eTarget.GetPlayerOwnerID())
         if (oPlayer) {
             // 目标死亡
-            if ((oPlayer.m_nPlayerState & GameMessage.PS_Die) > 0) {
+            if ((oPlayer.m_nPlayerState & PS_Die) > 0) {
                 return false
             }
             // 目标在监狱
-            if ((oPlayer.m_nPlayerState & GameMessage.PS_InPrison) > 0) {
+            if ((oPlayer.m_nPlayerState & PS_InPrison) > 0) {
                 this.m_strCastError = "AbilityError_InPrison"
                 return false
             }
@@ -352,7 +349,7 @@ export class TSBaseAbility extends BaseAbility {
                 // 不能是英雄
                 this.m_strCastError = "AbilityError_HeroCant"
             }
-        } else if ((eTarget as any).m_bBZ) {
+        } else if (!eTarget.IsRealHero()) {
             // 兵卒
             if (!this.isCanCastBZ()) {
                 this.m_strCastError = "AbilityError_BZCant"

@@ -1,4 +1,11 @@
 import { KeyValues } from "../kv"
+import { modifier_agility } from "../modifiers/hero/modifier_agility"
+import { modifier_base_agility } from "../modifiers/hero/modifier_base_agility"
+import { modifier_base_intellect } from "../modifiers/hero/modifier_base_intellect"
+import { modifier_base_strength } from "../modifiers/hero/modifier_base_strength"
+import { modifier_intellect } from "../modifiers/hero/modifier_intellect"
+import { modifier_primary_attribute } from "../modifiers/hero/modifier_primary_attribute"
+import { modifier_strength } from "../modifiers/hero/modifier_strength"
 import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
 
 const tPrimaryAttributes = {
@@ -44,15 +51,15 @@ export class Attribute {
         hUnit.fIntellect = hUnit.fBaseIntellect
         hUnit.fIntellectGain = tData.AttributeIntelligenceGain ?? 0
 
-        hUnit.hStrModifier = hUnit.AddNewModifier(hUnit, null, "modifier_strength", { duration: hUnit.fStrengthGain })
-        hUnit.hAgiModifier = hUnit.AddNewModifier(hUnit, null, "modifier_agility", { duration: hUnit.fAgilityGain })
-        hUnit.hIntModifier = hUnit.AddNewModifier(hUnit, null, "modifier_intellect", { duration: hUnit.fIntellectGain })
+        hUnit.hStrModifier = hUnit.AddNewModifier(hUnit, null, modifier_strength.name, { duration: hUnit.fStrengthGain })
+        hUnit.hAgiModifier = hUnit.AddNewModifier(hUnit, null, modifier_agility.name, { duration: hUnit.fAgilityGain })
+        hUnit.hIntModifier = hUnit.AddNewModifier(hUnit, null, modifier_intellect.name, { duration: hUnit.fIntellectGain })
 
-        hUnit.hBaseStrModifier = hUnit.AddNewModifier(hUnit, null, "modifier_base_strength", null)
-        hUnit.hBaseAgiModifier = hUnit.AddNewModifier(hUnit, null, "modifier_base_agility", null)
-        hUnit.hBaseIntModifier = hUnit.AddNewModifier(hUnit, null, "modifier_base_intellect", null)
+        hUnit.hBaseStrModifier = hUnit.AddNewModifier(hUnit, null, modifier_base_strength.name, null)
+        hUnit.hBaseAgiModifier = hUnit.AddNewModifier(hUnit, null, modifier_base_agility.name, null)
+        hUnit.hBaseIntModifier = hUnit.AddNewModifier(hUnit, null, modifier_base_intellect.name, null)
 
-        hUnit.hPrimaryAttributeModifier = hUnit.AddNewModifier(hUnit, null, "modifier_primary_attribute", null)
+        hUnit.hPrimaryAttributeModifier = hUnit.AddNewModifier(hUnit, null, modifier_primary_attribute.name, null)
         hUnit.hPrimaryAttributeModifier.SetStackCount(hUnit.nPrimaryAttribute)
 
         hUnit.GetPrimaryAttribute = function (this) {

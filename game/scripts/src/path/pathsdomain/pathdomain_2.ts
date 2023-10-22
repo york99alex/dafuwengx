@@ -5,10 +5,6 @@ import { PathDomain } from "./pathdomain";
 /**领土路径-河道 */
 export class PathDomain_2 extends PathDomain {
 
-    constructor(entity: CBaseEntity) {
-        super(entity)
-    }
-
     /**计算玩家领地buff等级 */
     getPathBuffLevel(oPlayer: Player): number {
         // 兵卒几级就几级

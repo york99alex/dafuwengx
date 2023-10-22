@@ -27,14 +27,14 @@ export interface CDOTA_BaseNPC_BZ extends CDOTA_BaseNPC_Hero {
     ModifyAgility(newAgility: number, bIsBase?: boolean): void
     ModifyIntellect(newIntellect: number, bIsBase?: boolean): void
 
-    get06ItemByName(sName: string, itemIgnore?):CDOTA_Item
-    get09ItemByName(sName: string, itemIgnore?):CDOTA_Item
+    get06ItemByName(sName: string, itemIgnore?): CDOTA_Item
+    get09ItemByName(sName: string, itemIgnore?): CDOTA_Item
 }
 /**自定义兵卒类,继承CDOTA_BaseNPC */
 export class CDOTA_BaseNPC_BZ {
     m_path: PathDomain
     m_eAtkTarget: CDOTA_BaseNPC_Hero
-    m_bAbltBZ: BaseAbility
+    m_bAbltBZ: CDOTABaseAbility
     m_bBattle: boolean
     m_tabAtker: CDOTA_BaseNPC_Hero[]
     _ctrlBzAtk_thinkID: string

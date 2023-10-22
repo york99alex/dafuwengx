@@ -1,7 +1,7 @@
 import { BaseModifier, registerModifier } from "../../utils/dota_ts_adapter";
 
 @registerModifier()
-class modifier_base_agility extends BaseModifier {
+export class modifier_base_agility extends BaseModifier {
 
     IsHidden(): boolean {
         return true

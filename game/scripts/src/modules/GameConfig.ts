@@ -7,7 +7,7 @@ import { Auction } from "../mode/auction"
 import { Constant } from "../mode/constant"
 import { DeathClearing } from "../mode/deathclearing"
 import { Filters } from "../mode/filters"
-import { GameMessage } from "../mode/gamemessage"
+import { GS_DeathClearing, GS_Finished, GS_Move, GS_None, GS_ReadyStart, GS_Wait, GS_WaitOperator, PS_AtkMonster, PS_InPrison, TBuyItem_SideAndSecret, TGameRecord_AYZZ, TypeOprt } from "../mode/gamemessage"
 import { GameRecord } from "../mode/gamerecord"
 import { HudError } from "../mode/huderror"
 import { Trade } from "../mode/trade"
@@ -25,7 +25,7 @@ import { reloadable } from "../utils/tstl-utils"
 export class GameConfig {
 
     _DotaState: []
-    m_typeState = GameMessage.GS_None //游戏状态
+    m_typeState = GS_None //游戏状态
     m_nGameID = -1 // 比赛编号
     m_nOrderID: PlayerID = -1 // 当前操作玩家ID
     m_nOrderFirst: PlayerID = -1 // 首操作玩家ID
@@ -180,8 +180,8 @@ export class GameConfig {
 
     /**更新回合操作时限 */
     updateTimeOprt() {
-        if (this.m_typeState === GameMessage.GS_ReadyStart
-            || this.m_typeState === GameMessage.GS_WaitOperator) {
+        if (this.m_typeState === GS_ReadyStart
+            || this.m_typeState === GS_WaitOperator) {
             this.m_timeOprt -= 1
             // 每一秒更新到网表
             if (this.m_timeOprt % 10 == 0) {
@@ -253,7 +253,7 @@ export class GameConfig {
     skipRoll(nPlayerID: number) {
         print("nPlayerID: ", nPlayerID, "  skipRoll~~~~~~~~~~~~~~~~~~~~")
         const tabOprt = {
-            typeOprt: GameMessage.TypeOprt.TO_Roll,
+            typeOprt: TypeOprt.TO_Roll,
             PlayerID: nPlayerID,
             nPlayerID: nPlayerID,
             nNum1: 0,
@@ -264,7 +264,7 @@ export class GameConfig {
             GameRules.PlayerManager.broadcastMsg("GM_OperatorFinished", tabOprt)
             // 发送操作, 完成回合
             GameRules.GameConfig.broadcastOprt({
-                typeOprt: GameMessage.TypeOprt.TO_Finish,
+                typeOprt: TypeOprt.TO_Finish,
                 nPlayerID: nPlayerID,
             })
             DeepPrintTable(this.m_tabOprtCan)
@@ -316,41 +316,41 @@ export class GameConfig {
             return
         }
 
-        if (tabData.typeOprt > GameMessage.TypeOprt.TO_Free) {
-            if (tabData.typeOprt == GameMessage.TypeOprt.TO_ZBMM) { }
-            else if (tabData.typeOprt == GameMessage.TypeOprt.TO_XJGT) { }
-            else if (tabData.typeOprt == GameMessage.TypeOprt.TO_TRADE) {
+        if (tabData.typeOprt > TypeOprt.TO_Free) {
+            if (tabData.typeOprt == TypeOprt.TO_ZBMM) { }
+            else if (tabData.typeOprt == TypeOprt.TO_XJGT) { }
+            else if (tabData.typeOprt == TypeOprt.TO_TRADE) {
                 GameRules.EventManager.FireEvent(Trade.EvtID.Event_TO_TRADE, tabData)
-            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_TRADE_BE) {
+            } else if (tabData.typeOprt == TypeOprt.TO_TRADE_BE) {
                 GameRules.EventManager.FireEvent(Trade.EvtID.Event_TO_TRADE_BE, tabData)
-            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_SendAuction) {
+            } else if (tabData.typeOprt == TypeOprt.TO_SendAuction) {
                 GameRules.EventManager.FireEvent(Auction.EvtID.Event_TO_SendAuction, tabData)
-            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_BidAuction) {
+            } else if (tabData.typeOprt == TypeOprt.TO_BidAuction) {
                 GameRules.EventManager.FireEvent(Auction.EvtID.Event_TO_BidAuction, tabData)
-            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_UseCard) {
+            } else if (tabData.typeOprt == TypeOprt.TO_UseCard) {
                 GameRules.EventManager.FireEvent(CardManager.EvtID.Event_CardUseRequest, tabData)
             } else {
                 // 
             }
             // } else {
         } else if (this.checkOprt(tabData) != false) {
-            if (tabData.typeOprt == GameMessage.TypeOprt.TO_Finish) {
+            if (tabData.typeOprt == TypeOprt.TO_Finish) {
                 this.processFinish(tabData)
-            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_Roll) {
+            } else if (tabData.typeOprt == TypeOprt.TO_Roll) {
                 this.processRoll(tabData)
-            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_AYZZ) {
+            } else if (tabData.typeOprt == TypeOprt.TO_AYZZ) {
                 this.processAYZZ(tabData)
-            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_GCLD) {
+            } else if (tabData.typeOprt == TypeOprt.TO_GCLD) {
                 this.processGCLD(tabData)
-            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_TP) {
+            } else if (tabData.typeOprt == TypeOprt.TO_TP) {
                 this.processTP(tabData)
-            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_PRISON_OUT) {
+            } else if (tabData.typeOprt == TypeOprt.TO_PRISON_OUT) {
                 this.processPrisonOut(tabData)
-            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_DeathClearing) {
+            } else if (tabData.typeOprt == TypeOprt.TO_DeathClearing) {
                 GameRules.EventManager.FireEvent(DeathClearing.EvtID.Event_TO_DeathClearing, tabData)
-            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_Supply) {
+            } else if (tabData.typeOprt == TypeOprt.TO_Supply) {
                 // Supply
-            } else if (tabData.typeOprt == GameMessage.TypeOprt.TO_AtkMonster) {
+            } else if (tabData.typeOprt == TypeOprt.TO_AtkMonster) {
                 this.processAtkMonster(tabData)
             }
         }
@@ -359,8 +359,8 @@ export class GameConfig {
     /**处理回合结束 */
     processFinish(tabData: { nPlayerID: number, typeOprt: number }) {
         print("processFinish====")
-        if (this.m_typeState == GameMessage.GS_Move) return
-        if (this.m_typeState == GameMessage.GS_Wait) return
+        if (this.m_typeState == GS_Move) return
+        if (this.m_typeState == GS_Wait) return
 
         GameRules.GameLoop.Timer(() => {
             GameRules.GameLoop.GameStateService.send("tofinished")
@@ -377,16 +377,16 @@ export class GameConfig {
 
     /**处理roll点 */
     processRoll(tabData: { nPlayerID: number, typeOprt: number }) {
-        if (this.m_typeState == GameMessage.GS_Move) return
-        if (this.m_typeState == GameMessage.GS_Wait) return
+        if (this.m_typeState == GS_Move) return
+        if (this.m_typeState == GS_Wait) return
 
         const oPlayer = GameRules.PlayerManager.getPlayer(tabData.nPlayerID)
-        const bInPrison: boolean = 0 < (GameMessage.PS_InPrison & oPlayer.m_nPlayerState)
+        const bInPrison: boolean = 0 < (PS_InPrison & oPlayer.m_nPlayerState)
 
         // 有tp和攻城跳过
-        this.autoOprt(GameMessage.TypeOprt.TO_TP)
-        this.autoOprt(GameMessage.TypeOprt.TO_GCLD)
-        this.autoOprt(GameMessage.TypeOprt.TO_AtkMonster)
+        this.autoOprt(TypeOprt.TO_TP)
+        this.autoOprt(TypeOprt.TO_GCLD)
+        this.autoOprt(TypeOprt.TO_AtkMonster)
 
         let nNum1 = RandomInt(1, 6), nNum2 = RandomInt(1, 6)
 
@@ -500,7 +500,7 @@ export class GameConfig {
             this.showGold(oPlayer, -oPath.m_nPrice)
 
             // 设置游戏记录
-            GameRecord.setGameRecord(GameMessage.TGameRecord_AYZZ, tabOprt.nPlayerID, {
+            GameRecord.setGameRecord(TGameRecord_AYZZ, tabOprt.nPlayerID, {
                 strPathName: "PathName_" + tabOprt.nPathID,
                 nGold: oPath.m_nPrice
             })
@@ -544,12 +544,12 @@ export class GameConfig {
                 } else if (path.m_tabENPC && AHMC.IsValid(path.m_tabENPC[0]) && path.m_tabENPC[0].IsStunned()) {
                     HudError.FireLocalizeError(tabData.nPlayerID, "Error_CantGCLD_Stunned")
                     return 4    // 目标眩晕
-                } else if (GameRules.GameConfig.m_typeState == GameMessage.GS_Wait) {
+                } else if (GameRules.GameConfig.m_typeState == GS_Wait) {
                     HudError.FireLocalizeError(tabData.nPlayerID, "LuaAbilityError_Wait")
                     return 5    // 等待中
                 }
                 const playerBe = GameRules.PlayerManager.getPlayer(path.m_nOwnerID)
-                if (playerBe && 0 < bit.band(GameMessage.PS_InPrison, playerBe.m_nPlayerState)) {
+                if (playerBe && 0 < bit.band(PS_InPrison, playerBe.m_nPlayerState)) {
                     HudError.FireLocalizeError(tabData.nPlayerID, "Error_CantGCLD_InPrison")
                     return 6    // 在监狱
                 }
@@ -596,29 +596,29 @@ export class GameConfig {
             if ((typeOprt == null || v.typeOprt == typeOprt)    // 指定操作
                 && (oPlayer == null || v.nPlayerID == oPlayer.m_nPlayerID)) {
                 print("验证操作")
-                if (GameMessage.TypeOprt.TO_Finish == v.typeOprt) {
+                if (TypeOprt.TO_Finish == v.typeOprt) {
                     // 结束回合
                     v.nRequest = 1
-                } else if (GameMessage.TypeOprt.TO_Roll == v.typeOprt) {
+                } else if (TypeOprt.TO_Roll == v.typeOprt) {
                     // roll点
                     v.nRequest = 1
-                } else if (GameMessage.TypeOprt.TO_AYZZ == v.typeOprt) {
+                } else if (TypeOprt.TO_AYZZ == v.typeOprt) {
                     // 安营扎寨，默认不
                     v.nRequest = 0
-                } else if (GameMessage.TypeOprt.TO_GCLD == v.typeOprt) {
+                } else if (TypeOprt.TO_GCLD == v.typeOprt) {
                     // 攻城略地，默认不
                     v.nRequest = 0
-                } else if (GameMessage.TypeOprt.TO_TP == v.typeOprt) {
+                } else if (TypeOprt.TO_TP == v.typeOprt) {
                     // TP传送，默认不
                     v.nRequest = 0
-                } else if (GameMessage.TypeOprt.TO_PRISON_OUT == v.typeOprt) {
+                } else if (TypeOprt.TO_PRISON_OUT == v.typeOprt) {
                     // 出狱，默认不买活
                     v.nRequest = 0
-                } else if (GameMessage.TypeOprt.TO_DeathClearing == v.typeOprt) {
+                } else if (TypeOprt.TO_DeathClearing == v.typeOprt) {
                     v.nRequest = 1
-                } else if (GameMessage.TypeOprt.TO_AtkMonster == v.typeOprt) {
+                } else if (TypeOprt.TO_AtkMonster == v.typeOprt) {
                     v.nRequest = 0
-                } else if (GameMessage.TypeOprt.TO_RandomCard == v.typeOprt) {
+                } else if (TypeOprt.TO_RandomCard == v.typeOprt) {
                     v.nRequest = 0
                 }
 
@@ -707,15 +707,15 @@ export class GameConfig {
 
         // 剩余操作出来
         if (this.m_nOrderID == event.player.m_nPlayerID
-            && this.m_typeState != GameMessage.GS_DeathClearing) {
+            && this.m_typeState != GS_DeathClearing) {
             // 移除操作
             for (let i = 0; i < this.m_tabOprtCan.length; i++) {
                 this.m_tabOprtCan = this.m_tabOprtCan.filter(v =>
                     v.nPlayerID !== event.player.m_nPlayerID)
             }
             if (nAlive > 1) {
-                if (GameRules.GameLoop.m_typeStateCur != GameMessage.GS_ReadyStart) {
-                    GameRules.GameLoop.setGameState(GameMessage.GS_Finished)
+                if (GameRules.GameLoop.m_typeStateCur != GS_ReadyStart) {
+                    GameRules.GameLoop.setGameState(GS_Finished)
                 }
             }
         }
@@ -789,8 +789,8 @@ export class GameConfig {
         oPlayer.moveToPath(pathDes, (bSuccess: boolean) => {
             print("this.m_typeState:", this.m_typeState)
             // 触发移动结束事件
-            if (this.m_typeState === GameMessage.GS_Move ||
-                this.m_typeState === GameMessage.GS_DeathClearing) {
+            if (this.m_typeState === GS_Move ||
+                this.m_typeState === GS_DeathClearing) {
                 // GSMOVE_Exit()结束移动
                 GameRules.GameLoop.Timer(() => {
                     GameRules.GameLoop.GameStateService.send("towaitoprt")
@@ -807,10 +807,10 @@ export class GameConfig {
             // 判断豹子触发
             GameRules.EventManager.FireEvent("Event_RollBaoZiJudge", { player: event.player })
             if (!event.bIgnore && event.nNum1 == event.nNum2 &&
-                (oPlayer.m_nPlayerState & (GameMessage.PS_InPrison | GameMessage.PS_AtkMonster)) === 0) {
+                (oPlayer.m_nPlayerState & (PS_InPrison | PS_AtkMonster)) === 0) {
                 // 豹子,发送roll点操作
                 this.broadcastOprt({
-                    typeOprt: GameMessage.TypeOprt.TO_Roll,
+                    typeOprt: TypeOprt.TO_Roll,
                     bPrison: tonumber(Constant.PRISON_BAOZI_COUNT - 1 == this.m_nBaoZi),
                     nPlayerID: oPlayer.m_nPlayerID
                 })
@@ -823,7 +823,7 @@ export class GameConfig {
 
             // 发送操作,完成回合
             this.broadcastOprt({
-                typeOprt: GameMessage.TypeOprt.TO_Finish,
+                typeOprt: TypeOprt.TO_Finish,
                 nPlayerID: oPlayer.m_nPlayerID
             })
         })
@@ -909,7 +909,7 @@ export class GameConfig {
         if (this.m_nRound == Constant.GLOBAL_SHOP_ROUND) {
             // 遍历GameRules.Playermanager.m_tabPlayers
             GameRules.PlayerManager.m_tabPlayers.forEach((oPlayer) => {
-                oPlayer.setBuyState(GameMessage.TBuyItem_SideAndSecret, -1)
+                oPlayer.setBuyState(TBuyItem_SideAndSecret, -1)
             })
         }
         return true

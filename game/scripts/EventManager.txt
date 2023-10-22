@@ -22,7 +22,7 @@
 
 "Event_GameStart"
 
-"Event_PlayerRoundBefore", { typeGameState : GameMessage.GS_Begin }
+"Event_PlayerRoundBefore", { typeGameState : GS_Begin }
 
 "Event_FinalBattle"
 
@@ -133,3 +133,9 @@
                                     entity: entity,
                                     nCD: 0
                                 }
+
+"Event_GCLDReady", {
+    entity: CDOTA_BaseNPC_Hero,
+    path: PathDomain,
+    bIgnore: boolean,
+}

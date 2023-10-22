@@ -1,4 +1,4 @@
-import { GameMessage } from "../mode/gamemessage"
+import { PS_None } from "../mode/gamemessage"
 import { Path } from "../path/Path"
 import { Player } from "./player"
 
@@ -84,7 +84,7 @@ export class PlayerManager {
 
     // 选择英雄
     onEvent_playerPickHero(event: GameEventProvidedProperties & DotaPlayerPickHeroEvent): void {
-        if (GameRules.GameConfig.m_typeState == GameMessage.PS_None) {
+        if (GameRules.GameConfig.m_typeState == PS_None) {
             print("onEvent_playerPickHero")
             DeepPrintTable(event)
             const eHero = EntIndexToHScript(event.heroindex as EntityIndex) as CDOTA_BaseNPC_Hero

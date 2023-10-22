@@ -10,7 +10,7 @@ import { TSBaseAbility } from "../tsBaseAbilty";
 @registerAbility()
 export class path_12 extends TSBaseAbility {
     GetIntrinsicModifierName() {
-        return "modifier_" + this.GetAbilityName() + "_L" + this.GetLevel()
+        return "modifier_" + this.GetAbilityName() + "_l" + this.GetLevel()
     }
 }
 
@@ -18,7 +18,7 @@ export class path_12 extends TSBaseAbility {
  * 路径技能：天辉
  */
 @registerModifier()
-export class modifier_path_12_L1 extends BaseModifier {
+export class modifier_path_12_l1 extends BaseModifier {
     oPlayer: Player
     sBuffName: string
     unUpdateBZBuffByCreate: Function
@@ -97,12 +97,12 @@ export class modifier_path_12_L1 extends BaseModifier {
 }
 
 @registerModifier()
-export class modifier_path_12_L2 extends modifier_path_12_L1 {
+export class modifier_path_12_l2 extends modifier_path_12_l1 {
 
 }
 
 @registerModifier()
-export class modifier_path_12_L3 extends modifier_path_12_L1 {
+export class modifier_path_12_l3 extends modifier_path_12_l1 {
     tEventID: number[]
     // OnCreated(params: object): void {
     //     super.OnCreated(params)
@@ -114,7 +114,7 @@ export class modifier_path_12_L3 extends modifier_path_12_L1 {
     //     if (!this.oPlayer) {
     //         return
     //     }
-    //     const tPaths = GameRules.PathManager.getPathByType(GameMessage.TP_DOMAIN_1) as PathDomain[]
+    //     const tPaths = GameRules.PathManager.getPathByType(TP_DOMAIN_1) as PathDomain[]
     //     if (tPaths.length != 3 || this.GetParent() != tPaths[1].m_tabENPC[0]) {
     //         return
     //     }

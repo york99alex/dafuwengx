@@ -1,4 +1,4 @@
-import { GameMessage } from "../../mode/gamemessage";
+import { PS_AtkHero, PS_AtkMonster, PS_InPrison, PS_Invis } from "../../mode/gamemessage";
 import { Player } from "../../player/player";
 import { AHMC } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
@@ -7,9 +7,9 @@ import { TSBaseAbility } from "../tsBaseAbilty";
 
 /**
  * 		"DOTA_Tooltip_ability_Ability_pudge_meat_hook"				"肉钩"
-		"DOTA_Tooltip_ability_Ability_pudge_meat_hook_Description"	"向英雄射出血腥的肉钩，并将它拖到帕吉的身边。"
-		"DOTA_Tooltip_ability_Ability_pudge_meat_hook_Lore"			"屠夫的肉钩是噩梦的象征，锋利的倒钩暗示了他嗜血的本性。"
-		"DOTA_Tooltip_ability_Ability_pudge_meat_hook_damage"		"伤害 :"
+        "DOTA_Tooltip_ability_Ability_pudge_meat_hook_Description"	"向英雄射出血腥的肉钩，并将它拖到帕吉的身边。"
+        "DOTA_Tooltip_ability_Ability_pudge_meat_hook_Lore"			"屠夫的肉钩是噩梦的象征，锋利的倒钩暗示了他嗜血的本性。"
+        "DOTA_Tooltip_ability_Ability_pudge_meat_hook_damage"		"伤害 :"
  */
 @registerAbility()
 export class Ability_pudge_meat_hook extends TSBaseAbility {
@@ -134,10 +134,10 @@ export class Ability_pudge_meat_hook extends TSBaseAbility {
         if (player.m_eHero == this.GetCaster()   // 自身
             || !this.checkTarget(player.m_eHero)
             || 0 < bit.band(
-                GameMessage.PS_InPrison       // 入狱
-                + GameMessage.PS_Invis          // 隐身
-                + GameMessage.PS_AtkHero
-                + GameMessage.PS_AtkMonster
+                PS_InPrison       // 入狱
+                + PS_Invis          // 隐身
+                + PS_AtkHero
+                + PS_AtkMonster
                 , player.m_nPlayerState)) {
             return false
         }

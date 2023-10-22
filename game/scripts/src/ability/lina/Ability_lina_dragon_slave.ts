@@ -1,4 +1,4 @@
-import { GameMessage } from "../../mode/gamemessage";
+import { PS_AtkMonster } from "../../mode/gamemessage";
 import { PathManager } from "../../path/PathManager";
 import { Player, player_info } from "../../player/player";
 import { AHMC } from "../../utils/amhc";
@@ -62,7 +62,7 @@ export class Ability_lina_dragon_slave extends TSBaseAbility {
             GameRules.PlayerManager.findRangePlayer(tabPlayer, pathTarger, 1, 0, (player: Player) => {
                 if (player == oPlayer
                     || !this.checkTarget(player.m_eHero)
-                    || 0 < bit.band(GameMessage.PS_AtkMonster, player.m_nPlayerState)) {
+                    || 0 < bit.band(PS_AtkMonster, player.m_nPlayerState)) {
                     return false
                 }
                 return true

@@ -1,4 +1,4 @@
-import { GameMessage } from "../mode/gamemessage"
+import { PS_AtkBZ, PS_AtkHero, PS_AtkMonster, PS_InPrison, PS_Invis, PS_MagicImmune, PS_Moving, PS_None, PS_Pass, PS_PhysicalImmune, PS_Rooted, TBuyItem_None, TP_DOMAIN_1, TP_START } from "../mode/gamemessage"
 import { Constant } from "../mode/constant"
 import { Path } from "../path/Path"
 import { AHMC } from "../utils/amhc"
@@ -39,8 +39,8 @@ export class Player {
     m_nRollMove: number = null			 //  roll点移动的次数（判断入狱给阎刃卡牌）
     m_nMoveDir: number = null			  //  方向	1=正向 -1=逆向
 
-    m_nPlayerState: number = GameMessage.PS_None			//  玩家状态
-    m_typeBuyState: number = GameMessage.TBuyItem_None//  购物状态
+    m_nPlayerState: number = PS_None			//  玩家状态
+    m_typeBuyState: number = TBuyItem_None//  购物状态
     m_typeTeam: DotaTeam = null			  //  自定义队伍
 
     m_oCDataPlayer = null			//  官方CDOTAPlayer脚本
@@ -86,9 +86,9 @@ export class Player {
         this.m_tabHasCard = []
         this.m_tabUseCard = []
         this.m_tabDelCard = []
-        this.m_nPlayerState = GameMessage.PS_None
+        this.m_nPlayerState = PS_None
         this.m_nBuyItem = 0
-        this.m_typeBuyState = GameMessage.TBuyItem_None
+        this.m_typeBuyState = TBuyItem_None
         this.m_bDie = false
         this.m_bAbandon = false
         this.m_typeTeam = Constant.CUSTOM_TEAM[nPlayerID]
@@ -159,7 +159,7 @@ export class Player {
                 oAblt.SetLevel(1)
         }
         // 设置起点路径
-        this.setPath(GameRules.PathManager.getPathByType(GameMessage.TP_START)[0])
+        this.setPath(GameRules.PathManager.getPathByType(TP_START)[0])
 
         // 玩家死亡杀死英雄
         if (this.m_bDie) {
@@ -215,7 +215,7 @@ export class Player {
         let tabBzPath: number[] = []
         for (const typePath in this.m_tabMyPath) {
             const paths = this.m_tabMyPath[typePath];
-            if (tonumber(typePath) >= GameMessage.TP_DOMAIN_1 && paths[0].m_tabENPC.length > 0) {
+            if (tonumber(typePath) >= TP_DOMAIN_1 && paths[0].m_tabENPC.length > 0) {
                 tabBzPath.push(tonumber(typePath))
             }
         }
@@ -372,42 +372,42 @@ export class Player {
         }
 
         // 判断是否有修改过以下状态
-        if (bit.band(playerState, GameMessage.PS_AtkBZ) > 0) {
+        if (bit.band(playerState, PS_AtkBZ) > 0) {
             // 设置兵卒可否攻击
             this.setAllBZAttack()
         }
-        if (bit.band(playerState, GameMessage.PS_AtkHero) > 0) {
+        if (bit.band(playerState, PS_AtkHero) > 0) {
             // 设置英雄可否攻击
-            let bCan: boolean = bit.band(this.m_nPlayerState, GameMessage.PS_AtkHero) > 0
+            let bCan: boolean = bit.band(this.m_nPlayerState, PS_AtkHero) > 0
             this.setHeroCanAttack(bCan)
             this.m_bGCLD = bCan
             if (bCan) {
                 // 攻击移除隐身状态
-                this.setPlayerState(-GameMessage.PS_Invis)
+                this.setPlayerState(-PS_Invis)
             }
 
             // 计算卡牌可用状态
             this.setCardCanCast()
         }
-        if (bit.band(playerState, GameMessage.PS_MagicImmune) > 0) {
+        if (bit.band(playerState, PS_MagicImmune) > 0) {
             // 设置英雄魔免
-            if (bit.band(this.m_nPlayerState, GameMessage.PS_MagicImmune) > 0) {
+            if (bit.band(this.m_nPlayerState, PS_MagicImmune) > 0) {
                 AHMC.AddAbilityAndSetLevel(this.m_eHero, "magic_immune")
             } else {
                 AHMC.RemoveAbilityAndModifier(this.m_eHero, "magic_immune")
             }
         }
-        if (bit.band(playerState, GameMessage.PS_PhysicalImmune) > 0) {
+        if (bit.band(playerState, PS_PhysicalImmune) > 0) {
             // 设置英雄物免
-            if (bit.band(this.m_nPlayerState, GameMessage.PS_PhysicalImmune) > 0) {
+            if (bit.band(this.m_nPlayerState, PS_PhysicalImmune) > 0) {
                 AHMC.AddAbilityAndSetLevel(this.m_eHero, "physical_immune")
             } else {
                 AHMC.RemoveAbilityAndModifier(this.m_eHero, "physical_immune")
             }
         }
-        if (bit.band(playerState, GameMessage.PS_Rooted) > 0) {
+        if (bit.band(playerState, PS_Rooted) > 0) {
             // 设置英雄禁止移动
-            if (bit.band(this.m_nPlayerState, GameMessage.PS_Rooted) > 0) {
+            if (bit.band(this.m_nPlayerState, PS_Rooted) > 0) {
                 AHMC.AddAbilityAndSetLevel(this.m_eHero, "rooted")
             } else {
                 AHMC.RemoveAbilityAndModifier(this.m_eHero, "rooted")
@@ -416,14 +416,14 @@ export class Player {
                 GameRules.EventManager.FireEvent("Event_RootedDisable", { player: this })
             }
         }
-        if (bit.band(playerState, GameMessage.PS_InPrison) > 0) {
+        if (bit.band(playerState, PS_InPrison) > 0) {
             // 设置兵卒攻击状态
             this.setAllBZAttack()
             // 计算卡牌可用状态
             this.setCardCanCast()
         }
-        if (bit.band(playerState, GameMessage.PS_Moving) > 0) {
-            if (bit.band(this.m_nPlayerState, GameMessage.PS_Moving) > 0) {
+        if (bit.band(playerState, PS_Moving) > 0) {
+            if (bit.band(this.m_nPlayerState, PS_Moving) > 0) {
                 // 玩家开始移动
                 GameRules.EventManager.FireEvent("Event_PlayerMove", { player: this })
             } else {
@@ -436,21 +436,21 @@ export class Player {
                 this.setCardCanCast()
             })
         }
-        if (bit.band(playerState, GameMessage.PS_Pass) > 0) {
-            if (bit.band(this.m_nPlayerState, GameMessage.PS_Pass) > 0) {
+        if (bit.band(playerState, PS_Pass) > 0) {
+            if (bit.band(this.m_nPlayerState, PS_Pass) > 0) {
                 GameRules.EventManager.FireEvent("Event_PlayerPass", { player: this })
             } else {
                 GameRules.EventManager.FireEvent("Event_PlayerPassEnd", { player: this })
             }
         }
-        if (bit.band(playerState, GameMessage.PS_Invis) > 0) {
-            if (bit.band(this.m_nPlayerState, GameMessage.PS_Invis) > 0) {
+        if (bit.band(playerState, PS_Invis) > 0) {
+            if (bit.band(this.m_nPlayerState, PS_Invis) > 0) {
                 GameRules.EventManager.FireEvent("Event_PlayerInvis", { player: this })
 
                 // 监听施法解除隐身
                 this._setState_Invis_onUsedAbltID = GameRules.EventManager.Register("dota_player_used_ability", (event) => {
                     if (this.m_eHero != null && event.caster_entindex == this.m_eHero.GetEntityIndex()) {
-                        this.setPlayerState(-GameMessage.PS_Invis)
+                        this.setPlayerState(-PS_Invis)
                         return true
                     }
                 })
@@ -466,7 +466,7 @@ export class Player {
     /**设置跳过回合 */
     setPass(nCount: number) {
         if (this.m_nPassCount <= 0) {
-            this.setPlayerState(GameMessage.PS_Pass)
+            this.setPlayerState(PS_Pass)
             this.m_nPassCount = nCount
             // 监听玩家回合开始, 跳过回合
             function onEventPlayerRoundBegin(event) {
@@ -482,7 +482,7 @@ export class Player {
                     }, 0)
                     // 次数达到不再跳过
                     if (this.m_nPassCount <= 0) {
-                        this.setPlayerState(-GameMessage.PS_Pass)
+                        this.setPlayerState(-PS_Pass)
                         return true
                     }
                 }
@@ -499,7 +499,7 @@ export class Player {
             })
         } else if (this.m_nPassCount < nCount) {
             // 解除上一次
-            this.setPlayerState(-GameMessage.PS_Pass)
+            this.setPlayerState(-PS_Pass)
             // 再次设置
             this.setPass(nCount)
         }
@@ -527,11 +527,11 @@ export class Player {
         }
 
         // 开始移动
-        this.setPlayerState(GameMessage.PS_Moving)
+        this.setPlayerState(PS_Moving)
         //TODO: 游戏状态是否要改变
 
         GameRules.PathManager.moveToPos(this.m_eHero, location, (bSuccess: boolean) => {
-            this.setPlayerState(-GameMessage.PS_Moving)
+            this.setPlayerState(-PS_Moving)
             if (funCallBack) {
                 funCallBack(bSuccess)
             }
@@ -541,7 +541,7 @@ export class Player {
     /**移动到路径 */
     moveToPath(path: Path, funCallBack?: Function) {
         // 开始移动
-        this.setPlayerState(GameMessage.PS_Moving)
+        this.setPlayerState(PS_Moving)
         this.m_pathMoveStart = this.m_pathCur
         if (this.m_pathCur != path) {
             // 触发离开路径
@@ -555,7 +555,7 @@ export class Player {
         // 设置移动
         GameRules.PathManager.moveToPath(this.m_eHero, path, true, (bSuccess: boolean) => {
             GameRules.EventManager.UnRegister("Event_PassingPath", funPassingPath)
-            this.setPlayerState(-GameMessage.PS_Moving)
+            this.setPlayerState(-PS_Moving)
             if (bSuccess && !this.m_bDie) {
                 this.setPath(path)
             }
@@ -759,26 +759,25 @@ export class Player {
         eBZ.SetNightTimeVisionRange(300)
         // 添加数据
         this.m_tabBz.push(eBZ)
-        path.m_tabENPC.push(eBZ);
-        (eBZ as any).m_path = path as Path
-        (eBZ as any).m_bBZ = true as boolean
+        path.m_tabENPC.push(eBZ)
+        eBZ.m_path = path
 
         // 设置兵卒技能等级
-        (eBZ as any).m_bAbltBZ = eBZ.GetAbilityByIndex(0)
+        eBZ.m_bAbltBZ = eBZ.GetAbilityByIndex(0)
         // 设置技能
         if (nStarLevel >= Constant.BZ_MAX_LEVEL) {
             // 设置巅峰技能
             AHMC.AddAbilityAndSetLevel(eBZ, "yjxr_max", Constant.BZ_MAX_LEVEL)
-            eBZ.SwapAbilities((eBZ as any).m_bAbltBZ.GetAbilityName(), "yjxr_max", true, true)
+            eBZ.SwapAbilities(eBZ.m_bAbltBZ.GetAbilityName(), "yjxr_max", true, true)
         } else {
             AHMC.AddAbilityAndSetLevel(eBZ, "yjxr_" + path.m_typePath, nStarLevel)
-            eBZ.SwapAbilities((eBZ as any).m_bAbltBZ.GetAbilityName(), "yjxr_" + path.m_typePath, true, true)
+            eBZ.SwapAbilities(eBZ.m_bAbltBZ.GetAbilityName(), "yjxr_" + path.m_typePath, true, true)
         }
         if (nStarLevel != 1) {
             AHMC.AddAbilityAndSetLevel(eBZ, "xj_" + path.m_typePath, nStarLevel)
             const oAblt = eBZ.GetAbilityByIndex(1)
             if (oAblt) {
-                eBZ.SwapAbilities((eBZ as any).m_bAbltBZ.GetAbilityName(), "xj_" + path.m_typePath, !oAblt.IsHidden(), true)
+                eBZ.SwapAbilities(eBZ.m_bAbltBZ.GetAbilityName(), "xj_" + path.m_typePath, !oAblt.IsHidden(), true)
             }
         }
 
@@ -817,8 +816,11 @@ export class Player {
     removeBz(eBZ: CDOTA_BaseNPC_BZ) {
         if (!eBZ) return
 
-        let bHas
+        let bHas: boolean
         for (const v of this.m_tabBz) {
+            print("======removeBz===========")
+            print("v:", v)
+            print("=====removeBz===PrintEnd=")
             if (v == eBZ) {
                 this.m_tabBz.filter(v => v != eBZ)
                 bHas = true
@@ -955,7 +957,7 @@ export class Player {
     setBzAttack(eBz: CDOTA_BaseNPC_BZ, bCan?: boolean) {
         if (eBz == null) return
         if (bCan == null) {
-            bCan = (0 < (this.m_nPlayerState & GameMessage.PS_AtkBZ)) && ((this.m_nPlayerState & GameMessage.PS_InPrison) == 0)
+            bCan = (0 < (this.m_nPlayerState & PS_AtkBZ)) && ((this.m_nPlayerState & PS_InPrison) == 0)
         }
         for (const value of this.m_tabBz) {
             if (value == eBz) {
@@ -980,10 +982,10 @@ export class Player {
     /**设置玩家全部兵卒可否攻击 */
     setAllBZAttack() {
         print("===setAllBZAttack===this.m_nPlayerState:", this.m_nPlayerState)
-        print("===setAllBZAttack===band1:", bit.band(this.m_nPlayerState, GameMessage.PS_AtkBZ))
-        print("===setAllBZAttack===band2:", bit.band(this.m_nPlayerState, GameMessage.PS_InPrison))
-        const bCan = bit.band(this.m_nPlayerState, GameMessage.PS_AtkBZ) > 0
-            && bit.band(this.m_nPlayerState, GameMessage.PS_InPrison) == 0
+        print("===setAllBZAttack===band1:", bit.band(this.m_nPlayerState, PS_AtkBZ))
+        print("===setAllBZAttack===band2:", bit.band(this.m_nPlayerState, PS_InPrison))
+        const bCan = bit.band(this.m_nPlayerState, PS_AtkBZ) > 0
+            && bit.band(this.m_nPlayerState, PS_InPrison) == 0
         print("===setAllBZAttack===bCan:", bCan)
         function filter(eBZ: CDOTA_BaseNPC_BZ) {
             return !eBZ.m_bBattle   // 忽略战斗中的兵卒
@@ -1503,21 +1505,21 @@ export class Player {
             const tEventID: number[] = []
 
             // 设置兵卒攻击,英雄魔免物免
-            let nState = GameMessage.PS_AtkBZ
-            if (0 == bit.band(GameMessage.PS_AtkMonster + GameMessage.PS_AtkHero), this.m_nPlayerState) {
-                nState += GameMessage.PS_PhysicalImmune
+            let nState = PS_AtkBZ
+            if (0 == bit.band(PS_AtkMonster + PS_AtkHero), this.m_nPlayerState) {
+                nState += PS_PhysicalImmune
             } else {
                 tEventID.push(GameRules.EventManager.Register("Event_GCLDEnd", (tEvent) => {
                     if (tEvent.entity == this.m_eHero) {
-                        nState += GameMessage.PS_PhysicalImmune
-                        this.setPlayerState(GameMessage.PS_PhysicalImmune)
+                        nState += PS_PhysicalImmune
+                        this.setPlayerState(PS_PhysicalImmune)
                         return true
                     }
                 }))
                 tEventID.push(GameRules.EventManager.Register("Event_AtkMosterEnd", (tEvent) => {
                     if (tEvent.entity == this.m_eHero) {
-                        nState += GameMessage.PS_PhysicalImmune
-                        this.setPlayerState(GameMessage.PS_PhysicalImmune)
+                        nState += PS_PhysicalImmune
+                        this.setPlayerState(PS_PhysicalImmune)
                         return true
                     }
                 }))
@@ -1529,7 +1531,7 @@ export class Player {
             // 监听兵卒创建继续设置目标
             tEventID.push(GameRules.EventManager.Register("Event_BZCreate", (tEvent) => {
                 if (tEvent.entity.GetPlayerOwnerID() == this.m_nPlayerID
-                    && 0 < bit.band(GameMessage.PS_AtkBZ, this.m_nPlayerState)) {
+                    && 0 < bit.band(PS_AtkBZ, this.m_nPlayerState)) {
                     this.setBzAtker(tEvent.entity, event.entity, false)
                 }
             }))

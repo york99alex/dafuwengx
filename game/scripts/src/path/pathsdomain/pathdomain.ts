@@ -1,5 +1,5 @@
 import { Constant } from "../../mode/constant"
-import { GameMessage } from "../../mode/gamemessage"
+import { GS_Begin, PS_AtkHero, PS_InPrison, TypeOprt } from "../../mode/gamemessage"
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ"
 import { Player } from "../../player/player"
 import { AHMC } from "../../utils/amhc"
@@ -46,7 +46,7 @@ export class PathDomain extends Path {
             // 无主之地,发送安营扎寨操作
             const tabOprt = {
                 nPlayerID: player.m_nPlayerID,
-                typeOprt: GameMessage.TypeOprt.TO_AYZZ,
+                typeOprt: TypeOprt.TO_AYZZ,
                 typePath: this.m_typePath,
                 nPathID: this.m_nID
             }
@@ -58,7 +58,7 @@ export class PathDomain extends Path {
             // 非己方城池
             const playerOwn = GameRules.PlayerManager.getPlayer(this.m_nOwnerID)
             // 领主未进监狱
-            if (0 === (GameMessage.PS_InPrison & playerOwn.m_nPlayerState)) {
+            if (0 === (PS_InPrison & playerOwn.m_nPlayerState)) {
                 if (this.m_tabENPC.length == 0) {
                     // 交过路费
                     const nGold = math.floor(this.m_nPrice * Constant.PATH_TOLL_RATE)
@@ -84,7 +84,7 @@ export class PathDomain extends Path {
                         return
                     const tabOprt = {
                         nPlayerID: player.m_nPlayerID,
-                        typeOprt: GameMessage.TypeOprt.TO_GCLD,
+                        typeOprt: TypeOprt.TO_GCLD,
                         typePath: this.m_typePath,
                         nPathID: this.m_nID
                     }
@@ -93,7 +93,7 @@ export class PathDomain extends Path {
                     GameRules.GameConfig.sendOprt(tabOprt)
                     GameRules.EventManager.Register("Event_CurPathChange", (event: { player: Player }) => {
                         if (event.player == player && this != player.m_pathCur) {
-                            GameRules.GameConfig.autoOprt(GameMessage.TypeOprt.TO_GCLD, player)
+                            GameRules.GameConfig.autoOprt(TypeOprt.TO_GCLD, player)
                         }
                     })
                 }
@@ -304,7 +304,7 @@ export class PathDomain extends Path {
         // 设置兵卒攻击
         this.m_tabENPC[0].m_bBattle = true
 
-        oPlayer.setPlayerState(GameMessage.PS_AtkHero)
+        oPlayer.setPlayerState(PS_AtkHero)
 
         // 移动到兵卒前
         oPlayer.moveToPos(this.m_eCity.GetAbsOrigin() + this.m_eCity.GetForwardVector() * 100 as Vector, (bSuccess: boolean) => {
@@ -414,7 +414,7 @@ export class PathDomain extends Path {
         oPlayer.setExpAdd(nExp)
         oPlayerOwn.setExpAdd(nExp)
 
-        oPlayer.setPlayerState(-GameMessage.PS_AtkHero)
+        oPlayer.setPlayerState(-PS_AtkHero)
         // 英雄回到原位
         if (bMoveBack) {
             if (oPlayer.m_eHero.IsStunned()) {
@@ -479,7 +479,7 @@ export class PathDomain extends Path {
         typeGameState: number
     }) {
         if (this.m_nPlayerIDGCLD != GameRules.GameConfig.m_nOrderID
-            || GameMessage.GS_Begin != tabEvent.typeGameState) return
+            || GS_Begin != tabEvent.typeGameState) return
 
         const oPlayer = GameRules.PlayerManager.getPlayer(this.m_nPlayerIDGCLD)
 

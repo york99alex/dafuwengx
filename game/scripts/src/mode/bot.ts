@@ -1,4 +1,4 @@
-import { GameMessage } from "./gamemessage"
+import { TP_START } from "./gamemessage"
 
 export class Bot {
 
@@ -11,8 +11,8 @@ export class Bot {
         // const eBot1 = GameRules.AddBotPlayerWithEntityScript("npc_dota_hero_bloodseeker", "bloodseeker", DotaTeam.CUSTOM_1, null, true)
         const eBot2 = GameRules.AddBotPlayerWithEntityScript("npc_dota_hero_meepo", "meepo", DotaTeam.CUSTOM_2, null, true)
 
-        // GameRules.PathManager.moveToPath(eBot1, GameRules.PathManager.getPathByType(GameMessage.TP_START)[0], false, null)
-        GameRules.PathManager.moveToPath(eBot2, GameRules.PathManager.getPathByType(GameMessage.TP_START)[0], false, null)
-    
+        // GameRules.PathManager.moveToPath(eBot1, GameRules.PathManager.getPathByType(TP_START)[0], false, null)
+        GameRules.PathManager.moveToPath(eBot2, GameRules.PathManager.getPathByType(TP_START)[0], false, null)
+
     }
 }

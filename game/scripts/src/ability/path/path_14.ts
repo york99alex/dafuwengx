@@ -1,4 +1,4 @@
-import { GameMessage } from "../../mode/gamemessage";
+import { PS_AbilityImmune, PS_InPrison, PS_Rooted, TP_DOMAIN_3 } from "../../mode/gamemessage";
 import { PathDomain } from "../../path/pathsdomain/pathdomain";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
@@ -13,7 +13,7 @@ import { TSBaseAbility } from "../tsBaseAbilty";
 @registerAbility()
 export class path_14 extends TSBaseAbility {
     GetIntrinsicModifierName() {
-        return "modifier_" + this.GetAbilityName() + "_L" + this.GetLevel()
+        return "modifier_" + this.GetAbilityName() + "_l" + this.GetLevel()
     }
 }
 
@@ -21,7 +21,7 @@ export class path_14 extends TSBaseAbility {
  * 路径技能：蛇沼
  */
 @registerModifier()
-export class modifier_path_14_L1 extends BaseModifier {
+export class modifier_path_14_l1 extends BaseModifier {
     oPlayer: Player
     sBuffName: string
     unUpdateBZBuffByCreate: Function
@@ -71,7 +71,7 @@ export class modifier_path_14_L1 extends BaseModifier {
         // 给玩家兵卒buff
         function checkBZ(eBZ: CDOTA_BaseNPC_BZ) {
             if (eBZ) {
-                if (this.GetAbility().GetLevel() == 3 || eBZ.m_path.m_typePath == GameMessage.TP_DOMAIN_3) {
+                if (this.GetAbility().GetLevel() == 3 || eBZ.m_path.m_typePath == TP_DOMAIN_3) {
                     return true
                 }
             }
@@ -116,7 +116,7 @@ export class modifier_path_14_L1 extends BaseModifier {
         if (event.entity["bTriggered"]
             || event.path.m_nOwnerID != oPlayer.m_nPlayerID
             || event.entity == oPlayer.m_eHero
-            || 0 != bit.band(GameMessage.PS_InPrison, oPlayer.m_nPlayerState)) {
+            || 0 != bit.band(PS_InPrison, oPlayer.m_nPlayerState)) {
             return
         }
         if (!event.path.m_tabENPC
@@ -127,7 +127,7 @@ export class modifier_path_14_L1 extends BaseModifier {
 
         // 判断触发
         const oPlayerTarget = GameRules.PlayerManager.getPlayer(event.entity.GetPlayerOwnerID())
-        if (oPlayerTarget == null && 0 < bit.band(GameMessage.PS_AbilityImmune, oPlayerTarget.m_nPlayerState)) {
+        if (oPlayerTarget == null && 0 < bit.band(PS_AbilityImmune, oPlayerTarget.m_nPlayerState)) {
             return
         }
         // 计算缠绕概率
@@ -144,7 +144,7 @@ export class modifier_path_14_L1 extends BaseModifier {
         })
 
         // 设置缠绕玩家禁止移动
-        oPlayerTarget.setPlayerState(GameMessage.PS_Rooted)
+        oPlayerTarget.setPlayerState(PS_Rooted)
 
         // 计算缠绕运动
         const nFps = 30
@@ -185,7 +185,7 @@ export class modifier_path_14_L1 extends BaseModifier {
                 EmitSoundOn("Hero_Medusa.MysticSnake.Cast", oPlayerTarget.m_eHero)
 
                 // 设置缠绕玩家禁止移动取消
-                oPlayerTarget.setPlayerState(-GameMessage.PS_Rooted)
+                oPlayerTarget.setPlayerState(-PS_Rooted)
                 return null
             })
         })
@@ -193,7 +193,7 @@ export class modifier_path_14_L1 extends BaseModifier {
 }
 
 @registerModifier()
-export class modifier_path_14_L2 extends BaseModifier { }
+export class modifier_path_14_l2 extends modifier_path_14_l1 { }
 
 @registerModifier()
-export class modifier_path_14_L3 extends BaseModifier { }
+export class modifier_path_14_l3 extends modifier_path_14_l1 { }
