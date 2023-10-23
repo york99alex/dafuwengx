@@ -1,3 +1,5 @@
+import { DamageEvent } from "../player/player"
+
 export class Filters {
 
     static init() {
@@ -15,14 +17,7 @@ export class Filters {
         GameMode.SetTrackingProjectileFilter(() => true, this)
     }
 
-    static DamageFilter(event: {
-        entindex_attacker_const: EntityIndex;
-        entindex_victim_const: EntityIndex;
-        entindex_inflictor_const?: EntityIndex;
-        damagetype_const: DamageTypes;
-        damage: number;
-        bIgnore?: boolean;
-    }): boolean {
+    static DamageFilter(event: DamageEvent): boolean {
         // 触发攻击事件
         GameRules.EventManager.FireEvent("Event_Atk", event)
         // 触发被攻击事件
@@ -114,6 +109,7 @@ export class Filters {
             GameRules.EventManager.FireEvent("Event_OrderMoveToPos", event)
             return false
         } else if (orderType == UnitOrder.PURCHASE_ITEM) {
+            return false
             GameRules.EventManager.FireEvent("Event_ItemBuy", event)
         } else if (orderType == UnitOrder.SELL_ITEM) {
             GameRules.EventManager.FireEvent("Event_ItemSell", event)

@@ -15,10 +15,6 @@ export class HeroSelection {
         DeepPrintTable(GameRules.PlayerManager.m_tabPlayers)
     }
 
-    SelectHero(PlayerID: PlayerID, sHeroName?: string) {
-
-    }
-
     /** 自动选择英雄(自动随机英雄) */
     autoSelectHero() {
         for (const oPlayer of GameRules.PlayerManager.m_tabPlayers) {

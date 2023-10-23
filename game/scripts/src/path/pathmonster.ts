@@ -76,12 +76,12 @@ export class PathMonster extends Path {
 
         if (this.m_typePath == TP_MONSTER_2
             || this.m_typePath == TP_MONSTER_3) {
-            GameRules.EventManager.Register("Event_UpdateRound", () => {
-                if (GameRules.GameConfig.m_nRound == 5 * (this.m_typePath - TP_MONSTER_2 + 1)) {
-                    this.spawnMonster()
-                    return true
-                }
-            }, this)
+            // GameRules.EventManager.Register("Event_UpdateRound", () => {
+            //     if (GameRules.GameConfig.m_nRound == 5 * (this.m_typePath - TP_MONSTER_2 + 1)) {
+            //         this.spawnMonster()
+            //         return true
+            //     }
+            // }, this)
         } else {
             GameRules.EventManager.Register("Event_GameStart", () => {
                 this.spawnMonster()

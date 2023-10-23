@@ -1,65 +1,79 @@
-import { PS_AtkBZ, PS_AtkHero, PS_AtkMonster, PS_InPrison, PS_Invis, PS_MagicImmune, PS_Moving, PS_None, PS_Pass, PS_PhysicalImmune, PS_Rooted, TBuyItem_None, TP_DOMAIN_1, TP_START } from "../mode/gamemessage"
+import { PS_AtkBZ, PS_AtkHero, PS_AtkMonster, PS_Die, PS_InPrison, PS_Invis, PS_MagicImmune, PS_Moving, PS_None, PS_Pass, PS_PhysicalImmune, PS_Rooted, TBuyItem_None, TP_DOMAIN_1, TP_START } from "../mode/gamemessage"
 import { Constant } from "../mode/constant"
 import { Path } from "../path/Path"
 import { AHMC } from "../utils/amhc"
 import { PathDomain } from "../path/pathsdomain/pathdomain"
 import { reloadable } from "../utils/tstl-utils"
 import { CDOTA_BaseNPC_BZ } from "./CDOTA_BaseNPC_BZ"
+import { TSBaseAbility } from "../ability/tsBaseAbilty"
 
 export type player_info = "player_info_0" | "player_info_1" | "player_info_2" | "player_info_3" | "player_info_4" | "player_info_5"
+export type DamageEvent = {
+    entindex_attacker_const: EntityIndex;
+    entindex_victim_const: EntityIndex;
+    entindex_inflictor_const?: EntityIndex;
+    damagetype_const: DamageTypes;
+    damage: number;
+    bIgnore?: boolean;
+    bIgnoreGold?: boolean
+    bIgnoreDamageSelf?: boolean
+    bIgnoreBZHuiMo?: boolean
+}
+
 
 @reloadable
 export class Player {
 
-    m_bRoundFinished: boolean = null			//  此轮中已结束回合
-    m_bDisconnect: boolean = null		   //  断线
-    m_bDie: boolean = null				  //  死亡
-    m_bAbandon: boolean = null			  //  放弃
-    m_bDeathClearing: boolean = null		//  亡国清算中
+    m_bRoundFinished: boolean			//  此轮中已结束回合
+    m_bDisconnect: boolean		   //  断线
+    m_bDie: boolean				  //  死亡
+    m_bAbandon: boolean			  //  放弃
+    m_bDeathClearing: boolean		//  亡国清算中
     m_tMuteTradePlayers: number[] = []	  //  交易屏蔽玩家id
 
-    m_nPlayerID: PlayerID = null				//  玩家ID
-    m_nUserID: number = null				//  userID
-    m_nSteamID: number = null				//  SteamID
+    m_nPlayerID: PlayerID				//  玩家ID
+    m_nUserID: number				//  userID
+    m_nSteamID: number				//  SteamID
     m_nWageGold: number = 0			 //  每次工资
     m_nGold: number = 0				   //  拥有的金币
     m_nSumGold: number = 0				//  总资产
     m_nPassCount: number = 0			//  剩余要跳过的回合数
-    m_nCDSub: number = null				//  冷却减缩固值
-    m_nManaSub: number = null			  //  耗魔减缩固值
-    m_nLastAtkPlayerID: number = null	  //  最后攻击我的玩家ID
-    m_nKill: number = null				 //  击杀数
+    m_nManaMaxBase: number			//  蓝量最大基础值
+    m_nCDSub: number				//  冷却减缩固值
+    m_nManaSub: number			  //  耗魔减缩固值
+    m_nLastAtkPlayerID: number	  //  最后攻击我的玩家ID
+    m_nKill: number				 //  击杀数
     m_nGCLD: number				 //  攻城数
-    m_nDamageHero: number = null		   //  英雄伤害
-    m_nDamageBZ: number = null			 //  兵卒伤害
-    m_nGoldMax: number = null			  //  巅峰资产数
-    m_nBuyItem: number = null			  //  可购装备数
-    m_nRank: number = null				 //  游戏排名
-    m_nOprtOrder: number = null			//  操作顺序,根据m_PlayersSort中的index
-    m_nRollMove: number = null			 //  roll点移动的次数（判断入狱给阎刃卡牌）
-    m_nMoveDir: number = null			  //  方向	1=正向 -1=逆向
+    m_nDamageHero: number		   //  英雄伤害
+    m_nDamageBZ: number			 //  兵卒伤害
+    m_nGoldMax: number			  //  巅峰资产数
+    m_nBuyItem: number			  //  可购装备数
+    m_nRank: number				 //  游戏排名
+    m_nOprtOrder: number			//  操作顺序,根据m_PlayersSort中的index
+    m_nRollMove: number			 //  roll点移动的次数（判断入狱给阎刃卡牌）
+    m_nMoveDir: number			  //  方向	1=正向 -1=逆向
 
     m_nPlayerState: number = PS_None			//  玩家状态
     m_typeBuyState: number = TBuyItem_None//  购物状态
-    m_typeTeam: DotaTeam = null			  //  自定义队伍
+    m_typeTeam: DotaTeam			  //  自定义队伍
 
-    m_oCDataPlayer = null			//  官方CDOTAPlayer脚本
-    m_eHero: CDOTA_BaseNPC_Hero = null					//  英雄单位
+    m_oCDataPlayer: CDOTAPlayerController			//  官方CDOTAPlayer脚本
+    m_eHero: CDOTA_BaseNPC_Hero					//  英雄单位
 
-    m_pathCur: Path = null				//  当前英雄所在路径
-    m_pathLast: Path = null				//  上次英雄停留路径
-    m_pathPassLast: Path = null			//  上次英雄经过路径
-    m_pathMoveStart: Path = null			//  上次移动起点路径
+    m_pathCur: Path				//  当前英雄所在路径
+    m_pathLast: Path				//  上次英雄停留路径
+    m_pathPassLast: Path			//  上次英雄经过路径
+    m_pathMoveStart: Path			//  上次移动起点路径
 
 
     m_tabMyPath: {
         [typePath: number]: PathDomain[]
-    } = null				//  占领的路径<路径类型,路径{}>
-    m_tabBz: CDOTA_BaseNPC_BZ[] = null					//  兵卒
-    m_tabHasCard: number[] = null			//  手上的卡牌
-    m_tabUseCard = null			//  已使用的卡牌
-    m_tabDelCard = null			//  已移除的卡牌
-    m_tCourier = null			  //  信使
+    }				//  占领的路径<路径类型,路径{}>
+    m_tabBz: CDOTA_BaseNPC_BZ[]					//  兵卒
+    m_tabHasCard: number[]			//  手上的卡牌
+    m_tabUseCard			//  已使用的卡牌
+    m_tabDelCard			//  已移除的卡牌
+    m_tCourier			  //  信使
     __init: boolean = false            // 
     m_bGCLD: boolean        // 玩家英雄是否在攻城
     private _setState_Invis_onUsedAbltID: number
@@ -69,6 +83,7 @@ export class Player {
         print("new Player(),nPlayerID:", nPlayerID)
         this.m_nPlayerID = nPlayerID
         this.m_nSteamID = PlayerResource.GetSteamAccountID(this.m_nPlayerID)
+        this.m_nManaMaxBase = 0
         this.m_nCDSub = 0
         this.m_nManaSub = 0
         this.m_nWageGold = 0
@@ -96,7 +111,6 @@ export class Player {
         this.m_nRollMove = 0
         this.m_nMoveDir = 1
         this.m_tMuteTradePlayers = []
-        this.m_eHero = null
         this.m_tCourier = []
 
         PlayerResource.SetCustomTeamAssignment(nPlayerID, DotaTeam.GOODGUYS)
@@ -169,6 +183,26 @@ export class Player {
 
         // 设置共享主单位
         // TODO:
+    }
+
+    // ================魔法修改触发事件====================
+
+    /**耗蓝 */
+    spendPlayerMana(nMana: number, ability: CDOTABaseAbility) {
+        this.m_eHero.SpendMana(nMana, ability)
+        GameRules.EventManager.FireEvent("Event_HeroManaChange", { player: this, oAblt: ability })
+    }
+
+    /**回蓝 */
+    givePlayerMana(nMana: number) {
+        this.m_eHero.GiveMana(nMana)
+        GameRules.EventManager.FireEvent("Event_HeroManaChange", { player: this })
+    }
+
+    /**设置蓝量 */
+    setPlayerMana(nMana: number) {
+        this.m_eHero.SetMana(nMana)
+        GameRules.EventManager.FireEvent("Event_HeroManaChange", { player: this })
     }
 
     /**队伍 */
@@ -476,8 +510,9 @@ export class Player {
                     event.bRoll = false
                     this.m_nPassCount -= 1
                     GameRules.EventManager.FireEvent("Event_PlayerPassOne", { player: this })
+                    print("player_", event.player.m_nPlayerID, "===setPass===GameState:", GameRules.GameConfig.m_typeState)
                     GameRules.GameLoop.Timer(() => {
-                        GameRules.GameLoop.GameStateService.send("towaitoprt")
+                        GameRules.GameLoop.GameStateService.send("tofinished")
                         return null
                     }, 0)
                     // 次数达到不再跳过
@@ -1095,7 +1130,7 @@ export class Player {
     }
 
     /**该玩家是否有该兵卒 */
-    hasBZ(entity: CBaseEntity | EntityIndex): CBaseEntity {
+    hasBZ(entity: CBaseEntity | EntityIndex) {
         if (entity != null) {
             if (typeof entity != "number") {
                 for (const v of this.m_tabBz) {
@@ -1113,6 +1148,7 @@ export class Player {
                 }
             }
         }
+        return false
     }
 
     /**设置玩家英雄可否攻击 */
@@ -1171,7 +1207,7 @@ export class Player {
         }
 
         this.m_eHero.RemoveAbility(ability.GetAbilityName())
-        this.m_eHero.SetMana(nManaCur)
+        this.setPlayerMana(nManaCur)
     }
 
     /**添加当前血量 */
@@ -1185,6 +1221,14 @@ export class Player {
     /**设置可用卡牌 */
     setCardCanCast() {
         //TODO:
+    }
+
+    // 发送手牌数据给客户端
+    sendHandCardData() {
+        // let jsonData = []
+        // for (const value of this.m_tabHasCard) {
+
+        // }
     }
 
     /**设置技能缩减 */
@@ -1344,7 +1388,7 @@ export class Player {
             })
             // 整化魔法数值
             Timers.CreateTimer(0.05, () => {
-                this.m_eHero.SetMana(math.floor(this.m_eHero.GetMana() + 0.5))
+                this.setPlayerMana(math.floor(this.m_eHero.GetMana() + 0.5))
             })
             // 清空技能点
             this.m_eHero.SetAbilityPoints(0)
@@ -1369,17 +1413,17 @@ export class Player {
 
     /**注册触发事件 */
     registerEvent(): void {
-        GameRules.EventManager.Register("Event_OnDamage", (event) => this.onEvent_OnDamage(event), this, -987654321)
-        GameRules.EventManager.Register("Event_Atk", (event) => this.onEvent_Atk_bzHuiMo(event), this)
-        GameRules.EventManager.Register("Event_PlayerRoundBegin", (event) => this.onEvent_PlayerRoundBegin(event), this)
+        GameRules.EventManager.Register("Event_OnDamage", (event: DamageEvent) => this.onEvent_OnDamage(event), this, -987654321)
+        GameRules.EventManager.Register("Event_Atk", (event: DamageEvent) => this.onEvent_Atk_bzHuiMo(event), this)
+        GameRules.EventManager.Register("Event_PlayerRoundBegin", (event: { oPlayer: Player, bRoll: boolean }) => this.onEvent_PlayerRoundBegin(event), this)
         GameRules.EventManager.Register("Event_UpdateRound", () => this.onEvent_UpdateRound(), this)
-        GameRules.EventManager.Register("Event_Move", (event) => this.onEvent_Move(event), this)
-        GameRules.EventManager.Register("Event_PlayerDie", (event) => this.onEvent_PlayerDie(event), this)
-        GameRules.EventManager.Register("Event_HeroManaChange", (event) => this.onEvent_HeroManaChange(event), this)
+        GameRules.EventManager.Register("Event_Move", (event: { entity: CDOTA_BaseNPC_Hero }) => this.onEvent_Move(event), this)
+        GameRules.EventManager.Register("Event_PlayerDie", (event: { player: Player }) => this.onEvent_PlayerDie(event), this)
+        GameRules.EventManager.Register("Event_HeroManaChange", (event: { player: Player, oAblt?: TSBaseAbility }) => this.onEvent_HeroManaChange(event), this)
     }
 
     /**受伤 */
-    onEvent_OnDamage(event) {
+    onEvent_OnDamage(event: DamageEvent) {
         if (event.bIgnore) return
 
         // 受伤者
@@ -1396,7 +1440,7 @@ export class Player {
                 oPlayerAtk = GameRules.PlayerManager.getPlayer(oAttacker.GetPlayerOwnerID())
                 // 统计伤害
                 if (oPlayerAtk) {
-                    if (oAttacker.IsHero()) {
+                    if (oAttacker.IsRealHero()) {
                         oPlayerAtk.m_nDamageHero += event.damage
                     } else {
                         oPlayerAtk.m_nDamageBZ += event.damage
@@ -1421,8 +1465,7 @@ export class Player {
                     print("debug oPlayerAtk", oAttacker.GetPlayerOwnerID())
 
                     // 攻击者是敌人，给敌人玩家设置金币
-                    if (!event.bIgnoreAddGold
-                        && oPlayerAtk
+                    if (oPlayerAtk
                         && oPlayerAtk != this) {
                         oPlayerAtk.setGold(event.damage)
                         GameRules.GameConfig.showGold(oPlayerAtk, event.damage)
@@ -1443,19 +1486,13 @@ export class Player {
                 }
 
                 // 兵卒受伤回魔
-                if (oVictim.GetClassname() == "npc_dota_creature"
+                if (!oVictim.IsRealHero()
                     && !event.bIgnoreBZHuiMo) {
                     // 计算回魔量
                     let nHuiMoRate = Constant.BZ_HUIMO_BEATK_RATE
                     let tabEventHuiMo = {
                         eBz: oVictim,
-                        nHuiMoSum: event.damage * nHuiMoRate,
-                        getBaseHuiMo: () => {
-                            let nHuimoBase = event.damage * nHuiMoRate
-                            return () => {
-                                return nHuimoBase
-                            }
-                        }
+                        nHuiMoSum: event.damage * nHuiMoRate
                     }
                     // 触发兵卒回魔事件
                     GameRules.EventManager.FireEvent("Event_BZHuiMo", tabEventHuiMo)
@@ -1469,21 +1506,75 @@ export class Player {
                 let nHealth = oVictim.GetHealth() - event.damage
                 if (nHealth < 2) {
                     // 即将死亡,设置成1血
-                    nHealth = 2
+                    nHealth = 1
                 }
                 oVictim.ModifyHealth(nHealth, null, false, 0)
             }
             event.damage = 0
         }
-
     }
 
-    onEvent_Atk_bzHuiMo(event) {
-
+    /**兵卒造成伤害回魔 */
+    onEvent_Atk_bzHuiMo(event: DamageEvent) {
+        if (event.bIgnore || event.bIgnoreBZHuiMo) {
+            return
+        }
+        const eBZ = this.hasBZ(event.entindex_attacker_const) as CDOTA_BaseNPC_BZ
+        if (!eBZ) {
+            return
+        }
+        // 计算回魔量
+        let nHuiMoRate = eBZ.IsRangedAttacker() ? Constant.BZ_HUIMO_RATE_Y : Constant.BZ_HUIMO_RATE_J
+        let tabEventHuiMo = {
+            eBz: eBZ,
+            nHuiMoSum: event.damage * nHuiMoRate
+        }
+        // 触发兵卒回魔事件
+        GameRules.EventManager.FireEvent("Event_BZHuiMo", tabEventHuiMo)
+        if (tabEventHuiMo.nHuiMoSum < 1) {
+            return
+        }
+        // 给兵卒回魔
+        eBZ.GiveMana(tabEventHuiMo.nHuiMoSum)
     }
 
-    onEvent_PlayerRoundBegin(event) {
+    /**玩家回合开始 */
+    onEvent_PlayerRoundBegin(event: { oPlayer: Player, bRoll: boolean }) {
+        this.setCardCanCast()
 
+        if (event.oPlayer != this)
+            return
+
+        // 提高英雄魔法上限
+        if (this.m_nManaMaxBase < 10) {
+            this.m_nManaMaxBase += 1
+            this.setMaxMana(this.m_nManaMaxBase)
+        }
+        // 英雄回蓝
+        const tabEventHuiMo = {
+            oPlayer: this,
+            nHuiMo: 1
+        }
+        // 触发英雄回魔在回合开始
+        GameRules.EventManager.FireEvent("Event_HeroHuiMoByRound", tabEventHuiMo)
+        this.givePlayerMana(tabEventHuiMo.nHuiMo)
+
+        // 英雄回血
+        let tabEventHuiXue = {
+            entity: this.m_eHero,
+            nHuiXue: this.m_eHero.GetMaxHealth() * Constant.ROUND_HERO_HUIXUE_ROTA
+        }
+        GameRules.EventManager.FireEvent("Event_ItemHuiXueByRound", tabEventHuiXue)
+        this.addHealth(tabEventHuiXue.nHuiXue)
+
+        // 兵卒回血
+        for (const eBZ of this.m_tabBz) {
+            tabEventHuiXue = {
+                entity: eBZ,
+                nHuiXue: eBZ.GetMaxHealth() * Constant.ROUND_BZ_HUIXUE_ROTA
+            }
+            eBZ.SetHealth(eBZ.GetHealth() + tabEventHuiXue.nHuiXue)
+        }
     }
 
     /**游戏回合更新 */
@@ -1495,6 +1586,14 @@ export class Player {
             // 加经验
             const nAddExp = 1 + math.floor(nRound / 10)
             this.setExpAdd(nAddExp)
+        }
+    }
+
+    /**玩家魔法修改 */
+    onEvent_HeroManaChange(event: { player: Player; oAblt?: TSBaseAbility }) {
+        if (event.player == this) {
+            // 设置卡牌可否释放
+            this.setCardCanCast()
         }
     }
 
@@ -1564,20 +1663,47 @@ export class Player {
         }
     }
 
-    onEvent_PlayerDie(event) {
+    /**玩家死亡 */
+    onEvent_PlayerDie(event: { player: Player }) {
+        if (event.player != this) {
+            if (event.player.m_nLastAtkPlayerID == this.m_nPlayerID) {
+                this.setKillCountAdd(1)
+            }
+            return
+        }
 
+        this.m_bDie = true
+        this.setPlayerState(PS_Die)
+        // 设置网表
+        const keyname = "player_info_" + this.m_nPlayerID as player_info
+        const info = CustomNetTables.GetTableValue("GamingTable", keyname)
+        info.bDie = 1
+        CustomNetTables.SetTableValue("GamingTable", keyname, info)
+
+        this.setPlayerState(PS_Pass)
+        this.SetWageGold(0)
+
+        if (this.m_tabMyPath) {
+            for (const pathType in this.m_tabMyPath) {
+                for (const path of this.m_tabMyPath[pathType]) {
+                    this.setMyPathDel(path)
+                }
+            }
+        }
+
+        if (this.m_eHero) {
+            this.m_eHero.SetRespawnsDisabled(true)
+            this.m_eHero.ForceKill(true)
+        }
+
+        GameRules.EventManager.UnRegister("Event_OnDamage", (event: DamageEvent) => this.onEvent_OnDamage(event))
+        GameRules.EventManager.UnRegister("Event_Atk", (event: DamageEvent) => this.onEvent_Atk_bzHuiMo(event))
+        GameRules.EventManager.UnRegister("Event_PlayerRoundBegin", (event: { oPlayer: Player, bRoll: boolean }) => this.onEvent_PlayerRoundBegin(event))
+        GameRules.EventManager.UnRegister("Event_UpdateRound", () => this.onEvent_UpdateRound())
+        GameRules.EventManager.UnRegister("Event_Move", (event: { entity: CDOTA_BaseNPC_Hero }) => this.onEvent_Move(event))
+
+        // 音效
+        EmitGlobalSound("Custom.Killed")
+        return true
     }
-
-    onEvent_HeroManaChange(event) {
-
-    }
-
-    // 发送手牌数据给客户端
-    sendHandCardData() {
-        // let jsonData = []
-        // for (const value of this.m_tabHasCard) {
-
-        // }
-    }
-
 }

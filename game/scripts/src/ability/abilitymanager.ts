@@ -229,6 +229,7 @@ export class AbilityManager {
         return true
     }
 
+    /**玩家回合结束计算buff */
     static judgeBuffRound(casterPlayerID: number, buff: any, funChange?: Function) {
         if (!buff || !buff.m_nROund || buff.m_nROund < 1) {
             return

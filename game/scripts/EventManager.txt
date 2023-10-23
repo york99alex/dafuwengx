@@ -12,9 +12,7 @@
             player: Player
         })
 
-"Event_PlayerDie", (event: {
-            player: Player
-        })
+"Event_PlayerDie", { player: Player }
 
 "Event_UpdateRound", { isBegin: boolean, nRound: number }       
 
@@ -44,12 +42,9 @@
 
 "Event_RollBaoZiJudge", { player: event.player }
 
-"Event_HeroManaChange", { player : oPlayer, oAblt : ability }
+"Event_HeroManaChange", { player : Player, oAblt? : CDOTABaseAbility }
 
-"Event_HeroManaChange", { player: this }
-
-"Event_OnDamage", {}
-                {
+"Event_OnDamage",  {
         entindex_attacker_const: EntityIndex;
         entindex_victim_const: EntityIndex;
         entindex_inflictor_const?: EntityIndex;
@@ -90,15 +85,15 @@
 
 "Event_BZLevel", { eBZNew: eBZNew, eBZ: eBZ }
 
-"Event_Move", { entity: event.player.m_eHero }
+"Event_Move", { entity: CDOTA_BaseNPC_Hero }
 
-"Event_MoveEnd", { entity: event.player.m_eHero }
+"Event_MoveEnd", { entity: CDOTA_BaseNPC_Hero }
 
 "Event_BZCreate", { entity: eBZ }
 
 "Event_BZCastAblt", {ablt: this, bIgnore: true}
 
-"Event_CurPathChange", { player: this }
+"Event_CurPathChange", { player: Player }
 
 "Event_PathOwnChange", {
             path: this,
@@ -139,3 +134,12 @@
     path: PathDomain,
     bIgnore: boolean,
 }
+
+"Event_Atk", {
+        entindex_attacker_const: EntityIndex;
+        entindex_victim_const: EntityIndex;
+        entindex_inflictor_const?: EntityIndex;
+        damagetype_const: DamageTypes;
+        damage: number;
+        bIgnore?: boolean;
+    }

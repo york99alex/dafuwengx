@@ -98,6 +98,7 @@ export class EventManager {
                 const index = eventInfo.findIndex(item => item.nID == nID)
                 if (index == -1) return
                 eventInfo.splice(index, 1)
+                print("=====Event UnRegister==>nID:", nID, "event:", event)
                 return true
             }
         } else {
@@ -106,9 +107,11 @@ export class EventManager {
                 const index = eventInfo.findIndex(item => item.nID == nID)
                 if (index == -1) return
                 eventInfo.splice(index, 1)
+                print("=====Event UnRegister==>nID:", nID, "event:", event)
                 return true
             }
         }
+        print("=====Event UnRegister Failed==>nID:", nID, "event:", event)
         return false
     }
 
@@ -123,6 +126,7 @@ export class EventManager {
         const index = eventInfo.findIndex(item => item.funCallBack == funCallBack)
         if (index == -1) return
         eventInfo.splice(index, 1)
+        print("=====Event UnRegister==>name:", event)
         return true
     }
 

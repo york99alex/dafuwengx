@@ -358,7 +358,7 @@ export class GameConfig {
 
     /**处理回合结束 */
     processFinish(tabData: { nPlayerID: number, typeOprt: number }) {
-        print("processFinish====")
+        print("processFinish====this.m_typeState:", this.m_typeState)
         if (this.m_typeState == GS_Move) return
         if (this.m_typeState == GS_Wait) return
 
@@ -604,7 +604,7 @@ export class GameConfig {
                     v.nRequest = 1
                 } else if (TypeOprt.TO_AYZZ == v.typeOprt) {
                     // 安营扎寨，默认不
-                    v.nRequest = 0
+                    v.nRequest = 1
                 } else if (TypeOprt.TO_GCLD == v.typeOprt) {
                     // 攻城略地，默认不
                     v.nRequest = 0
@@ -889,20 +889,41 @@ export class GameConfig {
 
     /**增加轮数 */
     addRound() {
+        GameRules.PlayerManager.m_tabPlayers.forEach((oPlayer) => {
+            const abltCount = oPlayer.m_eHero.GetAbilityCount()
+            for (let i = 0; i < abltCount; i++) {
+                const ability = oPlayer.m_eHero.GetAbilityByIndex(i)
+                if (ability) {
+                    print("oPlayer__", oPlayer.m_nPlayerID, "===heroname:", oPlayer.m_eHero.GetUnitName(), " ===index(i)", i, "===abilityname:", oPlayer.m_eHero.GetAbilityByIndex(i).GetAbilityName())
+                }
+            }
+            oPlayer.m_eHero.FindAllModifiers().forEach((oBuff) => {
+                print("oPlayer__", oPlayer.m_nPlayerID, "===heroname:", oPlayer.m_eHero.GetUnitName(), " ===oBuff===name:", oBuff.GetName())
+            })
+        })
+
         this.m_nRound += 1
-        print("===回合数增加===this.m_nRound:", this.m_nRound)
+        print("===addRound===this.m_nRound:", this.m_nRound)
         // 同步网表
         CustomNetTables.SetTableValue("GamingTable", "round", { nRound: this.m_nRound })
+
+        const tEvtData = {
+            isBegin: true,
+            nRound: this.m_nRound
+        }
 
         if (Constant.RoundTip[this.m_nRound]) {
             CustomGameEventManager.Send_ServerToAllClients("S2C_round_tip", { sTip: "false" })
         }
 
         // 触发轮数更新
-        GameRules.EventManager.FireEvent("Event_UpdateRound", { isBegin: true, nRound: this.m_nRound })
+        GameRules.EventManager.FireEvent("Event_UpdateRound", tEvtData)
+        // 根据结果设置是否拦截回合开始
+        print("===addRound===tEvtData.isBegin:", tEvtData.isBegin)
+        GameRules.GameLoop.m_bRoundBefore = !tEvtData.isBegin
 
         if (Constant.RoundTip[this.m_nRound + 1]) {
-            CustomGameEventManager.Send_ServerToAllClients("S2C_round_tip", { sTip: Constant.RoundTip[this.m_nRound] })
+            CustomGameEventManager.Send_ServerToAllClients("S2C_round_tip", { sTip: Constant.RoundTip[this.m_nRound + 1] })
         }
 
         // 全图商店
@@ -912,7 +933,7 @@ export class GameConfig {
                 oPlayer.setBuyState(TBuyItem_SideAndSecret, -1)
             })
         }
-        return true
+        return tEvtData.isBegin
     }
 
     /**设置结算数据 */

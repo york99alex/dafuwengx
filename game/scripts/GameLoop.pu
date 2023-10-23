@@ -23,7 +23,11 @@ state GameState {
     GSNone --> GSReadyStart
     GSReadyStart : 设置回合数时间\n第0回合5秒\n
     state ReadyStartTOBegin <<join>>
-    GSReadyStart --> ReadyStartTOBegin :GSReadyStart_Exit方法{\n回合数加一addRound()\n触发事件"Event_GameStart"\n准备进入GSBegin(结束攻城和打野)\n只有两人触发终局决战}
+    GSReadyStart --> GSRoundBefore
+    GSRoundBefore : 延迟1秒判断m_bRoundBefore是否非真\n如果为真会停止去往GSBegin\nExit离开时会置m_bRoundBefore为null
+    GSRoundBefore --> GSMove : Event_PlayerRoundBefore触发\n攻城打野直到玩家新一个回合未结束\n则会进入Move移动到原本路径
+    GSMove --> GSRoundBefore
+    GSRoundBefore --> ReadyStartTOBegin : GSReadyStart_Exit方法{\n回合数加一addRound()\n触发事件"Event_GameStart"\n准备进入GSBegin(结束攻城和打野)\n只有两人触发终局决战}
     ReadyStartTOBegin --> GSBegin
     GSBegin : 玩家回合开始\n触发玩家回合开始事件\nEvent_PlayerRoundBegin\n(物品和技能CD,释放的技能,隐身符,黑黄杖效果,监狱,蓝量)\n广播Roll点操作
     GSBegin --> GSWaitOprt

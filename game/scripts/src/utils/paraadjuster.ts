@@ -1,10 +1,15 @@
+import { AHMC } from "./amhc"
+
 /**
  *  用来修正平衡性常数的东西
     根据的是DOTA标准常数
-    每点力量增加20点血
+    每点力量提供22点血
+    每点力量提供0.1点秒回血
     每点智力12点蓝
-    每点敏捷增加0.01点攻击速度
-    每点敏捷增加0.2点护甲
+    每点智力提供0.05点/秒魔法恢复
+    每点智力提供0.1%魔法抗性
+    每点敏捷增加1点攻击速度
+    每点敏捷增加0.16点护甲
  
     如果你设置的常数和这个常数不一致
     则需要同样拷贝本项目中
@@ -47,7 +52,7 @@ export class ParaAdjuster {
 
 
     static SetStrToHealth(value: number) {
-        this.sth_para = value - 20
+        this.sth_para = value - 22
     }
 
     static SetIntToMana(value: number) {
@@ -59,7 +64,7 @@ export class ParaAdjuster {
     }
 
     static SetAgiToAmr(value: number) {
-        this.ata_para = value - 0.17
+        this.ata_para = value - 0.16
     }
 
     /**
@@ -69,8 +74,8 @@ export class ParaAdjuster {
      * @param modi_name 修正类型
      */
     static ModifyData(unit: CDOTA_BaseNPC_Hero, data: number, mod_name: string) {
-
-        function funUpdate() {
+        print("===ModifyData===unit:", unit, "data:", data, "mod_name:", mod_name)
+        function funUpdate(noReturn?: boolean) {
             // 如果数据储存不存在，则初始化之
             if (!unit["recorder"]) unit["recorder"] = []
             if (!unit["recorder__modified_data"]) unit["recorder__modified_data"] = []
@@ -96,9 +101,9 @@ export class ParaAdjuster {
                 // 为单位增加修正的技能
                 let modifierAbility = unit.FindAbilityByName(ability_name) as CDOTA_Ability_DataDriven
                 if (!modifierAbility) {
-                    unit.AddAbility(ability_name)
+                    print("===ModifyData===AddAbility:", ability_name)
+                    AHMC.AddAbilityAndSetLevel(unit, ability_name)
                     modifierAbility = unit.FindAbilityByName(ability_name) as CDOTA_Ability_DataDriven
-                    modifierAbility.SetLevel(1)
                 }
 
                 // 二进制表
@@ -159,9 +164,10 @@ export class ParaAdjuster {
                 unit["recorder__" + mod_name] = current_data
                 unit["recorder__modified_data__" + mod_name] = modified_data
             }
+            if (noReturn == null)
+                return 0.2
         }
-
-        funUpdate()
+        unit.SetContextThink(DoUniqueString("modify_data"), () => funUpdate(), 0.2)
 
         GameRules.EventManager.Register("Event_SxChange", (event: { entity: CDOTA_BaseNPC_Hero }) => {
             if (unit == null || unit.IsNull()) {
@@ -172,7 +178,7 @@ export class ParaAdjuster {
             }
             funUpdate()
             Timers.CreateTimer(0.01, () => {
-                funUpdate()
+                funUpdate(true)
             })
         })
     }

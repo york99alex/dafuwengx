@@ -108,14 +108,13 @@ export class modifier_path_16_l1 extends BaseModifier {
         this.tEventID.push(GameRules.EventManager.Register("Event_BZHuiMo",
             (event: {
                 eBz: CDOTA_BaseNPC_BZ,
-                nHuiMoSum: number,
-                getBaseHuiMo: Function
+                nHuiMoSum: number
             }) => {
                 if (event.eBz.GetPlayerOwnerID() != this.oPlayer.m_nPlayerID) {
                     return
                 }
                 // 额外回魔
-                event.nHuiMoSum += (event.getBaseHuiMo() * this.huimo_bz * 0.01)
+                event.nHuiMoSum += (event.nHuiMoSum * this.huimo_bz * 0.01)
             }))
 
         // 监听技能释放
@@ -177,8 +176,8 @@ export class modifier_path_16_l1 extends BaseModifier {
 }
 
 @registerModifier()
-export class modifier_path_16_l2 extends modifier_path_16_l1 {}
+export class modifier_path_16_l2 extends modifier_path_16_l1 { }
 
 @registerModifier()
-export class modifier_path_16_l3 extends modifier_path_16_l1 {}
+export class modifier_path_16_l3 extends modifier_path_16_l1 { }
 

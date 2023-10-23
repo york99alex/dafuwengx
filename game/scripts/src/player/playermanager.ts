@@ -16,7 +16,7 @@ export class PlayerManager {
     init() {
         if (IsServer()) {
             // 玩家断线
-            // ListenToGameEvent("player_disconnect", (event) => this.onEvent_playerDisconnect(event), this)
+            ListenToGameEvent("player_disconnect", (event) => this.onEvent_playerDisconnect(event), this)
         }
         // 玩家连接
         ListenToGameEvent("player_connect_full", (event) => this.onEvent_playerConnectFull(event), this)
@@ -42,6 +42,7 @@ export class PlayerManager {
         let player = GameRules.PlayerManager.getPlayer(event.PlayerID)
         if (player == null) {
             player = new Player(event.PlayerID)
+            this.m_tabPlayers[event.PlayerID] = player
             player.m_oCDataPlayer = PlayerResource.GetPlayer(event.PlayerID)
         }
         // 掉线随机英雄
@@ -49,10 +50,14 @@ export class PlayerManager {
             player.m_oCDataPlayer != null &&
             GameRules.State_Get() == GameState.HERO_SELECTION) {
             print("PlayerID:", event.PlayerID, "MakeRandomHeroSelection")
-            GameRules.HeroSelection.SelectHero(event.PlayerID)
+            player.m_oCDataPlayer.MakeRandomHeroSelection()
+            GameRules.HeroSelection.m_SelectHeroPlayerID.push(player.m_nPlayerID)
         }
 
         player.setDisconnect(true)
+
+        // 轮询是否放弃比赛 和 掉线超时检测
+        // TODO:
     }
 
     // 玩家连接
@@ -123,8 +128,6 @@ export class PlayerManager {
     onEvent_dota_player_used_ability(event: GameEventProvidedProperties & DotaPlayerUsedAbilityEvent): void {
         print("onEvent_dota_player_used_ability")
         DeepPrintTable(event)
-        GameRules.EventManager.FireEvent("Event_HeroManaChange", { player: this
-            , oAblt: this.getPlayer(event.PlayerID).m_eHero.FindAbilityByName(event.abilityname) })
         GameRules.EventManager.FireEvent("dota_player_used_ability", event)
     }
 

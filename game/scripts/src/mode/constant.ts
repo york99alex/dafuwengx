@@ -39,9 +39,9 @@ export namespace Constant {
     export const PRISON_BAOZI_COUNT: number = 3
     // 兵卒最大等级
     export const BZ_MAX_LEVEL: number = 3
-    // 远程兵卒回魔率
+    /**远程兵卒回魔率 */ 
     export const BZ_HUIMO_RATE_Y: number = 0.5
-    // 近战兵卒回魔率
+    /**近战兵卒回魔率 */
     export const BZ_HUIMO_RATE_J: number = 0.4
     // 兵卒受伤回魔率
     export const BZ_HUIMO_BEATK_RATE: number = 0.4
@@ -56,7 +56,7 @@ export namespace Constant {
     // 竞拍倒计时时间
     export const AUCTION_BID_TIME: number = 10
     // 初始金币 
-    export const INITIAL_GOLD: number = 3000
+    export const INITIAL_GOLD: number = 5000
     // 工资金币
     export const WAGE_GOLD: number = 1000
     // 每圈工资降低
@@ -64,9 +64,9 @@ export namespace Constant {
     // 全图购物回合
     export const GLOBAL_SHOP_ROUND: number = 25
     // 英雄每回合回血百分百
-    export const ROUNT_HERO_HUIXUE_ROTA: number = 0.15
+    export const ROUND_HERO_HUIXUE_ROTA: number = 0.15
     // 兵卒每回合回血百分百
-    export const ROUNT_BZ_HUIXUE_ROTA: number = 0
+    export const ROUND_BZ_HUIXUE_ROTA: number = 0.1
     // 出狱金币 
     export const GOLD_OUT_PRISON: number = 300
     // 抽卡消耗

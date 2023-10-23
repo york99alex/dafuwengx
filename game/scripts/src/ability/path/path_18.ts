@@ -2,7 +2,7 @@ import { PS_InPrison, TP_DOMAIN_7 } from "../../mode/gamemessage";
 import { Path } from "../../path/Path";
 import { PathDomain } from "../../path/pathsdomain/pathdomain";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
-import { Player } from "../../player/player";
+import { DamageEvent, Player } from "../../player/player";
 import { AHMC } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../abilitymanager";
@@ -125,14 +125,7 @@ export class modifier_path_18_l1 extends BaseModifier {
             EmitGlobalSound("Hero_Omniknight.Purification")
 
             // 造成伤害
-            const nEventID = GameRules.EventManager.Register("Event_Atk", (event2: {
-                entindex_attacker_const: EntityIndex;
-                entindex_victim_const: EntityIndex;
-                entindex_inflictor_const?: EntityIndex;
-                damagetype_const: DamageTypes;
-                damage: number;
-                bIgnore?: boolean;
-            }) => {
+            const nEventID = GameRules.EventManager.Register("Event_Atk", (event2: DamageEvent) => {
                 if (event2.damagetype_const == typeDamage) {
                     event2.damage = this.damage
                 }

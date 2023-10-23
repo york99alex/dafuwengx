@@ -49,6 +49,7 @@ declare interface CustomNetTableDeclarations {
             nOprtOrder: number
             tMuteTradePlayers: any
             typeTeam: number
+            bDie?: 1 | 0
         }
         player_info_1: {
             bDisconnect: 1 | 0
@@ -71,6 +72,7 @@ declare interface CustomNetTableDeclarations {
             nOprtOrder: number
             tMuteTradePlayers: any
             typeTeam: number
+            bDie?: 1 | 0
         }
         player_info_2: {
             bDisconnect: 1 | 0
@@ -93,6 +95,7 @@ declare interface CustomNetTableDeclarations {
             nOprtOrder: number
             tMuteTradePlayers: any
             typeTeam: number
+            bDie?: 1 | 0
         }
         player_info_3: {
             bDisconnect: 1 | 0
@@ -115,6 +118,7 @@ declare interface CustomNetTableDeclarations {
             nOprtOrder: number
             tMuteTradePlayers: any
             typeTeam: number
+            bDie?: 1 | 0
         }
         player_info_4: {
             bDisconnect: 1 | 0
@@ -137,6 +141,7 @@ declare interface CustomNetTableDeclarations {
             nOprtOrder: number
             tMuteTradePlayers: any
             typeTeam: number
+            bDie?: 1 | 0
         }
         player_info_5: {
             bDisconnect: 1 | 0
@@ -159,6 +164,7 @@ declare interface CustomNetTableDeclarations {
             nOprtOrder: number
             tMuteTradePlayers: any
             typeTeam: number
+            bDie?: 1 | 0
         }
         path_info: {
             vPos: {

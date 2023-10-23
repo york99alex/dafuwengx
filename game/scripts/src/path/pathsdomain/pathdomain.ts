@@ -1,7 +1,7 @@
 import { Constant } from "../../mode/constant"
 import { GS_Begin, PS_AtkHero, PS_InPrison, TypeOprt } from "../../mode/gamemessage"
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ"
-import { Player } from "../../player/player"
+import { DamageEvent, Player } from "../../player/player"
 import { AHMC } from "../../utils/amhc"
 import { reloadable } from "../../utils/tstl-utils"
 import { Path } from "../Path"
@@ -326,14 +326,7 @@ export class PathDomain extends Path {
         })
 
         // 监听双方受伤事件
-        this.m_tEventIDGCLD.push(GameRules.EventManager.Register("Event_OnDamage", (event: {
-            entindex_attacker_const: EntityIndex;
-            entindex_victim_const: EntityIndex;
-            entindex_inflictor_const?: EntityIndex;
-            damagetype_const: DamageTypes;
-            damage: number;
-            bIgnore?: boolean;
-        }) => {
+        this.m_tEventIDGCLD.push(GameRules.EventManager.Register("Event_OnDamage", (event: DamageEvent) => {
             let e
             if (this.m_tabENPC[0].GetEntityIndex() == event.entindex_victim_const) {
                 e = this.m_tabENPC[0]
