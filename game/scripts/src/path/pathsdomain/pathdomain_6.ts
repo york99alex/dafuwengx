@@ -1,4 +1,4 @@
-import { AHMC } from "../../utils/amhc";
+import { AHMC, IsValid } from "../../utils/amhc";
 import { PathDomain } from "./pathdomain";
 
 /**领土路径-鵰巢 */
@@ -37,7 +37,7 @@ export class PathDomain_6 extends PathDomain {
     }
 
     setDiaoGesture(typeACT: GameActivity) {
-        if (!AHMC.IsValid(this.m_eDiao)) return
+        if (!IsValid(this.m_eDiao)) return
 
         if (!this.m_eDiao["bIdle"]) {
             if (typeACT == GameActivity.DOTA_IDLE)

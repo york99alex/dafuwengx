@@ -16,7 +16,7 @@ import { PathDomain } from "../path/pathsdomain/pathdomain"
 import { PathTP } from "../path/pathtp"
 import { Player, player_info } from "../player/player"
 import { PlayerManager } from "../player/playermanager"
-import { AHMC } from "../utils/amhc"
+import { IsValid } from "../utils/amhc"
 import { EventManager } from "../utils/eventmanager"
 import { ParaAdjuster } from "../utils/paraadjuster"
 import { reloadable } from "../utils/tstl-utils"
@@ -102,6 +102,12 @@ export class GameConfig {
         GameRules.GetGameModeEntity().SetStickyItemDisabled(true) //隐藏快速购买处的物品
         GameRules.GetGameModeEntity().SetRecommendedItemsDisabled(true) //禁止推荐物品
 
+        GameRules.GetGameModeEntity().SetDaynightCycleDisabled(true) // 是否禁用白天黑夜循环
+        GameRules.SetTimeOfDay(0.5) // 白天
+        GameRules.GetGameModeEntity().SetCustomXPRequiredToReachNextLevel(Constant.LEVEL_EXP)
+        GameRules.GetGameModeEntity().SetUseCustomHeroLevels(true) // 是否启用自定义英雄等级
+        GameRules.GetGameModeEntity().SetCustomHeroMaxLevel(25) // 设置自定义英雄最大等级
+
         // GameRules.SetCustomGameSetupAutoLaunchDelay(3) // 游戏设置时间（默认的游戏设置是最开始的队伍分配）
         // GameRules.SetCustomGameSetupRemainingTime(3) // 游戏设置剩余时间
         // GameRules.SetCustomGameSetupTimeout(3) // 游戏设置阶段超时
@@ -125,17 +131,14 @@ export class GameConfig {
         // game.SetSelectionGoldPenaltyEnabled(false) // 是否启用选择英雄时的金钱惩罚（超时每秒扣钱）
         // game.SetLoseGoldOnDeath(false) // 是否在英雄死亡时扣除金钱
         // game.SetBuybackEnabled(false) // 是否允许买活
-        // game.SetDaynightCycleDisabled(true) // 是否禁用白天黑夜循环
+
         // game.SetForceRightClickAttackDisabled(true) // 是否禁用右键攻击
         // game.SetHudCombatEventsDisabled(true) // 是否禁用战斗事件（左下角的战斗消息）
         // game.SetCustomGameForceHero(`npc_dota_hero_phoenix`) // 设置强制英雄（会直接跳过英雄选择阶段并直接为所有玩家选择这个英雄）
-        // game.SetUseCustomHeroLevels(true) // 是否启用自定义英雄等级
-        // game.SetCustomHeroMaxLevel(1) // 设置自定义英雄最大等级
         // game.SetCustomXPRequiredToReachNextLevel({
         //     // 设置自定义英雄每个等级所需经验，这里的经验是升级到这一级所需要的*总经验）
         //     1: 0,
         // })
-        // game.SetDaynightCycleDisabled(true) // 是否禁用白天黑夜循环
         // game.SetDeathOverlayDisabled(true) // 是否禁用死亡遮罩（灰色的遮罩）
 
         // 设置自定义的队伍人数上限，这里的设置是10个队伍，每个队伍1人
@@ -541,7 +544,7 @@ export class GameConfig {
                 } else if (path.m_nPlayerIDGCLD) {
                     HudError.FireLocalizeError(tabData.nPlayerID, "Error_CantGCLD_Battling")
                     return 3    // 已在攻城中
-                } else if (path.m_tabENPC && AHMC.IsValid(path.m_tabENPC[0]) && path.m_tabENPC[0].IsStunned()) {
+                } else if (path.m_tabENPC && IsValid(path.m_tabENPC[0]) && path.m_tabENPC[0].IsStunned()) {
                     HudError.FireLocalizeError(tabData.nPlayerID, "Error_CantGCLD_Stunned")
                     return 4    // 目标眩晕
                 } else if (GameRules.GameConfig.m_typeState == GS_Wait) {
@@ -607,7 +610,7 @@ export class GameConfig {
                     v.nRequest = 1
                 } else if (TypeOprt.TO_GCLD == v.typeOprt) {
                     // 攻城略地，默认不
-                    v.nRequest = 0
+                    v.nRequest = 1
                 } else if (TypeOprt.TO_TP == v.typeOprt) {
                     // TP传送，默认不
                     v.nRequest = 0
@@ -805,9 +808,10 @@ export class GameConfig {
             pathDes.onPath(event.player)
 
             // 判断豹子触发
-            GameRules.EventManager.FireEvent("Event_RollBaoZiJudge", { player: event.player })
-            if (!event.bIgnore && event.nNum1 == event.nNum2 &&
-                (oPlayer.m_nPlayerState & (PS_InPrison | PS_AtkMonster)) === 0) {
+            const tEventJudge = { player: event.player }
+            GameRules.EventManager.FireEvent("Event_RollBaoZiJudge", tEventJudge)
+            if (tEventJudge["bIgnore"] == 1 && event.nNum1 == event.nNum2 &&
+                (bit.band(oPlayer.m_nPlayerState, PS_InPrison + PS_AtkMonster)) == 0) {
                 // 豹子,发送roll点操作
                 this.broadcastOprt({
                     typeOprt: TypeOprt.TO_Roll,

@@ -26,8 +26,8 @@ DOTA_Tooltip_ability_Ability_pudge_rot_range,作用范围 :,
 DOTA_Tooltip_ability_Ability_pudge_rot_damage,伤害 :,
 DOTA_Tooltip_ability_Ability_pudge_rot_rot_slow,%减速 :,
 AbilityError_NeedMana_1,至少需要1点魔法,
-DOTA_Tooltip_modifier_Ability_pudge_rot_debuff,腐烂,
-DOTA_Tooltip_modifier_Ability_pudge_rot_debuff_Description,被腐烂减速<font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font>,
+DOTA_Tooltip_modifier_ability_pudge_rot_debuff,腐烂,
+DOTA_Tooltip_modifier_ability_pudge_rot_debuff_Description,被腐烂减速<font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font>,
 DOTA_Tooltip_ability_Ability_BZ_pudge_rot,腐烂,
 DOTA_Tooltip_ability_Ability_BZ_pudge_rot_Description,<font color='#00FF00'>自动</font> 魔法至100%时，对经过的英雄造成持续伤害的毒性云雾，并使其移速减缓。,
 DOTA_Tooltip_ability_Ability_BZ_pudge_rot_Lore,从屠夫腐烂肿胀的肉体中放出的有毒气体，气体恶心的令人窒息。,
@@ -181,3 +181,88 @@ DOTA_Tooltip_ability_yjxr_max,养精蓄锐
 DOTA_Tooltip_ability_yjxr_max_Description,顶级兵卒
 DOTA_Tooltip_ability_yjxr_max_Lore,我感觉人生已经到达了巅峰!!!
 DOTA_Tooltip_ability_yjxr_max_level_max,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_path_12,天辉
+DOTA_Tooltip_ability_path_12_Description,<h1>【领地增益 : 辉光普照】</h1>护甲提升 : <font color='#FFFFFF'>5 / 10 / 10</font> <br>魔抗提升 : <font color='#FFFFFF'>15% / 30% / 30%</font> \n<h1>【满级效果 : 融合】</h1>天辉兵卒融合成传说中的天辉巨人。<br>（等级，射程，体型是普通兵卒的 2 倍）\n<h1>【增益等级规则】</h1>一级 : 需★天辉兵卒 x  1<br>二级 : 需★★天辉兵卒 x  2<br>三级 : 需★★★天辉兵卒 x 3
+DOTA_Tooltip_ability_path_12_Lore,天辉大地因世界树充满活力。受到世界树的庇护，全军防御抗性提升。
+DOTA_Tooltip_Modifier_path_12_l1,辉光普照
+DOTA_Tooltip_Modifier_path_12_l1_Description,护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。<br><font color='#FFFF00'>下个等级 : ★★天辉兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_12_l2,辉光普照
+DOTA_Tooltip_Modifier_path_12_l2_Description,护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。<br><font color='#FFFF00'>下个等级 : ★★★天辉兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_12_l3,辉光普照
+DOTA_Tooltip_Modifier_path_12_l3_Description,护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。
+DOTA_Tooltip_ability_path_13,河道
+DOTA_Tooltip_ability_path_13_Description,<h1>【领地增益 ：寒流】</h1>护甲穿透（上河道） : <font color='#FFFFFF'>15% / 25% / 35%</font> <br>魔抗穿透（下河道） : <font color='#FFFFFF'>15% / 25% / 35%</font>\n<h1>【增益等级规则】</h1>一级 : 需★河道兵卒 x 1<br>二级 : 需★★河道兵卒 x 1<br>三级 : 需★★★河道兵卒 x 1
+DOTA_Tooltip_ability_path_13_Lore,肃杀的世界连流水同样冰冷，刺骨之寒透过坚硬的盔甲。
+DOTA_Tooltip_Modifier_path_13_hujia_l1,寒流 : 物理穿透
+DOTA_Tooltip_Modifier_path_13_hujia_l1_Description,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。<br><font color='#FFFF00'>下个等级 : ★★上河道兵卒 x1</font>
+DOTA_Tooltip_Modifier_path_13_mokang_l1,寒流 : 魔法穿透
+DOTA_Tooltip_Modifier_path_13_mokang_l1_Description,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性 。<br><font color='#FFFF00'>下个等级 : ★★下河道兵卒  x1</font>
+DOTA_Tooltip_Modifier_path_13_hujia_l2,寒流 : 物理穿透
+DOTA_Tooltip_Modifier_path_13_hujia_l2_Description,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。<br><font color='#FFFF00'>下个等级 : ★★★上河道兵卒 x1</font>
+DOTA_Tooltip_Modifier_path_13_mokang_l2,寒流 : 魔法穿透
+DOTA_Tooltip_Modifier_path_13_mokang_l2_Description,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性。<br><font color='#FFFF00'>下个等级 : ★★★下河道兵卒 x1</font>
+DOTA_Tooltip_Modifier_path_13_hujia_l3,寒流 : 物理穿透
+DOTA_Tooltip_Modifier_path_13_hujia_l3_Description,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。
+DOTA_Tooltip_Modifier_path_13_mokang_l3,寒流 : 魔法穿透
+DOTA_Tooltip_Modifier_path_13_mokang_l3_Description,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性。
+DOTA_Tooltip_ability_path_14,蛇沼
+DOTA_Tooltip_ability_path_14_Description,<h1>【领地增益 ：缚足】</h1>敌人经过此地有概率被群蛇束缚。\n束缚概率 : <font color='#FFFFFF'>25%</font> <br>束缚时间 : <font color='#FFFFFF'>1 / 2 / 2</font>\n<h1>【满级效果 : 扩张】</h1>作用全部己方领地\n<h1>【增益等级规则】</h1>一级 : 需★蛇沼兵卒 x 1<br>二级 : 需★★蛇沼兵卒 x 2<br>三级 : 需★★★蛇沼兵卒 x 3
+DOTA_Tooltip_ability_path_14_Lore,穿行沼泽的确不是件轻松活，好在有蛇蛇们的帮助。
+DOTA_Tooltip_Modifier_path_14_l1,缚足
+DOTA_Tooltip_Modifier_path_14_l1_Description,敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）<br><font color='#FFFF00'>下个等级 : ★★蛇沼兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_14_l2,缚足
+DOTA_Tooltip_Modifier_path_14_l2_Description,敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）<br><font color='#FFFF00'>下个等级 : ★★★蛇沼兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_14_l3,缚足
+DOTA_Tooltip_Modifier_path_14_l3_Description,敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）
+DOTA_Tooltip_ability_path_15,夜魇
+DOTA_Tooltip_ability_path_15_Description,<h1>【领地增益 ：癫狂】</h1>攻速提升 : <font color='#FFFFFF'>25 / 50 / 100</font> <br>移速提升 : <font color='#FFFFFF'>10 / 20 / 40</font>\n<h1>【满级效果 : 癫狂】</h1>夜魇兵卒双倍提升，被沉默无法施法兵卒技。\n<h1>【增益等级规则】</h1>一级 : 需★夜魇兵卒 x 1<br>二级 : 需★★夜魇兵卒 x 2<br>三级 : 需★★★夜魇兵卒 x 3
+DOTA_Tooltip_ability_path_15_Lore,至邪的源泉侵蚀它的子民，失去了灵魂换得他人的恐惧。
+DOTA_Tooltip_Modifier_path_15_l1,癫狂
+DOTA_Tooltip_Modifier_path_15_l1_Description,全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。<br><font color='#FFFF00'>下个等级 : ★★夜魇兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_15_l2,癫狂
+DOTA_Tooltip_Modifier_path_15_l2_Description,全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。<br><font color='#FFFF00'>下个等级 : ★★★夜魇兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_15_l3,癫狂
+DOTA_Tooltip_Modifier_path_15_l3_Description,全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。夜魇兵卒双倍提升，沉默自身。
+DOTA_Tooltip_Modifier_path_15_chenmo,癫狂反噬
+DOTA_Tooltip_Modifier_path_15_chenmo_Description,失去理性，无法释放技能。
+DOTA_Tooltip_ability_path_16,龙谷
+DOTA_Tooltip_ability_path_16_Description,<h1>【领地增益 ：神龙赐法】</h1>英雄回魔提升 : <font color='#FFFFFF'>1</font><br>兵卒回魔提升 : <font color='#FFFFFF'>40%</font><br>萃魔概率 : <font color='#FFFFFF'>15% / 30% / 50%</font><br>刷新概率 : <font color='#FFFFFF'>0% / 15% / 50%</font>\n<h1>【特殊效果 : 萃魔】</h1>施法有概率返还魔法\n<h1>【特殊效果 : 刷新】</h1>施法有概率刷新技能\n<h1>【增益等级规则】</h1>一级 : 需★龙谷兵卒 x 1<br>二级 : 需★★龙谷兵卒 x 2<br>三级 : 需★★★龙谷兵卒 x 3
+DOTA_Tooltip_ability_path_16_Lore,神秘的古老种族，掌管着最纯粹的魔法。
+DOTA_Tooltip_Modifier_path_16_l1,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l1_Description,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 15%% 返还魔耗。<br><font color='#FFFF00'>下个等级 : ★★龙谷兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_16_l2,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l2_Description,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 30%% 返还魔耗。<br>施法 15%% 刷新冷却。<br><font color='#FFFF00'>下个等级 : ★★★龙谷兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_16_l3,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l3_Description,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 50%% 返还魔耗。<br>施法 50%% 刷新冷却。
+DOTA_Tooltip_Modifier_path_16_l1_BZ,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l1_BZ_Description,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 15%% 返还魔耗。<br><font color='#FFFF00'>下个等级 : ★★龙谷兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_16_l2_BZ,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l2_BZ_Description,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 30%% 返还魔耗。<br>施法 15%% 刷新冷却。<br><font color='#FFFF00'>下个等级 : ★★★龙谷兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_16_l3_BZ,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l3_BZ_Description,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 50%% 返还魔耗。<br>施法 50%% 刷新冷却。
+DOTA_Tooltip_ability_path_17,鵰巢
+DOTA_Tooltip_ability_path_17_Description,<h1>【领地增益 ：圣兽之怒】</h1>圣兽刮起飓风，伤害经过的敌人。\n持续魔法伤害 : <font color='#FFFFFF'>30</font><br>减速 : <font color='#FFFFFF'>0% / 50% / 50%</font>\n<h1>【二级效果 : 减速】</h1>飓风造成减速\n<h1>【满级效果 : 扩张】</h1>作用全部己方领地\n<h1>【增益等级规则】</h1>一级 : 需★鵰巢兵卒 x 1<br>二级 : 需★★鵰巢兵卒 x 2<br>三级 : 需★★★鵰巢兵卒 x 3
+DOTA_Tooltip_ability_path_17_Lore,唤醒圣兽，刮起飓风，触碰的敌人被持续减速，并造成魔法伤害。唤醒沉睡的圣兽，无谓的战争引燃它的怒火。
+DOTA_Tooltip_Modifier_path_17_l1,圣兽
+DOTA_Tooltip_Modifier_path_17_l1_Description,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害。<br><font color='#FFFF00'>下个等级 : ★★鵰巢兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_17_l2,圣兽
+DOTA_Tooltip_Modifier_path_17_l2_Description,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害，并减速 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%。<br><font color='#FFFF00'>下个等级 : ★★★鵰巢兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_17_l3,圣兽
+DOTA_Tooltip_Modifier_path_17_l3_Description,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害，并减速 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%。
+DOTA_Tooltip_Modifier_path_17_debuff,圣兽
+DOTA_Tooltip_Modifier_path_17_debuff_Description,飓风减速 %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%
+DOTA_Tooltip_ability_path_18,圣所
+DOTA_Tooltip_ability_path_18_Description,<h1>【领地增益 ：圣洁净土】</h1>对驻足在圣所的敌人造成神圣伤害。\n纯粹伤害 : <font color='#FFFFFF'>1000 / 2000 / 4000</font>\n<h1>【特殊效果 : 石佛】</h1>圣所兵卒无法攻击。无法被攻城。\n<h1>【增益等级规则】</h1>一级 : 需★圣所兵卒 x 2<br>二级 : 需★★圣所兵卒 x 2<br>三级 : 需★★★圣所兵卒 x 2
+DOTA_Tooltip_ability_path_18_Lore,神圣的殿堂前没有纷争也没有不速之客。
+DOTA_Tooltip_Modifier_path_18_l1,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l1_Description,对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★圣所兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_18_l2,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l2_Description,对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★★圣所兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_18_l3,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l3_Description,对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。
+DOTA_Tooltip_Modifier_path_18_l1_BZ,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l1_BZ_Description,化身石佛守护圣所，对驻足在圣所的敌人造成 1000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★圣所兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_18_l2_BZ,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l2_BZ_Description,化身石佛守护圣所，对驻足在圣所的敌人造成 2000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★★圣所兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_18_l3_BZ,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l3_BZ_Description,化身石佛守护圣所，对驻足在圣所的敌人造成 4000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。

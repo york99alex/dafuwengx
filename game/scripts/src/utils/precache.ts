@@ -12,6 +12,7 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/units/heroes/hero_meepo/meepo_poof_start.vpcf',
             'particles/units/heroes/hero_meepo/meepo_loadout.vpcf',
             'particles/econ/items/pudge/pudge_trapper_beam_chain/pudge_nx_meathook.vpcf',
+            'particles/econ/items/pudge/pudge_trapper_beam_chain/pudge_nx_meathook_hook.vpcf',
             'particles/units/heroes/hero_pudge/pudge_rot.vpcf',
             'particles/units/heroes/hero_lina/lina_spell_dragon_slave.vpcf',
             'particles/units/heroes/hero_dark_willow/dark_willow_wisp_spell_marker_ring.vpcf',

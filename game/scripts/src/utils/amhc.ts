@@ -1,3 +1,5 @@
+import { ParaAdjuster } from "./paraadjuster"
+
 export class AHMC {
     // 写一些方法类,有AMHC之前的lua代码翻译过来,也有自定义工具方法
 
@@ -14,6 +16,12 @@ export class AHMC {
             oAblt = unit.FindAbilityByName(abilityName)
             oAblt.SetLevel(nLevel)
         }
+        print("===AddAbilityAndSetLevel:", abilityName)
+        if (unit.IsRealHero()) {
+            print("===AHMC===AddAbilityAndSetLevel===:", unit.GetPlayerOwnerID())
+            print("===AHMC===AddAbilityAndSetLevel===m_nManaMaxBase:", GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+            ParaAdjuster.ModifyMana(unit, GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+        }
         return oAblt
     }
 
@@ -24,19 +32,56 @@ export class AHMC {
             unit.RemoveAbility(abilityName)
 
             let strBuff = "modifier_" + abilityName
-            print(strBuff)
+            print("===RemoveAbilityAndModifier:", strBuff)
             let tabBuff = unit.FindAllModifiers()
-            print(tabBuff)
             for (const value of tabBuff) {
-                if (string.find(value.GetName(), strBuff) != null)
+                print("const value of tabBuff:", value.GetName())
+                if (value.GetName().indexOf(strBuff) != -1) {
+                    print("unit.RemoveModifierByName:", value.GetName())
                     unit.RemoveModifierByName(value.GetName())
+                }
+            }
+            if (unit.IsRealHero()) {
+                print("===AHMC===RemoveAbilityAndModifier===:", unit.GetPlayerOwnerID())
+                print("===AHMC===RemoveAbilityAndModifier===m_nManaMaxBase:", GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+                ParaAdjuster.ModifyMana(unit, GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
             }
             return true
         }
     }
 
-    static IsValid(handle: CEntityInstance | any) {
-        return handle != null && !handle.IsNull()
+    static AddNewModifier(
+        unit: CDOTA_BaseNPC,
+        caster: CDOTA_BaseNPC | undefined,
+        ability: CDOTABaseAbility | undefined,
+        modifierName: string,
+        modifierTable: object | undefined,
+    ) {
+        const oBuff = unit.AddNewModifier(caster, ability, modifierName, modifierTable)
+        if (unit.IsRealHero()) {
+            print("===AHMC===AddNewModifier===:", unit.GetPlayerOwnerID())
+            print("===AHMC===AddNewModifier===m_nManaMaxBase:", GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+            ParaAdjuster.ModifyMana(unit, GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+        }
+        return oBuff
+    }
+
+    static RemoveModifierByName(name: string, unit: CDOTA_BaseNPC) {
+        unit.RemoveModifierByName(name)
+        if (unit.IsRealHero()) {
+            print("===AHMC===RemoveModifierByName===:", unit.GetPlayerOwnerID())
+            print("===AHMC===RemoveModifierByName===m_nManaMaxBase:", GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+            ParaAdjuster.ModifyMana(unit, GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+        }
+    }
+
+    static RemoveModifierByNameAndCaster(name: string, unit: CDOTA_BaseNPC, caster: CDOTA_BaseNPC) {
+        unit.RemoveModifierByNameAndCaster(name, caster)
+        if (unit.IsRealHero()) {
+            print("===AHMC===RemoveModifierByNameAndCaster===:", unit.GetPlayerOwnerID())
+            print("===AHMC===RemoveModifierByNameAndCaster===m_nManaMaxBase:", GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+            ParaAdjuster.ModifyMana(unit, GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+        }
     }
 
     static removeAll(object: any[], condition: any) {
@@ -192,7 +237,7 @@ export class AHMC {
      * @returns 返回true有效且存活, 返回false有效但死亡, 返回null无效实体
      */
     static IsAlive(entity: CBaseEntity) {
-        if (IsValidEntity(entity)) {
+        if (IsValid(entity)) {
             if (entity.IsAlive()) {
                 return true
             }
@@ -215,7 +260,7 @@ export class AHMC {
         if (this.IsAlive(attacker) != true || this.IsAlive(victim) != true) {
             return null
         }
-        scale = scale ?? 1
+        scale = null ?? 1
         if (scale < 0) scale = 1
 
         const tEntID = GameRules.EventManager.Register("Event_Atk", (event) => {
@@ -237,4 +282,8 @@ export class AHMC {
         })
         GameRules.EventManager.UnRegisterByID(tEntID, "Event_Atk")
     }
+}
+
+export function IsValid(handle: CEntityInstance | any) {
+    return handle != null && !handle.IsNull()
 }

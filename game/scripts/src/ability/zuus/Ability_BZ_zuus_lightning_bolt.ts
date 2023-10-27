@@ -1,6 +1,6 @@
 import { PS_AbilityImmune } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
-import { AHMC } from "../../utils/amhc";
+import { AHMC, IsValid } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
 import { TSBaseAbility } from "../tsBaseAbilty";
 
@@ -26,7 +26,7 @@ export class Ability_BZ_zuus_lightning_bolt extends TSBaseAbility {
 
     /**选择目标时 */
     CastFilterResultTarget(target: CDOTA_BaseNPC): UnitFilterResult {
-        if (IsValidEntity((this.GetCaster() as CDOTA_BaseNPC_BZ).m_eAtkTarget)) {
+        if (IsValid((this.GetCaster() as CDOTA_BaseNPC_BZ).m_eAtkTarget)) {
             this.m_eTarget = (this.GetCaster() as CDOTA_BaseNPC_BZ).m_eAtkTarget
             const playerTarget = GameRules.PlayerManager.getPlayer(this.m_eTarget.GetPlayerOwnerID())
             if (playerTarget && 0 < bit.band(PS_AbilityImmune, playerTarget.m_nPlayerState)) {
@@ -48,7 +48,7 @@ export class Ability_BZ_zuus_lightning_bolt extends TSBaseAbility {
     /**开始技能效果 */
     OnSpellStart(): void {
         const eTarget = this.m_eTarget
-        if (!IsValidEntity(eTarget)) {
+        if (!IsValid(eTarget)) {
             return
         }
         const oPlayer = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID())

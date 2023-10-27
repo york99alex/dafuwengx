@@ -12,6 +12,7 @@ export class yjxr_18 extends TSBaseAbility {
     /**选择无目标时 */
     CastFilterResult(): UnitFilterResult {
         if (IsServer() && this.GetCaster().HasModifier("modifier_medusa_stone_gaze_stone")) {
+            print("===yjxr==this.GetCaster()===", this.GetCaster().GetName())
             this.OnSpellStart()
         }
         return UnitFilterResult.SUCCESS

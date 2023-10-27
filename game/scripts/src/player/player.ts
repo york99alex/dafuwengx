@@ -1,11 +1,12 @@
 import { PS_AtkBZ, PS_AtkHero, PS_AtkMonster, PS_Die, PS_InPrison, PS_Invis, PS_MagicImmune, PS_Moving, PS_None, PS_Pass, PS_PhysicalImmune, PS_Rooted, TBuyItem_None, TP_DOMAIN_1, TP_START } from "../mode/gamemessage"
 import { Constant } from "../mode/constant"
 import { Path } from "../path/Path"
-import { AHMC } from "../utils/amhc"
+import { AHMC, IsValid } from "../utils/amhc"
 import { PathDomain } from "../path/pathsdomain/pathdomain"
 import { reloadable } from "../utils/tstl-utils"
 import { CDOTA_BaseNPC_BZ } from "./CDOTA_BaseNPC_BZ"
 import { TSBaseAbility } from "../ability/tsBaseAbilty"
+import { ParaAdjuster } from "../utils/paraadjuster"
 
 export type player_info = "player_info_0" | "player_info_1" | "player_info_2" | "player_info_3" | "player_info_4" | "player_info_5"
 export type DamageEvent = {
@@ -148,7 +149,7 @@ export class Player {
         this.m_eHero.SetAbilityPoints(0)
         // 0回蓝
         Timers.CreateTimer(0.1, () => {
-            this.m_eHero.SetMaxMana(1)
+            this.m_eHero.SetMana(1)
             this.m_eHero.SetBaseManaRegen(0)
             this.m_eHero.SetBaseManaRegen(-(this.m_eHero.GetManaRegen()))
         })
@@ -318,7 +319,7 @@ export class Player {
 
     setGoldUpdate() {
         Timers.CreateTimer(() => {
-            if (!AHMC.IsValid(this.m_eHero)) return
+            if (!IsValid(this.m_eHero)) return
             if (this.m_nGold > 0)
                 this.m_eHero.SetGold(this.m_nGold, false)
             else
@@ -707,7 +708,7 @@ export class Player {
         if (!this.isHasPath(path.m_nID))
             return
 
-        this.m_tabMyPath[path.m_typePath].filter(v => {
+        this.m_tabMyPath[path.m_typePath] = this.m_tabMyPath[path.m_typePath].filter(v => {
             if (v.m_nID == path.m_nID) {
                 if (v.m_nOwnerID == this.m_nPlayerID) {
                     path.setOwner()
@@ -779,7 +780,7 @@ export class Player {
 
     /**创建兵卒到领地 */
     createBZOnPath(path: PathDomain, nStarLevel: number, bLevelUp?: boolean) {
-        nStarLevel = nStarLevel ?? 1
+        nStarLevel = nStarLevel || 1
 
         // 创建单位
         let strName = Constant.HERO_TO_BZ[this.m_eHero.GetUnitName()]
@@ -844,6 +845,8 @@ export class Player {
 
         // 特效 TODO:
 
+        print("===ModifyMana===createBZOnPath")
+        Timers.CreateTimer(0.01, () => ParaAdjuster.ModifyMana(this.m_eHero, this.m_nManaMaxBase, 0))
         return eBZ
     }
 
@@ -854,10 +857,10 @@ export class Player {
         let bHas: boolean
         for (const v of this.m_tabBz) {
             print("======removeBz===========")
-            print("v:", v)
+            print("v:", v.GetName())
             print("=====removeBz===PrintEnd=")
             if (v == eBZ) {
-                this.m_tabBz.filter(v => v != eBZ)
+                this.m_tabBz = this.m_tabBz.filter(v => v != eBZ)
                 bHas = true
                 break
             }
@@ -870,7 +873,7 @@ export class Player {
             if (eBZ.m_path.m_typePath == tonumber(typePath)) {
                 for (const oPath of tabPath) {
                     if (eBZ.m_path == oPath) {
-                        oPath.m_tabENPC.filter(v => v != eBZ)
+                        oPath.m_tabENPC = oPath.m_tabENPC.filter(v => v != eBZ)
                         break
                     }
                 }
@@ -887,7 +890,7 @@ export class Player {
         // 移除buff
         const tBuffs = eBZ.FindAllModifiers()
         for (const buff of tBuffs) {
-            eBZ.RemoveModifierByName(buff.GetName())
+            AHMC.RemoveModifierByName(buff.GetName(), eBZ)
         }
 
         // 处理装备
@@ -926,7 +929,9 @@ export class Player {
         // 复制buff
         const tBuffs = eBZ.FindAllModifiers()
         for (const buff of tBuffs) {
-            // TODO:
+            if (buff["copyBfToEnt"]) {
+                buff["copyBfToEnt"](eBZNew)
+            }
         }
 
         // 触发事件
@@ -979,10 +984,11 @@ export class Player {
         if (eBz == null) return
         for (const value of this.m_tabBz) {
             if (value == eBz) {
-                if (bCan)
+                if (bCan) {
                     AHMC.RemoveAbilityAndModifier(value, "physical_immune")
-                else
+                } else {
                     AHMC.AddAbilityAndSetLevel(value, "physical_immune")
+                }
             }
             return
         }
@@ -1028,7 +1034,7 @@ export class Player {
 
         if (bCan) {
             for (const v of this.m_tabBz) {
-                if (IsValidEntity(v) && filter(v)) {
+                if (IsValid(v) && filter(v)) {
                     v.SetControllableByPlayer(-1, true)  // 攻击时不能控制
                     v.SetTeam(DotaTeam.BADGUYS) // 攻击时需要为敌方
                     GameRules.EventManager.FireEvent("Event_BZCanAtk", { entity: v })  // 触发兵卒可攻击事件
@@ -1036,7 +1042,7 @@ export class Player {
             }
         } else {
             for (const v of this.m_tabBz) {
-                if (IsValidEntity(v) && filter(v)) {
+                if (IsValid(v) && filter(v)) {
                     AHMC.AddAbilityAndSetLevel(v, "jiaoxie")
                     if (!this.m_bDisconnect) {
                         v.SetControllableByPlayer(this.m_nPlayerID, true)
@@ -1071,7 +1077,7 @@ export class Player {
                     bz.m_tabAtker = []
                 }
                 if (bDel) {
-                    bz.m_tabAtker.filter(atker => atker != eAtaker)
+                    bz.m_tabAtker = bz.m_tabAtker.filter(atker => atker != eAtaker)
                 } else {
                     bz.m_tabAtker.push(eAtaker)
                     bz.m_tabAtker = bz.m_tabAtker.filter((atker, index) => {
@@ -1140,7 +1146,7 @@ export class Player {
                 }
             } else {
                 for (const v of this.m_tabBz) {
-                    if (IsValidEntity(v)) {
+                    if (IsValid(v)) {
                         if (entity == v.GetEntityIndex()) {
                             return v
                         }
@@ -1174,39 +1180,7 @@ export class Player {
     setMaxMana(nValue: number) {
         // 不影响当前魔法值
         const nManaCur = this.m_eHero.GetMana()
-
-        // 添加修改魔法上限的buff
-        AHMC.RemoveAbilityAndModifier(this.m_eHero, "mana_max")
-        const ability = this.m_eHero.AddAbility("mana_max") as CDOTA_Ability_DataDriven
-
-        // 删除之前
-        for (const v of this.m_eHero.FindAllModifiers()) {
-            if (v.GetName().indexOf("modifier_mana_max_mod_") != -1) {
-                this.m_eHero.RemoveModifierByName(v.GetName())
-            }
-        }
-
-        // 二进制表
-        const bitTable = [512, 256, 128, 64, 32, 16, 8, 4, 2, 1]
-        // 如果有很大的数据，大于1023，那么增加N个512先干到512以下
-        if (nValue > 1023) {
-            const out_count = math.floor(nValue / 512)
-            for (let i = 1; i <= out_count; i++) {
-                ability.ApplyDataDrivenModifier(this.m_eHero, this.m_eHero, "modifier_mana_max_mod_512", null)
-            }
-            nValue -= out_count * 512
-        }
-        // 循环增加Modifier，最终增加到正确个数的Modifier
-        for (let p = 0; p < bitTable.length; p++) {
-            const val = bitTable[p]
-            const count = math.floor(nValue / val)
-            if (count >= 1) {
-                ability.ApplyDataDrivenModifier(this.m_eHero, this.m_eHero, "modifier_mana_max_mod_" + val, null)
-                nValue -= val
-            }
-        }
-
-        this.m_eHero.RemoveAbility(ability.GetAbilityName())
+        ParaAdjuster.ModifyMana(this.m_eHero, nValue, 0)
         this.setPlayerMana(nManaCur)
     }
 
@@ -1284,7 +1258,7 @@ export class Player {
 
     /**获取单位物品栏加背包9格中的物品用名字 */
     get09ItemByName(sName: string, itemIgnore) {
-        if (IsValidEntity(this.m_eHero)) {
+        if (IsValid(this.m_eHero)) {
             for (let i = 0; i < 9; i++) {
                 const item = this.m_eHero.GetItemInSlot(i)
                 if (item && item != itemIgnore && !item.IsNull() && item.GetAbilityName() == sName) {
@@ -1381,7 +1355,7 @@ export class Player {
 
         if (nLevelUpExp && nCurExp + nAddExp >= nLevelUpExp) {
             // 升级,触发属性变更
-            GameRules.EventManager.FireEvent("Event_SxChange", { entity: this.m_eHero })
+            GameRules.EventManager.FireEvent("Event_SxChange", { entity: this.m_eHero, bonus_mana: this.m_nManaMaxBase })
             // 修改回蓝回血为0
             Timers.CreateTimer(0.1, () => {
                 this.updateRegen0()
@@ -1424,18 +1398,25 @@ export class Player {
 
     /**受伤 */
     onEvent_OnDamage(event: DamageEvent) {
+        print("===onEvent_OnDamage===")
+        print("===onEvent_OnDamage===damage:", event.damage)
+        print("===onEvent_OnDamage===damagetype:", event.damagetype_const)
+        print("===onEvent_OnDamage===bIgnore:", event.bIgnore)
+        print("===onEvent_OnDamage===bIgnoreGold:", event.bIgnoreGold)
+        print("===onEvent_OnDamage===bIgnoreDamageSelf:", event.bIgnoreDamageSelf)
+        print("===onEvent_OnDamage===bIgnoreBZHuiMo:", event.bIgnoreBZHuiMo)
         if (event.bIgnore) return
 
         // 受伤者
         const oVictim = EntIndexToHScript(event.entindex_victim_const) as CDOTA_BaseNPC
-        if (IsValidEntity(oVictim) && (oVictim == this.m_eHero || this.hasBZ(oVictim))) {
+        if (IsValid(oVictim) && (oVictim == this.m_eHero || this.hasBZ(oVictim))) {
             event.bIgnore = true
             event.damage = math.ceil(event.damage)
 
             // 攻击者
             const oAttacker = EntIndexToHScript(event.entindex_attacker_const) as CDOTA_BaseNPC
             let oPlayerAtk: Player
-            if (IsValidEntity(oAttacker)) {
+            if (IsValid(oAttacker)) {
                 this.m_nLastAtkPlayerID = oAttacker.GetPlayerOwnerID()
                 oPlayerAtk = GameRules.PlayerManager.getPlayer(oAttacker.GetPlayerOwnerID())
                 // 统计伤害
@@ -1467,6 +1448,7 @@ export class Player {
                     // 攻击者是敌人，给敌人玩家设置金币
                     if (oPlayerAtk
                         && oPlayerAtk != this) {
+                        print("oPlayerAtk.setGold(event.damage)", event.damage)
                         oPlayerAtk.setGold(event.damage)
                         GameRules.GameConfig.showGold(oPlayerAtk, event.damage)
                         GameRules.EventManager.FireEvent("Event_ChangeGold_Atk", {
@@ -1628,7 +1610,7 @@ export class Player {
             // 设置兵卒攻击目标
             this.setAllBzAtker(event.entity, false)
             // 监听兵卒创建继续设置目标
-            tEventID.push(GameRules.EventManager.Register("Event_BZCreate", (tEvent) => {
+            tEventID.push(GameRules.EventManager.Register("Event_BZCreate", (tEvent: { entity: CDOTA_BaseNPC_BZ }) => {
                 if (tEvent.entity.GetPlayerOwnerID() == this.m_nPlayerID
                     && 0 < bit.band(PS_AtkBZ, this.m_nPlayerState)) {
                     this.setBzAtker(tEvent.entity, event.entity, false)

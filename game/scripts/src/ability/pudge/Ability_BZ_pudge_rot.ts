@@ -1,9 +1,9 @@
 import { PS_AbilityImmune } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
-import { AHMC } from "../../utils/amhc";
+import { AHMC, IsValid } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
 import { TSBaseAbility } from "../tsBaseAbilty";
-import { modifier_Ability_pudge_rot_debuff } from "./Ability_pudge_rot";
+import { modifier_ability_pudge_rot_debuff } from "./Ability_pudge_rot";
 
 
 /**
@@ -43,7 +43,7 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
                 return UnitFilterResult.FAIL_CUSTOM
             }
 
-            if (IsValidEntity(this.GetCaster().m_eAtkTarget)) {
+            if (IsValid(this.GetCaster().m_eAtkTarget)) {
                 this.m_eTarget = this.GetCaster().m_eAtkTarget
                 const playerTarget = GameRules.PlayerManager.getPlayer(this.m_eTarget.GetPlayerOwnerID())
                 if (playerTarget && 0 < bit.band(playerTarget.m_nPlayerState, PS_AbilityImmune)) {
@@ -120,7 +120,7 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
                                 AHMC.Damage(this.GetCaster(), v, this.GetSpecialValueFor("damage"), this.GetAbilityDamageType()
                                     , this, 1, { bIgnoreBZHuiMo: true })
                                 const nTime = this.GetSpecialValueFor("time_damage")
-                                v.AddNewModifier(this.GetCaster(), this, modifier_Ability_pudge_rot_debuff.name
+                                v.AddNewModifier(this.GetCaster(), this, modifier_ability_pudge_rot_debuff.name
                                     , { duration: nTime })
                                 tabDamageCD[v.GetEntityIndex()] = true
                                 Timers.CreateTimer(nTime, () => {

@@ -1,5 +1,6 @@
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
+import { AHMC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -10,6 +11,7 @@ import { TSBaseAbility } from "../tsBaseAbilty";
 @registerAbility()
 export class path_12 extends TSBaseAbility {
     GetIntrinsicModifierName() {
+        print("path==modname:", "modifier_" + this.GetAbilityName() + "_l" + this.GetLevel())
         return "modifier_" + this.GetAbilityName() + "_l" + this.GetLevel()
     }
 }
@@ -21,7 +23,7 @@ export class path_12 extends TSBaseAbility {
 export class modifier_path_12_l1 extends BaseModifier {
     oPlayer: Player
     sBuffName: string
-    unUpdateBZBuffByCreate: Function
+    unUpdateBZBuffByCreate: number
     hujia: number
     mokang: number
     IsHidden(): boolean {
@@ -36,27 +38,37 @@ export class modifier_path_12_l1 extends BaseModifier {
     GetTexture(): string {
         return "path12"
     }
+    RemoveOnDeath(): boolean {
+        return false
+    }
+    DestroyOnExpire(): boolean {
+        return false
+    }
     OnDestroy(): void {
+        print("ability=modifier=OnDestroy===name:", this.GetName())
         if (this.oPlayer && this.sBuffName) {
             for (const eBZ of this.oPlayer.m_tabBz) {
-                if (IsValidEntity(eBZ)) {
-                    eBZ.RemoveModifierByName(this.sBuffName)
+                if (IsValid(eBZ)) {
+                    AHMC.RemoveModifierByName(this.sBuffName, eBZ)
                 }
             }
         }
         if (this.unUpdateBZBuffByCreate) {
-            this.unUpdateBZBuffByCreate()
+            GameRules.EventManager.UnRegisterByID(this.unUpdateBZBuffByCreate)
         }
     }
     OnCreated(params: object): void {
-        if (!IsValidEntity(this)) {
+        print("ability=modifier=OnCreated===name:", this.GetName(), "Time:", this.GetRemainingTime())
+        if (!IsValid(this)) {
             return
         }
-        if (!IsValidEntity(this.GetAbility())) {
+        if (!IsValid(this.GetAbility())) {
             return
         }
         this.hujia = this.GetAbility().GetSpecialValueFor("hujia")
         this.mokang = this.GetAbility().GetSpecialValueFor("mokang")
+        print(this.GetName(), "===this.hujia", this.hujia)
+        print(this.GetName(), "===this.mokang", this.mokang)
         if (IsClient() || !this.GetParent().IsRealHero()) {
             return
         }
@@ -64,16 +76,19 @@ export class modifier_path_12_l1 extends BaseModifier {
         if (!this.oPlayer) {
             return
         }
+        const oPlayer = this.oPlayer
+        const ability = this.GetAbility()
+        const buffName = this.GetName()
         // 给玩家全部兵卒buff
         Timers.CreateTimer(0.1, () => {
-            if (IsValidEntity(this) && IsValidEntity(this.GetAbility())) {
+            if (IsValid(this) && IsValid(this.GetAbility())) {
                 this.sBuffName = this.GetName()
                 for (const eBZ of this.oPlayer.m_tabBz) {
                     eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
                 }
                 this.unUpdateBZBuffByCreate = AbilityManager.updateBZBuffByCreate(this.oPlayer, this.GetAbility(), (eBZ: CDOTA_BaseNPC_BZ) => {
-                    if (IsValidEntity(eBZ)) {
-                        eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
+                    if (IsValid(eBZ)) {
+                        eBZ.AddNewModifier(oPlayer.m_eHero, ability, buffName, {})
                     }
                 })
             }
@@ -123,7 +138,7 @@ export class modifier_path_12_l3 extends modifier_path_12_l1 {
     //     const oPlayer = this.oPlayer
     //     // 合体兵卒
     //     function setBZ321() {
-    //         if (!IsValidEntity(tPaths[1].m_tabENPC[0])) {
+    //         if (!IsValid(tPaths[1].m_tabENPC[0])) {
     //             return
     //         }
     //         // 移除边上2个兵卒

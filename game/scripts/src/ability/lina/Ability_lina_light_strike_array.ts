@@ -1,7 +1,7 @@
 import { PS_AbilityImmune, PS_AtkMonster, PS_Die, PS_InPrison } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
-import { AHMC } from "../../utils/amhc";
+import { AHMC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -93,22 +93,23 @@ export class Ability_lina_light_strike_array extends TSBaseAbility {
         // 对玩家造成伤害
         const nDamage = this.GetSpecialValueFor("light_strike_array_damage")
         const nDuration = this.GetSpecialValueFor("light_strike_array_stun_duration")
+        const caster = this.GetCaster()
         for (const player of tabPlayer) {
-            AHMC.Damage(this.GetCaster(), player.m_eHero, nDamage, this.GetAbilityDamageType(), this)
+            AHMC.Damage(caster, player.m_eHero, nDamage, this.GetAbilityDamageType(), this)
             // 设置眩晕回合
             player.setPass(nDuration)
             // 设置眩晕BUFF
             for (const eBZ of player.m_tabBz) {
-                AbilityManager.setCopyBuff("modifier_Ability_lina_light_strike_array"
-                    , eBZ, this.GetCaster(), this)
+                AbilityManager.setCopyBuff(modifier_ability_lina_light_strike_array.name
+                    , eBZ, caster, this)
             }
-            const buff = AbilityManager.setCopyBuff("modifier_Ability_lina_light_strike_array"
-                , player.m_eHero, this.GetCaster(), this)
+            const buff = AbilityManager.setCopyBuff(modifier_ability_lina_light_strike_array.name
+                , player.m_eHero, caster, this)
             // 兵卒创建更新buff
             if (buff) {
-                buff.unupdateBZBuffByCreate = AbilityManager.updateBZBuffByCreate(player, null, (eBZ: CDOTA_BaseNPC_BZ) => {
-                    AbilityManager.setCopyBuff("modifier_Ability_lina_light_strike_array"
-                        , eBZ, this.GetCaster(), this)
+                buff["updateBZBuffByCreate"] = AbilityManager.updateBZBuffByCreate(player, null, (eBZ: CDOTA_BaseNPC_BZ) => {
+                    AbilityManager.setCopyBuff(modifier_ability_lina_light_strike_array.name
+                        , eBZ, caster, this)
                 })
             }
         }
@@ -116,7 +117,7 @@ export class Ability_lina_light_strike_array extends TSBaseAbility {
 }
 
 @registerModifier()
-export class modifier_Ability_lina_light_strike_array extends BaseModifier {
+export class modifier_ability_lina_light_strike_array extends BaseModifier {
 
     m_nDuration: number
     m_nRound: number
@@ -147,7 +148,7 @@ export class modifier_Ability_lina_light_strike_array extends BaseModifier {
 
     OnCreated(params: object): void {
         this.m_nDuration = this.GetAbility().GetSpecialValueFor("light_strike_array_stun_duration")
-        if (IsServer() && IsValidEntity(this.GetCaster())) {
+        if (IsServer() && IsValid(this.GetCaster())) {
             this.m_nRound = this.m_nDuration
             AbilityManager.judgeBuffRound(this.GetCaster().GetPlayerOwnerID(), this)
             // 兵卒被眩晕结束攻城
@@ -160,8 +161,8 @@ export class modifier_Ability_lina_light_strike_array extends BaseModifier {
     }
 
     OnDestroy(): void {
-        if ((this as any).unupdateBZBuffByCreate) {
-            (this as any).unupdateBZBuffByCreate()
+        if (this["updateBZBuffByCreate"]) {
+            this["updateBZBuffByCreate"]()
         }
     }
 

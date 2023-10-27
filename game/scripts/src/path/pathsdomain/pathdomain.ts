@@ -2,7 +2,8 @@ import { Constant } from "../../mode/constant"
 import { GS_Begin, PS_AtkHero, PS_InPrison, TypeOprt } from "../../mode/gamemessage"
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ"
 import { DamageEvent, Player } from "../../player/player"
-import { AHMC } from "../../utils/amhc"
+import { AHMC, IsValid } from "../../utils/amhc"
+import { ParaAdjuster } from "../../utils/paraadjuster"
 import { reloadable } from "../../utils/tstl-utils"
 import { Path } from "../Path"
 
@@ -218,9 +219,11 @@ export class PathDomain extends Path {
 
     /**设置领地BUFF */
     setBuff(oPlayer: Player) {
+        print("ability=setBuff")
         this.delBuff(oPlayer)
         // 获取路径等级
         const nLevel = this.getPathBuffLevel(oPlayer)
+        print("===setBuff===nLevel:", nLevel)
         if (!nLevel || nLevel <= 0)
             return
 
@@ -228,10 +231,12 @@ export class PathDomain extends Path {
         const strBuff = this.getBuffName(nLevel)
         const oAblt = AHMC.AddAbilityAndSetLevel(oPlayer.m_eHero, strBuff, nLevel)
         oAblt.SetLevel(nLevel)
+        ParaAdjuster.ModifyMana(oPlayer.m_eHero, oPlayer.m_nManaMaxBase)
     }
 
     /**移除领地BUFF */
     delBuff(oPlayer: Player) {
+        print("ability=delBuff")
         for (let i = 1; i <= 3; i++) {
             const strBuffName = this.getBuffName(i)
             if (oPlayer.m_eHero.HasAbility(strBuffName)) {
@@ -254,7 +259,7 @@ export class PathDomain extends Path {
 
         const tabBZLevelCount = [, 0, 0, 0]
         for (const v of tabPath) {
-            if (IsValidEntity(v.m_tabENPC[0]) && v.m_nOwnerID == oPlayer.m_nPlayerID) {
+            if (IsValid(v.m_tabENPC[0]) && v.m_nOwnerID == oPlayer.m_nPlayerID) {
                 const nLevelTemp = oPlayer.getBzStarLevel(v.m_tabENPC[0])
                 if (!tabBZLevelCount[nLevelTemp]) {
                     tabBZLevelCount[nLevelTemp] = 0
@@ -276,7 +281,7 @@ export class PathDomain extends Path {
     setAttacking(entity: CDOTA_BaseNPC_BZ) {
         const oPlayer = GameRules.PlayerManager.getPlayer(this.m_nPlayerIDGCLD)
         const oPlayerOwn = GameRules.PlayerManager.getPlayer(this.m_nOwnerID)
-        if (oPlayer && oPlayerOwn && IsValidEntity(entity)) {
+        if (oPlayer && oPlayerOwn && IsValid(entity)) {
             for (const v of this.m_tabENPC) {
                 if (v == entity) {
                     entity.m_bBattle = true
@@ -381,6 +386,7 @@ export class PathDomain extends Path {
         if (bMoveBack == null) bMoveBack = true
 
         const oPlayerOwn = GameRules.PlayerManager.getPlayer(this.m_nOwnerID)
+        if (!this.m_nPlayerIDGCLD) return
         const oPlayer = GameRules.PlayerManager.getPlayer(this.m_nPlayerIDGCLD)
         // 销毁特效
         if (this.m_nPtclIDGCLD) {
@@ -393,7 +399,7 @@ export class PathDomain extends Path {
         GameRules.EventManager.UnRegisterByIDs(this.m_tEventIDGCLD)
         this.m_tEventIDGCLD = null
 
-        if (IsValidEntity(this.m_tabENPC[0])) {
+        if (IsValid(this.m_tabENPC[0])) {
             this.m_tabENPC[0].m_bBattle = null
             oPlayer.m_bGCLD = null
             oPlayerOwn.setBzAttack(this.m_tabENPC[0])
@@ -486,7 +492,7 @@ export class PathDomain extends Path {
                 GameRules.EventManager.Register("Event_PlayerMoveEnd", (event3: { player: Player }) => {
                     if (event3.player == oPlayer) {
                         // (攻城/打野可以持续到该玩家的新的一回合开始)
-                        GameRules.GameLoop.GameStateService.send("toRoundBefore")
+                        GameRules.GameLoop.GameStateService.send("tobegin")
                         return true
                     }
                 })
@@ -494,9 +500,9 @@ export class PathDomain extends Path {
             return true
         }
 
-        GameRules.EventManager.Register("Event_PlayerMove", (event: { player: Player }) => onMove)
+        GameRules.EventManager.Register("Event_PlayerMove", (event: { player: Player }) => onMove(event))
         this.atkCityEnd(false)
-        GameRules.EventManager.UnRegister("Event_PlayerMove", (event: { player: Player }) => onMove)
+        GameRules.EventManager.UnRegister("Event_PlayerMove", (event: { player: Player }) => onMove(event))
     }
 
     /**玩家死亡：结束攻城 */

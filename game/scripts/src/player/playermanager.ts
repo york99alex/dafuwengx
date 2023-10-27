@@ -113,6 +113,7 @@ export class PlayerManager {
                     this.m_bAllPlayerInit = true
                 }
             }
+            GameRules.EventManager.FireEvent("dota_player_pick_hero", { eHero: eHero })
         }
     }
 
@@ -248,8 +249,8 @@ export class PlayerManager {
             }
         }
 
-        nOffset = nOffset ?? 0
-        nRange = nRange ?? 1
+        nOffset ?? 0
+        nRange ?? 1
         if (nRange > GameRules.PathManager.m_tabPaths.length) {
             nRange = GameRules.PathManager.m_tabPaths.length
         }
@@ -273,7 +274,7 @@ export class PlayerManager {
 
     /**找到随机N个玩家 */
     findRandomPlayer(nCount: number, funFilter: Function): Player[] {
-        nCount = nCount ?? 1
+        nCount ?? 1
         if (!funFilter) {
             funFilter = () => {
                 return true

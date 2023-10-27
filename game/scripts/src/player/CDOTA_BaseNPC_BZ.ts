@@ -1,4 +1,5 @@
 import { PathDomain } from "../path/pathsdomain/pathdomain";
+import { IsValid } from "../utils/amhc";
 import { BaseAbility } from "../utils/dota_ts_adapter";
 
 export interface CDOTA_BaseNPC_BZ extends CDOTA_BaseNPC_Hero {
@@ -51,7 +52,7 @@ export class CDOTA_BaseNPC_BZ {
 
     /**获取单位物品栏加背包9格中的物品用名字 */
     get09ItemByName(sName: string, itemIgnore?) {
-        if (IsValidEntity(this)) {
+        if (IsValid(this)) {
             for (let i = 0; i < 9; i++) {
                 const item = this.GetItemInSlot(i)
                 if (item && item != itemIgnore && !item.IsNull() && item.GetAbilityName() == sName) {

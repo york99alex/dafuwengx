@@ -1,5 +1,5 @@
 import { Constant } from "../mode/constant";
-import { AHMC } from "../utils/amhc";
+import { IsValid } from "../utils/amhc";
 import { reloadable } from "../utils/tstl-utils";
 import { Path } from "./Path";
 import { PathFactory } from "./pathfactory";
@@ -217,13 +217,36 @@ export class PathManager {
         }
         this.m_tabMoveData[nEntId] = tMoveData
 
+
+        // 防卡死功能
+        let nTimeKasi = 0
+        let vLocLast = null
+        function judgeKasi() {
+            if (vLocLast == entity.GetAbsOrigin()) {
+                nTimeKasi += 1
+                if (nTimeKasi >= Constant.TIME_MOVEKASI) {
+                    // 超过时间,直接设置到目的地
+                    entity.SetAbsOrigin(path.m_entity.GetOrigin())
+                    FindClearSpaceForUnit(entity, entity.GetAbsOrigin(), true)
+                    GameRules.PathManager.moveStop(entity, true)
+                    return false
+                }
+            } else {
+                vLocLast = entity.GetAbsOrigin()
+            }
+            return false
+        }
+        print("moveToPath===1")
         // 持续寻路
         Timers.CreateTimer(() => {
+            print("moveToPath===2")
             if (tMoveData != this.m_tabMoveData[nEntId]) return
-            if (!AHMC.IsValid(entity) || !entity.IsAlive()) {
+            print("moveToPath===3")
+            if (!IsValid(entity) || !entity.IsAlive()) {
                 this.moveStop(entity, false)
                 return
             }
+            print("moveToPath===4")
             // 检验每个寻路点path_corner
             const nDis = (entity.GetOrigin() - vNext as Vector).Length2D()
             let nCheckDis = 30
@@ -231,26 +254,34 @@ export class PathManager {
                 nCheckDis = entity.GetIdealSpeed() * 0.35 - 75
                 if (nCheckDis < 30) nCheckDis = 30
             }
+            print("moveToPath===5")
             if (nDis < nCheckDis) {
+                print("moveToPath===6")
                 // 触发事件: 途径某路径
                 if (pathBegin != pathNext && bEventEnable) {
                     GameRules.EventManager.FireEvent("Event_PassingPath", { path: pathNext, entity: entity })
                 }
-                if (pathNext == path) {
+                print("moveToPath===7")
+                if (pathNext == path || judgeKasi()) {
+                    print("moveToPath===8")
                     // 移动结束
                     this.moveStop(entity, true)
                     return null
                 } else {
                     // 移动至下一个路径点
+                    print("moveToPath===9")
                     pathCur = pathNext
                     pathNext = this.getNextPath(pathCur, 1)
                     if (pathNext == null || pathNext == pathCur) {
+                        print("moveToPath===10")
                         this.moveStop(entity, true)
                         return
                     }
+                    print("moveToPath===11")
                     getNextPos()
                 }
             }
+            print("moveToPath===12")
             entity.MoveToPosition(vNext)
             return 0.1
         })
@@ -259,7 +290,7 @@ export class PathManager {
 
     /**坐标寻路移动 */
     moveToPos(entity: CDOTA_BaseNPC_Hero, location: Vector, funCallBack: Function) {
-        if (!IsValidEntity(entity)) {
+        if (!IsValid(entity)) {
             return
         }
         // 验证能否到达
@@ -305,7 +336,7 @@ export class PathManager {
         // 设置计时器监听移动结束，触发回调
         Timers.CreateTimer(() => {
             if (tMoveData != this.m_tabMoveData[nEntId]) return
-            if (!IsValidEntity(entity) || !entity.IsAlive()) {
+            if (!IsValid(entity) || !entity.IsAlive()) {
                 this.moveStop(entity, false)
                 return
             }

@@ -3,6 +3,7 @@ import { Player } from "../player/player"
 import { BaseAbility, BaseItem } from "../utils/dota_ts_adapter"
 import { TSBaseAbility } from "./tsBaseAbilty"
 import { modifier_fix_damage } from "../modifiers/modifier_fix_damage"
+import { AHMC, IsValid } from "../utils/amhc"
 
 export class AbilityManager {
 
@@ -75,7 +76,7 @@ export class AbilityManager {
         // 物品还有CD则修改
         if (bItem) {
             let item: CDOTABaseAbility = AbilityManager.m_tabEntityItemCD[oPlayer.m_nPlayerID][strName]
-            if (!IsValidEntity(item) || !IsValidEntity(item.GetCaster())) {
+            if (!IsValid(item) || !IsValid(item.GetCaster())) {
                 item = ability
             } else if (!item.IsCooldownReady()) {
                 GameRules.EventManager.FireEvent("Event_LastCDChange", {
@@ -115,7 +116,7 @@ export class AbilityManager {
             if (bItem) {
                 if ((ability as CDOTA_Item).GetItemSlot() >= 6) {
                     // 切换到在物品栏的同物品
-                    if (IsValidEntity(eCaster)) {
+                    if (IsValid(eCaster)) {
                         const item = eCaster.get06ItemByName(strName)
                         if (!item) {
                             return  // 没有就不刷CD
@@ -199,19 +200,18 @@ export class AbilityManager {
 
     static updateBZBuffByCreate(player: Player, ability: CDOTABaseAbility, funOnBuffApply?: Function) {
         // 监听兵卒创建
-        function f(event: { entity: CDOTA_BaseNPC_BZ }) {
+        const eventID = GameRules.EventManager.Register("Event_BZCreate", (event: { entity: CDOTA_BaseNPC_BZ }) => {
             if (event.entity.GetPlayerOwnerID() == player.m_nPlayerID) {
                 // 给升级的兵卒添加buff
                 if (ability && ability.IsNull()) {
                     return true
                 }
                 if (funOnBuffApply) {
-                    return funOnBuffApply(event.entity)
+                    funOnBuffApply(event.entity)
                 }
             }
-        }
-        GameRules.EventManager.Register("Event_BZCreate", () => f)
-        return () => GameRules.EventManager.UnRegister("Event_BZCreate", () => f)
+        })
+        return eventID
     }
 
     /**兵卒能否放技能 */
@@ -231,7 +231,7 @@ export class AbilityManager {
 
     /**玩家回合结束计算buff */
     static judgeBuffRound(casterPlayerID: number, buff: any, funChange?: Function) {
-        if (!buff || !buff.m_nROund || buff.m_nROund < 1) {
+        if (!IsValid(buff) || !buff.m_nROund || buff.m_nROund < 1) {
             return
         }
         GameRules.EventManager.Register("Event_PlayerRoundFinished", (playerF: Player) => {
@@ -242,7 +242,7 @@ export class AbilityManager {
                     funChange()
                 }
                 if (buff.m_nRound <= 0) {
-                    if (IsValidEntity(buff)) {
+                    if (IsValid(buff)) {
                         buff.Destroy()
                     }
                     return true
@@ -251,19 +251,20 @@ export class AbilityManager {
         })
     }
 
-    static setCopyBuff(strBuff: string, eTarget: CDOTA_BaseNPC, eCaster: CDOTA_BaseNPC, ability: BaseAbility, tBuffData?: object, bStack?: boolean, oBuffOld?) {
-        let oBuff
-        if (IsValidEntity(eTarget)) {
+    /**添加可复制的buff */
+    static setCopyBuff(strBuff: string, eTarget: CDOTA_BaseNPC, eCaster: CDOTA_BaseNPC, ability: BaseAbility, tBuffData?: object, bStack?: boolean, oBuffOld?: CDOTA_Buff) {
+        let oBuff: CDOTA_Buff
+        if (IsValid(eTarget)) {
             oBuff = eTarget.FindModifierByNameAndCaster(strBuff, eCaster)
         }
         if (!oBuff) {
-            oBuff = eTarget.AddNewModifier(eCaster, ability, strBuff, tBuffData)
+            oBuff = AHMC.AddNewModifier(eTarget, eCaster, ability, strBuff, tBuffData)
             if (oBuff) {
-                oBuff.copyBfToEnt = (_, e) => {
-                    return AbilityManager.setCopyBuff(strBuff, e, eCaster, ability, tBuffData, bStack, oBuffOld)
+                oBuff["copyBfToEnt"] = (entity: CDOTA_BaseNPC_BZ) => {
+                    return AbilityManager.setCopyBuff(strBuff, entity, eCaster, ability, tBuffData, bStack, oBuffOld)
                 }
                 if (oBuffOld) {
-                    oBuff.m_nRound = oBuffOld.m_nRound
+                    oBuff["m_nRound"] = oBuffOld["m_nRound"]
                     oBuff.SetStackCount(oBuffOld.GetStackCount())
                 }
             }
@@ -281,10 +282,13 @@ export function onAblt_yjxr(event: {
     caster: CDOTA_BaseNPC_BZ,
     ability: CDOTABaseAbility
 }) {
-    print("===onAblt_yjxr===")
+    print("===onAblt_yjxr===caster:", event.caster.GetPlayerOwnerID())
+    print("===onAblt_yjxr===ability_owner", event.ability.GetOwner().GetOwner().GetName())
+
     let unit = event.caster
     const ability = event.ability
     const nGold = ability.GetGoldCost(ability.GetLevel() - 1)
+    print("===onAblt_yjxr===nGold:", nGold)
     // 升级
     const oPlayer = GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID())
     unit = oPlayer.setBzStarLevelUp(unit, 1)
@@ -305,6 +309,7 @@ export function onAblt_xj(event: {
     let unit = event.caster
     const ability = event.ability
     const nGold = ability.GetGoldCost(ability.GetLevel() - 1)
+    print("===onAblt_xj===nGold:", nGold)
     // 降级
     const oPlayer = GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID())
     unit = oPlayer.setBzStarLevelUp(unit, -1)

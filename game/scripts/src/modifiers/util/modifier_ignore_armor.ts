@@ -29,6 +29,7 @@ export class modifier_ignore_armor_debuff extends BaseModifier {
         return false
     }
     OnCreated(params: object): void {
+        print("modifier_ignore_armor_debuff===OnCreated")
         this.ignore_armor = this.GetAbility().GetSpecialValueFor("ignore_armor") * 0.01
         this.ignore_armor_base = this.GetAbility().GetSpecialValueFor("ignore_armor_base") * 0.01
         this.ignore_armor_bonus = this.GetAbility().GetSpecialValueFor("ignore_armor_bonus") * 0.01

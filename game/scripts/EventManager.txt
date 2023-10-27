@@ -26,7 +26,7 @@
 
 "Event_PlayerRoundFinished", this
 
-"Event_SxChange", { entity: this.m_eHero }
+"Event_SxChange", { entity: CDOTA_BaseNPC_Hero, bonus_mana: number }
 
 "Event_BZLevelUp", { eBZ: eBZ, nLevel: nLevel }
 

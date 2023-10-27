@@ -2,8 +2,9 @@ import { PS_AbilityImmune, PS_InPrison, PS_Rooted, TP_DOMAIN_3 } from "../../mod
 import { PathDomain } from "../../path/pathsdomain/pathdomain";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
-import { AHMC } from "../../utils/amhc";
+import { AHMC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
+import { ParaAdjuster } from "../../utils/paraadjuster";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
 
@@ -13,6 +14,7 @@ import { TSBaseAbility } from "../tsBaseAbilty";
 @registerAbility()
 export class path_14 extends TSBaseAbility {
     GetIntrinsicModifierName() {
+        print("path==modname:", "modifier_" + this.GetAbilityName() + "_l" + this.GetLevel())
         return "modifier_" + this.GetAbilityName() + "_l" + this.GetLevel()
     }
 }
@@ -24,7 +26,7 @@ export class path_14 extends TSBaseAbility {
 export class modifier_path_14_l1 extends BaseModifier {
     oPlayer: Player
     sBuffName: string
-    unUpdateBZBuffByCreate: Function
+    unUpdateBZBuffByCreate: number
     time: number
     chance: number
     tEventID: number[]
@@ -40,27 +42,37 @@ export class modifier_path_14_l1 extends BaseModifier {
     GetTexture(): string {
         return "path14"
     }
+    RemoveOnDeath(): boolean {
+        return false
+    }
+    DestroyOnExpire(): boolean {
+        return false
+    }
     OnDestroy(): void {
+        print("ability=modifier=OnDestroy===name:", this.GetName())
         if (this.oPlayer && this.sBuffName) {
             for (const eBZ of this.oPlayer.m_tabBz) {
-                if (IsValidEntity(eBZ)) {
-                    eBZ.RemoveModifierByName(this.sBuffName)
+                if (IsValid(eBZ)) {
+                    AHMC.RemoveModifierByName(this.sBuffName, eBZ)
                 }
             }
         }
         if (this.unUpdateBZBuffByCreate) {
-            this.unUpdateBZBuffByCreate()
+            GameRules.EventManager.UnRegisterByID(this.unUpdateBZBuffByCreate)
         }
     }
     OnCreated(params: object): void {
-        if (!IsValidEntity(this)) {
+        print("ability=modifier=OnCreated===name:", this.GetName(), "Time:", this.GetRemainingTime())
+        if (!IsValid(this)) {
             return
         }
-        if (!IsValidEntity(this.GetAbility())) {
+        if (!IsValid(this.GetAbility())) {
             return
         }
         this.time = this.GetAbility().GetSpecialValueFor("time")
         this.chance = this.GetAbility().GetSpecialValueFor("chance")
+        print(this.GetName(), "===this.time", this.time)
+        print(this.GetName(), "===this.chance", this.chance)
         if (IsClient() || !this.GetParent().IsRealHero()) {
             return
         }
@@ -68,31 +80,37 @@ export class modifier_path_14_l1 extends BaseModifier {
         if (!this.oPlayer) {
             return
         }
+        const ability = this.GetAbility()
+        const buffName = this.GetName()
+        const oPlayer = this.oPlayer
+        const nLevel = ability.GetLevel()
+
         // 给玩家兵卒buff
         function checkBZ(eBZ: CDOTA_BaseNPC_BZ) {
             if (eBZ) {
-                if (this.GetAbility().GetLevel() == 3 || eBZ.m_path.m_typePath == TP_DOMAIN_3) {
+                if (nLevel == 3 || eBZ.m_path.m_typePath == TP_DOMAIN_3) {
                     return true
                 }
             }
             return false
         }
         Timers.CreateTimer(0.1, () => {
-            if (IsValidEntity(this) && IsValidEntity(this.GetAbility())) {
+            if (IsValid(this) && IsValid(this.GetAbility())) {
                 this.sBuffName = this.GetName()
                 for (const eBZ of this.oPlayer.m_tabBz) {
                     if (checkBZ(eBZ))
                         eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
                 }
-                this.unUpdateBZBuffByCreate = AbilityManager.updateBZBuffByCreate(this.oPlayer, this.GetAbility(), (eBZ: CDOTA_BaseNPC_BZ) => {
-                    if (checkBZ(eBZ) && IsValidEntity(eBZ)) {
-                        eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
+                this.unUpdateBZBuffByCreate = AbilityManager.updateBZBuffByCreate(oPlayer, ability, (eBZ: CDOTA_BaseNPC_BZ) => {
+                    if (checkBZ(eBZ) && IsValid(eBZ)) {
+                        eBZ.AddNewModifier(oPlayer.m_eHero, ability, buffName, {})
                     }
                 })
             }
         })
 
         // 监听玩家路过某路径事件
+        this.tEventID = []
         this.tEventID.push(GameRules.EventManager.Register("Event_PassingPath", (event: { path: PathDomain, entity: CDOTA_BaseNPC }) => this.onEvent_PassingPath(event), this))
     }
     DeclareFunctions(): ModifierFunction[] {
@@ -110,7 +128,7 @@ export class modifier_path_14_l1 extends BaseModifier {
 
     onEvent_PassingPath(event: { path: PathDomain; entity: CDOTA_BaseNPC; }) {
         const oPlayer = this.oPlayer
-        if (!oPlayer || !IsValidEntity(this)) {
+        if (!oPlayer || !IsValid(this)) {
             return true
         }
         if (event.entity["bTriggered"]
@@ -120,7 +138,7 @@ export class modifier_path_14_l1 extends BaseModifier {
             return
         }
         if (!event.path.m_tabENPC
-            || !IsValidEntity(event.path.m_tabENPC[0])
+            || !IsValid(event.path.m_tabENPC[0])
             || !event.path.m_tabENPC[0].FindModifierByName(this.GetName())) {
             return
         }
@@ -150,7 +168,7 @@ export class modifier_path_14_l1 extends BaseModifier {
         const nFps = 30
         const nFpsTime = 1 / nFps
         const v3Dis = Vector(0, 0, oPlayerTarget.m_eHero.GetModelRadius() * 2.5)
-        const nTimeSum = this.time * 0.5 & nFps
+        const nTimeSum = this.time * 0.5 * nFps
         const v3Speed = v3Dis / nTimeSum
         let v3Cur = oPlayerTarget.m_eHero.GetAbsOrigin()
         let nTimeCur = math.floor(nTimeSum * 0.5)

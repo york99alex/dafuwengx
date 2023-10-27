@@ -130,16 +130,17 @@ export class GameLoop {
     }
 
     GSReadyStart_Exit() {
-        GameRules.EventManager.FireEvent("Event_PlayerRoundBefore", { typeGameState: GS_Begin })
     }
 
     /**玩家回合开始阶段Entry */
     GSRoundBefore_Entry() {
         this.setGameState(GS_Begin)
         print("GameState_GSRoundBefore_Entry")
+        GameRules.EventManager.FireEvent("Event_PlayerRoundBefore", { typeGameState: GS_Begin })
         this.Timer(() => {
-            if (!this.m_bRoundBefore)
+            if (!this.m_bRoundBefore) {
                 this.GameStateService.send("tobegin")
+            }
             return null
         }, 1)
     }

@@ -3,8 +3,9 @@ import { Path } from "../../path/Path";
 import { PathDomain } from "../../path/pathsdomain/pathdomain";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { DamageEvent, Player } from "../../player/player";
-import { AHMC } from "../../utils/amhc";
+import { AHMC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
+import { ParaAdjuster } from "../../utils/paraadjuster";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
 
@@ -14,6 +15,7 @@ import { TSBaseAbility } from "../tsBaseAbilty";
 @registerAbility()
 export class path_18 extends TSBaseAbility {
     GetIntrinsicModifierName() {
+        print("path==modname:", "modifier_" + this.GetAbilityName() + "_l" + this.GetLevel())
         return "modifier_" + this.GetAbilityName() + "_l" + this.GetLevel()
     }
 }
@@ -24,7 +26,7 @@ export class path_18 extends TSBaseAbility {
 @registerModifier()
 export class modifier_path_18_l1 extends BaseModifier {
     oPlayer: Player
-    unUpdateBZBuffByCreate: Function
+    unUpdateBZBuffByCreate: number
     tEventID: number[]
     damage: number
     IsHidden(): boolean {
@@ -39,17 +41,24 @@ export class modifier_path_18_l1 extends BaseModifier {
     GetTexture(): string {
         return "path18"
     }
+    RemoveOnDeath(): boolean {
+        return false
+    }
+    DestroyOnExpire(): boolean {
+        return false
+    }
     OnDestroy(): void {
+        print("ability=modifier=OnDestroy===name:", this.GetName())
         if (this.oPlayer) {
             for (const eBZ of this.oPlayer.m_tabBz) {
-                if (IsValidEntity(eBZ) && eBZ.m_path.m_typePath == TP_DOMAIN_7) {
-                    eBZ.RemoveModifierByName(this.GetName())
-                    eBZ.RemoveModifierByNameAndCaster("modifier_medusa_stone_gaze_stone", this.oPlayer.m_eHero)
+                if (IsValid(eBZ) && eBZ.m_path.m_typePath == TP_DOMAIN_7) {
+                    AHMC.RemoveModifierByName(this.GetName(), eBZ)
+                    AHMC.RemoveModifierByNameAndCaster("modifier_medusa_stone_gaze_stone", eBZ, this.oPlayer.m_eHero)
                 }
             }
         }
         if (this.unUpdateBZBuffByCreate) {
-            this.unUpdateBZBuffByCreate()
+            GameRules.EventManager.UnRegisterByID(this.unUpdateBZBuffByCreate)
         }
         if (this.tEventID) {
             for (const nID of this.tEventID) {
@@ -58,15 +67,17 @@ export class modifier_path_18_l1 extends BaseModifier {
         }
     }
     OnCreated(params: object): void {
-        if (!IsValidEntity(this)) {
+        print("ability=modifier=OnCreated===name:", this.GetName(), "Time:", this.GetRemainingTime())
+        if (!IsValid(this)) {
             return
         }
-        if (!IsValidEntity(this.GetAbility())) {
+        if (!IsValid(this.GetAbility())) {
             return
         }
         const ability = this.GetAbility()
         const typeDamage = DamageTypes.PURE
         this.damage = ability.GetSpecialValueFor("damage")
+        print(this.GetName(), "===this.damage", this.damage)
         if (IsClient() || !this.GetParent().IsRealHero()) {
             return
         }
@@ -76,19 +87,21 @@ export class modifier_path_18_l1 extends BaseModifier {
         }
         this.tEventID = []
 
+        const oPlayer = this.oPlayer
+        const buffName = this.GetName()
         // 给玩家兵卒buff
         Timers.CreateTimer(0.1, () => {
-            if (IsValidEntity(this) && IsValidEntity(this.GetAbility())) {
+            if (IsValid(this) && IsValid(this.GetAbility())) {
                 for (const eBZ of this.oPlayer.m_tabBz) {
                     if (eBZ.m_path.m_typePath == TP_DOMAIN_7)
                         eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
                 }
                 this.unUpdateBZBuffByCreate = AbilityManager.updateBZBuffByCreate(this.oPlayer, this.GetAbility(), (eBZ: CDOTA_BaseNPC_BZ) => {
-                    if (eBZ.m_path.m_typePath == TP_DOMAIN_7 && IsValidEntity(eBZ)) {
-                        eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
+                    if (eBZ.m_path.m_typePath == TP_DOMAIN_7 && IsValid(eBZ)) {
+                        eBZ.AddNewModifier(oPlayer.m_eHero, ability, buffName, {})
                         Timers.CreateTimer(0.5, () => {
-                            if (IsValidEntity(ability)) {
-                                eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), "modifier_medusa_stone_gaze_stone", null)
+                            if (IsValid(ability)) {
+                                eBZ.AddNewModifier(oPlayer.m_eHero, ability, "modifier_medusa_stone_gaze_stone", null)
                             }
                         })
                     }

@@ -81,7 +81,6 @@ export class EventManager {
         })
         this.m_tabEvent[event] = sortedEvent
         sortedEvent = null
-
         return nID
     }
 
@@ -163,20 +162,15 @@ export class EventManager {
             const handler = event.funCallBack
             if (handler) {
                 // 执行事件
-                let bSuccess: boolean = false
                 try {
-                    handler(args)
-                    bSuccess = true
+                    bDeleteHandler = handler(args)
                     print("FireEvent Success==>eventName:", eventName)
                 } catch (error) {
                     print("FireEvent Error==>eventName:", eventName)
                     print(error)
                 }
-                if (!bSuccess) {
-                    bDeleteHandler = bSuccess
-                }
             } else {
-                bDeleteHandler = true;
+                bDeleteHandler = true
             }
             // 执行完毕后释放
             if (bDeleteHandler) {
@@ -193,7 +187,7 @@ export class EventManager {
 
     /**阻塞事件Fire */
     BlockFireEvent() {
-        this.m_tBlockFire = this.m_tBlockFire ?? {}
+        this.m_tBlockFire ?? {}
     }
 
     /**释放事件并Fire */

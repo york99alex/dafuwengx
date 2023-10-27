@@ -21,12 +21,12 @@ export class Ability_axe_helix_counter extends TSBaseAbility {
     }
 
     GetIntrinsicModifierName(): string {
-        return "modifier_Ability_axe_helix_counter"
+        return "modifier_ability_axe_helix_counter"
     }
 }
 
 @registerModifier()
-export class modifier_Ability_axe_helix_counter extends BaseModifier {
+export class modifier_ability_axe_helix_counter extends BaseModifier {
 
 
     IsHidden(): boolean {

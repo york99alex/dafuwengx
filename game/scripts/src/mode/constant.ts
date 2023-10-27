@@ -39,7 +39,7 @@ export namespace Constant {
     export const PRISON_BAOZI_COUNT: number = 3
     // 兵卒最大等级
     export const BZ_MAX_LEVEL: number = 3
-    /**远程兵卒回魔率 */ 
+    /**远程兵卒回魔率 */
     export const BZ_HUIMO_RATE_Y: number = 0.5
     /**近战兵卒回魔率 */
     export const BZ_HUIMO_RATE_J: number = 0.4
@@ -73,16 +73,16 @@ export namespace Constant {
     export const SKIN_RANDOM_GOLD: number = 30
 
     // 每等级经验
-    export const LEVEL_EXP: { [key: number]: number } = {
-        1: 0,
-        2: 1,
-        3: 2,
-        4: 3,
-        5: 4,
-        6: 6,
-        7: 8,
-        8: 10,
-        9: 12,
+    export const LEVEL_EXP: Record<number, number> = {
+        1: 5,
+        2: 6,
+        3: 7,
+        4: 8,
+        5: 9,
+        6: 10,
+        7: 11,
+        8: 12,
+        9: 13,
         10: 14,
         11: 16,
         12: 18,

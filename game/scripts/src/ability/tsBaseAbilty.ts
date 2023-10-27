@@ -3,6 +3,7 @@ import { Path } from "../path/Path"
 import { PathManager } from "../path/PathManager"
 import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
 import { player_info } from "../player/player"
+import { IsValid } from "../utils/amhc"
 import { BaseAbility } from "../utils/dota_ts_adapter"
 import { AbilityManager } from "./abilitymanager"
 
@@ -217,8 +218,8 @@ export class TSBaseAbility extends BaseAbility {
                 }
             }))
             const strTimerName = Timers.CreateTimer(() => {
-                if (IsValidEntity(this)) {
-                    if (IsValidEntity((super.GetCaster() as CDOTA_BaseNPC_BZ).m_eAtkTarget)
+                if (IsValid(this)) {
+                    if (IsValid((super.GetCaster() as CDOTA_BaseNPC_BZ).m_eAtkTarget)
                         && this.IsCooldownReady()
                         && super.GetCaster().GetMana() == nManaCast) {
                         // 蓝满了放技能
@@ -315,15 +316,18 @@ export class TSBaseAbility extends BaseAbility {
 
     // 判断目标
     checkTarget(eTarget: CDOTA_BaseNPC): boolean {
+        print("checkTarget===1")
         if (!eTarget && eTarget.IsNull()) {
             return false
         }
+        print("checkTarget===2")
 
         this.m_strCastError = "ERROR"
 
         // 对自己释放
         if (eTarget == this.GetCaster() && !this.isCanCastSelf()) {
             this.m_strCastError = "AbilityError_SelfCant"
+            print("checkTarget===3")
             return false
         }
 
@@ -331,11 +335,13 @@ export class TSBaseAbility extends BaseAbility {
         if (oPlayer) {
             // 目标死亡
             if ((oPlayer.m_nPlayerState & PS_Die) > 0) {
+                print("checkTarget===4")
                 return false
             }
             // 目标在监狱
             if ((oPlayer.m_nPlayerState & PS_InPrison) > 0) {
                 this.m_strCastError = "AbilityError_InPrison"
+                print("checkTarget===5")
                 return false
             }
         }
@@ -361,10 +367,12 @@ export class TSBaseAbility extends BaseAbility {
                 this.m_strCastError = "AbilityError_MonsterCant"
             }
         } else {
+            print("checkTarget===6")
             return false
         }
 
-        if (this.m_strCastError == "ERROR") {
+        if (this.m_strCastError != "ERROR") {
+            print("checkTarget===7 , this.m_strCastError:", this.m_strCastError)
             return false
         }
         return true

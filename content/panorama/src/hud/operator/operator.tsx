@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { render, useNetTableKey } from 'react-panorama-x';
 
 function Counter() {
-  const timeOprt = useNetTableKey("GamingTable", "timeOprt") ?? { time: 0 }
-
+  const { time } = useNetTableKey("GamingTable", "timeOprt") ?? { time: 0 }
+  const { nRound } = useNetTableKey("GamingTable", "round") ?? { nRound: 0 }
 
   return (
     <Panel style={{ flowChildren: 'down' }}>
-      <Label className='Countdown' text={`Count: ${timeOprt.time ?? 0}`} />
+      <Label className='Countdown' text={`Count: ${time ?? 0}`} />
 
       <TextButton className="ButtonBevel" text="Roll" onactivate={() => {
         GameEvents.SendCustomGameEventToServer("GM_Operator", {
@@ -31,6 +31,7 @@ function Counter() {
         })
       }} />
 
+      <Label className='Countdown' text={`Round: ${nRound ?? 0}`} />
     </Panel>
   );
 }

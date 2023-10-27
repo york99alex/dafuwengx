@@ -31,7 +31,7 @@ export class modifier_fix_damage extends BaseModifier {
         return [
             ModifierFunction.INCOMING_DAMAGE_PERCENTAGE,
             ModifierFunction.INCOMING_SPELL_DAMAGE_CONSTANT,
-            ModifierFunction.TOTALDAMAGEOUTGOING_PERCENTAGE
+            // ModifierFunction.TOTALDAMAGEOUTGOING_PERCENTAGE
         ]
     }
     GetModifierIncomingDamage_Percentage(event: ModifierAttackEvent): number {

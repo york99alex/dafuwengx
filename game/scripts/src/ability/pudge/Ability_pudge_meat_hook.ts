@@ -1,6 +1,6 @@
 import { PS_AtkHero, PS_AtkMonster, PS_InPrison, PS_Invis } from "../../mode/gamemessage";
 import { Player } from "../../player/player";
-import { AHMC } from "../../utils/amhc";
+import { AHMC, IsValid } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -20,9 +20,10 @@ export class Ability_pudge_meat_hook extends TSBaseAbility {
             return UnitFilterResult.FAIL_CUSTOM
         }
         if (IsServer()) {
-            this.m_strCastError = "ERROR"
             const playerTarget = GameRules.PlayerManager.getPlayer(target.GetPlayerOwnerID())
+            print("===target.GetPlayerOwnerID():", target.GetPlayerOwnerID())
             if (!this.filterTarget(playerTarget)) {
+                this.m_strCastError = "AbilityError_TargetError"
                 return UnitFilterResult.FAIL_CUSTOM
             }
         }
@@ -51,9 +52,12 @@ export class Ability_pudge_meat_hook extends TSBaseAbility {
     OnSpellStart(): void {
         const oPlayer = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID())
         const hTarget = this.GetCursorTarget()
+        print("===meat_hook===OnSpellStart===oPlayer:", oPlayer.m_eHero.GetUnitName())
+        print("===meat_hook===OnSpellStart===hTarget:", hTarget.GetUnitName())
         let oPlayerTarget: Player
-        if (IsValidEntity(hTarget)) {
+        if (IsValid(hTarget)) {
             oPlayerTarget = GameRules.PlayerManager.getPlayer(hTarget.GetPlayerOwnerID())
+            print("===meat_hook===OnSpellStart===oPlayerTarget:", oPlayerTarget.m_eHero.GetUnitName())
         }
         if (!oPlayerTarget) {
             // 获取随机玩家
@@ -65,36 +69,37 @@ export class Ability_pudge_meat_hook extends TSBaseAbility {
         }
 
         const nDamage = this.GetSpecialValueFor("damage")
+        print("===meat_hook===OnSpellStart===damage:", nDamage)
 
         // 计算运动
         const nFps = 30
         const nFpsTime = 1 / nFps
-        const v3Dis = oPlayerTarget.m_eHero.GetAbsOrigin() - this.GetCaster().GetAbsOrigin() as Vector
+        const v3Dis = (oPlayerTarget.m_eHero.GetAbsOrigin() - this.GetCaster().GetAbsOrigin()) as Vector
         let nTime = math.floor(math.floor(v3Dis.Length() / 500) * 0.2 * nFps)  // 每500码耗时0.2秒
         if (nTime > nFps * 2) {
             nTime = math.floor(nFps * 2)
         } else if (nTime <= nFps * 0.2) {
             nTime = math.floor(nFps * 0.2)
         }
+        print("===meat_hook===OnSpellStart===nTime:", nTime)
         const v3Speed = v3Dis / nTime
         let v3Cur = this.GetCaster().GetAbsOrigin()
         let nTimeCur = nTime
 
         // 创建肉钩特效
-        const nPtclID = AHMC.CreateParticle("particles/econ/items/pudge/pudge_trapper_beam_chain/pudge_nx_meathook.vpcf"
+        const nPtclID = AHMC.CreateParticle("particles/econ/items/pudge/pudge_trapper_beam_chain/pudge_nx_meathook_hook.vpcf"
             , ParticleAttachment.CUSTOMORIGIN, false, this.GetCaster(), nFpsTime * nTime * 2)
         ParticleManager.SetParticleControlEnt(nPtclID, 0, this.GetCaster(), ParticleAttachment.POINT_FOLLOW, "attach_weapon_chain_rt", this.GetCaster().GetAbsOrigin(), true)
         ParticleManager.SetParticleControl(nPtclID, 3, Vector(5, 0, 0)) // 持续时间
         this.GetCaster().StartGesture(GameActivity.DOTA_OVERRIDE_ABILITY_1) // 出钩动作
         EmitSoundOn("Hero_Pudge.AttackHookExtend", oPlayer.m_eHero)
         Timers.CreateTimer(0, () => {
-            v3Cur = v3Cur + v3Speed as Vector
+            v3Cur = (v3Cur + v3Speed) as Vector
             ParticleManager.SetParticleControl(nPtclID, 6, v3Cur)
             ParticleManager.SetParticleControl(nPtclID, 1, v3Cur)
             nTimeCur -= 1
-            if (nTimeCur < 0)
-                return
-
+            if (nTimeCur > 0)
+                return nFpsTime
             // 钩到目标, 伤害
             AHMC.Damage(this.GetCaster(), oPlayerTarget.m_eHero, nDamage, this.GetAbilityDamageType(), this)
 
@@ -105,7 +110,7 @@ export class Ability_pudge_meat_hook extends TSBaseAbility {
             EmitSoundOn("Hero_Pudge.AttackHookImpact", oPlayer.m_eHero)
             EmitSoundOn("Hero_Pudge.AttackHookRetract", oPlayer.m_eHero)
             Timers.CreateTimer(0, () => {
-                v3Cur = v3Cur - v3Speed as Vector
+                v3Cur = (v3Cur - v3Speed) as Vector
                 ParticleManager.SetParticleControl(nPtclID, 6, v3Cur)
                 ParticleManager.SetParticleControl(nPtclID, 1, v3Cur)
                 oPlayerTarget.m_eHero.SetAbsOrigin(v3Cur)
@@ -131,6 +136,8 @@ export class Ability_pudge_meat_hook extends TSBaseAbility {
 
     /**过滤技能目标 */
     filterTarget(player: Player): boolean {
+        print("player.m_nPlayerState:", player.m_nPlayerState)
+
         if (player.m_eHero == this.GetCaster()   // 自身
             || !this.checkTarget(player.m_eHero)
             || 0 < bit.band(

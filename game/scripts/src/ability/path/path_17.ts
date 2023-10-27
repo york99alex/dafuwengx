@@ -3,7 +3,7 @@ import { PathDomain } from "../../path/pathsdomain/pathdomain";
 import { PathDomain_6 } from "../../path/pathsdomain/pathdomain_6";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
-import { AHMC } from "../../utils/amhc";
+import { AHMC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -14,6 +14,7 @@ import { TSBaseAbility } from "../tsBaseAbilty";
 @registerAbility()
 export class path_17 extends TSBaseAbility {
     GetIntrinsicModifierName() {
+        print("path==modname:", "modifier_" + this.GetAbilityName() + "_l" + this.GetLevel())
         return "modifier_" + this.GetAbilityName() + "_l" + this.GetLevel()
     }
 }
@@ -24,7 +25,7 @@ export class path_17 extends TSBaseAbility {
 @registerModifier()
 export class modifier_path_17_l1 extends BaseModifier {
     oPlayer: Player
-    unUpdateBZBuffByCreate: Function
+    unUpdateBZBuffByCreate: number
     tEventID: number[]
     jiansu: number
     damage: number
@@ -40,16 +41,23 @@ export class modifier_path_17_l1 extends BaseModifier {
     GetTexture(): string {
         return "path17"
     }
+    RemoveOnDeath(): boolean {
+        return false
+    }
+    DestroyOnExpire(): boolean {
+        return false
+    }
     OnDestroy(): void {
+        print("ability=modifier=OnDestroy===name:", this.GetName())
         if (this.oPlayer) {
             for (const eBZ of this.oPlayer.m_tabBz) {
-                if (IsValidEntity(eBZ)) {
-                    eBZ.RemoveModifierByName(this.GetName())
+                if (IsValid(eBZ)) {
+                    AHMC.RemoveModifierByName(this.GetName(), eBZ)
                 }
             }
         }
         if (this.unUpdateBZBuffByCreate) {
-            this.unUpdateBZBuffByCreate()
+            GameRules.EventManager.UnRegisterByID(this.unUpdateBZBuffByCreate)
         }
         if (this.tEventID) {
             for (const nID of this.tEventID) {
@@ -58,15 +66,18 @@ export class modifier_path_17_l1 extends BaseModifier {
         }
     }
     OnCreated(params: object): void {
-        if (!IsValidEntity(this)) {
+        print("ability=modifier=OnCreated===name:", this.GetName(), "Time:", this.GetRemainingTime())
+        if (!IsValid(this)) {
             return
         }
-        if (!IsValidEntity(this.GetAbility())) {
+        if (!IsValid(this.GetAbility())) {
             return
         }
         const ability = this.GetAbility()
         this.jiansu = ability.GetSpecialValueFor("jiansu")
         this.damage = ability.GetSpecialValueFor("damage")
+        print(this.GetName(), "===this.jiansu", this.jiansu)
+        print(this.GetName(), "===this.damage", this.damage)
         if (IsClient() || !this.GetParent().IsRealHero()) {
             return
         }
@@ -83,16 +94,18 @@ export class modifier_path_17_l1 extends BaseModifier {
             }
             return false
         }
+        const oPlayer = this.oPlayer
+        const buffName = this.GetName()
         // 给玩家兵卒buff
         Timers.CreateTimer(0.1, () => {
-            if (IsValidEntity(this) && IsValidEntity(this.GetAbility())) {
+            if (IsValid(this) && IsValid(this.GetAbility())) {
                 for (const eBZ of this.oPlayer.m_tabBz) {
                     if (checkBZ(eBZ))
                         eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
                 }
                 this.unUpdateBZBuffByCreate = AbilityManager.updateBZBuffByCreate(this.oPlayer, this.GetAbility(), (eBZ: CDOTA_BaseNPC_BZ) => {
-                    if (checkBZ(eBZ) && IsValidEntity(eBZ)) {
-                        eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
+                    if (checkBZ(eBZ) && IsValid(eBZ)) {
+                        eBZ.AddNewModifier(oPlayer.m_eHero, ability, buffName, {})
                     }
                 })
             }
@@ -114,17 +127,17 @@ export class modifier_path_17_l1 extends BaseModifier {
         const sHasBuff = "_onAblt_path_17_HasBuff" + ability.GetEntityIndex()
 
         function funOnDamage(v3: Vector, nID: number) {
-            if (!IsValidEntity(ability)) {
+            if (!IsValid(ability)) {
                 return
             }
             for (const v of tabMover) {
-                if (IsValidEntity(v)) {
+                if (IsValid(v)) {
                     const nDis = (v.GetAbsOrigin() - v3 as Vector).Length2D()
                     if (nDis > 200) {
                         if (sHasBuff && v[sHasBuff + nID]) {
                             // 脱离范围删除减速buff
                             v[sHasBuff + nID] = false
-                            v.RemoveModifierByNameAndCaster(modifier_path_17_debuff.name, this.oPlayer.m_eHero)
+                            AHMC.RemoveModifierByNameAndCaster(modifier_path_17_debuff.name, v, this.oPlayer.m_eHero)
                         }
                         return
                     }
@@ -147,7 +160,7 @@ export class modifier_path_17_l1 extends BaseModifier {
             if (event.entity == this.oPlayer.m_eHero) {
                 return
             }
-            if (!IsValidEntity(ability)) {
+            if (!IsValid(ability)) {
                 return true
             }
             if (0 < bit.band(PS_InPrison, this.oPlayer.m_nPlayerState)) {
@@ -203,7 +216,7 @@ export class modifier_path_17_l1 extends BaseModifier {
 
 
                 // 持续移动飓风
-                function funMoveFeng() {
+                function funMoveFeng(modi: modifier_path_17_l1) {
                     const pathNext = getNextPath()
                     const nFps = 30
                     const nFpsTime = 1 / nFps
@@ -214,7 +227,7 @@ export class modifier_path_17_l1 extends BaseModifier {
                     let nTimeCur = math.floor(nTimeSum)
 
                     Timers.CreateTimer(() => {
-                        if (tabMover.length > 0 && IsValidEntity(ability)) {
+                        if (tabMover.length > 0 && IsValid(ability)) {
                             v3Cur = v3Cur + v3Speed as Vector
                             ParticleManager.SetParticleControl(nPtclID, 0, v3Cur)
                             // 触发伤害和减速
@@ -225,10 +238,10 @@ export class modifier_path_17_l1 extends BaseModifier {
                                 return nFpsTime
                             }
                             pathCur = pathNext
-                            funMoveFeng()
+                            funMoveFeng(modi)
                         } else {
-                            if (IsValidEntity(event.entity)) {
-                                event.entity.RemoveModifierByNameAndCaster(modifier_path_17_debuff.name, this.oPlayer.m_eHero)
+                            if (IsValid(event.entity)) {
+                                AHMC.RemoveModifierByNameAndCaster(modifier_path_17_debuff.name, event.entity, modi.oPlayer.m_eHero)
                             }
                             ParticleManager.DestroyParticle(nPtclID, false)
                             pathMid.setDiaoGesture(-GameActivity.DOTA_CAST_ABILITY_1)
@@ -240,7 +253,7 @@ export class modifier_path_17_l1 extends BaseModifier {
                     })
                 }
 
-                funMoveFeng()
+                funMoveFeng(this)
             }
         }
 
@@ -310,6 +323,7 @@ export class modifier_path_17_debuff extends BaseModifier {
         return this.jiansu
     }
     OnCreated(params: object): void {
+        print("path===OnCreated")
         this.jiansu = this.GetAbility().GetSpecialValueFor("jiansu")
     }
 }

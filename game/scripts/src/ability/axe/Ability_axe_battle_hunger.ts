@@ -42,7 +42,7 @@ export class Ability_axe_battle_hunger extends TSBaseAbility {
         const target = this.GetCursorTarget()
 
         // 添加减攻击buff
-        AbilityManager.setCopyBuff("modifier_Ability_axe_battle_hunger"
+        AbilityManager.setCopyBuff(modifier_ability_axe_battle_hunger.name
             , target, this.GetCaster(), this)
         EmitGlobalSound("Hero_Axe.Battle_Hunger")
 
@@ -54,7 +54,7 @@ export class Ability_axe_battle_hunger extends TSBaseAbility {
 }
 
 @registerModifier()
-export class modifier_Ability_axe_battle_hunger extends BaseModifier {
+export class modifier_ability_axe_battle_hunger extends BaseModifier {
 
     m_tEventID: number[]
     m_nRound: number
@@ -91,7 +91,7 @@ export class modifier_Ability_axe_battle_hunger extends BaseModifier {
     OnDestroy(): void {
         if (IsClient())
             return
-        GameRules.EventManager.FireEvent("modifier_Ability_axe_battle_hunger", this)
+        GameRules.EventManager.FireEvent("modifier_ability_axe_battle_hunger", this)
         GameRules.EventManager.UnRegisterByIDs(this.m_tEventID)
     }
 

@@ -10,9 +10,9 @@ import { TSBaseAbility } from "../tsBaseAbilty";
         "DOTA_Tooltip_ability_Ability_pudge_rot_range"				"作用范围 :"
         "DOTA_Tooltip_ability_Ability_pudge_rot_damage"				"伤害 :"
         "DOTA_Tooltip_ability_Ability_pudge_rot_rot_slow"			"%减速 :"
-            "AbilityError_NeedMana_1"		"至少需要1点魔法"
-        "DOTA_Tooltip_modifier_Ability_pudge_rot_debuff"				"腐烂"
-        "DOTA_Tooltip_modifier_Ability_pudge_rot_debuff_Description"	"被腐烂减速<font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font>"
+        "AbilityError_NeedMana_1"		"至少需要1点魔法"
+        "DOTA_Tooltip_modifier_ability_pudge_rot_debuff"				"腐烂"
+        "DOTA_Tooltip_modifier_ability_pudge_rot_debuff_Description"	"被腐烂减速<font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font>"
 
  */
 @registerAbility()
@@ -120,21 +120,21 @@ export class Ability_pudge_rot extends TSBaseAbility {
             Timers.CreateTimer(() => {
                 if (bMoveEnd) {
                     // 移动结束, 结束检测
-                    enemy.RemoveModifierByName("modifier_Ability_pudge_rot_debuff")
+                    AHMC.RemoveModifierByName(modifier_ability_pudge_rot_debuff.name, enemy)
                     return null
                 }
 
                 // 判断距离
                 const nDis = (enemy.GetAbsOrigin() - this.GetCaster().GetAbsOrigin() as Vector).Length()
                 if (nDis > nRange) {
-                    enemy.RemoveModifierByName("modifier_Ability_pudge_rot_debuff")
+                    AHMC.RemoveModifierByName(modifier_ability_pudge_rot_debuff.name, enemy)
                     return 0.1
                 }
                 print("OnSpellStart_pudge_rot_5")
 
                 // 范围内对敌人造成伤害
                 AHMC.Damage(this.GetCaster(), enemy, nDamage, this.GetAbilityDamageType(), this)
-                enemy.AddNewModifier(this.GetCaster(), this, modifier_Ability_pudge_rot_debuff.name, null)
+                enemy.AddNewModifier(this.GetCaster(), this, modifier_ability_pudge_rot_debuff.name, null)
 
                 // 检测耗蓝
                 if (!bUseMana) {
@@ -196,7 +196,7 @@ export class Ability_pudge_rot extends TSBaseAbility {
 
 /**腐烂范围减速 */
 @registerModifier()
-export class modifier_Ability_pudge_rot_aura extends BaseModifier {
+export class modifier_ability_pudge_rot_aura extends BaseModifier {
     IsDebuff(): boolean {
         return true
     }
@@ -216,7 +216,7 @@ export class modifier_Ability_pudge_rot_aura extends BaseModifier {
 
 /** */
 @registerModifier()
-export class modifier_Ability_pudge_rot_debuff extends BaseModifier {
+export class modifier_ability_pudge_rot_debuff extends BaseModifier {
     IsHidden(): boolean {
         return true
     }
@@ -230,7 +230,7 @@ export class modifier_Ability_pudge_rot_debuff extends BaseModifier {
     }
 
     GetModifierAura(): string {
-        return "modifier_Ability_pudge_rot_aura"
+        return "modifier_ability_pudge_rot_aura"
     }
 
     GetAuraSearchTeam(): UnitTargetTeam {

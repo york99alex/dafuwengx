@@ -1,5 +1,6 @@
 import { Player } from "../../player/player";
 import { AHMC } from "../../utils/amhc";
+import { ParaAdjuster } from "../../utils/paraadjuster";
 import { PathDomain } from "./pathdomain";
 
 /**领土路径-河道 */
@@ -25,6 +26,7 @@ export class PathDomain_2 extends PathDomain {
 
     /**设置领地BUFF */
     setBuff(oPlayer: Player): void {
+        print("ability=setBuff")
         this.delBuff(oPlayer)
         // 获取路径等级
         const nLevel = this.getPathBuffLevel(oPlayer)
@@ -34,12 +36,16 @@ export class PathDomain_2 extends PathDomain {
         // 添加
         const ability = AHMC.AddAbilityAndSetLevel(oPlayer.m_eHero, this.getBuffName(nLevel), nLevel)
         ability.SetLevel(nLevel)
+        ParaAdjuster.ModifyMana(oPlayer.m_eHero, oPlayer.m_nManaMaxBase)
 
         // TODO: 3级双河道buff
+
+
     }
 
     /**移除领地BUFF */
     delBuff(oPlayer: Player): void {
+        print("ability=delBuff")
         const strBuffName = this.getBuffName()
         if (oPlayer.m_eHero.HasAbility(strBuffName)) {
             // 触发事件：领地技能移除

@@ -13,6 +13,8 @@ export class xj_13 extends TSBaseAbility {
     CastFilterResult(): UnitFilterResult {
         print("========xj======CastFilterResult====")
         if (IsServer()) {
+            print("===xj==this.GetCaster()===",this.GetCaster().GetOwner().GetName())
+            print("===xj==this.GetCaster()===",this.GetCaster().GetOwner().GetTeamNumber())
             this.OnSpellStart()
         }
         return UnitFilterResult.SUCCESS
