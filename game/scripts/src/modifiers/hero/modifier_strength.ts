@@ -1,4 +1,5 @@
 import { Constant } from "../../mode/constant";
+import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { BaseModifier, registerModifier } from "../../utils/dota_ts_adapter";
 
 @registerModifier()
@@ -30,11 +31,11 @@ export class modifier_strength extends BaseModifier {
 
     OnStackCountChanged(stackCount: number): void {
         if (IsServer()) {
-            const hParent = this.GetParent() as CDOTA_BaseNPC_Hero
+            const hParent = this.GetParent() as CDOTA_BaseNPC_BZ
             const nNewStackCount = this.GetStackCount()
             const nChanged = nNewStackCount - stackCount
 
-            hParent.ModifyHealth(nChanged * Constant.ATTRIBUTE.STRENGTH_HP, null, false, null)
+            hParent.SetBaseMaxHealth(hParent.GetMaxHealth() + nChanged * Constant.ATTRIBUTE.STRENGTH_HP)
 
             if (hParent.GetPrimaryAttribute() == Attributes.STRENGTH) {
                 const nValue = nChanged * Constant.ATTRIBUTE.PRIMARY_ATTACK_DAMAGE

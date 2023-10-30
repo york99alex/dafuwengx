@@ -64,7 +64,7 @@ export namespace Constant {
     // 全图购物回合
     export const GLOBAL_SHOP_ROUND: number = 25
     // 英雄每回合回血百分百
-    export const ROUND_HERO_HUIXUE_ROTA: number = 0.15
+    export const ROUND_HERO_HUIXUE_ROTA: number = 0.1
     // 兵卒每回合回血百分百
     export const ROUND_BZ_HUIXUE_ROTA: number = 0.1
     // 出狱金币 
@@ -183,15 +183,15 @@ export namespace Constant {
 
     /**兵卒属性效果 */
     export const ATTRIBUTE = {
-        STRENGTH_HP: 20,
+        STRENGTH_HP: 22,
         STRENGTH_HP_REGEN: 0.1,
         AGILITY_ATTACK_SPEED: 1,
-        AGILITY_PHYSICAL_ARMOR: 0.17,
+        AGILITY_PHYSICAL_ARMOR: 0.16,
         INTELLIGENCE_MANA: 0,
         INTELLIGENCE_MANA_REGEN: 0,
         INTELLIGENCE_MAGICAL_RESISTANCE: 0.1,
         PRIMARY_ATTACK_DAMAGE: 1,
-        ALL_ATTACK_DAMAGE: 0.6
+        ALL_ATTACK_DAMAGE: 0.7
     }
 
 }

@@ -58,7 +58,7 @@ export class modifier_path_14_l1 extends BaseModifier {
             }
         }
         if (this.unUpdateBZBuffByCreate) {
-            GameRules.EventManager.UnRegisterByID(this.unUpdateBZBuffByCreate)
+            GameRules.EventManager.UnRegisterByID(this.unUpdateBZBuffByCreate, "Event_BZCreate")
         }
     }
     OnCreated(params: object): void {

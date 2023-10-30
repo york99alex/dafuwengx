@@ -18,6 +18,7 @@ import { TSBaseAbility } from "../tsBaseAbilty";
 @registerAbility()
 export class Ability_pudge_rot extends TSBaseAbility {
     m_tabPtclID: ParticleID[] = []
+    tEventID: number[] = []
 
     /**施法距离 */
     GetCastRange(location: Vector, target: CDOTA_BaseNPC): number {
@@ -40,6 +41,8 @@ export class Ability_pudge_rot extends TSBaseAbility {
 
     /**开始技能效果 */
     OnSpellStart(): void {
+        if (IsClient()) return
+
         if (this.m_tabPtclID.length == 0) {
             print("OnSpellStart_pudge_rot_腐烂开启")
             // 开启腐烂
@@ -50,9 +53,9 @@ export class Ability_pudge_rot extends TSBaseAbility {
             ParticleManager.SetParticleControl(this.m_tabPtclID[0], 1, Vector(nRange, 0, 0))    // 范围
             print("OnSpellStart_pudge_rot_0")
             // 注册移动监听
-            GameRules.EventManager.Register("Event_Move", (event: { entity: CDOTA_BaseNPC_Hero }) => this.onEvent_Move(event), this)
+            this.tEventID.push(GameRules.EventManager.Register("Event_Move", (event: { entity: CDOTA_BaseNPC_Hero }) => this.onEvent_Move(event), this))
             // 注册英雄魔法修改
-            GameRules.EventManager.Register("Event_HeroManaChange", (event: { player: Player, oAblt: TSBaseAbility }) => this.onEvent_HeroManaChange(event), this)
+            this.tEventID.push(GameRules.EventManager.Register("Event_HeroManaChange", (event: { player: Player, oAblt: TSBaseAbility }) => this.onEvent_HeroManaChange(event), this))
 
             // 音效
             EmitSoundOn("Hero_Pudge.Rot", this.GetCaster())
@@ -69,8 +72,8 @@ export class Ability_pudge_rot extends TSBaseAbility {
 
             StopSoundOn("Hero_Pudge.Rot", this.GetCaster())
 
-            GameRules.EventManager.UnRegister("Event_Move", (event: { entity: CDOTA_BaseNPC_Hero }) => this.onEvent_Move(event))
-            GameRules.EventManager.UnRegister("Event_HeroManaChange", (event: { player: Player, oAblt: TSBaseAbility }) => this.onEvent_HeroManaChange(event))
+            GameRules.EventManager.UnRegisterByIDs(this.tEventID)
+            this.tEventID = []
         }
     }
 
@@ -143,6 +146,7 @@ export class Ability_pudge_rot extends TSBaseAbility {
                     print("OnSpellStart_pudge_rot_6")
 
                 }
+                return nTime
             })
         }
 

@@ -78,7 +78,7 @@
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityTextureName" "meepo_poof"
 		"AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
-		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"SpellImmunityType" "SPELL_IMMUNITY_ALLIES_YES"
 		"AbilitySound" "Hero_Meepo.Poof"
 		"AbilityCastPoint" "1.5000"
@@ -409,7 +409,7 @@
 		"ScriptFile" "ability/path/path_14"
 		"AbilityValues" {
 			"time" "1 1.5 2"
-			"chance" "100"
+			"chance" "25"
 		}
 		"MaxLevel" "3"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"

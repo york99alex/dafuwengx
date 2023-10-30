@@ -785,12 +785,14 @@ export class Player {
         // 创建单位
         let strName = Constant.HERO_TO_BZ[this.m_eHero.GetUnitName()]
         for (let i = nStarLevel; i >= 2; i--) {
-            strName += '1';
+            strName += '1'
         }
         print("创建单位strName:", strName)
 
         const eBZ = AHMC.CreateUnit(strName, path.m_eCity.GetOrigin(), path.m_eCity.GetAnglesAsVector().y, this.m_eHero, DotaTeam.GOODGUYS) as CDOTA_BaseNPC_BZ
-        eBZ.SetMaxHealth(eBZ.GetMaxHealth() + 500)
+        print("===createBZOnPath===GetMaxHealth:",eBZ.GetMaxHealth())
+        print("===createBZOnPath===GetBaseMaxHealth:",eBZ.GetBaseMaxHealth())
+        eBZ.SetBaseMaxHealth(eBZ.GetMaxHealth() + 300)
         eBZ.SetDayTimeVisionRange(300)
         eBZ.SetNightTimeVisionRange(300)
         // 添加数据
@@ -813,7 +815,7 @@ export class Player {
             AHMC.AddAbilityAndSetLevel(eBZ, "xj_" + path.m_typePath, nStarLevel)
             const oAblt = eBZ.GetAbilityByIndex(1)
             if (oAblt) {
-                eBZ.SwapAbilities(eBZ.m_bAbltBZ.GetAbilityName(), "xj_" + path.m_typePath, !oAblt.IsHidden(), true)
+                eBZ.SwapAbilities(oAblt.GetAbilityName(), "xj_" + path.m_typePath, !oAblt.IsHidden(), true)
             }
         }
 
@@ -956,7 +958,12 @@ export class Player {
         }
         nLevel -= eBZ.GetLevel()
 
-        GameRules.EventManager.FireEvent("Event_BZLevelUp", { eBZ: eBZ, nLevel: nLevel })
+        const tEvent = {
+            eBZ: eBZ,
+            nLevel: nLevel
+        }
+        GameRules.EventManager.FireEvent("Event_BZLevelUp", tEvent)
+        nLevel = tEvent.nLevel
 
         const bLevelDown = nLevel < 0
 
@@ -968,7 +975,7 @@ export class Player {
         // 等级变更
         nLevel = math.abs(nLevel)
         for (let i = 1; i <= nLevel; i++) {
-            // TODO: 合并CDOTA_BaseNPC_BZ.ts和attribute.ts
+            eBZ.LevelUp(false, bLevelDown)
         }
 
         // 计算兵卒技能等级
@@ -1551,11 +1558,12 @@ export class Player {
 
         // 兵卒回血
         for (const eBZ of this.m_tabBz) {
-            tabEventHuiXue = {
+            let tabEventBZHuiXue = {
                 entity: eBZ,
                 nHuiXue: eBZ.GetMaxHealth() * Constant.ROUND_BZ_HUIXUE_ROTA
             }
-            eBZ.SetHealth(eBZ.GetHealth() + tabEventHuiXue.nHuiXue)
+            GameRules.EventManager.FireEvent("Event_ItemHuiXueByRound", tabEventBZHuiXue)
+            eBZ.SetHealth(eBZ.GetHealth() + tabEventBZHuiXue.nHuiXue)
         }
     }
 

@@ -236,17 +236,17 @@ export class PathManager {
             }
             return false
         }
-        print("moveToPath===1")
+        // print("moveToPath===1")
         // 持续寻路
         Timers.CreateTimer(() => {
-            print("moveToPath===2")
+            // print("moveToPath===2")
             if (tMoveData != this.m_tabMoveData[nEntId]) return
-            print("moveToPath===3")
+            // print("moveToPath===3")
             if (!IsValid(entity) || !entity.IsAlive()) {
                 this.moveStop(entity, false)
                 return
             }
-            print("moveToPath===4")
+            // print("moveToPath===4")
             // 检验每个寻路点path_corner
             const nDis = (entity.GetOrigin() - vNext as Vector).Length2D()
             let nCheckDis = 30
@@ -254,34 +254,34 @@ export class PathManager {
                 nCheckDis = entity.GetIdealSpeed() * 0.35 - 75
                 if (nCheckDis < 30) nCheckDis = 30
             }
-            print("moveToPath===5")
+            // print("moveToPath===5")
             if (nDis < nCheckDis) {
-                print("moveToPath===6")
+                // print("moveToPath===6")
                 // 触发事件: 途径某路径
                 if (pathBegin != pathNext && bEventEnable) {
                     GameRules.EventManager.FireEvent("Event_PassingPath", { path: pathNext, entity: entity })
                 }
-                print("moveToPath===7")
+                // print("moveToPath===7")
                 if (pathNext == path || judgeKasi()) {
-                    print("moveToPath===8")
+                    // print("moveToPath===8")
                     // 移动结束
                     this.moveStop(entity, true)
                     return null
                 } else {
                     // 移动至下一个路径点
-                    print("moveToPath===9")
+                    // print("moveToPath===9")
                     pathCur = pathNext
                     pathNext = this.getNextPath(pathCur, 1)
                     if (pathNext == null || pathNext == pathCur) {
-                        print("moveToPath===10")
+                        // print("moveToPath===10")
                         this.moveStop(entity, true)
                         return
                     }
-                    print("moveToPath===11")
+                    // print("moveToPath===11")
                     getNextPos()
                 }
             }
-            print("moveToPath===12")
+            // print("moveToPath===12")
             entity.MoveToPosition(vNext)
             return 0.1
         })

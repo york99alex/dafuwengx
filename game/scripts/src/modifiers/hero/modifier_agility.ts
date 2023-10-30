@@ -1,4 +1,5 @@
 import { Constant } from "../../mode/constant";
+import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { BaseModifier, registerModifier } from "../../utils/dota_ts_adapter";
 
 @registerModifier()
@@ -30,7 +31,7 @@ export class modifier_agility extends BaseModifier {
 
     OnStackCountChanged(stackCount: number): void {
         if (IsServer()) {
-            const hParent = this.GetParent() as CDOTA_BaseNPC_Hero
+            const hParent = this.GetParent() as CDOTA_BaseNPC_BZ
             const nNewStackCount = this.GetStackCount()
             const nChanged = nNewStackCount - stackCount
 

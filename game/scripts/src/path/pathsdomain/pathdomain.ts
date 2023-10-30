@@ -536,6 +536,7 @@ export class PathDomain extends Path {
     /**兵卒升级 */
     Event_BZLevel(event: { eBZNew: CDOTA_BaseNPC_BZ, eBZ: CDOTA_BaseNPC_BZ }) {
         if (this.m_nPlayerIDGCLD && this.m_tabENPC.indexOf(event.eBZ) != -1) {
+            print("===Event_BZLevel===")
             // 在攻城, 重新设置双方攻击
             this.setAttacking(event.eBZNew)
         }

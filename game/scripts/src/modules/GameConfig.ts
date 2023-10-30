@@ -1,6 +1,5 @@
 import { AbilityManager } from "../ability/abilitymanager"
 import { CardManager } from "../card/cardmanager"
-import { Attribute } from "../mechanics/attribute"
 import { GameLoop } from "../mode/GameLoop"
 import { HeroSelection } from "../mode/HeroSelection"
 import { Auction } from "../mode/auction"
@@ -14,6 +13,7 @@ import { Trade } from "../mode/trade"
 import { PathManager } from "../path/PathManager"
 import { PathDomain } from "../path/pathsdomain/pathdomain"
 import { PathTP } from "../path/pathtp"
+import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
 import { Player, player_info } from "../player/player"
 import { PlayerManager } from "../player/playermanager"
 import { IsValid } from "../utils/amhc"
@@ -155,7 +155,8 @@ export class GameConfig {
         this.registerThink()    // 调用GameLoop
 
         Filters.init()  // 过滤器
-        Attribute.init()    // 兵卒属性
+        const BZ = new CDOTA_BaseNPC_BZ()
+        BZ.init() // 兵卒属性
         ParaAdjuster.init()// 平衡性常数, 注册事件智力不加蓝
         ParaAdjuster.SetIntToMana(0)
         GameRules.PlayerManager = new PlayerManager()    // 玩家管理模块初始化
@@ -610,7 +611,7 @@ export class GameConfig {
                     v.nRequest = 1
                 } else if (TypeOprt.TO_GCLD == v.typeOprt) {
                     // 攻城略地，默认不
-                    v.nRequest = 1
+                    v.nRequest = 0
                 } else if (TypeOprt.TO_TP == v.typeOprt) {
                     // TP传送，默认不
                     v.nRequest = 0

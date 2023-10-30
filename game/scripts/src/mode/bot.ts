@@ -9,7 +9,6 @@ export class Bot {
     static init() {
         // 添加机器人测试
         // const eBot1 = GameRules.AddBotPlayerWithEntityScript("npc_dota_hero_bloodseeker", "bloodseeker", DotaTeam.GOODGUYS, null, true)
-        // TODO: new Player的方式创建bot
         const eBot2 = GameRules.AddBotPlayerWithEntityScript("npc_dota_hero_meepo", "meepo", DotaTeam.GOODGUYS, null, true)
 
         // GameRules.PathManager.moveToPath(eBot1, GameRules.PathManager.getPathByType(TP_START)[0], false, null)
