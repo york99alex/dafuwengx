@@ -260,7 +260,7 @@ export class AHMC {
         if (this.IsAlive(attacker) != true || this.IsAlive(victim) != true) {
             return null
         }
-        scale = null ?? 1
+        scale = scale || 1
         if (scale < 0) scale = 1
 
         const tEntID = GameRules.EventManager.Register("Event_Atk", (event) => {
@@ -273,6 +273,7 @@ export class AHMC {
                 }
             }
         }, null, 987654321)
+        print("===scale==:", scale)
         ApplyDamage({
             victim: victim,
             attacker: attacker,

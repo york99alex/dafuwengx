@@ -59,10 +59,10 @@ export class EventManager {
 
         let nID: number
         if (bindID == null) {
-            nID = this.getInCludeID()
+            nID = GameRules.EventManager.getInCludeID()
         } else {
             nID = bindID
-            this.UnRegisterByID(bindID, event)
+            GameRules.EventManager.UnRegisterByID(bindID, event)
         }
         // 初始化空数组
         if (!(event in this.m_tabEvent)) {
@@ -95,7 +95,6 @@ export class EventManager {
                 const eventInfo = this.m_tabEvent[event]
                 if (!eventInfo) return
                 const index = eventInfo.findIndex(item => item.nID == nID)
-                if (index == -1) return
                 eventInfo.splice(index, 1)
                 print("=====Event UnRegister==>nID:", nID, "event:", event)
                 return true
@@ -104,7 +103,7 @@ export class EventManager {
             for (const k in this.m_tabEvent) {
                 const eventInfo = this.m_tabEvent[k]
                 const index = eventInfo.findIndex(item => item.nID == nID)
-                if (index == -1) return
+                if (index == -1) continue
                 eventInfo.splice(index, 1)
                 print("=====Event UnRegister==>nID:", nID, "event:", event)
                 return true
@@ -134,7 +133,7 @@ export class EventManager {
      * @param tID 全部注册ID
      */
     UnRegisterByIDs(tID: number[]) {
-        tID.forEach(value => this.UnRegisterByID(value))
+        tID.forEach(value => GameRules.EventManager.UnRegisterByID(value))
     }
 
     /**
@@ -178,7 +177,7 @@ export class EventManager {
                 if (nFireCount != -1) {
                     if (nFireCount > 0) {
                         this.m_tabEventCount[event.nID]--
-                        this.UnRegisterByID(event.nID);
+                        GameRules.EventManager.UnRegisterByID(event.nID);
                     }
                 }
             }
@@ -196,7 +195,7 @@ export class EventManager {
             const table = this.m_tBlockFire
             this.m_tBlockFire = null
             for (const event in table) {
-                this.FireEvent(event, table[event])
+                GameRules.EventManager.FireEvent(event, table[event])
             }
         }
     }

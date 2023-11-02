@@ -88,7 +88,7 @@ export class modifier_path_17_l1 extends BaseModifier {
 
         function checkBZ(eBZ: CDOTA_BaseNPC_BZ) {
             if (eBZ) {
-                if (this.GetAbility().GetLevel() == 3 || eBZ.m_path.m_typePath == TP_DOMAIN_6) {
+                if (ability.GetLevel() == 3 || eBZ.m_path.m_typePath == TP_DOMAIN_6) {
                     return true
                 }
             }
@@ -157,13 +157,13 @@ export class modifier_path_17_l1 extends BaseModifier {
         }
 
         function funOnMove(event: { entity: CDOTA_BaseNPC_Hero }) {
-            if (event.entity == this.oPlayer.m_eHero) {
+            if (event.entity == oPlayer.m_eHero) {
                 return
             }
             if (!IsValid(ability)) {
                 return true
             }
-            if (0 < bit.band(PS_InPrison, this.oPlayer.m_nPlayerState)) {
+            if (0 < bit.band(PS_InPrison, oPlayer.m_nPlayerState)) {
                 return
             }
 
@@ -174,7 +174,7 @@ export class modifier_path_17_l1 extends BaseModifier {
             const tPaths: PathDomain[][] = [[]]
             for (const path of GameRules.PathManager.m_tabPaths) {
                 if (path instanceof PathDomain
-                    && path.m_nOwnerID == this.oPlayer.m_nPlayerID
+                    && path.m_nOwnerID == oPlayer.m_nPlayerID
                     && path.m_tabENPC[0] && checkBZ(path.m_tabENPC[0])) {
                     const tab = tPaths[tPaths.length - 1]
                     if (tab[tab.length - 1] && tab[tab.length - 1].m_nID + 1 != path.m_nID) {
@@ -216,7 +216,7 @@ export class modifier_path_17_l1 extends BaseModifier {
 
 
                 // 持续移动飓风
-                function funMoveFeng(modi: modifier_path_17_l1) {
+                function funMoveFeng() {
                     const pathNext = getNextPath()
                     const nFps = 30
                     const nFpsTime = 1 / nFps
@@ -238,10 +238,10 @@ export class modifier_path_17_l1 extends BaseModifier {
                                 return nFpsTime
                             }
                             pathCur = pathNext
-                            funMoveFeng(modi)
+                            funMoveFeng()
                         } else {
                             if (IsValid(event.entity)) {
-                                AHMC.RemoveModifierByNameAndCaster(modifier_path_17_debuff.name, event.entity, modi.oPlayer.m_eHero)
+                                AHMC.RemoveModifierByNameAndCaster(modifier_path_17_debuff.name, event.entity, oPlayer.m_eHero)
                             }
                             ParticleManager.DestroyParticle(nPtclID, false)
                             pathMid.setDiaoGesture(-GameActivity.DOTA_CAST_ABILITY_1)
@@ -253,7 +253,7 @@ export class modifier_path_17_l1 extends BaseModifier {
                     })
                 }
 
-                funMoveFeng(this)
+                funMoveFeng()
             }
         }
 

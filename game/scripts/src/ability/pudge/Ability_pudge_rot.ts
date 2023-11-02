@@ -17,8 +17,12 @@ import { TSBaseAbility } from "../tsBaseAbilty";
  */
 @registerAbility()
 export class Ability_pudge_rot extends TSBaseAbility {
-    m_tabPtclID: ParticleID[] = []
-    tEventID: number[] = []
+    m_tabPtclID: ParticleID[]
+    tEventID: number[]
+
+    constructor() {
+        super()
+    }
 
     /**施法距离 */
     GetCastRange(location: Vector, target: CDOTA_BaseNPC): number {
@@ -43,15 +47,20 @@ export class Ability_pudge_rot extends TSBaseAbility {
     OnSpellStart(): void {
         if (IsClient()) return
 
+        if (!this.m_tabPtclID) this.m_tabPtclID = []
+
         if (this.m_tabPtclID.length == 0) {
             print("OnSpellStart_pudge_rot_腐烂开启")
             // 开启腐烂
-            this.m_tabPtclID[0] = AHMC.CreateParticle("particles/units/heroes/hero_pudge/pudge_rot.vpcf"
-                , ParticleAttachment.POINT_FOLLOW, false, this.GetCaster())
+            this.m_tabPtclID.push(AHMC.CreateParticle("particles/units/heroes/hero_pudge/pudge_rot.vpcf"
+                , ParticleAttachment.POINT_FOLLOW, false, this.GetCaster()))
 
             const nRange = this.GetSpecialValueFor("range")
             ParticleManager.SetParticleControl(this.m_tabPtclID[0], 1, Vector(nRange, 0, 0))    // 范围
             print("OnSpellStart_pudge_rot_0")
+            if (!this.tEventID) {
+                this.tEventID = []
+            }
             // 注册移动监听
             this.tEventID.push(GameRules.EventManager.Register("Event_Move", (event: { entity: CDOTA_BaseNPC_Hero }) => this.onEvent_Move(event), this))
             // 注册英雄魔法修改
@@ -72,6 +81,7 @@ export class Ability_pudge_rot extends TSBaseAbility {
 
             StopSoundOn("Hero_Pudge.Rot", this.GetCaster())
 
+            DeepPrintTable(this.tEventID)
             GameRules.EventManager.UnRegisterByIDs(this.tEventID)
             this.tEventID = []
         }
@@ -104,6 +114,7 @@ export class Ability_pudge_rot extends TSBaseAbility {
             if (event.entity == endEvent.entity) {
                 bMoveEnd = true
                 if (this.GetCaster().GetMana() == 0) {
+                    print("OnSpellStart_pudge_rot_nomana")
                     // 魔法耗尽, 结束技能
                     if (this.m_tabPtclID.length > 0) {
                         this.OnSpellStart()
@@ -136,15 +147,15 @@ export class Ability_pudge_rot extends TSBaseAbility {
                 print("OnSpellStart_pudge_rot_5")
 
                 // 范围内对敌人造成伤害
+                print("OnSpellStart_pudge_rot_Damage:", nDamage)
                 AHMC.Damage(this.GetCaster(), enemy, nDamage, this.GetAbilityDamageType(), this)
-                enemy.AddNewModifier(this.GetCaster(), this, modifier_ability_pudge_rot_debuff.name, null)
+                AHMC.AddNewModifier(enemy, this.GetCaster(), this, modifier_ability_pudge_rot_debuff.name, null)
 
                 // 检测耗蓝
                 if (!bUseMana) {
                     bUseMana = true
-                    this.GetCaster().SpendMana(1, this)
+                    oPlayer.spendPlayerMana(1, this)
                     print("OnSpellStart_pudge_rot_6")
-
                 }
                 return nTime
             })
@@ -171,6 +182,7 @@ export class Ability_pudge_rot extends TSBaseAbility {
         player: Player,
         oAblt: TSBaseAbility
     }) {
+        print("OnSpellStart_pudge_rot_onEvent_HeroManaChange")
         if (event.player.m_eHero != this.GetCaster()) {
             return
         }
@@ -179,7 +191,7 @@ export class Ability_pudge_rot extends TSBaseAbility {
         }
         if (this.GetCaster().GetMana() < 1) {
             // 没蓝就关闭技能
-            if (this.m_tabPtclID.length! + 0) {
+            if (this.m_tabPtclID.length != 0) {
                 this.OnSpellStart()
             }
         }
@@ -198,33 +210,13 @@ export class Ability_pudge_rot extends TSBaseAbility {
     }
 }
 
-/**腐烂范围减速 */
+/**腐烂减速 */
 @registerModifier()
-export class modifier_ability_pudge_rot_aura extends BaseModifier {
+export class modifier_ability_pudge_rot_debuff extends BaseModifier {
+    rot_slow: number
     IsDebuff(): boolean {
         return true
     }
-
-    IsPurgable(): boolean {
-        return false
-    }
-
-    DeclareFunctions(): ModifierFunction[] {
-        return [ModifierFunction.MOVESPEED_BONUS_PERCENTAGE]
-    }
-
-    GetModifierMoveSpeedBonus_Percentage(): number {
-        return this.GetAbility().GetSpecialValueFor("rot_slow")
-    }
-}
-
-/** */
-@registerModifier()
-export class modifier_ability_pudge_rot_debuff extends BaseModifier {
-    IsHidden(): boolean {
-        return true
-    }
-
     IsPurgable(): boolean {
         return false
     }
@@ -232,19 +224,41 @@ export class modifier_ability_pudge_rot_debuff extends BaseModifier {
     IsAura(): boolean {
         return true
     }
-
-    GetModifierAura(): string {
-        return "modifier_ability_pudge_rot_aura"
+    OnCreated(params: object): void {
+        this.rot_slow = this.GetAbility().GetSpecialValueFor("rot_slow")
     }
+    OnRefresh(params: object): void {
+        this.rot_slow = this.GetAbility().GetSpecialValueFor("rot_slow")
+    }
+    DeclareFunctions(): ModifierFunction[] {
+        return [ModifierFunction.MOVESPEED_BONUS_PERCENTAGE]
+    }
+    GetModifierMoveSpeedBonus_Percentage(): number {
+        return this.rot_slow
+    }
+}
 
+/**腐烂光环范围 */
+@registerModifier()
+export class modifier_ability_pudge_rot_aura extends BaseModifier {
+    IsHidden(): boolean {
+        return true
+    }
+    IsPurgable(): boolean {
+        return false
+    }
+    IsAura(): boolean {
+        return true
+    }
+    GetModifierAura(): string {
+        return modifier_ability_pudge_rot_debuff.name
+    }
     GetAuraSearchTeam(): UnitTargetTeam {
         return UnitTargetTeam.FRIENDLY
     }
-
     GetAuraSearchType(): UnitTargetType {
         return UnitTargetType.HERO
     }
-
     GetAuraRadius(): number {
         return this.GetAbility().GetSpecialValueFor("range")
     }

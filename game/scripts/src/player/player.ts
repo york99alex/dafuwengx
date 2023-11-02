@@ -1405,13 +1405,13 @@ export class Player {
 
     /**受伤 */
     onEvent_OnDamage(event: DamageEvent) {
-        print("===onEvent_OnDamage===")
-        print("===onEvent_OnDamage===damage:", event.damage)
-        print("===onEvent_OnDamage===damagetype:", event.damagetype_const)
-        print("===onEvent_OnDamage===bIgnore:", event.bIgnore)
-        print("===onEvent_OnDamage===bIgnoreGold:", event.bIgnoreGold)
-        print("===onEvent_OnDamage===bIgnoreDamageSelf:", event.bIgnoreDamageSelf)
-        print("===onEvent_OnDamage===bIgnoreBZHuiMo:", event.bIgnoreBZHuiMo)
+        // print("===onEvent_OnDamage===")
+        // print("===onEvent_OnDamage===damage:", event.damage)
+        // print("===onEvent_OnDamage===damagetype:", event.damagetype_const)
+        // print("===onEvent_OnDamage===bIgnore:", event.bIgnore)
+        // print("===onEvent_OnDamage===bIgnoreGold:", event.bIgnoreGold)
+        // print("===onEvent_OnDamage===bIgnoreDamageSelf:", event.bIgnoreDamageSelf)
+        // print("===onEvent_OnDamage===bIgnoreBZHuiMo:", event.bIgnoreBZHuiMo)
         if (event.bIgnore) return
 
         // 受伤者
