@@ -93,11 +93,19 @@ export class CDOTA_BaseNPC_BZ {
             unit.primaryAttributeModifier = unit.AddNewModifier(unit, null, modifier_primary_attribute.name, null)
             unit.primaryAttributeModifier.SetStackCount(unit.primaryAttribute)
 
-            unit.GetPrimaryAttribute = () => this.GetPrimaryAttribute()
-            unit.updateStrength = () => this.updateStrength(unit)
-            unit.updateAgility = () => this.updateAgility(unit)
-            unit.updateIntellect = () => this.updateIntellect(unit)
-            unit.updateAll = () => this.updateAll(unit)
+            unit.GetPrimaryAttribute = this.GetPrimaryAttribute
+            unit.updateStrength = this.updateStrength
+            unit.updateAgility = this.updateAgility
+            unit.updateIntellect = this.updateIntellect
+            unit.updateAll = this.updateAll
+            unit.LevelUp = this.LevelUp
+            unit.GetStrengthGain = this.GetStrengthGain
+            unit.GetAgilityGain = this.GetAgilityGain
+            unit.GetIntellectGain = this.GetIntellectGain
+            unit.ModifyStrength = this.ModifyStrength
+            unit.ModifyAgility = this.ModifyAgility
+            unit.ModifyIntellect = this.ModifyIntellect
+
 
             unit.updateStrength(unit)
             unit.updateAgility(unit)

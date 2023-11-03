@@ -76,6 +76,7 @@ export class modifier_path_17_l1 extends BaseModifier {
         const ability = this.GetAbility()
         this.jiansu = ability.GetSpecialValueFor("jiansu")
         this.damage = ability.GetSpecialValueFor("damage")
+        const damage = this.damage
         print(this.GetName(), "===this.jiansu", this.jiansu)
         print(this.GetName(), "===this.damage", this.damage)
         if (IsClient() || !this.GetParent().IsRealHero()) {
@@ -137,20 +138,20 @@ export class modifier_path_17_l1 extends BaseModifier {
                         if (sHasBuff && v[sHasBuff + nID]) {
                             // 脱离范围删除减速buff
                             v[sHasBuff + nID] = false
-                            AHMC.RemoveModifierByNameAndCaster(modifier_path_17_debuff.name, v, this.oPlayer.m_eHero)
+                            AHMC.RemoveModifierByNameAndCaster(modifier_path_17_debuff.name, v, oPlayer.m_eHero)
                         }
                         return
                     }
                     if (!v[sDamageCD + nID]) {
                         v[sDamageCD + nID] = true
-                        AHMC.Damage(this.oPlayer.m_eHero, v, this.damage, ability.GetAbilityDamageType(), this)
+                        AHMC.Damage(oPlayer.m_eHero, v, damage, ability.GetAbilityDamageType(), ability)
                         Timers.CreateTimer(0.5, () => {
                             v[sDamageCD + nID] = false
                         })
                     }
                     if (!v[sHasBuff + nID]) {
                         v[sHasBuff + nID] = true
-                        v.AddNewModifier(this.oPlayer.m_eHero, ability, modifier_path_17_debuff.name, {})
+                        v.AddNewModifier(oPlayer.m_eHero, ability, modifier_path_17_debuff.name, {})
                     }
                 }
             }

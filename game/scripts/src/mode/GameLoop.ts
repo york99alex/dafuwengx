@@ -137,6 +137,7 @@ export class GameLoop {
         this.setGameState(GS_Begin)
         print("GameState_GSRoundBefore_Entry")
         GameRules.EventManager.FireEvent("Event_PlayerRoundBefore", { typeGameState: GS_Begin })
+        print("GameState_GSRoundBefore_Entry_m_bRoundBefore:", this.m_bRoundBefore)
         this.Timer(() => {
             if (!this.m_bRoundBefore) {
                 this.GameStateService.send("tobegin")
@@ -226,12 +227,12 @@ export class GameLoop {
     GSWait_Entry() {
         this.setGameState(GS_Wait)
         print("GameState_GSWait_Entry")
-        this.m_timeWait = 100
+        this.m_timeWait = 200
         Timers.CreateTimer(0, () => {
             print(this.m_timeWait -= 1)
-            if (this.m_typeStateCur != GS_Wait || this.m_timeWait <= 0) {
+            if (this.m_timeWait <= 0) {
                 // wait超时，回到上个操作
-                this.GameStateService.send("towaitopr")
+                this.GameStateService.send("towaitoprt")
                 return
             }
             return 0.1

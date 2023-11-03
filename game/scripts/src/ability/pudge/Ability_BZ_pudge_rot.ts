@@ -1,9 +1,9 @@
 import { PS_AbilityImmune } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { AHMC, IsValid } from "../../utils/amhc";
-import { registerAbility } from "../../utils/dota_ts_adapter";
+import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
+import { ParaAdjuster } from "../../utils/paraadjuster";
 import { TSBaseAbility } from "../tsBaseAbilty";
-import { modifier_ability_pudge_rot_debuff } from "./Ability_pudge_rot";
 
 
 /**
@@ -26,10 +26,6 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
         this.ai()
     }
 
-    GetCaster(): CDOTA_BaseNPC_BZ {
-        return this.GetCaster() as CDOTA_BaseNPC_BZ
-    }
-
     /**施法距离 */
     GetCastRange(location: Vector, target: CDOTA_BaseNPC): number {
         return this.GetSpecialValueFor("range")
@@ -38,13 +34,18 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
     /**选择无目标时 */
     CastFilterResult(): UnitFilterResult {
         if (IsServer()) {
+            // print("===Ability_BZ_pudge_rot_IsRealHero:", this.GetCaster().IsRealHero())
+            // print("===Ability_BZ_pudge_rot_GetUnitName:", this.GetCaster().GetUnitName())
+            // print("===Ability_BZ_pudge_rot_GetClassname:", this.GetCaster().GetClassname())
+            // print("===Ability_BZ_pudge_rot_m_eAtkTarget:", (this.GetCaster() as CDOTA_BaseNPC_BZ).m_eAtkTarget.GetUnitName())
             if (this.m_bDamageCheck) {
+                // print("===Ability_BZ_pudge_rot_m_bDamageCheck:", this.m_bDamageCheck)
                 // 已经开启
                 return UnitFilterResult.FAIL_CUSTOM
             }
 
-            if (IsValid(this.GetCaster().m_eAtkTarget)) {
-                this.m_eTarget = this.GetCaster().m_eAtkTarget
+            if (IsValid(this.GetCaster())) {
+                this.m_eTarget = this.GetCaster()["m_eAtkTarget"]
                 const playerTarget = GameRules.PlayerManager.getPlayer(this.m_eTarget.GetPlayerOwnerID())
                 if (playerTarget && 0 < bit.band(playerTarget.m_nPlayerState, PS_AbilityImmune)) {
                     return UnitFilterResult.FAIL_CUSTOM // 技能免疫
@@ -55,6 +56,7 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
                 }
                 GameRules.EventManager.FireEvent("Event_BZCastAblt", event)
                 if (!event.bIgnore) {
+                    // print("===Ability_BZ_pudge_rot_CastResult: success")
                     return UnitFilterResult.SUCCESS
                 }
             }
@@ -65,7 +67,8 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
 
     /**开始技能效果 */
     OnSpellStart(): void {
-        for (const v of this.GetCaster().m_tabAtker) {
+        // print("===Ability_BZ_pudge_rot_OnSpellStart")
+        for (const v of this.GetCaster()["m_tabAtker"]) {
             if (this.checkTarget(v)) {
                 const nDis = (v.GetAbsOrigin() - this.GetCaster().GetAbsOrigin() as Vector).Length()
                 if (nDis <= this.GetSpecialValueFor("range")) {
@@ -87,6 +90,7 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
 
     /**开启腐烂特效 */
     switchPctl(bOn: boolean) {
+        // print("===Ability_BZ_pudge_rot_switchPctl:", bOn, this.m_nPctlID)
         if (bOn) {
             // 开启
             if (!this.m_nPctlID) {
@@ -103,36 +107,42 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
 
     /**开关伤害检测 */
     switchDamageCheck(bOn: boolean) {
+        // print("===Ability_BZ_pudge_rot_switchDamageCheck:", bOn)
         if (bOn) {
             // 开启
+            // print("===Ability_BZ_pudge_rot_switchDamageCheck:", 1)
             this.m_bDamageCheck = true
-            const tabDamageCD = []
+            const tabDamageCD: number[] = []
             Timers.CreateTimer(() => {
                 if (!this.m_bDamageCheck) {
                     return
                 }
                 if (!this.IsNull() && !this.GetCaster().IsNull()) {
-                    for (const v of this.GetCaster().m_tabAtker) {
-                        if (!tabDamageCD[v.GetEntityIndex()]) {
+                    for (const v of this.GetCaster()["m_tabAtker"]) {
+                        if (tabDamageCD.indexOf(v.GetEntityIndex()) == -1) {
                             const nDis = (v.GetAbsOrigin() - this.GetCaster().GetAbsOrigin() as Vector).Length()
                             if (nDis <= this.GetSpecialValueFor("range")) {
                                 // 造成伤害
                                 AHMC.Damage(this.GetCaster(), v, this.GetSpecialValueFor("damage"), this.GetAbilityDamageType()
                                     , this, 1, { bIgnoreBZHuiMo: true })
                                 const nTime = this.GetSpecialValueFor("time_damage")
-                                v.AddNewModifier(this.GetCaster(), this, modifier_ability_pudge_rot_debuff.name
-                                    , { duration: nTime })
-                                tabDamageCD[v.GetEntityIndex()] = true
+                                // print("===Ability_BZ_pudge_rot_switchDamageCheck_nTime:", nTime)
+                                AHMC.AddNewModifier(v, this.GetCaster(), this, modifier_ability_BZ_pudge_rot_debuff.name, {})
+                                // print("===Ability_BZ_pudge_rot_switchDamageCheck:", 2)
+                                tabDamageCD.push(v.GetEntityIndex())
                                 Timers.CreateTimer(nTime, () => {
-                                    tabDamageCD[v.GetEntityIndex()] = null
+                                    AHMC.RemoveModifierByName(modifier_ability_BZ_pudge_rot_debuff.name, v)
+                                    tabDamageCD.splice(tabDamageCD.indexOf(v.GetEntityIndex()), 1)
+                                    // print("===Ability_BZ_pudge_rot_switchDamageCheck_length:", tabDamageCD.length)
                                 })
                             }
                         }
                     }
                 } else {
                     this.switchPctl(false)
+                    return
                 }
-                if (tabDamageCD.filter(v => v != null).length == 0) {
+                if (tabDamageCD.length == 0) {
                     // 关闭
                     this.switchPctl(false)
                     this.m_bDamageCheck = null
@@ -151,5 +161,29 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
 
     isCanManaSub(): boolean {
         return false
+    }
+}
+
+/**腐烂减速 */
+@registerModifier()
+export class modifier_ability_BZ_pudge_rot_debuff extends BaseModifier {
+    rot_slow: number
+    IsDebuff(): boolean {
+        return true
+    }
+    IsPurgable(): boolean {
+        return false
+    }
+    OnCreated(params: object): void {
+        this.rot_slow = this.GetAbility().GetSpecialValueFor("rot_slow")
+    }
+    OnRefresh(params: object): void {
+        this.rot_slow = this.GetAbility().GetSpecialValueFor("rot_slow")
+    }
+    DeclareFunctions(): ModifierFunction[] {
+        return [ModifierFunction.MOVESPEED_BONUS_PERCENTAGE]
+    }
+    GetModifierMoveSpeedBonus_Percentage(): number {
+        return this.rot_slow
     }
 }

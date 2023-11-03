@@ -32,6 +32,7 @@ export class modifier_fix_damage extends BaseModifier {
             // ModifierFunction.INCOMING_DAMAGE_PERCENTAGE,
             ModifierFunction.INCOMING_SPELL_DAMAGE_CONSTANT,
             // ModifierFunction.TOTALDAMAGEOUTGOING_PERCENTAGE
+            ModifierFunction.PHYSICAL_CONSTANT_BLOCK
         ]
     }
     // GetModifierIncomingDamage_Percentage(event: ModifierAttackEvent): number {
@@ -59,5 +60,8 @@ export class modifier_fix_damage extends BaseModifier {
             print("INCOMING_SPELL_DAMAGE_CONSTANT===result:", event.original_damage * (factor - 1))
             return event.original_damage * (factor - 1)
         }
+    }
+    GetModifierPhysical_ConstantBlock(event: ModifierAttackEvent): number {
+        return 0
     }
 }

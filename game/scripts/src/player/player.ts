@@ -504,27 +504,28 @@ export class Player {
             this.setPlayerState(PS_Pass)
             this.m_nPassCount = nCount
             // 监听玩家回合开始, 跳过回合
-            function onEventPlayerRoundBegin(event) {
+            function onEventPlayerRoundBegin(event: { oPlayer: Player, bRoll: boolean }) {
+                print("===setPass_onEventPlayerRoundBegin===1")
+                print("===setPass_onEventPlayerRoundBegin===this.mehero:", event.oPlayer.m_eHero.GetUnitName())
                 if (event.oPlayer == this) {
+                    print("===setPass_onEventPlayerRoundBegin===2")
                     // 跳过一回合
-                    event.bIgnore = true
+                    event["bIgnore"] = true
                     event.bRoll = false
                     this.m_nPassCount -= 1
                     GameRules.EventManager.FireEvent("Event_PlayerPassOne", { player: this })
-                    print("player_", event.player.m_nPlayerID, "===setPass===GameState:", GameRules.GameConfig.m_typeState)
-                    GameRules.GameLoop.Timer(() => {
-                        GameRules.GameLoop.GameStateService.send("tofinished")
-                        return null
-                    }, 0)
+                    print("===setPass_player:", event.oPlayer.m_eHero.GetUnitName(), "===setPass===GameState:", GameRules.GameConfig.m_typeState)
+                    GameRules.GameLoop.GameStateService.send("tofinished")
+
                     // 次数达到不再跳过
-                    if (this.m_nPassCount <= 0) {
-                        this.setPlayerState(-PS_Pass)
+                    if (event.oPlayer.m_nPassCount <= 0) {
+                        event.oPlayer.setPlayerState(-PS_Pass)
                         return true
                     }
                 }
             }
 
-            GameRules.EventManager.Register("Event_PlayerRoundBegin", (event) => onEventPlayerRoundBegin(event))
+            GameRules.EventManager.Register("Event_PlayerRoundBegin", (event: { oPlayer: Player, bRoll: boolean }) => onEventPlayerRoundBegin(event))
             // 监听状态解除
             GameRules.EventManager.Register("Event_PlayerPassEnd", (event) => {
                 if (event.player == this) {
@@ -790,8 +791,8 @@ export class Player {
         print("创建单位strName:", strName)
 
         const eBZ = AHMC.CreateUnit(strName, path.m_eCity.GetOrigin(), path.m_eCity.GetAnglesAsVector().y, this.m_eHero, DotaTeam.GOODGUYS) as CDOTA_BaseNPC_BZ
-        print("===createBZOnPath===GetMaxHealth:",eBZ.GetMaxHealth())
-        print("===createBZOnPath===GetBaseMaxHealth:",eBZ.GetBaseMaxHealth())
+        print("===createBZOnPath===GetMaxHealth:", eBZ.GetMaxHealth())
+        print("===createBZOnPath===GetBaseMaxHealth:", eBZ.GetBaseMaxHealth())
         eBZ.SetBaseMaxHealth(eBZ.GetMaxHealth() + 300)
         eBZ.SetDayTimeVisionRange(300)
         eBZ.SetNightTimeVisionRange(300)

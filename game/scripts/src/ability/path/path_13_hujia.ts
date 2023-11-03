@@ -71,7 +71,7 @@ export class modifier_path_13_hujia_l1 extends BaseModifier {
         this.ignore_armor = this.GetAbility().GetSpecialValueFor("ignore_armor")
         print(this.GetName(), "===this.ignore_armor", this.ignore_armor)
         if (IsServer()) {
-            this.GetParent().AddNewModifier(this.GetParent(), this.GetAbility(), modifier_ignore_armor.name, {})
+            AHMC.AddNewModifier(this.GetParent(), this.GetParent(), this.GetAbility(), modifier_ignore_armor.name, {})
         }
         if (IsClient() || !this.GetParent().IsRealHero()) {
             return
@@ -87,11 +87,11 @@ export class modifier_path_13_hujia_l1 extends BaseModifier {
         Timers.CreateTimer(0.1, () => {
             if (IsValid(this) && IsValid(this.GetAbility())) {
                 for (const eBZ of this.oPlayer.m_tabBz) {
-                    eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
+                    AHMC.AddNewModifier(eBZ, this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
                 }
                 this.unUpdateBZBuffByCreate = AbilityManager.updateBZBuffByCreate(this.oPlayer, this.GetAbility(), (eBZ: CDOTA_BaseNPC_BZ) => {
                     if (IsValid(eBZ)) {
-                        eBZ.AddNewModifier(oPlayer.m_eHero, ability, buffName, {})
+                        AHMC.AddNewModifier(eBZ, oPlayer.m_eHero, ability, buffName, {})
                     }
                 })
             }

@@ -1,5 +1,6 @@
-import { AddModifierEvents } from "../../ability/common";
+import { AHMC } from "../../utils/amhc";
 import { BaseModifier, registerModifier } from "../../utils/dota_ts_adapter";
+import { ParaAdjuster } from "../../utils/paraadjuster";
 
 @registerModifier()
 export class modifier_ignore_armor_debuff extends BaseModifier {
@@ -33,6 +34,10 @@ export class modifier_ignore_armor_debuff extends BaseModifier {
         this.ignore_armor = this.GetAbility().GetSpecialValueFor("ignore_armor") * 0.01
         this.ignore_armor_base = this.GetAbility().GetSpecialValueFor("ignore_armor_base") * 0.01
         this.ignore_armor_bonus = this.GetAbility().GetSpecialValueFor("ignore_armor_bonus") * 0.01
+        print("modifier_ignore_armor_debuff===ignore_armor", this.ignore_armor)
+        print("modifier_ignore_armor_debuff===ignore_armor_base", this.ignore_armor_base)
+        print("modifier_ignore_armor_debuff===ignore_armor_bonus", this.ignore_armor_bonus)
+        print("modifier_ignore_armor_debuff===armor_before", this.GetParent().GetPhysicalArmorValue(false))
         if (this.ignore_armor) {
             this.armor_reduction = -math.max(this.GetParent().GetPhysicalArmorValue(false) * this.ignore_armor, 0)
         } else {
@@ -47,11 +52,20 @@ export class modifier_ignore_armor_debuff extends BaseModifier {
         ]
     }
     GetModifierPhysicalArmorBonus(event: ModifierAttackEvent): number {
+        print("modifier_ignore_armor_debuff===armor_reduction", this.armor_reduction)
         return this.armor_reduction
     }
     OnTakeDamage(event: ModifierInstanceEvent): void {
+        print("modifier_ignore_armor_debuff===armor_OnTakeDamage", this.GetParent().GetPhysicalArmorValue(false))
         if (event.unit == this.GetParent() && event.damage_category == DamageCategory.ATTACK) {
-            this.Destroy
+            print("OnTakeDamage Destroy Before:", event.unit.GetUnitName(), event.unit.GetMaxMana())
+            this.Destroy()
+            if (event.unit.IsRealHero()) {
+                ParaAdjuster.ModifyMana(event.unit)
+            }
+            Timers.CreateTimer(0.01, () => {
+                print("OnTakeDamage Destroy After 0.01:", event.unit.GetUnitName(), event.unit.GetMaxMana())
+            })
         }
     }
 }
@@ -82,7 +96,7 @@ export class modifier_ignore_armor extends BaseModifier {
     OnAttackLanded(event: ModifierAttackEvent): void {
         if (event.target == null) return
         if (event.attacker == this.GetParent()) {
-            event.target.AddNewModifier(event.attacker, this.GetAbility(), modifier_ignore_armor_debuff.name, { duration: 1 / 30 })
+            AHMC.AddNewModifier(event.target, event.attacker, this.GetAbility(), modifier_ignore_armor_debuff.name, { duration: 1 / 30 })
         }
     }
 }

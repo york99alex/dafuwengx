@@ -155,6 +155,17 @@ export class PlayerManager {
         }
     }
 
+    /**
+     * 通过英雄名获取玩家对象
+     * @param heroName 
+     */
+    getPlayerByHeroName(heroName: string): Player {
+        for (const player of this.m_tabPlayers) {
+            if (heroName == player.m_eHero.GetUnitName())
+                return player
+        }
+    }
+
     getPlayerCount() {
         return this.m_tabPlayers.length
     }
@@ -249,8 +260,8 @@ export class PlayerManager {
             }
         }
 
-        nOffset ?? 0
-        nRange ?? 1
+        nOffset = nOffset || 0
+        nRange = nRange || 1
         if (nRange > GameRules.PathManager.m_tabPaths.length) {
             nRange = GameRules.PathManager.m_tabPaths.length
         }

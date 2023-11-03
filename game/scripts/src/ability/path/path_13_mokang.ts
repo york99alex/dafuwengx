@@ -91,11 +91,11 @@ export class modifier_path_13_mokang_l1 extends BaseModifier {
         Timers.CreateTimer(0.1, () => {
             if (IsValid(this) && IsValid(this.GetAbility())) {
                 for (const eBZ of this.oPlayer.m_tabBz) {
-                    eBZ.AddNewModifier(this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
+                    AHMC.AddNewModifier(eBZ, this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
                 }
                 this.unUpdateBZBuffByCreate = AbilityManager.updateBZBuffByCreate(this.oPlayer, this.GetAbility(), (eBZ: CDOTA_BaseNPC_BZ) => {
                     if (IsValid(eBZ)) {
-                        eBZ.AddNewModifier(oPlayer.m_eHero, ability, buffName, {})
+                        AHMC.AddNewModifier(eBZ, oPlayer.m_eHero, ability, buffName, {})
                     }
                 })
             }

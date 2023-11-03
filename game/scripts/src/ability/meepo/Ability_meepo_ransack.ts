@@ -15,29 +15,34 @@ import { TSBaseAbility } from "../tsBaseAbilty";
 @registerAbility()
 export class Ability_meepo_ransack extends TSBaseAbility {
     GetIntrinsicModifierName() {
-        return "modifier_meepo_ransack"
+        return modifier_ability_meepo_ransack.name
     }
 }
 
 @registerModifier()
-export class modifier_meepo_ransack extends BaseModifier {
-
+export class modifier_ability_meepo_ransack extends BaseModifier {
     IsPassive(): boolean {
         return true
     }
-
     IsHidden(): boolean {
-        return false
+        if (this.GetParent().IsRealHero()) {
+            return false
+        } else {
+            return true
+        }
     }
-
     IsPurgable(): boolean {
         return false
     }
-
+    DeclareFunctions(): ModifierFunction[] {
+        return [ModifierFunction.ON_ATTACK_LANDED]
+    }
     OnAttackLanded(event: ModifierAttackEvent): void {
-        const oPlayer = GameRules.PlayerManager.getPlayer(event.attacker.GetPlayerOwnerID())
+        const oPlayer = GameRules.PlayerManager.getPlayerByHeroName("npc_dota_hero_meepo")
         if (!oPlayer) return
+        if (event.attacker.GetModelName() != "models/heroes/meepo/meepo.vmdl") return
 
+        print("===meepo_ransack===modifier_stackcount:", this.GetStackCount())
         const addsh = this.GetAbility().GetSpecialValueFor("addsh")
         this.SetStackCount(this.GetStackCount() + addsh)
     }

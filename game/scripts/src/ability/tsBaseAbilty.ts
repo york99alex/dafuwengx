@@ -25,6 +25,8 @@ export class TSBaseAbility extends BaseAbility {
     timeAbltMark?: number
     // 技能标识特效
     tabAbltMarkPtcl?: ParticleID[]
+    // 前摇/持续施法进行等待状态标识可以进行
+    yieldWait?:boolean
 
     constructor() {
         super()
@@ -78,6 +80,11 @@ export class TSBaseAbility extends BaseAbility {
      */
     GetCustomCastError(): string {
         return this.m_strCastError
+    }
+
+    /**当开始施法的时候，资源尚未被消耗 */
+    OnAbilityPhaseStart(): boolean {
+        return true
     }
 
     /**当技能升级时 */
@@ -202,14 +209,14 @@ export class TSBaseAbility extends BaseAbility {
             if (this.IsNull()) {
                 return true
             }
-            if (super.GetCaster() != event.entity) {
+            if (this.GetCaster() != event.entity) {
                 return
             }
-            if (!AbilityManager.isCanOnAblt(super.GetCaster())) {
+            if (!AbilityManager.isCanOnAblt(this.GetCaster())) {
                 return
             }
-
             const nManaCast = this.GetManaCost(this.GetLevel() - 1)
+            // print("===BZ_AI===0_nManaCast:", nManaCast)
             // 持续进行施法判断
             const tEventID = []
             tEventID.push(GameRules.EventManager.Register("Event_BZCastAblt", (tEvent) => {
@@ -217,14 +224,17 @@ export class TSBaseAbility extends BaseAbility {
                     tEvent.bIgnore = false
                 }
             }))
+            // print("===BZ_AI===1")
             const strTimerName = Timers.CreateTimer(() => {
                 if (IsValid(this)) {
-                    if (IsValid((super.GetCaster() as CDOTA_BaseNPC_BZ).m_eAtkTarget)
+                    // print("===BZ_AI===2")
+                    if (IsValid(this.GetCaster()["m_eAtkTarget"])
                         && this.IsCooldownReady()
-                        && super.GetCaster().GetMana() == nManaCast) {
+                        && this.GetCaster().GetMana() == nManaCast) {
+                        // print("===BZ_AI===3")
                         // 蓝满了放技能
                         ExecuteOrderFromTable({
-                            UnitIndex: super.GetCaster().GetEntityIndex(),
+                            UnitIndex: this.GetCaster().entindex(),
                             OrderType: UnitOrder.CAST_NO_TARGET,
                             TargetIndex: null,
                             AbilityIndex: this.GetEntityIndex(),
@@ -232,12 +242,15 @@ export class TSBaseAbility extends BaseAbility {
                             Queue: false
                         })
                     }
+                    // print("===BZ_AI===4_GetMana", this.GetCaster().GetMana())
                     return 0.1
                 }
             })
+            // print("===BZ_AI===5")
             // 监听攻击结束
-            tEventID.push(GameRules.EventManager.Register("Event_BZCantAtk", (tEventCantAtk) => {
-                if (this.IsNull() || super.GetCaster() == tEventCantAtk.entity) {
+            tEventID.push(GameRules.EventManager.Register("Event_BZCantAtk", (tEventCantAtk: { entity: CDOTA_BaseNPC_BZ }) => {
+                if (this.IsNull() || this.GetCaster() == tEventCantAtk.entity) {
+                    // print("===BZ_AI===6")
                     Timers.RemoveTimer(strTimerName)
                     for (const v of tEventID) {
                         GameRules.EventManager.UnRegisterByID(v)
@@ -281,7 +294,7 @@ export class TSBaseAbility extends BaseAbility {
                 return false
             }
             // 等待阶段不能施法
-            if (GameRules.GameConfig.m_typeState == GS_Wait) {
+            if (GameRules.GameConfig.m_typeState == GS_Wait && !this.yieldWait) {
                 this.m_strCastError = "AbilityError_Wait"
                 return false
             }
@@ -307,7 +320,7 @@ export class TSBaseAbility extends BaseAbility {
             }
 
             // 验证目标单位
-            if (eTarget && this.checkTarget(eTarget)) {
+            if (eTarget && !this.checkTarget(eTarget)) {
                 return false
             }
         }
@@ -375,6 +388,7 @@ export class TSBaseAbility extends BaseAbility {
             print("checkTarget===7 , this.m_strCastError:", this.m_strCastError)
             return false
         }
+        print("checkTarget===success")
         return true
     }
 

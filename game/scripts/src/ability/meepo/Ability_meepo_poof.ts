@@ -22,7 +22,7 @@ export class Ability_meepo_poof extends TSBaseAbility {
         if (!this.isCanCast(target)) {
             return UnitFilterResult.FAIL_CUSTOM
         }
-        if (GameRules.GameConfig) {
+        if (GameRules.GameConfig != null) {
             // 判断目标是否是米波
             if (target.GetModelName() != "models/heroes/meepo/meepo.vmdl") {
                 this.m_strCastError = "AbilityError_not_meepo"
@@ -34,13 +34,13 @@ export class Ability_meepo_poof extends TSBaseAbility {
 
     /**开始施法 */
     OnAbilityPhaseStart(): boolean {
+        print("===meepo_poof_OnAbilityPhaseStart===0")
         if (IsServer()) {
-            GameRules.GameLoop.Timer(() => {
-                GameRules.GameLoop.GameStateService.send("towait")
-                return null
-            }, 0)
+            GameRules.GameLoop.GameStateService.send("towait")
+            this.yieldWait = true
         }
         const oPlayer = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID())
+        print("===meepo_poof_OnAbilityPhaseStart===1_oPlayer:", oPlayer.m_eHero.GetUnitName())
 
         // 声音
         EmitGlobalSound("Hero_Meepo.Poof.Channel")
@@ -50,12 +50,17 @@ export class Ability_meepo_poof extends TSBaseAbility {
             , ParticleAttachment.POINT, false, oPlayer.m_eHero, 3)
         ParticleManager.SetParticleControl(nPtclID, 0, oPlayer.m_eHero.GetAbsOrigin())
         ParticleManager.ReleaseParticleIndex(nPtclID)
-
+        print("===meepo_poof_OnAbilityPhaseStart===2")
         return true
+    }
+
+    OnAbilityPhaseInterrupted(): void {
+        print("===meepo_poof_OnAbilityPhaseInterrupted===0")
     }
 
     /**开始技能效果 */
     OnSpellStart(): void {
+        print("===meepo_poof_OnSpellStart===0")
         const oPlayer = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID())
         const eTarget = this.GetCursorTarget()
 
@@ -78,11 +83,19 @@ export class Ability_meepo_poof extends TSBaseAbility {
             return true
         })
 
+        tabPlayer.forEach((player: Player) => {
+            print("===meepo_poof_OnSpellStart===tabPlayer_", player.m_nPlayerID, "name:", player.m_eHero.GetUnitName())
+        })
+
+        print("===meepo_poof_OnSpellStart===1")
         // 对玩家造成伤害
         this.atk(tabPlayer)
 
+        print("===meepo_poof_OnSpellStart===2")
         oPlayer.m_eHero.SetOrigin(oPlayer.m_eHero.GetOrigin() - Vector(0, 9999, 9999) as Vector)
+        print("===meepo_poof_OnSpellStart===3")
         Timers.CreateTimer(0.5, () => {
+            print("===meepo_poof_OnSpellStart===4")
             // 再现的遁地特效
             if (eTarget.IsRealHero()) {
                 oPlayer.blinkToPath(GameRules.PlayerManager.getPlayer(eTarget.GetPlayerOwnerID()).m_pathCur)
@@ -107,15 +120,17 @@ export class Ability_meepo_poof extends TSBaseAbility {
                     return true
                 })
             }
-
+            print("===meepo_poof_OnSpellStart===5")
+            tabPlayer.forEach((player: Player) => {
+                print("===meepo_poof_OnSpellStart Leave===tabPlayer_", player.m_nPlayerID, "name:", player.m_eHero.GetUnitName())
+            })
             // 对玩家造成伤害
             this.atk(tabPlayer)
+            print("===meepo_poof_OnSpellStart===6")
 
             // 重置状态
-            GameRules.GameLoop.Timer(() => {
-                GameRules.GameLoop.GameStateService.send("towaitoprt")
-                return null
-            }, 0)
+            GameRules.GameLoop.GameStateService.send("towaitoprt")
+            this.yieldWait = null
         })
 
         // 触发耗蓝
@@ -141,5 +156,9 @@ export class Ability_meepo_poof extends TSBaseAbility {
                 AHMC.Damage(this.GetCaster(), player.m_eHero, nDamage, this.GetAbilityDamageType(), this)
             }
         }
+    }
+
+    isCanCastSelf(): boolean {
+        return true
     }
 }
