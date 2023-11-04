@@ -35,7 +35,6 @@ export class AHMC {
             print("===RemoveAbilityAndModifier:", strBuff)
             let tabBuff = unit.FindAllModifiers()
             for (const value of tabBuff) {
-                print("const value of tabBuff:", value.GetName())
                 if (value.GetName().indexOf(strBuff) != -1) {
                     print("unit.RemoveModifierByName:", value.GetName())
                     unit.RemoveModifierByName(value.GetName())

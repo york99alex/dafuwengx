@@ -16,10 +16,10 @@ function Counter() {
         })
       }} />
 
-      <TextButton className="ButtonBevel" text="AYZZ" onactivate={() => {
+      <TextButton className="ButtonBevel" text="攻城略地" onactivate={() => {
         GameEvents.SendCustomGameEventToServer("GM_Operator", {
           nPlayerID: Players.GetLocalPlayer(),
-          typeOprt: 2,
+          typeOprt: 3,
           nRequest: 1
         })
       }} />
@@ -37,9 +37,5 @@ function Counter() {
 }
 
 
-
-function setOprtCountdown(data: number) {
-
-}
 
 render(<Counter />, $.GetContextPanel());

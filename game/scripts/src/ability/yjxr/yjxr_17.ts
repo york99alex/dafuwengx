@@ -31,5 +31,6 @@ export class yjxr_17 extends TSBaseAbility {
             caster: this.GetCaster() as CDOTA_BaseNPC_BZ,
             ability: this
         })
+        print("========yjxr======OnSpellStart====End")
     }
 }

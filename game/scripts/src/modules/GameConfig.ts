@@ -108,6 +108,8 @@ export class GameConfig {
         GameRules.GetGameModeEntity().SetUseCustomHeroLevels(true) // 是否启用自定义英雄等级
         GameRules.GetGameModeEntity().SetCustomHeroMaxLevel(25) // 设置自定义英雄最大等级
 
+        GameRules.GetGameModeEntity().SetInnateMeleeDamageBlockAmount(0)    // 设置近战英雄天生格挡的伤害
+
         // GameRules.SetCustomGameSetupAutoLaunchDelay(3) // 游戏设置时间（默认的游戏设置是最开始的队伍分配）
         // GameRules.SetCustomGameSetupRemainingTime(3) // 游戏设置剩余时间
         // GameRules.SetCustomGameSetupTimeout(3) // 游戏设置阶段超时
@@ -532,7 +534,7 @@ export class GameConfig {
         let path: PathDomain
 
         // 验证操作
-        tabOprt["nRequest"] = () => {
+        tabOprt["nRequest"] = (() => {
             if (tabData.nRequest == 1) {
                 path = GameRules.PathManager.getPathByID(tabOprt["nPathID"]) as PathDomain
                 if (!path) {
@@ -559,7 +561,8 @@ export class GameConfig {
                 }
             }
             return tabData.nRequest
-        }
+        })()
+
 
         if (tabOprt["nRequest"] == 1) {
             // 广播玩家攻城略地
@@ -611,7 +614,7 @@ export class GameConfig {
                     v.nRequest = 1
                 } else if (TypeOprt.TO_GCLD == v.typeOprt) {
                     // 攻城略地，默认不
-                    v.nRequest = 0
+                    v.nRequest = 1
                 } else if (TypeOprt.TO_TP == v.typeOprt) {
                     // TP传送，默认不
                     v.nRequest = 0
@@ -757,7 +760,7 @@ export class GameConfig {
         // 设置2秒后清除
         if (!this.m_nTimeChangeGold) {
             Timers.CreateTimer(0.1, () => {
-                this.m_nTimeChangeGold--
+                this.m_nTimeChangeGold -= 1
                 if (this.m_nTimeChangeGold > 0) return 0.1
                 this.m_nTimeChangeGold = null
                 this.m_tabChangeGold = null

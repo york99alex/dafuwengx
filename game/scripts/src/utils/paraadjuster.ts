@@ -72,6 +72,7 @@ export class ParaAdjuster {
      * @param modi_name 修正类型
      */
     static ModifyMana(unit: CDOTA_BaseNPC_Hero, bonus_mana?: number, data?: number) {
+        if (IsClient()) return
         if (!bonus_mana) {
             bonus_mana = GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase
         }

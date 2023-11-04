@@ -219,7 +219,7 @@ export class PathDomain extends Path {
 
     /**设置领地BUFF */
     setBuff(oPlayer: Player) {
-        print("ability=setBuff")
+        print("===setBuff===0")
         this.delBuff(oPlayer)
         // 获取路径等级
         const nLevel = this.getPathBuffLevel(oPlayer)
@@ -230,13 +230,16 @@ export class PathDomain extends Path {
         // 添加buff
         const strBuff = this.getBuffName(nLevel)
         const oAblt = AHMC.AddAbilityAndSetLevel(oPlayer.m_eHero, strBuff, nLevel)
+        print("===setBuff===1")
         oAblt.SetLevel(nLevel)
-        ParaAdjuster.ModifyMana(oPlayer.m_eHero, oPlayer.m_nManaMaxBase)
+        print("===setBuff===2")
+        // ParaAdjuster.ModifyMana(oPlayer.m_eHero, oPlayer.m_nManaMaxBase)
+        print("===setBuff===3")
     }
 
     /**移除领地BUFF */
     delBuff(oPlayer: Player) {
-        print("ability=delBuff")
+        print("===delBuff===0")
         for (let i = 1; i <= 3; i++) {
             const strBuffName = this.getBuffName(i)
             if (oPlayer.m_eHero.HasAbility(strBuffName)) {

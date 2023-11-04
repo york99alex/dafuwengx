@@ -60,12 +60,11 @@
 		"ModelScale" "0.7000"
 		"Creature" {
 			"AttachWearables" {
-				"1" { "ItemDef" "6872" }
-				"2" { "ItemDef" "14948" }
-				"3" { "ItemDef" "18450" }
-				"4" { "ItemDef" "18451" }
-				"5" { "ItemDef" "13478" }
-				"6" { "ItemDef" "18455" }
+				"1" { "ItemDef" "137" }
+				"2" { "ItemDef" "138" }
+				"3" { "ItemDef" "139" }
+				"4" { "ItemDef" "140" }
+				"5" { "ItemDef" "141" }
 			}
 		}
 		"SoundSet" "Hero_PhantomAssassin"
@@ -80,7 +79,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "305"
-		"MovementTurnRate" "0.4000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -117,12 +116,11 @@
 		"ModelScale" "0.8000"
 		"Creature" {
 			"AttachWearables" {
-				"1" { "ItemDef" "6872" }
-				"2" { "ItemDef" "14948" }
-				"3" { "ItemDef" "18450" }
-				"4" { "ItemDef" "18451" }
-				"5" { "ItemDef" "13478" }
-				"6" { "ItemDef" "18455" }
+				"1" { "ItemDef" "8586" }
+				"2" { "ItemDef" "8587" }
+				"3" { "ItemDef" "8588" }
+				"4" { "ItemDef" "8589" }
+				"5" { "ItemDef" "8590" }
 			}
 		}
 		"SoundSet" "Hero_PhantomAssassin"
@@ -137,7 +135,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "305"
-		"MovementTurnRate" "0.4000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -179,7 +177,6 @@
 				"3" { "ItemDef" "18450" }
 				"4" { "ItemDef" "18451" }
 				"5" { "ItemDef" "13478" }
-				"6" { "ItemDef" "18455" }
 			}
 		}
 		"SoundSet" "Hero_PhantomAssassin"
@@ -194,7 +191,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "305"
-		"MovementTurnRate" "0.4000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -250,7 +247,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "330"
-		"MovementTurnRate" "0.4000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -306,7 +303,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "330"
-		"MovementTurnRate" "0.4000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -362,7 +359,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "330"
-		"MovementTurnRate" "0.4000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -420,7 +417,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "280"
-		"MovementTurnRate" "0.7000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -479,7 +476,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "280"
-		"MovementTurnRate" "0.7000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -538,7 +535,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "280"
-		"MovementTurnRate" "0.7000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -595,7 +592,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "290"
-		"MovementTurnRate" "0.6000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -653,7 +650,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "290"
-		"MovementTurnRate" "0.6000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -711,7 +708,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "290"
-		"MovementTurnRate" "0.6000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -771,7 +768,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "295"
-		"MovementTurnRate" "0.6000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -830,7 +827,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "295"
-		"MovementTurnRate" "0.6000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -889,7 +886,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "295"
-		"MovementTurnRate" "0.6000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -946,7 +943,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "295"
-		"MovementTurnRate" "0.6000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -1003,7 +1000,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "295"
-		"MovementTurnRate" "0.6000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
@@ -1060,7 +1057,7 @@
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
 		"MovementSpeed" "295"
-		"MovementTurnRate" "0.6000"
+		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"

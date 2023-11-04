@@ -194,7 +194,7 @@ export class CDOTA_BaseNPC_BZ {
         this.ModifyStrength(this.GetStrengthGain(this) * nChanged, true)
         this.ModifyAgility(this.GetAgilityGain(this) * nChanged, true)
         this.ModifyIntellect(this.GetIntellectGain(this) * nChanged, true)
-        this.updateAll
+        this.updateAll(this)
 
         const hAbilities: { index: number, iLevel: number, bAutoCastState: boolean, bToggleState: boolean }[] = []
         for (let i = 0; i < this.GetAbilityCount(); i++) {

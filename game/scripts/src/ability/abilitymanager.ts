@@ -201,12 +201,16 @@ export class AbilityManager {
     static updateBZBuffByCreate(player: Player, ability: CDOTABaseAbility, funOnBuffApply?: Function) {
         // 监听兵卒创建
         const eventID = GameRules.EventManager.Register("Event_BZCreate", (event: { entity: CDOTA_BaseNPC_BZ }) => {
+            print("===updateBZBuffByCreate===0")
             if (event.entity.GetPlayerOwnerID() == player.m_nPlayerID) {
+                print("===updateBZBuffByCreate===1")
                 // 给升级的兵卒添加buff
                 if (ability && ability.IsNull()) {
+                    print("===updateBZBuffByCreate===2")
                     return true
                 }
                 if (funOnBuffApply) {
+                    print("===updateBZBuffByCreate===3")
                     funOnBuffApply(event.entity)
                 }
             }
@@ -230,18 +234,18 @@ export class AbilityManager {
     }
 
     /**玩家回合结束计算buff */
-    static judgeBuffRound(casterPlayerID: number, buff: any, funChange?: Function) {
-        if (!IsValid(buff) || !buff.m_nROund || buff.m_nROund < 1) {
+    static judgeBuffRound(casterPlayerID: number, buff: CDOTA_Buff, funChange?: Function) {
+        if (!IsValid(buff) || !buff["m_nRound"] || buff["m_nRound"] < 1) {
             return
         }
         GameRules.EventManager.Register("Event_PlayerRoundFinished", (playerF: Player) => {
             if (playerF.m_nPlayerID == GameRules.GameConfig.getLastValidOrder(casterPlayerID)) {
                 // 一轮结束
-                buff.m_nRound -= 1
+                buff["m_nRound"] -= 1
                 if (funChange) {
                     funChange()
                 }
-                if (buff.m_nRound <= 0) {
+                if (buff["m_nRound"] <= 0) {
                     if (IsValid(buff)) {
                         buff.Destroy()
                     }
@@ -292,11 +296,13 @@ export function onAblt_yjxr(event: {
     // 升级
     const oPlayer = GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID())
     unit = oPlayer.setBzStarLevelUp(unit, 1)
-
+    print("===onAblt_yjxr===1")
     oPlayer.setGold(-nGold)
+    print("===onAblt_yjxr===2")
     // 通知UI显示花费
     GameRules.GameConfig.showGold(oPlayer, -nGold)
 
+    print("===onAblt_yjxr===finished")
     // 设置游戏记录
     // TODO: GameRecord
 }

@@ -236,6 +236,7 @@ export class Player {
 
     /** 设置玩家网表信息 */
     setNetTableInfo() {
+        print("===setNetTableInfo===")
         const keyname = "player_info_" + this.m_nPlayerID as player_info
         const tabData = CustomNetTables.GetTableValue("GamingTable", keyname)
         // 拥有的路径信息
@@ -503,17 +504,18 @@ export class Player {
         if (this.m_nPassCount <= 0) {
             this.setPlayerState(PS_Pass)
             this.m_nPassCount = nCount
+            const player = this
             // 监听玩家回合开始, 跳过回合
             function onEventPlayerRoundBegin(event: { oPlayer: Player, bRoll: boolean }) {
                 print("===setPass_onEventPlayerRoundBegin===1")
-                print("===setPass_onEventPlayerRoundBegin===this.mehero:", event.oPlayer.m_eHero.GetUnitName())
-                if (event.oPlayer == this) {
+                print("===setPass_onEventPlayerRoundBegin===event.mehero:", event.oPlayer.m_eHero.GetUnitName())
+                if (event.oPlayer == player) {
                     print("===setPass_onEventPlayerRoundBegin===2")
                     // 跳过一回合
                     event["bIgnore"] = true
                     event.bRoll = false
-                    this.m_nPassCount -= 1
-                    GameRules.EventManager.FireEvent("Event_PlayerPassOne", { player: this })
+                    player.m_nPassCount -= 1
+                    GameRules.EventManager.FireEvent("Event_PlayerPassOne", { player: player })
                     print("===setPass_player:", event.oPlayer.m_eHero.GetUnitName(), "===setPass===GameState:", GameRules.GameConfig.m_typeState)
                     GameRules.GameLoop.GameStateService.send("tofinished")
 
@@ -525,12 +527,12 @@ export class Player {
                 }
             }
 
-            GameRules.EventManager.Register("Event_PlayerRoundBegin", (event: { oPlayer: Player, bRoll: boolean }) => onEventPlayerRoundBegin(event))
+            const eventID = GameRules.EventManager.Register("Event_PlayerRoundBegin", (event: { oPlayer: Player, bRoll: boolean }) => onEventPlayerRoundBegin(event))
             // 监听状态解除
-            GameRules.EventManager.Register("Event_PlayerPassEnd", (event) => {
+            GameRules.EventManager.Register("Event_PlayerPassEnd", (event: { player: Player }) => {
                 if (event.player == this) {
-                    GameRules.EventManager.UnRegister("Event_PlayerRoundBegin", (event) => onEventPlayerRoundBegin(event))
-                    this.m_nPassCount = 0
+                    GameRules.EventManager.UnRegisterByID(eventID, "Event_PlayerRoundBegin")
+                    event.player.m_nPassCount = 0
                     return true
                 }
             })
@@ -855,20 +857,23 @@ export class Player {
 
     /**移除兵卒 */
     removeBz(eBZ: CDOTA_BaseNPC_BZ) {
+        print("===removeBz===0")
         if (!eBZ) return
 
         let bHas: boolean
         for (const v of this.m_tabBz) {
-            print("======removeBz===========")
-            print("v:", v.GetName())
-            print("=====removeBz===PrintEnd=")
+            print("===removeBz===========")
+            print("v:", v.GetUnitName())
+            print("===removeBz===PrintEnd=")
             if (v == eBZ) {
                 this.m_tabBz = this.m_tabBz.filter(v => v != eBZ)
                 bHas = true
                 break
             }
         }
+        print("===removeBz===1")
         if (!bHas) return
+        print("===removeBz===2")
 
         for (const typePath in this.m_tabMyPath) {
             const tabPath = this.m_tabMyPath[typePath]
@@ -883,18 +888,21 @@ export class Player {
                 break
             }
         }
+        print("===removeBz===3")
 
         // 触发事件
         GameRules.EventManager.FireEvent("Event_BZDestroy", { entity: eBZ })
 
         // 解除装备共享
         // TODO:
+        print("===removeBz===4")
 
         // 移除buff
         const tBuffs = eBZ.FindAllModifiers()
         for (const buff of tBuffs) {
             AHMC.RemoveModifierByName(buff.GetName(), eBZ)
         }
+        print("===removeBz===5")
 
         // 处理装备
         if (this.m_tabBz.length > 0) {
@@ -903,9 +911,11 @@ export class Player {
                 // TODO:
             }
         }
+        print("===removeBz===6")
 
         eBZ.Destroy()
 
+        print("===removeBz===7")
         // 同步玩家网表信息
         this.setNetTableInfo()
     }
@@ -1406,7 +1416,8 @@ export class Player {
 
     /**受伤 */
     onEvent_OnDamage(event: DamageEvent) {
-        // print("===onEvent_OnDamage===")
+        print("===onEvent_OnDamage===")
+        print("===onEvent_OnDamage===", EntIndexToHScript(event.entindex_victim_const).GetName())
         // print("===onEvent_OnDamage===damage:", event.damage)
         // print("===onEvent_OnDamage===damagetype:", event.damagetype_const)
         // print("===onEvent_OnDamage===bIgnore:", event.bIgnore)
