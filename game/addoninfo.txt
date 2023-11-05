@@ -5,10 +5,10 @@
 	IsTemplate = false
 	maps = 
 	[
-		"dota",
+		"1x6",
 	]
 	CheckAFKPlayers = false
-	DefaultMap = "dota"
+	DefaultMap = "1x6"
 	Default_Keys = 
 	[
 	]
@@ -16,17 +16,18 @@
 	EnablePickRules = false
 	EventGame = false
 	hero_picker = null
-	HeroGuidesSupported = false
-	ForceDefaultGuide = false
+	HeroGuidesSupported = true
+	ForceDefaultGuide = true
 	MinimalPrecache = false
 	MinPlayers = 1
-	MaxPlayers = 10
+	MaxPlayers = 6
 	map_options = 
 	[
 		{
-			map = "dota"
+			MaxPlayers = 6
+			map = "1x6"
 		},
 	]
 	PenaltiesEnabled = false
-	TeamCount = -1
+	TeamCount = 6
 }

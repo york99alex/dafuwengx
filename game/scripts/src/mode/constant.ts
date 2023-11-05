@@ -56,7 +56,7 @@ export namespace Constant {
     // 竞拍倒计时时间
     export const AUCTION_BID_TIME: number = 10
     // 初始金币 
-    export const INITIAL_GOLD: number = 5000
+    export const INITIAL_GOLD: number = 3000
     // 工资金币
     export const WAGE_GOLD: number = 1000
     // 每圈工资降低

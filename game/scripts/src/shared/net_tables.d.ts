@@ -23,7 +23,10 @@ declare interface CustomNetTableDeclarations {
             bNoSwap: 1 | 0
         }
         timeOprt: { time: number }
-        order: { nPlayerID: number }
+        order: {
+            nPlayerID: number
+            heroName: string
+        }
         round: { nRound: number }
         state: { typeState: number }
         change_gold: any

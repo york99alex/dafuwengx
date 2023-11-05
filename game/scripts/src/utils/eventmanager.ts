@@ -150,10 +150,10 @@ export class EventManager {
         }
         const eventInfo = this.m_tabEvent[eventName];
         if (eventInfo == null) return;
-        // 深拷贝事件 handlers
+        // 拷贝事件 handlers
         let eventHandlers = eventInfo.map(obj => Object.assign({}, obj))
-        // 排序
-        eventHandlers.sort((a, b) => a.nOrder - b.nOrder);
+        // 升序排序
+        eventHandlers.sort((a, b) => b.nOrder - a.nOrder)
         // 执行事件
         for (let event of eventHandlers) {
             let bDeleteHandler = false

@@ -13,9 +13,8 @@ export class yjxr_18 extends TSBaseAbility {
     CastFilterResult(): UnitFilterResult {
         if (IsServer() && this.GetCaster().HasModifier("modifier_medusa_stone_gaze_stone")) {
             print("===yjxr==this.GetCaster()===", this.GetCaster().GetName())
-            this.OnSpellStart()
+            return UnitFilterResult.SUCCESS
         }
-        return UnitFilterResult.SUCCESS
     }
 
     /**开始技能效果 */

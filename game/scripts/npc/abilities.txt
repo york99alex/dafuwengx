@@ -72,8 +72,8 @@
 		"MaxLevel" "3"
 		"RequiredLevel" "0"
 		"LevelsBetweenUpgrades" "10"
-		"AbilityCooldown" "1"
-		"AbilityManaCost" "0"
+		"AbilityCooldown" "3"
+		"AbilityManaCost" "2"
 		"ID" "5431"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityTextureName" "meepo_poof"
@@ -374,8 +374,8 @@
 		"BaseClass" "ability_lua"
 		"ScriptFile" "ability/path/path_12"
 		"AbilityValues" {
-			"hujia" "10 15 20"
-			"mokang" "15 20 25"
+			"hujia" "5 10 20"
+			"mokang" "10 15 25"
 		}
 		"MaxLevel" "3"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"

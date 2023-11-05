@@ -29,7 +29,7 @@ export class GameLoop {
             GSBegin: { on: { towaitoprt: "GSWaitOprt", tofinished: "GSFinished" }, entry: "GSBegin_Entry", exit: "GSBegin_Exit" },
             GSWaitOprt: { on: { tomove: "GSMove", towait: "GSWait", tofinished: "GSFinished" }, entry: "GSWaitOprt_Entry", exit: "GSWaitOprt_Exit" },
             GSWait: { on: { towaitoprt: "GSWaitOprt" }, entry: "GSWait_Entry", exit: "GSWait_Exit" },
-            GSMove: { on: { towaitoprt: "GSWaitOprt", toRoundBefore: "GSRoundBefore" }, entry: "GSMove_Entry", exit: "GSMove_Exit" },
+            GSMove: { on: { towaitoprt: "GSWaitOprt", toRoundBefore: "GSRoundBefore", tobegin: "GSBegin" }, entry: "GSMove_Entry", exit: "GSMove_Exit" },
             GSFinished: { on: { toRoundBefore: "GSRoundBefore" }, entry: "GSFinished_Entry", exit: "GSFinished_Exit" },
             GSDeathClearing: { entry: "GSDeathClearing_Entry", exit: "GSDeathClearing_Exit" },
             GSEnd: { entry: "GSEnd_Entry", exit: "GSEnd_Exit" }
@@ -143,7 +143,7 @@ export class GameLoop {
                 this.GameStateService.send("tobegin")
             }
             return null
-        }, 1)
+        }, 0.5)
     }
 
     /**玩家回合开始阶段Exit */

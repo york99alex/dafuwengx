@@ -326,8 +326,7 @@ export class PathDomain extends Path {
             // 决斗特效
             this.m_nPtclIDGCLD = AHMC.CreateParticle("particles/units/heroes/hero_legion_commander/legion_duel_ring.vpcf"
                 , ParticleAttachment.ABSORIGIN, false, oPlayer.m_eHero)
-            ParticleManager.SetParticleControlOrientation(this.m_nPtclIDGCLD, 0
-                , oPlayer.m_eHero.GetForwardVector(), oPlayer.m_eHero.GetRightVector(), oPlayer.m_eHero.GetUpVector())
+            ParticleManager.SetParticleControl(this.m_nPtclIDGCLD, 0, this.m_eCity.GetAbsOrigin())
 
             // 音效
             EmitSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
@@ -344,8 +343,10 @@ export class PathDomain extends Path {
                 return
             }
             // 攻城时不扣钱
-            event["bIgnoreGold"] = true
+            event.bIgnoreGold = true
+            event.bIgnore = false
             if (event.damage >= e.GetHealth()) {
+                print("===atkCity finish===bWin:", e == this.m_tabENPC[0])
                 // 一方死亡，战斗结束
                 event.damage = 0
                 this.atkCityEnd(e == this.m_tabENPC[0])
@@ -355,7 +356,7 @@ export class PathDomain extends Path {
                     oPlayer.m_eHero.ModifyHealth(oPlayer.m_eHero.GetMaxHealth(), null, false, 0)
                 }
             }
-        }, null, -987654321))
+        }, null, 10000))
 
         // 设置游戏记录
         // TODO:
@@ -484,6 +485,7 @@ export class PathDomain extends Path {
             || GS_Begin != tabEvent.typeGameState) return
 
         const oPlayer = GameRules.PlayerManager.getPlayer(this.m_nPlayerIDGCLD)
+        GameRules.GameLoop.m_bRoundBefore = true
 
         // 监听玩家移动回路径
         function onMove(tabEvent2: { player: Player }) {
@@ -494,7 +496,7 @@ export class PathDomain extends Path {
                 // 离开RoundBefore时, m_bRoundBefore置为null
                 GameRules.EventManager.Register("Event_PlayerMoveEnd", (event3: { player: Player }) => {
                     if (event3.player == oPlayer) {
-                        // (攻城/打野可以持续到该玩家的新的一回合开始)
+                        // (攻城/打野可以持续到该玩家的新的一回合开始)  从GSMove到GSBegin
                         GameRules.GameLoop.GameStateService.send("tobegin")
                         return true
                     }
@@ -503,9 +505,9 @@ export class PathDomain extends Path {
             return true
         }
 
-        GameRules.EventManager.Register("Event_PlayerMove", (event: { player: Player }) => onMove(event))
+        const eventID = GameRules.EventManager.Register("Event_PlayerMove", (event: { player: Player }) => onMove(event))
         this.atkCityEnd(false)
-        GameRules.EventManager.UnRegister("Event_PlayerMove", (event: { player: Player }) => onMove(event))
+        GameRules.EventManager.UnRegisterByID(eventID, "Event_PlayerMove")
     }
 
     /**玩家死亡：结束攻城 */

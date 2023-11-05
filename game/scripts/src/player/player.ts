@@ -795,7 +795,7 @@ export class Player {
         const eBZ = AHMC.CreateUnit(strName, path.m_eCity.GetOrigin(), path.m_eCity.GetAnglesAsVector().y, this.m_eHero, DotaTeam.GOODGUYS) as CDOTA_BaseNPC_BZ
         print("===createBZOnPath===GetMaxHealth:", eBZ.GetMaxHealth())
         print("===createBZOnPath===GetBaseMaxHealth:", eBZ.GetBaseMaxHealth())
-        eBZ.SetBaseMaxHealth(eBZ.GetMaxHealth() + 300)
+        eBZ.SetBaseMaxHealth(eBZ.GetMaxHealth())
         eBZ.SetDayTimeVisionRange(300)
         eBZ.SetNightTimeVisionRange(300)
         // 添加数据
@@ -825,8 +825,8 @@ export class Player {
         // 重置蓝量
         eBZ.SetMana(0)
 
-        // 添加星星特效 TODO:hPrimaryAttributeModifier
-        // AMHC.ShowStarsOnUnit(eBZ, nStarLevel)
+        // 添加星星特效
+        AHMC.ShowStarsOnUnit(eBZ, nStarLevel)
 
         // 设置可否攻击
         this.setAllBZAttack()
@@ -1416,8 +1416,8 @@ export class Player {
 
     /**受伤 */
     onEvent_OnDamage(event: DamageEvent) {
-        print("===onEvent_OnDamage===")
-        print("===onEvent_OnDamage===", EntIndexToHScript(event.entindex_victim_const).GetName())
+        // print("===onEvent_OnDamage===")
+        // print("===onEvent_OnDamage===", EntIndexToHScript(event.entindex_victim_const).GetName())
         // print("===onEvent_OnDamage===damage:", event.damage)
         // print("===onEvent_OnDamage===damagetype:", event.damagetype_const)
         // print("===onEvent_OnDamage===bIgnore:", event.bIgnore)
@@ -1428,6 +1428,7 @@ export class Player {
 
         // 受伤者
         const oVictim = EntIndexToHScript(event.entindex_victim_const) as CDOTA_BaseNPC
+        const oPlayerVict = GameRules.PlayerManager.getPlayer(oVictim.GetPlayerOwnerID())
         if (IsValid(oVictim) && (oVictim == this.m_eHero || this.hasBZ(oVictim))) {
             event.bIgnore = true
             event.damage = math.ceil(event.damage)
@@ -1480,7 +1481,7 @@ export class Player {
                 // 是否扣血
                 if (!oAttacker.IsRealHero()) {
                     // 兵卒攻击不扣血
-                    if (!oPlayerAtk.m_bGCLD) {
+                    if (!oPlayerVict.m_bGCLD) {
                         print("非攻城略地,兵卒攻击不扣血 damage = 0")
                         event.damage = 0
                     }
@@ -1511,7 +1512,7 @@ export class Player {
                 }
                 oVictim.ModifyHealth(nHealth, null, false, 0)
             }
-            event.damage = 0
+            // event.damage = 0
         }
     }
 

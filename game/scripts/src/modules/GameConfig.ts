@@ -252,7 +252,10 @@ export class GameConfig {
         print("GameConfig.setOrder over======================")
         this.m_nOrderID = nOrder
         // 同步网表
-        CustomNetTables.SetTableValue("GamingTable", "order", { nPlayerID: nOrder })
+        CustomNetTables.SetTableValue("GamingTable", "order", {
+            nPlayerID: nOrder,
+            heroName: GameRules.PlayerManager.getPlayer(nOrder).m_eHero.GetUnitName(),
+        })
     }
 
     /**跳过投骰子 */
@@ -533,6 +536,8 @@ export class GameConfig {
 
         let path: PathDomain
 
+        print("===processGCLD===")
+
         // 验证操作
         tabOprt["nRequest"] = (() => {
             if (tabData.nRequest == 1) {
@@ -563,7 +568,8 @@ export class GameConfig {
             return tabData.nRequest
         })()
 
-
+        print("===processGCLD===tabOprt:")
+        print(tabOprt)
         if (tabOprt["nRequest"] == 1) {
             // 广播玩家攻城略地
             GameRules.PlayerManager.broadcastMsg("GM_OperatorFinished", tabOprt)
@@ -812,9 +818,10 @@ export class GameConfig {
             pathDes.onPath(event.player)
 
             // 判断豹子触发
-            const tEventJudge = { player: event.player }
-            GameRules.EventManager.FireEvent("Event_RollBaoZiJudge", tEventJudge)
-            if (tEventJudge["bIgnore"] == 1 && event.nNum1 == event.nNum2 &&
+            // const tEventJudge = { player: event.player }
+            // GameRules.EventManager.FireEvent("Event_RollBaoZiJudge", tEventJudge)
+            // if (tEventJudge["bIgnore"] == 1 && event.nNum1 == event.nNum2 &&
+            if (event.nNum1 == event.nNum2 &&
                 (bit.band(oPlayer.m_nPlayerState, PS_InPrison + PS_AtkMonster)) == 0) {
                 // 豹子,发送roll点操作
                 this.broadcastOprt({

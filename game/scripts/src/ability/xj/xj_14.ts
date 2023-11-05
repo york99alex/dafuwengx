@@ -11,13 +11,11 @@ export class xj_14 extends TSBaseAbility {
 
     /**选择无目标时 */
     CastFilterResult(): UnitFilterResult {
-        print("========xj======CastFilterResult====")
         if (IsServer()) {
-            print("===xj==this.GetCaster()===",this.GetCaster().GetOwner().GetName())
-            print("===xj==this.GetCaster()===",this.GetCaster().GetOwner().GetTeamNumber())
-            this.OnSpellStart()
+            print("===xj==this.GetCaster()===", this.GetCaster().GetOwner().GetName())
+            print("===xj==this.GetCaster()===", this.GetCaster().GetOwner().GetTeamNumber())
+            return UnitFilterResult.SUCCESS
         }
-        return UnitFilterResult.SUCCESS
     }
 
     /**开始技能效果 */

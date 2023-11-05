@@ -18,12 +18,6 @@ export class Filters {
     }
 
     static DamageFilter(event: DamageEvent): boolean {
-        print("===DamageFilter===damage:", event.damage)
-        print("===DamageFilter===damagetype:", event.damagetype_const)
-        print("===DamageFilter===bIgnore:", event.bIgnore)
-        print("===DamageFilter===bIgnoreGold:", event.bIgnoreGold)
-        print("===DamageFilter===bIgnoreDamageSelf:", event.bIgnoreDamageSelf)
-        print("===DamageFilter===bIgnoreBZHuiMo:", event.bIgnoreBZHuiMo)
         // 触发攻击事件
         GameRules.EventManager.FireEvent("Event_Atk", event)
         // 触发被攻击事件
@@ -33,6 +27,12 @@ export class Filters {
         }
         // 触发受伤事件
         GameRules.EventManager.FireEvent("Event_OnDamage", event)
+        print("===DamageFilter===damage:", event.damage)
+        print("===DamageFilter===damagetype:", event.damagetype_const)
+        print("===DamageFilter===bIgnore:", event.bIgnore)
+        print("===DamageFilter===bIgnoreGold:", event.bIgnoreGold)
+        print("===DamageFilter===bIgnoreDamageSelf:", event.bIgnoreDamageSelf)
+        print("===DamageFilter===bIgnoreBZHuiMo:", event.bIgnoreBZHuiMo)
         return true
     }
 

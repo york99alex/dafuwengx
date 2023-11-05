@@ -15,9 +15,8 @@ export class yjxr_13 extends TSBaseAbility {
         if (IsServer()) {
             print("===yjxr==this.GetCaster()===",this.GetCaster().GetOwner().GetName())
             print("===yjxr==this.GetCaster()===",this.GetCaster().GetOwner().GetTeamNumber())
-            this.OnSpellStart()
+            return UnitFilterResult.SUCCESS
         }
-        return UnitFilterResult.SUCCESS
     }
 
     /**开始技能效果 */

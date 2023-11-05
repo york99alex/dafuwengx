@@ -43,6 +43,15 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/water_impact/water_splash_03.vpcf',
             'particles/water_impact/water_splash_02.vpcf',
             'particles/water_impact/water_splash_01.vpcf',
+            'particles/units/heroes/hero_zuus/zuus_base_attack.vpcf',
+            'particles/units/heroes/hero_lina/lina_base_attack.vpcf',
+            'effect/arrow/star1.vpcf',
+            'effect/arrow/star2.vpcf',
+            'effect/arrow/star2_1.vpcf',
+            'effect/arrow/star3.vpcf',
+            'effect/arrow/star3_1.vpcf',
+            'effect/arrow/star3_2.vpcf',
+            'particles/units/heroes/hero_legion_commander/legion_duel_ring.vpcf',
         ],
         context
     );

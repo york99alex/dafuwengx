@@ -1,21 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { render, useNetTableKey } from 'react-panorama-x';
+import { render, useGameEvent, useNetTableKey } from 'react-panorama-x';
 
 function Counter() {
   const { time } = useNetTableKey("GamingTable", "timeOprt") ?? { time: 0 }
   const { nRound } = useNetTableKey("GamingTable", "round") ?? { nRound: 0 }
+  const order = useNetTableKey("GamingTable", "order")
+  console.log(order)
+
+  const [nNum1, setNum1] = useState(0)
+  const [nNum2, setNum2] = useState(0)
+  useGameEvent("GM_OperatorFinished", (event) => {
+    setNum1(event.nNum1)
+    setNum2(event.nNum2)
+  })
 
   return (
     <Panel style={{ flowChildren: 'down' }}>
-      <Label className='Countdown' text={`Count: ${time ?? 0}`} />
+      <Label className='Round' text={`Round: ${nRound ?? 0}`} />
 
-      <TextButton className="ButtonBevel" text="Roll" onactivate={() => {
-        GameEvents.SendCustomGameEventToServer("GM_Operator", {
-          nPlayerID: Players.GetLocalPlayer(),
-          typeOprt: 1
-        })
-      }} />
+      <Label className='Countdown' text={`倒计时: ${time ?? 0}`} />
 
+      <Panel style={{ flowChildren: 'right' }}>
+        <TextButton className="ButtonBevel" text="Roll" onactivate={() => {
+          GameEvents.SendCustomGameEventToServer("GM_Operator", {
+            nPlayerID: Players.GetLocalPlayer(),
+            typeOprt: 1
+          })
+        }} />
+        <Label className='RollResult' text={` ${nNum1 ?? 0}&${nNum2 ?? 0}`} />
+      </Panel>
+      
       <TextButton className="ButtonBevel" text="攻城略地" onactivate={() => {
         GameEvents.SendCustomGameEventToServer("GM_Operator", {
           nPlayerID: Players.GetLocalPlayer(),
@@ -31,7 +45,10 @@ function Counter() {
         })
       }} />
 
-      <Label className='Countdown' text={`Round: ${nRound ?? 0}`} />
+      <Panel style={{ flowChildren: 'right' }}>
+        <Label text={`当前回合玩家：`} />
+        <DOTAHeroImage heroimagestyle='icon' heroname={order?.heroName} />
+      </Panel>
     </Panel>
   );
 }

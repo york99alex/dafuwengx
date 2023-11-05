@@ -1,3 +1,4 @@
+import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
 import { ParaAdjuster } from "./paraadjuster"
 
 export class AHMC {
@@ -186,7 +187,7 @@ export class AHMC {
 
         const p = ParticleManager.CreateParticle(particleName, particleAttach, owningEntity)
 
-        if (duration) {
+        if (duration != null) {
             const time = GameRules.GetGameTime()
             this.Timer(particleName, () => {
                 if (GameRules.GetGameTime() - time >= duration) {
@@ -267,8 +268,8 @@ export class AHMC {
                 event.ability = ability
             }
             if (tData) {
-                for (const v of tData) {
-                    event.push(v)
+                for (const k in tData) {
+                    event[k] = tData[k]
                 }
             }
         }, null, 987654321)
@@ -282,8 +283,20 @@ export class AHMC {
         })
         GameRules.EventManager.UnRegisterByID(tEntID, "Event_Atk")
     }
+
+    /**星星特效 */
+    static ShowStarsOnUnit(unit: CDOTA_BaseNPC_BZ, nCount: number, duration?: number) {
+        duration = duration || 5
+
+        AHMC.AddAbilityAndSetLevel(unit, "no_bar")
+
+        AHMC.CreateParticle("effect/arrow/star" + nCount + ".vpcf", ParticleAttachment.OVERHEAD_FOLLOW, false, unit, duration, () => {
+            AHMC.RemoveAbilityAndModifier(unit, "no_bar")
+        })
+    }
 }
 
 export function IsValid(handle: CEntityInstance | any) {
     return handle != null && !handle.IsNull()
 }
+
