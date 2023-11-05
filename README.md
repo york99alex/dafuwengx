@@ -1,10 +1,21 @@
-# 目录
-
 萌新开发笔记, 一款基于DOTA2游廊开发的拥有独特技能和玩法的大富翁游戏
 
 开发中略略略...
 
 
+
+# 刀富翁
+
+在天辉和夜宴的彼岸，存在着一片远古遗迹，这里的英雄们受到时间之外的约束，他们要占领彼此的领地，以金钱为唯一标准角逐出最强的刀富翁，获得永恒的宝藏。
+
+——————————————————
+●游戏类型：大富翁 塔防
+●游戏人数：2-6人
+●游戏特色：DotA风格的大富翁，存在英雄、技能、装备、属性等机制，同时也结合大富翁玩法融合出多种随机事件，期待你的探索。
+注：支持本地主机游玩。
+——————————————————
+欢迎加入交流QQ群：691590881
+个人独立开发，如遇BUG请谅解和反馈，项目参考大将军。本项目开源Github：york99alex/dafuwengx
 
 
 
@@ -734,6 +745,7 @@ export const App = () => {	// 根组件
    - [TypeScript 入门教程](https://ts.xcatliu.com/)
    - [ 深入理解 TypeScript](https://jkchao.github.io/typescript-book-chinese/)
 - 地图编辑器Hammer教学 [鸽子群来了个做地图的年轻人-LV1-](https://www.bilibili.com/video/BV1qx411g7eT/?spm_id_from=333.788.recommend_more_video.-1)
+- 云端-石墨文档-[Dota2游廊新手入门教程 (shimo.im)](https://shimo.im/docs/rp3OVyBdxjtnBmAm/read)
 
 
 ## ==文件目录/路径==
@@ -942,20 +954,12 @@ export const App = () => {	// 根组件
   - new PlayerManager().init()
   - ...
   
-  
 
 
 
 ## Todo
 
-1. ~~bIgnore是什么~~
-
-2. ~~path创建兵卒~~
-
-3. ~~在起兵回合时创建的旗帜, 起兵回合后, 监听起兵 有问题~~
-   ~~检查触发情况?触发条件? 单开暂时未发现~~
-
-4. 什么是pathlog?
+1. 什么是pathlog?
 
    self.m_eLog = Entities:FindByName(nil, "PathLog_" .. self.m_nID)
 
@@ -977,33 +981,25 @@ export const App = () => {	// 根组件
 
      end
 
-5. CGameParticleManager::SetParticleControlEnt: Unable to lookup attachment attach_attack1 on model  for entity npc_dota_creature
+2. CGameParticleManager::SetParticleControlEnt: Unable to lookup attachment attach_attack1 on model  for entity npc_dota_creature
 
-6. ==兵卒相关==
+3. ==兵卒相关==
 
-   1. m_tabENPC是单个领地上对一的单个兵卒, 一对一
+   1. ==调整==:
+      1. m_bBattle: boolean = null  由bz定义 
+      2. m_bGCLD: boolean = null  由player定义, 注意检测兵卒是否可用问题
+      3. 去掉m_bBZ判断兵卒，通过IsRealHero判断是否是兵卒
+   2. 天辉path_12 三个合体?
+   3. 检查兵卒创建的属性合理性，初始生命值，攻击力
+   4. 检查全才英雄兵卒的创建, 攻击力加成
+   5. 存在创建多个兵卒后，新创建的兵卒血量较少不正常，检查该情况
 
-   2. ==调整==:m_bBattle: boolean = null
-      由bz定义 
-
-      m_bGCLD: boolean = null
-      由player定义, 注意检测兵卒是否可用问题
-
-   3. 天辉path_12 三个合体?
-
-   4. ==升星兵卒闪退问题==
-
-      1. 斧王不会闪退
-      2. pa/米波/宙斯闪退
-      3. 
-
-7. ==路径相关==
+4. ==路径相关==
 
    1. path_13_hundun 三级双河道buff? 造成伤害时，物理视为魔法，魔法视为物理?
-   2. 测试path_13护甲穿透是否生效
-   4. 
+   2. 测试path_13护甲穿透和魔法穿透是否生效
 
-8. ==回合相关==
+5. ==回合相关==
 
    1. 如果回合开始前有操作, 需要设置GameLoop.==m_bRoundBefore==为true, 并在回合前操作完成后去手动跳转至begin GameLoop.GameStateService.send("tobegin")
       1. GSFinished_Entry会调用addRound, addRound会触发事件==Event_UpdateRound==, 所有在回合前有操作的都会注册该事件并至少做两件事:
@@ -1013,149 +1009,68 @@ export const App = () => {	// 根组件
 
          3. 操作完成后手动跳转回对应的begin
 
-      2. 进入新的一个玩家的回合前, 在GSRoundBefore_Entry会触发事件 Event_PlayerRoundBefore
-         1. PathDomain.onEvent_PlayerRoundBefore, 设置所有兵卒攻城失败
-            - 如果没有攻城, 则不会有玩家移动, 不会触发函数, 正常继续到 GSBegin_Entry
-
-         2. 检查玩家移动结束，游戏状态恢复
-
-9. ==蓝量相关==, 重做修改属性的方法, 主要是蓝量
+6. ==蓝量相关==, 重做修改属性的方法, 主要是蓝量
 
    1. ParaAdjuster.ModifyMana(英雄单位, 额外蓝量, 修正系数)
       	额外蓝量: 每回合给Player增加的m_nManaMaxBase
    2. 选择英雄/升级/监听装备事件
    3. ==问题== :
 
-10. ==攻城==
+7. UnRegister Failed Event Move?
 
-   1. 攻城不掉血
-   2. 攻城回合不会自动结束
-   3. 测试攻城所有情况:
-      1. 到玩家新回合都未死亡
-         - 回到路径上,继续回合
+   1. 以及所有注销事件的调用尽量用ByID
 
-      2. 玩家死亡
-         - 
+8. judgeBuffRound和 player的setRoundFinished触发的Event_PlayerRoundFinished存在问题？
 
-      3. 兵卒死亡
-         - 
+9. 实现CamerManage的前端部分
+        检查pa一技能使用后镜头是否正确移动
 
-11. 点击其他玩家(机器人的兵卒会闪退)
+10. huderror前端部分实现
 
-12. UnRegister Failed Event Move?
+11. GameLoop需重新调整的点
 
-    1. 以及所有注销事件的调用尽量用ByID
+    1. 切换状态是否需要封装？
+    2. 新增GSRoundBefore
+    3. 重新理清状态图
 
-13. judgeBuffRound和 player的setRoundFinished触发的Event_PlayerRoundFinished存在问题
+12. ~~Player.setState重写~~，替换为setPlayerState
 
-14. 检查玩家攻城坐标是否正确移动
-     atkCity(oPlayer: Player) {
+    -  遗留问题: BKB魔法免疫问题
+      - 屠夫钩子对bkb
 
-15. FireEvent Error==>eventName:	Event_Move
-      scripts\vscripts\player/player.lua:1756: Can't call CDOTA_BaseNPC:IsInvisible on an object of type [none]
-      if (eBz.IsInvisible()) return
+13. 在一个合适的时机通过后端事件通知前端关闭操作提示框
 
-16. 实现CamerManage的前端部分
-         检查pa一技能使用后镜头是否正确移动
+14. 检查setPlayerMuteTrade能否生效
 
-17. huderror前端部分实现
+15. ==前端相关==
 
-18. GameLoop需重新调整的点
+    1. 关闭以下前端页面:
+       1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
+       2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
 
-        1. 切换状态是否需要封装
-        2. 新增GSRoundBefore
-        3. 重新理清状态图, 注意攻城的情况
+       3. Label id="AbilityBuildComment"  #AbilityBuildComment
 
-19. ~~Player.setState重写~~
+    2. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
 
-        - 遗留问题: BKB魔法免疫问题
+16. 本地化翻译所有this.m_strCastError
 
-20. ~~AbilityManager.setRoundCD~~
+17. ~~setKillCountAdd源码逻辑是否合理~~
 
-21. ~~因为在unit kv表中给兵卒的ConsideredHero键值为1, 测试IsRealHero是否能判断是英雄还是兵卒?~~
-        可以通过IsRealHero判断是否是兵卒
+18. 重写了技能tsbaseability的GetCastRange
 
-22. 在一个合适的时机通过后端事件通知前端关闭操作提示框
+    1. 需要分清不同技能的情况
+    2. 默认重写的tsbaseability中的getcastrange是以路径ID为距离计算返回的整数
+    3. 如果分情况需要再对应的技能里重写getcastrange
+    4. ==TODO==：调整PA技能范围为格数，而非距离
 
-23. 检查setPlayerMuteTrade能否生效
+19. 游戏记录模块 game_record客户端操作, 更新记录面板
 
-24. 关闭以下前端页面:
+20. 分开事件, 分开发送？可能没有必要，待确认
 
-        1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
-        
-        2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
-        
-        3. Label id="AbilityBuildComment"  #AbilityBuildComment
+21. ~~PlaySort与机器人的情况有点问题,总是021~~
+    注意使用RandInt方法来生成随机数
 
-25. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
-
-26. ~~兵卒朝向问题~~
-
-27. 全才英雄兵卒的创建, 攻击力加成
-
-28. player // 魔法修改触发事件会导致栈溢出stackoverflow 重写
-
-29. 翻译所有this.m_strCastError
-
-30. 检测屠夫钩子对bkb
-
-31. 屠夫兵卒无法攻击 FireEvent Error==>eventName:    Event_BZCreate
-
-32. ~~setKillCountAdd源码逻辑是否合理~~
-
-33. 重写了技能tsbaseability的GetCastRange
-
-        - 需要分清不同技能的情况
-        - 默认重写的tsbaseability中的getcastrange是以路径ID为距离计算返回的整数
-        - 如果分情况需要再对应的技能里重写getcastrange
-
-34. 验证操作:
-        roll到达地方后会触发onPath, 不同类型的地onPath继承方法不一样,这里会调用sendOprt给玩家发送消息弹出提示框,同时添加购买操作
-
-35. 检查gameloop是否可以切换   
-        // 监听玩家移动回路径
-
-            const onMove(tabEvent2){
-        
-        ​      if(tabEvent2.player == oPlayer){
-        
-        ​        // 如果要移动,游戏状态改为移动状态
-        
-        ​        GameRules.GameLoop.GameStateService.send("tomove")
-
-36. 攻城检查(攻城/打野可以持续到新的一回合开始)
-        if (tabEvent2.player == oPlayer) {
-
-                    // TODO:玩家移动结束，游戏状态恢复
-        
-        ​            // GameRules.GameLoop.GameStateService.send("tobegin")
-        
-        ​            return true
-        
-        ​          }
-
-37. 游戏记录模块 game_record客户端操作, 更新记录面板
-
-38. 分开事件,分开发送
-
-39. 豹子触发有问题
-
-40. ~~PlaySort与机器人的情况有点问题,总是021~~
-        注意使用RandInt方法来生成随机数,不要用Math.random
-
-41. ~~设置起点路径~~
-        ~~self:setPath(PathManager:getPathByType(TP_START)[1])~~
-
-42. 玩家攻城结束 待验证 还是有问题会造成
-        atkCityEnd(bWin: boolean, bMoveBack?: boolean) 
-
-43. ~~GameConfig的计时回调registerThink和onThink_update~~
-        ~~如何与GameLoop实现~~
-        ~~思路: 灵活运用 进入状态触发的函数和离开状态触发的函数~~
-
-44. Path路径管理模块, 以及游戏地图
-
-45. 添加 unit 
+22. 添加 unit 
 
         1. "path_17_diao"
             	{
@@ -1172,53 +1087,41 @@ export const App = () => {	// 根组件
                   		"StatusHealth"	"1"
                   	}
 
-46. setDiaoGesture 雕哥施法检查
+    1. setDiaoGesture 雕哥施法检查
+    2. 雕哥施法鬼畜，第一个飓风不会消除
 
-47. PathRune
+23. PathRune
 
-48. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+24. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
 
-49. ==兵卒 player\CDOTA_BaseNPC_BZ.ts==
-        整合 mechanics\attribute.ts
+25. Roll点的随机路径平衡机制数值思考
 
-50. Roll点的随机路径平衡机制数值思考
+26. 检查网表GamingTable的nSumGold总资产计算是否正确
 
-51. 检查网表GamingTable的nSumGold总资产计算是否正确
+27. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
-52. 增加英雄 const HERO_TO_BANNER 需要调整
+28. 统一所有英雄移速 ? 重新设计移速，290力量300全才/智力310敏捷，再根据强弱适当调整
 
-53. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
+29. 检查FireEvent的args参数为空的情况
 
-54. _tEventIDGCLD   ?为数组?
-
-55. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
-
-56. addon_schinese.txt :		"RandomTip"						"随机英雄"
-
-57. 统一所有英雄移速 ?
-
-58. 检查FireEvent的args参数为空的情况
-
-59. ~~GSManager:setState都调整为loop~~ GameLoop.setGameState
-
-60. /**设置结算数据 */
+30. /**设置结算数据 */
         setGameEndData(){}
 
-61. ~~==sendMsg和broadcastMsg的tabData格式==~~
+31. ~~==sendMsg和broadcastMsg的tabData格式==~~
 
-62. ~~gamestate的计时器update是0.1调用一次~~
+32. ~~gamestate的计时器update是0.1调用一次~~
 
-63. ~~// 监听玩家移动回路径~~
+33. ~~// 监听玩家移动回路径~~
 
-64. ~~onMove如何处理gamestateloop~~
+34. ~~onMove如何处理gamestateloop~~
 
-65. 英雄经验系统/数值
+35. 英雄经验系统/数值
 
-66. 客户端,前端 请求传输数据缩减
+36. 客户端,前端 请求传输数据缩减
 
-67. 考虑把莉娜的兵卒技能换成光击阵
+37. 考虑把莉娜的兵卒技能换成光击阵
 
-68. 验证AMHC.Damage
+38. 验证AMHC.Damage
         ```
                     if (tData) {
                         for (const v of tData) {
@@ -1227,34 +1130,21 @@ export const App = () => {	// 根组件
                     }
         ```
 
-    ​    
+39. HudError:FireLocalizeError
 
-69. HudError:FireLocalizeError
-
-70. PathDomain.  atkCity(oPlayer: Player) {
-
-71. ==核心机制设计==:
-
-        1. 玩家移动时兵卒攻击不会造成扣血
-
-72. 金币有bug player.onEvent_OnDamage{} 效果未生效
-
-73. ~~Sc~~ript Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
+40. ~~Script Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
         ~~stack traceback:~~
         ~~[C]: in function '__index'~~
 
-        - 通过  if (IsClient())  return 解决
-          但是为什么? 原因? 如何理解
+    通过  if (IsClient())  return 解决
+     但是为什么? 原因? 如何理解
 
-74. 兵卒生成还是有问题
-        不能在合适的阶段正确攻击
-
-75. custom_sounds 有问题
+41. custom_sounds 有问题
 
         Failed loading resource "soundevents/custom_sounds.vsndevts_c" (ERROR_BADREQUEST: Code error - bad request)
         参考
 
-76. 
+42. 
 
 
 
@@ -1287,12 +1177,6 @@ export const App = () => {	// 根组件
 
 - 所有兵卒的m_bBZ可以用IsRealHero() 来判断
 
-- m_bBattle: boolean = null
-  由bz定义 
-  
-  m_bGCLD: boolean = null
-  由player定义, 注意检测兵卒是否可用问题
-  
 - Modifier应该尽量通过这种方式添加 类.name, 同时指定引入相应的类
   target.AddNewModifier(this.GetCaster(), this, ==modifier_ancient_seal.name==, { duration: seal_duration });
   
@@ -1358,7 +1242,7 @@ GSWaitOprt_Entry()执行Roll点,调用GameConfig.processRoll()方法{
 
 ### 记录所有状态切换情况
 
-米波施放忽悠时进入GS_Wait, 释放结束后回到GS_WaitOprt
+有前摇的技能，米波施放忽悠时进入GS_Wait, 释放结束后回到GS_WaitOprt
 
 
 
