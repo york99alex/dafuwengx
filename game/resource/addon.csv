@@ -1,268 +1,279 @@
-﻿Tokens,SChinese,English
-addon_game_name,擎天阁大富翁,Big General Monopoly
-DOTA_Tooltip_ability_Ability_phantom_strike,幻影突袭,
-DOTA_Tooltip_ability_Ability_phantom_strike_Description,闪烁到一个目标身边，并攻击%attack_times%次。,
-DOTA_Tooltip_ability_Ability_phantom_strike_attack_times,攻击次数 :,
-DOTA_Tooltip_ability_Ability_phantom_strike_range,施法范围 :,
-DOTA_Tooltip_ability_Ability_meepo_ransack,洗劫,
-DOTA_Tooltip_ability_Ability_meepo_ransack_Description,每次攻击从敌人身体汲取神秘的能量，以永久提升忽悠伤害。,
-DOTA_Tooltip_ability_Ability_meepo_ransack_addsh,伤害提升 :,
-DOTA_Tooltip_Modifier_Ability_meepo_ransack,洗劫,
-DOTA_Tooltip_Modifier_Ability_meepo_ransack_Description,伤害提升,
-DOTA_Tooltip_ability_Ability_meepo_poof,忽悠,
-DOTA_Tooltip_ability_Ability_meepo_poof_Description,通过从大地中汲取神秘的能量，一个米波可以在施法1.5秒后传送至另一个米波或自身所在之处，在离开和到达的区域都造成伤害。,
-DOTA_Tooltip_ability_Ability_meepo_poof_Lore,有时候打碎一块影墟水晶可以作为自己摆脱陷阱的方法，或者是另外一个自己。,
-DOTA_Tooltip_ability_Ability_meepo_poof_range,作用格数 :,
-DOTA_Tooltip_ability_Ability_meepo_poof_poof_damage,忽悠伤害 :,
-AbilityError_not_meepo,目标不是米波,
-DOTA_Tooltip_ability_Ability_pudge_meat_hook,肉钩,
-DOTA_Tooltip_ability_Ability_pudge_meat_hook_Description,向英雄射出血腥的肉钩，并将它拖到帕吉的身边。,
-DOTA_Tooltip_ability_Ability_pudge_meat_hook_Lore,屠夫的肉钩是噩梦的象征，锋利的倒钩暗示了他嗜血的本性。,
-DOTA_Tooltip_ability_Ability_pudge_meat_hook_damage,伤害 :,
-DOTA_Tooltip_ability_Ability_pudge_rot,腐烂,
-DOTA_Tooltip_ability_Ability_pudge_rot_Description,<font color='#4169E1'>开启/关闭</font> 持续性的毒性云雾，移动阶段伤害经过的英雄，并使其移速减缓。\n移动期间产生过伤害，消耗 <font color='#1E90FF'>■</font> <font color='#FFFFFF'><b>1</b></font>。,
-DOTA_Tooltip_ability_Ability_pudge_rot_Lore,从屠夫腐烂肿胀的肉体中放出的有毒气体，气体恶心的令人窒息。,
-DOTA_Tooltip_ability_Ability_pudge_rot_range,作用范围 :,
-DOTA_Tooltip_ability_Ability_pudge_rot_damage,伤害 :,
-DOTA_Tooltip_ability_Ability_pudge_rot_rot_slow,%减速 :,
-AbilityError_NeedMana_1,至少需要1点魔法,
-DOTA_Tooltip_modifier_ability_pudge_rot_debuff,腐烂,
-DOTA_Tooltip_modifier_ability_pudge_rot_debuff_Description,被腐烂减速<font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font>,
-DOTA_Tooltip_ability_Ability_BZ_pudge_rot,腐烂,
-DOTA_Tooltip_ability_Ability_BZ_pudge_rot_Description,<font color='#00FF00'>自动</font> 魔法至100%时，对经过的英雄造成持续伤害的毒性云雾，并使其移速减缓。,
-DOTA_Tooltip_ability_Ability_BZ_pudge_rot_Lore,从屠夫腐烂肿胀的肉体中放出的有毒气体，气体恶心的令人窒息。,
-DOTA_Tooltip_ability_Ability_BZ_pudge_rot_range,作用范围 :,
-DOTA_Tooltip_ability_Ability_BZ_pudge_rot_damage,伤害 :,
-DOTA_Tooltip_ability_Ability_BZ_pudge_rot_rot_slow,%减速 :,
-DOTA_Tooltip_ability_Ability_lina_dragon_slave,龙破斩,
-DOTA_Tooltip_ability_Ability_lina_dragon_slave_Description,莉娜引导龙的吐息，放出一波火焰，烧焦前方全部敌人。,
-DOTA_Tooltip_ability_Ability_lina_dragon_slave_Lore,在纷争之国的荒焦之地，为了娱乐，莉娜学会了操控沙漠龙的火焰吐息。,
-DOTA_Tooltip_ability_Ability_lina_dragon_slave_dragon_slave_damage,伤害 :,
-DOTA_Tooltip_ability_Ability_lina_light_strike_array,光击阵,
-DOTA_Tooltip_ability_Ability_lina_light_strike_array_Description,召唤柱状火焰伤害并眩晕敌人。目标地为中心的%range%格范围。,
-DOTA_Tooltip_ability_Ability_lina_light_strike_array_Lore,莉娜的精华让她能够集中太阳的能量，随时让空气燃烧。,
-DOTA_Tooltip_ability_Ability_lina_light_strike_array_light_strike_array_damage,伤害 :,
-DOTA_Tooltip_ability_Ability_lina_light_strike_array_range,范围格数 :,
-DOTA_Tooltip_ability_Ability_lina_light_strike_array_light_strike_array_stun_duration,眩晕回合 :,
-DOTA_Tooltip_Modifier_Ability_lina_light_strike_array,光击阵,
-DOTA_Tooltip_Modifier_Ability_lina_light_strike_array_Description,眩晕 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> 回合 ：跳过自身回合无法操作。兵卒眩晕无法攻击，无法触发攻城。,
-DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave,龙破斩,
-DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave_Description,<font color='#00FF00'>自动</font> 莉娜引导龙的吐息，放出一波火焰，烧焦经过的敌人。,
-DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave_Lore,在纷争之国的荒焦之地，为了娱乐，莉娜学会了操控沙漠龙的火焰吐息。,
-DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave_dragon_slave_damage,伤害 :,
-DOTA_Tooltip_ability_Ability_zuus_arc_lightning,弧形闪电,
-DOTA_Tooltip_ability_Ability_zuus_arc_lightning_Description,释放一道会跳跃穿越附近敌人的闪电。每次在目标<font color='#FFFFFF'> 5 </font>格范围跳跃。,
-DOTA_Tooltip_ability_Ability_zuus_arc_lightning_Lore,弧形闪电是宙斯在对付渺小的凡人时最喜欢用的法术。,
-DOTA_Tooltip_ability_Ability_zuus_arc_lightning_arc_damage,伤害 :,
-DOTA_Tooltip_ability_Ability_zuus_arc_lightning_jump_count,跳跃次数 :,
-DOTA_Tooltip_ability_Ability_zuus_lightning_bolt,雷击,
-DOTA_Tooltip_ability_Ability_zuus_lightning_bolt_Description,召唤一道闪电打击一个敌方英雄。,
-DOTA_Tooltip_ability_Ability_zuus_lightning_bolt_Lore,对那些反叛的异教徒最震慑的天罚。,
-DOTA_Tooltip_ability_Ability_zuus_lightning_bolt_damage,伤害 :,
-DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt,雷击,
-DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt_Description,<font color='#00FF00'>自动</font> 召唤一道闪电打击经过的敌人。,
-DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt_Lore,对那些反叛的异教徒最震慑的天罚。,
-DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt_damage,伤害 :,
-DOTA_Tooltip_ability_Ability_axe_battle_hunger,战斗威吓,
-DOTA_Tooltip_ability_Ability_axe_battle_hunger_Description,恐吓一个敌方单位，降低他的攻击力，并且在其自身回合开始受到伤害。,
-DOTA_Tooltip_ability_Ability_axe_battle_hunger_Lore,通常英雄无法抵挡蒙哥可汗的战斗狂怒，他们会一直畏惧，直到蒙哥可汗的狂怒平息。,
-DOTA_Tooltip_ability_Ability_axe_battle_hunger_duration,持续回合 :,
-DOTA_Tooltip_ability_Ability_axe_battle_hunger_bonus_atk,%攻击力降低 :,
-DOTA_Tooltip_ability_Ability_axe_battle_hunger_damage,每回合伤害 ,
-DOTA_Tooltip_Modifier_Ability_axe_battle_hunger,战斗威吓,
-DOTA_Tooltip_Modifier_Ability_axe_battle_hunger_Description,持续 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%</font> 回合：降低 <font color='#FF0000'>%dMODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE%%%</font> 的攻击力，回合开始时受到 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> 点魔法伤害,
-DOTA_Tooltip_ability_Ability_axe_helix_counter,反击螺旋,
-DOTA_Tooltip_ability_Ability_axe_helix_counter_Description,受到攻击时，斧王有几率做出反击螺旋，对范围内的所有敌方单位造成纯粹伤害。如果受到一定次数攻击后，斧王还没做出反击螺旋，会愤怒地释放一次。,
-DOTA_Tooltip_ability_Ability_axe_helix_counter_Lore,我买了个小风车~呼呼呼,
-DOTA_Tooltip_ability_Ability_axe_helix_counter_chance,%触发概率 :,
-DOTA_Tooltip_ability_Ability_axe_helix_counter_radius,半径 :,
-DOTA_Tooltip_ability_Ability_axe_helix_counter_trigger_attacks,触发次数 :,
-DOTA_Tooltip_ability_Ability_axe_helix_counter_damage,伤害 :,
-DOTA_Tooltip_Modifier_Ability_axe_helix_counter,反击螺旋,
-bz_pa_1,幻影刺客★,PA★
-bz_pa_11,幻影刺客★★,PA★★
-bz_pa_111,幻影刺客★★★,PA★★★
-bz_meepo_1,米波★,Meepo★
-bz_meepo_11,米波★★,Meepo★★
-bz_meepo_111,米波★★★,Meepo★★★
-bz_pudge_1,帕吉★,Pudge★
-bz_pudge_11,帕吉★★,Pudge★★
-bz_pudge_111,帕吉★★★,Pudge★★★
-bz_lina_1,莉娜★,Lina★
-bz_lina_11,莉娜★★,Lina★★
-bz_lina_111,莉娜★★★,Lina★★★
-bz_zuus_1,宙斯★,Zuus★
-bz_zuus_11,宙斯★★,Zuus★★
-bz_zuus_111,宙斯★★★,Zuus★★★
-bz_axe_1,斧王★,Axe★
-bz_axe_11,斧王★★,Axe★★
-bz_axe_111,斧王★★★,Axe★★★
-DOTA_Tooltip_ability_yjxr_12,养精蓄锐
-DOTA_Tooltip_ability_yjxr_12_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_12_Lore,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_12_goldcost,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_12_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_13,养精蓄锐
-DOTA_Tooltip_ability_yjxr_13_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_13_Lore,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_13_goldcost,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_13_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_14,养精蓄锐
-DOTA_Tooltip_ability_yjxr_14_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_14_Lore,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_14_goldcost,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_14_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_15,养精蓄锐
-DOTA_Tooltip_ability_yjxr_15_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_15_Lore,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_15_goldcost,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_15_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_16,养精蓄锐
-DOTA_Tooltip_ability_yjxr_16_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_16_Lore,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_16_goldcost,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_16_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_17,养精蓄锐
-DOTA_Tooltip_ability_yjxr_17_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_17_Lore,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_17_goldcost,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_17_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_18,养精蓄锐
-DOTA_Tooltip_ability_yjxr_18_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_18_Lore,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_18_goldcost,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_18_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_19,养精蓄锐
-DOTA_Tooltip_ability_yjxr_19_Description,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_19_Lore,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_19_goldcost,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_19_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_12,解甲归田
-DOTA_Tooltip_ability_xj_12_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_12_Description,降低兵卒★级，返还一半金币。
-DOTA_Tooltip_ability_xj_12_Lore,
-DOTA_Tooltip_ability_xj_12_goldcost,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_13,解甲归田
-DOTA_Tooltip_ability_xj_13_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_13_Description,降低兵卒★级，返还一半金币。
-DOTA_Tooltip_ability_xj_13_Lore,
-DOTA_Tooltip_ability_xj_13_goldcost,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_14,解甲归田
-DOTA_Tooltip_ability_xj_14_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_14_Description,降低兵卒★级，返还一半金币。
-DOTA_Tooltip_ability_xj_14_Lore,
-DOTA_Tooltip_ability_xj_14_goldcost,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_15,解甲归田
-DOTA_Tooltip_ability_xj_15_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_15_Description,降低兵卒★级，返还一半金币。
-DOTA_Tooltip_ability_xj_15_Lore,
-DOTA_Tooltip_ability_xj_15_goldcost,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_16,解甲归田
-DOTA_Tooltip_ability_xj_16_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_16_Description,降低兵卒★级，返还一半金币。
-DOTA_Tooltip_ability_xj_16_Lore,
-DOTA_Tooltip_ability_xj_16_goldcost,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_17,解甲归田
-DOTA_Tooltip_ability_xj_17_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_17_Description,降低兵卒★级，返还一半金币。
-DOTA_Tooltip_ability_xj_17_Lore,
-DOTA_Tooltip_ability_xj_17_goldcost,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_18,解甲归田
-DOTA_Tooltip_ability_xj_18_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_18_Description,降低兵卒★级，返还一半金币。
-DOTA_Tooltip_ability_xj_18_Lore,
-DOTA_Tooltip_ability_xj_18_goldcost,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_19,解甲归田
-DOTA_Tooltip_ability_xj_19_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_19_Description,降低兵卒★级，返还一半金币。
-DOTA_Tooltip_ability_xj_19_Lore,
-DOTA_Tooltip_ability_xj_19_goldcost,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_yjxr_max,养精蓄锐
-DOTA_Tooltip_ability_yjxr_max_Description,顶级兵卒
-DOTA_Tooltip_ability_yjxr_max_Lore,我感觉人生已经到达了巅峰!!!
-DOTA_Tooltip_ability_yjxr_max_level_max,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_path_12,天辉
-DOTA_Tooltip_ability_path_12_Description,<h1>【领地增益 : 辉光普照】</h1>护甲提升 : <font color='#FFFFFF'>5 / 10 / 10</font> <br>魔抗提升 : <font color='#FFFFFF'>15% / 30% / 30%</font> \n<h1>【满级效果 : 融合】</h1>天辉兵卒融合成传说中的天辉巨人。<br>（等级，射程，体型是普通兵卒的 2 倍）\n<h1>【增益等级规则】</h1>一级 : 需★天辉兵卒 x  1<br>二级 : 需★★天辉兵卒 x  2<br>三级 : 需★★★天辉兵卒 x 3
-DOTA_Tooltip_ability_path_12_Lore,天辉大地因世界树充满活力。受到世界树的庇护，全军防御抗性提升。
-DOTA_Tooltip_Modifier_path_12_l1,辉光普照
-DOTA_Tooltip_Modifier_path_12_l1_Description,护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。<br><font color='#FFFF00'>下个等级 : ★★天辉兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_12_l2,辉光普照
-DOTA_Tooltip_Modifier_path_12_l2_Description,护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。<br><font color='#FFFF00'>下个等级 : ★★★天辉兵卒 x3</font>
-DOTA_Tooltip_Modifier_path_12_l3,辉光普照
-DOTA_Tooltip_Modifier_path_12_l3_Description,护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。
-DOTA_Tooltip_ability_path_13,河道
-DOTA_Tooltip_ability_path_13_Description,<h1>【领地增益 ：寒流】</h1>护甲穿透（上河道） : <font color='#FFFFFF'>15% / 25% / 35%</font> <br>魔抗穿透（下河道） : <font color='#FFFFFF'>15% / 25% / 35%</font>\n<h1>【增益等级规则】</h1>一级 : 需★河道兵卒 x 1<br>二级 : 需★★河道兵卒 x 1<br>三级 : 需★★★河道兵卒 x 1
-DOTA_Tooltip_ability_path_13_Lore,肃杀的世界连流水同样冰冷，刺骨之寒透过坚硬的盔甲。
-DOTA_Tooltip_Modifier_path_13_hujia_l1,寒流 : 物理穿透
-DOTA_Tooltip_Modifier_path_13_hujia_l1_Description,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。<br><font color='#FFFF00'>下个等级 : ★★上河道兵卒 x1</font>
-DOTA_Tooltip_Modifier_path_13_mokang_l1,寒流 : 魔法穿透
-DOTA_Tooltip_Modifier_path_13_mokang_l1_Description,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性 。<br><font color='#FFFF00'>下个等级 : ★★下河道兵卒  x1</font>
-DOTA_Tooltip_Modifier_path_13_hujia_l2,寒流 : 物理穿透
-DOTA_Tooltip_Modifier_path_13_hujia_l2_Description,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。<br><font color='#FFFF00'>下个等级 : ★★★上河道兵卒 x1</font>
-DOTA_Tooltip_Modifier_path_13_mokang_l2,寒流 : 魔法穿透
-DOTA_Tooltip_Modifier_path_13_mokang_l2_Description,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性。<br><font color='#FFFF00'>下个等级 : ★★★下河道兵卒 x1</font>
-DOTA_Tooltip_Modifier_path_13_hujia_l3,寒流 : 物理穿透
-DOTA_Tooltip_Modifier_path_13_hujia_l3_Description,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。
-DOTA_Tooltip_Modifier_path_13_mokang_l3,寒流 : 魔法穿透
-DOTA_Tooltip_Modifier_path_13_mokang_l3_Description,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性。
-DOTA_Tooltip_ability_path_14,蛇沼
-DOTA_Tooltip_ability_path_14_Description,<h1>【领地增益 ：缚足】</h1>敌人经过此地有概率被群蛇束缚。\n束缚概率 : <font color='#FFFFFF'>25%</font> <br>束缚时间 : <font color='#FFFFFF'>1 / 2 / 2</font>\n<h1>【满级效果 : 扩张】</h1>作用全部己方领地\n<h1>【增益等级规则】</h1>一级 : 需★蛇沼兵卒 x 1<br>二级 : 需★★蛇沼兵卒 x 2<br>三级 : 需★★★蛇沼兵卒 x 3
-DOTA_Tooltip_ability_path_14_Lore,穿行沼泽的确不是件轻松活，好在有蛇蛇们的帮助。
-DOTA_Tooltip_Modifier_path_14_l1,缚足
-DOTA_Tooltip_Modifier_path_14_l1_Description,敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）<br><font color='#FFFF00'>下个等级 : ★★蛇沼兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_14_l2,缚足
-DOTA_Tooltip_Modifier_path_14_l2_Description,敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）<br><font color='#FFFF00'>下个等级 : ★★★蛇沼兵卒 x3</font>
-DOTA_Tooltip_Modifier_path_14_l3,缚足
-DOTA_Tooltip_Modifier_path_14_l3_Description,敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）
-DOTA_Tooltip_ability_path_15,夜魇
-DOTA_Tooltip_ability_path_15_Description,<h1>【领地增益 ：癫狂】</h1>攻速提升 : <font color='#FFFFFF'>25 / 50 / 100</font> <br>移速提升 : <font color='#FFFFFF'>10 / 20 / 40</font>\n<h1>【满级效果 : 癫狂】</h1>夜魇兵卒双倍提升，被沉默无法施法兵卒技。\n<h1>【增益等级规则】</h1>一级 : 需★夜魇兵卒 x 1<br>二级 : 需★★夜魇兵卒 x 2<br>三级 : 需★★★夜魇兵卒 x 3
-DOTA_Tooltip_ability_path_15_Lore,至邪的源泉侵蚀它的子民，失去了灵魂换得他人的恐惧。
-DOTA_Tooltip_Modifier_path_15_l1,癫狂
-DOTA_Tooltip_Modifier_path_15_l1_Description,全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。<br><font color='#FFFF00'>下个等级 : ★★夜魇兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_15_l2,癫狂
-DOTA_Tooltip_Modifier_path_15_l2_Description,全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。<br><font color='#FFFF00'>下个等级 : ★★★夜魇兵卒 x3</font>
-DOTA_Tooltip_Modifier_path_15_l3,癫狂
-DOTA_Tooltip_Modifier_path_15_l3_Description,全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。夜魇兵卒双倍提升，沉默自身。
-DOTA_Tooltip_Modifier_path_15_chenmo,癫狂反噬
-DOTA_Tooltip_Modifier_path_15_chenmo_Description,失去理性，无法释放技能。
-DOTA_Tooltip_ability_path_16,龙谷
-DOTA_Tooltip_ability_path_16_Description,<h1>【领地增益 ：神龙赐法】</h1>英雄回魔提升 : <font color='#FFFFFF'>1</font><br>兵卒回魔提升 : <font color='#FFFFFF'>40%</font><br>萃魔概率 : <font color='#FFFFFF'>15% / 30% / 50%</font><br>刷新概率 : <font color='#FFFFFF'>0% / 15% / 50%</font>\n<h1>【特殊效果 : 萃魔】</h1>施法有概率返还魔法\n<h1>【特殊效果 : 刷新】</h1>施法有概率刷新技能\n<h1>【增益等级规则】</h1>一级 : 需★龙谷兵卒 x 1<br>二级 : 需★★龙谷兵卒 x 2<br>三级 : 需★★★龙谷兵卒 x 3
-DOTA_Tooltip_ability_path_16_Lore,神秘的古老种族，掌管着最纯粹的魔法。
-DOTA_Tooltip_Modifier_path_16_l1,神龙赐法
-DOTA_Tooltip_Modifier_path_16_l1_Description,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 15%% 返还魔耗。<br><font color='#FFFF00'>下个等级 : ★★龙谷兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_16_l2,神龙赐法
-DOTA_Tooltip_Modifier_path_16_l2_Description,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 30%% 返还魔耗。<br>施法 15%% 刷新冷却。<br><font color='#FFFF00'>下个等级 : ★★★龙谷兵卒 x3</font>
-DOTA_Tooltip_Modifier_path_16_l3,神龙赐法
-DOTA_Tooltip_Modifier_path_16_l3_Description,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 50%% 返还魔耗。<br>施法 50%% 刷新冷却。
-DOTA_Tooltip_Modifier_path_16_l1_BZ,神龙赐法
-DOTA_Tooltip_Modifier_path_16_l1_BZ_Description,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 15%% 返还魔耗。<br><font color='#FFFF00'>下个等级 : ★★龙谷兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_16_l2_BZ,神龙赐法
-DOTA_Tooltip_Modifier_path_16_l2_BZ_Description,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 30%% 返还魔耗。<br>施法 15%% 刷新冷却。<br><font color='#FFFF00'>下个等级 : ★★★龙谷兵卒 x3</font>
-DOTA_Tooltip_Modifier_path_16_l3_BZ,神龙赐法
-DOTA_Tooltip_Modifier_path_16_l3_BZ_Description,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 50%% 返还魔耗。<br>施法 50%% 刷新冷却。
-DOTA_Tooltip_ability_path_17,鵰巢
-DOTA_Tooltip_ability_path_17_Description,<h1>【领地增益 ：圣兽之怒】</h1>圣兽刮起飓风，伤害经过的敌人。\n持续魔法伤害 : <font color='#FFFFFF'>30</font><br>减速 : <font color='#FFFFFF'>0% / 50% / 50%</font>\n<h1>【二级效果 : 减速】</h1>飓风造成减速\n<h1>【满级效果 : 扩张】</h1>作用全部己方领地\n<h1>【增益等级规则】</h1>一级 : 需★鵰巢兵卒 x 1<br>二级 : 需★★鵰巢兵卒 x 2<br>三级 : 需★★★鵰巢兵卒 x 3
-DOTA_Tooltip_ability_path_17_Lore,唤醒圣兽，刮起飓风，触碰的敌人被持续减速，并造成魔法伤害。唤醒沉睡的圣兽，无谓的战争引燃它的怒火。
-DOTA_Tooltip_Modifier_path_17_l1,圣兽
-DOTA_Tooltip_Modifier_path_17_l1_Description,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害。<br><font color='#FFFF00'>下个等级 : ★★鵰巢兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_17_l2,圣兽
-DOTA_Tooltip_Modifier_path_17_l2_Description,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害，并减速 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%。<br><font color='#FFFF00'>下个等级 : ★★★鵰巢兵卒 x3</font>
-DOTA_Tooltip_Modifier_path_17_l3,圣兽
-DOTA_Tooltip_Modifier_path_17_l3_Description,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害，并减速 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%。
-DOTA_Tooltip_Modifier_path_17_debuff,圣兽
-DOTA_Tooltip_Modifier_path_17_debuff_Description,飓风减速 %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%
-DOTA_Tooltip_ability_path_18,圣所
-DOTA_Tooltip_ability_path_18_Description,<h1>【领地增益 ：圣洁净土】</h1>对驻足在圣所的敌人造成神圣伤害。\n纯粹伤害 : <font color='#FFFFFF'>1000 / 2000 / 4000</font>\n<h1>【特殊效果 : 石佛】</h1>圣所兵卒无法攻击。无法被攻城。\n<h1>【增益等级规则】</h1>一级 : 需★圣所兵卒 x 2<br>二级 : 需★★圣所兵卒 x 2<br>三级 : 需★★★圣所兵卒 x 2
-DOTA_Tooltip_ability_path_18_Lore,神圣的殿堂前没有纷争也没有不速之客。
-DOTA_Tooltip_Modifier_path_18_l1,圣洁净土
-DOTA_Tooltip_Modifier_path_18_l1_Description,对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★圣所兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_18_l2,圣洁净土
-DOTA_Tooltip_Modifier_path_18_l2_Description,对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★★圣所兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_18_l3,圣洁净土
-DOTA_Tooltip_Modifier_path_18_l3_Description,对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。
-DOTA_Tooltip_Modifier_path_18_l1_BZ,圣洁净土
-DOTA_Tooltip_Modifier_path_18_l1_BZ_Description,化身石佛守护圣所，对驻足在圣所的敌人造成 1000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★圣所兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_18_l2_BZ,圣洁净土
-DOTA_Tooltip_Modifier_path_18_l2_BZ_Description,化身石佛守护圣所，对驻足在圣所的敌人造成 2000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★★圣所兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_18_l3_BZ,圣洁净土
-DOTA_Tooltip_Modifier_path_18_l3_BZ_Description,化身石佛守护圣所，对驻足在圣所的敌人造成 4000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。
+﻿Tokens,English,SChinese
+addon_game_name,Big General Monopoly,擎天阁大富翁
+1x6,1x6,1x6
+DOTA_Tooltip_ability_tt1,WAY,让我能去改变我能改变的事
+DOTA_Tooltip_ability_tt2,YOUR,请赋予我勇气
+DOTA_Tooltip_ability_tt3,GUIDE,思 而 后 动
+DOTA_Tooltip_ability_tt4,FLAME,我听见风来自地铁和人海
+DOTA_Tooltip_ability_tt5,THE,花开者谢必早
+DOTA_Tooltip_ability_tt6,MAY,久伏者飞必高
+DOTA_Tooltip_ability_tt7,DOTA,思而不学则殆
+DOTA_Tooltip_ability_tt8,ENJOY,学而不思则罔
+DOTA_Tooltip_ability_Ability_phantom_strike,,幻影突袭
+DOTA_Tooltip_ability_Ability_phantom_strike_Description,,闪烁到一个目标身边，并攻击%attack_times%次。
+DOTA_Tooltip_ability_Ability_phantom_strike_attack_times,,攻击次数 :
+DOTA_Tooltip_ability_Ability_phantom_strike_range,,施法范围 :
+DOTA_Tooltip_ability_Ability_meepo_ransack,,洗劫
+DOTA_Tooltip_ability_Ability_meepo_ransack_Description,,每次攻击从敌人身体汲取神秘的能量，以永久提升忽悠伤害。
+DOTA_Tooltip_ability_Ability_meepo_ransack_addsh,,伤害提升 :
+DOTA_Tooltip_Modifier_Ability_meepo_ransack,,洗劫
+DOTA_Tooltip_Modifier_Ability_meepo_ransack_Description,,伤害提升
+DOTA_Tooltip_ability_Ability_meepo_poof,,忽悠
+DOTA_Tooltip_ability_Ability_meepo_poof_Description,,通过从大地中汲取神秘的能量，一个米波可以在施法1.5秒后传送至另一个米波或自身所在之处，在离开和到达的区域都造成伤害。
+DOTA_Tooltip_ability_Ability_meepo_poof_Lore,,有时候打碎一块影墟水晶可以作为自己摆脱陷阱的方法，或者是另外一个自己。
+DOTA_Tooltip_ability_Ability_meepo_poof_range,,作用格数 :
+DOTA_Tooltip_ability_Ability_meepo_poof_poof_damage,,忽悠伤害 :
+AbilityError_not_meepo,,目标不是米波
+DOTA_Tooltip_ability_Ability_pudge_meat_hook,,肉钩
+DOTA_Tooltip_ability_Ability_pudge_meat_hook_Description,,向英雄射出血腥的肉钩，并将它拖到帕吉的身边。
+DOTA_Tooltip_ability_Ability_pudge_meat_hook_Lore,,屠夫的肉钩是噩梦的象征，锋利的倒钩暗示了他嗜血的本性。
+DOTA_Tooltip_ability_Ability_pudge_meat_hook_damage,,伤害 :
+DOTA_Tooltip_ability_Ability_pudge_rot,,腐烂
+DOTA_Tooltip_ability_Ability_pudge_rot_Description,,<font color='#4169E1'>开启/关闭</font> 持续性的毒性云雾，移动阶段伤害经过的英雄，并使其移速减缓。\n移动期间产生过伤害，消耗 <font color='#1E90FF'>■</font> <font color='#FFFFFF'><b>1</b></font>。
+DOTA_Tooltip_ability_Ability_pudge_rot_Lore,,从屠夫腐烂肿胀的肉体中放出的有毒气体，气体恶心的令人窒息。
+DOTA_Tooltip_ability_Ability_pudge_rot_range,,作用范围 :
+DOTA_Tooltip_ability_Ability_pudge_rot_damage,,伤害 :
+DOTA_Tooltip_ability_Ability_pudge_rot_rot_slow,,%减速 :
+AbilityError_NeedMana_1,,至少需要1点魔法
+DOTA_Tooltip_modifier_ability_pudge_rot_debuff,,腐烂
+DOTA_Tooltip_modifier_ability_pudge_rot_debuff_Description,,被腐烂减速<font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font>
+DOTA_Tooltip_ability_Ability_BZ_pudge_rot,,腐烂
+DOTA_Tooltip_ability_Ability_BZ_pudge_rot_Description,,<font color='#00FF00'>自动</font> 魔法至100%时，对经过的英雄造成持续伤害的毒性云雾，并使其移速减缓。
+DOTA_Tooltip_ability_Ability_BZ_pudge_rot_Lore,,从屠夫腐烂肿胀的肉体中放出的有毒气体，气体恶心的令人窒息。
+DOTA_Tooltip_ability_Ability_BZ_pudge_rot_range,,作用范围 :
+DOTA_Tooltip_ability_Ability_BZ_pudge_rot_damage,,伤害 :
+DOTA_Tooltip_ability_Ability_BZ_pudge_rot_rot_slow,,%减速 :
+DOTA_Tooltip_ability_Ability_lina_dragon_slave,,龙破斩
+DOTA_Tooltip_ability_Ability_lina_dragon_slave_Description,,莉娜引导龙的吐息，放出一波火焰，烧焦前方全部敌人。
+DOTA_Tooltip_ability_Ability_lina_dragon_slave_Lore,,在纷争之国的荒焦之地，为了娱乐，莉娜学会了操控沙漠龙的火焰吐息。
+DOTA_Tooltip_ability_Ability_lina_dragon_slave_dragon_slave_damage,,伤害 :
+DOTA_Tooltip_ability_Ability_lina_light_strike_array,,光击阵
+DOTA_Tooltip_ability_Ability_lina_light_strike_array_Description,,召唤柱状火焰伤害并眩晕敌人。目标地为中心的%range%格范围。
+DOTA_Tooltip_ability_Ability_lina_light_strike_array_Lore,,莉娜的精华让她能够集中太阳的能量，随时让空气燃烧。
+DOTA_Tooltip_ability_Ability_lina_light_strike_array_light_strike_array_damage,,伤害 :
+DOTA_Tooltip_ability_Ability_lina_light_strike_array_range,,范围格数 :
+DOTA_Tooltip_ability_Ability_lina_light_strike_array_light_strike_array_stun_duration,,眩晕回合 :
+DOTA_Tooltip_Modifier_Ability_lina_light_strike_array,,光击阵
+DOTA_Tooltip_Modifier_Ability_lina_light_strike_array_Description,,眩晕 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> 回合 ：跳过自身回合无法操作。兵卒眩晕无法攻击，无法触发攻城。
+DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave,,龙破斩
+DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave_Description,,<font color='#00FF00'>自动</font> 莉娜引导龙的吐息，放出一波火焰，烧焦经过的敌人。
+DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave_Lore,,在纷争之国的荒焦之地，为了娱乐，莉娜学会了操控沙漠龙的火焰吐息。
+DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave_dragon_slave_damage,,伤害 :
+DOTA_Tooltip_ability_Ability_zuus_arc_lightning,,弧形闪电
+DOTA_Tooltip_ability_Ability_zuus_arc_lightning_Description,,释放一道会跳跃穿越附近敌人的闪电。每次在目标<font color='#FFFFFF'> 5 </font>格范围跳跃。
+DOTA_Tooltip_ability_Ability_zuus_arc_lightning_Lore,,弧形闪电是宙斯在对付渺小的凡人时最喜欢用的法术。
+DOTA_Tooltip_ability_Ability_zuus_arc_lightning_arc_damage,,伤害 :
+DOTA_Tooltip_ability_Ability_zuus_arc_lightning_jump_count,,跳跃次数 :
+DOTA_Tooltip_ability_Ability_zuus_lightning_bolt,,雷击
+DOTA_Tooltip_ability_Ability_zuus_lightning_bolt_Description,,召唤一道闪电打击一个敌方英雄。
+DOTA_Tooltip_ability_Ability_zuus_lightning_bolt_Lore,,对那些反叛的异教徒最震慑的天罚。
+DOTA_Tooltip_ability_Ability_zuus_lightning_bolt_damage,,伤害 :
+DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt,,雷击
+DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt_Description,,<font color='#00FF00'>自动</font> 召唤一道闪电打击经过的敌人。
+DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt_Lore,,对那些反叛的异教徒最震慑的天罚。
+DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt_damage,,伤害 :
+DOTA_Tooltip_ability_Ability_axe_battle_hunger,,战斗威吓
+DOTA_Tooltip_ability_Ability_axe_battle_hunger_Description,,恐吓一个敌方单位，降低他的攻击力，并且在其自身回合开始受到伤害。
+DOTA_Tooltip_ability_Ability_axe_battle_hunger_Lore,,通常英雄无法抵挡蒙哥可汗的战斗狂怒，他们会一直畏惧，直到蒙哥可汗的狂怒平息。
+DOTA_Tooltip_ability_Ability_axe_battle_hunger_duration,,持续回合 :
+DOTA_Tooltip_ability_Ability_axe_battle_hunger_bonus_atk,,%攻击力降低 :
+DOTA_Tooltip_ability_Ability_axe_battle_hunger_damage,,每回合伤害 
+DOTA_Tooltip_Modifier_Ability_axe_battle_hunger,,战斗威吓
+DOTA_Tooltip_Modifier_Ability_axe_battle_hunger_Description,,持续 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%</font> 回合：降低 <font color='#FF0000'>%dMODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE%%%</font> 的攻击力，回合开始时受到 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> 点魔法伤害
+DOTA_Tooltip_ability_Ability_axe_helix_counter,,反击螺旋
+DOTA_Tooltip_ability_Ability_axe_helix_counter_Description,,受到攻击时，斧王有几率做出反击螺旋，对范围内的所有敌方单位造成纯粹伤害。如果受到一定次数攻击后，斧王还没做出反击螺旋，会愤怒地释放一次。
+DOTA_Tooltip_ability_Ability_axe_helix_counter_Lore,,我买了个小风车~呼呼呼
+DOTA_Tooltip_ability_Ability_axe_helix_counter_chance,,%触发概率 :
+DOTA_Tooltip_ability_Ability_axe_helix_counter_radius,,半径 :
+DOTA_Tooltip_ability_Ability_axe_helix_counter_trigger_attacks,,触发次数 :
+DOTA_Tooltip_ability_Ability_axe_helix_counter_damage,,伤害 :
+DOTA_Tooltip_Modifier_Ability_axe_helix_counter,,反击螺旋
+bz_pa_1,PA★,幻影刺客★
+bz_pa_11,PA★★,幻影刺客★★
+bz_pa_111,PA★★★,幻影刺客★★★
+bz_meepo_1,Meepo★,米波★
+bz_meepo_11,Meepo★★,米波★★
+bz_meepo_111,Meepo★★★,米波★★★
+bz_pudge_1,Pudge★,帕吉★
+bz_pudge_11,Pudge★★,帕吉★★
+bz_pudge_111,Pudge★★★,帕吉★★★
+bz_lina_1,Lina★,莉娜★
+bz_lina_11,Lina★★,莉娜★★
+bz_lina_111,Lina★★★,莉娜★★★
+bz_zuus_1,Zuus★,宙斯★
+bz_zuus_11,Zuus★★,宙斯★★
+bz_zuus_111,Zuus★★★,宙斯★★★
+bz_axe_1,Axe★,斧王★
+bz_axe_11,Axe★★,斧王★★
+bz_axe_111,Axe★★★,斧王★★★
+DOTA_Tooltip_ability_yjxr_12,,养精蓄锐
+DOTA_Tooltip_ability_yjxr_12_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_12_Lore,,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_12_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_12_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_13,,养精蓄锐
+DOTA_Tooltip_ability_yjxr_13_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_13_Lore,,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_13_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_13_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_14,,养精蓄锐
+DOTA_Tooltip_ability_yjxr_14_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_14_Lore,,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_14_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_14_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_15,,养精蓄锐
+DOTA_Tooltip_ability_yjxr_15_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_15_Lore,,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_15_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_15_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_16,,养精蓄锐
+DOTA_Tooltip_ability_yjxr_16_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_16_Lore,,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_16_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_16_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_17,,养精蓄锐
+DOTA_Tooltip_ability_yjxr_17_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_17_Lore,,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_17_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_17_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_18,,养精蓄锐
+DOTA_Tooltip_ability_yjxr_18_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_18_Lore,,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_18_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_18_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_19,,养精蓄锐
+DOTA_Tooltip_ability_yjxr_19_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_19_Lore,,来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_19_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_19_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_12,,解甲归田
+DOTA_Tooltip_ability_xj_12_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_12_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_12_Lore,,
+DOTA_Tooltip_ability_xj_12_goldcost,,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_13,,解甲归田
+DOTA_Tooltip_ability_xj_13_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_13_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_13_Lore,,
+DOTA_Tooltip_ability_xj_13_goldcost,,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_14,,解甲归田
+DOTA_Tooltip_ability_xj_14_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_14_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_14_Lore,,
+DOTA_Tooltip_ability_xj_14_goldcost,,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_15,,解甲归田
+DOTA_Tooltip_ability_xj_15_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_15_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_15_Lore,,
+DOTA_Tooltip_ability_xj_15_goldcost,,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_16,,解甲归田
+DOTA_Tooltip_ability_xj_16_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_16_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_16_Lore,,
+DOTA_Tooltip_ability_xj_16_goldcost,,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_17,,解甲归田
+DOTA_Tooltip_ability_xj_17_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_17_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_17_Lore,,
+DOTA_Tooltip_ability_xj_17_goldcost,,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_18,,解甲归田
+DOTA_Tooltip_ability_xj_18_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_18_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_18_Lore,,
+DOTA_Tooltip_ability_xj_18_goldcost,,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_19,,解甲归田
+DOTA_Tooltip_ability_xj_19_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_19_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_19_Lore,,
+DOTA_Tooltip_ability_xj_19_goldcost,,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_yjxr_max,,养精蓄锐
+DOTA_Tooltip_ability_yjxr_max_Description,,顶级兵卒
+DOTA_Tooltip_ability_yjxr_max_Lore,,我感觉人生已经到达了巅峰!!!
+DOTA_Tooltip_ability_yjxr_max_level_max,,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_path_12,,天辉
+DOTA_Tooltip_ability_path_12_Description,,<h1>【领地增益 : 辉光普照】</h1>护甲提升 : <font color='#FFFFFF'>5 / 10 / 10</font> <br>魔抗提升 : <font color='#FFFFFF'>15% / 30% / 30%</font> \n<h1>【满级效果 : 融合】</h1>天辉兵卒融合成传说中的天辉巨人。<br>（等级，射程，体型是普通兵卒的 2 倍）\n<h1>【增益等级规则】</h1>一级 : 需★天辉兵卒 x  1<br>二级 : 需★★天辉兵卒 x  2<br>三级 : 需★★★天辉兵卒 x 3
+DOTA_Tooltip_ability_path_12_Lore,,天辉大地因世界树充满活力。受到世界树的庇护，全军防御抗性提升。
+DOTA_Tooltip_Modifier_path_12_l1,,辉光普照
+DOTA_Tooltip_Modifier_path_12_l1_Description,,护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。<br><font color='#FFFF00'>下个等级 : ★★天辉兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_12_l2,,辉光普照
+DOTA_Tooltip_Modifier_path_12_l2_Description,,护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。<br><font color='#FFFF00'>下个等级 : ★★★天辉兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_12_l3,,辉光普照
+DOTA_Tooltip_Modifier_path_12_l3_Description,,护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。
+DOTA_Tooltip_ability_path_13,,河道
+DOTA_Tooltip_ability_path_13_Description,,<h1>【领地增益 ：寒流】</h1>护甲穿透（上河道） : <font color='#FFFFFF'>15% / 25% / 35%</font> <br>魔抗穿透（下河道） : <font color='#FFFFFF'>15% / 25% / 35%</font>\n<h1>【增益等级规则】</h1>一级 : 需★河道兵卒 x 1<br>二级 : 需★★河道兵卒 x 1<br>三级 : 需★★★河道兵卒 x 1
+DOTA_Tooltip_ability_path_13_Lore,,肃杀的世界连流水同样冰冷，刺骨之寒透过坚硬的盔甲。
+DOTA_Tooltip_Modifier_path_13_hujia_l1,,寒流 : 物理穿透
+DOTA_Tooltip_Modifier_path_13_hujia_l1_Description,,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。<br><font color='#FFFF00'>下个等级 : ★★上河道兵卒 x1</font>
+DOTA_Tooltip_Modifier_path_13_mokang_l1,,寒流 : 魔法穿透
+DOTA_Tooltip_Modifier_path_13_mokang_l1_Description,,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性 。<br><font color='#FFFF00'>下个等级 : ★★下河道兵卒  x1</font>
+DOTA_Tooltip_Modifier_path_13_hujia_l2,,寒流 : 物理穿透
+DOTA_Tooltip_Modifier_path_13_hujia_l2_Description,,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。<br><font color='#FFFF00'>下个等级 : ★★★上河道兵卒 x1</font>
+DOTA_Tooltip_Modifier_path_13_mokang_l2,,寒流 : 魔法穿透
+DOTA_Tooltip_Modifier_path_13_mokang_l2_Description,,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性。<br><font color='#FFFF00'>下个等级 : ★★★下河道兵卒 x1</font>
+DOTA_Tooltip_Modifier_path_13_hujia_l3,,寒流 : 物理穿透
+DOTA_Tooltip_Modifier_path_13_hujia_l3_Description,,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。
+DOTA_Tooltip_Modifier_path_13_mokang_l3,,寒流 : 魔法穿透
+DOTA_Tooltip_Modifier_path_13_mokang_l3_Description,,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性。
+DOTA_Tooltip_ability_path_14,,蛇沼
+DOTA_Tooltip_ability_path_14_Description,,<h1>【领地增益 ：缚足】</h1>敌人经过此地有概率被群蛇束缚。\n束缚概率 : <font color='#FFFFFF'>25%</font> <br>束缚时间 : <font color='#FFFFFF'>1 / 2 / 2</font>\n<h1>【满级效果 : 扩张】</h1>作用全部己方领地\n<h1>【增益等级规则】</h1>一级 : 需★蛇沼兵卒 x 1<br>二级 : 需★★蛇沼兵卒 x 2<br>三级 : 需★★★蛇沼兵卒 x 3
+DOTA_Tooltip_ability_path_14_Lore,,穿行沼泽的确不是件轻松活，好在有蛇蛇们的帮助。
+DOTA_Tooltip_Modifier_path_14_l1,,缚足
+DOTA_Tooltip_Modifier_path_14_l1_Description,,敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）<br><font color='#FFFF00'>下个等级 : ★★蛇沼兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_14_l2,,缚足
+DOTA_Tooltip_Modifier_path_14_l2_Description,,敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）<br><font color='#FFFF00'>下个等级 : ★★★蛇沼兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_14_l3,,缚足
+DOTA_Tooltip_Modifier_path_14_l3_Description,,敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）
+DOTA_Tooltip_ability_path_15,,夜魇
+DOTA_Tooltip_ability_path_15_Description,,<h1>【领地增益 ：癫狂】</h1>攻速提升 : <font color='#FFFFFF'>25 / 50 / 100</font> <br>移速提升 : <font color='#FFFFFF'>10 / 20 / 40</font>\n<h1>【满级效果 : 癫狂】</h1>夜魇兵卒双倍提升，被沉默无法施法兵卒技。\n<h1>【增益等级规则】</h1>一级 : 需★夜魇兵卒 x 1<br>二级 : 需★★夜魇兵卒 x 2<br>三级 : 需★★★夜魇兵卒 x 3
+DOTA_Tooltip_ability_path_15_Lore,,至邪的源泉侵蚀它的子民，失去了灵魂换得他人的恐惧。
+DOTA_Tooltip_Modifier_path_15_l1,,癫狂
+DOTA_Tooltip_Modifier_path_15_l1_Description,,全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。<br><font color='#FFFF00'>下个等级 : ★★夜魇兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_15_l2,,癫狂
+DOTA_Tooltip_Modifier_path_15_l2_Description,,全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。<br><font color='#FFFF00'>下个等级 : ★★★夜魇兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_15_l3,,癫狂
+DOTA_Tooltip_Modifier_path_15_l3_Description,,全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。夜魇兵卒双倍提升，沉默自身。
+DOTA_Tooltip_Modifier_path_15_chenmo,,癫狂反噬
+DOTA_Tooltip_Modifier_path_15_chenmo_Description,,失去理性，无法释放技能。
+DOTA_Tooltip_ability_path_16,,龙谷
+DOTA_Tooltip_ability_path_16_Description,,<h1>【领地增益 ：神龙赐法】</h1>英雄回魔提升 : <font color='#FFFFFF'>1</font><br>兵卒回魔提升 : <font color='#FFFFFF'>40%</font><br>萃魔概率 : <font color='#FFFFFF'>15% / 30% / 50%</font><br>刷新概率 : <font color='#FFFFFF'>0% / 15% / 50%</font>\n<h1>【特殊效果 : 萃魔】</h1>施法有概率返还魔法\n<h1>【特殊效果 : 刷新】</h1>施法有概率刷新技能\n<h1>【增益等级规则】</h1>一级 : 需★龙谷兵卒 x 1<br>二级 : 需★★龙谷兵卒 x 2<br>三级 : 需★★★龙谷兵卒 x 3
+DOTA_Tooltip_ability_path_16_Lore,,神秘的古老种族，掌管着最纯粹的魔法。
+DOTA_Tooltip_Modifier_path_16_l1,,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l1_Description,,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 15%% 返还魔耗。<br><font color='#FFFF00'>下个等级 : ★★龙谷兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_16_l2,,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l2_Description,,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 30%% 返还魔耗。<br>施法 15%% 刷新冷却。<br><font color='#FFFF00'>下个等级 : ★★★龙谷兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_16_l3,,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l3_Description,,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 50%% 返还魔耗。<br>施法 50%% 刷新冷却。
+DOTA_Tooltip_Modifier_path_16_l1_BZ,,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l1_BZ_Description,,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 15%% 返还魔耗。<br><font color='#FFFF00'>下个等级 : ★★龙谷兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_16_l2_BZ,,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l2_BZ_Description,,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 30%% 返还魔耗。<br>施法 15%% 刷新冷却。<br><font color='#FFFF00'>下个等级 : ★★★龙谷兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_16_l3_BZ,,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l3_BZ_Description,,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 50%% 返还魔耗。<br>施法 50%% 刷新冷却。
+DOTA_Tooltip_ability_path_17,,鵰巢
+DOTA_Tooltip_ability_path_17_Description,,<h1>【领地增益 ：圣兽之怒】</h1>圣兽刮起飓风，伤害经过的敌人。\n持续魔法伤害 : <font color='#FFFFFF'>30</font><br>减速 : <font color='#FFFFFF'>0% / 50% / 50%</font>\n<h1>【二级效果 : 减速】</h1>飓风造成减速\n<h1>【满级效果 : 扩张】</h1>作用全部己方领地\n<h1>【增益等级规则】</h1>一级 : 需★鵰巢兵卒 x 1<br>二级 : 需★★鵰巢兵卒 x 2<br>三级 : 需★★★鵰巢兵卒 x 3
+DOTA_Tooltip_ability_path_17_Lore,,唤醒圣兽，刮起飓风，触碰的敌人被持续减速，并造成魔法伤害。唤醒沉睡的圣兽，无谓的战争引燃它的怒火。
+DOTA_Tooltip_Modifier_path_17_l1,,圣兽
+DOTA_Tooltip_Modifier_path_17_l1_Description,,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害。<br><font color='#FFFF00'>下个等级 : ★★鵰巢兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_17_l2,,圣兽
+DOTA_Tooltip_Modifier_path_17_l2_Description,,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害，并减速 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%。<br><font color='#FFFF00'>下个等级 : ★★★鵰巢兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_17_l3,,圣兽
+DOTA_Tooltip_Modifier_path_17_l3_Description,,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害，并减速 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%。
+DOTA_Tooltip_Modifier_path_17_debuff,,圣兽
+DOTA_Tooltip_Modifier_path_17_debuff_Description,,飓风减速 %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%
+DOTA_Tooltip_ability_path_18,,圣所
+DOTA_Tooltip_ability_path_18_Description,,<h1>【领地增益 ：圣洁净土】</h1>对驻足在圣所的敌人造成神圣伤害。\n纯粹伤害 : <font color='#FFFFFF'>1000 / 2000 / 4000</font>\n<h1>【特殊效果 : 石佛】</h1>圣所兵卒无法攻击。无法被攻城。\n<h1>【增益等级规则】</h1>一级 : 需★圣所兵卒 x 2<br>二级 : 需★★圣所兵卒 x 2<br>三级 : 需★★★圣所兵卒 x 2
+DOTA_Tooltip_ability_path_18_Lore,,神圣的殿堂前没有纷争也没有不速之客。
+DOTA_Tooltip_Modifier_path_18_l1,,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l1_Description,,对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★圣所兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_18_l2,,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l2_Description,,对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★★圣所兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_18_l3,,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l3_Description,,对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。
+DOTA_Tooltip_Modifier_path_18_l1_BZ,,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l1_BZ_Description,,化身石佛守护圣所，对驻足在圣所的敌人造成 1000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★圣所兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_18_l2_BZ,,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l2_BZ_Description,,化身石佛守护圣所，对驻足在圣所的敌人造成 2000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★★圣所兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_18_l3_BZ,,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l3_BZ_Description,,化身石佛守护圣所，对驻足在圣所的敌人造成 4000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。
+TypeOperator_Hell,,地狱之门
+DescriptionContent_Hell,,身处地狱，封锁全部领地。\n地狱惩戒：（持续入狱）\n第3回合：损失100金币。\n第4回合：损失200金币。\n第5回合：损失400金币。\n 以此类推...

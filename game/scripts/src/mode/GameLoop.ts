@@ -171,6 +171,8 @@ export class GameLoop {
         }
         GameRules.EventManager.FireEvent("Event_PlayerRoundBegin", tabEvent)
 
+        print("===Event_PlayerRoundBegin===tabEvent:")
+        DeepPrintTable(tabEvent)
         if (tabEvent.bRoll) {
             // 广播roll点操作
             const tabOprt = {

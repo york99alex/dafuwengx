@@ -11,7 +11,7 @@
 		"ModelScale"	"1"
 		"Ability1"	"jiaoxie"
 		"Ability2"	"no_bar"
-		// "Ability3"	"no_collision"
+		"Ability3"	"no_collision"
 		"Ability4"	"magic_immune"
 		"Ability5"	"physical_immune"
 		"Ability6"	"no_all_select"
@@ -19,4 +19,19 @@
 		"StatusHealth"	"1"
 	}
 
+
+	"prison_eg"
+	{
+		"BaseClass"		"npc_dota_building"//"npc_dota_base_additive"
+		"Model"			"models/courier/doom_demihero_courier/doom_demihero_courier_flying.vmdl"
+		"ModelScale"	"1"
+		"Ability1"	"jiaoxie"
+		"Ability2"	"no_bar"
+		"Ability3"	"no_collision"
+		"Ability4"	"magic_immune"
+		"Ability5"	"physical_immune"
+		"Ability6"	"no_all_select"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"StatusHealth"	"1"
+	}
 }

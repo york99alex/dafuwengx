@@ -52,6 +52,8 @@ export default function Precache(context: CScriptPrecacheContext) {
             'effect/arrow/star3_1.vpcf',
             'effect/arrow/star3_2.vpcf',
             'particles/units/heroes/hero_legion_commander/legion_duel_ring.vpcf',
+            'particles/ui/ui_game_start_hero_spawn.vpcf',
+            'particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf'
         ],
         context
     );

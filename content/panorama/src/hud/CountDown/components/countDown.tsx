@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { render, useGameEvent, useNetTableKey } from 'react-panorama-x';
+import { useState } from 'react';
+import { useGameEvent, useNetTableKey } from 'react-panorama-x';
 
-function Counter() {
+export function CountDown() {
   const { time } = useNetTableKey("GamingTable", "timeOprt") ?? { time: 0 }
   const { nRound } = useNetTableKey("GamingTable", "round") ?? { nRound: 0 }
   const order = useNetTableKey("GamingTable", "order")
@@ -13,12 +13,16 @@ function Counter() {
     setNum1(event.nNum1)
     setNum2(event.nNum2)
   })
+  let baoziTip = ""
+  if (nNum1 + nNum2 > 0 && nNum1 == nNum2) {
+    baoziTip = "豹子！"
+  }
 
   return (
-    <Panel style={{ flowChildren: 'down' }}>
+    <Panel className='CountDown' style={{ flowChildren: 'down' }}>
       <Label className='Round' text={`Round: ${nRound ?? 0}`} />
 
-      <Label className='Countdown' text={`倒计时: ${time ?? 0}`} />
+      <Label className='Number' text={`倒计时: ${time ?? 0}`} />
 
       <Panel style={{ flowChildren: 'right' }}>
         <TextButton className="ButtonBevel" text="Roll" onactivate={() => {
@@ -27,9 +31,9 @@ function Counter() {
             typeOprt: 1
           })
         }} />
-        <Label className='RollResult' text={` ${nNum1 ?? 0}&${nNum2 ?? 0}`} />
+        <Label className='RollResult' text={` ${nNum1 ?? 0}&${nNum2 ?? 0} ${baoziTip}`} />
       </Panel>
-      
+
       <TextButton className="ButtonBevel" text="攻城略地" onactivate={() => {
         GameEvents.SendCustomGameEventToServer("GM_Operator", {
           nPlayerID: Players.GetLocalPlayer(),
@@ -52,7 +56,3 @@ function Counter() {
     </Panel>
   );
 }
-
-
-
-render(<Counter />, $.GetContextPanel());

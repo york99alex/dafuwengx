@@ -1,6 +1,6 @@
 <root>
     <scripts>
-        <include src="./script.tsx" />
+        <include src="./index.tsx" />
     </scripts>
     <styles>
         <include src="s2r://panorama/styles/dotastyles.vcss_c" />

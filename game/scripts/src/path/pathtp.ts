@@ -31,6 +31,22 @@ export class PathTP extends Path {
         }
     }
 
+    /**设置领主 */
+    setOwner(player?: Player) {
+        if (player == null) {
+            this.setPathState(Constant.TypePathState.None)
+            this.setBanner()
+            this.m_nOwnerID = null
+        } else {
+            // TODO:占领音效
+            EmitGlobalSound("Custom.AYZZ")
+
+            this.setBanner(player.m_eHero.GetUnitName())
+            this.m_nOwnerID = player.m_nPlayerID
+        }
+    }
+
+    /**触发路径 */
     onPath(player: Player): void {
         super.onPath(player)
 
@@ -53,28 +69,36 @@ export class PathTP extends Path {
             // 敌方TP点,交过路费
             const playerOwn = GameRules.PlayerManager.getPlayer(this.m_nOwnerID)
             // 领主未进监狱
-            if (0 === (PS_InPrison & playerOwn.m_nPlayerState)) {
+            if (0 == bit.band(PS_InPrison, playerOwn.m_nPlayerState)) {
                 const nGold = Constant.PATH_TOLL_TP[playerOwn.m_tabMyPath[this.m_typePath].length - 1]
                 player.giveGold(nGold, playerOwn)
                 GameRules.GameConfig.showGold(playerOwn, nGold)
                 GameRules.GameConfig.showGold(player, -nGold)
                 // TODO:给钱音效
-                // EmitGlobalSound()
+                EmitGlobalSound("Custom.Gold.Sell")
             }
         }
     }
 
-    setOwner(player?: Player) {
-        if (player == null) {
-            this.setPathState(Constant.TypePathState.None)
-            this.setBanner()
-            this.m_nOwnerID = null
-        } else {
-            // TODO:占领音效
-            // EmitGlobalSound("Custom.AYZZ")
+    TP(oPlayer: Player) {
+        EmitSoundOn("Custom.TP.Begin", oPlayer.m_eHero)
 
-            this.setBanner(player.m_eHero.GetUnitName())
-            this.m_nOwnerID = player.m_nPlayerID
-        }
+        // 传送进入wait
+        GameRules.GameLoop.GameStateService.send("towait")
+        oPlayer.m_eHero.StartGesture(GameActivity.DOTA_TELEPORT)
+        Timers.CreateTimer(2.5, () => {
+            // 处理传送
+            StopSoundOn("Custom.TP.Begin", oPlayer.m_eHero)
+            EmitSoundOn("Custom.TP.End", oPlayer.m_eHero)
+
+            oPlayer.m_eHero.RemoveGesture(GameActivity.DOTA_TELEPORT)
+            oPlayer.m_eHero.StartGesture(GameActivity.DOTA_TELEPORT_END)
+
+            if (0 < bit.band(PS_InPrison, oPlayer.m_nPlayerState)) {
+                return
+            }
+            oPlayer.blinkToPath(this)
+            GameRules.GameLoop.GameStateService.send("towaitoprt")
+        })
     }
 }

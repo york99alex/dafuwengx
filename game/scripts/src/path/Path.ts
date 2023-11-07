@@ -129,10 +129,12 @@ export class Path {
     }
 
     /**获得单位已经占用的位置 */
-    getUsedPos(entity: CDOTA_BaseNPC_Hero) {
-        for (const v of this.m_tabPos) {
-            if (entity == v.entity) {
-                return v.vPos
+    getUsedPos(entity: CDOTA_BaseNPC_Hero, bInPrison?: boolean) {
+        if (bInPrison) {
+            for (const v of this.m_tabPos) {
+                if (entity == v.entity) {
+                    return v.vPos
+                }
             }
         }
         return this.m_entity.GetAbsOrigin()

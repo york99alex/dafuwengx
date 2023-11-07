@@ -1029,14 +1029,14 @@ export const App = () => {	// 根组件
 
 11. GameLoop需重新调整的点
 
-    1. 切换状态是否需要封装？
-    2. 新增GSRoundBefore
-    3. 重新理清状态图
+     1. 切换状态是否需要封装？
+     2. 新增GSRoundBefore
+     3. 重新理清状态图
 
 12. ~~Player.setState重写~~，替换为setPlayerState
 
-    -  遗留问题: BKB魔法免疫问题
-      - 屠夫钩子对bkb
+     -  遗留问题: BKB魔法免疫问题
+       - 屠夫钩子对bkb
 
 13. 在一个合适的时机通过后端事件通知前端关闭操作提示框
 
@@ -1044,13 +1044,13 @@ export const App = () => {	// 根组件
 
 15. ==前端相关==
 
-    1. 关闭以下前端页面:
-       1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
-       2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
+     1. 关闭以下前端页面:
+        1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
+        2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
 
-       3. Label id="AbilityBuildComment"  #AbilityBuildComment
+        3. Label id="AbilityBuildComment"  #AbilityBuildComment
 
-    2. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
+     2. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
 
 16. 本地化翻译所有this.m_strCastError
 
@@ -1058,37 +1058,37 @@ export const App = () => {	// 根组件
 
 18. 重写了技能tsbaseability的GetCastRange
 
-    1. 需要分清不同技能的情况
-    2. 默认重写的tsbaseability中的getcastrange是以路径ID为距离计算返回的整数
-    3. 如果分情况需要再对应的技能里重写getcastrange
-    4. ==TODO==：调整PA技能范围为格数，而非距离
+     1. 需要分清不同技能的情况
+     2. 默认重写的tsbaseability中的getcastrange是以路径ID为距离计算返回的整数
+     3. 如果分情况需要再对应的技能里重写getcastrange
+     4. ==TODO==：调整PA技能范围为格数，而非距离
 
 19. 游戏记录模块 game_record客户端操作, 更新记录面板
 
 20. 分开事件, 分开发送？可能没有必要，待确认
 
 21. ~~PlaySort与机器人的情况有点问题,总是021~~
-    注意使用RandInt方法来生成随机数
+     注意使用RandInt方法来生成随机数
 
 22. 添加 unit 
 
-        1. "path_17_diao"
-            	{
-                  		"BaseClass"		"npc_dota_creature"
-                  		"Model"			"models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
-                  		"ModelScale"	"1"
-                  		"Ability1"	"jiaoxie"
-                  		"Ability2"	"no_bar"
-                  		// "Ability3"	"no_collision"
-                  		"Ability4"	"magic_immune"
-                  		"Ability5"	"physical_immune"
-                  		"Ability6"	"no_all_select"
-                  		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
-                  		"StatusHealth"	"1"
-                  	}
+         1. "path_17_diao"
+             	{
+                   		"BaseClass"		"npc_dota_creature"
+                   		"Model"			"models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
+                   		"ModelScale"	"1"
+                   		"Ability1"	"jiaoxie"
+                   		"Ability2"	"no_bar"
+                   		// "Ability3"	"no_collision"
+                   		"Ability4"	"magic_immune"
+                   		"Ability5"	"physical_immune"
+                   		"Ability6"	"no_all_select"
+                   		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+                   		"StatusHealth"	"1"
+                   	}
 
-    1. setDiaoGesture 雕哥施法检查
-    2. 雕哥施法鬼畜，第一个飓风不会消除
+     1. setDiaoGesture 雕哥施法检查
+     2. 雕哥施法鬼畜，第一个飓风不会消除
 
 23. PathRune
 
@@ -1105,7 +1105,7 @@ export const App = () => {	// 根组件
 29. 检查FireEvent的args参数为空的情况
 
 30. /**设置结算数据 */
-        setGameEndData(){}
+         setGameEndData(){}
 
 31. ~~==sendMsg和broadcastMsg的tabData格式==~~
 
@@ -1122,30 +1122,56 @@ export const App = () => {	// 根组件
 37. 考虑把莉娜的兵卒技能换成光击阵
 
 38. 验证AMHC.Damage
-        ```
-                    if (tData) {
-                        for (const v of tData) {
-                            event.push(v)
-                        }
-                    }
-        ```
+         ```
+                     if (tData) {
+                         for (const v of tData) {
+                             event.push(v)
+                         }
+                     }
+         ```
 
 39. HudError:FireLocalizeError
 
 40. ~~Script Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
-        ~~stack traceback:~~
-        ~~[C]: in function '__index'~~
+         ~~stack traceback:~~
+         ~~[C]: in function '__index'~~
 
-    通过  if (IsClient())  return 解决
-     但是为什么? 原因? 如何理解
+     通过  if (IsClient())  return 解决
+      但是为什么? 原因? 如何理解
 
 41. custom_sounds 有问题
 
-        Failed loading resource "soundevents/custom_sounds.vsndevts_c" (ERROR_BADREQUEST: Code error - bad request)
-        参考
+         Failed loading resource "soundevents/custom_sounds.vsndevts_c" (ERROR_BADREQUEST: Code error - bad request)
+         参考
 
-42. 
+42. 天赋树
 
+     1. 龙骑 2024年1月是哪年的冬季呢
+     2. 炸弹人 问涛宝
+
+43. 出狱思路:
+
+     1. 进入新的回合开始, onEvent_PlayerRoundBegin
+         1. 如果在监狱
+             1. 后端给前端发送 TypeOprt.TO_PRISON_OUT(5) 操作
+
+             2. 前端弹出监狱Panel
+
+             3. 用户点击是或者否对应回包的nRequest 1和0
+                 GameEvents.SendCustomGameEventToServer
+
+             4. 后端GameConfig.onMsg_oprt ==> processPrisonOut
+
+         2. 如果不在监狱==>正常roll点
+             1. roll点豹子到达三次
+                 - onEvent_Roll ==> setInPrison
+
+             2. roll点走到监狱路径
+                 - onPath ==> setInPrison
+
+44. 注意前端面板应该仅展示给对应的玩家
+
+45. 
 
 
 ## 注意/调整
@@ -1283,6 +1309,12 @@ GSWaitOprt_Entry()执行Roll点,调用GameConfig.processRoll()方法{
   - 2技能 反击螺旋
 
   - 兵卒技能 反击螺旋
+- TODO:
+- 血魔
+- 龙骑
+- 小狗
+- 尸王
+- 炸弹人
 
 
 

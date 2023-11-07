@@ -30,7 +30,7 @@
 
 "Event_BZLevelUp", { eBZ: eBZ, nLevel: nLevel }
 
-"Event_PlayerRoundBegin", { oPlayer: oPlayer, bRoll: true }
+"Event_PlayerRoundBegin", { oPlayer: oPlayer, bRoll: true , bIgnore?: boolean}
 
 "Event_GSWait_Over"
 
@@ -143,3 +143,7 @@
         damage: number;
         bIgnore?: boolean;
     }
+
+"Event_PrisonOut", {
+    player: Player
+}

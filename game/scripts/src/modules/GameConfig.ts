@@ -6,11 +6,12 @@ import { Auction } from "../mode/auction"
 import { Constant } from "../mode/constant"
 import { DeathClearing } from "../mode/deathclearing"
 import { Filters } from "../mode/filters"
-import { GS_DeathClearing, GS_Finished, GS_Move, GS_None, GS_ReadyStart, GS_Wait, GS_WaitOperator, PS_AtkMonster, PS_InPrison, TBuyItem_SideAndSecret, TGameRecord_AYZZ, TypeOprt } from "../mode/gamemessage"
+import { GS_DeathClearing, GS_Finished, GS_Move, GS_None, GS_ReadyStart, GS_Wait, GS_WaitOperator, PS_AtkMonster, PS_InPrison, TBuyItem_SideAndSecret, TGameRecord_AYZZ, TP_PRISON, TypeOprt } from "../mode/gamemessage"
 import { GameRecord } from "../mode/gamerecord"
 import { HudError } from "../mode/huderror"
 import { Trade } from "../mode/trade"
 import { PathManager } from "../path/PathManager"
+import { PathPrison } from "../path/pathprison"
 import { PathDomain } from "../path/pathsdomain/pathdomain"
 import { PathTP } from "../path/pathtp"
 import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
@@ -429,7 +430,10 @@ export class GameConfig {
             }
 
         }
-
+        // if (oPlayer.m_eHero.GetUnitName() == "npc_dota_hero_phantom_assassin") {
+        //     nNum1 = 5
+        //     nNum2 = 5
+        // }
         // 删除操作
         const tabOprt = this.checkOprt(tabData, true)
         tabOprt["nNum1"] = nNum1
@@ -454,8 +458,6 @@ export class GameConfig {
                 bIgnore: 0,
                 nNum1: nNum1,
                 nNum2: nNum2,
-                // nNum1: 2,
-                // nNum2: 3,
                 player: oPlayer
             })
         })
@@ -593,8 +595,57 @@ export class GameConfig {
     }
 
     /**处理出狱 */
-    processPrisonOut(tabData) {
+    processPrisonOut(tabData: { nPlayerID: number; typeOprt: number; nPathID?: number; nRequest?: number }) {
+        let tabOprt = this.checkOprt(tabData)
+        print("===processPrisonOut===0")
+        print("===processPrisonOut===GameState:",GameRules.GameLoop.getGameState())
+        DeepPrintTable(tabOprt as any)
+        const oPlayer = GameRules.PlayerManager.getPlayer(tabData.nPlayerID)
 
+        // 验证操作
+        tabOprt["nRequest"] = (() => {
+            if (tabData.nRequest == 1) {
+                // 玩家买活,验证金币
+                if (oPlayer.GetGold() < tabOprt["nGold"]) {
+                    // 错误提示
+                    HudError.FireLocalizeError(tabData.nPlayerID, "Error_NeedGold")
+                    return 2
+                }
+            }
+            return tabData.nRequest
+        })()
+        print("===processPrisonOut===1")
+        DeepPrintTable(tabOprt as any)
+        // 回包
+        GameRules.PlayerManager.sendMsg("GM_OperatorFinished", tabOprt, tabData.nPlayerID)
+        if (tabOprt["nRequest"] > 1) {
+            return
+        }
+
+        // 成功删除操作
+        this.checkOprt(tabData, true)
+
+        // 买活出狱
+        if (tabOprt["nRequest"] == 1) {
+            (GameRules.PathManager.getPathByType(TP_PRISON)[0] as PathPrison).setOutPrison(oPlayer)
+            // 扣钱
+            oPlayer.setGold(-tabOprt["nGold"])
+            oPlayer.m_eHero.ModifyHealth(oPlayer.m_eHero.GetMaxHealth(), null, false, 0)
+            GameRules.GameConfig.showGold(oPlayer, -tabOprt["nGold"])
+
+            // TODO:设置游戏记录
+            // GameRecord:setGameRecord
+
+        }
+
+        // 发送Roll点操作
+        tabOprt = {
+            nPlayerID: oPlayer.m_nPlayerID,
+            typeOprt: TypeOprt.TO_Roll,
+        }
+        this.broadcastOprt(tabOprt)
+        print("===processPrisonOut===GameState:",GameRules.GameLoop.getGameState())
+        this.m_timeOprt = Constant.TIME_OPERATOR
     }
 
     /**处理打野 */
