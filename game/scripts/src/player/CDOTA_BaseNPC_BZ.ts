@@ -8,7 +8,7 @@ import { modifier_intellect } from "../modifiers/hero/modifier_intellect";
 import { modifier_primary_attribute } from "../modifiers/hero/modifier_primary_attribute";
 import { modifier_strength } from "../modifiers/hero/modifier_strength";
 import { PathDomain } from "../path/pathsdomain/pathdomain";
-import { AHMC, IsValid } from "../utils/amhc";
+import { IsValid } from "../utils/amhc";
 
 export interface CDOTA_BaseNPC_BZ extends CDOTA_BaseNPC_Creature {
     primaryAttribute: number
@@ -37,6 +37,7 @@ export interface CDOTA_BaseNPC_BZ extends CDOTA_BaseNPC_Creature {
 
     get06ItemByName(sName: string, itemIgnore?): CDOTA_Item
     get09ItemByName(sName: string, itemIgnore?): CDOTA_Item
+    setBattleState(bBattle?: boolean): void
 }
 
 const PrimaryAttributes = {
@@ -62,6 +63,12 @@ export class CDOTA_BaseNPC_BZ {
             const sHeroName = unit.GetUnitName()
             const tData = KeyValues.UnitsKv[sHeroName]
             print("===init_Event_BZCreate===")
+            unit.m_bBattle = false
+            unit.setBattleState = (bBattle?: boolean) => {
+                if (bBattle == null) { this.m_bBattle = false; return }
+                this.m_bBattle = bBattle
+            }
+
             DeepPrintTable(tData)
             if (tData == null || tData.AttributePrimary == null) {
                 return

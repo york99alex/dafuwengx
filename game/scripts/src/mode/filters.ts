@@ -18,21 +18,24 @@ export class Filters {
     }
 
     static DamageFilter(event: DamageEvent): boolean {
+        // 深拷贝event给tEvent
+        let tEvent = { ...event }
         // 触发攻击事件
-        GameRules.EventManager.FireEvent("Event_Atk", event)
+        GameRules.EventManager.FireEvent("Event_Atk", tEvent)
         // 触发被攻击事件
-        GameRules.EventManager.FireEvent("Event_BeAtk", event)
+        GameRules.EventManager.FireEvent("Event_BeAtk", tEvent)
         if (event.bIgnore) {
             return false    // 忽略订单
         }
         // 触发受伤事件
-        GameRules.EventManager.FireEvent("Event_OnDamage", event)
+        GameRules.EventManager.FireEvent("Event_OnDamage", tEvent)
         print("===DamageFilter===damage:", event.damage)
         print("===DamageFilter===damagetype:", event.damagetype_const)
         print("===DamageFilter===bIgnore:", event.bIgnore)
         print("===DamageFilter===bIgnoreGold:", event.bIgnoreGold)
         print("===DamageFilter===bIgnoreDamageSelf:", event.bIgnoreDamageSelf)
         print("===DamageFilter===bIgnoreBZHuiMo:", event.bIgnoreBZHuiMo)
+        event.damage = tEvent.damage
         return true
     }
 

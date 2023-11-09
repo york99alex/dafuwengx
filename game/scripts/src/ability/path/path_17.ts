@@ -5,6 +5,7 @@ import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
 import { AHMC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
+import { ParaAdjuster } from "../../utils/paraadjuster";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
 
@@ -279,6 +280,7 @@ export class modifier_path_17_l1 extends BaseModifier {
 
             }
         }))
+        Timers.CreateTimer(0.1, () => ParaAdjuster.ModifyMana(oPlayer.m_eHero))
     }
     DeclareFunctions(): ModifierFunction[] {
         return [

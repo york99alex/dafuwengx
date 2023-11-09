@@ -1,6 +1,7 @@
     //  游戏状态
     export const GS_None = 0
     export const GS_Begin = 1
+    export const GS_RoundBefore = 1
     export const GS_Wait = 2
     export const GS_WaitOperator = 3
     export const GS_Move = 4

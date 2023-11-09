@@ -53,7 +53,24 @@ export default function Precache(context: CScriptPrecacheContext) {
             'effect/arrow/star3_2.vpcf',
             'particles/units/heroes/hero_legion_commander/legion_duel_ring.vpcf',
             'particles/ui/ui_game_start_hero_spawn.vpcf',
-            'particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf'
+            'particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf',
+            'particles/generic_gameplay/rune_doubledamage.vpcf',
+            'particles/generic_gameplay/rune_haste.vpcf',
+            'particles/generic_gameplay/rune_invisibility.vpcf',
+            'particles/generic_gameplay/rune_regeneration.vpcf',
+            'particles/generic_gameplay/rune_bounty.vpcf',
+            'particles/generic_gameplay/rune_arcane.vpcf',
+            'particles/generic_gameplay/rune_shield.vpcf',
+            'particles/generic_gameplay/rune_wisdom.vpcf',
+            'particles/generic_gameplay/rune_doubledamage_owner.vpcf',
+            'particles/generic_gameplay/rune_haste_owner.vpcf',
+            'particles/generic_hero_status/status_invisibility_start.vpcf',
+            'particles/generic_gameplay/rune_regen_owner.vpcf',
+            'particles/generic_gameplay/rune_bounty_owner.vpcf',
+            'particles/generic_gameplay/rune_arcane_owner.vpcf',
+            'particles/status_fx/status_effect_shield_rune.vpcf',
+            'particles/econ/items/outworld_devourer/od_shards_exile/od_shards_exile_prison_start.vpcf',
+            
         ],
         context
     );

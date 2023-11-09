@@ -430,10 +430,13 @@ export class GameConfig {
             }
 
         }
-        // if (oPlayer.m_eHero.GetUnitName() == "npc_dota_hero_phantom_assassin") {
-        //     nNum1 = 5
-        //     nNum2 = 5
-        // }
+        if (oPlayer.m_eHero.GetUnitName() == "npc_dota_hero_phantom_assassin") {
+            nNum1 = 7
+            nNum2 = 9
+        }else{
+            nNum1 = 3
+            nNum2 = 5
+        }
         // 删除操作
         const tabOprt = this.checkOprt(tabData, true)
         tabOprt["nNum1"] = nNum1
@@ -598,7 +601,7 @@ export class GameConfig {
     processPrisonOut(tabData: { nPlayerID: number; typeOprt: number; nPathID?: number; nRequest?: number }) {
         let tabOprt = this.checkOprt(tabData)
         print("===processPrisonOut===0")
-        print("===processPrisonOut===GameState:",GameRules.GameLoop.getGameState())
+        print("===processPrisonOut===GameState:", GameRules.GameLoop.getGameState())
         DeepPrintTable(tabOprt as any)
         const oPlayer = GameRules.PlayerManager.getPlayer(tabData.nPlayerID)
 
@@ -644,7 +647,7 @@ export class GameConfig {
             typeOprt: TypeOprt.TO_Roll,
         }
         this.broadcastOprt(tabOprt)
-        print("===processPrisonOut===GameState:",GameRules.GameLoop.getGameState())
+        print("===processPrisonOut===GameState:", GameRules.GameLoop.getGameState())
         this.m_timeOprt = Constant.TIME_OPERATOR
     }
 

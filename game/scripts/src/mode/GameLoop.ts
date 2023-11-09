@@ -172,7 +172,8 @@ export class GameLoop {
         GameRules.EventManager.FireEvent("Event_PlayerRoundBegin", tabEvent)
 
         print("===Event_PlayerRoundBegin===tabEvent:")
-        DeepPrintTable(tabEvent)
+        print("oPlayer:",tabEvent.oPlayer)
+        print("bRoll:",tabEvent.bRoll)
         if (tabEvent.bRoll) {
             // 广播roll点操作
             const tabOprt = {
@@ -233,8 +234,9 @@ export class GameLoop {
         Timers.CreateTimer(0, () => {
             print(this.m_timeWait -= 1)
             if (this.m_timeWait <= 0) {
-                // wait超时，回到上个操作
-                this.GameStateService.send("towaitoprt")
+                // 如果移动超时,blink然后进入waitoprt
+                // TODO:
+                // this.GameStateService.send("towaitoprt")
                 return
             }
             return 0.1

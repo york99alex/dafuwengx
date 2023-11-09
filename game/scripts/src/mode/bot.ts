@@ -13,9 +13,5 @@ export class Bot {
 
         // FindClearSpaceForUnit(eBot1, GameRules.PathManager.getPathByType(TP_START)[0].getNilPos(eBot1), true)
         FindClearSpaceForUnit(eBot2, GameRules.PathManager.getPathByType(TP_START)[0].getNilPos(eBot2), true)
-
-        // GameRules.PathManager.moveToPath(eBot1, GameRules.PathManager.getPathByType(TP_START)[0], false, null)
-        // GameRules.PathManager.moveToPath(eBot2, GameRules.PathManager.getPathByType(TP_START)[0], false, null)
-
     }
 }

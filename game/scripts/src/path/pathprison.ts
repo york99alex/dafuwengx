@@ -9,7 +9,7 @@ export class PathPrison extends Path {
     m_tabENPC: CDOTA_BaseNPC_Hero[] = null			// 路径上的全部NPC实体（监狱玩家）
     m_tabCount: number[] = null          // 玩家持续在监狱的次数记录
     m_eCity: CBaseEntity = null				// 建筑点实体
-    m_eDoom: CDOTA_BaseNPC
+    m_eDoom: CDOTA_BaseNPC_Creature
 
     constructor(entity: CBaseEntity) {
         super(entity)
@@ -21,13 +21,9 @@ export class PathPrison extends Path {
 
         // 游戏开始生成恶鬼
         GameRules.EventManager.Register("Event_GameStart", () => {
-            Timers.CreateTimer(5, () => {
-                const orgin = this.m_eCity.GetAbsOrigin()
-                AHMC.CreateUnitAsync("prison_eg", orgin, this.m_entity.GetAnglesAsVector().y, null, DotaTeam.GOODGUYS, (eDoom: CDOTA_BaseNPC) => {
-                    this.m_eDoom = eDoom
-                    eDoom.StartGestureWithPlaybackRate(GameActivity.DOTA_INTRO, 0.5)
-                    eDoom.SetAbsOrigin(orgin + Vector(-100, 100, -100) as Vector)
-                })
+            const orgin = this.m_eCity.GetAbsOrigin() + Vector(-150, 130, 100) as Vector
+            AHMC.CreateUnitAsync("prison_doom", orgin, Vector(100, -100, 0), null, DotaTeam.GOODGUYS, (eDoom: CDOTA_BaseNPC_Creature) => {
+                this.m_eDoom = eDoom
             })
             return true
         })

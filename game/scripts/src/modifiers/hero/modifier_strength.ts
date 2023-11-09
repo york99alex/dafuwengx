@@ -45,9 +45,12 @@ export class modifier_strength extends BaseModifier {
         }
     }
 
-    // DeclareFunctions(): ModifierFunction[] {
-    //     return [ModifierFunction.HEALTH_REGEN_CONSTANT]
-    // }
+    DeclareFunctions(): ModifierFunction[] {
+        return [
+            ModifierFunction.HEALTH_REGEN_CONSTANT,
+            // ModifierFunction.HEALTH_BONUS
+        ]
+    }
 
     // GetModifierConstantHealthRegen(): number {
     //     return Constant.ATTRIBUTE.STRENGTH_HP_REGEN * this.GetStackCount()

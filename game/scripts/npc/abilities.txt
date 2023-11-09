@@ -467,4 +467,78 @@
 		"AbilityTextureName" "path_18"
 		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
 	}
+	"rune_0" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/rune/rune_0"
+		"AbilityValues" {
+			"duration" "2"
+		}
+		"MaxLevel" "1"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	}
+	"rune_1" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/rune/rune_1"
+		"AbilityValues" {
+			"duration" "2"
+		}
+		"MaxLevel" "1"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	}
+	"rune_3" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/rune/rune_3"
+		"AbilityValues" {
+			"duration" "2"
+		}
+		"MaxLevel" "1"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	}
+	"rune_4" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/rune/rune_4"
+		"AbilityValues" {
+			"duration" "2"
+		}
+		"MaxLevel" "1"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	}
+	"rune_5" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/rune/rune_5"
+		"AbilityValues" {
+			"gold" "500"
+		}
+		"MaxLevel" "1"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	}
+	"rune_6" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/rune/rune_6"
+		"AbilityValues" {
+			"duration" "2"
+			"cdsub" "1"
+			"manasub" "1"
+		}
+		"MaxLevel" "1"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	}
+	"rune_8" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/rune/rune_8"
+		"AbilityValues" {
+			"exp" "5"
+		}
+		"MaxLevel" "1"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	}
+	"rune_9" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/rune/rune_9"
+		"AbilityValues" {
+			"shield" "50"
+		}
+		"MaxLevel" "1"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	}
 }

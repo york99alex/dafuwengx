@@ -6,7 +6,7 @@ export class Path {
     m_typePath: number 			// 路径类型
 
     m_entity: CBaseEntity 			// 路径实体
-    m_eLog: CBaseEntity 			    // 路径Log实体
+    // m_eLog: CBaseEntity 			    // 路径Log实体
     m_eUnit = null	    // 路径单位
 
     m_tabEJoin: CEntityInstance[]         // 停留在路径上的实体
@@ -29,12 +29,12 @@ export class Path {
         strName = strName.slice(5)
         this.m_nID = tonumber(strName)
 
-        this.m_eLog = Entities.FindByName(null, "PathLog_" + this.m_nID)
-        if (this.m_eLog != null) {
-            // 创建log单位
-            this.m_eUnit = CreateUnitByName("PathLog_" + this.m_nID, this.m_eLog.GetAbsOrigin(), false, null, null, DotaTeam.NEUTRALS)
-            this.m_eUnit.m_path = this
-        }
+        // this.m_eLog = Entities.FindByName(null, "PathLog_" + this.m_nID)
+        // if (this.m_eLog != null) {
+        //     // 创建log单位
+        //     this.m_eUnit = CreateUnitByName("PathLog_" + this.m_nID, this.m_eLog.GetAbsOrigin(), false, null, null, DotaTeam.NEUTRALS)
+        //     this.m_eUnit.m_path = this
+        // }
 
         this.initNilPos()
         this.setPathState(Constant.TypePathState.None)

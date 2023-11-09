@@ -287,7 +287,7 @@ export class PathDomain extends Path {
         if (oPlayer && oPlayerOwn && IsValid(entity)) {
             for (const v of this.m_tabENPC) {
                 if (v == entity) {
-                    entity.m_bBattle = true
+                    entity.setBattleState(true)
                     oPlayer.m_bGCLD = true
                     oPlayerOwn.setBzAttack(entity, true)
                     oPlayerOwn.setBzAtker(entity, oPlayer.m_eHero)
@@ -310,7 +310,7 @@ export class PathDomain extends Path {
         this.m_nPlayerIDGCLD = oPlayer.m_nPlayerID
 
         // 设置兵卒攻击
-        this.m_tabENPC[0].m_bBattle = true
+        this.m_tabENPC[0].setBattleState(true)
 
         oPlayer.setPlayerState(PS_AtkHero)
 
@@ -344,7 +344,6 @@ export class PathDomain extends Path {
             }
             // 攻城时不扣钱
             event.bIgnoreGold = true
-            event.bIgnore = false
             if (event.damage >= e.GetHealth()) {
                 print("===atkCity finish===bWin:", e == this.m_tabENPC[0])
                 // 一方死亡，战斗结束
@@ -356,7 +355,7 @@ export class PathDomain extends Path {
                     oPlayer.m_eHero.ModifyHealth(oPlayer.m_eHero.GetMaxHealth(), null, false, 0)
                 }
             }
-        }, null, 10000))
+        }, this, 10000))
 
         // 设置游戏记录
         // TODO:
@@ -404,7 +403,7 @@ export class PathDomain extends Path {
         this.m_tEventIDGCLD = null
 
         if (IsValid(this.m_tabENPC[0])) {
-            this.m_tabENPC[0].m_bBattle = null
+            this.m_tabENPC[0].setBattleState()
             oPlayer.m_bGCLD = null
             oPlayerOwn.setBzAttack(this.m_tabENPC[0])
             oPlayerOwn.setBzAtker(this.m_tabENPC[0], oPlayer.m_eHero, true)

@@ -1047,7 +1047,7 @@ export class Player {
             && bit.band(this.m_nPlayerState, PS_InPrison) == 0
         print("===setAllBZAttack===bCan:", bCan)
         function filter(eBZ: CDOTA_BaseNPC_BZ) {
-            return !eBZ.m_bBattle   // 忽略战斗中的兵卒
+            return !eBZ.m_path.m_nPlayerIDGCLD   // 忽略战斗中的兵卒
         }
 
         if (bCan) {
@@ -1098,8 +1098,9 @@ export class Player {
                     bz.m_tabAtker = bz.m_tabAtker.filter(atker => atker != eAtaker)
                 } else {
                     bz.m_tabAtker.push(eAtaker)
-                    bz.m_tabAtker = bz.m_tabAtker.filter((atker, index) => {
-                        return bz.m_tabAtker.indexOf(atker) == index
+                    // 删去bz.m_tabAtker中重复的元素
+                    bz.m_tabAtker = bz.m_tabAtker.filter((value, index, arr) => {
+                        return arr.indexOf(value) === index
                     })
                     this.ctrlBzAtk(bz)
                 }
@@ -1512,7 +1513,7 @@ export class Player {
                 }
                 oVictim.ModifyHealth(nHealth, null, false, 0)
             }
-            // event.damage = 0
+            event.damage = 0
         }
     }
 
@@ -1608,7 +1609,7 @@ export class Player {
 
             // 设置兵卒攻击,英雄魔免物免
             let nState = PS_AtkBZ
-            if (0 == bit.band(PS_AtkMonster + PS_AtkHero), this.m_nPlayerState) {
+            if (0 == bit.band(PS_AtkMonster + PS_AtkHero, this.m_nPlayerState)) {
                 nState += PS_PhysicalImmune
             } else {
                 tEventID.push(GameRules.EventManager.Register("Event_GCLDEnd", (tEvent) => {

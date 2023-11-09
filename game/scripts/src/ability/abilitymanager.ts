@@ -4,6 +4,7 @@ import { BaseAbility, BaseItem } from "../utils/dota_ts_adapter"
 import { TSBaseAbility } from "./tsBaseAbilty"
 import { modifier_fix_damage } from "../modifiers/modifier_fix_damage"
 import { AHMC, IsValid } from "../utils/amhc"
+import { ParaAdjuster } from "../utils/paraadjuster"
 
 export class AbilityManager {
 
@@ -247,7 +248,11 @@ export class AbilityManager {
                 }
                 if (buff["m_nRound"] <= 0) {
                     if (IsValid(buff)) {
+                        // const owner = buff.GetParent()
                         buff.Destroy()
+                        // if(owner.IsRealHero()){
+                        //     ParaAdjuster.ModifyMana(owner)
+                        // }
                     }
                     return true
                 }
