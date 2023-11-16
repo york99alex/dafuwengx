@@ -81,7 +81,7 @@ export class PathRune extends Path {
             // this.m_typeRune = RuneType.SHIELD
             do {
                 this.m_typeRune = RandomInt(RuneType.INVALID + 1, DOTA_RUNE_COUNT)
-            } while (this.m_typeRune != RuneType.BOUNTY && RUNE_SETTINGS[this.m_typeRune])
+            } while (this.m_typeRune != RuneType.BOUNTY && !RUNE_SETTINGS[this.m_typeRune])
         } else {
             this.m_typeRune = RuneType.BOUNTY
         }
@@ -124,6 +124,16 @@ export class PathRune extends Path {
 }
 
 /**神符信息 */
+const RuneNum = [
+    RuneType.DOUBLEDAMAGE,
+    RuneType.HASTE,
+    RuneType.INVISIBILITY,
+    RuneType.REGENERATION,
+    RuneType.BOUNTY,
+    RuneType.ARCANE,
+    RuneType.XP,
+    RuneType.SHIELD
+]
 const RUNE_SETTINGS: { [key: number]: { model: string, particle: string, sound: string } } = {
     // 双倍
     [RuneType.DOUBLEDAMAGE]: {

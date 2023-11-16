@@ -3,7 +3,6 @@ import { Constant } from "../mode/constant"
 import { Path } from "../path/Path"
 import { AHMC, IsValid } from "../utils/amhc"
 import { PathDomain } from "../path/pathsdomain/pathdomain"
-import { reloadable } from "../utils/tstl-utils"
 import { CDOTA_BaseNPC_BZ } from "./CDOTA_BaseNPC_BZ"
 import { TSBaseAbility } from "../ability/tsBaseAbilty"
 import { ParaAdjuster } from "../utils/paraadjuster"
@@ -22,7 +21,6 @@ export type DamageEvent = {
 }
 
 
-@reloadable
 export class Player {
 
     m_bRoundFinished: boolean			//  此轮中已结束回合
@@ -239,6 +237,9 @@ export class Player {
         print("===setNetTableInfo===")
         const keyname = "player_info_" + this.m_nPlayerID as player_info
         const tabData = CustomNetTables.GetTableValue("GamingTable", keyname)
+        if (this.m_pathCur) {
+            tabData.nPathCurID = this.m_pathCur.m_nID
+        }
         // 拥有的路径信息
         let tabOwnPath: number[] = []
         for (const key in this.m_tabMyPath) {
@@ -261,7 +262,7 @@ export class Player {
             nGold: this.m_nGold,
             nSumGold: this.m_nSumGold,
             bRoundFinished: this.m_bRoundFinished ? 1 : 0,
-            nPathCurID: tabData == null ? 1 : this.m_pathCur.m_nID,
+            nPathCurID: this.m_pathCur != null ? this.m_pathCur.m_nID : 1,
             nSteamID64: tabData == null ? PlayerResource.GetSteamAccountID(this.m_nPlayerID) : tabData.nSteamID64,
             nSteamID32: tabData == null ? PlayerResource.GetSteamID(this.m_nPlayerID) : tabData.nSteamID32,
             tabPathHasBZ: tabBzPath,

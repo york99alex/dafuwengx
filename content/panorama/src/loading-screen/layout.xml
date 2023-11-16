@@ -1,9 +1,5 @@
 <root>
-    <scripts>
-        <include src="./script.tsx" />
-    </scripts>
-    <styles>
-        <include src="./styles.less" />
-    </styles>
-    <Panel class="root" hittest="false" />
-</root>
+    <Panel class="root" hittest="false">
+        <Image id="ix" class="imageSize" src="file://{images}/custom_game/loading.png" style="width:100%; height:100%;" />
+        <Panel/>
+    </root>

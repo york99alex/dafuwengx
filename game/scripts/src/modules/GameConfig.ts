@@ -20,9 +20,7 @@ import { PlayerManager } from "../player/playermanager"
 import { IsValid } from "../utils/amhc"
 import { EventManager } from "../utils/eventmanager"
 import { ParaAdjuster } from "../utils/paraadjuster"
-import { reloadable } from "../utils/tstl-utils"
 
-@reloadable
 export class GameConfig {
 
     _DotaState: []
@@ -430,13 +428,13 @@ export class GameConfig {
             }
 
         }
-        if (oPlayer.m_eHero.GetUnitName() == "npc_dota_hero_phantom_assassin") {
-            nNum1 = 7
-            nNum2 = 9
-        }else{
-            nNum1 = 3
-            nNum2 = 5
-        }
+        // if (oPlayer.m_eHero.GetUnitName() == "npc_dota_hero_phantom_assassin") {
+        //     nNum1 = 2
+        //     nNum2 = 8
+        // }else{
+        //     nNum1 = 3
+        //     nNum2 = 5
+        // }
         // 删除操作
         const tabOprt = this.checkOprt(tabData, true)
         tabOprt["nNum1"] = nNum1

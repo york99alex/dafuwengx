@@ -3,14 +3,11 @@ import { GS_Begin, PS_AtkHero, PS_InPrison, TypeOprt } from "../../mode/gamemess
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ"
 import { DamageEvent, Player } from "../../player/player"
 import { AHMC, IsValid } from "../../utils/amhc"
-import { ParaAdjuster } from "../../utils/paraadjuster"
-import { reloadable } from "../../utils/tstl-utils"
 import { Path } from "../Path"
 
 /**
  * 领地路径
  */
-@reloadable
 export class PathDomain extends Path {
 
     m_tabENPC: CDOTA_BaseNPC_BZ[]		// 路径上的全部NPC实体（城池的兵卒）

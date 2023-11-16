@@ -460,6 +460,10 @@ Panorama 用户界面，用来在您的游戏模式中自定义界面
 
 
 
+## 关闭小地图
+
+
+
 # 本地化
 
 addon_schinese.txt 是本地化文件，可以修改技能描述等。
@@ -634,7 +638,7 @@ https://www.npmjs.com/
 
 
 
-## 编写技能
+## 编写技能Ability
 
 .\excels\kv.xlxs	通过这个excel编写所有于kv相关的,包括英雄, 技能, 物品等
 
@@ -652,9 +656,18 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 
 
+## 编写物品Item
+
+
+
+
+
 ## TS的Modifier
 
-
+```typescript
+@registerModifier()
+export class modifier_XXX extends BaseModifier { }
+```
 
 
 
@@ -752,6 +765,9 @@ export const App = () => {	// 根组件
    - [ 深入理解 TypeScript](https://jkchao.github.io/typescript-book-chinese/)
 - 地图编辑器Hammer教学 [鸽子群来了个做地图的年轻人-LV1-](https://www.bilibili.com/video/BV1qx411g7eT/?spm_id_from=333.788.recommend_more_video.-1)
 - 云端-石墨文档-[Dota2游廊新手入门教程 (shimo.im)](https://shimo.im/docs/rp3OVyBdxjtnBmAm/read)
+   - [游戏中传递数据的几种方式 (shimo.im)](https://shimo.im/docs/VMAPVQeg5pU1lXqg/read)
+   - [如何绑定快捷键 (shimo.im)](https://shimo.im/docs/XKq4M9lR8VcE4lkN/read)
+
 
 
 ## ==文件目录/路径==
@@ -812,8 +828,17 @@ export const App = () => {	// 根组件
 ## 测试/作弊指令
 
 - [常用测试指令 - DotA中文维基 - 灰机wiki (huijiwiki.com)](https://dota.huijiwiki.com/p/140255)
+
 - [【翻译+教程】DotA2 测试/作弊指令大全【dota2吧】_百度贴吧 (baidu.com)](https://tieba.baidu.com/p/2199201677?red_tag=2585701344&see_lz=1)
-- 
+
+- ==如何测试==?
+
+  - 本体启动选项 `-console` 进入客户端后可以按反斜杠 `\` 打开控制行 (可同时配合本地虚拟机双开)
+    ![image-20231116142335544](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/11/16/14-23-35-256ee1df7868db4bd454fda2a1c7d2ba-image-20231116142335544-6085d0.png)
+
+    效果如下图
+    ![image-20231116142955060](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/11/16/14-29-55-07f80930ac8dda0d0641a225df41e70b-image-20231116142955060-516247.png)
+
 
 ## 开发工具
 
@@ -1034,159 +1059,163 @@ export const App = () => {	// 根组件
 9. 实现CamerManage的前端部分
         检查pa一技能使用后镜头是否正确移动
 
-10. huderror前端部分实现
+10. 音效:
 
-11. GameLoop需重新调整的点
+    1. 玩家回合倒计时结束自动骰子时声音异常Roll声音会重复发出
 
-      1. 切换状态是否需要封装？
-      2. 新增GSRoundBefore
-      3. 重新理清状态图
+11. huderror前端部分实现
 
-12. ~~Player.setState重写~~，替换为setPlayerState
+12. GameLoop需重新调整的点
 
-      -  遗留问题: BKB魔法免疫问题
-        - 屠夫钩子对bkb
+       1. 切换状态是否需要封装？
+       2. 新增GSRoundBefore
+       3. 重新理清状态图
 
-13. 在一个合适的时机通过后端事件通知前端关闭操作提示框
+13. ~~Player.setState重写~~，替换为setPlayerState
 
-14. 检查setPlayerMuteTrade能否生效
+       -  遗留问题: BKB魔法免疫问题
+         - 屠夫钩子对bkb
 
-15. ==前端相关==
+14. 在一个合适的时机通过后端事件通知前端关闭操作提示框
 
-       1. 关闭以下前端页面:
-         1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
-         2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
+15. 检查setPlayerMuteTrade能否生效
 
-         3. Label id="AbilityBuildComment"  #AbilityBuildComment
+16. ==前端相关==
 
-       2. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
+        1. 关闭以下前端页面:
+               1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
+               2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
 
-       3. 禁用天赋树点击事件 参考http://www.dota2rpg.com/forum.php?mod=viewthread&tid=4491&highlight=%3F%3F%3F
+               3. Label id="AbilityBuildComment"  #AbilityBuildComment
 
-       4. 移除天赋树属性面板
+        2. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
 
-16. 本地化翻译所有this.m_strCastError
+        3. 禁用天赋树点击事件 参考http://www.dota2rpg.com/forum.php?mod=viewthread&tid=4491&highlight=%3F%3F%3F
 
-17. ~~setKillCountAdd源码逻辑是否合理~~
+        4. 移除天赋树属性面板
 
-18. 重写了技能tsbaseability的GetCastRange
+17. 本地化翻译所有this.m_strCastError
 
-      1. 需要分清不同技能的情况
-      2. 默认重写的tsbaseability中的getcastrange是以路径ID为距离计算返回的整数
-      3. 如果分情况需要再对应的技能里重写getcastrange
-      4. ==TODO==：调整PA技能范围为格数，而非距离
+18. ~~setKillCountAdd源码逻辑是否合理~~
 
-19. 游戏记录模块 game_record客户端操作, 更新记录面板
+19. 重写了技能tsbaseability的GetCastRange
 
-20. 分开事件, 分开发送？可能没有必要，待确认
+       1. 需要分清不同技能的情况
+       2. 默认重写的tsbaseability中的getcastrange是以路径ID为距离计算返回的整数
+       3. 如果分情况需要再对应的技能里重写getcastrange
+       4. ==TODO==：调整PA技能范围为格数，而非距离
 
-21. ~~PlaySort与机器人的情况有点问题,总是021~~
-      注意使用RandInt方法来生成随机数
+20. 游戏记录模块 game_record客户端操作, 更新记录面板
 
-22. 添加 unit 
+21. 分开事件, 分开发送？可能没有必要，待确认
 
-          1. "path_17_diao"
-              	{
-                    		"BaseClass"		"npc_dota_creature"
-                    		"Model"			"models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
-                    		"ModelScale"	"1"
-                    		"Ability1"	"jiaoxie"
-                    		"Ability2"	"no_bar"
-                    		// "Ability3"	"no_collision"
-                    		"Ability4"	"magic_immune"
-                    		"Ability5"	"physical_immune"
-                    		"Ability6"	"no_all_select"
-                    		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
-                    		"StatusHealth"	"1"
-                    	}
+22. ~~PlaySort与机器人的情况有点问题,总是021~~
+       注意使用RandInt方法来生成随机数
 
-      1. setDiaoGesture 雕哥施法检查
-      2. 雕哥施法鬼畜，第一个飓风不会消除
+23. 添加 unit 
 
-23. PathRune
+           1. "path_17_diao"
+               	{
+                     		"BaseClass"		"npc_dota_creature"
+                     		"Model"			"models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
+                     		"ModelScale"	"1"
+                     		"Ability1"	"jiaoxie"
+                     		"Ability2"	"no_bar"
+                     		// "Ability3"	"no_collision"
+                     		"Ability4"	"magic_immune"
+                     		"Ability5"	"physical_immune"
+                     		"Ability6"	"no_all_select"
+                     		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+                     		"StatusHealth"	"1"
+                     	}
 
-24. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+       1. setDiaoGesture 雕哥施法检查
+       2. 雕哥施法鬼畜，第一个飓风不会消除
 
-25. Roll点的随机路径平衡机制数值思考
+24. PathRune
 
-26. 检查网表GamingTable的nSumGold总资产计算是否正确
+25. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
 
-27. addon_schinese.txt :		"RandomTip"						"随机英雄"
+26. Roll点的随机路径平衡机制数值思考
 
-28. 统一所有英雄移速 ? 重新设计移速，290力量300全才/智力310敏捷，再根据强弱适当调整
+27. 检查网表GamingTable的nSumGold总资产计算是否正确
 
-29. 检查FireEvent的args参数为空的情况
+28. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
-30. /**设置结算数据 */
-          setGameEndData(){}
+29. 统一所有英雄移速 ? 重新设计移速，290力量300全才/智力310敏捷，再根据强弱适当调整
 
-31. ~~==sendMsg和broadcastMsg的tabData格式==~~
+30. 检查FireEvent的args参数为空的情况
 
-32. ~~gamestate的计时器update是0.1调用一次~~
+31. /**设置结算数据 */
+           setGameEndData(){}
 
-33. ~~// 监听玩家移动回路径~~
+32. ~~==sendMsg和broadcastMsg的tabData格式==~~
 
-34. ~~onMove如何处理gamestateloop~~
+33. ~~gamestate的计时器update是0.1调用一次~~
 
-35. 英雄经验系统/数值
+34. ~~// 监听玩家移动回路径~~
 
-36. 客户端,前端 请求传输数据缩减
+35. ~~onMove如何处理gamestateloop~~
 
-37. 考虑把莉娜的兵卒技能换成光击阵
+36. 英雄经验系统/数值
 
-38. 验证AMHC.Damage
-          ```
-                      if (tData) {
-                          for (const v of tData) {
-                              event.push(v)
-                          }
-                      }
-          ```
+37. 客户端,前端 请求传输数据缩减
 
-39. HudError:FireLocalizeError
+38. 考虑把莉娜的兵卒技能换成光击阵
 
-40. ~~Script Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
-          ~~stack traceback:~~
-          ~~[C]: in function '__index'~~
+39. 验证AMHC.Damage
+           ```
+                       if (tData) {
+                           for (const v of tData) {
+                               event.push(v)
+                           }
+                       }
+           ```
 
-      通过  if (IsClient())  return 解决
-       但是为什么? 原因? 如何理解
+40. HudError:FireLocalizeError
 
-41. custom_sounds 有问题
+41. ~~Script Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
+           ~~stack traceback:~~
+           ~~[C]: in function '__index'~~
 
-          Failed loading resource "soundevents/custom_sounds.vsndevts_c" (ERROR_BADREQUEST: Code error - bad request)
-          参考
+       通过  if (IsClient())  return 解决
+        但是为什么? 原因? 如何理解
 
-42. 天赋树
+42. custom_sounds 有问题
 
-      1. 龙骑 2024年1月是哪年的冬季呢
-      2. 炸弹人 问涛宝
+           Failed loading resource "soundevents/custom_sounds.vsndevts_c" (ERROR_BADREQUEST: Code error - bad request)
+           参考
 
-43. 出狱思路:
+43. 天赋树
 
-      1. 进入新的回合开始, onEvent_PlayerRoundBegin
-          1. 如果在监狱
-              1. 后端给前端发送 TypeOprt.TO_PRISON_OUT(5) 操作
+       1. 龙骑 2024年1月是哪年的冬季呢
+       2. 炸弹人 问涛宝
 
-              2. 前端弹出监狱Panel
+44. 出狱思路:
 
-              3. 用户点击是或者否对应回包的nRequest 1和0
-                  GameEvents.SendCustomGameEventToServer
+       1. 进入新的回合开始, onEvent_PlayerRoundBegin
+           1. 如果在监狱
+               1. 后端给前端发送 TypeOprt.TO_PRISON_OUT(5) 操作
 
-              4. 后端GameConfig.onMsg_oprt ==> processPrisonOut
+               2. 前端弹出监狱Panel
 
-          2. 如果不在监狱==>正常roll点
-              1. roll点豹子到达三次
-                  - onEvent_Roll ==> setInPrison
+               3. 用户点击是或者否对应回包的nRequest 1和0
+                   GameEvents.SendCustomGameEventToServer
 
-              2. roll点走到监狱路径
-                  - onPath ==> setInPrison
+               4. 后端GameConfig.onMsg_oprt ==> processPrisonOut
 
-44. 注意前端面板应该仅展示给对应的玩家
+           2. 如果不在监狱==>正常roll点
+               1. roll点豹子到达三次
+                   - onEvent_Roll ==> setInPrison
 
-45. 做一个动画效果,肉山大转盘, 可以不花钱投,但是轮盘概率会很小中将,
-     如果给100,中将的就会轮盘区域就会动画过渡变大
-     给更多变更大
+               2. roll点走到监狱路径
+                   - onPath ==> setInPrison
+
+45. 注意前端面板应该仅展示给对应的玩家
+
+46. 做一个动画效果,肉山大转盘, 可以不花钱投,但是轮盘概率会很小中将,
+      如果给100,中将的就会轮盘区域就会动画过渡变大
+      给更多变更大
 
 
 ## 注意/调整
@@ -1336,6 +1365,12 @@ GSWaitOprt_Entry()执行Roll点,调用GameConfig.processRoll()方法{
 Ti决赛壁画英雄
 
 兽王 美杜莎 滚滚 白虎 土猫
+
+
+
+## 装备
+
+
 
 
 

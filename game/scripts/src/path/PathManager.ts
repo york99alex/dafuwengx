@@ -1,10 +1,8 @@
 import { Constant } from "../mode/constant";
 import { IsValid } from "../utils/amhc";
-import { reloadable } from "../utils/tstl-utils";
 import { Path } from "./Path";
 import { PathFactory } from "./pathfactory";
 
-@reloadable
 export class PathManager {
 
     /**全部路径 */

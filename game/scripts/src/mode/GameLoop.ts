@@ -172,8 +172,8 @@ export class GameLoop {
         GameRules.EventManager.FireEvent("Event_PlayerRoundBegin", tabEvent)
 
         print("===Event_PlayerRoundBegin===tabEvent:")
-        print("oPlayer:",tabEvent.oPlayer)
-        print("bRoll:",tabEvent.bRoll)
+        print("oPlayer:", tabEvent.oPlayer)
+        print("bRoll:", tabEvent.bRoll)
         if (tabEvent.bRoll) {
             // 广播roll点操作
             const tabOprt = {
@@ -200,6 +200,7 @@ export class GameLoop {
     GSWaitOprt_Entry() {
         this.setGameState(GS_WaitOperator)
         print("GameState_GSWaitOprt_Entry")
+        let hasUrgent = false
         this.Timer(() => {
             GameRules.GameConfig.updateTimeOprt()
             const timeOprt = GameRules.GameConfig.m_timeOprt
@@ -212,11 +213,13 @@ export class GameLoop {
             } else if (timeOprt == 0) {
                 EmitGlobalSound("Custom.Time.Finish")
             } else if (0 < timeOprt && timeOprt < 51) {
-                if (timeOprt % 10 == 0) {
+                if (timeOprt % 10 == 0 && !hasUrgent) {
                     EmitGlobalSound("Custom.Time.Urgent")
                     // 默认自动操作roll点
                     GameRules.GameConfig.autoOprt(TypeOprt.TO_Roll)
+                    hasUrgent = true
                 }
+                if (timeOprt < 50 && hasUrgent) hasUrgent = false
             }
             return 0.1
         }, 0)

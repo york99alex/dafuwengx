@@ -1,13 +1,3 @@
 .image-precache {
-	background-image: url("file://{images}/custom_game/banner_bz/npc_dota_hero_axe_png.png");
-	background-image: url("file://{images}/custom_game/banner_bz/npc_dota_hero_bloodseeker_png.png");
-	background-image: url("file://{images}/custom_game/banner_bz/npc_dota_hero_dragon_knight_png.png");
-	background-image: url("file://{images}/custom_game/banner_bz/npc_dota_hero_life_stealer_png.png");
-	background-image: url("file://{images}/custom_game/banner_bz/npc_dota_hero_lina_png.png");
-	background-image: url("file://{images}/custom_game/banner_bz/npc_dota_hero_meepo_png.png");
-	background-image: url("file://{images}/custom_game/banner_bz/npc_dota_hero_phantom_assassin_png.png");
-	background-image: url("file://{images}/custom_game/banner_bz/npc_dota_hero_pudge_png.png");
-	background-image: url("file://{images}/custom_game/banner_bz/npc_dota_hero_techies_png.png");
-	background-image: url("file://{images}/custom_game/banner_bz/npc_dota_hero_undying_png.png");
-	background-image: url("file://{images}/custom_game/banner_bz/npc_dota_hero_zuus_png.png");
+	background-image: url("file://{images}/custom_game/loading.png");
 }

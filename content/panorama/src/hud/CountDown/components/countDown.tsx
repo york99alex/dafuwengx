@@ -4,8 +4,7 @@ import { useGameEvent, useNetTableKey } from 'react-panorama-x';
 export function CountDown() {
   const { time } = useNetTableKey("GamingTable", "timeOprt") ?? { time: 0 }
   const { nRound } = useNetTableKey("GamingTable", "round") ?? { nRound: 0 }
-  const order = useNetTableKey("GamingTable", "order")
-  console.log(order)
+  const heroName = useNetTableKey("GamingTable", "order")?.heroName ?? ""
 
   const [nNum1, setNum1] = useState(0)
   const [nNum2, setNum2] = useState(0)
@@ -51,7 +50,7 @@ export function CountDown() {
 
       <Panel style={{ flowChildren: 'right' }}>
         <Label text={`当前回合玩家：`} />
-        <DOTAHeroImage heroimagestyle='icon' heroname={order?.heroName} />
+        <DOTAHeroImage heroimagestyle='icon' heroname={heroName} />
       </Panel>
     </Panel>
   );
