@@ -1,3 +1,4 @@
+import { CardManager } from '../card/cardmanager';
 import { GameLoop } from '../mode/GameLoop';
 import { HeroSelection } from '../mode/HeroSelection';
 import { Bot } from '../mode/bot';
@@ -18,6 +19,7 @@ declare global {
         PathManager: PathManager;
         HeroSelection: HeroSelection;
         GameConfig: GameConfig;
+        CardManager: CardManager;
     }
 }
 

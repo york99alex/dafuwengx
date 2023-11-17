@@ -1,0 +1,12 @@
+"cardlist"
+{
+    //阎刃
+    "Card_MAGIC_InfernalBlade"
+    {
+        "CardType"          "20005"
+        "ManaCost"          "1"
+        "CastType"          "4"
+        "CardKind"          "2"
+        "IsSupply"          "1"
+    }
+}

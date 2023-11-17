@@ -462,6 +462,14 @@ Panorama 用户界面，用来在您的游戏模式中自定义界面
 
 ## 关闭小地图
 
+[Hiding HUD with SetHUDVisible](https://moddota.com/panorama/hiding-hud-with-sethudvisible)
+
+前端:
+
+```tsx
+GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_HUD_VISIBILITY_ACTION_MINIMAP, false);
+```
+
 
 
 # 本地化
@@ -1049,6 +1057,7 @@ export const App = () => {	// 根组件
    2. 选择英雄/升级/监听装备事件
    3. ==问题== :
    4. 还需要继续测试
+   5. 测试技能蓝量和CD能否正确缩减
 
 7. UnRegister Failed Event Move?
 
@@ -1370,7 +1379,30 @@ Ti决赛壁画英雄
 
 ## 装备
 
+中立物品槽位: 15
 
+TP卷轴槽位: 16
+
+设置TP卷轴槽位覆盖的装备 SetTPScrollSlotItemOverride(itemName: string): nil #CDOTABaseGameMode
+
+==注意装备共享share时不应该共享tp卷轴==
+
+### itemlist
+
+- 跳刀: 占装备位
+  - 可升级大跳刀
+- TP: 占卷轴位
+
+
+
+## 卡牌
+
+
+
+### cardlist
+
+- 阎刃	"Card_MAGIC_InfernalBlade"
+- 
 
 
 

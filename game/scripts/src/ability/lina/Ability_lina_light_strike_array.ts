@@ -115,7 +115,7 @@ export class Ability_lina_light_strike_array extends TSBaseAbility {
                 })
             }
         }
-        
+
         // 触发耗蓝
         GameRules.EventManager.FireEvent("Event_HeroManaChange", { player: oPlayer, oAblt: this })
         // 设置冷却

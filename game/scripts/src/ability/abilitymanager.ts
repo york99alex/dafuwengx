@@ -5,6 +5,7 @@ import { TSBaseAbility } from "./tsBaseAbilty"
 import { modifier_fix_damage } from "../modifiers/modifier_fix_damage"
 import { AHMC, IsValid } from "../utils/amhc"
 import { ParaAdjuster } from "../utils/paraadjuster"
+import { TSBaseItem } from "./tsBaseItem"
 
 export class AbilityManager {
 
@@ -26,7 +27,7 @@ export class AbilityManager {
         const spawnedUnit = EntIndexToHScript(event.entindex as EntityIndex) as CDOTA_BaseNPC
         if (spawnedUnit == null) return
         // // 添加默认modifier
-        // const tData = KeyValues.UnitsKv[spawnedUnit.GetUnitName()]
+        // const tData = KeyValues.UnitsKV[spawnedUnit.GetUnitName()]
         // if (tData != null && tData.AmbientModifiers != null && tData.AmbientModifiers != "") {
 
         // }
@@ -169,7 +170,7 @@ export class AbilityManager {
     }
 
     /**显示技能范围标识 */
-    static showAbltMark(ability: TSBaseAbility, entity: CDOTA_BaseNPC, tabPathID: number[]) {
+    static showAbltMark(ability: TSBaseAbility | TSBaseItem, entity: CDOTA_BaseNPC, tabPathID: number[]) {
         if (ability.timeAbltMark && GameRules.GetDOTATime(false, true) - ability.timeAbltMark < 1) {
             return
         }

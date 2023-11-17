@@ -16,4 +16,23 @@
 		"AbilityCooldown" "1 2 3 4"
 		"AbilityManaCost" "1 1 1 1"
 	}
+	"item_tp_scroll" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "ability/items/item_tp_scroll"
+		"AbilityValues" {
+		}
+		"ItemShareability" "ITEM_FULLY_SHAREABLE"
+		"ItemPurchasable" "0"
+		"ItemSellable" "0"
+		"ItemPermanent" "0"
+		"ItemQuality" "consumable"
+		"ItemInitialCharges" "1"
+		"ItemDisplayCharges" "1"
+		"ItemStackable" "1"
+		"Model" "models/props_gameplay/tpscroll01.vmdl"
+		"AbilityCooldown" "1"
+		"AbilityManaCost" "1"
+		"AbilityTextureName" "item_tpscroll"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT"
+	}
 }

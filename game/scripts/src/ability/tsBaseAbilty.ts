@@ -1,3 +1,4 @@
+import { KeyValues } from "../kv"
 import { GS_DeathClearing, GS_Move, GS_Supply, GS_Wait, PS_AtkHero, PS_Die, PS_InPrison } from "../mode/gamemessage"
 import { Path } from "../path/Path"
 import { PathManager } from "../path/PathManager"
@@ -26,7 +27,7 @@ export class TSBaseAbility extends BaseAbility {
     // 技能标识特效
     tabAbltMarkPtcl?: ParticleID[]
     // 前摇/持续施法进行等待状态标识可以进行
-    yieldWait?:boolean
+    yieldWait?: boolean
 
     constructor() {
         super()
@@ -35,8 +36,8 @@ export class TSBaseAbility extends BaseAbility {
         this.m_tBaseCooldown = []
 
         let tAbility
-        if (IsServer()) {
-            tAbility = this.GetAbilityKeyValues()
+        if (IsClient()) {
+            tAbility = KeyValues.AbilitiesKV[this.GetName()]
         } else {
             return
         }
@@ -158,8 +159,9 @@ export class TSBaseAbility extends BaseAbility {
 
     /**返回技能等级的魔法消耗 */
     GetManaCost(nLevel: number): number {
-        if (!this.m_bInit) {
-            this.constructor()
+        if (!this.m_bInit && IsClient()) {
+            this.m_bInit = true
+            return
         }
 
         // 获取冷却缩减

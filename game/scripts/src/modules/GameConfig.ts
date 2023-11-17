@@ -69,7 +69,8 @@ export class GameConfig {
         // 选择英雄时间
         GameRules.SetHeroSelectionTime(Constant.TIME_SELECTHERO)
         GameRules.SetHeroSelectPenaltyTime(0)
-        GameRules.GetGameModeEntity().SetSelectionGoldPenaltyEnabled(false)
+        const gamemode = GameRules.GetGameModeEntity()
+        gamemode.SetSelectionGoldPenaltyEnabled(false)
         // 设置决策时间
         GameRules.SetStrategyTime(0.5)
         // 设置展示时间
@@ -84,30 +85,31 @@ export class GameConfig {
         GameRules.SetGoldTickTime(60)
         GameRules.SetGoldPerTick(0)
         // 禁用随机英雄奖励
-        GameRules.GetGameModeEntity().SetRandomHeroBonusItemGrantDisabled(true)
+        gamemode.SetRandomHeroBonusItemGrantDisabled(true)
         // 无战争迷雾
-        GameRules.GetGameModeEntity().SetFogOfWarDisabled(true)
+        gamemode.SetFogOfWarDisabled(true)
         AddFOWViewer(DotaTeam.GOODGUYS, Vector(0, 0, 0), 1500, -1, true)
         // 无广播员
-        GameRules.GetGameModeEntity().SetAnnouncerDisabled(true)
+        gamemode.SetAnnouncerDisabled(true)
         // 禁止买活
-        GameRules.GetGameModeEntity().SetBuybackEnabled(false)
+        gamemode.SetBuybackEnabled(false)
         GameRules.SetHeroRespawnEnabled(false)
-        GameRules.GetGameModeEntity().SetDeathOverlayDisabled(false)
+        gamemode.SetDeathOverlayDisabled(false)
         // 禁用死亡时损失金钱
-        GameRules.GetGameModeEntity().SetLoseGoldOnDeath(true)
+        gamemode.SetLoseGoldOnDeath(true)
         // 物品
-        GameRules.GetGameModeEntity().SetStashPurchasingDisabled(false) //开关储藏处购买功能
-        GameRules.GetGameModeEntity().SetStickyItemDisabled(true) //隐藏快速购买处的物品
-        GameRules.GetGameModeEntity().SetRecommendedItemsDisabled(true) //禁止推荐物品
+        gamemode.SetStashPurchasingDisabled(false) //开关储藏处购买功能
+        gamemode.SetStickyItemDisabled(true) //隐藏快速购买处的物品
+        gamemode.SetRecommendedItemsDisabled(true) //禁止推荐物品
 
-        GameRules.GetGameModeEntity().SetDaynightCycleDisabled(true) // 是否禁用白天黑夜循环
+        gamemode.SetDaynightCycleDisabled(true) // 是否禁用白天黑夜循环
         GameRules.SetTimeOfDay(0.5) // 白天
-        GameRules.GetGameModeEntity().SetCustomXPRequiredToReachNextLevel(Constant.LEVEL_EXP)
-        GameRules.GetGameModeEntity().SetUseCustomHeroLevels(true) // 是否启用自定义英雄等级
-        GameRules.GetGameModeEntity().SetCustomHeroMaxLevel(25) // 设置自定义英雄最大等级
+        gamemode.SetCustomXPRequiredToReachNextLevel(Constant.LEVEL_EXP)
+        gamemode.SetUseCustomHeroLevels(true) // 是否启用自定义英雄等级
+        gamemode.SetCustomHeroMaxLevel(25) // 设置自定义英雄最大等级
 
-        GameRules.GetGameModeEntity().SetInnateMeleeDamageBlockAmount(0)    // 设置近战英雄天生格挡的伤害
+        gamemode.SetInnateMeleeDamageBlockAmount(0)    // 设置近战英雄天生格挡的伤害
+        gamemode.SetTPScrollSlotItemOverride("item_tp_scroll")  // 设置TP卷轴槽位覆盖装备
 
         // GameRules.SetCustomGameSetupAutoLaunchDelay(3) // 游戏设置时间（默认的游戏设置是最开始的队伍分配）
         // GameRules.SetCustomGameSetupRemainingTime(3) // 游戏设置剩余时间
@@ -153,26 +155,27 @@ export class GameConfig {
         GameRules.GameLoop = new GameLoop()
         this.registerEvent()
         this.registerMessage()
-        this.registerThink()    // 调用GameLoop
+        this.registerThink()    // 调用GameLoop,开始进入倒计时和回合
 
-        Filters.init()  // 过滤器
+        Filters.init()  // 全局过滤器
         const BZ = new CDOTA_BaseNPC_BZ()
         BZ.init() // 兵卒属性
         ParaAdjuster.init()// 平衡性常数, 注册事件智力不加蓝
         ParaAdjuster.SetIntToMana(0)
-        GameRules.PlayerManager = new PlayerManager()    // 玩家管理模块初始化
+        GameRules.PlayerManager = new PlayerManager()    // 玩家管理模块
         GameRules.PlayerManager.init()
-        GameRules.PathManager = new PathManager()    // 路径管理模块初始化
+        GameRules.PathManager = new PathManager()    // 路径管理模块
         GameRules.PathManager.init()
         AbilityManager.init()   // 技能模块
-        // Card
+        GameRules.CardManager = new CardManager()   // 卡牌管理模块
+        GameRules.CardManager.init()
         // Trade
         // Auction
         // DeathClearing
         // ItemManager
         // Selection
         // Supply
-        GameRules.HeroSelection = new HeroSelection()   // 自动选择英雄模块初始化
+        GameRules.HeroSelection = new HeroSelection()   // 自动选择英雄模块
         GameRules.HeroSelection.init()
 
         this.m_bNoSwap = string.find(GetMapName(), "no_swap") ? 1 : 0
@@ -957,16 +960,24 @@ export class GameConfig {
     /**增加轮数 */
     addRound() {
         GameRules.PlayerManager.m_tabPlayers.forEach((oPlayer) => {
-            const abltCount = oPlayer.m_eHero.GetAbilityCount()
-            for (let i = 0; i < abltCount; i++) {
-                const ability = oPlayer.m_eHero.GetAbilityByIndex(i)
-                if (ability) {
-                    print("oPlayer__", oPlayer.m_nPlayerID, "===heroname:", oPlayer.m_eHero.GetUnitName(), " ===index(i)", i, "===abilityname:", oPlayer.m_eHero.GetAbilityByIndex(i).GetAbilityName())
-                }
+            // const abltCount = oPlayer.m_eHero.GetAbilityCount()
+            // for (let i = 0; i < abltCount; i++) {
+            //     const ability = oPlayer.m_eHero.GetAbilityByIndex(i)
+            //     if (ability) {
+            //         print("oPlayer__", oPlayer.m_nPlayerID, "===heroname:", oPlayer.m_eHero.GetUnitName(), " ===index(i)", i, "===abilityname:", oPlayer.m_eHero.GetAbilityByIndex(i).GetAbilityName())
+            //     }
+            // }
+            // oPlayer.m_eHero.FindAllModifiers().forEach((oBuff) => {
+            //     print("oPlayer__", oPlayer.m_nPlayerID, "===heroname:", oPlayer.m_eHero.GetUnitName(), " ===oBuff===name:", oBuff.GetName())
+            // })
+
+            oPlayer.m_eHero.AddItemByName("item_tp_scroll")
+            // print("===item_psychic_headband===slot_index:", oPlayer.m_eHero.FindItemInInventory("item_psychic_headband").GetItemSlot())
+            for (let i = 0; i < 21; i++) {
+                const item = oPlayer.m_eHero.GetItemInSlot(i)
+                if (item == null) continue
+                print("===heroname:", oPlayer.m_eHero.GetUnitName(), " ===slot_index:", i, "===itemName:", item.GetName())
             }
-            oPlayer.m_eHero.FindAllModifiers().forEach((oBuff) => {
-                print("oPlayer__", oPlayer.m_nPlayerID, "===heroname:", oPlayer.m_eHero.GetUnitName(), " ===oBuff===name:", oBuff.GetName())
-            })
         })
 
         this.m_nRound += 1

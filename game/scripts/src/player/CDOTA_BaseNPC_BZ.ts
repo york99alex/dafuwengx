@@ -61,7 +61,7 @@ export class CDOTA_BaseNPC_BZ {
 
             const unit = event.entity
             const sHeroName = unit.GetUnitName()
-            const tData = KeyValues.UnitsKv[sHeroName]
+            const tData = KeyValues.UnitsKV[sHeroName]
             print("===init_Event_BZCreate===")
             unit.m_bBattle = false
             unit.setBattleState = (bBattle?: boolean) => {

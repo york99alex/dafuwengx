@@ -102,6 +102,9 @@ module.exports = {
                 // if filename is not set, it will use the name of the entry
                 { import: './hud/layout.xml', type: 'Hud' },
 
+                { import: './hero_selection/layout.xml', type: 'HeroSelection' },
+                { import: './scoreboard/layout.xml', type: 'FlyoutScoreboard' },
+
             ],
         }),
         // use ignore plugin to ignore less files changes
