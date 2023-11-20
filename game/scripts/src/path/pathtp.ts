@@ -1,3 +1,4 @@
+import { item_qtg_tpscroll } from "../item/items/item_qtg_tpscroll";
 import { Constant } from "../mode/constant";
 import { PS_InPrison, TypeOprt } from "../mode/gamemessage";
 import { Player } from "../player/player";
@@ -38,7 +39,7 @@ export class PathTP extends Path {
             this.setBanner()
             this.m_nOwnerID = null
         } else {
-            // TODO:占领音效
+            // 占领音效
             EmitGlobalSound("Custom.AYZZ")
 
             this.setBanner(player.m_eHero.GetUnitName())
@@ -63,8 +64,8 @@ export class PathTP extends Path {
             GameRules.GameConfig.sendOprt(tabOprt)
             print("======发送安营扎寨操作======")
         } else if (player.m_nPlayerID == this.m_nOwnerID) {
-            // 己方TP点,给传送卡牌
-            // TODO: player:setCardAdd(card)
+            // 己方TP点,给传送卷轴
+            player.m_eHero.AddItemByName(item_qtg_tpscroll.name)
         } else {
             // 敌方TP点,交过路费
             const playerOwn = GameRules.PlayerManager.getPlayer(this.m_nOwnerID)
@@ -74,7 +75,7 @@ export class PathTP extends Path {
                 player.giveGold(nGold, playerOwn)
                 GameRules.GameConfig.showGold(playerOwn, nGold)
                 GameRules.GameConfig.showGold(player, -nGold)
-                // TODO:给钱音效
+                // 给钱音效
                 EmitGlobalSound("Custom.Gold.Sell")
             }
         }

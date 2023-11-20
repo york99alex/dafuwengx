@@ -6,6 +6,7 @@ import { modifier_fix_damage } from "../modifiers/modifier_fix_damage"
 import { AHMC, IsValid } from "../utils/amhc"
 import { ParaAdjuster } from "../utils/paraadjuster"
 import { TSBaseItem } from "./tsBaseItem"
+import { Get06ItemByName } from "../item/itemmanager"
 
 export class AbilityManager {
 
@@ -51,7 +52,7 @@ export class AbilityManager {
         }
 
         const bItem = ability.IsItem()
-        const eCaster = ability.GetCaster() as CDOTA_BaseNPC_BZ
+        const eCaster = ability.GetCaster()
         const strName = ability.GetAbilityName()
         let tEventID = []
         let sThink
@@ -116,10 +117,11 @@ export class AbilityManager {
             }
             // 倒计时的物品被放入背包
             if (bItem) {
-                if ((ability as CDOTA_Item).GetItemSlot() >= 6) {
+                const slot = (ability as CDOTA_Item).GetItemSlot()
+                if (slot >= 6 && slot < 10) {
                     // 切换到在物品栏的同物品
                     if (IsValid(eCaster)) {
-                        const item = eCaster.get06ItemByName(strName)
+                        const item = Get06ItemByName(eCaster, strName)
                         if (!item) {
                             return  // 没有就不刷CD
                         }

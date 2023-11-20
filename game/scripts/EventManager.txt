@@ -147,3 +147,13 @@
 "Event_PrisonOut", {
     player: Player
 }
+
+"Event_ItemValid", { item: item}
+
+"Event_ItemInvalid", {
+                        item: item2,
+                        entity: caster,
+                        nItemEntID : item2.GetEntityIndex(),
+                        nItemSlot : item2.GetItemSlot(),
+                        sItemName: item2.GetAbilityName()
+                    }

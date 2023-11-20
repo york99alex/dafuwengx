@@ -1,4 +1,5 @@
 import { AbilityManager } from "../ability/abilitymanager"
+import { item_qtg_tpscroll } from "../item/items/item_qtg_tpscroll"
 import { CardManager } from "../card/cardmanager"
 import { GameLoop } from "../mode/GameLoop"
 import { HeroSelection } from "../mode/HeroSelection"
@@ -20,6 +21,7 @@ import { PlayerManager } from "../player/playermanager"
 import { IsValid } from "../utils/amhc"
 import { EventManager } from "../utils/eventmanager"
 import { ParaAdjuster } from "../utils/paraadjuster"
+import { ItemManager } from "../item/itemmanager"
 
 export class GameConfig {
 
@@ -109,7 +111,7 @@ export class GameConfig {
         gamemode.SetCustomHeroMaxLevel(25) // 设置自定义英雄最大等级
 
         gamemode.SetInnateMeleeDamageBlockAmount(0)    // 设置近战英雄天生格挡的伤害
-        gamemode.SetTPScrollSlotItemOverride("item_tp_scroll")  // 设置TP卷轴槽位覆盖装备
+        gamemode.SetTPScrollSlotItemOverride(item_qtg_tpscroll.name)  // 设置TP卷轴槽位覆盖装备
 
         // GameRules.SetCustomGameSetupAutoLaunchDelay(3) // 游戏设置时间（默认的游戏设置是最开始的队伍分配）
         // GameRules.SetCustomGameSetupRemainingTime(3) // 游戏设置剩余时间
@@ -172,7 +174,8 @@ export class GameConfig {
         // Trade
         // Auction
         // DeathClearing
-        // ItemManager
+        GameRules.ItemManager = new ItemManager()
+        GameRules.ItemManager.init()
         // Selection
         // Supply
         GameRules.HeroSelection = new HeroSelection()   // 自动选择英雄模块
@@ -948,6 +951,14 @@ export class GameConfig {
         return (nOrder + 1) % GameRules.PlayerManager.getPlayerCount()
     }
 
+    /**自动处理可选操作 */
+    autoOptionalOprt(oPlayer: Player) {
+        GameRules.GameConfig.autoOprt(TypeOprt.TO_TP, oPlayer)
+        GameRules.GameConfig.autoOprt(TypeOprt.TO_GCLD, oPlayer)
+        GameRules.GameConfig.autoOprt(TypeOprt.TO_AtkMonster, oPlayer)
+        GameRules.GameConfig.autoOprt(TypeOprt.TO_RandomCard, oPlayer)
+    }
+
     /**飘金 */
     showGold(oPlayer: Player, nGold: number) {
         // 通知UI显式花费
@@ -971,7 +982,6 @@ export class GameConfig {
             //     print("oPlayer__", oPlayer.m_nPlayerID, "===heroname:", oPlayer.m_eHero.GetUnitName(), " ===oBuff===name:", oBuff.GetName())
             // })
 
-            oPlayer.m_eHero.AddItemByName("item_tp_scroll")
             // print("===item_psychic_headband===slot_index:", oPlayer.m_eHero.FindItemInInventory("item_psychic_headband").GetItemSlot())
             for (let i = 0; i < 21; i++) {
                 const item = oPlayer.m_eHero.GetItemInSlot(i)

@@ -8,7 +8,6 @@ import { modifier_intellect } from "../modifiers/hero/modifier_intellect";
 import { modifier_primary_attribute } from "../modifiers/hero/modifier_primary_attribute";
 import { modifier_strength } from "../modifiers/hero/modifier_strength";
 import { PathDomain } from "../path/pathsdomain/pathdomain";
-import { IsValid } from "../utils/amhc";
 
 export interface CDOTA_BaseNPC_BZ extends CDOTA_BaseNPC_Creature {
     primaryAttribute: number
@@ -248,27 +247,4 @@ export class CDOTA_BaseNPC_BZ {
             ParticleManager.ReleaseParticleIndex(particleID)
         }
     }
-
-    /**获取单位物品栏6格中的物品用名字 */
-    get06ItemByName(sName: string, itemIgnore?) {
-        for (let i = 0; i < 6; i++) {
-            const item = this.GetItemInSlot(i)
-            if (item && item != itemIgnore && !item.IsNull() && item.GetAbilityName() == sName) {
-                return item
-            }
-        }
-    }
-
-    /**获取单位物品栏加背包9格中的物品用名字 */
-    get09ItemByName(sName: string, itemIgnore?) {
-        if (IsValid(this)) {
-            for (let i = 0; i < 9; i++) {
-                const item = this.GetItemInSlot(i)
-                if (item && item != itemIgnore && !item.IsNull() && item.GetAbilityName() == sName) {
-                    return item
-                }
-            }
-        }
-    }
-
 }

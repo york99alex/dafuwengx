@@ -1,0 +1,182 @@
+"dota_shops"
+{
+	"consumables"   // 消耗品
+	{
+        "item"		"item_tp_scroll"
+		"item"		"item_faerie_fire"				
+		"item"		"item_enchanted_mango"
+		// "item"		"item_bottle"
+		// "item"		"item_aghanims_shard"
+	}
+
+	"attributes"    // 属性
+	{
+		"item"		"item_belt_of_strength"
+		"item"		"item_boots_of_elves"
+		"item"		"item_robe"
+		"item"		"item_crown"
+
+		"item"		"item_ogre_axe"
+		"item"		"item_blade_of_alacrity"
+		"item"		"item_staff_of_wizardry"
+		"item"		"item_diadem"
+		
+	}
+
+	"weapons_armor" // 装备
+	{
+		"item"		"item_iron_talon"   // 猎野爪
+		"item"		"item_orb_of_venom"
+		"item"		"item_blight_stone"
+		"item"		"item_blades_of_attack"
+		"item"		"item_gloves"
+		"item"		"item_chainmail"
+		"item"		"item_quarterstaff"
+		"item"		"item_helm_of_iron_will"
+		"item"		"item_claymore"				
+	}
+			
+	"misc"  // 其他
+	{
+		"item"		"item_fluffy_hat"
+		"item"		"item_cloak"
+		"item"		"item_boots"
+
+		"item"		"item_lifesteal"
+		"item"		"item_voodoo_mask"
+
+		"item"		"item_ghost"
+		"item"		"item_blink"		
+	}	
+	
+	// Level 1 - Green Recipes
+	"basics"    // 配件
+	{		
+		"item"		"item_orb_of_corrosion"
+		"item"		"item_falcon_blade"
+		"item"		"item_power_treads"
+		"item"		"item_phase_boots"
+		"item"		"item_oblivion_staff"
+ 		"item"		"item_mask_of_madness"
+		"item"		"item_moon_shard"	
+	}
+
+	// Level 2 - Blue Recipes
+	"support"   // 辅助
+	{
+		"item"		"item_buckler"
+		"item"		"item_ring_of_basilius"
+		"item"		"item_headdress"
+		"item"		"item_tranquil_boots"
+		"item"		"item_medallion_of_courage"
+		"item"		"item_arcane_boots"
+		"item"		"item_pipe"			
+	}
+				
+	"magics"    // 法器		
+	{
+		"item"		"item_force_staff"
+		"item"		"item_witch_blade"
+		"item"		"item_rod_of_atos"
+		"item"		"item_dagon"
+		"item"		"item_orchid"	
+		"item"		"item_solar_crest"
+		"item"		"item_refresher"
+		"item"		"item_octarine_core"
+		"item"		"item_sheepstick"
+		"item"		"item_gungir"
+	}
+		
+	// Level 3 - Purple Recipes	
+	"defense"   // 防具
+	{
+		"item"		"item_vanguard"
+		"item"		"item_blade_mail"
+		"item"		"item_soul_booster" // 振魂石,再次鼓起丧失的勇气
+		"item"		"item_crimson_guard"		
+		"item"		"item_black_king_bar"
+		"item"		"item_hurricane_pike"	
+		// "item"		"item_sphere"
+		"item"		"item_shivas_guard"
+		"item"		"item_heart"	
+		"item"		"item_assault"
+	}
+			
+	"weapons"   // 兵刃
+	{	
+		"item"		"item_lesser_crit"	
+ 		"item"		"item_desolator"	
+		"item"		"item_ethereal_blade"
+		// "item"		"item_nullifier"	
+		"item"		"item_butterfly"
+		"item"		"item_radiance"
+		"item"		"item_greater_crit"
+		"item"		"item_rapier"
+		"item"		"item_bloodthorn"
+		"item"		"item_revenants_brooch"	
+	}
+		
+	// Level 4 - Orange / Orb / Artifacts				
+	"artifacts" // 宝物
+	{	
+ 		"item"		"item_dragon_lance"
+		"item"		"item_sange"
+ 		"item"		"item_yasha"
+ 		"item"		"item_kaya"
+ 		"item"		"item_mage_slayer"
+ 		"item"		"item_kaya_and_sange"
+ 		"item"		"item_sange_and_yasha"
+ 		"item"		"item_yasha_and_kaya"
+ 		"item"		"item_satanic"		
+ 		"item"		"item_skadi" 
+ 		"item"		"item_overwhelming_blink"		
+ 		"item"		"item_swift_blink"		
+ 		"item"		"item_arcane_blink"		
+	}
+
+	"sideshop1"
+	{
+		"item"		"item_tpscroll"
+		"item"		"item_magic_stick"
+		"item"		"item_quelling_blade"
+		"item"		"item_boots"
+		"item"		"item_boots_of_elves"
+		"item"		"item_belt_of_strength"
+		"item"		"item_robe"
+		"item"		"item_crown"
+	}
+
+	"sideshop2"
+	{
+		"item"		"item_gloves"
+		"item"		"item_chainmail"
+		"item"		"item_cloak"
+		"item"		"item_void_stone"
+		"item"		"item_helm_of_iron_will"
+		"item"		"item_energy_booster"
+		"item"		"item_vitality_booster"
+		"item"		"item_lifesteal"
+		"item"		"item_broadsword"
+		"item"		"item_blink"
+	}
+	
+	"secretshop"
+	{				
+		"item"		"item_ring_of_health"
+		"item"		"item_void_stone"
+		"item"		"item_cornucopia"
+		"item"		"item_energy_booster"
+		"item"		"item_vitality_booster"
+		"item"		"item_point_booster"
+		"item"		"item_talisman_of_evasion"
+		"item"		"item_platemail"
+		"item"		"item_hyperstone"
+		"item"		"item_ultimate_orb"
+		"item"		"item_demon_edge"
+		"item"		"item_mystic_staff"
+		"item"		"item_reaver"
+		"item"		"item_eagle"
+		"item"		"item_relic"
+	}
+
+}

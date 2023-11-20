@@ -1,4 +1,5 @@
 import { DamageEvent } from "../player/player"
+import { ParaAdjuster } from "../utils/paraadjuster"
 
 export class Filters {
 
@@ -39,20 +40,7 @@ export class Filters {
         return true
     }
 
-    static ExecuteOrderFilter(event: {
-        units: Record<string, EntityIndex>;
-        entindex_target: EntityIndex;
-        entindex_ability: EntityIndex;
-        issuer_player_id_const: PlayerID;
-        sequence_number_const: number;
-        queue: 0 | 1;
-        position_x: number;
-        order_type: UnitOrder;
-        position_y: number;
-        position_z: number;
-        shop_item_name: string;
-        bIgnore?: boolean
-    }): boolean {
+    static ExecuteOrderFilter(event: ExecuteOrderFilterEvent): boolean {
         /**
          * 命令常量
          *  DOTA_UNIT_ORDER_NONE = 0
@@ -113,26 +101,34 @@ export class Filters {
             || orderType == UnitOrder.PATROL
             || orderType == UnitOrder.ATTACK_TARGET
             || orderType == UnitOrder.MOVE_TO_DIRECTION) {
+            // 过滤玩家攻击，移动，脱捡装备，吃符，停止订单
             return false
         } else if (orderType == UnitOrder.MOVE_TO_POSITION) {
+            // 玩家移动
             GameRules.EventManager.FireEvent("Event_OrderMoveToPos", event)
             return false
         } else if (orderType == UnitOrder.PURCHASE_ITEM) {
+            // 购买物品
             return false
             GameRules.EventManager.FireEvent("Event_ItemBuy", event)
         } else if (orderType == UnitOrder.SELL_ITEM) {
+            // 出售物品
             GameRules.EventManager.FireEvent("Event_ItemSell", event)
         } else if (orderType == UnitOrder.DISASSEMBLE_ITEM) {
+            // 拆分物品
             GameRules.EventManager.FireEvent("Event_ItemSplit", event)
         } else if (orderType == UnitOrder.MOVE_ITEM) {
+            // 移动物品
             GameRules.EventManager.FireEvent("Event_ItemMove", event)
         } else if (orderType == UnitOrder.SET_ITEM_COMBINE_LOCK) {
+            // 锁定物品
             GameRules.EventManager.FireEvent("Event_ItemLock", event)
         } else if (orderType == UnitOrder.GIVE_ITEM) {
+            // 给予物品
             GameRules.EventManager.FireEvent("Event_ItemGive", event)
         }
 
-        if (event.bIgnore)
+        if (event["bIgnore"])
             return false
 
         return true
@@ -141,6 +137,8 @@ export class Filters {
     static ItemAddedToInventoryFilter(event: ItemAddedToInventoryFilterEvent): boolean {
         // 触发获取物品
         GameRules.EventManager.FireEvent("Event_ItemAdd", event)
+        const npc = EntIndexToHScript(event.inventory_parent_entindex_const) as CDOTA_BaseNPC
+        if (npc.IsRealHero()) Timers.CreateTimer(0.01, () => ParaAdjuster.ModifyMana(npc))
         return true
     }
 

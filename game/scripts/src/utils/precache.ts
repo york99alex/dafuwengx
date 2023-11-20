@@ -70,6 +70,11 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/generic_gameplay/rune_arcane_owner.vpcf',
             'particles/status_fx/status_effect_shield_rune.vpcf',
             'particles/econ/items/outworld_devourer/od_shards_exile/od_shards_exile_prison_start.vpcf',
+            'particles/events/ti6_teams/teleport_start_ti6_lvl3_wings_gaming.vpcf',
+            'particles/items_fx/blink_dagger_start.vpcf',
+            'particles/items_fx/blink_dagger_end.vpcf',
+            'particles/items_fx/arcane_boots.vpcf',
+            'particles/items_fx/arcane_boots_recipient.vpcf',
             
         ],
         context

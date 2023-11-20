@@ -3,18 +3,18 @@ import { render } from "react-panorama-x";
 render(<></>, $.GetContextPanel())
 
 const SelectHero = $.GetContextPanel().GetParent()!.GetParent()!.GetParent()!
-function HideHudElement(name: string) {
-    const element = SelectHero.FindChildTraverse(name)
+export function HideHudElement(context: Panel, name: string) {
+    const element = context.FindChildTraverse(name)
     element != null ? element.visible = false : null
 }
-function HideHudClassElement(classname: string) {
-    const element = SelectHero.FindChildrenWithClassTraverse(classname).forEach(x => x.visible = false)
+export function HideHudClassElement(context: Panel, classname: string) {
+    context.FindChildrenWithClassTraverse(classname).forEach(x => x.visible = false)
 }
 
-HideHudElement("PreMinimapContainer")
-HideHudElement("ViewModeControls")
-HideHudElement("FriendsAndFoes")
-HideHudClassElement("ScepterDetails")
+HideHudElement(SelectHero, "PreMinimapContainer")
+HideHudElement(SelectHero, "ViewModeControls")
+HideHudElement(SelectHero, "FriendsAndFoes")
+HideHudClassElement(SelectHero, "ScepterDetails")
 
 let child = SelectHero.FindChildTraverse("GridCategories")
 if (child) {

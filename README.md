@@ -1094,13 +1094,13 @@ export const App = () => {	// 根组件
         1. 关闭以下前端页面:
                1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
                2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
-
+    
                3. Label id="AbilityBuildComment"  #AbilityBuildComment
-
+    
         2. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
-
+    
         3. 禁用天赋树点击事件 参考http://www.dota2rpg.com/forum.php?mod=viewthread&tid=4491&highlight=%3F%3F%3F
-
+    
         4. 移除天赋树属性面板
 
 17. 本地化翻译所有this.m_strCastError
@@ -1387,13 +1387,28 @@ TP卷轴槽位: 16
 
 ==注意装备共享share时不应该共享tp卷轴==
 
+### 堆叠
+
+物品如果要堆叠并在UI界面显示堆叠数要设置以下kv值
+
+```txt
+		"ItemPermanent" "0"			// 可以被消耗
+		"ItemInitialCharges" "1"	// 获得时的充能数,也可以理解为堆叠数
+		"ItemDisplayCharges" "1"	// 是否显示充能数,也可以理解为堆叠数
+        "ItemStackable" "1"			// 是否开启堆叠
+```
+
+
+
 ### itemlist
 
 - 跳刀: 占装备位
   - 可升级大跳刀
 - TP: 占卷轴位
 
+防御: 赤红甲 强袭
 
+绿鞋, 非本人回合可以回复5%已损失生命值
 
 ## 卡牌
 

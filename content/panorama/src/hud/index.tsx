@@ -7,6 +7,7 @@ import { useXNetTableKey } from '../hooks/useXNetTable';
 import { PathPanel } from './PathPanel/components/pathPanel';
 import { CountDown } from './CountDown/components/countDown';
 import { PrisonPanel } from './PathPanel/components/prisonPanel';
+import { HideHudElement } from '../hero_selection';
 
 const Test: FC = () => {
     const data = useXNetTableKey(`test_table`, `test_key`, { data_1: `HelloWorld` });
@@ -30,3 +31,6 @@ GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_AGHANIMS_STATU
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_QUICKBUY, false)
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_COURIER, false)
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_QUICK_STATS, false)
+
+const hud = $.GetContextPanel().GetParent()!.GetParent()!.GetParent()!
+HideHudElement(hud, "CommonItems")

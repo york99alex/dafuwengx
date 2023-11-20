@@ -68,8 +68,8 @@ export class ParaAdjuster {
     /**
      * 修正函数
      * @param unit 要修正的单位
+     * @param bonus_mana 额外的蓝量
      * @param data 平衡性常数修正值，为相对DOTA标准数值的偏差，例如说你要设置力量-血量平衡性常数为15，那么这个data数值会为-5
-     * @param modi_name 修正类型
      */
     static ModifyMana(unit: CDOTA_BaseNPC_Hero, bonus_mana?: number, data?: number) {
         if (IsClient()) return
