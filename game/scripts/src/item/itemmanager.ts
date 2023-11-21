@@ -1,4 +1,5 @@
 import { TSBaseItem } from "../ability/tsBaseItem";
+import { Player } from "../player/player";
 import { IsValid } from "../utils/amhc";
 import { ParaAdjuster } from "../utils/paraadjuster";
 
@@ -6,7 +7,7 @@ import { ParaAdjuster } from "../utils/paraadjuster";
 const INDEX_ITEM = 6
 const INDEX_BACK = 8
 export class ItemManager {
-    m_tCombinable: []    //  记录合成物品，用于过滤重复合成
+    m_tCombinable: []    // 记录合成物品，用于过滤重复合成
 
     constructor() {
         this.m_tCombinable = []
@@ -116,7 +117,22 @@ export class ItemManager {
     }
     onEvent_ItemSplit() {
     }
-
+    /**
+     * 检查是否有重复物品，并统一为旧装备的CD
+     */
+    isSameItemCD(item: TSBaseItem, player: Player) {
+        if (!IsValid(item)) return
+        for (let i = 0; i < 9; i++) {
+            const itemTemp = player.m_eHero.GetItemInSlot(i)
+            if (itemTemp && IsValid(itemTemp) && itemTemp.GetName() == item.GetName()) {
+                if (!itemTemp.IsCooldownReady()) {
+                    return math.ceil(itemTemp.GetCooldownTimeRemaining())
+                } else {
+                    return false
+                }
+            }
+        }
+    }
 }
 
 export function Get06ItemByName(npc: CDOTA_BaseNPC, sName: string, itemIgnore?: TSBaseItem): CDOTA_Item {

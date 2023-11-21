@@ -101,6 +101,7 @@ export class GameConfig {
         gamemode.SetLoseGoldOnDeath(true)
         // 物品
         gamemode.SetStashPurchasingDisabled(false) //开关储藏处购买功能
+        gamemode.SetSendToStashEnabled(false) //禁止物品被送到储藏处
         gamemode.SetStickyItemDisabled(true) //隐藏快速购买处的物品
         gamemode.SetRecommendedItemsDisabled(true) //禁止推荐物品
 

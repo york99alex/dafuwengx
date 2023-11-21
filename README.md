@@ -775,8 +775,7 @@ export const App = () => {	// 根组件
 - 云端-石墨文档-[Dota2游廊新手入门教程 (shimo.im)](https://shimo.im/docs/rp3OVyBdxjtnBmAm/read)
    - [游戏中传递数据的几种方式 (shimo.im)](https://shimo.im/docs/VMAPVQeg5pU1lXqg/read)
    - [如何绑定快捷键 (shimo.im)](https://shimo.im/docs/XKq4M9lR8VcE4lkN/read)
-
-
+- [Dota2常用测试-作弊-指令大全（含物品中英对照）](https://www.magese.com/2020/12/28/Dota2%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95-%E4%BD%9C%E5%BC%8A-%E6%8C%87%E4%BB%A4%E5%A4%A7%E5%85%A8/)
 
 ## ==文件目录/路径==
 
@@ -1065,166 +1064,177 @@ export const App = () => {	// 根组件
 
 8. judgeBuffRound和 player的setRoundFinished触发的Event_PlayerRoundFinished存在问题？
 
-9. 实现CamerManage的前端部分
+9. ==装备/卡牌相关==
+
+    1. 测试CD物品在监狱的情况，比如猎野爪
+
+    2. ==TODO==
+        1. 完成CardFactory
+
+        2. 测试Player.setCardAdd里的sendMsg部分的JSON.stringify能不能正确json化字符
+
+        3. 继续item_qtg_iron_talon.OnSpellStart里的onItem_getCard(this, player, "MONSTER")整个逻辑
+
+10. 实现CamerManage的前端部分
         检查pa一技能使用后镜头是否正确移动
 
-10. 音效:
+11. 音效:
 
-    1. 玩家回合倒计时结束自动骰子时声音异常Roll声音会重复发出
+     1. 玩家回合倒计时结束自动骰子时声音异常Roll声音会重复发出
 
-11. huderror前端部分实现
+12. huderror前端部分实现
 
-12. GameLoop需重新调整的点
+13. GameLoop需重新调整的点
 
-       1. 切换状态是否需要封装？
-       2. 新增GSRoundBefore
-       3. 重新理清状态图
+        1. 切换状态是否需要封装？
+        2. 新增GSRoundBefore
+        3. 重新理清状态图
 
-13. ~~Player.setState重写~~，替换为setPlayerState
+14. ~~Player.setState重写~~，替换为setPlayerState
 
-       -  遗留问题: BKB魔法免疫问题
-         - 屠夫钩子对bkb
+        -  遗留问题: BKB魔法免疫问题
+          - 屠夫钩子对bkb
 
-14. 在一个合适的时机通过后端事件通知前端关闭操作提示框
+15. 在一个合适的时机通过后端事件通知前端关闭操作提示框
 
-15. 检查setPlayerMuteTrade能否生效
+16. 检查setPlayerMuteTrade能否生效
 
-16. ==前端相关==
+17. ==前端相关==
 
-        1. 关闭以下前端页面:
-               1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
-               2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
-    
-               3. Label id="AbilityBuildComment"  #AbilityBuildComment
-    
-        2. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
-    
-        3. 禁用天赋树点击事件 参考http://www.dota2rpg.com/forum.php?mod=viewthread&tid=4491&highlight=%3F%3F%3F
-    
-        4. 移除天赋树属性面板
+         1. 关闭以下前端页面:
+                1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
+                2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
+         
+                3. Label id="AbilityBuildComment"  #AbilityBuildComment
+         
+         2. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
+         
+         3. 禁用天赋树点击事件 参考http://www.dota2rpg.com/forum.php?mod=viewthread&tid=4491&highlight=%3F%3F%3F
+         
+         4. 移除天赋树属性面板
 
-17. 本地化翻译所有this.m_strCastError
+18. 本地化翻译所有this.m_strCastError
 
-18. ~~setKillCountAdd源码逻辑是否合理~~
+19. ~~setKillCountAdd源码逻辑是否合理~~
 
-19. 重写了技能tsbaseability的GetCastRange
+20. 重写了技能tsbaseability的GetCastRange
 
-       1. 需要分清不同技能的情况
-       2. 默认重写的tsbaseability中的getcastrange是以路径ID为距离计算返回的整数
-       3. 如果分情况需要再对应的技能里重写getcastrange
-       4. ==TODO==：调整PA技能范围为格数，而非距离
+        1. 需要分清不同技能的情况
+        2. 默认重写的tsbaseability中的getcastrange是以路径ID为距离计算返回的整数
+        3. 如果分情况需要再对应的技能里重写getcastrange
+        4. ==TODO==：调整PA技能范围为格数，而非距离
 
-20. 游戏记录模块 game_record客户端操作, 更新记录面板
+21. 游戏记录模块 game_record客户端操作, 更新记录面板
 
-21. 分开事件, 分开发送？可能没有必要，待确认
+22. 分开事件, 分开发送？可能没有必要，待确认
 
-22. ~~PlaySort与机器人的情况有点问题,总是021~~
-       注意使用RandInt方法来生成随机数
+23. ~~PlaySort与机器人的情况有点问题,总是021~~
+        注意使用RandInt方法来生成随机数
 
-23. 添加 unit 
+24. 添加 unit 
 
-           1. "path_17_diao"
-               	{
-                     		"BaseClass"		"npc_dota_creature"
-                     		"Model"			"models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
-                     		"ModelScale"	"1"
-                     		"Ability1"	"jiaoxie"
-                     		"Ability2"	"no_bar"
-                     		// "Ability3"	"no_collision"
-                     		"Ability4"	"magic_immune"
-                     		"Ability5"	"physical_immune"
-                     		"Ability6"	"no_all_select"
-                     		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
-                     		"StatusHealth"	"1"
-                     	}
+            1. "path_17_diao"
+                	{
+                      		"BaseClass"		"npc_dota_creature"
+                      		"Model"			"models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
+                      		"ModelScale"	"1"
+                      		"Ability1"	"jiaoxie"
+                      		"Ability2"	"no_bar"
+                      		// "Ability3"	"no_collision"
+                      		"Ability4"	"magic_immune"
+                      		"Ability5"	"physical_immune"
+                      		"Ability6"	"no_all_select"
+                      		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+                      		"StatusHealth"	"1"
+                      	}
 
-       1. setDiaoGesture 雕哥施法检查
-       2. 雕哥施法鬼畜，第一个飓风不会消除
+        1. setDiaoGesture 雕哥施法检查
+        2. 雕哥施法鬼畜，第一个飓风不会消除
 
-24. PathRune
+25. PathRune
 
-25. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+26. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
 
-26. Roll点的随机路径平衡机制数值思考
+27. Roll点的随机路径平衡机制数值思考
 
-27. 检查网表GamingTable的nSumGold总资产计算是否正确
+28. 检查网表GamingTable的nSumGold总资产计算是否正确
 
-28. addon_schinese.txt :		"RandomTip"						"随机英雄"
+29. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
-29. 统一所有英雄移速 ? 重新设计移速，290力量300全才/智力310敏捷，再根据强弱适当调整
+30. 统一所有英雄移速 ? 重新设计移速，290力量300全才/智力310敏捷，再根据强弱适当调整
 
-30. 检查FireEvent的args参数为空的情况
+31. 检查FireEvent的args参数为空的情况
 
-31. /**设置结算数据 */
-           setGameEndData(){}
+32. /**设置结算数据 */
+            setGameEndData(){}
 
-32. ~~==sendMsg和broadcastMsg的tabData格式==~~
+33. ~~==sendMsg和broadcastMsg的tabData格式==~~
 
-33. ~~gamestate的计时器update是0.1调用一次~~
+34. ~~gamestate的计时器update是0.1调用一次~~
 
-34. ~~// 监听玩家移动回路径~~
+35. ~~// 监听玩家移动回路径~~
 
-35. ~~onMove如何处理gamestateloop~~
+36. ~~onMove如何处理gamestateloop~~
 
-36. 英雄经验系统/数值
+37. 英雄经验系统/数值
 
-37. 客户端,前端 请求传输数据缩减
+38. 客户端,前端 请求传输数据缩减
 
-38. 考虑把莉娜的兵卒技能换成光击阵
+39. 考虑把莉娜的兵卒技能换成光击阵
 
-39. 验证AMHC.Damage
-           ```
-                       if (tData) {
-                           for (const v of tData) {
-                               event.push(v)
-                           }
-                       }
-           ```
+40. 验证AMHC.Damage
+            ```
+                        if (tData) {
+                            for (const v of tData) {
+                                event.push(v)
+                            }
+                        }
+            ```
 
-40. HudError:FireLocalizeError
+41. HudError:FireLocalizeError
 
-41. ~~Script Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
-           ~~stack traceback:~~
-           ~~[C]: in function '__index'~~
+42. ~~Script Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
+            ~~stack traceback:~~
+            ~~[C]: in function '__index'~~
 
-       通过  if (IsClient())  return 解决
-        但是为什么? 原因? 如何理解
+        通过  if (IsClient())  return 解决
+         但是为什么? 原因? 如何理解
 
-42. custom_sounds 有问题
+43. custom_sounds 有问题
 
-           Failed loading resource "soundevents/custom_sounds.vsndevts_c" (ERROR_BADREQUEST: Code error - bad request)
-           参考
+            Failed loading resource "soundevents/custom_sounds.vsndevts_c" (ERROR_BADREQUEST: Code error - bad request)
+            参考
 
-43. 天赋树
+44. 天赋树
 
-       1. 龙骑 2024年1月是哪年的冬季呢
-       2. 炸弹人 问涛宝
+        1. 龙骑 2024年1月是哪年的冬季呢
+        2. 炸弹人 问涛宝
 
-44. 出狱思路:
+45. 出狱思路:
 
-       1. 进入新的回合开始, onEvent_PlayerRoundBegin
-           1. 如果在监狱
-               1. 后端给前端发送 TypeOprt.TO_PRISON_OUT(5) 操作
+        1. 进入新的回合开始, onEvent_PlayerRoundBegin
+            1. 如果在监狱
+                1. 后端给前端发送 TypeOprt.TO_PRISON_OUT(5) 操作
 
-               2. 前端弹出监狱Panel
+                2. 前端弹出监狱Panel
 
-               3. 用户点击是或者否对应回包的nRequest 1和0
-                   GameEvents.SendCustomGameEventToServer
+                3. 用户点击是或者否对应回包的nRequest 1和0
+                    GameEvents.SendCustomGameEventToServer
 
-               4. 后端GameConfig.onMsg_oprt ==> processPrisonOut
+                4. 后端GameConfig.onMsg_oprt ==> processPrisonOut
 
-           2. 如果不在监狱==>正常roll点
-               1. roll点豹子到达三次
-                   - onEvent_Roll ==> setInPrison
+            2. 如果不在监狱==>正常roll点
+                1. roll点豹子到达三次
+                    - onEvent_Roll ==> setInPrison
 
-               2. roll点走到监狱路径
-                   - onPath ==> setInPrison
+                2. roll点走到监狱路径
+                    - onPath ==> setInPrison
 
-45. 注意前端面板应该仅展示给对应的玩家
+46. 注意前端面板应该仅展示给对应的玩家
 
-46. 做一个动画效果,肉山大转盘, 可以不花钱投,但是轮盘概率会很小中将,
-      如果给100,中将的就会轮盘区域就会动画过渡变大
-      给更多变更大
+47. 做一个动画效果,肉山大转盘, 可以不花钱投,但是轮盘概率会很小中将,
+       如果给100,中将的就会轮盘区域就会动画过渡变大
+       给更多变更大
 
 
 ## 注意/调整
@@ -1398,9 +1408,36 @@ TP卷轴槽位: 16
         "ItemStackable" "1"			// 是否开启堆叠
 ```
 
+GetNetWorth 获取玩家财产总和
+
+### 商店
+
+game\scripts\shops\1x6_shops.txt
+
+#### 刀富翁原则
+
+价格
+
+- 价格越便宜，性价比可以相对越高，（单件和没有卷轴的）性价比系数：
+  - 小于1000，计算价格 * 0.6 = 最终价
+  - 1000~2000，计算价格 * 0.8 = 最终价
+  - 2000~3000，计算价格 * 0.9 = 最终价
+  - 大于3000，计算价格 * 1 = 最终价
+- 1点属性=100块
+- 1攻击=66.7块，1.5攻击=100块
+- 1点攻速=50块
+- 100点生命值=400块，25点生命值=100块
+- 1点护甲=150块，0.667护甲=100块
+- 10%魔法抗性=500块，2%魔抗=100块
+- 回血？
+- 1点回蓝=1000块，0.125点回蓝=100块
+- 100点血=500块，20点血=100块
+- 1点蓝=500块
+- 1%吸血=80块
 
 
-### itemlist
+
+
 
 - 跳刀: 占装备位
   - 可升级大跳刀
@@ -1410,7 +1447,285 @@ TP卷轴槽位: 16
 
 绿鞋, 非本人回合可以回复5%已损失生命值
 
+```txt
+"dota_shops"
+{
+	"consumables"   // 消耗品
+	{
+		// TP卷轴，200
+        "item"		"item_qtg_tpscroll"
+		// 仙灵火，100，加5攻击，消耗回100血
+		"item"		"item_faerie_fire"				
+		// 芒果，100，消耗回2点蓝
+		"item"		"item_famango"
+		// "item"		"item_bottle"
+		// "item"		"item_aghanims_shard"
+	}
+
+	"attributes"    // 属性
+	{
+		// 力量腰带
+		"item"		"item_belt_of_strength"
+		// 精灵布带
+		"item"		"item_boots_of_elves"
+		// 法师长袍
+		"item"		"item_robe"
+		// 王冠
+		"item"		"item_crown"
+
+		// 食人魔之斧
+		"item"		"item_ogre_axe"
+		// 欢欣之刃
+		"item"		"item_blade_of_alacrity"
+		// 魔力法杖
+		"item"		"item_staff_of_wizardry"
+		// 宝冕
+		"item"		"item_diadem"
+		
+	}
+
+	"weapons_armor" // 装备
+	{
+		// 猎野爪（原寒铁钢爪）
+		"item"		"item_iron_talon"   
+		// 淬毒之珠
+		"item"		"item_orb_of_venom"
+		// 枯萎之石
+		"item"		"item_blight_stone"
+		// 攻击之爪
+		"item"		"item_blades_of_attack"
+		// 加速手套
+		"item"		"item_gloves"
+		// 锁子甲
+		"item"		"item_chainmail"
+		// 	短棍
+		"item"		"item_quarterstaff"
+		// 铁意头盔
+		"item"		"item_helm_of_iron_will"
+		// 大剑
+		"item"		"item_claymore"				
+	}
+			
+	"misc"  // 其他
+	{
+		// 毛毛帽
+		"item"		"item_fluffy_hat"
+		// 抗魔斗篷
+		"item"		"item_cloak"
+		// 速度之靴
+		"item"		"item_boots"
+
+		// 吸血面具
+		"item"		"item_lifesteal"
+		// 巫毒面具
+		"item"		"item_voodoo_mask"
+
+		// 幽魂权杖
+		"item"		"item_ghost"
+		// 闪烁匕首
+		"item"		"item_blink"		
+	}	
+	
+	// Level 1 - Green Recipes
+	"basics"    // 配件
+	{		
+		// 腐蚀之球
+		"item"		"item_orb_of_corrosion"
+		// 猎鹰战刃
+		"item"		"item_falcon_blade"
+		// 动力鞋
+		"item"		"item_power_treads"
+		// 相位鞋
+		"item"		"item_phase_boots"
+		// 空明杖
+		"item"		"item_oblivion_staff"
+ 		// 疯狂面具
+		"item"		"item_mask_of_madness"
+		// 银月之晶
+		"item"		"item_moon_shard"	
+	}
+
+	// Level 2 - Blue Recipes
+	"support"   // 辅助
+	{
+		// 玄冥盾牌
+		"item"		"item_buckler"
+		// 王者之戒
+		"item"		"item_ring_of_basilius"
+		// 恢复头巾
+		"item"		"item_headdress"
+		// 静谧之鞋
+		"item"		"item_tranquil_boots"
+		// 勇气勋章
+		"item"		"item_medallion_of_courage"
+		// 奥术鞋
+		"item"		"item_arcane_boots"
+		// 洞察烟斗
+		"item"		"item_pipe"			
+	}
+				
+	"magics"    // 法器		
+	{
+		// 原力法杖
+		// "item"		"item_force_staff"
+		// 巫师之刃
+		"item"		"item_witch_blade"
+
+		// 达贡之神力系列 item_dagon_[#] (1-5)
+		"item"		"item_dagon"
+		// 紫怨
+		"item"		"item_orchid"	
+		// 炎阳纹章
+		"item"		"item_solar_crest"
+		// 阿托斯之棍
+		"item"		"item_rod_of_atos"
+		// 刷新球
+		"item"		"item_refresher"
+		// 玲珑心
+		"item"		"item_octarine_core"
+		// 邪恶镰刀
+		"item"		"item_sheepstick"
+		// 缚灵索
+		// "item"		"item_gungir"
+	}
+		
+	// Level 3 - Purple Recipes	
+	"defense"   // 防具
+	{
+		// 先锋盾
+		"item"		"item_vanguard"
+		// 刃甲
+		"item"		"item_blade_mail"
+		// 振魂石，可以设计为降受到的魔法伤害转变为生命值？
+		"item"		"item_soul_booster" // 振魂石,再次鼓起丧失的勇气
+		// 赤红甲
+		"item"		"item_crimson_guard"		
+		// 黑皇杖
+		"item"		"item_black_king_bar"
+		// 飓风长戟
+		// "item"		"item_hurricane_pike"	
+		// "item"		"item_sphere"
+		// 希瓦的守护
+		"item"		"item_shivas_guard"
+		// 恐鳌之心
+		"item"		"item_heart"	
+		// 强袭胸甲
+		"item"		"item_assault"
+	}
+			
+	"weapons"   // 兵刃
+	{	
+		// 水晶剑
+		"item"		"item_lesser_crit"	
+ 		// 黯灭
+		"item"		"item_desolator"	
+		// 虚灵之刃
+		"item"		"item_ethereal_blade"
+		// "item"		"item_nullifier"	
+		// 蝴蝶
+		"item"		"item_butterfly"
+		// 	辉耀
+		"item"		"item_radiance"
+		// 代达罗斯之殇
+		"item"		"item_greater_crit"
+		// 圣剑
+		"item"		"item_rapier"
+		// 血棘
+		"item"		"item_bloodthorn"
+		// 英灵胸针
+		"item"		"item_revenants_brooch"	
+	}
+		
+	// Level 4 - Orange / Orb / Artifacts				
+	"artifacts" // 宝物
+	{	
+		// 魔龙枪
+ 		// "item"		"item_dragon_lance"
+		// 散华
+		"item"		"item_sange"
+ 		// 夜叉
+		"item"		"item_yasha"
+ 		// 慧光
+		"item"		"item_kaya"
+ 		// 法师克星
+		"item"		"item_mage_slayer"
+ 		// 散慧对剑
+		"item"		"item_kaya_and_sange"
+ 		// 散夜对剑
+		"item"		"item_sange_and_yasha"
+ 		// 慧夜对剑
+		"item"		"item_yasha_and_kaya"
+ 		// 撒旦之邪力
+		"item"		"item_satanic"		
+ 		// 斯嘉蒂之眼
+		"item"		"item_skadi" 
+ 		// 盛势闪光
+		"item"		"item_overwhelming_blink"		
+ 		// 迅疾闪光
+		"item"		"item_swift_blink"		
+ 		// 迅疾闪光
+		"item"		"item_arcane_blink"		
+	}
+
+	"sideshop1"
+	{
+		"item"		"item_tpscroll"
+		"item"		"item_magic_stick"
+		"item"		"item_quelling_blade"
+		"item"		"item_boots"
+		"item"		"item_boots_of_elves"
+		"item"		"item_belt_of_strength"
+		"item"		"item_robe"
+		"item"		"item_crown"
+	}
+
+	"sideshop2"
+	{
+		"item"		"item_gloves"
+		"item"		"item_chainmail"
+		"item"		"item_cloak"
+		"item"		"item_void_stone"
+		"item"		"item_helm_of_iron_will"
+		"item"		"item_energy_booster"
+		"item"		"item_vitality_booster"
+		"item"		"item_lifesteal"
+		"item"		"item_broadsword"
+		"item"		"item_blink"
+	}
+	
+	"secretshop"
+	{				
+		"item"		"item_ring_of_health"
+		"item"		"item_void_stone"
+		"item"		"item_energy_booster"
+		"item"		"item_vitality_booster"
+		// "item"		"item_talisman_of_evasion"
+		"item"		"item_platemail"
+		"item"		"item_hyperstone"
+		"item"		"item_ultimate_orb"
+		"item"		"item_demon_edge"
+		"item"		"item_mystic_staff"
+		"item"		"item_reaver"
+		"item"		"item_eagle"
+		"item"		"item_relic"
+	}
+
+}
+```
+
+
+
+
+
 ## 卡牌
+
+装备获得卡牌的思路：
+
+- 装备的Buff，Oncreated，获得该装备时进行判断：
+- 从商店购买获得，立刻获得一张卡牌，并开启倒计时判断
+- 从背包拖到装备栏获得，判断是否有重复物品在CD，设置为原先的CD
+
+
 
 
 

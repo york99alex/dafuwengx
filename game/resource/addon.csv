@@ -277,7 +277,7 @@ DOTA_Tooltip_Modifier_path_18_l3_BZ,,圣洁净土
 DOTA_Tooltip_Modifier_path_18_l3_BZ_Description,,化身石佛守护圣所，对驻足在圣所的敌人造成 4000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。
 TypeOperator_Hell,,地狱之门
 DescriptionContent_Hell,,身处地狱，封锁全部领地。\n地狱惩戒：（持续入狱）\n第3回合：损失100金币。\n第4回合：损失200金币。\n第5回合：损失400金币。\n 以此类推...
-DOTA_Tooltip_ability_item_tp_scroll,,传送卷轴
-DOTA_Tooltip_ability_item_tp_scroll_Description,,<h1>使用：传送</h1>传送至指定传送阵。
-DOTA_Tooltip_ability_item_tp_scroll_Lore,,疾风已有归途，落叶总会归根
-DOTA_Tooltip_ability_item_tp_scroll_Note0,,如果是别人的可要过路费哦
+DOTA_Tooltip_ability_item_qtg_tpscroll,,传送卷轴
+DOTA_Tooltip_ability_item_qtg_tpscroll_Description,,<h1>使用：传送</h1>传送至指定传送阵。
+DOTA_Tooltip_ability_item_qtg_tpscroll_Lore,,疾风已有归途，落叶总会归根
+DOTA_Tooltip_ability_item_qtg_tpscroll_Note0,,如果是别人的可要过路费哦

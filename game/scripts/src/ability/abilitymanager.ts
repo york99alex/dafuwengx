@@ -4,7 +4,6 @@ import { BaseAbility, BaseItem } from "../utils/dota_ts_adapter"
 import { TSBaseAbility } from "./tsBaseAbilty"
 import { modifier_fix_damage } from "../modifiers/modifier_fix_damage"
 import { AHMC, IsValid } from "../utils/amhc"
-import { ParaAdjuster } from "../utils/paraadjuster"
 import { TSBaseItem } from "./tsBaseItem"
 import { Get06ItemByName } from "../item/itemmanager"
 

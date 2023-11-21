@@ -109,8 +109,8 @@ export class Filters {
             return false
         } else if (orderType == UnitOrder.PURCHASE_ITEM) {
             // 购买物品
-            return false
-            GameRules.EventManager.FireEvent("Event_ItemBuy", event)
+            return true
+            // GameRules.EventManager.FireEvent("Event_ItemBuy", event)
         } else if (orderType == UnitOrder.SELL_ITEM) {
             // 出售物品
             GameRules.EventManager.FireEvent("Event_ItemSell", event)
@@ -138,7 +138,7 @@ export class Filters {
         // 触发获取物品
         GameRules.EventManager.FireEvent("Event_ItemAdd", event)
         const npc = EntIndexToHScript(event.inventory_parent_entindex_const) as CDOTA_BaseNPC
-        if (npc.IsRealHero()) Timers.CreateTimer(0.01, () => ParaAdjuster.ModifyMana(npc))
+        if (npc && npc.IsRealHero()) Timers.CreateTimer(0.01, () => ParaAdjuster.ModifyMana(npc))
         return true
     }
 

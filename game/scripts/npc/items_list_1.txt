@@ -16,14 +16,15 @@
 		"AbilityCooldown" "1 2 3 4"
 		"AbilityManaCost" "1 1 1 1"
 	}
-	"item_gtg_tpscroll" {
+	"item_qtg_tpscroll" {
 		"BaseClass" "item_lua"
 		"ScriptFile" "item/items/item_qtg_tpscroll"
 		"AbilityValues" {
 		}
+		"ItemCost" "200"
 		"ItemShareability" "ITEM_FULLY_SHAREABLE"
-		"ItemPurchasable" "0"
-		"ItemSellable" "0"
+		"ItemPurchasable" "1"
+		"ItemSellable" "1"
 		"ItemPermanent" "0"
 		"ItemQuality" "consumable"
 		"ItemInitialCharges" "1"
@@ -35,6 +36,66 @@
 		"AbilityTextureName" "item_tpscroll"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT"
 	}
+	"item_faerie_fire" {
+		"BaseClass" "item_faerie_fire"
+		"AbilityValues" {
+			"bonus_damage" "5"
+			"hp_restore" "100"
+		}
+		"ItemCost" "100"
+	}
+	"item_famango" {
+		"BaseClass" "item_famango"
+		"AbilityValues" {
+			"replenish_amount" "2"
+		}
+		"ItemCost" "100"
+		"ItemPurchasable" "1"
+		"ItemSellable" "1"
+	}
+	"item_belt_of_strength" {
+		"BaseClass" "item_belt_of_strength"
+		"AbilityValues" {
+		}
+		"ItemCost" "500"
+	}
+	"item_boots_of_elves" {
+		"BaseClass" "item_boots_of_elves"
+		"AbilityValues" {
+		}
+		"ItemCost" "500"
+	}
+	"item_robe" {
+		"BaseClass" "item_robe"
+		"AbilityValues" {
+		}
+		"ItemCost" "500"
+	}
+	"item_crown" {
+		"BaseClass" "item_crown"
+		"AbilityValues" {
+		}
+		"ItemCost" "500"
+	}
+	"item_qtg_iron_talon" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_iron_talon"
+		"AbilityValues" {
+			"bonus_attack_speed" "10"
+			"bonus_armor" "2"
+		}
+		"ItemCost" "1000"
+		"ItemPurchasable" "1"
+		"ItemSellable" "1"
+		"ItemQuality" "component"
+		"Model" "models/props_gameplay/quelling_blade.vmdl"
+		"AbilityCooldown" "5"
+		"AbilityTextureName" "item_iron_talon"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	}
+
+
+
 	"item_qtg_blink" {
 		"BaseClass" "item_lua"
 		"ScriptFile" "item/items/item_qtg_blink"

@@ -6,6 +6,7 @@ import { PathDomain } from "../path/pathsdomain/pathdomain"
 import { CDOTA_BaseNPC_BZ } from "./CDOTA_BaseNPC_BZ"
 import { TSBaseAbility } from "../ability/tsBaseAbilty"
 import { ParaAdjuster } from "../utils/paraadjuster"
+import { Card } from "../card/card"
 
 export type player_info = "player_info_0" | "player_info_1" | "player_info_2" | "player_info_3" | "player_info_4" | "player_info_5"
 export type DamageEvent = {
@@ -69,7 +70,7 @@ export class Player {
         [typePath: number]: PathDomain[]
     }				//  占领的路径<路径类型,路径{}>
     m_tabBz: CDOTA_BaseNPC_BZ[]					//  兵卒
-    m_tabHasCard: number[]			//  手上的卡牌
+    m_tabHasCard: Card[]			//  手上的卡牌
     m_tabUseCard			//  已使用的卡牌
     m_tabDelCard			//  已移除的卡牌
     m_tCourier			  //  信使
@@ -1212,6 +1213,34 @@ export class Player {
     // TODO: Card
     // =============卡牌================
 
+    /**是否拥有某卡牌 */
+    isHasCard(nCardID: number) {
+        for (const card of this.m_tabHasCard) {
+            if (nCardID == card.m_nID)
+                return true
+        }
+        return false
+    }
+
+    /**添加卡牌 */
+    setCardAdd(card: Card) {
+        if (this.isHasCard(card.m_nID)) return false
+
+        card.setOwner(this.m_nPlayerID)
+        this.m_tabHasCard.push(card)
+        
+        // 通知客户端获得卡牌
+        this.sendMsg("GM_CardAdd",{
+            nPlayerID: this.m_nPlayerID,
+            json: JSON.stringify(card.encodeJsonData())
+        })
+        this.setCardCanCast()
+        
+        // 同步玩家网表信息
+        this.setNetTableInfo()
+        return true
+    }
+
     /**设置可用卡牌 */
     setCardCanCast() {
         //TODO:
@@ -1335,11 +1364,16 @@ export class Player {
     }
 
     /**设置购物状态 */
-    setBuyState(typeState: number, nCount: number) {
+    setBuyState(buyState: number, nCount: number) {
         // 可购物事件
-        GameRules.EventManager.FireEvent("Event_BuyState", { nCount: nCount, typeState: typeState, player: this })
-        this.m_nBuyItem = nCount
-        this.m_typeBuyState = typeState
+        const event = {
+            nCount: nCount,
+            buyState: buyState,
+            player: this
+        }
+        GameRules.EventManager.FireEvent("Event_SetBuyState", event)
+        this.m_nBuyItem = event.nCount
+        this.m_typeBuyState = event.buyState
 
         // 设置网表
         const keyname = "player_info_" + this.m_nPlayerID as player_info

@@ -157,3 +157,14 @@
                         nItemSlot : item2.GetItemSlot(),
                         sItemName: item2.GetAbilityName()
                     }
+
+// 玩家停住某路径
+"Event_JoinPath": {
+    player: Player
+}
+
+"Event_SetBuyState": {
+                        nCount: number,
+                        buyState: number,
+                        player: Player
+                    }

@@ -1,8 +1,10 @@
-class Card {
+import { Player } from "../player/player"
+
+export class Card {
     /**卡牌ID */
     m_nID: number
     /**拥有者ID */
-    m_nOwnerID: number
+    m_nOwnerID: PlayerID
     /**魔法消耗 */
     m_nManaCost: number
     /**基础魔法消耗 */
@@ -28,7 +30,7 @@ class Card {
     /**技能信息 */
     m_tabAbltInfo
 
-    constructor(tInfo, nPlayerID: number) {
+    constructor(tInfo, nPlayerID: PlayerID) {
         this.m_typeCard = tonumber(tInfo.cardType)
         this.m_nID = GameRules.CardManager.getIncludeID()
         if (nPlayerID) {
@@ -43,4 +45,30 @@ class Card {
         this.m_nManaCost = tonumber(tInfo.ManaCost)
         this.m_nManaCostBase = this.m_nManaCost
     }
+
+    setOwner(playerID: PlayerID) {
+        this.m_nOwnerID = playerID
+    }
+
+    GetManaCost() {
+        let nManaCost = this.m_nManaCost
+        // 计算魔法减缩
+        const player = GameRules.PlayerManager.getPlayer(this.m_nOwnerID)
+        if (player) {
+            nManaCost -= player.m_nManaSub
+            if (nManaCost < 0) nManaCost = 0
+        }
+        return nManaCost
+    }
+
+    encodeJsonData() {
+        return {
+            nCardID: this.m_nID,
+            CardType: this.m_typeCard,
+            CardKind: this.m_typeKind,
+            CastType: this.m_typeCast,
+            ManaCost: this.GetManaCost()
+        }
+    }
+
 }

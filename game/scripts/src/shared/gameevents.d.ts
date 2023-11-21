@@ -20,20 +20,6 @@ declare interface CustomGameEventDeclarations {
         caster_entindex: EntityIndex;
     }
 
-    /** 玩家英雄离开某路径 */
-    Event_CurPathChange: {
-        playerID: PlayerID
-    }
-
-    /** 玩家停住某路径 */
-    Event_JoinPath: {
-        playerID: PlayerID
-    }
-
-    Event_TO_SendDeathClearing: {
-        nPlayerId: PlayerID
-    }
-
     GM_Operator: {
         nPlayerID: number;
         typeOprt: number;

@@ -1,8 +1,8 @@
+import { AbilityManager } from "../../ability/abilitymanager"
 import { TSBaseItem } from "../../ability/tsBaseItem"
 import { Player } from "../../player/player"
 import { AHMC, IsValid } from "../../utils/amhc"
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter"
-import { ParaAdjuster } from "../../utils/paraadjuster"
 
 @registerAbility()
 export class item_qtg_arcane_boots extends TSBaseItem {
@@ -54,6 +54,10 @@ export class item_qtg_arcane_boots extends TSBaseItem {
                     , ParticleAttachment.POINT, false, BZ, 2)
             }
         }
+        // 触发耗蓝
+        GameRules.EventManager.FireEvent("Event_HeroManaChange", { player: player, oAblt: this })
+        // 设置冷却
+        AbilityManager.setRoundCD(player, this)
     }
 
     GetIntrinsicModifierName() {
