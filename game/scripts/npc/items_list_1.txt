@@ -21,10 +21,9 @@
 		"ScriptFile" "item/items/item_qtg_tpscroll"
 		"AbilityValues" {
 		}
-		"ItemCost" "200"
 		"ItemShareability" "ITEM_FULLY_SHAREABLE"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
+		"ItemPurchasable" "0"
+		"ItemSellable" "0"
 		"ItemPermanent" "0"
 		"ItemQuality" "consumable"
 		"ItemInitialCharges" "1"

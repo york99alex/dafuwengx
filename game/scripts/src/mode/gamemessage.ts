@@ -42,10 +42,10 @@ export const PS_Invis = 4096
 
 
 //  购物状态
-export const TBuyItem_None = 0           //  不能购买
-export const TBuyItem_Side = 1           //  可购买边路商店物品
-export const TBuyItem_Secret = 2         //  可购买神秘商店物品
-export const TBuyItem_SideAndSecret = 3  //  可购买边路和神秘商店物品
+export const BuyState_None = 0           //  不能购买
+export const BuyState_Side = 1           //  可购买边路商店物品
+export const BuyState_Secret = 2         //  可购买神秘商店物品
+export const BuyState_SideAndSecret = 3  //  可购买边路和神秘商店物品
 
 // 路径类型
 /**无*/

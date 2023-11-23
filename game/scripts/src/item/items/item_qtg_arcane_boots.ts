@@ -1,5 +1,5 @@
 import { AbilityManager } from "../../ability/abilitymanager"
-import { TSBaseItem } from "../../ability/tsBaseItem"
+import { TSBaseItem } from "../tsBaseItem"
 import { Player } from "../../player/player"
 import { AHMC, IsValid } from "../../utils/amhc"
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter"

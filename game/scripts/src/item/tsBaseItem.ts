@@ -40,40 +40,38 @@ export class TSBaseItem extends BaseItem {
     }
 
     /**
-     * 通用判断技能施法
+     * 通用判断装备技能施法
      */
     isCanCast(eTarget?: CDOTA_BaseNPC): boolean {
         if (GameRules.GameConfig != null) {
-
             // 准备阶段不能施法
             if (GameRules.GameConfig.m_nRound == 0) {
-                this.m_strCastError = "ItemError_Round0"
+                this.m_strCastError = "AbilityError_Round0"
                 return false
             }
-
             // 非自己阶段不能施法
             if (!this.isCanCastOtherRound() && this.GetCaster().GetPlayerOwnerID() != GameRules.GameConfig.m_nOrderID) {
-                this.m_strCastError = "ItemError_NotSelfRound"
+                this.m_strCastError = "AbilityError_NotSelfRound"
                 return false
             }
             // 移动阶段不能施法
             if (!this.isCanCastMove() && GameRules.GameConfig.m_typeState == GS_Move) {
-                this.m_strCastError = "ItemError_Move"
+                this.m_strCastError = "AbilityError_Move"
                 return false
             }
             // 补给阶段不能施法
             if (!this.isCanCastSupply() && GameRules.GameConfig.m_typeState == GS_Supply) {
-                this.m_strCastError = "ItemError_Supply"
+                this.m_strCastError = "AbilityError_Supply"
                 return false
             }
             // 亡国阶段不能施法
             if (GameRules.GameConfig.m_typeState == GS_DeathClearing) {
-                this.m_strCastError = "ItemError_DeathClearing"
+                this.m_strCastError = "AbilityError_DeathClearing"
                 return false
             }
             // 等待阶段不能施法
             if (GameRules.GameConfig.m_typeState == GS_Wait && !this.yieldWait) {
-                this.m_strCastError = "ItemError_Wait"
+                this.m_strCastError = "AbilityError_Wait"
                 return false
             }
 
@@ -82,18 +80,18 @@ export class TSBaseItem extends BaseItem {
             if (oPlayer != null) {
                 // 在监狱不能施法
                 if (!this.isCanCastInPrison() && (PS_InPrison & oPlayer.m_nPlayerState) > 0) {
-                    this.m_strCastError = "ItemError_InPrison"
+                    this.m_strCastError = "AbilityError_InPrison"
                     return false
                 }
                 // 在英雄攻击时不能施法
                 if (!this.isCanCastHeroAtk() && (PS_AtkHero & oPlayer.m_nPlayerState) > 0) {
-                    this.m_strCastError = "ItemError_Battle"
+                    this.m_strCastError = "AbilityError_Battle"
                     return false
                 }
             }
 
             if (!this.isCanCastAtk() && oPlayer.m_bGCLD) {
-                this.m_strCastError = "ItemError_Battle"
+                this.m_strCastError = "AbilityError_Battle"
                 return false
             }
 
@@ -101,8 +99,8 @@ export class TSBaseItem extends BaseItem {
             if (eTarget && !this.checkTarget(eTarget)) {
                 return false
             }
+            return true
         }
-        return true
     }
 
     // 判断目标
@@ -117,7 +115,7 @@ export class TSBaseItem extends BaseItem {
 
         // 对自己释放
         if (eTarget == this.GetCaster() && !this.isCanCastSelf()) {
-            this.m_strCastError = "ItemError_SelfCant"
+            this.m_strCastError = "AbilityError_SelfCant"
             print("checkTarget===3")
             return false
         }
@@ -131,7 +129,7 @@ export class TSBaseItem extends BaseItem {
             }
             // 目标在监狱
             if ((oPlayer.m_nPlayerState & PS_InPrison) > 0) {
-                this.m_strCastError = "ItemError_InPrison"
+                this.m_strCastError = "AbilityError_InPrison"
                 print("checkTarget===5")
                 return false
             }
@@ -141,21 +139,21 @@ export class TSBaseItem extends BaseItem {
         if (eTarget.IsHero()) {
             if (eTarget.IsIllusion() && !this.isCanCastIllusion()) {
                 // 不能是幻象
-                this.m_strCastError = "ItemError_IllusionsCant"
+                this.m_strCastError = "AbilityError_IllusionsCant"
             } else if (!this.isCanCastHero()) {
                 // 不能是英雄
-                this.m_strCastError = "ItemError_HeroCant"
+                this.m_strCastError = "AbilityError_HeroCant"
             }
         } else if (!eTarget.IsRealHero()) {
             // 兵卒
             if (!this.isCanCastBZ()) {
-                this.m_strCastError = "ItemError_BZCant"
+                this.m_strCastError = "AbilityError_BZCant"
             }
         } else if ((eTarget as any).m_bMonster) {
             // 野怪
             if (!this.isCanCastMonster()) {
                 // 需要玩家控制，不能是野怪
-                this.m_strCastError = "ItemError_MonsterCant"
+                this.m_strCastError = "AbilityError_MonsterCant"
             }
         } else {
             print("checkTarget===6")

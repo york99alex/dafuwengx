@@ -1,5 +1,5 @@
 import { Constant } from "../mode/constant";
-import { TBuyItem_None, TBuyItem_Secret, TBuyItem_Side, TP_SHOP_SIDE } from "../mode/gamemessage";
+import { BuyState_None, BuyState_Secret, BuyState_Side, TP_SHOP_SIDE } from "../mode/gamemessage";
 import { Player } from "../player/player";
 import { Path } from "./Path";
 
@@ -20,9 +20,9 @@ export class PathShop extends Path {
     /**设置玩家购物状态 */
     setCanBuy(player: Player) {
         if (this.m_typePath == TP_SHOP_SIDE) {
-            player.setBuyState(TBuyItem_Side, 1)
+            player.setBuyState(BuyState_Side, 1)
         } else {
-            player.setBuyState(TBuyItem_Secret, 1)
+            player.setBuyState(BuyState_Secret, 1)
         }
     }
 
@@ -38,6 +38,6 @@ export class PathShop extends Path {
     onEvent_LeavePath(event: { player: Player; path: Path; }) {
         if (event.path != this) return
         if (GameRules.GameConfig.m_nRound >= Constant.GLOBAL_SHOP_ROUND) return
-        event.player.setBuyState(TBuyItem_None, 0)
+        event.player.setBuyState(BuyState_None, 0)
     }
 }

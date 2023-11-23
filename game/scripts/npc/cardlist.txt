@@ -9,4 +9,40 @@
         "CardKind"          "2"
         "IsSupply"          "1"
     }
+    //小型狩猎场
+    "Card_MONSTER_SMALL"
+    {
+        "ShopItemName"       "item_qtg_iron_talon"
+        "CardType"            "10005"
+        "ManaCost"        "1"
+        "CastType"        "1"
+        "CardKind"            "1"
+    }
+    //大型狩猎场
+    "Card_MONSTER_LARGE"
+    {
+        "ShopItemName"       "item_qtg_iron_talon"
+        "CardType"            "10006"
+        "ManaCost"        "2"
+        "CastType"        "1"
+        "CardKind"            "1"
+    }
+    //远古禁地
+    "Card_MONSTER_ANCIENT"
+    {
+        "ShopItemName"       "item_qtg_iron_talon"
+        "CardType"            "10007"
+        "ManaCost"        "3"
+        "CastType"        "1"
+        "CardKind"            "1"
+    }
+    //拉野
+    "Card_MONSTER_CREEP_STACKING"
+    {
+        "ShopItemName"       "item_qtg_iron_talon"
+        "CardType"            "10008"
+        "ManaCost"        "2"
+        "CastType"        "2"
+        "CardKind"            "1"
+    }
 }

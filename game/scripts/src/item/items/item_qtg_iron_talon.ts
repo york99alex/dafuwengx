@@ -1,5 +1,5 @@
 import { AbilityManager } from "../../ability/abilitymanager";
-import { TSBaseItem } from "../../ability/tsBaseItem";
+import { TSBaseItem } from "../tsBaseItem";
 import { IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 
@@ -21,6 +21,7 @@ export class item_qtg_iron_talon extends TSBaseItem {
     OnSpellStart(): void {
         if (!this.IsCooldownReady()) return
         const player = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID())
+        // TODO: if (!this.isCanCast()) return
         if (!player) return
         const result = GameRules.ItemManager.isSameItemCD(this, player)
         if (typeof result === 'number') {
@@ -31,7 +32,6 @@ export class item_qtg_iron_talon extends TSBaseItem {
         // 刷牌
         print("===item_qtg_iron_talon===OnSpellStart===index:", this.GetItemSlot())
         GameRules.CardManager.onItem_getCard(this, player, "MONSTER")
-        // TODO: 尽量把逻辑放在CardManager.onItem_getCard里
 
         let nCD = this.GetCooldown(0) - player.m_nCDSub
         if (nCD < 1) nCD = 1

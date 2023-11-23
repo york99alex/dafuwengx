@@ -3,7 +3,7 @@
 	"consumables"   // 消耗品
 	{
 		// TP卷轴，200
-        "item"		"item_qtg_tpscroll"
+        // "item"		"item_qtg_tpscroll"
 		// 仙灵火，100，加5攻击，消耗回100血
 		"item"		"item_faerie_fire"				
 		// 芒果，100，消耗回2点蓝

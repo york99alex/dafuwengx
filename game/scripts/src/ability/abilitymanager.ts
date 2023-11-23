@@ -4,7 +4,7 @@ import { BaseAbility, BaseItem } from "../utils/dota_ts_adapter"
 import { TSBaseAbility } from "./tsBaseAbilty"
 import { modifier_fix_damage } from "../modifiers/modifier_fix_damage"
 import { AHMC, IsValid } from "../utils/amhc"
-import { TSBaseItem } from "./tsBaseItem"
+import { TSBaseItem } from "../item/tsBaseItem"
 import { Get06ItemByName } from "../item/itemmanager"
 
 export class AbilityManager {

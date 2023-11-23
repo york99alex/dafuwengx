@@ -7,7 +7,7 @@ import { Auction } from "../mode/auction"
 import { Constant } from "../mode/constant"
 import { DeathClearing } from "../mode/deathclearing"
 import { Filters } from "../mode/filters"
-import { GS_DeathClearing, GS_Finished, GS_Move, GS_None, GS_ReadyStart, GS_Wait, GS_WaitOperator, PS_AtkMonster, PS_InPrison, TBuyItem_SideAndSecret, TGameRecord_AYZZ, TP_PRISON, TypeOprt } from "../mode/gamemessage"
+import { GS_DeathClearing, GS_Finished, GS_Move, GS_None, GS_ReadyStart, GS_Wait, GS_WaitOperator, PS_AtkMonster, PS_InPrison, BuyState_SideAndSecret, TGameRecord_AYZZ, TP_PRISON, TypeOprt } from "../mode/gamemessage"
 import { GameRecord } from "../mode/gamerecord"
 import { HudError } from "../mode/huderror"
 import { Trade } from "../mode/trade"
@@ -1019,7 +1019,7 @@ export class GameConfig {
         if (this.m_nRound == Constant.GLOBAL_SHOP_ROUND) {
             // 遍历GameRules.Playermanager.m_tabPlayers
             GameRules.PlayerManager.m_tabPlayers.forEach((oPlayer) => {
-                oPlayer.setBuyState(TBuyItem_SideAndSecret, -1)
+                oPlayer.setBuyState(BuyState_SideAndSecret, -1)
             })
         }
         return tEvtData.isBegin

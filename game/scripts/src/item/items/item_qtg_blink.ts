@@ -1,6 +1,6 @@
 import { AHMC, IsValid } from "../../utils/amhc"
 import { registerAbility } from "../../utils/dota_ts_adapter"
-import { TSBaseItem } from "../../ability/tsBaseItem"
+import { TSBaseItem } from "../tsBaseItem"
 import { AbilityManager } from "../../ability/abilitymanager"
 
 @registerAbility()

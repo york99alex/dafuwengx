@@ -61,11 +61,6 @@ declare interface CustomGameEventDeclarations {
         nPosZ: number;
     };
 
-    // S2C_GM_Operator: {
-    //     nPlayerID: number
-    //     typeOprt: number
-    // }
-
     // S2C_GM_OperatorFinished: {
     //     nNum1: number
     //     nNum2: number
@@ -88,9 +83,20 @@ declare interface CustomGameEventDeclarations {
     }
 
     GM_CameraCtrl: {
-        pos: Vector
+        pos: number
         lerp: number
         nPlayerID?: number
     }
-
+    /**通知卡牌添加 */
+    S2C_GM_CardAdd: {
+        nPlayerID: number
+        json:			// 卡牌消息
+        {
+            nCardID: number; // 卡牌ID
+            cardType: number; // 卡牌类型
+            cardKind: number; // 卡牌种类
+            castType: number; // 卡牌施法类型
+            nManaCost: number; // 卡牌耗蓝
+        }[]
+    }
 }

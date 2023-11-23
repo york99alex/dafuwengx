@@ -3,7 +3,7 @@ import { PathTP } from "../../path/pathtp";
 import { AHMC, IsValid } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../../ability/abilitymanager";
-import { TSBaseItem } from "../../ability/tsBaseItem";
+import { TSBaseItem } from "../tsBaseItem";
 
 @registerAbility()
 export class item_qtg_tpscroll extends TSBaseItem {

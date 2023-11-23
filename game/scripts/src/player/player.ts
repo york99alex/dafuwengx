@@ -1,4 +1,4 @@
-import { PS_AtkBZ, PS_AtkHero, PS_AtkMonster, PS_Die, PS_InPrison, PS_Invis, PS_MagicImmune, PS_Moving, PS_None, PS_Pass, PS_PhysicalImmune, PS_Rooted, TBuyItem_None, TP_DOMAIN_1, TP_START } from "../mode/gamemessage"
+import { PS_AtkBZ, PS_AtkHero, PS_AtkMonster, PS_Die, PS_InPrison, PS_Invis, PS_MagicImmune, PS_Moving, PS_None, PS_Pass, PS_PhysicalImmune, PS_Rooted, BuyState_None, TP_DOMAIN_1, TP_START } from "../mode/gamemessage"
 import { Constant } from "../mode/constant"
 import { Path } from "../path/Path"
 import { AHMC, IsValid } from "../utils/amhc"
@@ -21,13 +21,12 @@ export type DamageEvent = {
     bIgnoreBZHuiMo?: boolean
 }
 
-
 export class Player {
 
     m_bRoundFinished: boolean			//  此轮中已结束回合
     m_bDisconnect: boolean		   //  断线
-    m_bDie: boolean				  //  死亡
-    m_bAbandon: boolean			  //  放弃
+    m_bDie: boolean = false				  //  死亡
+    m_bAbandon: boolean = false		  //  放弃
     m_bDeathClearing: boolean		//  亡国清算中
     m_tMuteTradePlayers: number[] = []	  //  交易屏蔽玩家id
 
@@ -38,29 +37,29 @@ export class Player {
     m_nGold: number = 0				   //  拥有的金币
     m_nSumGold: number = 0				//  总资产
     m_nPassCount: number = 0			//  剩余要跳过的回合数
-    m_nManaMaxBase: number			//  蓝量最大基础值
-    m_nCDSub: number				//  冷却减缩固值
-    m_nManaSub: number			  //  耗魔减缩固值
-    m_nLastAtkPlayerID: number	  //  最后攻击我的玩家ID
-    m_nKill: number				 //  击杀数
-    m_nGCLD: number				 //  攻城数
-    m_nDamageHero: number		   //  英雄伤害
-    m_nDamageBZ: number			 //  兵卒伤害
-    m_nGoldMax: number			  //  巅峰资产数
-    m_nBuyItem: number			  //  可购装备数
+    m_nManaMaxBase: number = 0			//  蓝量最大基础值
+    m_nCDSub: number = 0				//  冷却减缩固值
+    m_nManaSub: number = 0		  //  耗魔减缩固值
+    m_nLastAtkPlayerID: number = -1	  //  最后攻击我的玩家ID
+    m_nKill: number = 0			 //  击杀数
+    m_nGCLD: number = 0			 //  攻城数
+    m_nDamageHero: number = 0		   //  英雄伤害
+    m_nDamageBZ: number = 0		 //  兵卒伤害
+    m_nGoldMax: number = 0		  //  巅峰资产数
+    m_nBuyItem: number = 0			  //  可购装备数
     m_nRank: number				 //  游戏排名
     m_nOprtOrder: number			//  操作顺序,根据m_PlayersSort中的index
-    m_nRollMove: number			 //  roll点移动的次数（判断入狱给阎刃卡牌）
-    m_nMoveDir: number			  //  方向	1=正向 -1=逆向
+    m_nRollMove: number = 0		 //  roll点移动的次数（判断入狱给阎刃卡牌）
+    m_nMoveDir: number = 1		  //  方向	1=正向 -1=逆向
 
     m_nPlayerState: number = PS_None			//  玩家状态
-    m_typeBuyState: number = TBuyItem_None//  购物状态
+    m_typeBuyState: number = BuyState_None//  购物状态
     m_typeTeam: DotaTeam			  //  自定义队伍
 
     m_oCDataPlayer: CDOTAPlayerController			//  官方CDOTAPlayer脚本
     m_eHero: CDOTA_BaseNPC_Hero					//  英雄单位
 
-    m_pathCur: Path				//  当前英雄所在路径
+    m_pathCur: Path = null			//  当前英雄所在路径
     m_pathLast: Path				//  上次英雄停留路径
     m_pathPassLast: Path			//  上次英雄经过路径
     m_pathMoveStart: Path			//  上次移动起点路径
@@ -68,12 +67,13 @@ export class Player {
 
     m_tabMyPath: {
         [typePath: number]: PathDomain[]
-    }				//  占领的路径<路径类型,路径{}>
-    m_tabBz: CDOTA_BaseNPC_BZ[]					//  兵卒
-    m_tabHasCard: Card[]			//  手上的卡牌
-    m_tabUseCard			//  已使用的卡牌
-    m_tabDelCard			//  已移除的卡牌
-    m_tCourier			  //  信使
+    } = {}			//  占领的路径<路径类型,路径{}>
+    m_tabBz: CDOTA_BaseNPC_BZ[] = []					//  兵卒
+    /**手上的卡牌 */
+    m_tabHasCard: Card[] = []
+    m_tabUseCardType: number[] = []     //  已使用的卡牌
+    m_tabDelCardType: number[] = []     //  已移除的卡牌
+    m_tCourier			  //  TODO: 信使
     __init: boolean = false            // 
     m_bGCLD: boolean        // 玩家英雄是否在攻城
     private _setState_Invis_onUsedAbltID: number
@@ -83,35 +83,7 @@ export class Player {
         print("new Player(),nPlayerID:", nPlayerID)
         this.m_nPlayerID = nPlayerID
         this.m_nSteamID = PlayerResource.GetSteamAccountID(this.m_nPlayerID)
-        this.m_nManaMaxBase = 0
-        this.m_nCDSub = 0
-        this.m_nManaSub = 0
-        this.m_nWageGold = 0
-        this.m_nGold = 0
-        this.m_nSumGold = 0
-        this.m_nGoldMax = 0
-        this.m_nPassCount = 0
-        this.m_nLastAtkPlayerID = -1
-        this.m_nKill = 0
-        this.m_nGCLD = 0
-        this.m_nDamageHero = 0
-        this.m_nDamageBZ = 0
-        this.m_tabMyPath = []
-        this.m_tabBz = []
-        this.m_tabHasCard = []
-        this.m_tabUseCard = []
-        this.m_tabDelCard = []
-        this.m_nPlayerState = PS_None
-        this.m_nBuyItem = 0
-        this.m_typeBuyState = TBuyItem_None
-        this.m_bDie = false
-        this.m_bAbandon = false
         this.m_typeTeam = Constant.CUSTOM_TEAM[nPlayerID]
-        this.m_pathCur = null
-        this.m_nRollMove = 0
-        this.m_nMoveDir = 1
-        this.m_tMuteTradePlayers = []
-        this.m_tCourier = []
 
         PlayerResource.SetCustomTeamAssignment(nPlayerID, DotaTeam.GOODGUYS)
         this.registerEvent()
@@ -214,72 +186,58 @@ export class Player {
 
     /**发送消息给玩家 */
     sendMsg(strMgsID: string, tabData) {
-        switch (strMgsID) {
-            case "GM_Operator":
-                CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
-                break;
-            case "GM_OperatorFinished":
-                CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
-                break;
-            case "S2C_GM_HUDErrorMessage":
-                CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
-                break;
-            case "GM_CameraCtrl":
-                CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
-                break;
-            default:
-                print("====player.sendMsg====!!!未匹配消息:", strMgsID, "!!!=========")
-                break;
-        }
+        //@ts-ignore
+        CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData)
     }
 
     /** 设置玩家网表信息 */
     setNetTableInfo() {
         print("===setNetTableInfo===")
         const keyname = "player_info_" + this.m_nPlayerID as player_info
-        const tabData = CustomNetTables.GetTableValue("GamingTable", keyname)
+        let tabData = CustomNetTables.GetTableValue("GamingTable", keyname)
+        if (!tabData) {
+            tabData = {
+                bRoundFinished: this.m_bRoundFinished ? 1 : 0,
+                nPathCurID: 1,
+                nSteamID64: PlayerResource.GetSteamAccountID(this.m_nPlayerID),
+                nSteamID32: PlayerResource.GetSteamID(this.m_nPlayerID),
+            }
+        }
         if (this.m_pathCur) {
             tabData.nPathCurID = this.m_pathCur.m_nID
         }
         // 拥有的路径信息
         let tabOwnPath: number[] = []
-        for (const key in this.m_tabMyPath) {
-            const paths = this.m_tabMyPath[key];
-            for (const path of paths) {
-                tabOwnPath.push(path.m_nID)
-            }
-        }
         // 有兵卒的路径信息
         let tabBzPath: number[] = []
         for (const typePath in this.m_tabMyPath) {
-            const paths = this.m_tabMyPath[typePath];
+            const paths = this.m_tabMyPath[typePath]
+            for (const path of paths) {
+                tabOwnPath.push(path.m_nID)
+            }
             if (tonumber(typePath) >= TP_DOMAIN_1 && paths[0].m_tabENPC.length > 0) {
                 tabBzPath.push(tonumber(typePath))
             }
         }
+        tabData.tabPath = tabOwnPath
+        tabData.tabPathHasBZ = tabBzPath
+
+        tabData.nGold = this.m_nGold
+        tabData.nSumGold = this.m_nSumGold
+        tabData.nCard = this.m_tabHasCard.length
+        tabData.nCDSub = this.m_nCDSub
+        tabData.nManaSub = this.m_nManaSub
+        tabData.nKill = this.m_nKill
+        tabData.nGCLD = this.m_nGCLD
+        tabData.nBuyItem = this.m_nBuyItem
+        tabData.typeBuyState = this.m_typeBuyState
+        tabData.bDeathClearing = this.m_bDeathClearing ? 1 : 0
+        tabData.nOprtOrder = this.m_nOprtOrder
+        tabData.tMuteTradePlayers = this.m_tMuteTradePlayers
+        tabData.typeTeam = this.m_typeTeam
+
         // 设置网表
-        CustomNetTables.SetTableValue("GamingTable", keyname, {
-            bDisconnect: tabData == null ? 0 : tabData.bDisconnect,
-            nGold: this.m_nGold,
-            nSumGold: this.m_nSumGold,
-            bRoundFinished: this.m_bRoundFinished ? 1 : 0,
-            nPathCurID: this.m_pathCur != null ? this.m_pathCur.m_nID : 1,
-            nSteamID64: tabData == null ? PlayerResource.GetSteamAccountID(this.m_nPlayerID) : tabData.nSteamID64,
-            nSteamID32: tabData == null ? PlayerResource.GetSteamID(this.m_nPlayerID) : tabData.nSteamID32,
-            tabPathHasBZ: tabBzPath,
-            tabPath: tabOwnPath,
-            nCard: this.m_tabHasCard.length,
-            nCDSub: this.m_nCDSub,
-            nManaSub: this.m_nManaSub,
-            nKill: this.m_nKill,
-            nGCLD: this.m_nGCLD,
-            nBuyItem: this.m_nBuyItem,
-            typeBuyState: this.m_typeBuyState,
-            bDeathClearing: this.m_bDeathClearing ? 1 : 0,
-            nOprtOrder: this.m_nOprtOrder,
-            tMuteTradePlayers: this.m_tMuteTradePlayers,
-            typeTeam: this.m_typeTeam
-        })
+        CustomNetTables.SetTableValue("GamingTable", keyname, tabData)
         // DeepPrintTable(CustomNetTables.GetTableValue("GamingTable", keyname))
     }
 
@@ -1228,22 +1186,42 @@ export class Player {
 
         card.setOwner(this.m_nPlayerID)
         this.m_tabHasCard.push(card)
-        
+
+        // TODO: 验证json数据，并检查双端通信
+        print("===setCardAdd===:")
+        print(json.encode(card.encodeJsonData()))
+        print("===setCardAdd====")
         // 通知客户端获得卡牌
-        this.sendMsg("GM_CardAdd",{
+        this.sendMsg("S2C_GM_CardAdd", {
             nPlayerID: this.m_nPlayerID,
-            json: JSON.stringify(card.encodeJsonData())
+            json: json.encode(card.encodeJsonData())
         })
         this.setCardCanCast()
-        
+
         // 同步玩家网表信息
         this.setNetTableInfo()
         return true
     }
 
+    /**删除卡牌 */
+    setCardDel(card: Card) {
+
+    }
+
     /**设置可用卡牌 */
     setCardCanCast() {
-        //TODO:
+        const tCanCast: number[] = []
+        for (const card of this.m_tabHasCard) {
+            if (card) {
+                if (card.CanUseCard())
+                    tCanCast.push(card.m_nID)
+            }
+        }
+        // 设置网表
+        const keyname = "player_info_" + this.m_nPlayerID as player_info
+        let info = CustomNetTables.GetTableValue("GamingTable", keyname)
+        info.tabCanCastCard = tCanCast
+        CustomNetTables.SetTableValue("GamingTable", keyname, info)
     }
 
     // 发送手牌数据给客户端

@@ -1,4 +1,4 @@
-import { TSBaseItem } from "../ability/tsBaseItem";
+import { TSBaseItem } from "./tsBaseItem";
 import { Player } from "../player/player";
 import { IsValid } from "../utils/amhc";
 import { ParaAdjuster } from "../utils/paraadjuster";
@@ -124,7 +124,7 @@ export class ItemManager {
         if (!IsValid(item)) return
         for (let i = 0; i < 9; i++) {
             const itemTemp = player.m_eHero.GetItemInSlot(i)
-            if (itemTemp && IsValid(itemTemp) && itemTemp.GetName() == item.GetName()) {
+            if (item.GetItemSlot() != i && itemTemp && IsValid(itemTemp) && itemTemp.GetName() == item.GetName()) {
                 if (!itemTemp.IsCooldownReady()) {
                     return math.ceil(itemTemp.GetCooldownTimeRemaining())
                 } else {

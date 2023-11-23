@@ -1,18 +1,19 @@
-import { TSBaseItem } from "../ability/tsBaseItem"
+import { TSBaseItem } from "../item/tsBaseItem"
 import { CardID_MONSTER, CardID_NONE } from "../mode/gamemessage"
 import { Player } from "../player/player"
+import { Card } from "./card"
 import { CardFactory } from "./cardfactory"
 
 export class CardManager {
     static EvtID = {
         Event_CardUseRequest: "Event_CardUseRequest"   // 请求使用卡牌
     }
-    m_tabCards = []
+    m_tabCards: Card[] = []
     m_tGetCardCount: {
         [playerid: number]: {
             [type: number]: number
         }
-    }    // 记录给玩家发牌的数量{playerid,{type,count}}
+    } = {}  // 记录给玩家发牌的数量{playerid,{type,count}}
     m_nIncludeID = 0
 
     /**初始化 */
@@ -32,10 +33,12 @@ export class CardManager {
     /**通用装备激活卡牌 */
     onItem_getCard(item: TSBaseItem, player: Player, cardType: string) {
         const cardID = this.getCardType(cardType, player, item)
+        print("===onItem_getCard===itemname:", item.GetName(), "cardID:", cardID)
         if (cardID) {
             const card = CardFactory.create(cardID, player.m_nPlayerID)
-            if (card)
+            if (card) {
                 player.setCardAdd(card)
+            }
         }
     }
 
@@ -48,7 +51,7 @@ export class CardManager {
                 break;
             case "MONSTER":
                 const keys = Object.keys(CardID_MONSTER)
-                const i = keys[RandomInt(1, keys.length)]
+                const i = keys[RandomInt(0, keys.length - 1)]
                 cardID = CardID_MONSTER[i]
                 break;
             case "ITEM":

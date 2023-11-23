@@ -1074,6 +1074,8 @@ export const App = () => {	// 根组件
         2. 测试Player.setCardAdd里的sendMsg部分的JSON.stringify能不能正确json化字符
 
         3. 继续item_qtg_iron_talon.OnSpellStart里的onItem_getCard(this, player, "MONSTER")整个逻辑
+        
+        4. 测试，在同一件物品进入cd然后放到背包栏里后又新获得一样的物品时，该物品会生效，应该不生效
 
 10. 实现CamerManage的前端部分
         检查pa一技能使用后镜头是否正确移动
@@ -1147,7 +1149,7 @@ export const App = () => {	// 根组件
                       		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
                       		"StatusHealth"	"1"
                       	}
-
+    
         1. setDiaoGesture 雕哥施法检查
         2. 雕哥施法鬼畜，第一个飓风不会消除
 
@@ -1215,18 +1217,18 @@ export const App = () => {	// 根组件
         1. 进入新的回合开始, onEvent_PlayerRoundBegin
             1. 如果在监狱
                 1. 后端给前端发送 TypeOprt.TO_PRISON_OUT(5) 操作
-
+    
                 2. 前端弹出监狱Panel
-
+    
                 3. 用户点击是或者否对应回包的nRequest 1和0
                     GameEvents.SendCustomGameEventToServer
-
+    
                 4. 后端GameConfig.onMsg_oprt ==> processPrisonOut
-
+    
             2. 如果不在监狱==>正常roll点
                 1. roll点豹子到达三次
                     - onEvent_Roll ==> setInPrison
-
+    
                 2. roll点走到监狱路径
                     - onPath ==> setInPrison
 
