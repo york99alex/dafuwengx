@@ -1,3 +1,9 @@
 .image-precache {
+	background-image: url("file://{images}/custom_game/arrow_png.png");
+	background-image: url("file://{images}/custom_game/card/card_10005_png.png");
+	background-image: url("file://{images}/custom_game/card/card_10006_png.png");
+	background-image: url("file://{images}/custom_game/card/card_10007_png.png");
+	background-image: url("file://{images}/custom_game/card/card_10008_png.png");
+	background-image: url("file://{images}/custom_game/card/card_bg_png.png");
 	background-image: url("file://{images}/custom_game/loading.png");
 }

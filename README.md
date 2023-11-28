@@ -1075,7 +1075,7 @@ export const App = () => {	// 根组件
 
         3. 继续item_qtg_iron_talon.OnSpellStart里的onItem_getCard(this, player, "MONSTER")整个逻辑
         
-        4. 测试，在同一件物品进入cd然后放到背包栏里后又新获得一样的物品时，该物品会生效，应该不生效
+        4. 
 
 10. 实现CamerManage的前端部分
         检查pa一技能使用后镜头是否正确移动
@@ -1088,9 +1088,11 @@ export const App = () => {	// 根组件
 
 13. GameLoop需重新调整的点
 
-        1. 切换状态是否需要封装？
-        2. 新增GSRoundBefore
-        3. 重新理清状态图
+         1. 切换状态是否需要封装？
+         2. 新增GSRoundBefore
+         3. 重新理清状态图
+         0.7(0.3*(1-y))*x=0.98
+         
 
 14. ~~Player.setState重写~~，替换为setPlayerState
 
@@ -1149,7 +1151,7 @@ export const App = () => {	// 根组件
                       		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
                       		"StatusHealth"	"1"
                       	}
-    
+        
         1. setDiaoGesture 雕哥施法检查
         2. 雕哥施法鬼畜，第一个飓风不会消除
 
@@ -1217,18 +1219,18 @@ export const App = () => {	// 根组件
         1. 进入新的回合开始, onEvent_PlayerRoundBegin
             1. 如果在监狱
                 1. 后端给前端发送 TypeOprt.TO_PRISON_OUT(5) 操作
-    
+        
                 2. 前端弹出监狱Panel
-    
+        
                 3. 用户点击是或者否对应回包的nRequest 1和0
                     GameEvents.SendCustomGameEventToServer
-    
+        
                 4. 后端GameConfig.onMsg_oprt ==> processPrisonOut
-    
+        
             2. 如果不在监狱==>正常roll点
                 1. roll点豹子到达三次
                     - onEvent_Roll ==> setInPrison
-    
+        
                 2. roll点走到监狱路径
                     - onPath ==> setInPrison
 
@@ -1721,11 +1723,47 @@ game\scripts\shops\1x6_shops.txt
 
 ## 卡牌
 
-装备获得卡牌的思路：
+卡牌前后端交互的思路：
 
-- 装备的Buff，Oncreated，获得该装备时进行判断：
-- 从商店购买获得，立刻获得一张卡牌，并开启倒计时判断
-- 从背包拖到装备栏获得，判断是否有重复物品在CD，设置为原先的CD
+1. 装备的Buff，Oncreated，获得该装备时进行判断：
+2. 从商店购买获得，立刻获得一张卡牌，并开启倒计时判断
+3. 从背包拖到装备栏获得，判断是否有重复物品在CD，设置为原先的CD
+4. Player.setCardAdd 从服务端发送数据到客户端
+
+   ```typescript
+           // 通知客户端获得卡牌
+           this.sendMsg('S2C_GM_CardAdd', {
+               nPlayerID: this.m_nPlayerID,
+               json: json.encode(card.encodeJsonData()),
+           });
+   ```
+5. 客户端react函数监听GameEvent，存储数据并修改卡牌
+
+   ```tsx
+       /**新增手牌 */
+       useGameEvent('S2C_GM_CardAdd', event => {
+           if (event.nPlayerID == Players.GetLocalPlayer()) {
+               for (const key in event.json) {
+                   const handCard = new HandCard(event.json[key]);
+                   updateCardList(event.nPlayerID, handCard.nCardID, handCard);
+               }
+           }
+       });
+   ```
+6. CardPanel为父组件，遍历cardlist生成子组件卡牌容器
+
+   - 【完成新增手牌】
+7. 子组件卡牌容器<Card\>渲染时绑定拖拽事件
+8. 拖拽出手牌区域表示为打出，card.tsx SendTagert发送相关施法数据至服务端
+
+   - 【完成前端打出卡牌并发送数据至后端】
+
+9. CardManager注册监听回调onEvent_CardUseRequest函数处理卡牌施法请求
+10. 处理成功则PlayerManager.broadcastMsg广播全部玩家
+
+    - 处理失败则player.sendMsg单独通知请求玩家
+
+11. 前端监听
 
 
 
@@ -1734,7 +1772,10 @@ game\scripts\shops\1x6_shops.txt
 ### cardlist
 
 - 阎刃	"Card_MAGIC_InfernalBlade"
-- 
+- 刀刀兄弟，全员补给
+- 赏金符全体+钱
+- 商店卡
+- 海妖娜迦，大招，移动范围睡眠，持续两回合
 
 
 
@@ -1783,6 +1824,10 @@ Path的类class name应以	path_corner
 
 同时通过PathType获取其属性值
 `const typePath = entity.GetIntAttr("PathType")`
+
+
+
+
 
 
 

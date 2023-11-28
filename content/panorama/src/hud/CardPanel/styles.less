@@ -1,15 +1,119 @@
+#CardBody {
+    width: 100%;
+    height: 100%;
+}
+
+#Arrow {
+    width: 100%;
+    height: 100%;
+}
+.arrowsize {
+    width: 100px;
+    height: 100px;
+}
+
 .CardPanel {
-    background-color: black;
-    opacity: 0.7;
+    opacity: 0.95;
     width: 25%;
-    height: 25%;
+    height: 40%;
     vertical-align: bottom;
-    flow-children: left;
+    flow-children: right;
+    background-image: url('file://{images}/custom_game/card/card_bg_png.png');
+    background-size: 100% 50%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    overflow: clip;
+    border-left: 4%;
+    border-bottom: 2%;
 }
 
 .CardContainer {
-    background-color: white;
+    animation-name: GetCardAnim;
+    animation-duration: 2s;
+    &.DelCard {
+        animation-name: DelCardAnim;
+        animation-duration: 2s;
+    }
     width: 30%;
-    height: 80%;
-    margin: 20px 10px 20px 0px;
+    height: 45%;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: #363535 inset 0px 0px 2px 1px;
+    horizontal-align: center;
+    vertical-align: bottom;
+    flow-children: down;
+    overflow: noclip;
+    &:hover {
+        margin-bottom: 20px;
+        z-index: 100;
+        transform: scale3d(1.2, 1.2, 1);
+    }
+
+    .CardHead {
+        width: 100%;
+        height: 15%;
+        background-color: rgb(255, 174, 0);
+        flow-children: right;
+        .CardMana {
+            height: 100%;
+            font-size: 25px;
+            color: rgb(33, 159, 209);
+            vertical-align: middle;
+            margin-top: -2px;
+            margin-left: 2px;
+            text-shadow: 1px 1px 1px #272727;
+        }
+        .CardName {
+            width: 100%;
+            font-size: 22px;
+            vertical-align: middle;
+            margin-top: 3px;
+            color: white;
+            text-shadow: 1px 1px 1px #272727;
+            font-family: titleFont;
+        }
+    }
+
+    .CardImage {
+        width: 100%;
+        height: 95%;
+        background-size: 100%;
+    }
+
+    .CardBottom {
+        width: 100%;
+        height: width-percentage(50%);
+        background-color: rgba(0, 0, 0, 0.9);
+        margin-top: -40%;
+        .CardDescription {
+            font-size: 20px;
+            color: white;
+            vertical-align: middle;
+            horizontal-align: center;
+            font-family: titleFont;
+            text-align: center;
+        }
+    }
+}
+
+@keyframes GetCardAnim {
+    0% {
+        transform: translate3d(0, -300px, 0);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes DelCardAnim {
+    0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(0, -400px, 0);
+        opacity: 0.7;
+    }
 }

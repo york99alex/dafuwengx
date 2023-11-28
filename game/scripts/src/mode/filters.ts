@@ -1,43 +1,42 @@
-import { DamageEvent } from "../player/player"
-import { ParaAdjuster } from "../utils/paraadjuster"
+import { DamageEvent } from '../player/player';
+import { ParaAdjuster } from '../utils/paraadjuster';
 
 export class Filters {
-
     static init() {
-        let GameMode = GameRules.GetGameModeEntity()
-        GameMode.SetAbilityTuningValueFilter(() => true, this)
-        GameMode.SetBountyRunePickupFilter(() => true, this)
-        GameMode.SetDamageFilter((event) => this.DamageFilter(event), this)
-        GameMode.SetExecuteOrderFilter((event) => this.ExecuteOrderFilter(event), this)
-        GameMode.SetHealingFilter(() => true, this)
-        GameMode.SetItemAddedToInventoryFilter((event) => this.ItemAddedToInventoryFilter(event), this)
-        GameMode.SetModifierGainedFilter(() => true, this)
-        GameMode.SetModifyExperienceFilter(() => true, this)
-        GameMode.SetModifyGoldFilter(() => true, this)
-        GameMode.SetRuneSpawnFilter(() => false, this)
-        GameMode.SetTrackingProjectileFilter(() => true, this)
+        let GameMode = GameRules.GetGameModeEntity();
+        GameMode.SetAbilityTuningValueFilter(() => true, this);
+        GameMode.SetBountyRunePickupFilter(() => true, this);
+        GameMode.SetDamageFilter(event => this.DamageFilter(event), this);
+        GameMode.SetExecuteOrderFilter(event => this.ExecuteOrderFilter(event), this);
+        GameMode.SetHealingFilter(() => true, this);
+        GameMode.SetItemAddedToInventoryFilter(event => this.ItemAddedToInventoryFilter(event), this);
+        GameMode.SetModifierGainedFilter(() => true, this);
+        GameMode.SetModifyExperienceFilter(() => true, this);
+        GameMode.SetModifyGoldFilter(() => true, this);
+        GameMode.SetRuneSpawnFilter(() => false, this);
+        GameMode.SetTrackingProjectileFilter(() => true, this);
     }
 
     static DamageFilter(event: DamageEvent): boolean {
         // 深拷贝event给tEvent
-        let tEvent = { ...event }
+        let tEvent = { ...event };
         // 触发攻击事件
-        GameRules.EventManager.FireEvent("Event_Atk", tEvent)
+        GameRules.EventManager.FireEvent('Event_Atk', tEvent);
         // 触发被攻击事件
-        GameRules.EventManager.FireEvent("Event_BeAtk", tEvent)
+        GameRules.EventManager.FireEvent('Event_BeAtk', tEvent);
         if (event.bIgnore) {
-            return false    // 忽略订单
+            return false; // 忽略订单
         }
         // 触发受伤事件
-        GameRules.EventManager.FireEvent("Event_OnDamage", tEvent)
-        print("===DamageFilter===damage:", event.damage)
-        print("===DamageFilter===damagetype:", event.damagetype_const)
-        print("===DamageFilter===bIgnore:", event.bIgnore)
-        print("===DamageFilter===bIgnoreGold:", event.bIgnoreGold)
-        print("===DamageFilter===bIgnoreDamageSelf:", event.bIgnoreDamageSelf)
-        print("===DamageFilter===bIgnoreBZHuiMo:", event.bIgnoreBZHuiMo)
-        event.damage = tEvent.damage
-        return true
+        GameRules.EventManager.FireEvent('Event_OnDamage', tEvent);
+        print('===DamageFilter===damage:', event.damage);
+        print('===DamageFilter===damagetype:', event.damagetype_const);
+        print('===DamageFilter===bIgnore:', event.bIgnore);
+        print('===DamageFilter===bIgnoreGold:', event.bIgnoreGold);
+        print('===DamageFilter===bIgnoreDamageSelf:', event.bIgnoreDamageSelf);
+        print('===DamageFilter===bIgnoreBZHuiMo:', event.bIgnoreBZHuiMo);
+        event.damage = tEvent.damage;
+        return true;
     }
 
     static ExecuteOrderFilter(event: ExecuteOrderFilterEvent): boolean {
@@ -85,61 +84,63 @@ export class Filters {
             DOTA_UNIT_ORDER_MOVE_RELATIVE = 39
             DOTA_UNIT_ORDER_CAST_TOGGLE_ALT = 40
          */
-        const orderType = event.order_type
-        const playerID = event.issuer_player_id_const
+        const orderType = event.order_type;
+        const playerID = event.issuer_player_id_const;
 
-        if (event.units == null || event.units["0"] == null) return
+        if (event.units == null || event.units['0'] == null) return;
 
-        const caster = EntIndexToHScript(event.units["0"])
+        const caster = EntIndexToHScript(event.units['0']);
 
-        if (orderType == UnitOrder.MOVE_TO_TARGET
-            || orderType == UnitOrder.DROP_ITEM
-            || orderType == UnitOrder.PICKUP_ITEM
-            || orderType == UnitOrder.PICKUP_RUNE
-            || orderType == UnitOrder.HOLD_POSITION
-            || orderType == UnitOrder.ATTACK_MOVE
-            || orderType == UnitOrder.PATROL
-            || orderType == UnitOrder.ATTACK_TARGET
-            || orderType == UnitOrder.MOVE_TO_DIRECTION) {
+        if (
+            orderType == UnitOrder.MOVE_TO_TARGET ||
+            orderType == UnitOrder.DROP_ITEM ||
+            orderType == UnitOrder.PICKUP_ITEM ||
+            orderType == UnitOrder.PICKUP_RUNE ||
+            orderType == UnitOrder.HOLD_POSITION ||
+            orderType == UnitOrder.ATTACK_MOVE ||
+            orderType == UnitOrder.PATROL ||
+            orderType == UnitOrder.ATTACK_TARGET ||
+            orderType == UnitOrder.MOVE_TO_DIRECTION
+        ) {
             // 过滤玩家攻击，移动，脱捡装备，吃符，停止订单
-            return false
+            return false;
         } else if (orderType == UnitOrder.MOVE_TO_POSITION) {
             // 玩家移动
-            GameRules.EventManager.FireEvent("Event_OrderMoveToPos", event)
-            return false
+            GameRules.EventManager.FireEvent('Event_OrderMoveToPos', event);
+            return false;
         } else if (orderType == UnitOrder.PURCHASE_ITEM) {
             // 购买物品
-            return true
+            return true;
             // GameRules.EventManager.FireEvent("Event_ItemBuy", event)
         } else if (orderType == UnitOrder.SELL_ITEM) {
             // 出售物品
-            GameRules.EventManager.FireEvent("Event_ItemSell", event)
+            GameRules.EventManager.FireEvent('Event_ItemSell', event);
+            // TODO: 测试return true
+            return true;
         } else if (orderType == UnitOrder.DISASSEMBLE_ITEM) {
             // 拆分物品
-            GameRules.EventManager.FireEvent("Event_ItemSplit", event)
+            GameRules.EventManager.FireEvent('Event_ItemSplit', event);
         } else if (orderType == UnitOrder.MOVE_ITEM) {
             // 移动物品
-            GameRules.EventManager.FireEvent("Event_ItemMove", event)
+            GameRules.EventManager.FireEvent('Event_ItemMove', event);
         } else if (orderType == UnitOrder.SET_ITEM_COMBINE_LOCK) {
             // 锁定物品
-            GameRules.EventManager.FireEvent("Event_ItemLock", event)
+            GameRules.EventManager.FireEvent('Event_ItemLock', event);
         } else if (orderType == UnitOrder.GIVE_ITEM) {
             // 给予物品
-            GameRules.EventManager.FireEvent("Event_ItemGive", event)
+            GameRules.EventManager.FireEvent('Event_ItemGive', event);
         }
 
-        if (event["bIgnore"])
-            return false
+        if (event['bIgnore']) return false;
 
-        return true
+        return true;
     }
 
     static ItemAddedToInventoryFilter(event: ItemAddedToInventoryFilterEvent): boolean {
         // 触发获取物品
-        GameRules.EventManager.FireEvent("Event_ItemAdd", event)
-        const npc = EntIndexToHScript(event.inventory_parent_entindex_const) as CDOTA_BaseNPC
-        if (npc && npc.IsRealHero()) Timers.CreateTimer(0.01, () => ParaAdjuster.ModifyMana(npc))
-        return true
+        GameRules.EventManager.FireEvent('Event_ItemAdd', event);
+        const npc = EntIndexToHScript(event.inventory_parent_entindex_const) as CDOTA_BaseNPC;
+        if (npc && npc.IsRealHero()) Timers.CreateTimer(0.01, () => ParaAdjuster.ModifyMana(npc));
+        return true;
     }
-
 }

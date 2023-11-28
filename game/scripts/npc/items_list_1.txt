@@ -88,7 +88,7 @@
 		"ItemSellable" "1"
 		"ItemQuality" "component"
 		"Model" "models/props_gameplay/quelling_blade.vmdl"
-		"AbilityCooldown" "5"
+		"AbilityCooldown" "1"
 		"AbilityTextureName" "item_iron_talon"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	}
