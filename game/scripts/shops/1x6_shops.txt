@@ -59,13 +59,13 @@
 	{
 		// 回复戒指 500，每回合5%回血
 		"item"		"item_ring_of_regen"	
-		// 贤者面罩 500，每回合0.25回蓝
+		// 贤者面罩 500，每回合0.25回蓝，兵卒10点蓝
 		"item"		"item_sobi_mask"
 		// 毛毛帽，500，200生命值
 		"item"		"item_fluffy_hat"
 		// 抗魔斗篷，1000，20%魔抗
 		"item"		"item_cloak"
-		// 速度之靴，500，20移速
+		// 速度之靴，500，30移速
 		"item"		"item_boots"
 
 		// 吸血面具，1000，20%吸血
@@ -73,10 +73,10 @@
 		// 巫毒面具，1000，10%技能吸血
 		"item"		"item_voodoo_mask"
 
-		// 幽魂权杖，1500，5点全属性
-		"item"		"item_ghost"
-		// 闪烁匕首 2250
-		"item"		"item_blink"		
+		// 幽魂权杖(item_lua)，1500，5点全属性
+		"item"		"item_qtg_ghost"
+		// 闪烁匕首 2000
+		"item"		"item_qtg_blink"		
 	}	
 	
 	// Level 1 - Green Recipes
@@ -87,14 +87,14 @@
 		// 猎鹰战刃，1500，毛毛帽500+贤者面罩500+攻击之爪500，200血，0.5回蓝，15攻击力
 		"item"		"item_falcon_blade"
 		// 动力鞋，1500，500鞋+500加速手套+500属性件
-		"item"		"item_power_treads"
+		"item"		"item_qtg_power_treads"
 		// 相位鞋，1500，500鞋+500锁子甲+500攻击之爪
 		"item"		"item_phase_boots"
 		// 空明杖，1500，1000短棍+500法师长袍，10攻速，15攻击力，10智力
 		"item"		"item_oblivion_staff"
- 		// 疯狂面具，1000+1000
-		"item"		"item_mask_of_madness"
-		// 银月之晶
+ 		// 疯狂面具(item_lua)，1000+1000
+		"item"		"item_qtg_mask_of_madness"
+		// 银月之晶，4000
 		"item"		"item_moon_shard"	
 	}
 
@@ -102,14 +102,14 @@
 	"support"   // 辅助
 	{
 		// 静谧之鞋，1000，500鞋子+500回复戒指，如果单位上回合没有受到伤害或造成伤害，额外回血10%
-		"item"		"item_tranquil_boots"
+		"item"		"item_qtg_tranquil_boots"
 		// 勇气勋章，1500，500甲+500面罩+500石头，5甲，0.5回蓝
-		"item"		"item_medallion_of_courage"
+		"item"		"item_qtg_medallion_of_courage"
 		// 奥术鞋，1500，500鞋子+1000能量球，2点蓝上限，4回合CD回4点蓝/40兵卒蓝
-		"item"		"item_arcane_boots"
+		"item"		"item_qtg_arcane_boots"
 		// 洞察烟斗，3500，1000斗篷+500回复戒指+1000治疗指环+1000卷轴，30%魔抗，18%回血
 		// 技能切换，受到技能伤害35%消耗1点蓝量抵挡
-		"item"		"item_pipe"			
+		"item"		"item_qtg_pipe"
 	}
 				
 	"magics"    // 法器		
@@ -120,24 +120,24 @@
 		// 巫师之刃，3000，500加速手套+1000魔力法杖+500锁子甲+1000短棍
 		// 30攻速，12智力，6点甲，10攻击力，300弹道速度
 		// 每次攻击附带造成0.4的智力值
-		"item"		"item_witch_blade"
+		"item"		"item_qtg_witch_blade"
 
 		// 达贡之神力系列 item_dagon_[#] (1-5)
 		// 3000/4000/5000/6000/7000
 		// 1000巫毒+1000王冕+1000卷轴
 		"item"		"item_dagon"
 		// 紫怨，3000，1000魔力法杖，1000短棍，1000宝石回蓝，20攻速，15攻击力，12智力，1回蓝
-		"item"		"item_orchid"	
+		"item"		"item_qtg_orchid"	
 		// 炎阳纹章，3000，勇气勋章1500+王冠500+短棍1000，6点甲，6点全属性，0.5回蓝，10攻速，10攻击力
-		"item"		"item_solar_crest"
+		"item"		"item_qtg_solar_crest"
 		// 阿托斯之棍，2500，1000魔力法杖，1000活力球，500法师长袍，20点智力
-		"item"		"item_rod_of_atos"
+		"item"		"item_qtg_rod_of_atos"
 		// 刷新球，5000，2500丰饶*2
-		"item"		"item_refresher"
+		"item"		"item_qtg_refresher"
 		// 玲珑心，4000，2回蓝+1活力球+1能量球，300血，2点蓝上限，2点回蓝
-		"item"		"item_octarine_core"
+		"item"		"item_qtg_octarine_core"
 		// 邪恶镰刀，5500，2500+2000+1000，3点蓝上限，3点回蓝
-		"item"		"item_sheepstick"
+		"item"		"item_qtg_sheepstick"
 		// 缚灵索
 		// "item"		"item_gungir"
 	}
@@ -148,21 +148,22 @@
 		// 先锋盾，2000，1000活力球+1000治疗指环
 		"item"		"item_vanguard"
 		// 刃甲，3000，1500大剑+1500的板甲
-		"item"		"item_blade_mail"
+		"item"		"item_qtg_blade_mail"
 		// 振魂石，设计为将受到的魔法伤害转变为生命值？
 		// 3000，1000活力球，1000能量球，1000治疗指环
 		"item"		"item_soul_booster" // 振魂石,再次鼓起丧失的勇气
 		// 赤红甲，2000先锋盾+1000头盔（+500？卷轴）
-		"item"		"item_crimson_guard"		
+		"item"		"item_qtg_crimson_guard"		
 		// 黑皇杖，1000斧头+1500大剑+1500卷轴
-		"item"		"item_black_king_bar"
+		// TODO: 
+		// "item"		"item_black_king_bar"
 		// 飓风长戟
 		// "item"		"item_hurricane_pike"	
 		// "item"		"item_sphere"
 		// 希瓦的守护，4000，1500板甲+2500
 		"item"		"item_shivas_guard"
-		// 恐鳌之心，4500，1000球+2500+1000卷轴，15%回血
-		"item"		"item_heart"	
+		// 恐鳌之心，4000，1000球+2500+500卷轴，20%回血
+		"item"		"item_qtg_heart"	
 		// 强袭胸甲，5000，1500板甲+1500板甲+2000振奋，60攻速+25甲，光环-10点甲
 		"item"		"item_assault"
 	}
@@ -173,7 +174,7 @@
 		"item"		"item_lesser_crit"	
  		// 黯灭，3500，大剑1500+大剑+枯萎之石500，50攻击力
 		"item"		"item_desolator"	
-		// 虚灵之刃，3000，慧光1500+绿杖1500，移除技能吸血增强
+		// 虚灵之刃，3000，慧光1500+绿杖1500，移除魔法回复增强
 		"item"		"item_ethereal_blade"
 		// "item"		"item_nullifier"	
 		// 蝴蝶，3500，2500+1000，3500，移除闪避
@@ -182,13 +183,13 @@
 		"item"		"item_radiance"
 		// 代达罗斯之殇，2500+2500，80攻击力
 		"item"		"item_greater_crit"
-		// 圣剑，6500，3500+2500，350攻击力
+		// 圣剑，6000，3500+2500，350攻击力
 		"item"		"item_rapier"
-		// 血棘，5500，3000紫怨+2500法师克星
-		"item"		"item_bloodthorn"
+		// 血棘，5500，3000紫怨+2500法师克星 TODO:
+		"item"		"item_qtg_bloodthorn"
 		// 英灵胸针，5500，3000巫师之刃+2500神秘法杖
 		// 每次攻击附带造成0.6的智力值
-		"item"		"item_revenants_brooch"	
+		"item"		"item_qtg_revenants_brooch"	
 	}
 		
 	// Level 4 - Orange / Orb / Artifacts				
@@ -200,12 +201,12 @@
 		"item"		"item_sange"
  		// 夜叉，1500，移除10%移速
 		"item"		"item_yasha"
- 		// 慧光，1500，移除24%技能吸血增强
+ 		// 慧光，1500，移除魔法回复增强
 		"item"		"item_kaya"
  		// 法师克星，2500，20%魔抗，15攻速，20攻击力，10智力
 		// 1000魔抗斗篷20%魔抗+1500的空明杖，10攻速，15攻击力，10智力
 		"item"		"item_mage_slayer"
- 		// 散慧对剑，3000，移除回复增强，移除技能吸血增强
+ 		// 散慧对剑，3000，移除回复增强，移除魔法回复增强，状态抗性？
 		"item"		"item_kaya_and_sange"
  		// 散夜对剑，3000，移除移速和回复增强
 		"item"		"item_sange_and_yasha"
@@ -213,42 +214,16 @@
 		"item"		"item_yasha_and_kaya"
  		// 撒旦之邪力，5000，1000+1500+2500
 		"item"		"item_satanic"		
- 		// 斯嘉蒂之眼，5000，2000+2000+1000（活力之球）
+ 		// 斯嘉蒂之眼，5000，2000+2000+1000（活力之球）,350血
 		"item"		"item_skadi" 
- 		// 盛势闪光，5500，2250+2500+750卷轴
-		"item"		"item_overwhelming_blink"		
- 		// 迅疾闪光，5500，2250+2500+750卷轴
-		"item"		"item_swift_blink"		
- 		// 迅疾闪光，5500，2250+2500+750卷轴
-		"item"		"item_arcane_blink"		
+ 		// 盛势闪光，5000，2000+2500+500卷轴
+		"item"		"item_qtg_overwhelming_blink"		
+ 		// 迅疾闪光，5000，2000+2500+500卷轴
+		"item"		"item_qtg_swift_blink"		
+ 		// 迅疾闪光，5000，2000+2500+500卷轴
+		"item"		"item_qtg_arcane_blink"		
 	}
 
-	"sideshop1"
-	{
-		"item"		"item_tpscroll"
-		"item"		"item_magic_stick"
-		"item"		"item_quelling_blade"
-		"item"		"item_boots"
-		"item"		"item_boots_of_elves"
-		"item"		"item_belt_of_strength"
-		"item"		"item_robe"
-		"item"		"item_crown"
-	}
-
-	"sideshop2"
-	{
-		"item"		"item_gloves"
-		"item"		"item_chainmail"
-		"item"		"item_cloak"
-		"item"		"item_void_stone"
-		"item"		"item_helm_of_iron_will"
-		"item"		"item_energy_booster"
-		"item"		"item_vitality_booster"
-		"item"		"item_lifesteal"
-		"item"		"item_broadsword"
-		"item"		"item_blink"
-	}
-	
 	"secretshop"
 	{				
 		// 治疗指环，1000，每回合回复10%生命值
@@ -257,17 +232,56 @@
 		"item"		"item_void_stone"
 		// 丰饶之环，2500，12%回血，1点回蓝，10点攻击力
 		"item"		"item_cornucopia"
+		// 能量之球，1000，2点蓝上限
 		"item"		"item_energy_booster"
+		// 活力之球，1000，300生命值
 		"item"		"item_vitality_booster"
 		// "item"		"item_talisman_of_evasion"
+		// 板甲，1500，10甲
 		"item"		"item_platemail"
+		// 振奋宝石，2000，60攻速
 		"item"		"item_hyperstone"
+		// 极限法球，2000，10全属性
 		"item"		"item_ultimate_orb"
+		// 恶魔刀锋，2500，40攻
 		"item"		"item_demon_edge"
+		// 神秘法杖，2500，25智力
 		"item"		"item_mystic_staff"
+		// 掠夺者之斧，2500，25力量
 		"item"		"item_reaver"
+		// 鹰歌弓，2500，25敏捷
 		"item"		"item_eagle"
+		// 圣者遗物，3500，60攻
 		"item"		"item_relic"
 	}
 
+	"sideshop1"
+	{
+	// 	"item"		"item_tpscroll"
+	// 	"item"		"item_magic_stick"
+	// 	"item"		"item_quelling_blade"
+	// 	"item"		"item_boots"
+	// 	"item"		"item_boots_of_elves"
+	// 	"item"		"item_belt_of_strength"
+	// 	"item"		"item_robe"
+	// 	"item"		"item_crown"
+	}
+
+	"sideshop2"
+	{
+	// 	"item"		"item_gloves"
+	// 	"item"		"item_chainmail"
+	// 	"item"		"item_cloak"
+	// 	"item"		"item_void_stone"
+	// 	"item"		"item_helm_of_iron_will"
+	// 	"item"		"item_energy_booster"
+	// 	"item"		"item_vitality_booster"
+	// 	"item"		"item_lifesteal"
+	// 	"item"		"item_broadsword"
+	// 	"item"		"item_blink"
+	}
+
+	"pregame"
+	{
+	}
 }

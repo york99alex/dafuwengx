@@ -1033,6 +1033,8 @@ export const App = () => {	// 根组件
    4. 检查全才英雄兵卒的创建, 攻击力加成
    5. ==存在创建多个兵卒后，新创建的兵卒血量较少不正常，检查该情况==
       检查兵卒血量和力量属性buff
+   6. Modifier name modifier_ability_BZ_pudge_rot_debuff is not lowercase.
+          Because CModifierFactoryDictionary is case sensitive, you have probably introduced a bug.
 
 4. ==路径相关==
 
@@ -1074,9 +1076,8 @@ export const App = () => {	// 根组件
         2. 测试Player.setCardAdd里的sendMsg部分的JSON.stringify能不能正确json化字符
 
         3. 继续item_qtg_iron_talon.OnSpellStart里的onItem_getCard(this, player, "MONSTER")整个逻辑
-        
-        4. 
-
+    3. 装备刷cd统一到重复位置
+    
 10. 实现CamerManage的前端部分
         检查pa一技能使用后镜头是否正确移动
 
@@ -1726,8 +1727,11 @@ game\scripts\shops\1x6_shops.txt
 卡牌前后端交互的思路：
 
 1. 装备的Buff，Oncreated，获得该装备时进行判断：
+
 2. 从商店购买获得，立刻获得一张卡牌，并开启倒计时判断
+
 3. 从背包拖到装备栏获得，判断是否有重复物品在CD，设置为原先的CD
+
 4. Player.setCardAdd 从服务端发送数据到客户端
 
    ```typescript
@@ -1737,6 +1741,7 @@ game\scripts\shops\1x6_shops.txt
                json: json.encode(card.encodeJsonData()),
            });
    ```
+
 5. 客户端react函数监听GameEvent，存储数据并修改卡牌
 
    ```tsx
@@ -1750,20 +1755,26 @@ game\scripts\shops\1x6_shops.txt
            }
        });
    ```
+
 6. CardPanel为父组件，遍历cardlist生成子组件卡牌容器
 
    - 【完成新增手牌】
+
 7. 子组件卡牌容器<Card\>渲染时绑定拖拽事件
+
 8. 拖拽出手牌区域表示为打出，card.tsx SendTagert发送相关施法数据至服务端
 
    - 【完成前端打出卡牌并发送数据至后端】
 
 9. CardManager注册监听回调onEvent_CardUseRequest函数处理卡牌施法请求
+
 10. 处理成功则PlayerManager.broadcastMsg广播全部玩家
 
     - 处理失败则player.sendMsg单独通知请求玩家
 
 11. 前端监听
+
+    
 
 
 

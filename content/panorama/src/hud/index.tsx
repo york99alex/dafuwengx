@@ -37,4 +37,7 @@ GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_QUICK_STATS, f
 
 const hud = $.GetContextPanel().GetParent()!.GetParent()!.GetParent()!;
 HideHudElement(hud, 'CommonItems');
+HideHudElement(hud, 'QuickBuySlot8');
+HideHudElement(hud, 'GridNeutralsTab');
+HideHudElement(hud, 'ToggleAdvancedShop');
 // HideHudElement(hud, 'stash');
