@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { HandCard } from '../handCard';
-import { TypeCard, TypeOperator } from '../../mode/constant';
+import { TypeCard, TypeOprt } from '../../mode/constant';
 
 export default function Card({ card, count }: { card: HandCard; count: number }) {
     console.log(card);
@@ -21,7 +21,7 @@ export default function Card({ card, count }: { card: HandCard; count: number })
         if (!cardContainer.current) return;
         $.RegisterEventHandler('DragStart', cardContainer.current, OnDragStart);
         $.RegisterEventHandler('DragEnd', cardContainer.current, OnDragEnd);
-        const marginRight = Math.round(((1 - 7 / (3 * (count - 1))) * 30 + 0.25) * 100) / 100;
+        const marginRight = Math.round(((1 - 7 / (3 * (count - 1))) * 30 ) * 100) / 100;
         cardContainer.current!.style.marginRight = marginRight > 0 ? `-${marginRight}%` : '0';
         cardContainer.current!.SetPanelEvent('onmouseover', () => cardContainer.current?.AddClass('hover'));
         cardContainer.current!.SetPanelEvent('onmouseout', () => cardContainer.current?.RemoveClass('hover'));
@@ -119,7 +119,7 @@ export default function Card({ card, count }: { card: HandCard; count: number })
             GameEvents.SendCustomGameEventToServer('GM_Operator', {
                 nPlayerID: Players.GetLocalPlayer(),
                 nCardID: cardID,
-                typeOprt: TypeOperator.TO_UseCard,
+                typeOprt: TypeOprt.TO_UseCard,
                 nPosX: screenPos[0],
                 nPosY: screenPos[1],
                 nPosZ: screenPos[2],
@@ -129,7 +129,7 @@ export default function Card({ card, count }: { card: HandCard; count: number })
             GameEvents.SendCustomGameEventToServer('GM_Operator', {
                 nPlayerID: Players.GetLocalPlayer(),
                 nCardID: cardID,
-                typeOprt: TypeOperator.TO_UseCard,
+                typeOprt: TypeOprt.TO_UseCard,
             });
             stingType = 'CardCast_Nil';
         } else if ((castType & TypeCard.TCardCast_Target) > 0 && entity.length > 0) {
@@ -138,7 +138,7 @@ export default function Card({ card, count }: { card: HandCard; count: number })
             GameEvents.SendCustomGameEventToServer('GM_Operator', {
                 nPlayerID: Players.GetLocalPlayer(),
                 nCardID: cardID,
-                typeOprt: TypeOperator.TO_UseCard,
+                typeOprt: TypeOprt.TO_UseCard,
                 nTargetEntID: entIndex,
                 nPosX: entityPos[0],
                 nPosY: entityPos[1],

@@ -4,7 +4,7 @@ export const TypeCard = {
     TCardCast_Target: 4,
 };
 
-export const TypeOperator = {
+export const TypeOprt = {
     TO_Finish: 0,
     TO_Roll: 1,
     TO_AYZZ: 2,

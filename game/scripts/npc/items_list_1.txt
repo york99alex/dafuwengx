@@ -98,7 +98,8 @@
 		"ScriptFile" "item/items/item_qtg_iron_talon"
 		"AbilityValues" {
 			"bonus_attack_speed" "10"
-			"bonus_armor" "2"
+			"bonus_armor" "4"
+			"cd_getcard" "5"
 		}
 		"ItemCost" "1000"
 		"ID" "1607"
@@ -108,7 +109,7 @@
 		"Model" "models/props_gameplay/quelling_blade.vmdl"
 		"AbilityCooldown" "5"
 		"AbilityTextureName" "item_iron_talon"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
 		}
 	}

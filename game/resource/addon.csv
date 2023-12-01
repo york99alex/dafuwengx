@@ -281,6 +281,10 @@ DOTA_Tooltip_ability_item_qtg_tpscroll,,传送卷轴
 DOTA_Tooltip_ability_item_qtg_tpscroll_Description,,<h1>使用：传送</h1>传送至指定传送阵。
 DOTA_Tooltip_ability_item_qtg_tpscroll_Lore,,疾风已有归途，落叶总会归根
 DOTA_Tooltip_ability_item_qtg_tpscroll_Note0,,如果是别人的可要过路费哦
+DOTA_Tooltip_ability_item_qtg_iron_talon,,猎野爪
+DOTA_Tooltip_ability_item_qtg_iron_talon_bonus_attack_speed,,+$attack
+DOTA_Tooltip_ability_item_qtg_iron_talon_bonus_armor,,+$armor
+DOTA_Tooltip_ability_item_qtg_iron_talon_Description,,<h1>被动：卡牌</h1>每<font color='#7e8c9d'> %cd_getcard% </font>回合获得一张猎野牌。
 Card_20005,,阎刃
 Card_20005_Description,,指定玩家出狱或入狱
 Card_10005,,小型猎野场

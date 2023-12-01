@@ -40,4 +40,5 @@ HideHudElement(hud, 'CommonItems');
 HideHudElement(hud, 'QuickBuySlot8');
 HideHudElement(hud, 'GridNeutralsTab');
 HideHudElement(hud, 'ToggleAdvancedShop');
+HideHudElement(hud, 'inventory_neutral_slot_container');
 // HideHudElement(hud, 'stash');

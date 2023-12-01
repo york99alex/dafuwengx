@@ -2,7 +2,7 @@ import { useGameEvent, useNetTableKey } from 'react-panorama-x';
 import { HandCard } from '../handCard';
 import { useEffect, useState } from 'react';
 import Card from './card';
-import { TypeOperator } from '../../mode/constant';
+import { TypeOprt } from '../../mode/constant';
 
 export default function CardPanel() {
     // 存储本地玩家手牌（playerID索引无效，stupid略略略）
@@ -57,7 +57,7 @@ export default function CardPanel() {
     useGameEvent(
         'GM_OperatorFinished',
         event => {
-            if (event.typeOprt == TypeOperator.TO_UseCard) {
+            if (event.typeOprt == TypeOprt.TO_UseCard) {
                 if (event.nRequest == 0) {
                     PlayerUseCard(event);
                 } else if (event.nRequest == 1) {
@@ -75,6 +75,7 @@ export default function CardPanel() {
         if (!cardContainer) return;
         console.log('===DelCard===Anim');
         cardContainer.AddClass('DelCard');
+        cardContainer.hittest = false;
     }
 
     /**玩家使用卡牌 */
@@ -112,8 +113,10 @@ export default function CardPanel() {
 
     /**游戏开始时配合动画修改透明度 */
     useEffect(() => {
+        const curPanel = $.GetContextPanel().FindChildrenWithClassTraverse('CardPanel')[0];
         setTimeout(() => {
-            $.GetContextPanel().FindChildrenWithClassTraverse('CardPanel')[0].style.opacity = '0.95';
+            curPanel.visible = true;
+            curPanel.style.opacity = '0.95';
         }, 1000);
     }, []);
 
@@ -133,9 +136,9 @@ export default function CardPanel() {
                     );
                 })}
             </Panel>
-            <Panel className="CardPanel"  hittest={false}>
+            <Panel className="CardPanel" hittest={false} visible={false}>
                 {Object.entries(cardlist || {}).map(([cardID, handCard]) => {
-                    return <Card key={cardID} card={handCard} count={Object.keys(cardlist[0] || {}).length}  />;
+                    return <Card key={cardID} card={handCard} count={Object.keys(cardlist || {}).length} />;
                 })}
             </Panel>
         </Panel>

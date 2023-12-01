@@ -110,13 +110,10 @@ export class Filters {
             return false;
         } else if (orderType == UnitOrder.PURCHASE_ITEM) {
             // 购买物品
-            return true;
-            // GameRules.EventManager.FireEvent("Event_ItemBuy", event)
+            GameRules.EventManager.FireEvent('Event_ItemBuy', event);
         } else if (orderType == UnitOrder.SELL_ITEM) {
             // 出售物品
             GameRules.EventManager.FireEvent('Event_ItemSell', event);
-            // TODO: 测试return true
-            return true;
         } else if (orderType == UnitOrder.DISASSEMBLE_ITEM) {
             // 拆分物品
             GameRules.EventManager.FireEvent('Event_ItemSplit', event);
@@ -139,8 +136,7 @@ export class Filters {
     static ItemAddedToInventoryFilter(event: ItemAddedToInventoryFilterEvent): boolean {
         // 触发获取物品
         GameRules.EventManager.FireEvent('Event_ItemAdd', event);
-        const npc = EntIndexToHScript(event.inventory_parent_entindex_const) as CDOTA_BaseNPC;
-        if (npc && npc.IsRealHero()) Timers.CreateTimer(0.01, () => ParaAdjuster.ModifyMana(npc));
+        if (event['bIgnore']) return false;
         return true;
     }
 }

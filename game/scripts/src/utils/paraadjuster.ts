@@ -78,6 +78,10 @@ export class ParaAdjuster {
         }
         // 移除modifier_special_bonus_attributes
         unit.RemoveModifierByName("modifier_special_bonus_attributes")
+        unit.SetBaseHealthRegen(0);
+        unit.SetBaseHealthRegen(-unit.GetHealthRegen());
+        unit.SetBaseManaRegen(0);
+        unit.SetBaseManaRegen(-unit.GetManaRegen());
 
         // 获取当前数值和修正后的对应数值
         let current_intell: number

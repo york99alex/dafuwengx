@@ -36,16 +36,16 @@ export class AbilityManager {
     }
 
     /**设置回合CD */
-    static setRoundCD(oPlayer: Player, ability: BaseAbility | CDOTA_Item, nCD?: number) {
+    static setRoundCD(oPlayer: Player, ability: TSBaseAbility | CDOTA_Item, nCD?: number) {
         if (ability == null) {
             return;
         }
 
         // 计算技能CD
         if (!nCD) {
-            nCD = ability.GetCooldown(ability.GetLevel() - 1);
+            nCD = ability.GetCooldown(ability.GetLevel());
         }
-        print('===setRoundCD===' + ability.GetName() + '===GetCooldownTime:', nCD);
+        print('===setRoundCD===' + ability.GetName() + '===GetCooldown:', nCD);
         if (nCD <= 0) {
             nCD = 1;
         }
