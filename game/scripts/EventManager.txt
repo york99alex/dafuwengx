@@ -168,3 +168,5 @@
                         buyState: number,
                         player: Player
                     }
+
+"Event_ItemHuiXueByRound": { entity: CDOTA_BaseNPC_Hero, nHuiXue: number }

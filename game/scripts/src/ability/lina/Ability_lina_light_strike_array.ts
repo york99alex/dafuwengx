@@ -123,7 +123,6 @@ export class Ability_lina_light_strike_array extends TSBaseAbility {
         GameRules.EventManager.FireEvent('Event_HeroManaChange', { player: oPlayer, oAblt: this });
         // 设置冷却
         AbilityManager.setRoundCD(oPlayer, this);
-        print('=====Ability_lina_light_strike_array========CD:', this.GetCooldownTime());
     }
 }
 

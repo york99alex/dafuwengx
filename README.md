@@ -1506,11 +1506,55 @@ game\scripts\shops\1x6_shops.txt
 
 装备注册EventManager，player.onEvent_PlayerRoundBegin触发回血
 
+注意：SpecialValues对应health_regen_hero 0.05	health_regen_bz 0.05，需要为小数的百分比
+
 #### 回蓝
 
-装备注册EventManager，player.onEvent_PlayerRoundBegin触发回血
+装备注册EventManager，player.onEvent_PlayerRoundBegin触发蓝
 
+- 兵卒回蓝：mana_regen_bz 10 提升所有获得蓝量的百分比
 
+  - 兵卒回蓝=伤害乘以 * 常量 \* 提升回蓝百分比
+
+    ```typescript
+    // ===受伤===
+    // 计算回魔量
+    let tabEventHuiMo = {
+        eBz: oVictim,
+        nHuiMoBase: 1
+    };
+    // 触发兵卒回魔事件
+    GameRules.EventManager.FireEvent('Event_BZHuiMo', tabEventHuiMo);
+    if (tabEventHuiMo.nHuiMoBase > 0) {
+        // 给兵卒回魔
+        oVictim.GiveMana(event.damage * Constant.BZ_HUIMO_BEATK_RATE * tabEventHuiMo.nHuiMoBase);
+    }
+    
+    // ===造成伤害===
+    // 计算回魔量
+    let nHuiMoRate = eBZ.IsRangedAttacker() ? Constant.BZ_HUIMO_RATE_Y : Constant.BZ_HUIMO_RATE_J;
+    let tabEventHuiMo = {
+        eBz: eBZ,
+        nHuiMoBase: 1,
+    };
+    // 触发兵卒回魔事件
+    GameRules.EventManager.FireEvent('Event_BZHuiMo', tabEventHuiMo);
+    if (tabEventHuiMo.nHuiMoBase > 0) {
+        // 给兵卒回魔
+        eBZ.GiveMana(event.damage * nHuiMoRate * tabEventHuiMo.nHuiMoBase);
+    }
+    
+    ```
+
+    
+
+- 英雄回蓝：mana_regen_hero  1配合物品CD，以被动+OnIntervalThink+技能OnSpellStart的效果实现
+
+#### 技能
+
+装备技能同英雄技能
+
+注意原生机制中，CastFilterResult会执行两遍，第一遍先在客户端Client，第二遍在服务端Server
 
 
 
@@ -1521,6 +1565,8 @@ game\scripts\shops\1x6_shops.txt
 防御: 赤红甲 强袭
 
 绿鞋, 非本人回合可以回复5%已损失生命值
+
+撒旦：被动，血量低于30%时触发，吸血效果提升，攻击力提升，CD
 
 ```txt
 "dota_shops"

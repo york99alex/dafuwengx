@@ -171,14 +171,20 @@
 		"ItemRequirements" {
 		}
 	}
-	"item_helm_of_iron_will" {
-		"BaseClass" "item_helm_of_iron_will"
+	"item_qtg_helm_of_iron_will" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_helm_of_iron_will"
 		"AbilityValues" {
 			"bonus_armor" "5"
-			"bonus_regen" "0"
-			"health_regen" "5"
+			"health_regen_hero" "5"
+			"health_regen_bz" "5"
 		}
 		"ItemCost" "1000"
+		"ID" "1614"
+		"ItemPurchasable" "1"
+		"ItemSellable" "1"
+		"ItemQuality" "component"
+		"AbilityTextureName" "item_helm_of_iron_will"
 		"ItemRequirements" {
 		}
 	}
@@ -191,25 +197,37 @@
 		"ItemRequirements" {
 		}
 	}
-	"item_ring_of_regen" {
-		"BaseClass" "item_ring_of_regen"
+	"item_qtg_ring_of_regen" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_ring_of_regen"
 		"AbilityValues" {
-			"bonus_health_regen" "0"
-			"health_regen" "5"
+			"health_regen_hero" "5"
+			"health_regen_bz" "5"
 		}
 		"ItemCost" "500"
+		"ID" "1616"
+		"ItemPurchasable" "1"
+		"ItemSellable" "1"
+		"ItemQuality" "component"
+		"AbilityTextureName" "item_ring_of_regen"
 		"ItemRequirements" {
 		}
 	}
-	"item_sobi_mask" {
-		"BaseClass" "item_sobi_mask"
+	"item_qtg_sobi_mask" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_sobi_mask"
 		"AbilityValues" {
-			"bonus_mana_regen" "0"
 			"mana_regen_hero" "1"
-			"mana_regen_hero_round" "4"
 			"mana_regen_bz" "10"
 		}
 		"ItemCost" "500"
+		"ID" "1617"
+		"ItemPurchasable" "1"
+		"ItemSellable" "1"
+		"ItemQuality" "component"
+		"AbilityCooldown" "4"
+		"AbilityTextureName" "item_sobi_mask"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
 		}
 	}
@@ -260,11 +278,21 @@
 		}
 	}
 	"item_qtg_ghost" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_ghost"
 		"AbilityValues" {
+			"bonus_all_stats" "5"
+			"extra_spell_damage_percent" "-30"
+			"duration" "1"
 		}
 		"ItemCost" "1500"
 		"ID" "1623"
+		"ItemPurchasable" "1"
+		"ItemSellable" "1"
+		"ItemQuality" "component"
+		"AbilityCooldown" "5"
 		"AbilityTextureName" "item_ghost"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"ItemRequirements" {
 		}
 	}
@@ -431,7 +459,7 @@
 		"ItemRecipe" "1"
 		"ItemResult" "item_qtg_tranquil_boots"
 		"ItemRequirements" {
-			"01" "item_boots;item_ring_of_regen"
+			"01" "item_boots;item_qtg_ring_of_regen"
 		}
 	}
 	"item_qtg_tranquil_boots" {
@@ -507,7 +535,7 @@
 		"ItemRecipe" "1"
 		"ItemResult" "item_qtg_pipe"
 		"ItemRequirements" {
-			"01" "item_cloak;item_ring_of_regen;item_ring_of_health"
+			"01" "item_cloak;item_qtg_ring_of_regen;item_qtg_ring_of_health"
 		}
 	}
 	"item_qtg_pipe" {
@@ -556,7 +584,7 @@
 		"ItemRecipe" "1"
 		"ItemResult" "item_qtg_orchid"
 		"ItemRequirements" {
-			"01" "item_staff_of_wizardry;item_quarterstaff;item_void_stone"
+			"01" "item_staff_of_wizardry;item_quarterstaff;item_qtg_void_stone"
 		}
 	}
 	"item_qtg_orchid" {
@@ -619,7 +647,7 @@
 		"ItemRecipe" "1"
 		"ItemResult" "item_qtg_refresher"
 		"ItemRequirements" {
-			"01" "item_cornucopia;item_cornucopia"
+			"01" "item_qtg_cornucopia;item_qtg_cornucopia"
 		}
 	}
 	"item_qtg_refresher" {
@@ -640,7 +668,7 @@
 		"ItemRecipe" "1"
 		"ItemResult" "item_qtg_octarine_core"
 		"ItemRequirements" {
-			"01" "item_void_stone;item_void_stone;item_vitality_booster;item_energy_booster"
+			"01" "item_void_stone;item_qtg_void_stone;item_vitality_booster;item_energy_booster"
 		}
 	}
 	"item_qtg_octarine_core" {
@@ -661,7 +689,7 @@
 		"ItemRecipe" "1"
 		"ItemResult" "item_qtg_sheepstick"
 		"ItemRequirements" {
-			"01" "item_mystic_staff;item_ultimate_orb;item_void_stone"
+			"01" "item_mystic_staff;item_ultimate_orb;item_qtg_void_stone"
 		}
 	}
 	"item_qtg_sheepstick" {
@@ -671,6 +699,18 @@
 		"ID" "1659"
 		"AbilityTextureName" "item_sheepstick"
 		"ItemRequirements" {
+		}
+	}
+	"item_recipe_vanguard" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_vanguard"
+		"ItemRequirements" {
+			"01" "item_qtg_ring_of_health;item_vitality_booster"
 		}
 	}
 	"item_vanguard" {
@@ -723,7 +763,7 @@
 		"ItemRecipe" "1"
 		"ItemResult" "item_qtg_crimson_guard"
 		"ItemRequirements" {
-			"01" "item_vanguard;item_helm_of_iron_will"
+			"01" "item_vanguard;item_qtg_helm_of_iron_will"
 		}
 	}
 	"item_qtg_crimson_guard" {
@@ -1195,33 +1235,55 @@
 		"ItemRequirements" {
 		}
 	}
-	"item_ring_of_health" {
-		"BaseClass" "item_ring_of_health"
+	"item_qtg_ring_of_health" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_ring_of_health"
 		"AbilityValues" {
-			"bonus_health_regen" "0"
-			"health_regen" "10"
+			"health_regen_hero" "10"
+			"health_regen_bz" "10"
 		}
 		"ItemCost" "1000"
+		"ID" "1712"
+		"ItemQuality" "component"
+		"SecretShop" "1"
+		"AbilityTextureName" "item_ring_of_health"
 		"ItemRequirements" {
 		}
 	}
-	"item_void_stone" {
-		"BaseClass" "item_void_stone"
+	"item_qtg_void_stone" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_void_stone"
 		"AbilityValues" {
-			"bonus_mana_regen" "0"
+			"mana_regen_hero" "1"
+			"mana_regen_bz" "20"
 		}
 		"ItemCost" "1000"
+		"ID" "1713"
+		"ItemQuality" "component"
+		"SecretShop" "1"
+		"AbilityCooldown" "2"
+		"AbilityTextureName" "item_void_stone"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
 		}
 	}
-	"item_cornucopia" {
-		"BaseClass" "item_cornucopia"
+	"item_qtg_cornucopia" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_cornucopia"
 		"AbilityValues" {
-			"bonus_health_regen" "0"
-			"bonus_mana_regen" "0"
 			"bonus_damage" "10"
+			"health_regen_hero" "12"
+			"health_regen_bz" "12"
+			"mana_regen_hero" "1"
+			"mana_regen_bz" "20"
 		}
 		"ItemCost" "2500"
+		"ID" "1714"
+		"ItemQuality" "common"
+		"SecretShop" "1"
+		"AbilityCooldown" "2"
+		"AbilityTextureName" "item_cornucopia"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
 		}
 	}

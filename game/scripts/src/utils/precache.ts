@@ -75,7 +75,8 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/items_fx/blink_dagger_end.vpcf',
             'particles/items_fx/arcane_boots.vpcf',
             'particles/items_fx/arcane_boots_recipient.vpcf',
-            
+            'particles/status_fx/status_effect_ghost.vpcf',
+            'particles/items_fx/ghost.vpcf',
         ],
         context
     );
@@ -137,7 +138,7 @@ function precacheUnits(unitNamesList: string[], context?: CScriptPrecacheContext
         });
     } else {
         unitNamesList.forEach(unitName => {
-            PrecacheUnitByNameAsync(unitName, () => { });
+            PrecacheUnitByNameAsync(unitName, () => {});
         });
     }
 }

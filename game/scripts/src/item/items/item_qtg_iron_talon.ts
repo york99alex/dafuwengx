@@ -8,6 +8,9 @@ import { BaseModifier, registerAbility, registerModifier } from '../../utils/dot
  */
 @registerAbility()
 export class item_qtg_iron_talon extends TSBaseItem {
+    IsPassive(): boolean {
+        return true;
+    }
     GetIntrinsicModifierName() {
         return this.GetAbilityName() + '_modifier';
     }
@@ -39,12 +42,8 @@ export class item_qtg_iron_talon_modifier extends BaseModifier {
         return true;
     }
     OnCreated(params: object): void {
-        if (!IsValid(this)) {
-            return;
-        }
-        if (!IsValid(this.GetAbility())) {
-            return;
-        }
+        if (!IsValid(this)) return;
+        if (!IsValid(this.GetAbility())) return;
         this.bonus_attack_speed = this.GetAbility().GetSpecialValueFor('bonus_attack_speed');
         this.bonus_armor = this.GetAbility().GetSpecialValueFor('bonus_armor');
 

@@ -48,7 +48,7 @@
 	// "item_gloves"   "REMOVE"
 	// "item_chainmail"   "REMOVE"
 	// "item_quarterstaff"   "REMOVE"
-	// "item_helm_of_iron_will"   "REMOVE"
+	"item_helm_of_iron_will"   "REMOVE"
 	"item_broadsword"   "REMOVE"
 	"item_blitz_knuckles"   "REMOVE"
 	"item_javelin"   "REMOVE"
@@ -56,8 +56,8 @@
 	"item_mithril_hammer"	   "REMOVE"
 	
 // "misc"
-	// "item_ring_of_regen"   "REMOVE"
-	// "item_sobi_mask"   "REMOVE"
+	"item_ring_of_regen"   "REMOVE"
+	"item_sobi_mask"   "REMOVE"
 	"item_magic_stick"   "REMOVE"
 	// "item_fluffy_hat"   "REMOVE"
 	"item_wind_lace"   "REMOVE"
@@ -195,9 +195,9 @@
 	
 // "secretshop"
 	
-	// "item_ring_of_health"   "REMOVE"
-	// "item_void_stone"   "REMOVE"
-	// "item_cornucopia"   "REMOVE"
+	"item_ring_of_health"   "REMOVE"
+	"item_void_stone"   "REMOVE"
+	"item_cornucopia"   "REMOVE"
 	// "item_energy_booster"   "REMOVE"
 	// "item_vitality_booster"   "REMOVE"
 	"item_point_booster"   "REMOVE"

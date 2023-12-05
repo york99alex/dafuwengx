@@ -664,10 +664,10 @@ export class GameConfig {
                     v.nRequest = 1;
                 } else if (TypeOprt.TO_AYZZ == v.typeOprt) {
                     // 安营扎寨，默认不
-                    v.nRequest = 1;
+                    v.nRequest = 0;
                 } else if (TypeOprt.TO_GCLD == v.typeOprt) {
                     // 攻城略地，默认不
-                    v.nRequest = 1;
+                    v.nRequest = 0;
                 } else if (TypeOprt.TO_TP == v.typeOprt) {
                     // TP传送，默认不
                     v.nRequest = 0;

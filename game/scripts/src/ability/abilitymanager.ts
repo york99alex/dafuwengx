@@ -170,7 +170,7 @@ export class AbilityManager {
             } else if (ability.GetCooldownTimeRemaining() > 0) {
                 ability.StartCooldown(nCDLast);
                 print('===setRoundCD===' + ability.GetName() + '===StartCooldown===2:', nCDLast);
-                return 0.9;
+                return 0.4;
             }
             onCDEnd();
             print('===setRoundCD===' + ability.GetName() + '===StartCooldown===3:', nCDLast);
@@ -278,7 +278,7 @@ export class AbilityManager {
         strBuff: string,
         eTarget: CDOTA_BaseNPC,
         eCaster: CDOTA_BaseNPC,
-        ability: BaseAbility,
+        ability: BaseAbility | TSBaseItem,
         tBuffData?: object,
         bStack?: boolean,
         oBuffOld?: CDOTA_Buff

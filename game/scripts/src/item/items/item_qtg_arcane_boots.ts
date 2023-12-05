@@ -11,6 +11,7 @@ export class item_qtg_arcane_boots extends TSBaseItem {
     }
 
     CastFilterResult(): UnitFilterResult {
+        if (!IsServer()) return;
         if (!this.isCanCast()) {
             return UnitFilterResult.FAIL_CUSTOM;
         }

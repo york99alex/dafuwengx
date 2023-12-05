@@ -1509,16 +1509,15 @@ export class Player {
                 // 兵卒受伤回魔
                 if (!oVictim.IsRealHero() && !event.bIgnoreBZHuiMo) {
                     // 计算回魔量
-                    let nHuiMoRate = Constant.BZ_HUIMO_BEATK_RATE;
                     let tabEventHuiMo = {
                         eBz: oVictim,
-                        nHuiMoSum: event.damage * nHuiMoRate,
+                        nHuiMoBase: 1,
                     };
                     // 触发兵卒回魔事件
                     GameRules.EventManager.FireEvent('Event_BZHuiMo', tabEventHuiMo);
-                    if (tabEventHuiMo.nHuiMoSum > 0) {
+                    if (tabEventHuiMo.nHuiMoBase > 0) {
                         // 给兵卒回魔
-                        oVictim.GiveMana(tabEventHuiMo.nHuiMoSum);
+                        oVictim.GiveMana(event.damage * Constant.BZ_HUIMO_BEATK_RATE * tabEventHuiMo.nHuiMoBase);
                     }
                 }
 
@@ -1547,15 +1546,14 @@ export class Player {
         let nHuiMoRate = eBZ.IsRangedAttacker() ? Constant.BZ_HUIMO_RATE_Y : Constant.BZ_HUIMO_RATE_J;
         let tabEventHuiMo = {
             eBz: eBZ,
-            nHuiMoSum: event.damage * nHuiMoRate,
+            nHuiMoBase: 1,
         };
         // 触发兵卒回魔事件
         GameRules.EventManager.FireEvent('Event_BZHuiMo', tabEventHuiMo);
-        if (tabEventHuiMo.nHuiMoSum < 1) {
-            return;
+        if (tabEventHuiMo.nHuiMoBase > 0) {
+            // 给兵卒回魔
+            eBZ.GiveMana(event.damage * nHuiMoRate * tabEventHuiMo.nHuiMoBase);
         }
-        // 给兵卒回魔
-        eBZ.GiveMana(tabEventHuiMo.nHuiMoSum);
     }
 
     /**玩家回合开始 */
