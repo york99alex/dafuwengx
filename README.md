@@ -1062,15 +1062,30 @@ export const App = () => {	// 根组件
          2. 进行回合前操作,手动跳转至对应的GameLoopState
 
          3. 操作完成后手动跳转回对应的begin
+   2. 会在
 
 7. ==蓝量相关==, 重做修改属性的方法, 主要是蓝量
 
    1. ParaAdjuster.ModifyMana(英雄单位, 额外蓝量, 修正系数)
       	额外蓝量: 每回合给Player增加的m_nManaMaxBase
+
    2. 选择英雄/升级/监听装备事件
+
    3. ==问题== :
+
    4. 还需要继续测试
+
    5. 测试技能蓝量和CD能否正确缩减
+
+   6. 更新装备CD，GetCooldown，同时==所有回蓝装备禁止被CD缩减==
+
+      isCanCDSub(): boolean {
+
+      ​    return false;
+
+        }
+
+   7. 
 
 8. UnRegister Failed Event Move?
 
@@ -1459,9 +1474,7 @@ game\scripts\shops\1x6_shops.txt
 
 #### 加蓝
 
-不在装备属性中设定bonus_mana（记得移除装备相关kv的specialvalue）
-
-而是使用item_lua定义specialvalue的mana_hero 为给英雄加的蓝上限
+在装备属性中设定bonus_mana
 
 在装备的modifier的OnCreated和OnDestroy中维护player.m_nManaMaxBase
 
@@ -1470,28 +1483,33 @@ game\scripts\shops\1x6_shops.txt
 ==参考==：item_qtg_arcane_boots
 
 ```typescript
-    OnCreated(params: object): void {
-        if (!IsValid(this)) return;
-        if (!IsValid(this.GetAbility())) return;
-        if (IsClient() || !this.GetParent().IsRealHero()) return;
-        
-        this.player = GameRules.PlayerManager.getPlayer(this.GetParent().GetPlayerOwnerID());
-        this.mana_hero = this.GetParent().IsRealHero() ? this.GetAbility().GetSpecialValueFor('mana_hero') : 0;
-        this.player.m_nManaMaxBase += this.mana_hero;
-    }
-    OnDestroy(): void {
-        if (IsClient() || !this.GetParent().IsRealHero()) return;
-        this.player.m_nManaMaxBase -= this.mana_hero;
-    }
-    
-    OnDestroy(): void {
-        if (IsClient() || !this.GetParent().IsRealHero()) return
-        this.player.m_nManaMaxBase -= this.mana_hero
-    }
+player: Player;
+bonus_mana: number;
+IsHidden(): boolean {
+    return true;
+}
+OnCreated(params: object): void {
+    if (!IsValid(this)) return;
+    if (!IsValid(this.GetAbility())) return;
+	if (IsClient() || !this.GetParent().IsRealHero()) return;
 
-    GetModifierManaBonus(): number {
-        return this.mana_hero ?? 0
-    }
+    this.player = GameRules.PlayerManager.getPlayer(this.GetParent().GetPlayerOwnerID());
+    this.bonus_mana = this.GetParent().IsRealHero() ? this.GetAbility().GetSpecialValueFor('bonus_mana') : 0;
+    this.player.m_nManaMaxBase += this.bonus_mana;
+}
+OnDestroy(): void {
+    if (IsClient() || !this.GetParent().IsRealHero()) return;
+    this.player.m_nManaMaxBase -= this.bonus_mana;
+}
+GetAttributes(): ModifierAttribute {
+    return ModifierAttribute.MULTIPLE;
+}
+DeclareFunctions(): ModifierFunction[] {
+    return [ModifierFunction.MANA_BONUS];
+}
+GetModifierManaBonus(): number {
+    return this.bonus_mana ?? 0;
+}
 ```
 
 
@@ -1554,7 +1572,10 @@ game\scripts\shops\1x6_shops.txt
 
 装备技能同英雄技能
 
-注意原生机制中，CastFilterResult会执行两遍，第一遍先在客户端Client，第二遍在服务端Server
+- 注意原生机制中，CastFilterResult会执行两遍，第一遍先在客户端Client，第二遍在服务端Server
+- GetSpecialValueFor也会在双端运行，如果在GetModifier...中通过return this.的话，就不要阻止其在任一端运行并获得值    this.bonus_damage = this.GetAbility().GetSpecialValueFor('bonus_damage');
+
+
 
 
 

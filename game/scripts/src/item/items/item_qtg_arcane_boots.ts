@@ -65,16 +65,18 @@ export class item_qtg_arcane_boots extends TSBaseItem {
 export class item_qtg_arcane_boots_modifier extends BaseModifier {
     player: Player;
     bonus_mana: number;
+    bonus_movement: number;
     IsHidden(): boolean {
         return true;
     }
     OnCreated(params: object): void {
         if (!IsValid(this)) return;
         if (!IsValid(this.GetAbility())) return;
+        this.bonus_mana = this.GetParent().IsRealHero() ? this.GetAbility().GetSpecialValueFor('bonus_mana') : 0;
+        this.bonus_movement = this.GetAbility().GetSpecialValueFor('bonus_movement');
         if (IsClient() || !this.GetParent().IsRealHero()) return;
 
         this.player = GameRules.PlayerManager.getPlayer(this.GetParent().GetPlayerOwnerID());
-        this.bonus_mana = this.GetParent().IsRealHero() ? this.GetAbility().GetSpecialValueFor('bonus_mana') : 0;
         this.player.m_nManaMaxBase += this.bonus_mana;
     }
     OnDestroy(): void {
@@ -88,9 +90,9 @@ export class item_qtg_arcane_boots_modifier extends BaseModifier {
         return [ModifierFunction.MOVESPEED_BONUS_UNIQUE, ModifierFunction.MANA_BONUS];
     }
     GetModifierMoveSpeedBonus_Special_Boots() {
-        return this.GetAbility().GetSpecialValueFor('bonus_movement');
+        return this.bonus_movement;
     }
     GetModifierManaBonus(): number {
-        return this.bonus_mana ?? 0;
+        return this.bonus_mana;
     }
 }

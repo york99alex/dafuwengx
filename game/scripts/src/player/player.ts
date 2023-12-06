@@ -56,6 +56,7 @@ export class Player {
     m_nCDSub: number = 0; //  冷却减缩固值
     m_nManaSub: number = 0; //  耗魔减缩固值
     m_nLastAtkPlayerID: number = -1; //  最后攻击我的玩家ID
+    m_nRoundDamage: number = 0; //  上回合承受伤害
     m_nKill: number = 0; //  击杀数
     m_nGCLD: number = 0; //  攻城数
     m_nDamageHero: number = 0; //  英雄伤害
@@ -263,7 +264,6 @@ export class Player {
     setGold(nGold: number) {
         const lastnGold = this.m_nGold;
         nGold += this.m_nGold;
-
         this.m_nGold = nGold;
         const keyname = ('player_info_' + this.m_nPlayerID) as player_info;
         // 设置网表
@@ -283,6 +283,7 @@ export class Player {
     /**给其他玩家金钱 */
     giveGold(nGold: number, player: Player) {
         this.m_nLastAtkPlayerID = player.m_nPlayerID;
+        this.m_nRoundDamage += nGold;
         this.setGold(-nGold);
         player.setGold(nGold);
     }
@@ -1458,7 +1459,9 @@ export class Player {
             let oPlayerAtk: Player;
             if (IsValid(oAttacker)) {
                 this.m_nLastAtkPlayerID = oAttacker.GetPlayerOwnerID();
+                this.m_nRoundDamage += event.damage;
                 oPlayerAtk = GameRules.PlayerManager.getPlayer(oAttacker.GetPlayerOwnerID());
+                oPlayerAtk.m_nRoundDamage += event.damage;
                 // 统计伤害
                 if (oPlayerAtk) {
                     if (oAttacker.IsRealHero()) {
@@ -1605,6 +1608,8 @@ export class Player {
             const nAddExp = 1 + math.floor(nRound / 10);
             this.setExpAdd(nAddExp);
         }
+        print('===onEvent_UpdateRound');
+        this.m_nRoundDamage = 0;
     }
 
     /**玩家魔法修改 */

@@ -37,10 +37,10 @@
 	{
 		// 猎野爪（原寒铁钢爪）,1000块，10攻速，2甲，五回合获得一张打野卡
 		"item"		"item_qtg_iron_talon"
-		// 淬毒之珠，500，debuff-15%移速近战/5%远程，移除中毒伤害
-		"item"		"item_orb_of_venom"
-		// 枯萎之石，500，debuff-3甲
-		"item"		"item_blight_stone"
+		// 淬毒之珠，500，debuff-10%移速持有近战/5%持有远程，持续2秒
+		"item"		"item_qtg_orb_of_venom"
+		// 枯萎之石，500，debuff-3甲，持续2秒
+		"item"		"item_qtg_blight_stone"
 		// 攻击之爪，500，10点攻击
 		"item"		"item_blades_of_attack"
 		// 加速手套，500，20攻速
@@ -83,16 +83,16 @@
 	"basics"    // 配件
 	{		
 		// 腐蚀之球，1500，毛毛帽500+淬毒之珠500+枯萎之石500
-		"item"		"item_orb_of_corrosion"
-		// 猎鹰战刃，1500，毛毛帽500+贤者面罩500+攻击之爪500，200血，0.5回蓝，15攻击力
-		"item"		"item_falcon_blade"
+		"item"		"item_qtg_orb_of_corrosion"
+		// 猎鹰战刃，1500，毛毛帽500+贤者面罩500+攻击之爪500，200血，3回合1蓝，12攻击力
+		"item"		"item_qtg_falcon_blade"
 		// 动力鞋，1500，500鞋+500加速手套+500属性件
-		"item"		"item_qtg_power_treads"
+		"item"		"item_power_treads"
 		// 相位鞋，1500，500鞋+500锁子甲+500攻击之爪
 		"item"		"item_phase_boots"
 		// 空明杖，1500，1000短棍+500法师长袍，10攻速，15攻击力，10智力
-		"item"		"item_oblivion_staff"
- 		// 疯狂面具(item_lua)，1000+1000
+		"item"		"item_qtg_oblivion_staff"
+ 		// 疯狂面具(item_lua)，1000+1000，10攻击力，10攻速，25%吸血
 		"item"		"item_qtg_mask_of_madness"
 		// 银月之晶，4000
 		"item"		"item_moon_shard"	
@@ -101,9 +101,9 @@
 	// Level 2 - Blue Recipes
 	"support"   // 辅助
 	{
-		// 静谧之鞋，1000，500鞋子+500回复戒指，如果单位上回合没有受到伤害或造成伤害，额外回血10%
+		// 静谧之鞋，1000，500鞋子+500回复戒指，每回合5%回血，如果单位上回合没有受到伤害或造成伤害，额外回血10%
 		"item"		"item_qtg_tranquil_boots"
-		// 勇气勋章，1500，500甲+500面罩+500石头，5甲，0.5回蓝
+		// 勇气勋章，1500，500甲+500面罩+500石头，5甲，英雄每3回合回复1点蓝，兵卒提升10%回蓝，CD3回合
 		"item"		"item_qtg_medallion_of_courage"
 		// 奥术鞋，1500，500鞋子+1000能量球，2点蓝上限，4回合CD回4点蓝/40兵卒蓝
 		"item"		"item_qtg_arcane_boots"
@@ -151,7 +151,7 @@
 		"item"		"item_qtg_blade_mail"
 		// 振魂石，设计为将受到的魔法伤害转变为生命值？
 		// 3000，1000活力球，1000能量球，1000治疗指环
-		"item"		"item_soul_booster" // 振魂石,再次鼓起丧失的勇气
+		"item"		"item_qtg_soul_booster" // 振魂石,再次鼓起丧失的勇气
 		// 赤红甲，2000先锋盾+1000头盔（+500？卷轴）
 		"item"		"item_qtg_crimson_guard"		
 		// 黑皇杖，1000斧头+1500大剑+1500卷轴
@@ -233,7 +233,7 @@
 		// 丰饶之环，2500，每回合英雄/兵卒回复12%生命值，英雄每2回合回复1点蓝，兵卒提升20%回蓝，10点攻击力
 		"item"		"item_qtg_cornucopia"
 		// 能量之球，1000，2点蓝上限
-		"item"		"item_energy_booster"
+		"item"		"item_qtg_energy_booster"
 		// 活力之球，1000，300生命值
 		"item"		"item_vitality_booster"
 		// "item"		"item_talisman_of_evasion"

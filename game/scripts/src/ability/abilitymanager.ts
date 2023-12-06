@@ -262,7 +262,7 @@ export class AbilityManager {
                 if (buff['m_nRound'] <= 0) {
                     if (IsValid(buff)) {
                         // const owner = buff.GetParent()
-                        buff.Destroy();
+                        AHMC.RemoveModifierByName(buff.GetName(), buff.GetParent());
                         // if(owner.IsRealHero()){
                         //     ParaAdjuster.ModifyMana(owner)
                         // }

@@ -58,6 +58,7 @@ export class item_qtg_cornucopia_modifier extends BaseModifier {
         this.health_regen_bz = this.GetAbility().GetSpecialValueFor('health_regen_bz');
         this.mana_regen_bz = this.GetAbility().GetSpecialValueFor('mana_regen_bz');
         this.bonus_damage = this.GetAbility().GetSpecialValueFor('bonus_damage');
+        this.tEventID = [];
         if (!IsServer()) return;
         if (this.GetParent().IsRealHero()) {
             // 英雄回血
@@ -109,9 +110,9 @@ export class item_qtg_cornucopia_modifier extends BaseModifier {
         return ModifierAttribute.MULTIPLE;
     }
     DeclareFunctions(): ModifierFunction[] {
-        return [ModifierFunction.BASEATTACK_BONUSDAMAGE];
+        return [ModifierFunction.PREATTACK_BONUS_DAMAGE];
     }
-    GetModifierBaseAttack_BonusDamage(): number {
+    GetModifierPreAttack_BonusDamage(): number {
         return this.bonus_damage;
     }
 }

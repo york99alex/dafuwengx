@@ -115,9 +115,8 @@ export default function CardPanel() {
     useEffect(() => {
         const curPanel = $.GetContextPanel().FindChildrenWithClassTraverse('CardPanel')[0];
         setTimeout(() => {
-            curPanel.visible = true;
             curPanel.style.opacity = '0.95';
-        }, 1000);
+        }, 3000);
     }, []);
 
     return (
@@ -136,7 +135,7 @@ export default function CardPanel() {
                     );
                 })}
             </Panel>
-            <Panel className="CardPanel" hittest={false} visible={false}>
+            <Panel className="CardPanel" hittest={false} visible={true}>
                 {Object.entries(cardlist || {}).map(([cardID, handCard]) => {
                     return <Card key={cardID} card={handCard} count={Object.keys(cardlist || {}).length} />;
                 })}

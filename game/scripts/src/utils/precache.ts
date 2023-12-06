@@ -77,6 +77,10 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/items_fx/arcane_boots_recipient.vpcf',
             'particles/status_fx/status_effect_ghost.vpcf',
             'particles/items_fx/ghost.vpcf',
+            'particles/items2_fx/orb_of_venom.vpcf',
+            'particles/generic_gameplay/generic_lifesteal.vpcf',
+            'particles/items2_fx/medallion_of_courage.vpcf',
+            'particles/items2_fx/medallion_of_courage_friend.vpcf',
         ],
         context
     );

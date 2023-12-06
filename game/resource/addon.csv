@@ -235,7 +235,7 @@ DOTA_Tooltip_Modifier_path_15_l3_Description,,全军攻击速度 +%dMODIFIER_PRO
 DOTA_Tooltip_Modifier_path_15_chenmo,,癫狂反噬
 DOTA_Tooltip_Modifier_path_15_chenmo_Description,,失去理性，无法释放技能。
 DOTA_Tooltip_ability_path_16,,龙谷
-DOTA_Tooltip_ability_path_16_Description,,<h1>【领地增益 ：神龙赐法】</h1>英雄回魔提升 : <font color='#FFFFFF'>1</font><br>兵卒回魔提升 : <font color='#FFFFFF'>40%</font><br>萃魔概率 : <font color='#FFFFFF'>15% / 30% / 50%</font><br>刷新概率 : <font color='#FFFFFF'>0% / 15% / 50%</font>\n<h1>【特殊效果 : 萃魔】</h1>施法有概率返还魔法\n<h1>【特殊效果 : 刷新】</h1>施法有概率刷新技能\n<h1>【增益等级规则】</h1>一级 : 需★龙谷兵卒 x 1<br>二级 : 需★★龙谷兵卒 x 2<br>三级 : 需★★★龙谷兵卒 x 3
+DOTA_Tooltip_ability_path_16_Description,,<h1>【领地增益 ：神龙赐法】</h1>英雄回魔提升 : <font color='#FFFFFF'>1</font><br>兵卒蓝量获取提升 : <font color='#FFFFFF'>40%</font><br>萃魔概率 : <font color='#FFFFFF'>15% / 30% / 50%</font><br>刷新概率 : <font color='#FFFFFF'>0% / 15% / 50%</font>\n<h1>【特殊效果 : 萃魔】</h1>施法有概率返还魔法\n<h1>【特殊效果 : 刷新】</h1>施法有概率刷新技能\n<h1>【增益等级规则】</h1>一级 : 需★龙谷兵卒 x 1<br>二级 : 需★★龙谷兵卒 x 2<br>三级 : 需★★★龙谷兵卒 x 3
 DOTA_Tooltip_ability_path_16_Lore,,神秘的古老种族，掌管着最纯粹的魔法。
 DOTA_Tooltip_Modifier_path_16_l1,,神龙赐法
 DOTA_Tooltip_Modifier_path_16_l1_Description,,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 15%% 返还魔耗。<br><font color='#FFFF00'>下个等级 : ★★龙谷兵卒 x2</font>
@@ -288,15 +288,15 @@ DOTA_Tooltip_ability_item_qtg_iron_talon_Description,,<h1>被动：卡牌</h1>�
 DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will,,铁意头盔
 DOTA_Tooltip_ability_item_qtg_helm_of_iron_will_Lore,,一位战死沙场的传奇战士身故时戴着的头盔。
 DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will_bonus_armor,,+$armor
-DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will_health_regen_hero,,%+每回合英雄回血
-DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will_health_regen_bz,,%+每回合兵卒回血
+DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will_health_regen_hero,,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will_health_regen_bz,,%+每回合兵卒回复最大生命值
 DOTA_Tooltip_Ability_item_qtg_ring_of_regen,,回复戒指
 DOTA_Tooltip_Ability_item_qtg_ring_of_regen_Lore,,一些侏儒迷信这个戒指能带来好运气。
-DOTA_Tooltip_Ability_item_qtg_ring_of_regen_health_regen_hero,,%+每回合英雄回血
-DOTA_Tooltip_Ability_item_qtg_ring_of_regen_health_regen_bz,,%+每回合兵卒回血
+DOTA_Tooltip_Ability_item_qtg_ring_of_regen_health_regen_hero,,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_ring_of_regen_health_regen_bz,,%+每回合兵卒回复最大生命值
 DOTA_Tooltip_Ability_item_qtg_sobi_mask,,贤者面罩
 DOTA_Tooltip_Ability_item_qtg_sobi_mask_Lore,,法师和术士在各类祭祀中常用的面罩。
-DOTA_Tooltip_Ability_item_qtg_sobi_mask_mana_regen_bz,,%+兵卒回魔提升
+DOTA_Tooltip_Ability_item_qtg_sobi_mask_mana_regen_bz,,%+兵卒蓝量获取提升
 DOTA_Tooltip_Ability_item_qtg_sobi_mask_Description,,<h1>被动：英雄回蓝</h1>英雄回复%mana_regen_hero%点蓝量。
 DOTA_Tooltip_Ability_item_qtg_ghost,,幽魂权杖
 DOTA_Tooltip_Ability_item_qtg_ghost_bonus_all_stats,,+$all
@@ -311,17 +311,93 @@ DOTA_Tooltip_Ability_item_qtg_blink_Lore,,传说中这片大陆上来去如风�
 DOTA_Tooltip_Ability_item_qtg_blink_Note0,,似乎会跳过起点。
 DOTA_Tooltip_Ability_item_qtg_ring_of_health,,治疗指环
 DOTA_Tooltip_Ability_item_qtg_ring_of_health_Lore,,一枚闪闪发光的指环，在一个胖乎乎的半身人尸体下被人所发现。
-DOTA_Tooltip_Ability_item_qtg_ring_of_health_health_regen_hero,,%+每回合英雄回血
-DOTA_Tooltip_Ability_item_qtg_ring_of_health_health_regen_bz,,%+每回合兵卒回血
+DOTA_Tooltip_Ability_item_qtg_ring_of_health_health_regen_hero,,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_ring_of_health_health_regen_bz,,%+每回合兵卒回复最大生命值
 DOTA_Tooltip_Ability_item_qtg_void_stone,,虚无宝石
 DOTA_Tooltip_Ability_item_qtg_void_stone_Lore,,一件曾被用来引导冥界魔法的珠宝，这个戒指中跃动着魔力。
-DOTA_Tooltip_Ability_item_qtg_void_stone_mana_regen_bz,,%+兵卒回魔提升
+DOTA_Tooltip_Ability_item_qtg_void_stone_mana_regen_bz,,%+兵卒蓝量获取提升
 DOTA_Tooltip_Ability_item_qtg_void_stone_Description,,<h1>被动：英雄回蓝</h1>英雄回复%mana_regen_hero%点蓝量。
 DOTA_Tooltip_Ability_item_qtg_cornucopia,,丰饶之环
-DOTA_Tooltip_Ability_item_qtg_cornucopia_health_regen_hero,,%+每回合英雄回血
-DOTA_Tooltip_Ability_item_qtg_cornucopia_health_regen_bz,,%+每回合兵卒回血
+DOTA_Tooltip_Ability_item_qtg_cornucopia_health_regen_hero,,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_cornucopia_health_regen_bz,,%+每回合兵卒回复最大生命值
 DOTA_Tooltip_Ability_item_qtg_cornucopia_bonus_damage,,+$damage
 DOTA_Tooltip_Ability_item_qtg_cornucopia_Description,,<h1>被动：英雄回蓝</h1>英雄回复%mana_regen_hero%点蓝量。
+DOTA_Tooltip_Ability_item_qtg_energy_booster,,能量之球
+DOTA_Tooltip_Ability_item_qtg_energy_booster_Lore,,巫师们若想提升战场上的存在感，通常会把这块天青石加入自己的收藏。
+DOTA_Tooltip_Ability_item_qtg_energy_booster_bonus_mana,,+$mana
+DOTA_Tooltip_Ability_item_qtg_orb_of_venom,,淬毒之珠
+DOTA_Tooltip_Ability_item_qtg_orb_of_venom_Description,,<h1>被动：毒性攻击</h1>使目标受到毒素影响，持有该装备的英雄为近战时将减缓目标%poison_movement_speed_melee%%%移动速度，为远程时将减缓%poison_movement_speed_range%%%移动速度，持续%poison_duration%秒。
+DOTA_Tooltip_Ability_item_qtg_orb_of_venom_Note0,,不与后续升级物品叠加。
+DOTA_Tooltip_Ability_item_qtg_orb_of_venom_Lore,,给你的毒器渡上毒蛇的毒液。
+DOTA_Tooltip_modifier_item_qtg_orb_of_venom_melee,,淬毒之珠-近战
+DOTA_Tooltip_modifier_item_qtg_orb_of_venom_melee_Description,,降低%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%移动速度。
+DOTA_Tooltip_modifier_item_qtg_orb_of_venom_range,,淬毒之珠-远程
+DOTA_Tooltip_modifier_item_qtg_orb_of_venom_range_Description,,降低%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%移动速度。
+DOTA_Tooltip_Ability_item_qtg_blight_stone,,枯萎之石
+DOTA_Tooltip_Ability_item_qtg_blight_stone_Description,,<h1>被动：次级腐蚀</h1>攻击将降低目标%corruption_armor%点护甲，持续%corruption_duration%秒。
+DOTA_Tooltip_Ability_item_qtg_blight_stone_Lore,,一颗让人闻风丧胆的石头，发掘自戮尽之地。
+DOTA_Tooltip_Ability_item_qtg_blight_stone_Note0,,不与后续升级物品叠加。
+DOTA_Tooltip_modifier_item_qtg_blight_stone_buff,,枯萎之石
+DOTA_Tooltip_modifier_item_qtg_blight_stone_buff_Description,,护甲被降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。
+DOTA_Tooltip_Ability_item_qtg_orb_of_corrosion,,腐蚀之球
+DOTA_Tooltip_Ability_item_qtg_orb_of_corrosion_Lore,,给这里添点绿色。
+DOTA_Tooltip_Ability_item_qtg_orb_of_corrosion_Description,,<h1>被动：腐蚀</h1>攻击将降低目标%armor%点护甲，并使其受到毒素影响，持有该装备的英雄为近战时将减缓目标%slow_melee%%%移动速度，为远程时将减缓%slow_range%%%移动速度，持续%duration%秒。
+DOTA_Tooltip_modifier_item_qtg_orb_of_corrosion_melee,,腐蚀之球-近战
+DOTA_Tooltip_modifier_item_qtg_orb_of_corrosion_melee_Description,,护甲降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。并且移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%。
+DOTA_Tooltip_modifier_item_qtg_orb_of_corrosion_range,,腐蚀之球-近战
+DOTA_Tooltip_modifier_item_qtg_orb_of_corrosion_range_Description,,护甲降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。并且移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%。
+DOTA_Tooltip_Ability_item_qtg_falcon_blade,,猎鹰战刃
+DOTA_Tooltip_Ability_item_qtg_falcon_blade_Lore,,一把具有魔力的战刃，多年前让一个无可救药的顽童从乞丐登上王位。
+DOTA_Tooltip_Ability_item_qtg_falcon_blade_bonus_health,,+$health
+DOTA_Tooltip_Ability_item_qtg_falcon_blade_mana_regen_bz,,%+兵卒蓝量获取提升
+DOTA_Tooltip_Ability_item_qtg_falcon_blade_bonus_damage,,+$damage
+DOTA_Tooltip_Ability_item_qtg_falcon_blade_Description,,<h1>被动：英雄回蓝</h1>英雄回复%mana_regen_hero%点蓝量。
+DOTA_Tooltip_Ability_item_qtg_oblivion_staff,,空明杖
+DOTA_Tooltip_Ability_item_qtg_oblivion_staff_Lore,,让人误以为只是根普通战棍的外表下，其实威力不凡，就像原来拥有它的邪王。
+DOTA_Tooltip_Ability_item_qtg_oblivion_staff_bonus_damage,,+$damage
+DOTA_Tooltip_Ability_item_qtg_oblivion_staff_bonus_intellect,,+$int
+DOTA_Tooltip_Ability_item_qtg_oblivion_staff_bonus_attack_speed,,+$attack
+DOTA_Tooltip_Ability_item_qtg_mask_of_madness,,疯狂面具
+DOTA_Tooltip_Ability_item_qtg_mask_of_madness_Description,,<h1>主动：狂热</h1>攻击速度提升%berserk_bonus_attack_speed%，移动速度提升%berserk_bonus_movement_speed%，但是护甲降低%berserk_armor_reduction%点，并且被沉默。持续%duration%回合。\n\n<h1>被动：吸血</h1>攻击者每次攻击都将根据造成伤害的一定百分比回复生命值。攻击非英雄单位的吸血效果降低%creep_lifesteal_reduction_pct%%%。
+DOTA_Tooltip_Ability_item_qtg_mask_of_madness_Lore,,一旦戴上这个面具就会变成无法控制的好战分子。
+DOTA_Tooltip_Ability_item_qtg_mask_of_madness_bonus_attack_speed,,+$attack
+DOTA_Tooltip_Ability_item_qtg_mask_of_madness_bonus_damage,,+$damage
+DOTA_Tooltip_Ability_item_qtg_mask_of_madness_lifesteal_percent,,%+$lifesteal
+DOTA_Tooltip_modifier_qtg_mask_of_madness_berserk,,狂热
+DOTA_Tooltip_modifier_qtg_mask_of_madness_berserk_Description,,攻击速度提升%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%并且移动速度提升%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%，但是护甲降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点，并且被沉默。
+DOTA_Tooltip_Ability_item_qtg_tranquil_boots,,静谧之鞋
+DOTA_Tooltip_Ability_item_qtg_tranquil_boots_Description,,<h1>被动：静谧</h1> 如果上回合没有造成伤害和受到伤害，静谧之鞋就会额外回复%bonus_regen%%%生命值。\n多个鞋类物品提供的移动速度加成不叠加。
+DOTA_Tooltip_Ability_item_qtg_tranquil_boots_Lore,,虽然延长了穿戴者的寿命，但这鞋子其实并不可靠。
+DOTA_Tooltip_Ability_item_qtg_tranquil_boots_bonus_movement_speed,,+$move_speed
+DOTA_Tooltip_Ability_item_qtg_tranquil_boots_health_regen_hero,,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_tranquil_boots_health_regen_bz,,%+每回合兵卒回复最大生命值
+DOTA_Tooltip_modifier_item_qtg_tranquil_boots_bonus_regen,,静谧
+DOTA_Tooltip_modifier_item_qtg_tranquil_boots_bonus_regen_Description,,下回合将会获得额外回复。
+DOTA_Tooltip_Ability_item_qtg_medallion_of_courage,,勇气勋章
+DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_Description,,<h1>主动：无畏</h1> 如果对己方单位施放可以在降低自身%armor_reduction%点护甲的同时，提升目标相同数值的护甲。<br><br>如果对敌方单位施放将同时降低自身和目标%armor_reduction%点护甲。<br><br>持续时间%duration%回合。\n\n<h1>被动：英雄回蓝</h1>每%mana_regen_hero_cd%回合回复英雄%mana_regen_hero%点蓝量。
+DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_Lore,,持有者将无惧于战斗。
+DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_Note0,,与炎阳纹章共享冷却时间。
+DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_bonus_armor,,+$armor
+DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_mana_regen_bz,,%+兵卒蓝量获取提升
+DOTA_Tooltip_modifier_qtg_medallion_of_courage_cd,,勇气勋章的英雄回蓝
+DOTA_Tooltip_modifier_qtg_medallion_of_courage_cd_Description,,英雄回蓝冷却中，剩余回合数。
+DOTA_Tooltip_modifier_qtg_medallion_of_courage_buff,,勇气勋章
+DOTA_Tooltip_modifier_qtg_medallion_of_courage_buff_Description,,护甲提升%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。
+DOTA_Tooltip_modifier_qtg_medallion_of_courage_debuff,,勇气勋章
+DOTA_Tooltip_modifier_qtg_medallion_of_courage_debuff_Description,,护甲被削弱%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。
+DOTA_Tooltip_Ability_item_qtg_arcane_boots,,奥术鞋
+DOTA_Tooltip_Ability_item_qtg_arcane_boots_Description,,<h1>主动：补魔</h1>回复英雄%replenish_hero%点魔法，回复兵卒%replenish_bz%点魔法。\n多个鞋类物品提供的移动速度加成不叠加。
+DOTA_Tooltip_Ability_item_qtg_arcane_boots_Lore,,装备这种鞋子的法师在战斗中值得重视。
+DOTA_Tooltip_Ability_item_qtg_arcane_boots_bonus_movement,,+$move_speed
+DOTA_Tooltip_Ability_item_qtg_arcane_boots_bonus_mana,,+$mana
+DOTA_Tooltip_Ability_item_qtg_pipe,,洞察烟斗
+DOTA_Tooltip_Ability_item_qtg_pipe_Description,,<h1>激活：魔法护盾</h1>受到魔法伤害时有%resist_perct%%%概率消耗1点蓝量抵挡该次伤害。
+DOTA_Tooltip_Ability_item_qtg_pipe_Lore,,一件来源神秘的强大古物，能制造出抵挡法术攻击的护盾。
+DOTA_Tooltip_Ability_item_qtg_pipe_Note0,,能与其他提高魔法抗性的技能叠加。
+DOTA_Tooltip_Ability_item_qtg_pipe_bonus_magical_armor,,%+$spell_resist
+DOTA_Tooltip_Ability_item_qtg_pipe_health_regen_hero,,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_pipe_health_regen_bz,,%+每回合兵卒回复最大生命值
+
 
 
 Card_20005,,阎刃

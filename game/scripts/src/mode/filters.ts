@@ -1,5 +1,4 @@
 import { DamageEvent } from '../player/player';
-import { ParaAdjuster } from '../utils/paraadjuster';
 
 export class Filters {
     static init() {
@@ -29,12 +28,12 @@ export class Filters {
         }
         // 触发受伤事件
         GameRules.EventManager.FireEvent('Event_OnDamage', tEvent);
-        print('===DamageFilter===damage:', event.damage);
+        print('===DamageFilter===damage:', event.damage, '===victim:', EntIndexToHScript(event.entindex_victim_const).GetName());
         print('===DamageFilter===damagetype:', event.damagetype_const);
-        print('===DamageFilter===bIgnore:', event.bIgnore);
-        print('===DamageFilter===bIgnoreGold:', event.bIgnoreGold);
-        print('===DamageFilter===bIgnoreDamageSelf:', event.bIgnoreDamageSelf);
-        print('===DamageFilter===bIgnoreBZHuiMo:', event.bIgnoreBZHuiMo);
+        // print('===DamageFilter===bIgnore:', event.bIgnore);
+        // print('===DamageFilter===bIgnoreGold:', event.bIgnoreGold);
+        // print('===DamageFilter===bIgnoreDamageSelf:', event.bIgnoreDamageSelf);
+        // print('===DamageFilter===bIgnoreBZHuiMo:', event.bIgnoreBZHuiMo);
         event.damage = tEvent.damage;
         return true;
     }

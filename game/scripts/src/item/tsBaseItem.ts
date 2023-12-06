@@ -127,7 +127,7 @@ export class TSBaseItem extends BaseItem {
             print('isCanCast===10');
             // 验证目标单位
             if (eTarget && !this.checkTarget(eTarget)) {
-                this.m_strCastError = 'AbilityError_Target';
+                // this.m_strCastError = 'AbilityError_Target';
                 return false;
             }
             print('isCanCast===11');

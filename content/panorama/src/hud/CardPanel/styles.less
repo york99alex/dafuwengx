@@ -15,9 +15,11 @@
 @keyframes GameStart {
     0% {
         transform: translate3d(0, 500px, 0);
+        opacity: 0;
     }
     100% {
         transform: translate3d(0, 0, 0);
+        opacity: 0.95;
     }
 }
 @keyframes GetCardAnim {
@@ -54,9 +56,11 @@
     border-left: 4%;
     border-right: 4%;
     border-bottom: 2%;
+    opacity: 0;
     animation-name: GameStart;
     animation-duration: 2s;
     animation-delay: 1s;
+    animation-fill-mode: forwards;
 }
 
 .CardContainer {

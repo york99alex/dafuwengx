@@ -438,14 +438,17 @@ export class GameConfig {
             }
         }
         // if (oPlayer.m_eHero.GetUnitName() == "npc_dota_hero_phantom_assassin") {
-        //     nNum1 = 2
-        //     nNum2 = 8
+        nNum1 = 1;
+        nNum2 = 3;
         // }else{
         //     nNum1 = 3
         //     nNum2 = 5
         // }
         // 删除操作
         const tabOprt = this.checkOprt(tabData, true);
+        // TODO: 检查bug
+        if (tabOprt == false) return;
+
         tabOprt['nNum1'] = nNum1;
         tabOprt['nNum2'] = nNum2;
         // 广播玩家roll点操作
@@ -664,10 +667,10 @@ export class GameConfig {
                     v.nRequest = 1;
                 } else if (TypeOprt.TO_AYZZ == v.typeOprt) {
                     // 安营扎寨，默认不
-                    v.nRequest = 0;
+                    v.nRequest = 1;
                 } else if (TypeOprt.TO_GCLD == v.typeOprt) {
                     // 攻城略地，默认不
-                    v.nRequest = 0;
+                    v.nRequest = 1;
                 } else if (TypeOprt.TO_TP == v.typeOprt) {
                     // TP传送，默认不
                     v.nRequest = 0;
@@ -943,18 +946,6 @@ export class GameConfig {
     /**增加轮数 */
     addRound() {
         GameRules.PlayerManager.m_tabPlayers.forEach(oPlayer => {
-            // const abltCount = oPlayer.m_eHero.GetAbilityCount()
-            // for (let i = 0; i < abltCount; i++) {
-            //     const ability = oPlayer.m_eHero.GetAbilityByIndex(i)
-            //     if (ability) {
-            //         print("oPlayer__", oPlayer.m_nPlayerID, "===heroname:", oPlayer.m_eHero.GetUnitName(), " ===index(i)", i, "===abilityname:", oPlayer.m_eHero.GetAbilityByIndex(i).GetAbilityName())
-            //     }
-            // }
-            // oPlayer.m_eHero.FindAllModifiers().forEach((oBuff) => {
-            //     print("oPlayer__", oPlayer.m_nPlayerID, "===heroname:", oPlayer.m_eHero.GetUnitName(), " ===oBuff===name:", oBuff.GetName())
-            // })
-
-            // print("===item_psychic_headband===slot_index:", oPlayer.m_eHero.FindItemInInventory("item_psychic_headband").GetItemSlot())
             for (let i = 0; i < 21; i++) {
                 const item = oPlayer.m_eHero.GetItemInSlot(i);
                 if (item == null) continue;
