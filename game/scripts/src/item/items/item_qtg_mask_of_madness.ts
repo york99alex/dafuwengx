@@ -147,9 +147,8 @@ export class modifier_qtg_mask_of_madness_berserk extends BaseModifier {
         GameRules.EventManager.UnRegisterByID(this.eventID);
         this.eventID = null;
 
-        if (this.GetParent().IsRealHero()) {
-            ParaAdjuster.ModifyMana(this.GetParent() as CDOTA_BaseNPC_Hero);
-        }
+        const parent = this.GetParent();
+        if (parent.IsRealHero()) ParaAdjuster.ModifyMana(parent);
     }
 
     DeclareFunctions(): ModifierFunction[] {

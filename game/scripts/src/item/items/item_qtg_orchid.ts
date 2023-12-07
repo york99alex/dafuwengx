@@ -4,17 +4,18 @@ import { TSBaseItem } from '../tsBaseItem';
 import { AbilityManager } from '../../ability/abilitymanager';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { Player } from '../../player/player';
-import { Constant } from '../../mode/constant';
+import { ParaAdjuster } from '../../utils/paraadjuster';
 
 /**
- * 勇气勋章，1500，500甲+500面罩+500石头，5甲，英雄每3回合回复1点蓝，兵卒提升10%回蓝
- * bonus_armor 5	mana_regen_bz 10
- * mana_regen_hero 1	mana_regen_hero_cd 3
- * armor_reduction -6	duration 1
- * CD 3回合
+ * 紫怨，3000，1000魔力法杖，1000短棍，1000宝石回蓝
+ * 20攻速，15攻击力，12智力
+ * bonus_attack_speed 20	bonus_damage 15	bonus_intellect 12
+ * 英雄2回合1回蓝，兵卒提升20%回蓝
+ * mana_regen_hero 1	mana_regen_hero_cd 2	mana_regen_bz 20
+ * 沉默，CD 5回合，2耗蓝
  */
 @registerAbility()
-export class item_qtg_medallion_of_courage extends TSBaseItem {
+export class item_qtg_orchid extends TSBaseItem {
     GetCastRange(location: Vector, target: CDOTA_BaseNPC): number {
         return 0;
     }
@@ -31,41 +32,45 @@ export class item_qtg_medallion_of_courage extends TSBaseItem {
     OnSpellStart(): void {
         const player = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID());
         const target = this.GetCursorTarget();
+        const targetPlayer = GameRules.PlayerManager.getPlayer(target.GetPlayerOwnerID());
         if (!player) return;
 
-        // 自身添加debuff
-        AHMC.AddNewModifier(this.GetCaster(), this.GetCaster(), this, modifier_qtg_medallion_of_courage_debuff.name, {});
-        EmitSoundOn('DOTA_Item.MedallionOfCourage.Activate', this.GetCaster());
-
-        if (target == this.GetCaster() || target.GetUnitName().includes(Constant.HERO_TO_BZ[player.m_eHero.GetUnitName()])) {
-            // 友军单位buff
-            AHMC.AddNewModifier(target, this.GetCaster(), this, modifier_qtg_medallion_of_courage_buff.name, {});
-        } else {
-            // 敌方单位debuff
-            AHMC.AddNewModifier(target, this.GetCaster(), this, modifier_qtg_medallion_of_courage_debuff.name, {});
-            // 音效
-            const targetPlayer = GameRules.PlayerManager.getPlayer(target.GetPlayerOwnerID());
-            EmitSoundOn('DOTA_Item.MedallionOfCourage.Activate', targetPlayer.m_eHero);
+        // 音效
+        EmitSoundOn('DOTA_Item.Orchid.Activate', this.GetCaster());
+        // 添加buff
+        const buff = AbilityManager.setCopyBuff(modifier_qtg_orchid_debuff.name, targetPlayer.m_eHero, this.GetCaster(), this);
+        for (const BZ of targetPlayer.m_tabBz) {
+            AbilityManager.setCopyBuff(modifier_qtg_orchid_debuff.name, BZ, this.GetCaster(), this, null, false, buff);
+        }
+        // 兵卒创建更新buff
+        if (buff) {
+            buff['updateBZBuffByCreate'] = AbilityManager.updateBZBuffByCreate(targetPlayer, null, (eBZ: CDOTA_BaseNPC_BZ) => {
+                AbilityManager.setCopyBuff(modifier_qtg_orchid_debuff.name, eBZ, this.GetCaster(), this, null, false, buff);
+            });
         }
 
+        // 触发耗蓝
+        GameRules.EventManager.FireEvent('Event_HeroManaChange', { player: player, oAblt: this });
         // 设置冷却
         AbilityManager.setRoundCD(player, this);
     }
     GetIntrinsicModifierName() {
         return this.GetAbilityName() + '_modifier';
     }
-    isCanCastSelf(): boolean {
-        return true;
-    }
 }
 
+/**
+ * bonus_attack_speed 20	bonus_damage 15	bonus_intellect 12
+ * mana_regen_hero 1	mana_regen_hero_cd 2	mana_regen_bz 20
+ */
 @registerModifier()
-export class item_qtg_medallion_of_courage_modifier extends BaseModifier {
-    bonus_armor: number;
-    mana_regen_bz: number;
+export class item_qtg_orchid_modifier extends BaseModifier {
+    bonus_attack_speed: number;
+    bonus_damage: number;
+    bonus_intellect: number;
     mana_regen_hero_cd: number;
+    mana_regen_bz: number;
     countCD: number;
-    nRound: number;
     tEventID: number[];
     IsHidden(): boolean {
         return true;
@@ -73,9 +78,11 @@ export class item_qtg_medallion_of_courage_modifier extends BaseModifier {
     OnCreated(params: object): void {
         if (!IsValid(this)) return;
         if (!IsValid(this.GetAbility())) return;
-        this.bonus_armor = this.GetAbility().GetSpecialValueFor('bonus_armor');
-        this.mana_regen_bz = this.GetAbility().GetSpecialValueFor('mana_regen_bz');
+        this.bonus_attack_speed = this.GetAbility().GetSpecialValueFor('bonus_attack_speed');
+        this.bonus_damage = this.GetAbility().GetSpecialValueFor('bonus_damage');
+        this.bonus_intellect = this.GetAbility().GetSpecialValueFor('bonus_intellect');
         this.mana_regen_hero_cd = this.GetAbility().GetSpecialValueFor('mana_regen_hero_cd');
+        this.mana_regen_bz = this.GetAbility().GetSpecialValueFor('mana_regen_bz');
         this.countCD = this.mana_regen_hero_cd;
         this.tEventID = [];
 
@@ -89,7 +96,7 @@ export class item_qtg_medallion_of_courage_modifier extends BaseModifier {
                 GameRules.EventManager.Register('Event_PlayerRoundBegin', (event: { oPlayer: Player }) => {
                     if (event.oPlayer != player) return;
                     if (!(this.GetAbility() as TSBaseItem).isCanCast()) return;
-                    if (this.nRound != GameRules.GameConfig.m_nRound) this.countCD--;
+                    this.countCD--;
                 })
             );
         } else {
@@ -109,7 +116,7 @@ export class item_qtg_medallion_of_courage_modifier extends BaseModifier {
      * mana_regen_hero 1	mana_regen_hero_cd 3
      */
     OnIntervalThink(): void {
-        let buff = this.GetParent().FindModifierByName(modifier_qtg_medallion_of_courage_cd.name);
+        let buff = this.GetParent().FindModifierByName(modifier_qtg_orchid_cd.name);
         if (!buff || !IsValid(buff)) {
             const player = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID());
             if (!player) return;
@@ -121,14 +128,13 @@ export class item_qtg_medallion_of_courage_modifier extends BaseModifier {
             player.givePlayerMana(this.GetAbility().GetSpecialValueFor('mana_regen_hero'));
             if (player.m_eHero.GetMana() >= player.m_eHero.GetMaxMana()) player.setPlayerMana(player.m_eHero.GetMaxMana());
             // 设置Buff
-            buff = AHMC.AddNewModifier(this.GetCaster(), this.GetCaster(), this.GetAbility(), modifier_qtg_medallion_of_courage_cd.name, {
+            buff = AHMC.AddNewModifier(this.GetCaster(), this.GetCaster(), this.GetAbility(), modifier_qtg_orchid_cd.name, {
                 duration: this.mana_regen_hero_cd,
             });
             this.countCD = this.mana_regen_hero_cd;
-            this.nRound = GameRules.GameConfig.m_nRound;
             buff.SetStackCount(this.countCD);
         } else if (buff && IsValid(buff)) {
-            if (this.countCD == 0) AHMC.RemoveModifierByName(modifier_qtg_medallion_of_courage_cd.name, this.GetCaster());
+            if (this.countCD == 0) AHMC.RemoveModifierByName(modifier_qtg_orchid_cd.name, this.GetCaster());
             else {
                 buff.SetDuration(this.countCD, true);
                 buff.SetStackCount(this.countCD);
@@ -140,14 +146,14 @@ export class item_qtg_medallion_of_courage_modifier extends BaseModifier {
         if (!this.tEventID) return;
         GameRules.EventManager.UnRegisterByIDs(this.tEventID);
         this.tEventID = null;
-        const buff = this.GetParent().FindModifierByName(modifier_qtg_medallion_of_courage_cd.name);
+        const buff = this.GetParent().FindModifierByName(modifier_qtg_orchid_cd.name);
         const player = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID());
         if (!player || !buff) return;
         if (this.GetAbility() && IsValid(this.GetAbility())) {
             const remainingTime = buff.GetRemainingTime();
             if (buff && IsValid(buff)) {
                 Timers.CreateTimer(0, () => {
-                    const item = player.m_eHero.FindItemInInventory(item_qtg_medallion_of_courage.name);
+                    const item = player.m_eHero.FindItemInInventory(item_qtg_orchid.name);
                     if (!item) return;
                     if (item.GetItemSlot() < 6 && item.GetItemState() == 1) return;
                     buff.SetDuration(remainingTime, true);
@@ -155,81 +161,71 @@ export class item_qtg_medallion_of_courage_modifier extends BaseModifier {
                 });
             }
         } else {
-            AHMC.RemoveModifierByName(modifier_qtg_medallion_of_courage_cd.name, this.GetParent());
+            AHMC.RemoveModifierByName(modifier_qtg_orchid_cd.name, this.GetParent());
         }
     }
     GetAttributes(): ModifierAttribute {
         return ModifierAttribute.MULTIPLE;
     }
     DeclareFunctions(): ModifierFunction[] {
-        return [ModifierFunction.PHYSICAL_ARMOR_BONUS];
+        return [ModifierFunction.ATTACKSPEED_BONUS_CONSTANT, ModifierFunction.PREATTACK_BONUS_DAMAGE, ModifierFunction.STATS_INTELLECT_BONUS];
     }
-    GetModifierPhysicalArmorBonus(): number {
-        return this.bonus_armor;
+    GetModifierAttackSpeedBonus_Constant(): number {
+        return this.bonus_attack_speed;
+    }
+    GetModifierPreAttack_BonusDamage(): number {
+        return this.bonus_damage;
+    }
+    GetModifierBonusStats_Intellect(): number {
+        return this.bonus_intellect;
     }
 }
 
 @registerModifier()
-export class modifier_qtg_medallion_of_courage_cd extends BaseModifier {
+export class modifier_qtg_orchid_cd extends BaseModifier {
     IsDebuff(): boolean {
         return true;
     }
     GetTexture(): string {
-        return 'item_medallion_of_courage';
+        return 'item_orchid';
+    }
+    OnDestroy(): void {
+        const parent = this.GetParent();
+        if (parent.IsRealHero()) ParaAdjuster.ModifyMana(parent);
     }
 }
 
 @registerModifier()
-export class modifier_qtg_medallion_of_courage_buff extends BaseModifier {
+export class modifier_qtg_orchid_debuff extends BaseModifier {
     m_nRound: number;
     GetTexture(): string {
-        return 'item_medallion_of_courage';
-    }
-    GetEffectName(): string {
-        return 'particles/items2_fx/medallion_of_courage_friend.vpcf';
-    }
-    GetEffectAttachType(): ParticleAttachment {
-        return ParticleAttachment.OVERHEAD_FOLLOW;
-    }
-    OnCreated(params: object): void {
-        this.m_nRound = this.GetAbility().GetSpecialValueFor('duration');
-        if (IsClient()) return;
-
-        AbilityManager.judgeBuffRound(this.GetCaster().GetPlayerOwnerID(), this);
-    }
-    DeclareFunctions(): ModifierFunction[] {
-        return [ModifierFunction.PHYSICAL_ARMOR_BONUS];
-    }
-    GetModifierPhysicalArmorBonus(): number {
-        return -this.GetAbility().GetSpecialValueFor('armor_reduction');
-    }
-}
-
-@registerModifier()
-export class modifier_qtg_medallion_of_courage_debuff extends BaseModifier {
-    m_nRound: number;
-    GetTexture(): string {
-        return 'item_medallion_of_courage';
+        return 'item_orchid';
     }
     IsDebuff(): boolean {
         return true;
     }
     GetEffectName(): string {
-        return 'particles/items2_fx/medallion_of_courage.vpcf';
+        return 'particles/items2_fx/orchid.vpcf';
     }
     GetEffectAttachType(): ParticleAttachment {
         return ParticleAttachment.OVERHEAD_FOLLOW;
     }
     OnCreated(params: object): void {
-        this.m_nRound = this.GetAbility().GetSpecialValueFor('duration');
+        this.m_nRound = this.GetAbility().GetSpecialValueFor('silence_duration');
         if (IsClient()) return;
 
         AbilityManager.judgeBuffRound(this.GetCaster().GetPlayerOwnerID(), this);
     }
-    DeclareFunctions(): ModifierFunction[] {
-        return [ModifierFunction.PHYSICAL_ARMOR_BONUS];
+    OnDestroy(): void {
+        if (this['updateBZBuffByCreate']) {
+            GameRules.EventManager.UnRegisterByID(this['updateBZBuffByCreate'], 'Event_BZCreate');
+        }
+        const hero = this.GetParent();
+        if (hero.IsRealHero()) ParaAdjuster.ModifyMana(hero);
     }
-    GetModifierPhysicalArmorBonus(): number {
-        return this.GetAbility().GetSpecialValueFor('armor_reduction');
+    CheckState(): Partial<Record<ModifierState, boolean>> {
+        return {
+            [ModifierState.SILENCED]: true,
+        };
     }
 }

@@ -127,9 +127,8 @@ export class modifier_qtg_ghost_state extends BaseModifier {
         GameRules.EventManager.UnRegisterByID(this.eventID);
         this.eventID = null;
 
-        if (this.GetParent().IsRealHero()) {
-            ParaAdjuster.ModifyMana(this.GetParent() as CDOTA_BaseNPC_Hero);
-        }
+        const parent = this.GetParent();
+        if (parent.IsRealHero()) ParaAdjuster.ModifyMana(parent);
     }
 
     DeclareFunctions(): ModifierFunction[] {

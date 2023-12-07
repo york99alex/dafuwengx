@@ -5,10 +5,10 @@ import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { AbilityManager } from '../../ability/abilitymanager';
 
 /**
- * 丰饶之环，2500，每回合英雄/兵卒回复12%生命值，英雄每2回合回复1点蓝，兵卒提升20%回蓝，10点攻击力
+ * 丰饶之环，2500，每回合英雄/兵卒回复12%生命值，英雄每2回合回复1点蓝，兵卒提升20%回蓝，15点攻击力
  * health_regen_hero 12	    health_regen_bz 12
  * mana_regen_hero 1	mana_regen_bz 20
- * bonus_damage 10
+ * bonus_damage 15
  * CD：2
  */
 @registerAbility()
@@ -23,7 +23,7 @@ export class item_qtg_cornucopia extends TSBaseItem {
         const player = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID());
         if (!player) return;
 
-        // 给蓝
+        // 物品给蓝
         player.givePlayerMana(this.GetSpecialValueFor('mana_regen_hero'));
         if (player.m_eHero.GetMana() > player.m_eHero.GetMaxMana()) player.setPlayerMana(player.m_eHero.GetMaxMana());
         // 设置冷却

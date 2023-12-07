@@ -119,7 +119,8 @@
 	"item_witch_blade"   "REMOVE"
 	"item_cyclone"	   "REMOVE"
 	"item_rod_of_atos"   "REMOVE"
-	// "item_dagon"   "REMOVE"
+	// TODO:
+	"item_dagon"   "REMOVE"
 	"item_orchid"	   "REMOVE"
 	"item_solar_crest"   "REMOVE"
 	"item_ultimate_scepter"   "REMOVE"

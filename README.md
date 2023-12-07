@@ -1052,6 +1052,7 @@ export const App = () => {	// 根组件
 
    1. path_13_hundun 三级双河道buff? 造成伤害时，物理视为魔法，魔法视为物理?
    2. 测试path_13护甲穿透和魔法穿透是否生效
+   3. 经过符文路径会无法自动结束回合，无限roll点？
 
 6. ==回合相关==
 
@@ -1085,7 +1086,9 @@ export const App = () => {	// 根组件
 
         }
 
-   7. 
+   7. 攻城未结束时回合开始，玩家蓝量未得到回合开始的更新
+
+      1. 同时之后每次受到伤害蓝量和蓝量上限增加一点
 
 8. UnRegister Failed Event Move?
 
@@ -1103,7 +1106,23 @@ export const App = () => {	// 根组件
         2. 测试Player.setCardAdd里的sendMsg部分的JSON.stringify能不能正确json化字符
 
         3. 继续item_qtg_iron_talon.OnSpellStart里的onItem_getCard(this, player, "MONSTER")整个逻辑
-    3. 装备刷cd统一到重复位置
+
+    3. 装备合成时一些通过modifier_cd和定时器实现的回蓝CD需要注意技能CD，吗？
+
+        参考原版情况：连击刀CD在装备技能的CD上，合成鱼叉后连击的CD在modifier里，如果CD中的连击刀合成了鱼叉，鱼叉可以立马释放连击。。。所以应该保留该特色？
+
+    4. 装备合成时应该保留之前的CD
+
+    5. 交换装备会导致蓝量异常
+
+    6. 刷新球/等通过modifier_cd和定时器实现回蓝的在特定情况下会异常
+
+        1. 蓝量未到上限，可以回蓝
+        2. 不存在modifier_cd
+        3. 原因：当新回合开始前会先创建modifier_cd再通过Event_PlayerRoundBegin减少countCD，所以modifier_cd的Think会
+        4. 导致错误的情况是，countCD会在回合内减一
+
+10. 给钱异常
 
 11. 实现CamerManage的前端部分
          检查pa一技能使用后镜头是否正确移动
@@ -1577,7 +1596,16 @@ GetModifierManaBonus(): number {
 
 
 
-
+/**
+ * 炎阳纹章，3000，勇气勋章1500+王冠500+短棍1000，6点甲，6点全属性，12攻速，12攻击力
+ * bonus_armor 6    mana_regen_bz 12    bonus_all_stats 6   bonus_attack_speed 12   bonus_damage 12
+ * mana_regen_hero 1    mana_regen_hero_cd 3
+ *
+ * 对己方单位施放可以提供7点护甲，50攻击速度，和10%移动速度。对敌人施放将降低其7点护甲，50攻击速度并减缓10%移动速度。
+ * 可以对自己使用
+ * armor_reduction -7   duration 1  bonus_attack_speed 50  bonus_speed_percent 10
+ * CD 3回合
+ */
 
 - 跳刀: 占装备位
   - 可升级大跳刀

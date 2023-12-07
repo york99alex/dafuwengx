@@ -81,6 +81,10 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/generic_gameplay/generic_lifesteal.vpcf',
             'particles/items2_fx/medallion_of_courage.vpcf',
             'particles/items2_fx/medallion_of_courage_friend.vpcf',
+            'particles/custom/item_pipe_miss_1.vpcf',
+            'particles/custom/item_pipe_miss_2.vpcf',
+            'particles/custom/item_pipe_miss_3.vpcf',
+            'particles/econ/items/oracle/oracle_fortune_ti7/oracle_fortune_ti7_purge_root_pnt.vpcf',
         ],
         context
     );

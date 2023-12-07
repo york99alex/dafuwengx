@@ -41,8 +41,10 @@ export class GameConfig {
     _DotaState: [];
     m_typeState = GS_None; //游戏状态
     m_nGameID = -1; // 比赛编号
-    m_nOrderID: PlayerID = -1; // 当前操作玩家ID
-    m_nOrderFirst: PlayerID = -1; // 首操作玩家ID
+    /**当前操作玩家ID */
+    m_nOrderID: PlayerID = -1;
+    /**首操作玩家ID */
+    m_nOrderFirst: PlayerID = -1;
     m_nOrderIndex = -1;
     m_nOrderFirstIndex = 0; // 首操作index
     m_timeOprt: number = -1; // 回合剩余时限
@@ -849,7 +851,7 @@ export class GameConfig {
             // 玩家死亡不操作
             if (event.player.m_bDie) return;
             // 触发到达路径功能
-            pathDes.onPath(event.player);
+            if(bSuccess) pathDes.onPath(event.player);
 
             // 判断豹子触发
             // const tEventJudge = { player: event.player }

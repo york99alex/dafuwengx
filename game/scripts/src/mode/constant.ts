@@ -27,6 +27,8 @@ export namespace Constant {
     export const TIME_OPERATOR_DISCONNECT: number = 51;
     // 豹子加时阈值  /0.1s
     export const TIME_BAOZI_YZ: number = 100;
+    // 移动操作时限  /0.1s
+    export const TIME_MOVE_MAX: number = 100;
     // 豹子加时时值  /0.1s
     export const TIME_BAOZI_ADD: number = 50;
     // 补给操作时限  /0.1s

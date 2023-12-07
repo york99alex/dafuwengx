@@ -52,6 +52,7 @@ export class modifier_path_16_l1 extends BaseModifier {
     OnDestroy(): void {
         print('ability=modifier=OnDestroy===name:', this.GetName());
         if (this.oPlayer) {
+            this.oPlayer.m_nManaMaxBase -= this.shangxian;
             for (const eBZ of this.oPlayer.m_tabBz) {
                 if (IsValid(eBZ)) {
                     AHMC.RemoveModifierByName(this.GetName(), eBZ);
@@ -68,7 +69,7 @@ export class modifier_path_16_l1 extends BaseModifier {
         }
     }
     OnCreated(params: object): void {
-        print('ability=modifier=OnCreated===name:', this.GetName(), 'Time:', this.GetRemainingTime());
+        print('ability=modifier=OnCreated===name:', this.GetName());
         if (!IsValid(this)) {
             return;
         }
@@ -114,7 +115,8 @@ export class modifier_path_16_l1 extends BaseModifier {
         });
         this.tEventID = [];
         // 提升玩家魔法上限
-        this.oPlayer.setMaxMana(this.oPlayer.m_eHero.GetMaxMana() + this.shangxian);
+        this.oPlayer.m_nManaMaxBase += this.shangxian;
+        ParaAdjuster.ModifyMana(this.oPlayer.m_eHero);
         // 监听玩家回合回魔
         this.tEventID.push(
             GameRules.EventManager.Register('Event_HeroHuiMoByRound', (event: { oPlayer: Player; nHuiMo: number }) => {

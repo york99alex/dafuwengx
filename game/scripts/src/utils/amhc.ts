@@ -1,52 +1,49 @@
-import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
-import { ParaAdjuster } from "./paraadjuster"
+import { CDOTA_BaseNPC_BZ } from '../player/CDOTA_BaseNPC_BZ';
+import { ParaAdjuster } from './paraadjuster';
 
 export class AHMC {
     // 写一些方法类,有AMHC之前的lua代码翻译过来,也有自定义工具方法
 
     /**通用方法之添加技能 */
     static AddAbilityAndSetLevel(unit: CDOTA_BaseNPC, abilityName: string, nLevel?: number): CDOTABaseAbility {
-        if (nLevel == null) nLevel = 1
-        if (unit == null || unit.IsNull()) return
-        let oAblt: CDOTABaseAbility
+        if (nLevel == null) nLevel = 1;
+        if (unit == null || unit.IsNull()) return;
+        let oAblt: CDOTABaseAbility;
         if (unit.FindAbilityByName(abilityName) == null) {
-            oAblt = unit.AddAbility(abilityName)
-            if (oAblt != null)
-                oAblt.SetLevel(nLevel)
+            oAblt = unit.AddAbility(abilityName);
+            if (oAblt != null) oAblt.SetLevel(nLevel);
         } else {
-            oAblt = unit.FindAbilityByName(abilityName)
-            oAblt.SetLevel(nLevel)
+            oAblt = unit.FindAbilityByName(abilityName);
+            oAblt.SetLevel(nLevel);
         }
-        print("===AddAbilityAndSetLevel:", abilityName)
+        print('===AddAbilityAndSetLevel:', abilityName);
         if (unit.IsRealHero()) {
-            print("===AHMC===AddAbilityAndSetLevel===:", unit.GetPlayerOwnerID())
-            print("===AHMC===AddAbilityAndSetLevel===m_nManaMaxBase:", GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
-            ParaAdjuster.ModifyMana(unit, GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+            print('===AHMC===AddAbilityAndSetLevel===:', unit.GetPlayerOwnerID());
+            ParaAdjuster.ModifyMana(unit);
         }
-        return oAblt
+        return oAblt;
     }
 
     /**通用方法之移除技能 */
     static RemoveAbilityAndModifier(unit: CDOTA_BaseNPC, abilityName: string): boolean {
-        if (unit == null || unit.IsNull()) return false
+        if (unit == null || unit.IsNull()) return false;
         if (unit.FindAbilityByName(abilityName) != null) {
-            unit.RemoveAbility(abilityName)
+            unit.RemoveAbility(abilityName);
 
-            let strBuff = "modifier_" + abilityName
-            print("===RemoveAbilityAndModifier:", strBuff)
-            let tabBuff = unit.FindAllModifiers()
+            let strBuff = 'modifier_' + abilityName;
+            print('===RemoveAbilityAndModifier:', strBuff);
+            let tabBuff = unit.FindAllModifiers();
             for (const value of tabBuff) {
                 if (value.GetName().indexOf(strBuff) != -1) {
-                    print("unit.RemoveModifierByName:", value.GetName())
-                    unit.RemoveModifierByName(value.GetName())
+                    print('unit.RemoveModifierByName:', value.GetName());
+                    unit.RemoveModifierByName(value.GetName());
                 }
             }
             if (unit.IsRealHero()) {
-                print("===AHMC===RemoveAbilityAndModifier===:", unit.GetPlayerOwnerID())
-                print("===AHMC===RemoveAbilityAndModifier===m_nManaMaxBase:", GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
-                ParaAdjuster.ModifyMana(unit, GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+                print('===AHMC===RemoveAbilityAndModifier===:', unit.GetPlayerOwnerID());
+                ParaAdjuster.ModifyMana(unit);
             }
-            return true
+            return true;
         }
     }
 
@@ -55,49 +52,43 @@ export class AHMC {
         caster: CDOTA_BaseNPC | undefined,
         ability: CDOTABaseAbility | undefined,
         modifierName: string,
-        modifierTable: object | undefined,
+        modifierTable: object | undefined
     ) {
-        const oBuff = unit.AddNewModifier(caster, ability, modifierName, modifierTable)
+        const oBuff = unit.AddNewModifier(caster, ability, modifierName, modifierTable);
         if (unit.IsRealHero()) {
-            print("===AHMC===AddNewModifier===:", unit.GetPlayerOwnerID())
-            print("===AHMC===AddNewModifier===m_nManaMaxBase:", GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
-            ParaAdjuster.ModifyMana(unit, GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+            print('===AHMC===AddNewModifier===:', unit.GetPlayerOwnerID());
+            ParaAdjuster.ModifyMana(unit);
         }
-        return oBuff
+        return oBuff;
     }
 
     static RemoveModifierByName(name: string, unit: CDOTA_BaseNPC) {
-        unit.RemoveModifierByName(name)
+        unit.RemoveModifierByName(name);
         if (unit.IsRealHero()) {
-            print("===AHMC===RemoveModifierByName===:", unit.GetPlayerOwnerID())
-            print("===AHMC===RemoveModifierByName===m_nManaMaxBase:", GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
-            ParaAdjuster.ModifyMana(unit, GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+            print('===AHMC===RemoveModifierByName===:', unit.GetPlayerOwnerID());
+            ParaAdjuster.ModifyMana(unit);
         }
     }
 
     static RemoveModifierByNameAndCaster(name: string, unit: CDOTA_BaseNPC, caster: CDOTA_BaseNPC) {
-        unit.RemoveModifierByNameAndCaster(name, caster)
+        unit.RemoveModifierByNameAndCaster(name, caster);
         if (unit.IsRealHero()) {
-            print("===AHMC===RemoveModifierByNameAndCaster===:", unit.GetPlayerOwnerID())
-            print("===AHMC===RemoveModifierByNameAndCaster===m_nManaMaxBase:", GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
-            ParaAdjuster.ModifyMana(unit, GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase)
+            print('===AHMC===RemoveModifierByNameAndCaster===:', unit.GetPlayerOwnerID());
+            ParaAdjuster.ModifyMana(unit);
         }
     }
 
     static removeAll(object: any[], condition: any) {
-        const kvs = this.FindAll(object, condition)
+        const kvs = this.FindAll(object, condition);
         for (let index = kvs.length - 1; index >= 0; index--) {
             const kv = kvs[index];
-            if (typeof (kvs[index].key) == "number")
-                object.splice(kv.key, 1)
-            else
-                object[kv.key] = null
+            if (typeof kvs[index].key == 'number') object.splice(kv.key, 1);
+            else object[kv.key] = null;
         }
     }
 
-
     static FindAll(obj: any, condition: any) {
-        const result: { key: any, value: any }[] = []
+        const result: { key: any; value: any }[] = [];
         if (obj && condition) {
             const isFunc = typeof condition === 'function';
             for (let key in obj) {
@@ -132,118 +123,137 @@ export class AHMC {
 
     static CreateUnitAsync(unitName: string, origin: Vector, face: number | Vector, owner: CDOTA_BaseNPC, teamNumber: number, callback: Function) {
         // 创建单位
-        CreateUnitByNameAsync(unitName, origin, false, null, null, teamNumber, (unit) => {
+        CreateUnitByNameAsync(unitName, origin, false, null, null, teamNumber, unit => {
             if (unit) {
                 // 设置单位面朝方向
-                if (typeof (face) == "number") {
-                    unit.SetAngles(0, face, 0)
+                if (typeof face == 'number') {
+                    unit.SetAngles(0, face, 0);
                 } else {
-                    unit.SetForwardVector(face)
+                    unit.SetForwardVector(face);
                 }
 
                 // 如果有召唤者
                 if (owner != null) {
-                    unit.SetOwner(owner)
-                    unit.SetControllableByPlayer(owner.GetPlayerOwnerID(), true)
+                    unit.SetOwner(owner);
+                    unit.SetControllableByPlayer(owner.GetPlayerOwnerID(), true);
                 }
 
                 // 回调函数
                 if (callback != null) {
-                    callback(unit)
+                    callback(unit);
                 }
             }
-        })
+        });
     }
 
     /**创建单位 */
     static CreateUnit(unitName: string, origin: Vector, face: number | Vector, owner: CDOTA_BaseNPC, teamNumber: number, callback?: Function) {
-        const unit = CreateUnitByName(unitName, origin, false, null, null, teamNumber)
+        const unit = CreateUnitByName(unitName, origin, false, null, null, teamNumber);
         if (unit) {
             // 设置单位面朝方向
-            if (typeof (face) == "number") {
-                unit.SetAngles(0, face, 0)
+            if (typeof face == 'number') {
+                unit.SetAngles(0, face, 0);
             } else {
-                unit.SetForwardVector(face)
+                unit.SetForwardVector(face);
             }
 
             // 如果有召唤者
             if (owner != null) {
-                unit.SetOwner(owner)
-                unit.SetControllableByPlayer(owner.GetPlayerOwnerID(), true)
+                unit.SetOwner(owner);
+                unit.SetControllableByPlayer(owner.GetPlayerOwnerID(), true);
             }
         }
 
         // 回调函数
-        if (callback != null) callback(unit)
+        if (callback != null) callback(unit);
 
-        return unit
+        return unit;
     }
 
     /**创建带有计时器的特效，计时器结束删除特效，并有一个callback函数 */
-    static CreateParticle(particleName: string, particleAttach: number, immediately: boolean, owningEntity: CBaseEntity | null, duration?: number, callback?: Function) {
+    static CreateParticle(
+        particleName: string,
+        particleAttach: number,
+        immediately: boolean,
+        owningEntity: CBaseEntity | null,
+        duration?: number,
+        callback?: Function
+    ) {
         if (AHMC.IsAlive(owningEntity) == null) {
-            error("AMHC:CreateParticle param 3: not valid entity", 2)
+            error('AMHC:CreateParticle param 3: not valid entity', 2);
         }
 
-        const p = ParticleManager.CreateParticle(particleName, particleAttach, owningEntity)
+        const p = ParticleManager.CreateParticle(particleName, particleAttach, owningEntity);
 
         if (duration != null) {
-            const time = GameRules.GetGameTime()
-            this.Timer(particleName, () => {
-                if (GameRules.GetGameTime() - time >= duration) {
-                    ParticleManager.DestroyParticle(p, immediately)
-                    if (callback != null) callback()
-                    return null
-                }
+            const time = GameRules.GetGameTime();
+            this.Timer(
+                particleName,
+                () => {
+                    if (GameRules.GetGameTime() - time >= duration) {
+                        ParticleManager.DestroyParticle(p, immediately);
+                        if (callback != null) callback();
+                        return null;
+                    }
 
-                return 0.01
-            }, 0)
+                    return 0.01;
+                },
+                0
+            );
         }
-        return p
+        return p;
     }
 
     static Timer(name: string, fun: Function, delay: number, entity?: CBaseEntity) {
-        delay = delay || 0
-        let ent = null
+        delay = delay || 0;
+        let ent = null;
         if (entity != null) {
             if (this.IsAlive(entity) == null) {
-                error("AMHC:Timer param 3: not valid entity", 2)
+                error('AMHC:Timer param 3: not valid entity', 2);
             }
-            ent = entity
+            ent = entity;
         } else {
-            ent = GameRules.GetGameModeEntity()
+            ent = GameRules.GetGameModeEntity();
         }
 
-        const time = GameRules.GetGameTime()
-        ent.SetContextThink(DoUniqueString(name), () => {
-            if (GameRules.GetGameTime() - time >= delay) {
-                ent.SetContextThink(DoUniqueString(name), () => {
-                    if (!GameRules.IsGamePaused()) {
-                        return fun()
-                    }
+        const time = GameRules.GetGameTime();
+        ent.SetContextThink(
+            DoUniqueString(name),
+            () => {
+                if (GameRules.GetGameTime() - time >= delay) {
+                    ent.SetContextThink(
+                        DoUniqueString(name),
+                        () => {
+                            if (!GameRules.IsGamePaused()) {
+                                return fun();
+                            }
 
-                    return 0.01
-                }, 0)
-                return null
-            }
+                            return 0.01;
+                        },
+                        0
+                    );
+                    return null;
+                }
 
-            return 0.01
-        }, 0)
+                return 0.01;
+            },
+            0
+        );
     }
 
     /**
-     * 
+     *
      * @param entity CDOTA_BaseNPC
      * @returns 返回true有效且存活, 返回false有效但死亡, 返回null无效实体
      */
     static IsAlive(entity: CBaseEntity) {
         if (IsValid(entity)) {
             if (entity.IsAlive()) {
-                return true
+                return true;
             }
-            return false
+            return false;
         }
-        return null
+        return null;
     }
 
     /**
@@ -256,47 +266,59 @@ export class AHMC {
      * @param scale number
      * @param tData 可选
      */
-    static Damage(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC, damage: number, damageType: DamageTypes, ability: CDOTABaseAbility, scale?: number, tData?) {
+    static Damage(
+        attacker: CDOTA_BaseNPC,
+        victim: CDOTA_BaseNPC,
+        damage: number,
+        damageType: DamageTypes,
+        ability: CDOTABaseAbility,
+        scale?: number,
+        tData?
+    ) {
         if (this.IsAlive(attacker) != true || this.IsAlive(victim) != true) {
-            return null
+            return null;
         }
-        scale = scale || 1
-        if (scale < 0) scale = 1
+        scale = scale || 1;
+        if (scale < 0) scale = 1;
 
-        const tEntID = GameRules.EventManager.Register("Event_Atk", (event) => {
-            if (ability) {
-                event.ability = ability
-            }
-            if (tData) {
-                for (const k in tData) {
-                    event[k] = tData[k]
+        const tEntID = GameRules.EventManager.Register(
+            'Event_Atk',
+            event => {
+                if (ability) {
+                    event.ability = ability;
                 }
-            }
-        }, null, 987654321)
-        print("===scale==:", scale)
+                if (tData) {
+                    for (const k in tData) {
+                        event[k] = tData[k];
+                    }
+                }
+            },
+            null,
+            987654321
+        );
+        print('===scale==:', scale);
         ApplyDamage({
             victim: victim,
             attacker: attacker,
             damage: damage * scale,
             damage_type: damageType,
-            ability: ability
-        })
-        GameRules.EventManager.UnRegisterByID(tEntID, "Event_Atk")
+            ability: ability,
+        });
+        GameRules.EventManager.UnRegisterByID(tEntID, 'Event_Atk');
     }
 
     /**星星特效 */
     static ShowStarsOnUnit(unit: CDOTA_BaseNPC_BZ, nCount: number, duration?: number) {
-        duration = duration || 5
+        duration = duration || 5;
 
-        AHMC.AddAbilityAndSetLevel(unit, "no_bar")
+        AHMC.AddAbilityAndSetLevel(unit, 'no_bar');
 
-        AHMC.CreateParticle("effect/arrow/star" + nCount + ".vpcf", ParticleAttachment.OVERHEAD_FOLLOW, false, unit, duration, () => {
-            AHMC.RemoveAbilityAndModifier(unit, "no_bar")
-        })
+        AHMC.CreateParticle('effect/arrow/star' + nCount + '.vpcf', ParticleAttachment.OVERHEAD_FOLLOW, false, unit, duration, () => {
+            AHMC.RemoveAbilityAndModifier(unit, 'no_bar');
+        });
     }
 }
 
 export function IsValid(handle: CEntityInstance | any) {
-    return handle != null && !handle.IsNull()
+    return handle != null && !handle.IsNull();
 }
-

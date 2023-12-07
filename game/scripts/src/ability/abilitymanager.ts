@@ -6,6 +6,7 @@ import { modifier_fix_damage } from '../modifiers/modifier_fix_damage';
 import { AHMC, IsValid } from '../utils/amhc';
 import { TSBaseItem } from '../item/tsBaseItem';
 import { Get06ItemByName } from '../item/itemmanager';
+import { ParaAdjuster } from '../utils/paraadjuster';
 
 export class AbilityManager {
     static m_tabNullAbltCD;
@@ -45,11 +46,11 @@ export class AbilityManager {
         if (!nCD) {
             nCD = ability.GetCooldown(ability.GetLevel());
         }
-        print('===setRoundCD===' + ability.GetName() + '===GetCooldown:', nCD);
+        // print('===setRoundCD===' + ability.GetName() + '===GetCooldown:', nCD);
         if (nCD <= 0) {
             nCD = 1;
         }
-        print('===setRoundCD===' + ability.GetName() + '===CD:', nCD);
+        // print('===setRoundCD===' + ability.GetName() + '===CD:', nCD);
 
         const bItem = ability.IsItem();
         const eCaster = ability.GetCaster();
@@ -158,7 +159,7 @@ export class AbilityManager {
 
         // 设置持续CD
         ability.StartCooldown(nCDLast);
-        print('===setRoundCD===' + ability.GetName() + '===StartCooldown===1:', nCDLast);
+        // print('===setRoundCD===' + ability.GetName() + '===StartCooldown===1:', nCDLast);
         sThink = Timers.CreateTimer(() => {
             if (ability.IsNull()) {
                 if (eCaster != null && !eCaster.IsNull()) {
@@ -169,11 +170,11 @@ export class AbilityManager {
                 }
             } else if (ability.GetCooldownTimeRemaining() > 0) {
                 ability.StartCooldown(nCDLast);
-                print('===setRoundCD===' + ability.GetName() + '===StartCooldown===2:', nCDLast);
+                // print('===setRoundCD====setRoundCD===' + ability.GetName() + '===StartCooldown===2:', nCDLast);
                 return 0.4;
             }
             onCDEnd();
-            print('===setRoundCD===' + ability.GetName() + '===StartCooldown===3:', nCDLast);
+            // print('===setRoundCD===' + ability.GetName() + '===StartCooldown===3:', nCDLast);
             return;
         });
     }
@@ -261,11 +262,11 @@ export class AbilityManager {
                 }
                 if (buff['m_nRound'] <= 0) {
                     if (IsValid(buff)) {
-                        // const owner = buff.GetParent()
-                        AHMC.RemoveModifierByName(buff.GetName(), buff.GetParent());
-                        // if(owner.IsRealHero()){
-                        //     ParaAdjuster.ModifyMana(owner)
-                        // }
+                        const owner = buff.GetParent();
+                        buff.Destroy();
+                        if (owner.IsRealHero()) {
+                            ParaAdjuster.ModifyMana(owner);
+                        }
                     }
                     return true;
                 }

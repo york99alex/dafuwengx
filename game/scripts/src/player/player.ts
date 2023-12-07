@@ -548,6 +548,24 @@ export class Player {
 
     /**移动到路径 */
     moveToPath(path: Path, funCallBack?: Function) {
+        print('===player===moveToPath===0');
+        // 检查是否缠绕状态
+        if (this.m_eHero.IsRooted()) {
+            print('===player===moveToPath===1');
+            // 如果是被缠绕，等待TIME_MOVE_MAX*0.1秒
+            let time_root = Constant.TIME_MOVE_MAX;
+            Timers.CreateTimer(0, () => {
+                print('===player===moveToPath===time_root', time_root--);
+                if (time_root <= 0) {
+                    if (!this.m_bDie && funCallBack != null) {
+                        funCallBack(false);
+                    }
+                    return;
+                }
+                return 0.1;
+            });
+            return;
+        }
         // 开始移动
         this.setPlayerState(PS_Moving);
         this.m_pathMoveStart = this.m_pathCur;
@@ -819,10 +837,20 @@ export class Player {
         // 设置共享
         // ItemShare.setShareAdd(eBZ, this.m_eHero)
 
-        // 特效 TODO:
+        // 特效
+        if (bLevelUp) {
+            AHMC.CreateParticle(
+                'particles/units/heroes/hero_oracle/oracle_false_promise_cast_enemy.vpcf',
+                ParticleAttachment.ABSORIGIN_FOLLOW,
+                false,
+                eBZ,
+                5
+            );
+        } else {
+            const nPtclID = AHMC.CreateParticle('particles/neutral_fx/roshan_spawn.vpcf', ParticleAttachment.ABSORIGIN_FOLLOW, false, eBZ, 5);
+            ParticleManager.SetParticleControl(nPtclID, 0, Vector(eBZ.GetOrigin().x, eBZ.GetOrigin().y, 0));
+        }
 
-        print('===ModifyMana===createBZOnPath');
-        Timers.CreateTimer(0.01, () => ParaAdjuster.ModifyMana(this.m_eHero, this.m_nManaMaxBase, 0));
         return eBZ;
     }
 
@@ -1160,14 +1188,6 @@ export class Player {
                 return buff;
             }
         }
-    }
-
-    /**设置英雄魔法上限 */
-    setMaxMana(nValue: number) {
-        // 不影响当前魔法值
-        const nManaCur = this.m_eHero.GetMana();
-        ParaAdjuster.ModifyMana(this.m_eHero, nValue, 0);
-        this.setPlayerMana(nManaCur);
     }
 
     /**添加当前血量 */
@@ -1566,9 +1586,10 @@ export class Player {
         if (event.oPlayer != this) return;
 
         // 提高英雄魔法上限
-        if (this.m_nManaMaxBase < 10) {
+        if (GameRules.GameConfig.m_nRound < 11) {
             this.m_nManaMaxBase += 1;
-            this.setMaxMana(this.m_nManaMaxBase);
+            ParaAdjuster.ModifyMana(this.m_eHero);
+            print('===RoundBegin===m_nManaMaxBase += 1===name:', event.oPlayer.m_eHero.GetName());
         }
         // 英雄回蓝
         const tabEventHuiMo = {

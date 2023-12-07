@@ -36,7 +36,7 @@ export class PathDomain_2 extends PathDomain {
         // 添加
         const ability = AHMC.AddAbilityAndSetLevel(oPlayer.m_eHero, this.getBuffName(nLevel), nLevel)
         ability.SetLevel(nLevel)
-        ParaAdjuster.ModifyMana(oPlayer.m_eHero, oPlayer.m_nManaMaxBase)
+        ParaAdjuster.ModifyMana(oPlayer.m_eHero)
 
         // TODO: 3级双河道buff
 

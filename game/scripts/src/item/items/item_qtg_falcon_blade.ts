@@ -21,7 +21,7 @@ export class item_qtg_falcon_blade extends TSBaseItem {
         const player = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID());
         if (!player) return;
 
-        // 给蓝
+        // 物品给蓝
         player.givePlayerMana(this.GetSpecialValueFor('mana_regen_hero'));
         if (player.m_eHero.GetMana() > player.m_eHero.GetMaxMana()) player.setPlayerMana(player.m_eHero.GetMaxMana());
         // 设置冷却

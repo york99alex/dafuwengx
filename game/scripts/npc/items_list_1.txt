@@ -470,6 +470,8 @@
 			"berserk_bonus_movement_speed" "20"
 			"berserk_armor_reduction" "8"
 			"duration" "1"
+			"bonus_attack_speed" "50"
+			"bonus_speed_percent" "10"
 		}
 		"ItemCost" "2000"
 		"ID" "1635"
@@ -615,6 +617,7 @@
 			"health_regen_hero" "18"
 			"health_regen_bz" "18"
 			"resist_perct" "35"
+			"resisit_mana" "1"
 		}
 		"ItemCost" "3500"
 		"ID" "1644"
@@ -647,8 +650,7 @@
 		"ItemRequirements" {
 		}
 	}
-	"item_dagon" {
-		"BaseClass" "item_dagon"
+	"item_qtg_dagon" {
 		"AbilityValues" {
 		}
 		"ItemRequirements" {
@@ -667,11 +669,28 @@
 		}
 	}
 	"item_qtg_orchid" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_orchid"
 		"AbilityValues" {
+			"bonus_attack_speed" "20"
+			"bonus_damage" "15"
+			"bonus_intellect" "12"
+			"mana_regen_hero" "1"
+			"mana_regen_hero_cd" "2"
+			"mana_regen_bz" "20"
+			"silence_duration" "1"
 		}
 		"ItemCost" "3000"
 		"ID" "1649"
+		"ItemPurchasable" "1"
+		"ItemSellable" "1"
+		"ItemQuality" "rare"
+		"AbilityCooldown" "5"
+		"AbilityManaCost" "2"
 		"AbilityTextureName" "item_orchid"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"ItemRequirements" {
 		}
 	}
@@ -688,11 +707,32 @@
 		}
 	}
 	"item_qtg_solar_crest" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_solar_crest"
 		"AbilityValues" {
+			"bonus_armor" "6"
+			"bonus_all_stats" "6"
+			"bonus_attack_speed" "12"
+			"bonus_damage" "12"
+			"mana_regen_bz" "12"
+			"mana_regen_hero" "1"
+			"mana_regen_hero_cd" "3"
+			"target_armor" "8"
+			"target_attack_speed" "60"
+			"target_movement_speed" "15"
+			"duration" "1"
 		}
 		"ItemCost" "3000"
 		"ID" "1651"
+		"ItemPurchasable" "1"
+		"ItemSellable" "1"
+		"ItemQuality" "rare"
+		"AbilityCooldown" "3"
 		"AbilityTextureName" "item_solar_crest"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_NO"
 		"ItemRequirements" {
 		}
 	}
@@ -709,11 +749,24 @@
 		}
 	}
 	"item_qtg_rod_of_atos" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_rod_of_atos"
 		"AbilityValues" {
+			"bonus_intellect" "20"
+			"bonus_health" "300"
+			"duration" "1"
 		}
 		"ItemCost" "2500"
 		"ID" "1653"
+		"ItemPurchasable" "1"
+		"ItemSellable" "1"
+		"ItemQuality" "rare"
+		"AbilityCooldown" "5"
+		"AbilityManaCost" "2"
 		"AbilityTextureName" "item_rod_of_atos"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"ItemRequirements" {
 		}
 	}
@@ -730,11 +783,25 @@
 		}
 	}
 	"item_qtg_refresher" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_refresher"
 		"AbilityValues" {
+			"bonus_damage" "30"
+			"mana_regen_bz" "40"
+			"mana_regen_hero" "2"
+			"mana_regen_hero_cd" "2"
+			"health_regen_hero" "24"
+			"health_regen_bz" "24"
 		}
 		"ItemCost" "5000"
 		"ID" "1655"
+		"ItemPurchasable" "1"
+		"ItemSellable" "1"
+		"ItemQuality" "rare"
+		"AbilityCooldown" "5"
+		"AbilityManaCost" "3"
 		"AbilityTextureName" "item_refresher"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"ItemRequirements" {
 		}
 	}
@@ -1368,7 +1435,7 @@
 		"BaseClass" "item_lua"
 		"ScriptFile" "item/items/item_qtg_cornucopia"
 		"AbilityValues" {
-			"bonus_damage" "10"
+			"bonus_damage" "15"
 			"health_regen_hero" "12"
 			"health_regen_bz" "12"
 			"mana_regen_hero" "1"

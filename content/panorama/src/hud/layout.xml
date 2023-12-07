@@ -5,6 +5,9 @@
     <styles>
         <include src="s2r://panorama/styles/dotastyles.vcss_c" />
         <include src="./styles.less" />
+        <include src="./CountDown/styles.less" />
+        <include src="./PathPanel/styles.less" />
+        <include src="./CardPanel/styles.less" />
     </styles>
     <Panel class="root" hittest="false" />
 </root>

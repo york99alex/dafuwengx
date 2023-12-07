@@ -168,9 +168,8 @@ export class modifier_ability_lina_light_strike_array extends BaseModifier {
             // print("===modifier_lina_light_strike_array===OnDestroy===updateBZBuffByCreate")
             GameRules.EventManager.UnRegisterByID(this['updateBZBuffByCreate'], 'Event_BZCreate');
         }
-        if (this.GetParent().IsRealHero()) {
-            ParaAdjuster.ModifyMana(this.GetParent() as CDOTA_BaseNPC_Hero);
-        }
+        const hero = this.GetParent();
+        if (hero.IsRealHero()) ParaAdjuster.ModifyMana(hero);
     }
 
     DeclareFunctions(): ModifierFunction[] {
