@@ -1,5 +1,5 @@
 import { Player } from '../../player/player';
-import { AHMC, IsValid } from '../../utils/amhc';
+import { AMHC, IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { ParaAdjuster } from '../../utils/paraadjuster';
 import { TSBaseAbility } from '../tsBaseAbilty';
@@ -46,7 +46,7 @@ export class modifier_rune_4 extends BaseModifier {
         oPlayer.setPlayerMana(oPlayer.m_eHero.GetMaxMana());
 
         // 加蓝特效
-        let nPtclID = AHMC.CreateParticle(
+        let nPtclID = AMHC.CreateParticle(
             'particles/econ/items/outworld_devourer/od_shards_exile/od_shards_exile_prison_start.vpcf',
             ParticleAttachment.OVERHEAD_FOLLOW,
             false,
@@ -59,7 +59,7 @@ export class modifier_rune_4 extends BaseModifier {
         for (const eBZ of oPlayer.m_tabBz) {
             eBZ.ModifyHealth(eBZ.GetMaxHealth(), null, false, 0);
             eBZ.SetMana(eBZ.GetMaxMana());
-            nPtclID = AHMC.CreateParticle(
+            nPtclID = AMHC.CreateParticle(
                 'particles/econ/items/outworld_devourer/od_shards_exile/od_shards_exile_prison_start.vpcf',
                 ParticleAttachment.OVERHEAD_FOLLOW,
                 false,
@@ -75,7 +75,7 @@ export class modifier_rune_4 extends BaseModifier {
         GameRules.EventManager.Register('Event_PlayerRoundFinished', (oPlayerFinished: Player) => {
             if (nRoundEnd == GameRules.GameConfig.m_nRound && oPlayerFinished == oPlayer && oPlayer.m_bRoundFinished) {
                 // 移除buff
-                if (!ability.IsNull()) AHMC.RemoveAbilityAndModifier(oPlayer.m_eHero, ability.GetAbilityName());
+                if (!ability.IsNull()) AMHC.RemoveAbilityAndModifier(oPlayer.m_eHero, ability.GetAbilityName());
                 return true;
             }
         });

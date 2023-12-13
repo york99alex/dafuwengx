@@ -1,4 +1,4 @@
-import { AHMC, IsValid } from '../../utils/amhc';
+import { AMHC, IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { TSBaseItem } from '../tsBaseItem';
 import { AbilityManager } from '../../ability/abilitymanager';
@@ -31,7 +31,7 @@ export class item_qtg_rod_of_atos extends TSBaseItem {
         if (!player || !targetPlayer) return;
 
         // 添加debuff
-        AHMC.AddNewModifier(targetPlayer.m_eHero, this.GetCaster(), this, modifier_qtg_rod_of_atos_debuff.name, {});
+        AMHC.AddNewModifier(targetPlayer.m_eHero, this.GetCaster(), this, modifier_qtg_rod_of_atos_debuff.name, {});
         // 音效
         EmitSoundOn('DOTA_Item.RodOfAtos.Cast', this.GetCaster());
         EmitSoundOn('DOTA_Item.RodOfAtos.Target', target);
@@ -88,7 +88,7 @@ export class modifier_qtg_rod_of_atos_debuff extends BaseModifier {
         const victPlayer = GameRules.PlayerManager.getPlayer(this.GetParent().GetPlayerOwnerID());
         victPlayer.setPlayerState(PS_Rooted);
 
-        this.nPtclID = AHMC.CreateParticle(
+        this.nPtclID = AMHC.CreateParticle(
             'particles/econ/items/oracle/oracle_fortune_ti7/oracle_fortune_ti7_purge_root_pnt.vpcf',
             ParticleAttachment.CENTER_FOLLOW,
             true,

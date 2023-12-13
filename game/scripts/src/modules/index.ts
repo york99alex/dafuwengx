@@ -1,8 +1,10 @@
 import { CardManager } from '../card/cardmanager';
 import { ItemManager } from '../item/itemmanager';
+import { ItemShare } from '../item/itemshare';
 import { GameLoop } from '../mode/GameLoop';
 import { HeroSelection } from '../mode/HeroSelection';
 import { Bot } from '../mode/bot';
+import { Trade } from '../mode/trade';
 import { PathManager } from '../path/PathManager';
 import { PlayerManager } from '../player/playermanager';
 import { EventManager } from '../utils/eventmanager';
@@ -22,6 +24,8 @@ declare global {
         GameConfig: GameConfig;
         CardManager: CardManager;
         ItemManager: ItemManager;
+        ItemShare: ItemShare;
+        Trade: Trade;
     }
 }
 
@@ -30,13 +34,13 @@ declare global {
  * 因此在这里作为单例模式使用
  **/
 export function ActivateModules() {
-    print("[ActivateModules] start...游戏开始")
+    print('[ActivateModules] start...游戏开始');
     if (GameRules.XNetTable == null) {
-        print("[GameRules初始化...]")
+        print('[GameRules初始化...]');
         // 初始化所有的GameRules模块
         GameRules.XNetTable = new XNetTable();
         GameRules.GameConfig = new GameConfig();
-        Bot.init()
+        Bot.init();
 
         // 初始化测试模块xD
         new Debug();

@@ -3,7 +3,7 @@ import { PathDomain } from '../../path/pathsdomain/pathdomain';
 import { PathDomain_6 } from '../../path/pathsdomain/pathdomain_6';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { Player } from '../../player/player';
-import { AHMC, IsValid } from '../../utils/amhc';
+import { AMHC, IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { ParaAdjuster } from '../../utils/paraadjuster';
 import { AbilityManager } from '../abilitymanager';
@@ -53,7 +53,7 @@ export class modifier_path_17_l1 extends BaseModifier {
         if (this.oPlayer) {
             for (const eBZ of this.oPlayer.m_tabBz) {
                 if (IsValid(eBZ)) {
-                    AHMC.RemoveModifierByName(this.GetName(), eBZ);
+                    AMHC.RemoveModifierByName(this.GetName(), eBZ);
                 }
             }
         }
@@ -138,20 +138,20 @@ export class modifier_path_17_l1 extends BaseModifier {
                         if (sHasBuff && v[sHasBuff + nID]) {
                             // 脱离范围删除减速buff
                             v[sHasBuff + nID] = false;
-                            AHMC.RemoveModifierByNameAndCaster(modifier_path_17_debuff.name, v, oPlayer.m_eHero);
+                            AMHC.RemoveModifierByNameAndCaster(modifier_path_17_debuff.name, v, oPlayer.m_eHero);
                         }
                         return;
                     }
                     if (!v[sDamageCD + nID]) {
                         v[sDamageCD + nID] = true;
-                        AHMC.Damage(oPlayer.m_eHero, v, damage, ability.GetAbilityDamageType(), ability);
+                        AMHC.Damage(oPlayer.m_eHero, v, damage, ability.GetAbilityDamageType(), ability);
                         Timers.CreateTimer(0.5, () => {
                             v[sDamageCD + nID] = false;
                         });
                     }
                     if (!v[sHasBuff + nID]) {
                         v[sHasBuff + nID] = true;
-                        AHMC.AddNewModifier(v, oPlayer.m_eHero, ability, modifier_path_17_debuff.name, {});
+                        AMHC.AddNewModifier(v, oPlayer.m_eHero, ability, modifier_path_17_debuff.name, {});
                     }
                 }
             }
@@ -190,7 +190,7 @@ export class modifier_path_17_l1 extends BaseModifier {
 
             // 创建飓风
             for (const tab of tPaths) {
-                const nPtclID = AHMC.CreateParticle('particles/neutral_fx/tornado_ambient.vpcf', ParticleAttachment.POINT, false, eDiao);
+                const nPtclID = AMHC.CreateParticle('particles/neutral_fx/tornado_ambient.vpcf', ParticleAttachment.POINT, false, eDiao);
                 // 刮风在路径上做往复移动
                 const tabPathMove = [tab[0]];
                 if (tab.length > 1) {
@@ -238,7 +238,7 @@ export class modifier_path_17_l1 extends BaseModifier {
                             funMoveFeng();
                         } else {
                             if (IsValid(event.entity)) {
-                                AHMC.RemoveModifierByNameAndCaster(modifier_path_17_debuff.name, event.entity, oPlayer.m_eHero);
+                                AMHC.RemoveModifierByNameAndCaster(modifier_path_17_debuff.name, event.entity, oPlayer.m_eHero);
                             }
                             ParticleManager.DestroyParticle(nPtclID, false);
                             pathMid.setDiaoGesture(-GameActivity.DOTA_CAST_ABILITY_1);

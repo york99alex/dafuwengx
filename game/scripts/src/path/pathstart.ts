@@ -10,7 +10,8 @@ export class PathStart extends Path {
         this.m_tPlayerGetCount = []
         // 监听玩家到起点发工资
         GameRules.EventManager.Register("Event_CurPathChange", (event: { player: Player }) => {
-            if (this != event.player.m_pathCur || GameRules.GameConfig.m_nRound <= 0) {
+            print("===PathStart===Event_CurPathChange===this.m_nID:", this.m_nID)
+            if (this.m_nID != event.player.m_pathCur.m_nID || GameRules.GameConfig.m_nRound <= 0) {
                 return
             }
             const player = event.player

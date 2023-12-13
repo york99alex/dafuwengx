@@ -9,6 +9,9 @@ import { CountDown } from './CountDown/components/countDown';
 import { PrisonPanel } from './PathPanel/components/prisonPanel';
 import { HideHudElement } from '../hero_selection';
 import CardPanel from './CardPanel/components/cardPanel';
+import { BuyItem } from './BuyItem/buyItem';
+import { HudError } from './HudError/hudError';
+import { Tooltip } from './Tooltip/tooltip';
 
 const Test: FC = () => {
     // const data = useXNetTableKey(`test_table`, `test_key`, { data_1: `HelloWorld` });
@@ -24,6 +27,9 @@ render(
         <CardPanel />
         <PathPanel />
         <PrisonPanel />
+        <BuyItem />
+        <HudError />
+        <Tooltip />
     </>,
     $.GetContextPanel()
 );

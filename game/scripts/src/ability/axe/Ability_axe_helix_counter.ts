@@ -1,6 +1,6 @@
 import { PS_AtkHero, PS_AtkMonster } from "../../mode/gamemessage";
 import { PathDomain } from "../../path/pathsdomain/pathdomain";
-import { AHMC } from "../../utils/amhc";
+import { AMHC } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { TSBaseAbility } from "../tsBaseAbilty";
 
@@ -128,7 +128,7 @@ export class modifier_ability_axe_helix_counter extends BaseModifier {
         if (tab) {
             for (const v of tab) {
                 if (v && !v.IsNull() && v.IsAlive()) {
-                    AHMC.Damage(caster, v, nDamage, ability.GetAbilityDamageType(), ability)
+                    AMHC.Damage(caster, v, nDamage, ability.GetAbilityDamageType(), ability)
                 }
             }
         }

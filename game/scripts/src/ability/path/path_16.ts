@@ -1,6 +1,6 @@
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { Player } from '../../player/player';
-import { AHMC, IsValid } from '../../utils/amhc';
+import { AMHC, IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { ParaAdjuster } from '../../utils/paraadjuster';
 import { AbilityManager } from '../abilitymanager';
@@ -55,7 +55,7 @@ export class modifier_path_16_l1 extends BaseModifier {
             this.oPlayer.m_nManaMaxBase -= this.shangxian;
             for (const eBZ of this.oPlayer.m_tabBz) {
                 if (IsValid(eBZ)) {
-                    AHMC.RemoveModifierByName(this.GetName(), eBZ);
+                    AMHC.RemoveModifierByName(this.GetName(), eBZ);
                 }
             }
         }
@@ -171,7 +171,7 @@ export class modifier_path_16_l1 extends BaseModifier {
                         }
                         // 特效
                         if (nPrltName != 0) {
-                            const nPtclID = AHMC.CreateParticle(
+                            const nPtclID = AMHC.CreateParticle(
                                 'particles/custom/path_ablt/path_ablt_nocdmana_' + nPrltName + '.vpcf',
                                 ParticleAttachment.POINT_FOLLOW,
                                 false,

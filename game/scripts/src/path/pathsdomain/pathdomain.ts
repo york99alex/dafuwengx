@@ -1,8 +1,9 @@
 import { Constant } from '../../mode/constant';
 import { GS_Begin, PS_AtkHero, PS_InPrison, TypeOprt } from '../../mode/gamemessage';
+import { modifier_unselect } from '../../modifiers/util/modifier_unselect';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { DamageEvent, Player } from '../../player/player';
-import { AHMC, IsValid } from '../../utils/amhc';
+import { AMHC, IsValid } from '../../utils/amhc';
 import { ParaAdjuster } from '../../utils/paraadjuster';
 import { Path } from '../Path';
 
@@ -11,7 +12,7 @@ import { Path } from '../Path';
  */
 export class PathDomain extends Path {
     m_tabENPC: CDOTA_BaseNPC_BZ[]; // 路径上的全部NPC实体（城池的兵卒）
-    m_eCity: CBaseEntity; // 建筑点实体
+    m_eCity: CDOTA_BaseNPC_Building; // 建筑点实体
     m_eBanner: CBaseModelEntity; // 横幅旗帜实体
     m_nPrice: number; // 价值
     m_nOwnerID: number; // 领主玩家ID
@@ -22,7 +23,8 @@ export class PathDomain extends Path {
     constructor(entity: CBaseEntity) {
         super(entity);
 
-        this.m_eCity = Entities.FindByName(null, 'city_' + this.m_nID);
+        this.m_eCity = Entities.FindByName(null, 'city_' + this.m_nID) as CDOTA_BaseNPC_Building;
+        this.m_eCity.AddNewModifier(null, null, modifier_unselect.name, null);
         this.m_eBanner = Entities.FindByName(null, 'bann_' + this.m_nID) as CBaseModelEntity;
         this.setBanner();
 
@@ -225,7 +227,7 @@ export class PathDomain extends Path {
 
         // 添加buff
         const strBuff = this.getBuffName(nLevel);
-        const oAblt = AHMC.AddAbilityAndSetLevel(oPlayer.m_eHero, strBuff, nLevel);
+        const oAblt = AMHC.AddAbilityAndSetLevel(oPlayer.m_eHero, strBuff, nLevel);
         oAblt.SetLevel(nLevel);
         ParaAdjuster.ModifyMana(oPlayer.m_eHero);
         print('===setBuff===End');
@@ -240,7 +242,7 @@ export class PathDomain extends Path {
                 // 触发事件：领地技能移除
                 GameRules.EventManager.FireEvent('Event_PathBuffDel', { oPlayer: oPlayer, path: this, sBuffName: strBuffName });
                 // 移除英雄buff技能
-                AHMC.RemoveAbilityAndModifier(oPlayer.m_eHero, strBuffName);
+                AMHC.RemoveAbilityAndModifier(oPlayer.m_eHero, strBuffName);
             }
         }
         print('===delBuff===End');
@@ -318,7 +320,7 @@ export class PathDomain extends Path {
             this.setAttacking(this.m_tabENPC[0]);
 
             // 决斗特效
-            this.m_nPtclIDGCLD = AHMC.CreateParticle(
+            this.m_nPtclIDGCLD = AMHC.CreateParticle(
                 'particles/units/heroes/hero_legion_commander/legion_duel_ring.vpcf',
                 ParticleAttachment.ABSORIGIN,
                 false,
@@ -458,7 +460,7 @@ export class PathDomain extends Path {
 
             oPlayer.setGCLDCountAdd(1);
 
-            AHMC.CreateParticle(
+            AMHC.CreateParticle(
                 'particles/units/heroes/hero_legion_commander/legion_commander_duel_victory.vpcf',
                 ParticleAttachment.ABSORIGIN,
                 false,

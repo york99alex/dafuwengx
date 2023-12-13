@@ -1,4 +1,4 @@
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { ParaAdjuster } from "../../utils/paraadjuster";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -73,7 +73,7 @@ export class modifier_rune_9 extends BaseModifier {
             this.blockCount = 0
             if (IsServer()) {
                 this.SendBuffRefreshToClients() // 刷新黄条
-                AHMC.RemoveAbilityAndModifier(this.GetParent(), this.GetAbility().GetAbilityName())
+                AMHC.RemoveAbilityAndModifier(this.GetParent(), this.GetAbility().GetAbilityName())
             }
             return -block   // 返回多少, 伤害就会加上多少, 返回负值以抵挡伤害
         } else {

@@ -1,5 +1,5 @@
 import { TSBaseItem } from '../tsBaseItem';
-import { AHMC, IsValid } from '../../utils/amhc';
+import { AMHC, IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { AbilityManager } from '../../ability/abilitymanager';
@@ -39,14 +39,14 @@ export class item_qtg_pipe extends TSBaseItem {
         if (isActivated) {
             // 开启状态施法，关闭魔法护盾，移除Buff
             this.SetShareability(ItemShareability.NOT_SHAREABLE);
-            AHMC.RemoveModifierByName(modifier_qtg_pipe_active.name, this.GetCaster());
+            AMHC.RemoveModifierByName(modifier_qtg_pipe_active.name, this.GetCaster());
         } else {
             // 激活状态施法，开启魔法护盾
             this.SetShareability(ItemShareability.PARTIALLY_SHAREABLE);
             // 使用音效
             EmitSoundOn('DOTA_Item.Pipe.Activate', this.GetCaster());
             // 添加Buff
-            const buff = AHMC.AddNewModifier(player.m_eHero, player.m_eHero, this, modifier_qtg_pipe_active.name, null);
+            const buff = AMHC.AddNewModifier(player.m_eHero, player.m_eHero, this, modifier_qtg_pipe_active.name, null);
             for (const BZ of player.m_tabBz) {
                 if (IsValid(BZ)) BZ.AddNewModifier(player.m_eHero, this, modifier_qtg_pipe_active.name, null);
             }
@@ -155,7 +155,7 @@ export class modifier_qtg_pipe_active extends BaseModifier {
                 player.spendPlayerMana(this.resisit_mana, this.GetAbility());
                 // 触发效果
                 event.damage = 0;
-                const nPtclID = AHMC.CreateParticle('particles/custom/item_pipe_miss_2.vpcf', ParticleAttachment.POINT, false, this.GetParent(), 2);
+                const nPtclID = AMHC.CreateParticle('particles/custom/item_pipe_miss_2.vpcf', ParticleAttachment.POINT, false, this.GetParent(), 2);
                 ParticleManager.SetParticleControl(nPtclID, 0, (this.GetParent().GetAbsOrigin() + Vector(0, 0, 200)) as Vector);
                 EmitSoundOn('DOTA_Item.LinkensSphere.Activate', this.GetParent());
             },
@@ -163,7 +163,7 @@ export class modifier_qtg_pipe_active extends BaseModifier {
             -987654321
         );
         const caster = this.GetParent();
-        this.nPtclID = AHMC.CreateParticle('particles/items2_fx/pipe_of_insight.vpcf', ParticleAttachment.OVERHEAD_FOLLOW, false, caster);
+        this.nPtclID = AMHC.CreateParticle('particles/items2_fx/pipe_of_insight.vpcf', ParticleAttachment.OVERHEAD_FOLLOW, false, caster);
         ParticleManager.SetParticleControlEnt(this.nPtclID, 1, caster, ParticleAttachment.POINT_FOLLOW, 'attach_origin', caster.GetAbsOrigin(), true);
         ParticleManager.SetParticleControl(this.nPtclID, 2, Vector(caster.GetModelRadius() * 1.5, 0, 0));
     }

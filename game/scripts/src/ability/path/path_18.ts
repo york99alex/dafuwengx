@@ -3,7 +3,7 @@ import { Path } from "../../path/Path";
 import { PathDomain } from "../../path/pathsdomain/pathdomain";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { DamageEvent, Player } from "../../player/player";
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { ParaAdjuster } from "../../utils/paraadjuster";
 import { AbilityManager } from "../abilitymanager";
@@ -52,8 +52,8 @@ export class modifier_path_18_l1 extends BaseModifier {
         if (this.oPlayer) {
             for (const eBZ of this.oPlayer.m_tabBz) {
                 if (IsValid(eBZ) && eBZ.m_path.m_typePath == TP_DOMAIN_7) {
-                    AHMC.RemoveModifierByName(this.GetName(), eBZ)
-                    AHMC.RemoveModifierByNameAndCaster("modifier_medusa_stone_gaze_stone", eBZ, this.oPlayer.m_eHero)
+                    AMHC.RemoveModifierByName(this.GetName(), eBZ)
+                    AMHC.RemoveModifierByNameAndCaster("modifier_medusa_stone_gaze_stone", eBZ, this.oPlayer.m_eHero)
                 }
             }
         }
@@ -133,7 +133,7 @@ export class modifier_path_18_l1 extends BaseModifier {
             }
 
             // 圣光特效
-            AHMC.CreateParticle("particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_purification_ti6_immortal.vpcf"
+            AMHC.CreateParticle("particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_purification_ti6_immortal.vpcf"
                 , ParticleAttachment.POINT, false, event.entity)
             EmitGlobalSound("Hero_Omniknight.Purification")
 
@@ -143,7 +143,7 @@ export class modifier_path_18_l1 extends BaseModifier {
                     event2.damage = this.damage
                 }
             }, null, 987654321)
-            AHMC.Damage(this.oPlayer.m_eHero, event.entity, this.damage, typeDamage, ability)
+            AMHC.Damage(this.oPlayer.m_eHero, event.entity, this.damage, typeDamage, ability)
             GameRules.EventManager.UnRegisterByID(nEventID, "Event_Atk")
         }))
 

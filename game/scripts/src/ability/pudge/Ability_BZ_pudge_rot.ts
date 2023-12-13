@@ -1,6 +1,6 @@
 import { PS_AbilityImmune } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { ParaAdjuster } from "../../utils/paraadjuster";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -94,7 +94,7 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
         if (bOn) {
             // 开启
             if (!this.m_nPctlID) {
-                this.m_nPctlID = AHMC.CreateParticle("particles/units/heroes/hero_pudge/pudge_rot.vpcf"
+                this.m_nPctlID = AMHC.CreateParticle("particles/units/heroes/hero_pudge/pudge_rot.vpcf"
                     , ParticleAttachment.POINT_FOLLOW, false, this.GetCaster())
                 ParticleManager.SetParticleControl(this.m_nPctlID, 1, Vector(this.GetSpecialValueFor("range"), 0, 0))
             }
@@ -123,15 +123,15 @@ export class Ability_BZ_pudge_rot extends TSBaseAbility {
                             const nDis = (v.GetAbsOrigin() - this.GetCaster().GetAbsOrigin() as Vector).Length()
                             if (nDis <= this.GetSpecialValueFor("range")) {
                                 // 造成伤害
-                                AHMC.Damage(this.GetCaster(), v, this.GetSpecialValueFor("damage"), this.GetAbilityDamageType()
+                                AMHC.Damage(this.GetCaster(), v, this.GetSpecialValueFor("damage"), this.GetAbilityDamageType()
                                     , this, 1, { bIgnoreBZHuiMo: true })
                                 const nTime = this.GetSpecialValueFor("time_damage")
                                 // print("===Ability_BZ_pudge_rot_switchDamageCheck_nTime:", nTime)
-                                AHMC.AddNewModifier(v, this.GetCaster(), this, modifier_ability_BZ_pudge_rot_debuff.name, {})
+                                AMHC.AddNewModifier(v, this.GetCaster(), this, modifier_ability_BZ_pudge_rot_debuff.name, {})
                                 // print("===Ability_BZ_pudge_rot_switchDamageCheck:", 2)
                                 tabDamageCD.push(v.GetEntityIndex())
                                 Timers.CreateTimer(nTime, () => {
-                                    AHMC.RemoveModifierByName(modifier_ability_BZ_pudge_rot_debuff.name, v)
+                                    AMHC.RemoveModifierByName(modifier_ability_BZ_pudge_rot_debuff.name, v)
                                     tabDamageCD.splice(tabDamageCD.indexOf(v.GetEntityIndex()), 1)
                                     // print("===Ability_BZ_pudge_rot_switchDamageCheck_length:", tabDamageCD.length)
                                 })

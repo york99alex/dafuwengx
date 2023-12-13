@@ -3,7 +3,7 @@ import { BaseModifier, registerAbility, registerModifier } from "../../utils/dot
 import { TSBaseAbility } from "../tsBaseAbilty";
 import { modifier_ignore_armor } from "../../modifiers/util/modifier_ignore_armor"
 import { AbilityManager } from "../abilitymanager";
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 
 /**
@@ -48,11 +48,11 @@ export class modifier_path_13_hujia_l1 extends BaseModifier {
         if (IsClient()) {
             return
         }
-        AHMC.RemoveModifierByName(modifier_ignore_armor.name, this.GetParent())
+        AMHC.RemoveModifierByName(modifier_ignore_armor.name, this.GetParent())
         if (this.oPlayer) {
             for (const eBZ of this.oPlayer.m_tabBz) {
                 if (IsValid(eBZ)) {
-                    AHMC.RemoveModifierByName(this.GetName(), eBZ)
+                    AMHC.RemoveModifierByName(this.GetName(), eBZ)
                 }
             }
         }
@@ -71,7 +71,7 @@ export class modifier_path_13_hujia_l1 extends BaseModifier {
         this.ignore_armor = this.GetAbility().GetSpecialValueFor("ignore_armor")
         print(this.GetName(), "===this.ignore_armor", this.ignore_armor)
         if (IsServer()) {
-            AHMC.AddNewModifier(this.GetParent(), this.GetParent(), this.GetAbility(), modifier_ignore_armor.name, {})
+            AMHC.AddNewModifier(this.GetParent(), this.GetParent(), this.GetAbility(), modifier_ignore_armor.name, {})
         }
         if (IsClient() || !this.GetParent().IsRealHero()) {
             return
@@ -87,11 +87,11 @@ export class modifier_path_13_hujia_l1 extends BaseModifier {
         Timers.CreateTimer(0.1, () => {
             if (IsValid(this) && IsValid(this.GetAbility())) {
                 for (const eBZ of this.oPlayer.m_tabBz) {
-                    AHMC.AddNewModifier(eBZ, this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
+                    AMHC.AddNewModifier(eBZ, this.oPlayer.m_eHero, this.GetAbility(), this.GetName(), {})
                 }
                 this.unUpdateBZBuffByCreate = AbilityManager.updateBZBuffByCreate(this.oPlayer, this.GetAbility(), (eBZ: CDOTA_BaseNPC_BZ) => {
                     if (IsValid(eBZ)) {
-                        AHMC.AddNewModifier(eBZ, oPlayer.m_eHero, ability, buffName, {})
+                        AMHC.AddNewModifier(eBZ, oPlayer.m_eHero, ability, buffName, {})
                     }
                 })
             }

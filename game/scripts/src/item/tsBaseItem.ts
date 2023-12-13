@@ -76,6 +76,10 @@ export class TSBaseItem extends BaseItem {
                 this.m_strCastError = 'AbilityError_NotSelfRound';
                 return false;
             }
+            if (!this.GetCaster().IsRealHero() && this.isBZCanCast()) {
+                this.m_strCastError = 'AbilityError_BZCantCast';
+                return false;
+            }
             print('isCanCast===3');
             // 移动阶段不能施法
             if (!this.isCanCastMove() && GameRules.GameConfig.m_typeState == GS_Move) {
@@ -257,5 +261,10 @@ export class TSBaseItem extends BaseItem {
 
     isCanCDSub() {
         return true;
+    }
+
+    /**兵卒能否施法 */
+    isBZCanCast() {
+        return false;
     }
 }

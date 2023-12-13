@@ -3,7 +3,7 @@ import { Player } from '../player/player';
 import { BaseAbility, BaseItem } from '../utils/dota_ts_adapter';
 import { TSBaseAbility } from './tsBaseAbilty';
 import { modifier_fix_damage } from '../modifiers/modifier_fix_damage';
-import { AHMC, IsValid } from '../utils/amhc';
+import { AMHC, IsValid } from '../utils/amhc';
 import { TSBaseItem } from '../item/tsBaseItem';
 import { Get06ItemByName } from '../item/itemmanager';
 import { ParaAdjuster } from '../utils/paraadjuster';
@@ -289,7 +289,7 @@ export class AbilityManager {
             oBuff = eTarget.FindModifierByNameAndCaster(strBuff, eCaster);
         }
         if (!oBuff) {
-            oBuff = AHMC.AddNewModifier(eTarget, eCaster, ability, strBuff, tBuffData);
+            oBuff = AMHC.AddNewModifier(eTarget, eCaster, ability, strBuff, tBuffData);
             if (oBuff) {
                 oBuff['copyBfToEnt'] = (entity: CDOTA_BaseNPC_BZ) => {
                     return AbilityManager.setCopyBuff(strBuff, entity, eCaster, ability, tBuffData, bStack, oBuffOld);

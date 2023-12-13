@@ -2,7 +2,7 @@ import { PS_AbilityImmune, PS_InPrison, PS_Rooted, TP_DOMAIN_3 } from "../../mod
 import { PathDomain } from "../../path/pathsdomain/pathdomain";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { ParaAdjuster } from "../../utils/paraadjuster";
 import { AbilityManager } from "../abilitymanager";
@@ -53,7 +53,7 @@ export class modifier_path_14_l1 extends BaseModifier {
         if (this.oPlayer && this.sBuffName) {
             for (const eBZ of this.oPlayer.m_tabBz) {
                 if (IsValid(eBZ)) {
-                    AHMC.RemoveModifierByName(this.sBuffName, eBZ)
+                    AMHC.RemoveModifierByName(this.sBuffName, eBZ)
                 }
             }
         }
@@ -173,7 +173,7 @@ export class modifier_path_14_l1 extends BaseModifier {
         let v3Cur = oPlayerTarget.m_eHero.GetAbsOrigin()
         let nTimeCur = math.floor(nTimeSum * 0.5)
 
-        const nPtclID = AHMC.CreateParticle("particles/econ/items/windrunner/windrunner_ti6/windrunner_spell_powershot_ti6_arc_b.vpcf"
+        const nPtclID = AMHC.CreateParticle("particles/econ/items/windrunner/windrunner_ti6/windrunner_spell_powershot_ti6_arc_b.vpcf"
             , ParticleAttachment.POINT_FOLLOW, false, oPlayerTarget.m_eHero, this.time)
         ParticleManager.SetParticleControlOrientationFLU(nPtclID, 3, Vector(0, 0, 1), Vector(0, 1, 0), Vector(1, 0, 0))
 
@@ -196,7 +196,7 @@ export class modifier_path_14_l1 extends BaseModifier {
                     return nFpsTime
                 }
                 // 结束
-                const nPtclID2 = AHMC.CreateParticle("particles/econ/items/shadow_shaman/shadow_shaman_ti8/shadow_shaman_ti8_ether_shock_target_snakes.vpcf"
+                const nPtclID2 = AMHC.CreateParticle("particles/econ/items/shadow_shaman/shadow_shaman_ti8/shadow_shaman_ti8_ether_shock_target_snakes.vpcf"
                     , ParticleAttachment.CENTER_FOLLOW, false, oPlayerTarget.m_eHero, 2)
                 ParticleManager.SetParticleControl(nPtclID2, 0, oPlayerTarget.m_eHero.GetAbsOrigin())
                 ParticleManager.SetParticleControl(nPtclID2, 1, oPlayerTarget.m_eHero.GetAbsOrigin() + Vector(0, 0, 10) as Vector)

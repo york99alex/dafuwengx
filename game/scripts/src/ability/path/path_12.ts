@@ -1,6 +1,6 @@
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -49,7 +49,7 @@ export class modifier_path_12_l1 extends BaseModifier {
         if (this.oPlayer && this.sBuffName) {
             for (const eBZ of this.oPlayer.m_tabBz) {
                 if (IsValid(eBZ)) {
-                    AHMC.RemoveModifierByName(this.sBuffName, eBZ)
+                    AMHC.RemoveModifierByName(this.sBuffName, eBZ)
                 }
             }
         }

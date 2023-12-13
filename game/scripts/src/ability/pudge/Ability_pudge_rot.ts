@@ -1,5 +1,5 @@
 import { Player } from "../../player/player";
-import { AHMC } from "../../utils/amhc";
+import { AMHC } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { TSBaseAbility } from "../tsBaseAbilty";
 
@@ -52,7 +52,7 @@ export class Ability_pudge_rot extends TSBaseAbility {
         if (this.m_tabPtclID.length == 0) {
             print("OnSpellStart_pudge_rot_腐烂开启")
             // 开启腐烂
-            this.m_tabPtclID.push(AHMC.CreateParticle("particles/units/heroes/hero_pudge/pudge_rot.vpcf"
+            this.m_tabPtclID.push(AMHC.CreateParticle("particles/units/heroes/hero_pudge/pudge_rot.vpcf"
                 , ParticleAttachment.POINT_FOLLOW, false, this.GetCaster()))
 
             const nRange = this.GetSpecialValueFor("range")
@@ -134,22 +134,22 @@ export class Ability_pudge_rot extends TSBaseAbility {
             Timers.CreateTimer(() => {
                 if (bMoveEnd) {
                     // 移动结束, 结束检测
-                    AHMC.RemoveModifierByName(modifier_ability_pudge_rot_debuff.name, enemy)
+                    AMHC.RemoveModifierByName(modifier_ability_pudge_rot_debuff.name, enemy)
                     return null
                 }
 
                 // 判断距离
                 const nDis = (enemy.GetAbsOrigin() - this.GetCaster().GetAbsOrigin() as Vector).Length()
                 if (nDis > nRange) {
-                    AHMC.RemoveModifierByName(modifier_ability_pudge_rot_debuff.name, enemy)
+                    AMHC.RemoveModifierByName(modifier_ability_pudge_rot_debuff.name, enemy)
                     return 0.1
                 }
                 print("OnSpellStart_pudge_rot_5")
 
                 // 范围内对敌人造成伤害
                 print("OnSpellStart_pudge_rot_Damage:", nDamage)
-                AHMC.Damage(this.GetCaster(), enemy, nDamage, this.GetAbilityDamageType(), this)
-                AHMC.AddNewModifier(enemy, this.GetCaster(), this, modifier_ability_pudge_rot_debuff.name, null)
+                AMHC.Damage(this.GetCaster(), enemy, nDamage, this.GetAbilityDamageType(), this)
+                AMHC.AddNewModifier(enemy, this.GetCaster(), this, modifier_ability_pudge_rot_debuff.name, null)
 
                 // 检测耗蓝
                 if (!bUseMana) {

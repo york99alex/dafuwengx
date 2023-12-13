@@ -1,4 +1,4 @@
-import { AHMC, IsValid } from '../../utils/amhc';
+import { AMHC, IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { TSBaseItem } from '../tsBaseItem';
 import { AbilityManager } from '../../ability/abilitymanager';
@@ -122,14 +122,14 @@ export class item_qtg_refresher_modifier extends BaseModifier {
             player.givePlayerMana(this.GetAbility().GetSpecialValueFor('mana_regen_hero'));
             if (player.m_eHero.GetMana() >= player.m_eHero.GetMaxMana()) player.setPlayerMana(player.m_eHero.GetMaxMana());
             // 设置Buff
-            buff = AHMC.AddNewModifier(this.GetCaster(), this.GetCaster(), this.GetAbility(), modifier_qtg_refresher_cd.name, {
+            buff = AMHC.AddNewModifier(this.GetCaster(), this.GetCaster(), this.GetAbility(), modifier_qtg_refresher_cd.name, {
                 duration: this.mana_regen_hero_cd,
             });
             this.countCD = this.mana_regen_hero_cd;
             this.nRound = GameRules.GameConfig.m_nRound;
             buff.SetStackCount(this.countCD);
         } else if (buff && IsValid(buff)) {
-            if (this.countCD == 0) AHMC.RemoveModifierByName(modifier_qtg_refresher_cd.name, this.GetCaster());
+            if (this.countCD == 0) AMHC.RemoveModifierByName(modifier_qtg_refresher_cd.name, this.GetCaster());
             else {
                 buff.SetDuration(this.countCD, true);
                 buff.SetStackCount(this.countCD);
@@ -156,7 +156,7 @@ export class item_qtg_refresher_modifier extends BaseModifier {
                 });
             }
         } else {
-            AHMC.RemoveModifierByName(modifier_qtg_refresher_cd.name, this.GetParent());
+            AMHC.RemoveModifierByName(modifier_qtg_refresher_cd.name, this.GetParent());
         }
     }
     GetAttributes(): ModifierAttribute {

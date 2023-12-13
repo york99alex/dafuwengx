@@ -1,7 +1,7 @@
 import { AbilityManager } from '../../ability/abilitymanager';
 import { TSBaseItem } from '../tsBaseItem';
 import { Player } from '../../player/player';
-import { AHMC, IsValid } from '../../utils/amhc';
+import { AMHC, IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 
 @registerAbility()
@@ -33,8 +33,8 @@ export class item_qtg_arcane_boots extends TSBaseItem {
         if (!player) return;
 
         // 特效
-        AHMC.CreateParticle('particles/items_fx/arcane_boots.vpcf', ParticleAttachment.POINT, false, player.m_eHero, 2);
-        AHMC.CreateParticle('particles/items_fx/arcane_boots_recipient.vpcf', ParticleAttachment.POINT, false, player.m_eHero, 2);
+        AMHC.CreateParticle('particles/items_fx/arcane_boots.vpcf', ParticleAttachment.POINT, false, player.m_eHero, 2);
+        AMHC.CreateParticle('particles/items_fx/arcane_boots_recipient.vpcf', ParticleAttachment.POINT, false, player.m_eHero, 2);
         // 音效
         EmitGlobalSound('DOTA_Item.ArcaneBoots.Activate');
 
@@ -46,8 +46,8 @@ export class item_qtg_arcane_boots extends TSBaseItem {
         for (const BZ of player.m_tabBz) {
             if (IsValid(BZ)) {
                 BZ.GiveMana(bzmana);
-                AHMC.CreateParticle('particles/items_fx/arcane_boots.vpcf', ParticleAttachment.POINT, false, BZ, 2);
-                AHMC.CreateParticle('particles/items_fx/arcane_boots_recipient.vpcf', ParticleAttachment.POINT, false, BZ, 2);
+                AMHC.CreateParticle('particles/items_fx/arcane_boots.vpcf', ParticleAttachment.POINT, false, BZ, 2);
+                AMHC.CreateParticle('particles/items_fx/arcane_boots_recipient.vpcf', ParticleAttachment.POINT, false, BZ, 2);
             }
         }
         // 触发耗蓝

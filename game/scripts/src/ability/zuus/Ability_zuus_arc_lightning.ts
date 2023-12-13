@@ -1,6 +1,6 @@
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
-import { AHMC } from "../../utils/amhc";
+import { AMHC } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -75,7 +75,7 @@ export class Ability_zuus_arc_lightning extends TSBaseAbility {
 
         function onDamage(nIDCur: number) {
             // 特效
-            const nPtclID = AHMC.CreateParticle("particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf"
+            const nPtclID = AMHC.CreateParticle("particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf"
                 , ParticleAttachment.POINT_FOLLOW, false, tabTarget[nIDCur], 1)
             ParticleManager.SetParticleControl(nPtclID, 1, tabTargetV3[nIDCur - 1])
             ParticleManager.SetParticleControl(nPtclID, 0, tabTargetV3[nIDCur])
@@ -85,7 +85,7 @@ export class Ability_zuus_arc_lightning extends TSBaseAbility {
                 EmitGlobalSound("Hero_Zuus.ArcLightning.Target")
             }
             // 对玩家造成伤害
-            AHMC.Damage(this.GetCaster(), tabTarget[nIDCur], nDamage, this.GetAbilityDamageType(), this)
+            AMHC.Damage(this.GetCaster(), tabTarget[nIDCur], nDamage, this.GetAbilityDamageType(), this)
         }
 
         // 释放闪电

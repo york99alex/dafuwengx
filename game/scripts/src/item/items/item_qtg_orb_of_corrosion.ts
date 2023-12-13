@@ -1,5 +1,5 @@
 import { TSBaseItem } from '../tsBaseItem';
-import { AHMC } from '../../utils/amhc';
+import { AMHC } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { Constant } from '../../mode/constant';
 import { ParaAdjuster } from '../../utils/paraadjuster';
@@ -33,12 +33,12 @@ export class item_qtg_orb_of_corrosion_modifier extends BaseModifier {
                     Constant.HERO_AttackCapabilit[this.GetParent().GetUnitName()] == UnitAttackCapability.RANGED_ATTACK
                 ) {
                     // 远程 range
-                    AHMC.AddNewModifier(event.target, event.attacker, this.GetAbility(), modifier_item_qtg_orb_of_corrosion_range.name, {
+                    AMHC.AddNewModifier(event.target, event.attacker, this.GetAbility(), modifier_item_qtg_orb_of_corrosion_range.name, {
                         duration: this.duration,
                     });
                 } else {
                     // 近战 melee
-                    AHMC.AddNewModifier(event.target, event.attacker, this.GetAbility(), modifier_item_qtg_orb_of_corrosion_melee.name, {
+                    AMHC.AddNewModifier(event.target, event.attacker, this.GetAbility(), modifier_item_qtg_orb_of_corrosion_melee.name, {
                         duration: this.duration,
                     });
                 }

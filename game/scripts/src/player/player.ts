@@ -17,7 +17,7 @@ import {
 } from '../mode/gamemessage';
 import { Constant } from '../mode/constant';
 import { Path } from '../path/Path';
-import { AHMC, IsValid } from '../utils/amhc';
+import { AMHC, IsValid } from '../utils/amhc';
 import { PathDomain } from '../path/pathsdomain/pathdomain';
 import { CDOTA_BaseNPC_BZ } from './CDOTA_BaseNPC_BZ';
 import { TSBaseAbility } from '../ability/tsBaseAbilty';
@@ -165,7 +165,7 @@ export class Player {
         }
 
         // 设置共享主单位
-        // TODO:
+        GameRules.ItemShare.setShareOwner(this.m_eHero);
     }
 
     // ================魔法修改触发事件====================
@@ -396,25 +396,25 @@ export class Player {
         if (bit.band(playerState, PS_MagicImmune) > 0) {
             // 设置英雄魔免
             if (bit.band(this.m_nPlayerState, PS_MagicImmune) > 0) {
-                AHMC.AddAbilityAndSetLevel(this.m_eHero, 'magic_immune');
+                AMHC.AddAbilityAndSetLevel(this.m_eHero, 'magic_immune');
             } else {
-                AHMC.RemoveAbilityAndModifier(this.m_eHero, 'magic_immune');
+                AMHC.RemoveAbilityAndModifier(this.m_eHero, 'magic_immune');
             }
         }
         if (bit.band(playerState, PS_PhysicalImmune) > 0) {
             // 设置英雄物免
             if (bit.band(this.m_nPlayerState, PS_PhysicalImmune) > 0) {
-                AHMC.AddAbilityAndSetLevel(this.m_eHero, 'physical_immune');
+                AMHC.AddAbilityAndSetLevel(this.m_eHero, 'physical_immune');
             } else {
-                AHMC.RemoveAbilityAndModifier(this.m_eHero, 'physical_immune');
+                AMHC.RemoveAbilityAndModifier(this.m_eHero, 'physical_immune');
             }
         }
         if (bit.band(playerState, PS_Rooted) > 0) {
             // 设置英雄禁止移动
             if (bit.band(this.m_nPlayerState, PS_Rooted) > 0) {
-                AHMC.AddAbilityAndSetLevel(this.m_eHero, 'rooted');
+                AMHC.AddAbilityAndSetLevel(this.m_eHero, 'rooted');
             } else {
-                AHMC.RemoveAbilityAndModifier(this.m_eHero, 'rooted');
+                AMHC.RemoveAbilityAndModifier(this.m_eHero, 'rooted');
 
                 // 触发事件:禁止移动取消
                 GameRules.EventManager.FireEvent('Event_RootedDisable', { player: this });
@@ -776,7 +776,7 @@ export class Player {
         }
         print('创建单位strName:', strName);
 
-        const eBZ = AHMC.CreateUnit(
+        const eBZ = AMHC.CreateUnit(
             strName,
             path.m_eCity.GetOrigin(),
             path.m_eCity.GetAnglesAsVector().y,
@@ -798,14 +798,14 @@ export class Player {
         // 设置技能
         if (nStarLevel >= Constant.BZ_MAX_LEVEL) {
             // 设置巅峰技能
-            AHMC.AddAbilityAndSetLevel(eBZ, 'yjxr_max', Constant.BZ_MAX_LEVEL);
+            AMHC.AddAbilityAndSetLevel(eBZ, 'yjxr_max', Constant.BZ_MAX_LEVEL);
             eBZ.SwapAbilities(eBZ.m_bAbltBZ.GetAbilityName(), 'yjxr_max', true, true);
         } else {
-            AHMC.AddAbilityAndSetLevel(eBZ, 'yjxr_' + path.m_typePath, nStarLevel);
+            AMHC.AddAbilityAndSetLevel(eBZ, 'yjxr_' + path.m_typePath, nStarLevel);
             eBZ.SwapAbilities(eBZ.m_bAbltBZ.GetAbilityName(), 'yjxr_' + path.m_typePath, true, true);
         }
         if (nStarLevel != 1) {
-            AHMC.AddAbilityAndSetLevel(eBZ, 'xj_' + path.m_typePath, nStarLevel);
+            AMHC.AddAbilityAndSetLevel(eBZ, 'xj_' + path.m_typePath, nStarLevel);
             const oAblt = eBZ.GetAbilityByIndex(1);
             if (oAblt) {
                 eBZ.SwapAbilities(oAblt.GetAbilityName(), 'xj_' + path.m_typePath, !oAblt.IsHidden(), true);
@@ -816,7 +816,7 @@ export class Player {
         eBZ.SetMana(0);
 
         // 添加星星特效
-        AHMC.ShowStarsOnUnit(eBZ, nStarLevel);
+        AMHC.ShowStarsOnUnit(eBZ, nStarLevel);
 
         // 设置可否攻击
         this.setAllBZAttack();
@@ -832,14 +832,14 @@ export class Player {
         // 同步玩家网表信息
         this.setNetTableInfo();
 
-        // 同步装备 TODO:
-        // this.m_eHero.syncItem(eBZ)
+        // 同步装备
+        this.syncItem(eBZ);
         // 设置共享
-        // ItemShare.setShareAdd(eBZ, this.m_eHero)
+        GameRules.ItemShare.setShareAdd(eBZ, this.m_eHero);
 
         // 特效
         if (bLevelUp) {
-            AHMC.CreateParticle(
+            AMHC.CreateParticle(
                 'particles/units/heroes/hero_oracle/oracle_false_promise_cast_enemy.vpcf',
                 ParticleAttachment.ABSORIGIN_FOLLOW,
                 false,
@@ -847,7 +847,7 @@ export class Player {
                 5
             );
         } else {
-            const nPtclID = AHMC.CreateParticle('particles/neutral_fx/roshan_spawn.vpcf', ParticleAttachment.ABSORIGIN_FOLLOW, false, eBZ, 5);
+            const nPtclID = AMHC.CreateParticle('particles/neutral_fx/roshan_spawn.vpcf', ParticleAttachment.ABSORIGIN_FOLLOW, false, eBZ, 5);
             ParticleManager.SetParticleControl(nPtclID, 0, Vector(eBZ.GetOrigin().x, eBZ.GetOrigin().y, 0));
         }
 
@@ -893,13 +893,14 @@ export class Player {
         GameRules.EventManager.FireEvent('Event_BZDestroy', { entity: eBZ });
 
         // 解除装备共享
-        // TODO:
+        GameRules.ItemShare.setShareDel(eBZ);
+
         print('===removeBz===4');
 
         // 移除buff
         const tBuffs = eBZ.FindAllModifiers();
         for (const buff of tBuffs) {
-            AHMC.RemoveModifierByName(buff.GetName(), eBZ);
+            AMHC.RemoveModifierByName(buff.GetName(), eBZ);
         }
         print('===removeBz===5');
 
@@ -979,7 +980,7 @@ export class Player {
 
         // 升级特效
         if (nLevel > 0) {
-            AHMC.CreateParticle('particles/generic_hero_status/hero_levelup.vpcf', ParticleAttachment.ABSORIGIN_FOLLOW, false, eBZ, 3);
+            AMHC.CreateParticle('particles/generic_hero_status/hero_levelup.vpcf', ParticleAttachment.ABSORIGIN_FOLLOW, false, eBZ, 3);
         }
 
         // 等级变更
@@ -1002,9 +1003,9 @@ export class Player {
         for (const value of this.m_tabBz) {
             if (value == eBz) {
                 if (bCan) {
-                    AHMC.RemoveAbilityAndModifier(value, 'physical_immune');
+                    AMHC.RemoveAbilityAndModifier(value, 'physical_immune');
                 } else {
-                    AHMC.AddAbilityAndSetLevel(value, 'physical_immune');
+                    AMHC.AddAbilityAndSetLevel(value, 'physical_immune');
                 }
             }
             return;
@@ -1026,7 +1027,7 @@ export class Player {
                     value.SetTeam(DotaTeam.BADGUYS);
                     GameRules.EventManager.FireEvent('Event_BZCanAtk', { entity: value });
                 } else {
-                    AHMC.AddAbilityAndSetLevel(value, 'jiaoxie');
+                    AMHC.AddAbilityAndSetLevel(value, 'jiaoxie');
                     if (!this.m_bDisconnect) value.SetControllableByPlayer(this.m_nPlayerID, true);
                     value.SetTeam(DotaTeam.GOODGUYS);
                     value.m_eAtkTarget = null;
@@ -1059,7 +1060,7 @@ export class Player {
         } else {
             for (const v of this.m_tabBz) {
                 if (IsValid(v) && filter(v)) {
-                    AHMC.AddAbilityAndSetLevel(v, 'jiaoxie');
+                    AMHC.AddAbilityAndSetLevel(v, 'jiaoxie');
                     if (!this.m_bDisconnect) {
                         v.SetControllableByPlayer(this.m_nPlayerID, true);
                     }
@@ -1077,7 +1078,7 @@ export class Player {
         if (eBz.m_tabAtker == null) eBz.m_tabAtker = [];
 
         if (bDel) {
-            AHMC.removeAll(eBz.m_tabAtker, eAtaker);
+            AMHC.removeAll(eBz.m_tabAtker, eAtaker);
         } else {
             if (eBz.m_tabAtker.indexOf(eAtaker) == -1) eBz.m_tabAtker.push(eAtaker);
             this.ctrlBzAtk(eBz);
@@ -1118,7 +1119,7 @@ export class Player {
                     const nRange = eBz.Script_GetAttackRange();
                     if (nDis <= nRange) {
                         // 达到攻击距离
-                        if (AHMC.RemoveAbilityAndModifier(eBz, 'jiaoxie')) {
+                        if (AMHC.RemoveAbilityAndModifier(eBz, 'jiaoxie')) {
                             eBz.SetDayTimeVisionRange(nRange);
                             eBz.SetNightTimeVisionRange(nRange);
                             eBz.MoveToTargetToAttack(value);
@@ -1126,7 +1127,7 @@ export class Player {
                             return 0.1;
                         }
                     } else {
-                        AHMC.AddAbilityAndSetLevel(eBz, 'jiaoxie');
+                        AMHC.AddAbilityAndSetLevel(eBz, 'jiaoxie');
                         eBz.m_eAtkTarget = null;
                     }
                     return 0.1;
@@ -1176,8 +1177,8 @@ export class Player {
     /**设置玩家英雄可否攻击 */
     setHeroCanAttack(bCan: boolean) {
         print('setHeroCanAttack:', bCan);
-        if (bCan) AHMC.RemoveAbilityAndModifier(this.m_eHero, 'jiaoxie');
-        else AHMC.AddAbilityAndSetLevel(this.m_eHero, 'jiaoxie');
+        if (bCan) AMHC.RemoveAbilityAndModifier(this.m_eHero, 'jiaoxie');
+        else AMHC.AddAbilityAndSetLevel(this.m_eHero, 'jiaoxie');
     }
 
     /**获取英雄身上某buff */
@@ -1193,6 +1194,64 @@ export class Player {
     /**添加当前血量 */
     addHealth(nValue: number) {
         this.m_eHero.SetHealth(this.m_eHero.GetHealth() + nValue);
+    }
+
+    /**同步物品 */
+    syncItem(BZ: CDOTA_BaseNPC) {
+        const tItemsUnLock = [];
+        const tSyncSlot: number[] = [];
+        const tHeroItems: CDOTA_Item[] = [];
+        const tBZItems: CDOTA_Item[] = [];
+        for (let slot = 0; slot < 9; slot++) {
+            tHeroItems[slot] = this.m_eHero.GetItemInSlot(slot) || null;
+            tBZItems[slot] = BZ.GetItemInSlot(slot) || null;
+        }
+        for (let slot = 0; slot < 9; slot++) {
+            if (!tHeroItems[slot]) {
+                // 当前格子没装备
+                if (!tBZItems[slot]) {
+                    // 同步单位也没装备，不用同步
+                } else {
+                    // 移除物品
+                    GameRules.ItemManager.removeItem(BZ, tBZItems[slot]);
+                    tBZItems[slot] = null;
+                }
+            } else {
+                // 当前格子有装备
+                if (!tBZItems[slot]) {
+                    // 同步单位没装备，同步
+                    tSyncSlot.push(slot);
+                } else if (tHeroItems[slot].GetAbilityName() != tBZItems[slot].GetAbilityName()) {
+                    // 物品不同，移除物品，同步
+                    tSyncSlot.push(slot);
+                    GameRules.ItemManager.removeItem(BZ, tBZItems[slot]);
+                    tBZItems[slot] = null;
+                }
+            }
+        }
+        print('===syncItem===tHeroItems:');
+        tHeroItems.forEach(item => print('slot:', item.GetItemSlot(), '===', item.GetAbilityName()));
+        print('===syncItem===tBZItems:');
+        tBZItems.forEach(item => print('slot:', item.GetItemSlot(), '===', item.GetAbilityName()));
+        print('===syncItem===tSyncSlot:');
+        DeepPrintTable(tSyncSlot);
+        // 预先锁定
+        for (let slot = 0; slot < 9; slot++) {
+            if (tBZItems[slot] && !tBZItems[slot].IsCombineLocked()) GameRules.ItemShare.lockItem(tBZItems[slot]);
+        }
+        // 同步
+        for (const slot of tSyncSlot) {
+            print('===syncItem===for of:', slot);
+            const itemNew = BZ.AddItemByName(tHeroItems[slot].GetAbilityName());
+            itemNew.SetPurchaseTime(tHeroItems[slot].GetPurchaseTime());
+            GameRules.ItemShare.lockItem(itemNew);
+            BZ.SwapItems(itemNew.GetItemSlot(), slot);
+            tBZItems[slot] = itemNew;
+        }
+        // 解锁定
+        for (let slot = 0; slot < 9; slot++) {
+            if (tHeroItems[slot] && !tHeroItems[slot].IsCombineLocked()) GameRules.ItemShare.lockItem(tBZItems[slot]);
+        }
     }
 
     // TODO: Card
@@ -1381,11 +1440,11 @@ export class Player {
     }
 
     /**购买装备 */
-    getItemBuy(sItemName: string) {
+    getItemBuy(itemName: string) {
         this.m_nBuyItem -= 1;
-        this.m_eHero.AddItemByName(sItemName);
-        this.setGold(-GetItemCost(sItemName));
-        GameRules.GameConfig.showGold(this, -GetItemCost(sItemName));
+        this.m_eHero.AddItemByName(itemName);
+        this.setGold(-GetItemCost(itemName));
+        GameRules.GameConfig.showGold(this, -GetItemCost(itemName));
 
         // 设置网表
         const keyname = ('player_info_' + this.m_nPlayerID) as player_info;

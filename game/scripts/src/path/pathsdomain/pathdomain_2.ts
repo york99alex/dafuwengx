@@ -1,5 +1,5 @@
 import { Player } from "../../player/player";
-import { AHMC } from "../../utils/amhc";
+import { AMHC } from "../../utils/amhc";
 import { ParaAdjuster } from "../../utils/paraadjuster";
 import { PathDomain } from "./pathdomain";
 
@@ -34,7 +34,7 @@ export class PathDomain_2 extends PathDomain {
             return
 
         // 添加
-        const ability = AHMC.AddAbilityAndSetLevel(oPlayer.m_eHero, this.getBuffName(nLevel), nLevel)
+        const ability = AMHC.AddAbilityAndSetLevel(oPlayer.m_eHero, this.getBuffName(nLevel), nLevel)
         ability.SetLevel(nLevel)
         ParaAdjuster.ModifyMana(oPlayer.m_eHero)
 
@@ -51,7 +51,7 @@ export class PathDomain_2 extends PathDomain {
             // 触发事件：领地技能移除
             GameRules.EventManager.FireEvent("Event_PathBuffDel", { oPlayer: oPlayer, path: this, sBuffName: strBuffName })
             // 移除英雄buff技能
-            AHMC.RemoveAbilityAndModifier(oPlayer.m_eHero, strBuffName)
+            AMHC.RemoveAbilityAndModifier(oPlayer.m_eHero, strBuffName)
             // TODO: 移除3级双河道buff
         }
     }

@@ -1,6 +1,6 @@
 import { PS_InPrison } from "../../mode/gamemessage";
 import { PathTP } from "../../path/pathtp";
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../../ability/abilitymanager";
 import { TSBaseItem } from "../tsBaseItem";
@@ -53,9 +53,9 @@ export class item_qtg_tpscroll extends TSBaseItem {
         GameRules.GameConfig.autoOptionalOprt(owner)
 
         // 特效
-        AHMC.CreateParticle("particles/events/ti6_teams/teleport_start_ti6_lvl3_wings_gaming.vpcf"
+        AMHC.CreateParticle("particles/events/ti6_teams/teleport_start_ti6_lvl3_wings_gaming.vpcf"
             , ParticleAttachment.POINT, false, owner.m_eHero, 2.5)
-        const nPtclID = AHMC.CreateParticle("particles/events/ti6_teams/teleport_start_ti6_lvl3_wings_gaming.vpcf"
+        const nPtclID = AMHC.CreateParticle("particles/events/ti6_teams/teleport_start_ti6_lvl3_wings_gaming.vpcf"
             , ParticleAttachment.POINT, false, owner.m_eHero, 2.5)
         ParticleManager.SetParticleControl(nPtclID, 0, path.m_entity.GetAbsOrigin())
         EmitSoundOn("Custom.TP.Begin", owner.m_eHero)

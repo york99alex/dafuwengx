@@ -1,4 +1,4 @@
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { PathDomain } from "./pathdomain";
 
 /**领土路径-鵰巢 */
@@ -14,7 +14,7 @@ export class PathDomain_6 extends PathDomain {
         print("======创建雕哥===PathDomain_6===constructor===")
         GameRules.EventManager.Register("Event_GameStart", () => {
             tabPath = GameRules.PathManager.getPathByType(this.m_typePath) as PathDomain_6[]
-            AHMC.CreateUnitAsync("path_17_diao",
+            AMHC.CreateUnitAsync("path_17_diao",
                 this.m_eCity.GetOrigin() - (this.m_eCity.GetForwardVector() * 200) as Vector,
                 this.m_eCity.GetAnglesAsVector().y, this.m_tabENPC[0], DotaTeam.BADGUYS, (entity) => {
                     this.m_eDiao = entity

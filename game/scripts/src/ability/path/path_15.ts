@@ -1,7 +1,7 @@
 import { TP_DOMAIN_4 } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { ParaAdjuster } from "../../utils/paraadjuster";
 import { AbilityManager } from "../abilitymanager";
@@ -51,8 +51,8 @@ export class modifier_path_15_l1 extends BaseModifier {
         if (this.oPlayer) {
             for (const eBZ of this.oPlayer.m_tabBz) {
                 if (IsValid(eBZ)) {
-                    AHMC.RemoveModifierByName(this.GetName(), eBZ)
-                    AHMC.RemoveModifierByName(modifier_path_15_chenmo.name, eBZ)
+                    AMHC.RemoveModifierByName(this.GetName(), eBZ)
+                    AMHC.RemoveModifierByName(modifier_path_15_chenmo.name, eBZ)
                 }
             }
         }

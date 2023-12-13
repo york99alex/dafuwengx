@@ -1,6 +1,6 @@
 import { PS_AbilityImmune } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
 import { TSBaseAbility } from "../tsBaseAbilty";
 
@@ -56,16 +56,16 @@ export class Ability_BZ_zuus_lightning_bolt extends TSBaseAbility {
             return
         }
         // 特效
-        let nPtclID = AHMC.CreateParticle("particles/units/heroes/hero_zuus/zuus_thundergods_wrath.vpcf"
+        let nPtclID = AMHC.CreateParticle("particles/units/heroes/hero_zuus/zuus_thundergods_wrath.vpcf"
             , ParticleAttachment.POINT_FOLLOW, false, eTarget, 2)
         ParticleManager.SetParticleControl(nPtclID, 0, eTarget.GetAbsOrigin() + Vector(0, 0, 2000) as Vector)
         ParticleManager.SetParticleControl(nPtclID, 1, eTarget.GetAbsOrigin())
-        nPtclID = AHMC.CreateParticle("particles/econ/items/zeus/lightning_weapon_fx/zuus_lb_cfx_il.vpcf"
+        nPtclID = AMHC.CreateParticle("particles/econ/items/zeus/lightning_weapon_fx/zuus_lb_cfx_il.vpcf"
             , ParticleAttachment.POINT, false, eTarget, 2)
         EmitGlobalSound("Hero_Zuus.LightningBolt")
 
         // 对玩家造成伤害
-        AHMC.Damage(this.GetCaster(), eTarget, this.GetSpecialValueFor("damage"), this.GetAbilityDamageType(), this, 1, { bIgnoreBZHuiMo: true })
+        AMHC.Damage(this.GetCaster(), eTarget, this.GetSpecialValueFor("damage"), this.GetAbilityDamageType(), this, 1, { bIgnoreBZHuiMo: true })
         // 触发放技能事件
         GameRules.EventManager.FireEvent("dota_player_used_ability", {
             caster_entindex: this.GetCaster().GetEntityIndex(),

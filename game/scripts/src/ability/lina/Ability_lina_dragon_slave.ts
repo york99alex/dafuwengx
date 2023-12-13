@@ -1,7 +1,7 @@
 import { PS_AtkMonster } from '../../mode/gamemessage';
 import { PathManager } from '../../path/PathManager';
 import { Player, player_info } from '../../player/player';
-import { AHMC } from '../../utils/amhc';
+import { AMHC } from '../../utils/amhc';
 import { registerAbility } from '../../utils/dota_ts_adapter';
 import { AbilityManager } from '../abilitymanager';
 import { TSBaseAbility } from '../tsBaseAbilty';
@@ -42,7 +42,7 @@ export class Ability_lina_dragon_slave extends TSBaseAbility {
         const oPlayer = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID());
 
         // 特效
-        const nPtclID = AHMC.CreateParticle(
+        const nPtclID = AMHC.CreateParticle(
             'particles/units/heroes/hero_lina/lina_spell_dragon_slave.vpcf',
             ParticleAttachment.POINT,
             false,
@@ -70,7 +70,7 @@ export class Ability_lina_dragon_slave extends TSBaseAbility {
             // 对玩家造成伤害
             if (tabPlayer.length > 0) {
                 for (const v of tabPlayer) {
-                    AHMC.Damage(this.GetCaster(), v.m_eHero, this.GetSpecialValueFor('dragon_slave_damage'), this.GetAbilityDamageType(), this);
+                    AMHC.Damage(this.GetCaster(), v.m_eHero, this.GetSpecialValueFor('dragon_slave_damage'), this.GetAbilityDamageType(), this);
                 }
             }
             if (pathTarger != pathQ) {

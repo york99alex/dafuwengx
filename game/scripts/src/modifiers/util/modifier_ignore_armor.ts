@@ -1,4 +1,4 @@
-import { AHMC } from '../../utils/amhc';
+import { AMHC } from '../../utils/amhc';
 import { BaseModifier, registerModifier } from '../../utils/dota_ts_adapter';
 
 @registerModifier()
@@ -61,7 +61,7 @@ export class modifier_ignore_armor_debuff extends BaseModifier {
         print('modifier_ignore_armor_debuff===armor_OnTakeDamage', this.GetParent().GetPhysicalArmorValue(false));
         if (event.unit == this.GetParent() && event.damage_category == DamageCategory.ATTACK) {
             print('OnTakeDamage Destroy Before:', event.unit.GetUnitName(), event.unit.GetMaxMana());
-            AHMC.RemoveModifierByName(modifier_ignore_armor_debuff.name, event.unit);
+            AMHC.RemoveModifierByName(modifier_ignore_armor_debuff.name, event.unit);
         }
     }
 }
@@ -92,7 +92,7 @@ export class modifier_ignore_armor extends BaseModifier {
     OnAttackLanded(event: ModifierAttackEvent): void {
         if (event.target == null) return;
         if (event.attacker == this.GetParent()) {
-            AHMC.AddNewModifier(event.target, event.attacker, this.GetAbility(), modifier_ignore_armor_debuff.name, {});
+            AMHC.AddNewModifier(event.target, event.attacker, this.GetAbility(), modifier_ignore_armor_debuff.name, {});
         }
     }
 }

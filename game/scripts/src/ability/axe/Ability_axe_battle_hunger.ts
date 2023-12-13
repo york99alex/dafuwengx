@@ -1,5 +1,5 @@
 import { Player } from "../../player/player";
-import { AHMC } from "../../utils/amhc";
+import { AMHC } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -114,7 +114,7 @@ export class modifier_ability_axe_battle_hunger extends BaseModifier {
                 return
             }
             // 造成伤害
-            AHMC.Damage(this.GetCaster(), this.GetParent(), this.m_nDamage, this.GetAbility().GetAbilityDamageType(), this.GetAbility())
+            AMHC.Damage(this.GetCaster(), this.GetParent(), this.m_nDamage, this.GetAbility().GetAbilityDamageType(), this.GetAbility())
         }))
     }
 

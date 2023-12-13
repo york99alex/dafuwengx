@@ -638,6 +638,18 @@ https://www.jiyik.com/tm/xwzj/web_834.html
         })()
 ```
 
+
+
+#### 遍历
+
+- forEach
+- some
+- every
+- filter
+- reduce
+
+
+
 ### 引入第三方库
 
 https://www.npmjs.com/
@@ -776,6 +788,8 @@ export const App = () => {	// 根组件
    - [游戏中传递数据的几种方式 (shimo.im)](https://shimo.im/docs/VMAPVQeg5pU1lXqg/read)
    - [如何绑定快捷键 (shimo.im)](https://shimo.im/docs/XKq4M9lR8VcE4lkN/read)
 - [Dota2常用测试-作弊-指令大全（含物品中英对照）](https://www.magese.com/2020/12/28/Dota2%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95-%E4%BD%9C%E5%BC%8A-%E6%8C%87%E4%BB%A4%E5%A4%A7%E5%85%A8/)
+- https://github.com/Nibuja05/dota_particle_editor_tutorial
+- [熔火STUDIO 核弹级新手保姆发电教程 (shimo.im)](https://shimo.im/docs/L9kBBNa8MLFDKokK/read)
 
 ## ==文件目录/路径==
 
@@ -1047,6 +1061,7 @@ export const App = () => {	// 根组件
       检查兵卒血量和力量属性buff
    6. Modifier name modifier_ability_BZ_pudge_rot_debuff is not lowercase.
           Because CModifierFactoryDictionary is case sensitive, you have probably introduced a bug.
+   7. 检查旧兵卒没有新兵卒地的buff问题
 
 5. ==路径相关==
 
@@ -1490,6 +1505,7 @@ game\scripts\shops\1x6_shops.txt
 1. 获得装备ItemAddedToInventoryFilter触发FireEvent'Event_ItemAdd'，进行
    	Timers.CreateTimer(0.01, () => ParaAdjuster.ModifyMana(npc))
    - 在0.01秒内，modifier的OnCreated已经执行完毕
+2. 暂时设置所有大剑不能拆分
 
 #### 加蓝
 
@@ -1596,16 +1612,30 @@ GetModifierManaBonus(): number {
 
 
 
-/**
- * 炎阳纹章，3000，勇气勋章1500+王冠500+短棍1000，6点甲，6点全属性，12攻速，12攻击力
- * bonus_armor 6    mana_regen_bz 12    bonus_all_stats 6   bonus_attack_speed 12   bonus_damage 12
- * mana_regen_hero 1    mana_regen_hero_cd 3
- *
- * 对己方单位施放可以提供7点护甲，50攻击速度，和10%移动速度。对敌人施放将降低其7点护甲，50攻击速度并减缓10%移动速度。
- * 可以对自己使用
- * armor_reduction -7   duration 1  bonus_attack_speed 50  bonus_speed_percent 10
- * CD 3回合
- */
+#### 装备共享
+
+ItemShare
+
+1. Player.initPlayer() 
+   	设置共享主单位，英雄和兵卒单位的属性['eShareOwner']为共享主单位
+
+   ​    GameRules.ItemShare.setShareOwner(this.m_eHero);会初始化ItemShare的m_tabShare创建以hero的entityindex为索引的m_tabShare索引项
+
+2. setShareOwner通过getShareTab获取npc的GetEntityIndex返回其共享组
+
+   - 初始化所有玩家角色的英雄索引
+
+3. 通过Player的createBZOnPath，setShareAdd把新创建的兵卒添加到其玩家英雄index的索引数组中
+
+      // 同步装备 TODO:
+
+   ​    this.syncItem(eBZ);
+
+   ​    // 设置共享
+
+   ​    GameRules.ItemShare.setShareAdd(eBZ, this.m_eHero);
+
+
 
 - 跳刀: 占装备位
   - 可升级大跳刀

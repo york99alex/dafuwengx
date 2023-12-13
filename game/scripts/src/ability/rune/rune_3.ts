@@ -1,6 +1,6 @@
 import { PS_Invis } from "../../mode/gamemessage";
 import { Player } from "../../player/player";
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { TSBaseAbility } from "../tsBaseAbilty";
 
@@ -55,7 +55,7 @@ export class modifier_rune_3 extends BaseModifier {
             if (!ability || ability.IsNull()) return true
             if (event.player == oPlayer) {
                 // 移除buff
-                AHMC.RemoveAbilityAndModifier(oPlayer.m_eHero, ability.GetAbilityName())
+                AMHC.RemoveAbilityAndModifier(oPlayer.m_eHero, ability.GetAbilityName())
                 return true
             }
         }
@@ -67,7 +67,7 @@ export class modifier_rune_3 extends BaseModifier {
             if (!ability || ability.IsNull()) return true
             if (nRoundEnd == GameRules.GameConfig.m_nRound && oPlayerFinished == oPlayer && oPlayer.m_bRoundFinished) {
                 // 移除buff
-                AHMC.RemoveAbilityAndModifier(oPlayer.m_eHero, ability.GetAbilityName())
+                AMHC.RemoveAbilityAndModifier(oPlayer.m_eHero, ability.GetAbilityName())
                 GameRules.EventManager.UnRegisterByID(eID, "Event_PlayerInvisEnd")
                 return true
             }

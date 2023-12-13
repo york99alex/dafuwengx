@@ -2,7 +2,7 @@ import { Constant } from "../mode/constant"
 import { PS_InPrison, TypeOprt } from "../mode/gamemessage"
 import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
 import { Player } from "../player/player"
-import { AHMC, IsValid } from "../utils/amhc"
+import { AMHC, IsValid } from "../utils/amhc"
 import { Path } from "./Path"
 
 export class PathPrison extends Path {
@@ -22,7 +22,7 @@ export class PathPrison extends Path {
         // 游戏开始生成恶鬼
         GameRules.EventManager.Register("Event_GameStart", () => {
             const orgin = this.m_eCity.GetAbsOrigin() + Vector(-150, 130, 100) as Vector
-            AHMC.CreateUnitAsync("prison_doom", orgin, Vector(100, -100, 0), null, DotaTeam.GOODGUYS, (eDoom: CDOTA_BaseNPC_Creature) => {
+            AMHC.CreateUnitAsync("prison_doom", orgin, Vector(100, -100, 0), null, DotaTeam.GOODGUYS, (eDoom: CDOTA_BaseNPC_Creature) => {
                 this.m_eDoom = eDoom
             })
             return true
@@ -75,11 +75,11 @@ export class PathPrison extends Path {
 
         // 设置动作, 添加监狱buff特效
         player.m_eHero.StartGesture(GameActivity.DOTA_FLAIL)
-        AHMC.AddAbilityAndSetLevel(player.m_eHero, "prison")
+        AMHC.AddAbilityAndSetLevel(player.m_eHero, "prison")
         for (const BZ of player.m_tabBz) {
             if (IsValid(BZ) && !BZ.m_bBattle) {
                 BZ.StartGesture(GameActivity.DOTA_FLAIL)
-                AHMC.AddAbilityAndSetLevel(BZ, "prison")
+                AMHC.AddAbilityAndSetLevel(BZ, "prison")
             }
         }
         EmitGlobalSound("Hero_DoomBringer.ScorchedEarthAura")
@@ -88,7 +88,7 @@ export class PathPrison extends Path {
         // 监听兵卒创建，更新监狱buff
         tEventID.push(GameRules.EventManager.Register("Event_BZCreate", (event: { entity: CDOTA_BaseNPC_BZ }) => {
             if (IsValid(event.entity) && event.entity.GetPlayerOwnerID() == player.m_nPlayerID) {
-                AHMC.AddAbilityAndSetLevel(event.entity, "prison")
+                AMHC.AddAbilityAndSetLevel(event.entity, "prison")
                 event.entity.StartGesture(GameActivity.DOTA_FLAIL)
             }
         }))
@@ -112,11 +112,11 @@ export class PathPrison extends Path {
 
                 // 移除动作和buff特效
                 player.m_eHero.RemoveGesture(GameActivity.DOTA_FLAIL)
-                AHMC.RemoveAbilityAndModifier(player.m_eHero, "prison")
+                AMHC.RemoveAbilityAndModifier(player.m_eHero, "prison")
                 for (const BZ of player.m_tabBz) {
                     if (IsValid(BZ)) {
                         BZ.RemoveGesture(GameActivity.DOTA_FLAIL)
-                        AHMC.RemoveAbilityAndModifier(BZ, "prison")
+                        AMHC.RemoveAbilityAndModifier(BZ, "prison")
                     }
                 }
 
@@ -125,7 +125,7 @@ export class PathPrison extends Path {
                 // 音效
                 EmitGlobalSound("Custom.Respawn")
                 // 重生特效
-                AHMC.CreateParticle("particles/ui/ui_game_start_hero_spawn.vpcf",
+                AMHC.CreateParticle("particles/ui/ui_game_start_hero_spawn.vpcf",
                     ParticleAttachment.POINT_FOLLOW, false, player.m_eHero, 5)
 
                 // 触发事件

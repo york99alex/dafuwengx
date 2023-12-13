@@ -1,4 +1,4 @@
-import { AHMC, IsValid } from '../../utils/amhc';
+import { AMHC, IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { TSBaseItem } from '../tsBaseItem';
 import { AbilityManager } from '../../ability/abilitymanager';

@@ -1,7 +1,7 @@
 import { PS_AbilityImmune, PS_AtkMonster, PS_Die, PS_InPrison } from '../../mode/gamemessage';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { Player } from '../../player/player';
-import { AHMC, IsValid } from '../../utils/amhc';
+import { AMHC, IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { ParaAdjuster } from '../../utils/paraadjuster';
 import { AbilityManager } from '../abilitymanager';
@@ -72,7 +72,7 @@ export class Ability_lina_light_strike_array extends TSBaseAbility {
         let path = GameRules.PathManager.getNextPath(this.m_pathTarget, -math.floor((nRange - 1) * 0.5));
         for (let i = 0; i < nRange; i++) {
             if (path && path.m_entity) {
-                const nPtclID = AHMC.CreateParticle(
+                const nPtclID = AMHC.CreateParticle(
                     'particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf',
                     ParticleAttachment.POINT,
                     false,
@@ -103,7 +103,7 @@ export class Ability_lina_light_strike_array extends TSBaseAbility {
         const nDuration = this.GetSpecialValueFor('light_strike_array_stun_duration');
         const caster = this.GetCaster();
         for (const player of tabPlayer) {
-            AHMC.Damage(caster, player.m_eHero, nDamage, this.GetAbilityDamageType(), this);
+            AMHC.Damage(caster, player.m_eHero, nDamage, this.GetAbilityDamageType(), this);
             // 设置眩晕回合
             player.setPass(nDuration);
             // 设置眩晕BUFF

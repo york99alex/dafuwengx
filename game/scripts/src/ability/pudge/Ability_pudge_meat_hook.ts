@@ -1,6 +1,6 @@
 import { PS_AtkHero, PS_AtkMonster, PS_InPrison, PS_Invis } from "../../mode/gamemessage";
 import { Player } from "../../player/player";
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -87,7 +87,7 @@ export class Ability_pudge_meat_hook extends TSBaseAbility {
         let nTimeCur = nTime
 
         // 创建肉钩特效
-        const nPtclID = AHMC.CreateParticle("particles/econ/items/pudge/pudge_trapper_beam_chain/pudge_nx_meathook_hook.vpcf"
+        const nPtclID = AMHC.CreateParticle("particles/econ/items/pudge/pudge_trapper_beam_chain/pudge_nx_meathook_hook.vpcf"
             , ParticleAttachment.CUSTOMORIGIN, false, this.GetCaster(), nFpsTime * nTime * 2)
         ParticleManager.SetParticleControlEnt(nPtclID, 0, this.GetCaster(), ParticleAttachment.POINT_FOLLOW, "attach_weapon_chain_rt", this.GetCaster().GetAbsOrigin(), true)
         ParticleManager.SetParticleControl(nPtclID, 3, Vector(5, 0, 0)) // 持续时间
@@ -101,7 +101,7 @@ export class Ability_pudge_meat_hook extends TSBaseAbility {
             if (nTimeCur > 0)
                 return nFpsTime
             // 钩到目标, 伤害
-            AHMC.Damage(this.GetCaster(), oPlayerTarget.m_eHero, nDamage, this.GetAbilityDamageType(), this)
+            AMHC.Damage(this.GetCaster(), oPlayerTarget.m_eHero, nDamage, this.GetAbilityDamageType(), this)
 
             // 拉回来
             this.GetCaster().RemoveGesture(GameActivity.DOTA_OVERRIDE_ABILITY_1)

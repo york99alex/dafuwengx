@@ -28,3 +28,5 @@ export const TypeOprt = {
     TO_FinishAuction: 1009,
     TO_UseCard: 1010,
 };
+
+export type player_info = 'player_info_0' | 'player_info_1' | 'player_info_2' | 'player_info_3' | 'player_info_4' | 'player_info_5';

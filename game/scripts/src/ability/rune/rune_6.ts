@@ -1,6 +1,6 @@
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -72,7 +72,7 @@ export class modifier_rune_6 extends BaseModifier {
                 for (const BZ of oPlayer.m_tabBz) {
                     BZ.RemoveModifierByName(modifier_rune_6.name)
                 }
-                if (!ability.IsNull()) AHMC.RemoveAbilityAndModifier(oPlayer.m_eHero, ability.GetAbilityName())
+                if (!ability.IsNull()) AMHC.RemoveAbilityAndModifier(oPlayer.m_eHero, ability.GetAbilityName())
                 oPlayer.setCDSub(oPlayer.m_nCDSub - nCDSub)
                 oPlayer.setManaSub(oPlayer.m_nCDSub - nManaSub)
                 return true

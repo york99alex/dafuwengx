@@ -1,4 +1,4 @@
-import { AHMC } from "../../utils/amhc";
+import { AMHC } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -36,16 +36,16 @@ export class Ability_zuus_lightning_bolt extends TSBaseAbility {
         const nDamage = this.GetSpecialValueFor("damage")
 
         // 特效
-        let nPtclID = AHMC.CreateParticle("particles/units/heroes/hero_zuus/zuus_thundergods_wrath.vpcf"
+        let nPtclID = AMHC.CreateParticle("particles/units/heroes/hero_zuus/zuus_thundergods_wrath.vpcf"
             , ParticleAttachment.POINT, false, target, 2)
         ParticleManager.SetParticleControl(nPtclID, 0, target.GetAbsOrigin() + Vector(0, 0, 2000) as Vector)
         ParticleManager.SetParticleControl(nPtclID, 1, target.GetAbsOrigin())
-        nPtclID = AHMC.CreateParticle("particles/econ/items/zeus/lightning_weapon_fx/zuus_lb_cfx_il.vpcf"
+        nPtclID = AMHC.CreateParticle("particles/econ/items/zeus/lightning_weapon_fx/zuus_lb_cfx_il.vpcf"
             , ParticleAttachment.POINT, false, target, 2)
         EmitGlobalSound("Hero_Zuus.LightningBolt")
 
         // 伤害
-        AHMC.Damage(this.GetCaster(), target, nDamage, this.GetAbilityDamageType(), this)
+        AMHC.Damage(this.GetCaster(), target, nDamage, this.GetAbilityDamageType(), this)
         // 触发耗蓝
         GameRules.EventManager.FireEvent("Event_HeroManaChange", { player: oPlayer, oAblt: this })
         // 设置冷却

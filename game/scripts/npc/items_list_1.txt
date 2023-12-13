@@ -25,8 +25,6 @@
 		}
 		"ID" "1600"
 		"ItemShareability" "ITEM_FULLY_SHAREABLE"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemPermanent" "0"
 		"ItemQuality" "consumable"
 		"ItemInitialCharges" "1"
@@ -56,8 +54,6 @@
 			"replenish_amount" "2"
 		}
 		"ItemCost" "100"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemRequirements" {
 		}
 	}
@@ -103,8 +99,6 @@
 		}
 		"ItemCost" "1000"
 		"ID" "1607"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "component"
 		"Model" "models/props_gameplay/quelling_blade.vmdl"
 		"AbilityCooldown" "5"
@@ -123,8 +117,6 @@
 		}
 		"ItemCost" "500"
 		"ID" "1608"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "component"
 		"AbilityTextureName" "item_orb_of_venom"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -140,8 +132,6 @@
 		}
 		"ItemCost" "500"
 		"ID" "1609"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "component"
 		"AbilityTextureName" "item_blight_stone"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -195,10 +185,9 @@
 		}
 		"ItemCost" "1000"
 		"ID" "1614"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "component"
 		"AbilityTextureName" "item_helm_of_iron_will"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
 		}
 	}
@@ -220,10 +209,9 @@
 		}
 		"ItemCost" "500"
 		"ID" "1616"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "component"
 		"AbilityTextureName" "item_ring_of_regen"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
 		}
 	}
@@ -236,8 +224,6 @@
 		}
 		"ItemCost" "500"
 		"ID" "1617"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "component"
 		"AbilityCooldown" "4"
 		"AbilityTextureName" "item_sobi_mask"
@@ -301,8 +287,6 @@
 		}
 		"ItemCost" "1500"
 		"ID" "1623"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "component"
 		"AbilityCooldown" "5"
 		"AbilityTextureName" "item_ghost"
@@ -317,10 +301,8 @@
 		}
 		"ItemCost" "2000"
 		"ID" "1624"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "component"
-		"AbilityCooldown" "5"
+		"AbilityCooldown" "1"
 		"AbilityTextureName" "item_blink"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT"
 		"ItemRequirements" {
@@ -350,9 +332,8 @@
 		}
 		"ItemCost" "1500"
 		"ID" "1626"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_orb_of_corrosion"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
@@ -381,16 +362,14 @@
 		}
 		"ItemCost" "1500"
 		"ID" "1628"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityCooldown" "3"
 		"AbilityTextureName" "item_falcon_blade"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
 		}
 	}
-
 	"item_power_treads" {
 		"BaseClass" "item_power_treads"
 		"AbilityValues" {
@@ -401,6 +380,7 @@
 			"bonus_damage" "0"
 		}
 		"ItemCost" "1500"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -411,6 +391,7 @@
 			"phase_duration" "10.0"
 		}
 		"ItemCost" "1500"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityCooldown" "3"
 		"ItemRequirements" {
 		}
@@ -437,9 +418,8 @@
 		}
 		"ItemCost" "1500"
 		"ID" "1633"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "common"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_oblivion_staff"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
@@ -475,10 +455,8 @@
 		}
 		"ItemCost" "2000"
 		"ID" "1635"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "artifact"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_ALWAYS"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityCooldown" "5"
 		"AbilityManaCost" "1"
 		"AbilityTextureName" "item_mask_of_madness"
@@ -491,6 +469,7 @@
 		"AbilityValues" {
 		}
 		"ItemCost" "4000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -518,9 +497,8 @@
 		}
 		"ItemCost" "1000"
 		"ID" "1638"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_tranquil_boots"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
@@ -552,9 +530,8 @@
 		}
 		"ItemCost" "1500"
 		"ID" "1640"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityCooldown" "3"
 		"AbilityTextureName" "item_medallion_of_courage"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -589,6 +566,7 @@
 		"ItemCost" "1500"
 		"ID" "1642"
 		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityCooldown" "4"
 		"AbilityTextureName" "item_arcane_boots"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -621,9 +599,8 @@
 		}
 		"ItemCost" "3500"
 		"ID" "1644"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_pipe"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"ItemRequirements" {
@@ -646,6 +623,7 @@
 		}
 		"ItemCost" "3000"
 		"ID" "1646"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_witch_blade"
 		"ItemRequirements" {
 		}
@@ -653,6 +631,7 @@
 	"item_qtg_dagon" {
 		"AbilityValues" {
 		}
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -682,9 +661,8 @@
 		}
 		"ItemCost" "3000"
 		"ID" "1649"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityCooldown" "5"
 		"AbilityManaCost" "2"
 		"AbilityTextureName" "item_orchid"
@@ -724,9 +702,8 @@
 		}
 		"ItemCost" "3000"
 		"ID" "1651"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityCooldown" "3"
 		"AbilityTextureName" "item_solar_crest"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -758,9 +735,8 @@
 		}
 		"ItemCost" "2500"
 		"ID" "1653"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityCooldown" "5"
 		"AbilityManaCost" "2"
 		"AbilityTextureName" "item_rod_of_atos"
@@ -795,9 +771,8 @@
 		}
 		"ItemCost" "5000"
 		"ID" "1655"
-		"ItemPurchasable" "1"
-		"ItemSellable" "1"
 		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityCooldown" "5"
 		"AbilityManaCost" "3"
 		"AbilityTextureName" "item_refresher"
@@ -822,6 +797,7 @@
 		}
 		"ItemCost" "4000"
 		"ID" "1657"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_octarine_core"
 		"ItemRequirements" {
 		}
@@ -843,6 +819,7 @@
 		}
 		"ItemCost" "5500"
 		"ID" "1659"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_sheepstick"
 		"ItemRequirements" {
 		}
@@ -867,6 +844,7 @@
 			"health_regen" "10"
 		}
 		"ItemCost" "2000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -888,6 +866,7 @@
 		}
 		"ItemCost" "3000"
 		"ID" "1662"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_blade_mail"
 		"ItemRequirements" {
 		}
@@ -910,6 +889,7 @@
 		}
 		"ItemCost" "3000"
 		"ID" "1663"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_soul_booster"
 		"ItemRequirements" {
 		}
@@ -931,6 +911,7 @@
 		}
 		"ItemCost" "3000"
 		"ID" "1665"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_crimson_guard"
 		"ItemRequirements" {
 		}
@@ -949,6 +930,7 @@
 		"AbilityValues" {
 		}
 		"ItemCost" "4000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -976,6 +958,7 @@
 		}
 		"ItemCost" "4000"
 		"ID" "1669"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_heart"
 		"ItemRequirements" {
 		}
@@ -1000,6 +983,7 @@
 			"aura_attack_speed" "0"
 		}
 		"ItemCost" "5000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1018,6 +1002,7 @@
 			"bonus_damage" "40"
 		}
 		"ItemCost" "2500"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1036,6 +1021,7 @@
 			"bonus_damage" "50"
 		}
 		"ItemCost" "3500"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1057,6 +1043,7 @@
 			"mana_regen_multiplier" "0"
 		}
 		"ItemCost" "3000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1075,6 +1062,7 @@
 			"bonus_evasion" "0"
 		}
 		"ItemCost" "3500"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1095,6 +1083,7 @@
 			"blind_pct" "0"
 		}
 		"ItemCost" "5000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1112,6 +1101,7 @@
 		"AbilityValues" {
 		}
 		"ItemCost" "5000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1120,6 +1110,7 @@
 		"AbilityValues" {
 		}
 		"ItemCost" "6000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1141,6 +1132,7 @@
 		}
 		"ItemCost" "5500"
 		"ID" "1686"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_bloodthorn"
 		"ItemRequirements" {
 		}
@@ -1163,6 +1155,7 @@
 		}
 		"ItemCost" "5500"
 		"ID" "1688"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_revenants_brooch"
 		"ItemRequirements" {
 		}
@@ -1183,6 +1176,7 @@
 			"hp_regen_amp" "0"
 		}
 		"ItemCost" "1500"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1200,6 +1194,7 @@
 			"movement_speed_percent_bonus" "0"
 		}
 		"ItemCost" "1500"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1217,6 +1212,7 @@
 			"mana_regen_multiplier" "0"
 		}
 		"ItemCost" "1500"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1241,6 +1237,7 @@
 			"duration" "3"
 		}
 		"ItemCost" "2500"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1260,6 +1257,7 @@
 			"status_resistance" "0"
 		}
 		"ItemCost" "3000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1279,6 +1277,7 @@
 			"hp_regen_amp" "0"
 		}
 		"ItemCost" "3000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1297,6 +1296,7 @@
 			"movement_speed_percent_bonus" "0"
 		}
 		"ItemCost" "3000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1305,6 +1305,7 @@
 		"AbilityValues" {
 		}
 		"ItemCost" "5000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1324,6 +1325,7 @@
 			"bonus_health" "350"
 		}
 		"ItemCost" "5000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemRequirements" {
 		}
 	}
@@ -1347,6 +1349,7 @@
 		}
 		"ItemCost" "5000"
 		"ID" "1707"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_overwhelming_blink"
 		"ItemRequirements" {
 		}
@@ -1371,6 +1374,7 @@
 		}
 		"ItemCost" "5000"
 		"ID" "1709"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_swift_blink"
 		"ItemRequirements" {
 		}
@@ -1395,6 +1399,7 @@
 		}
 		"ItemCost" "5000"
 		"ID" "1711"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_arcane_blink"
 		"ItemRequirements" {
 		}
@@ -1411,6 +1416,7 @@
 		"ItemQuality" "component"
 		"SecretShop" "1"
 		"AbilityTextureName" "item_ring_of_health"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
 		}
 	}
@@ -1472,6 +1478,8 @@
 			"bonus_health" "300"
 		}
 		"ItemCost" "1000"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
 		"ItemRequirements" {
 		}
 	}
@@ -1481,6 +1489,8 @@
 			"bonus_armor" "10"
 		}
 		"ItemCost" "1500"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
 		"ItemRequirements" {
 		}
 	}
@@ -1490,6 +1500,8 @@
 			"bonus_attack_speed" "60"
 		}
 		"ItemCost" "2000"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
 		"ItemRequirements" {
 		}
 	}
@@ -1499,6 +1511,8 @@
 			"bonus_all_stats" "10"
 		}
 		"ItemCost" "2000"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
 		"ItemRequirements" {
 		}
 	}
@@ -1508,6 +1522,8 @@
 			"bonus_damage" "40"
 		}
 		"ItemCost" "2500"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
 		"ItemRequirements" {
 		}
 	}
@@ -1517,6 +1533,8 @@
 			"bonus_intellect" "25"
 		}
 		"ItemCost" "2500"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
 		"ItemRequirements" {
 		}
 	}
@@ -1526,6 +1544,8 @@
 			"bonus_strength" "25"
 		}
 		"ItemCost" "2500"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
 		"ItemRequirements" {
 		}
 	}
@@ -1535,6 +1555,8 @@
 			"bonus_agility" "25"
 		}
 		"ItemCost" "2500"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
 		"ItemRequirements" {
 		}
 	}
@@ -1544,6 +1566,8 @@
 			"bonus_damage" "60"
 		}
 		"ItemCost" "3500"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
 		"ItemRequirements" {
 		}
 	}

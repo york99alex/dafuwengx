@@ -1,5 +1,5 @@
 import { TSBaseItem } from '../tsBaseItem';
-import { AHMC, IsValid } from '../../utils/amhc';
+import { AMHC, IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 
@@ -72,9 +72,9 @@ export class item_qtg_tranquil_boots_modifier extends BaseModifier {
         const oldBuff = player.m_eHero.FindModifierByName(modifier_item_qtg_tranquil_boots_bonus_regen.name);
 
         if (!oldBuff && !IsValid(oldBuff) && player.m_nRoundDamage == 0)
-            AHMC.AddNewModifier(this.GetParent(), this.GetParent(), this.GetAbility(), modifier_item_qtg_tranquil_boots_bonus_regen.name, {});
+            AMHC.AddNewModifier(this.GetParent(), this.GetParent(), this.GetAbility(), modifier_item_qtg_tranquil_boots_bonus_regen.name, {});
         else if (oldBuff && IsValid(oldBuff) && player.m_nRoundDamage != 0)
-            AHMC.RemoveModifierByName(modifier_item_qtg_tranquil_boots_bonus_regen.name, this.GetParent());
+            AMHC.RemoveModifierByName(modifier_item_qtg_tranquil_boots_bonus_regen.name, this.GetParent());
     }
     OnDestroy(): void {
         if (!IsServer()) return;

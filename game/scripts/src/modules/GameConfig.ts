@@ -129,6 +129,7 @@ export class GameConfig {
         gamemode.SetInnateMeleeDamageBlockAmount(0); // 设置近战英雄天生格挡的伤害
         gamemode.SetTPScrollSlotItemOverride(item_qtg_tpscroll.name); // 设置TP卷轴槽位覆盖装备
 
+        gamemode.SetCanSellAnywhere(true);
         // GameRules.SetCustomGameSetupAutoLaunchDelay(3) // 游戏设置时间（默认的游戏设置是最开始的队伍分配）
         // GameRules.SetCustomGameSetupRemainingTime(3) // 游戏设置剩余时间
         // GameRules.SetCustomGameSetupTimeout(3) // 游戏设置阶段超时
@@ -187,7 +188,8 @@ export class GameConfig {
         AbilityManager.init(); // 技能模块
         GameRules.CardManager = new CardManager(); // 卡牌管理模块
         GameRules.CardManager.init();
-        // Trade
+        GameRules.Trade = new Trade();  // 交易模块
+        GameRules.Trade.init();
         // Auction
         // DeathClearing
         GameRules.ItemManager = new ItemManager();
@@ -851,7 +853,7 @@ export class GameConfig {
             // 玩家死亡不操作
             if (event.player.m_bDie) return;
             // 触发到达路径功能
-            if(bSuccess) pathDes.onPath(event.player);
+            if (bSuccess) pathDes.onPath(event.player);
 
             // 判断豹子触发
             // const tEventJudge = { player: event.player }

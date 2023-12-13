@@ -1,6 +1,6 @@
 import { PS_AbilityImmune } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
 import { TSBaseAbility } from "../tsBaseAbilty";
 
@@ -58,7 +58,7 @@ export class Ability_BZ_lina_dragon_slave extends TSBaseAbility {
         const strAbltName = this.GetAbilityName()
 
         // 特效
-        const nPtclID = AHMC.CreateParticle("particles/units/heroes/hero_lina/lina_spell_dragon_slave.vpcf"
+        const nPtclID = AMHC.CreateParticle("particles/units/heroes/hero_lina/lina_spell_dragon_slave.vpcf"
             , ParticleAttachment.POINT, false, this.GetCaster(), 0.4)
         const v3 = (eTarget.GetAbsOrigin() - this.GetCaster().GetAbsOrigin() as Vector).Normalized()
         const nSpeed = this.GetSpecialValueFor("dragon_slave_speed")
@@ -66,7 +66,7 @@ export class Ability_BZ_lina_dragon_slave extends TSBaseAbility {
         EmitGlobalSound("Hero_Lina.DragonSlave")
 
         // 造成伤害
-        AHMC.Damage(this.GetCaster(), eTarget, this.GetSpecialValueFor("dragon_slave_damage"), this.GetAbilityDamageType(), this, 1, { bIgnoreBZHuiMo: true })
+        AMHC.Damage(this.GetCaster(), eTarget, this.GetSpecialValueFor("dragon_slave_damage"), this.GetAbilityDamageType(), this, 1, { bIgnoreBZHuiMo: true })
         // 触发放技能事件
         GameRules.EventManager.FireEvent("dota_player_used_ability", {
             caster_entindex: nCasterEntID,

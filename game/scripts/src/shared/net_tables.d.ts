@@ -183,6 +183,9 @@ declare interface CustomNetTableDeclarations {
             }
         }[]
         game_record: any
+        trade:{
+            tabWaitTrade: any
+        }
     }
 
     EndTable: {

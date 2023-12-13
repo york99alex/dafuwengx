@@ -1,4 +1,4 @@
-import { AHMC } from './amhc';
+import { AMHC } from './amhc';
 
 /**
  *  用来修正平衡性常数的东西

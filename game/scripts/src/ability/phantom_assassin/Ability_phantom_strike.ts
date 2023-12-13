@@ -1,7 +1,7 @@
 import { CameraManage } from "../../mode/CameraManage";
 import { PS_AtkHero, PS_AtkMonster, PS_InPrison, PS_Invis } from "../../mode/gamemessage";
 import { Player } from "../../player/player";
-import { AHMC } from "../../utils/amhc";
+import { AMHC } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -81,10 +81,10 @@ export class Ability_phantom_strike extends TSBaseAbility {
         EmitGlobalSound("Hero_PhantomAssassin.Strike.Start")
 
         // 创建闪烁特效
-        const cPtclID1 = AHMC.CreateParticle("particles/units/heroes/hero_phantom_assassin/phantom_assassin_loadout.vpcf", ParticleAttachment.POINT, false, oPlayer.m_eHero, 3)
+        const cPtclID1 = AMHC.CreateParticle("particles/units/heroes/hero_phantom_assassin/phantom_assassin_loadout.vpcf", ParticleAttachment.POINT, false, oPlayer.m_eHero, 3)
         ParticleManager.SetParticleControl(cPtclID1, 0, oPlayer.m_eHero.GetAbsOrigin())
         ParticleManager.ReleaseParticleIndex(cPtclID1)
-        const cPtclID2 = AHMC.CreateParticle("particles/units/heroes/hero_phantom_assassin/phantom_assassin_loadout.vpcf", ParticleAttachment.RENDERORIGIN_FOLLOW, false, oPlayer.m_eHero, 3)
+        const cPtclID2 = AMHC.CreateParticle("particles/units/heroes/hero_phantom_assassin/phantom_assassin_loadout.vpcf", ParticleAttachment.RENDERORIGIN_FOLLOW, false, oPlayer.m_eHero, 3)
         ParticleManager.SetParticleControl(cPtclID2, 0, oPlayerTarget.m_eHero.GetOrigin())
         ParticleManager.ReleaseParticleIndex(cPtclID2)
 

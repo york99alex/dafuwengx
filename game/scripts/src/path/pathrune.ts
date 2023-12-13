@@ -1,6 +1,6 @@
 import { TP_RUNE } from "../mode/gamemessage";
 import { Player } from "../player/player";
-import { AHMC } from "../utils/amhc";
+import { AMHC } from "../utils/amhc";
 import { Path } from "./Path";
 
 /**神符路径 */
@@ -68,7 +68,7 @@ export class PathRune extends Path {
             })
         }
         // 设置神符效果技能
-        AHMC.AddAbilityAndSetLevel(player.m_eHero, "rune_" + typeRune, 1)
+        AMHC.AddAbilityAndSetLevel(player.m_eHero, "rune_" + typeRune, 1)
     }
 
     /**刷新神符 */

@@ -1,4 +1,4 @@
-import { AHMC, IsValid } from '../../utils/amhc';
+import { AMHC, IsValid } from '../../utils/amhc';
 import { registerAbility } from '../../utils/dota_ts_adapter';
 import { TSBaseItem } from '../tsBaseItem';
 import { AbilityManager } from '../../ability/abilitymanager';
@@ -44,7 +44,7 @@ export class item_qtg_blink extends TSBaseItem {
         if (!player) return;
 
         // 特效
-        let nPtclID = AHMC.CreateParticle('particles/items_fx/blink_dagger_start.vpcf', ParticleAttachment.ABSORIGIN, false, player.m_eHero, 2);
+        let nPtclID = AMHC.CreateParticle('particles/items_fx/blink_dagger_start.vpcf', ParticleAttachment.ABSORIGIN, false, player.m_eHero, 2);
         ParticleManager.SetParticleControl(nPtclID, 0, player.m_eHero.GetAbsOrigin());
 
         // 音效
@@ -55,7 +55,7 @@ export class item_qtg_blink extends TSBaseItem {
         // 判断路径触发功能
         player.m_pathCur.onPath(player);
 
-        nPtclID = AHMC.CreateParticle('particles/items_fx/blink_dagger_end.vpcf', ParticleAttachment.ABSORIGIN, false, player.m_eHero, 2);
+        nPtclID = AMHC.CreateParticle('particles/items_fx/blink_dagger_end.vpcf', ParticleAttachment.ABSORIGIN, false, player.m_eHero, 2);
         ParticleManager.SetParticleControl(nPtclID, 0, player.m_eHero.GetAbsOrigin());
 
         // 视角

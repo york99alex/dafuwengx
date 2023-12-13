@@ -1,5 +1,5 @@
 import { TSBaseItem } from '../tsBaseItem';
-import { AHMC } from '../../utils/amhc';
+import { AMHC } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { ParaAdjuster } from '../../utils/paraadjuster';
 
@@ -27,7 +27,7 @@ export class item_qtg_blight_stone_modifier extends BaseModifier {
         if (IsServer()) {
             if (event.attacker == this.GetParent()) {
                 this.corruption_duration = this.GetAbility().GetSpecialValueFor('corruption_duration');
-                AHMC.AddNewModifier(event.target, event.attacker, this.GetAbility(), modifier_item_qtg_blight_stone_buff.name, {
+                AMHC.AddNewModifier(event.target, event.attacker, this.GetAbility(), modifier_item_qtg_blight_stone_buff.name, {
                     duration: this.corruption_duration,
                 });
             }

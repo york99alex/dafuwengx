@@ -1,7 +1,7 @@
 import { PS_AbilityImmune, PS_AtkMonster, PS_Die, PS_InPrison } from "../../mode/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
-import { AHMC } from "../../utils/amhc";
+import { AMHC } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";
 import { AbilityManager } from "../abilitymanager";
 import { TSBaseAbility } from "../tsBaseAbilty";
@@ -46,7 +46,7 @@ export class Ability_meepo_poof extends TSBaseAbility {
         EmitGlobalSound("Hero_Meepo.Poof.Channel")
 
         // 离开持续施法特效
-        const nPtclID = AHMC.CreateParticle("particles/units/heroes/hero_meepo/meepo_poof_start.vpcf"
+        const nPtclID = AMHC.CreateParticle("particles/units/heroes/hero_meepo/meepo_poof_start.vpcf"
             , ParticleAttachment.POINT, false, oPlayer.m_eHero, 3)
         ParticleManager.SetParticleControl(nPtclID, 0, oPlayer.m_eHero.GetAbsOrigin())
         ParticleManager.ReleaseParticleIndex(nPtclID)
@@ -65,7 +65,7 @@ export class Ability_meepo_poof extends TSBaseAbility {
         const eTarget = this.GetCursorTarget()
 
         // 离开的遁地特效
-        const nPtclID = AHMC.CreateParticle("particles/units/heroes/hero_meepo/meepo_loadout.vpcf"
+        const nPtclID = AMHC.CreateParticle("particles/units/heroes/hero_meepo/meepo_loadout.vpcf"
             , ParticleAttachment.POINT, false, oPlayer.m_eHero, 3)
 
         // 获取施法位置作用格数内的玩家
@@ -102,7 +102,7 @@ export class Ability_meepo_poof extends TSBaseAbility {
             } else {
                 oPlayer.blinkToPath((eTarget as CDOTA_BaseNPC_BZ).m_path)
             }
-            const nPtclID2 = AHMC.CreateParticle("particles/units/heroes/hero_meepo/meepo_loadout.vpcf"
+            const nPtclID2 = AMHC.CreateParticle("particles/units/heroes/hero_meepo/meepo_loadout.vpcf"
                 , ParticleAttachment.POINT, false, oPlayer.m_eHero, 3)
 
             // 再现声音
@@ -153,7 +153,7 @@ export class Ability_meepo_poof extends TSBaseAbility {
         // 造成伤害
         for (const player of tabPlayer) {
             if (player != oPlayer) {
-                AHMC.Damage(this.GetCaster(), player.m_eHero, nDamage, this.GetAbilityDamageType(), this)
+                AMHC.Damage(this.GetCaster(), player.m_eHero, nDamage, this.GetAbilityDamageType(), this)
             }
         }
     }

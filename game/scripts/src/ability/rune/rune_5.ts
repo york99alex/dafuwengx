@@ -1,4 +1,4 @@
-import { AHMC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { TSBaseAbility } from "../tsBaseAbilty";
 
@@ -48,6 +48,6 @@ export class modifier_rune_5 extends BaseModifier {
         // 飘金
         GameRules.GameConfig.showGold(oPlayer, nGold)
 
-        Timers.CreateTimer(0.01, () => { AHMC.RemoveAbilityAndModifier(oPlayer.m_eHero, ability.GetAbilityName()) })
+        Timers.CreateTimer(0.01, () => { AMHC.RemoveAbilityAndModifier(oPlayer.m_eHero, ability.GetAbilityName()) })
     }
 }
