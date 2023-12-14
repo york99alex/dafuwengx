@@ -1104,6 +1104,8 @@ export const App = () => {	// 根组件
    7. 攻城未结束时回合开始，玩家蓝量未得到回合开始的更新
 
       1. 同时之后每次受到伤害蓝量和蓝量上限增加一点
+      
+   8. 出售神秘法杖会导致当前蓝量降低
 
 8. UnRegister Failed Event Move?
 
@@ -1634,6 +1636,13 @@ ItemShare
    ​    // 设置共享
 
    ​    GameRules.ItemShare.setShareAdd(eBZ, this.m_eHero);
+
+
+
+物品都存在交换的情况
+
+1. 从背包栏拖动到装备栏，mana异常
+2. 
 
 
 

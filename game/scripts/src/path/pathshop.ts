@@ -19,25 +19,27 @@ export class PathShop extends Path {
     /**设置玩家购物状态 */
     setCanBuy(player: Player) {
         if (this.m_typePath == TP_SHOP_SIDE) {
+            print('===PathShop===setCanBuy===BuyState_Side');
             player.setBuyState(BuyState_Side, 1);
         } else {
+            print('===PathShop===setCanBuy===BuyState_Secret');
             player.setBuyState(BuyState_Secret, 1);
         }
     }
 
     /**玩家当前路径改变 */
     onEvent_JoinPath(event: { player: Player }) {
-        print('===PathShop===onEvent_JoinPath===this.m_nID:', this.m_nID);
         if (event.player.m_pathCur.m_nID != this.m_nID) return;
         if (event.player.m_pathLast.m_nID == this.m_nID) return;
+        print('===PathShop===onEvent_JoinPath===this.m_nID:', this.m_nID);
         if (GameRules.GameConfig.m_nRound >= Constant.GLOBAL_SHOP_ROUND) return;
         this.setCanBuy(event.player);
     }
 
     /**玩家离开路径 */
     onEvent_LeavePath(event: { player: Player; path: Path }) {
-        print('===PathShop===onEvent_LeavePath===this.m_nID:', this.m_nID);
         if (event.path != this) return;
+        print('===PathShop===onEvent_LeavePath===this.m_nID:', this.m_nID);
         if (GameRules.GameConfig.m_nRound >= Constant.GLOBAL_SHOP_ROUND) return;
         event.player.setBuyState(BuyState_None, 0);
     }

@@ -1,44 +1,37 @@
-import { Constant } from "../../mode/constant";
-import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
-import { BaseModifier, registerModifier } from "../../utils/dota_ts_adapter";
+import { Constant } from '../../mode/constant';
+import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
+import { BaseModifier, registerModifier } from '../../utils/dota_ts_adapter';
 
 @registerModifier()
 export class modifier_all extends BaseModifier {
-
     IsHidden(): boolean {
-        return true
+        return true;
     }
-
     IsDebuff(): boolean {
-        return false
+        return false;
     }
-
     IsPurgable(): boolean {
-        return false
+        return false;
     }
-
     IsPurgeException(): boolean {
-        return false
+        return false;
     }
-
     AllowIllusionDuplicate(): boolean {
-        return false
+        return false;
     }
-
     DestroyOnExpire(): boolean {
-        return false
+        return false;
     }
-
     OnStackCountChanged(stackCount: number): void {
         if (IsServer()) {
-            const hParent = this.GetParent() as CDOTA_BaseNPC_BZ
-            const nNewStackCount = this.GetStackCount()
-            const nChanged = nNewStackCount - stackCount
+            const hParent = this.GetParent() as CDOTA_BaseNPC_BZ;
+            const nNewStackCount = this.GetStackCount();
+            const nChanged = nNewStackCount - stackCount;
 
             if (hParent.GetPrimaryAttribute() == Attributes.ALL) {
-                const nValue = nChanged * Constant.ATTRIBUTE.PRIMARY_ATTACK_DAMAGE
-                hParent.SetBaseDamageMax(hParent.GetBaseDamageMax() + nValue)
-                hParent.SetBaseDamageMin(hParent.GetBaseDamageMin() + nValue)
+                const nValue = nChanged * Constant.ATTRIBUTE.PRIMARY_ATTACK_DAMAGE;
+                hParent.SetBaseDamageMax(hParent.GetBaseDamageMax() + nValue);
+                hParent.SetBaseDamageMin(hParent.GetBaseDamageMin() + nValue);
             }
         }
     }

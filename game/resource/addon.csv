@@ -471,3 +471,52 @@ Error_CantGCLD_Stunned,,目标眩晕无法攻城
 Error_CantGCLD_InPrison,,目标被地狱封印无法攻城
 Error_Card_TP,,,,仅传送阵
 Error_NoChichen,,,,鸡儿不足
+
+TradeButtonText,T\nR\nA\nD\nE,交\n易
+AuctionButtonText,A\nU\nC\nT\nI\nO\nN,拍\n卖
+TradeTitle,,交易
+AuctionTitle,,拍卖
+TradeTargetTitle,,选择玩家：
+TradePathTargetTitle,,选择领地：
+TradeGoldCost,PRICE,交易价格
+SendTradeButton,INITIATE TRADE,发送交易
+PathName_1,,起点
+PathName_2,,秘密宝藏
+PathName_3,,天辉 ● 其一
+PathName_4,,天辉 ● 其二
+PathName_5,,天辉 ● 其三
+PathName_6,,传送 ● 西
+PathName_7,,野区 ● 小
+PathName_8,,上河道下坡
+PathName_9,,河道 ● 上路
+PathName_10,,上河道上坡
+PathName_11,,镇妖宝塔
+PathName_12,,当铺
+PathName_13,,蛇沼 ● 之一
+PathName_14,,蛇沼 ● 之二
+PathName_15,,蛇沼 ● 之三
+PathName_16,,传送 ● 北
+PathName_17,,神符 ● 上
+PathName_18,,夜魇 ● 其一
+PathName_19,,夜魇 ● 其二
+PathName_20,,夜魇 ● 其三
+PathName_21,,肉山
+PathName_22,,天灾福泽
+PathName_23,,龙谷 ● 之一
+PathName_24,,龙谷 ● 之二
+PathName_25,,龙谷 ● 之三
+PathName_26,,传送 ● 东
+PathName_27,,野区 ● 大
+PathName_28,,下河道下坡
+PathName_29,,河道 ● 下路
+PathName_30,,下河道上坡
+PathName_31,,野区 ● 远古
+PathName_32,,秘密宝藏
+PathName_33,,鵰巢 ● 之一
+PathName_34,,鵰巢 ● 之二
+PathName_35,,鵰巢 ● 之三
+PathName_36,,传送 ● 南
+PathName_37,,神符 ● 下
+PathName_38,,天灾福泽
+PathName_39,,圣所 ● 其一
+PathName_40,,圣所 ● 其二

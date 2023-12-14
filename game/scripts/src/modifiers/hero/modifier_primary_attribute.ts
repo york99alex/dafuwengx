@@ -1,30 +1,23 @@
-import { BaseModifier, registerModifier } from "../../utils/dota_ts_adapter";
+import { BaseModifier, registerModifier } from '../../utils/dota_ts_adapter';
 
 @registerModifier()
 export class modifier_primary_attribute extends BaseModifier {
-
     IsHidden(): boolean {
-        return true
+        return true;
     }
-
     IsDebuff(): boolean {
-        return false
+        return false;
     }
-
     IsPurgable(): boolean {
-        return false
+        return false;
     }
-
     IsPurgeException(): boolean {
-        return false
+        return false;
     }
-
     AllowIllusionDuplicate(): boolean {
-        return false
+        return false;
     }
-
     DestroyOnExpire(): boolean {
-        return false
+        return false;
     }
-
 }

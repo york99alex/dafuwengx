@@ -12,6 +12,7 @@ import CardPanel from './CardPanel/components/cardPanel';
 import { BuyItem } from './BuyItem/buyItem';
 import { HudError } from './HudError/hudError';
 import { Tooltip } from './Tooltip/tooltip';
+import { TradePanel } from './Trade/components/tradePanel';
 
 const Test: FC = () => {
     // const data = useXNetTableKey(`test_table`, `test_key`, { data_1: `HelloWorld` });
@@ -30,6 +31,7 @@ render(
         <BuyItem />
         <HudError />
         <Tooltip />
+        <TradePanel />
     </>,
     $.GetContextPanel()
 );

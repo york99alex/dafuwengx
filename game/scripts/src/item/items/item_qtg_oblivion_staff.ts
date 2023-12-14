@@ -1,7 +1,7 @@
 import { TSBaseItem } from '../tsBaseItem';
-import { Player } from '../../player/player';
 import { IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
+import { ParaAdjuster } from '../../utils/paraadjuster';
 
 /**
  * 空明杖，1500，1000短棍+500法师长袍，10攻速，15攻击力，10智力
@@ -32,6 +32,13 @@ export class item_qtg_oblivion_staff_modifier extends BaseModifier {
         this.bonus_damage = this.GetAbility().GetSpecialValueFor('bonus_damage');
         this.bonus_intellect = this.GetAbility().GetSpecialValueFor('bonus_intellect');
         this.bonus_attack_speed = this.GetAbility().GetSpecialValueFor('bonus_attack_speed');
+
+        const parent = this.GetParent();
+        if (parent.IsRealHero()) ParaAdjuster.ModifyMana(parent);
+    }
+    OnDestroy(): void {
+        const parent = this.GetParent();
+        if (parent.IsRealHero()) ParaAdjuster.ModifyMana(parent);
     }
     GetAttributes(): ModifierAttribute {
         return ModifierAttribute.MULTIPLE;

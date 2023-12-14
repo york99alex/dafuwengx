@@ -3,7 +3,7 @@ import { HandCard } from '../handCard';
 import { TypeCard, TypeOprt } from '../../mode/constant';
 
 export default function Card({ card, count }: { card: HandCard; count: number }) {
-    console.log(card);
+    console.log('card:', card);
     const cardContainer = useRef<Panel | null>();
     const Arrow = $.GetContextPanel().GetParent()!.GetParent()!.FindChildTraverse('Arrow');
     const arrows: ImagePanel[] = [];
@@ -21,7 +21,7 @@ export default function Card({ card, count }: { card: HandCard; count: number })
         if (!cardContainer.current) return;
         $.RegisterEventHandler('DragStart', cardContainer.current, OnDragStart);
         $.RegisterEventHandler('DragEnd', cardContainer.current, OnDragEnd);
-        const marginRight = Math.round(((1 - 7 / (3 * (count - 1))) * 30 ) * 100) / 100;
+        const marginRight = Math.round((1 - 7 / (3 * (count - 1))) * 30 * 100) / 100;
         cardContainer.current!.style.marginRight = marginRight > 0 ? `-${marginRight}%` : '0';
         cardContainer.current!.SetPanelEvent('onmouseover', () => cardContainer.current?.AddClass('hover'));
         cardContainer.current!.SetPanelEvent('onmouseout', () => cardContainer.current?.RemoveClass('hover'));

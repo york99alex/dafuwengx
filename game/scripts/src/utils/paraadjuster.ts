@@ -1,3 +1,4 @@
+import { CDOTA_BaseNPC_BZ } from '../player/CDOTA_BaseNPC_BZ';
 import { AMHC } from './amhc';
 
 /**
@@ -69,8 +70,8 @@ export class ParaAdjuster {
     static ModifyMana(unit: CDOTA_BaseNPC_Hero) {
         if (IsClient()) return;
         const maxmana = GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase;
-        print('===ModifyMana===Round:', GameRules.GameConfig.m_nRound, 'oprtID:', GameRules.GameConfig.m_nOrderID);
-        print('===ModifyMana===Args:', 'unit_name:', unit.GetName(), 'unitID:', unit.GetPlayerOwnerID(), 'maxmana:', maxmana);
+        print('===ModifyMana===Round:', GameRules.GameConfig.m_nRound, 'oprtID:', GameRules.GameConfig.m_nOrderID, 'curMana:', unit.GetMana());
+        print('===ModifyMana===unit_name:', unit.GetName(), 'unitID:', unit.GetPlayerOwnerID(), 'maxmana:', maxmana, 'curMaxMana:', unit.GetMaxMana());
         // 移除modifier_special_bonus_attributes
         unit.RemoveModifierByName('modifier_special_bonus_attributes');
         unit.SetBaseHealthRegen(0);
@@ -172,5 +173,16 @@ export class ParaAdjuster {
         //         return 0.2
         // }
         // unit.SetContextThink(DoUniqueString("modify_data"), () => funUpdate(), 0.2)
+    }
+
+    /**修正兵卒属性modifer */
+    static ModifyBzAttribute(bz: CDOTA_BaseNPC_BZ) {
+        if (IsClient()) return;
+        const hero = GameRules.PlayerManager.getPlayer(bz.GetPlayerOwnerID()).m_eHero;
+        bz.SetStrength(bz, hero.GetStrength());
+        bz.SetAgility(bz, hero.GetAgility());
+        bz.SetIntellect(bz, hero.GetIntellect());
+
+        print('===ModifyBzAttribute-' + bz.GetUnitName() + '===', bz.GetStrength(bz), bz.GetAgility(bz), bz.GetIntellect(bz));
     }
 }

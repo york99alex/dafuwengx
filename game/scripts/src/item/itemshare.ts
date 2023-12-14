@@ -1,16 +1,18 @@
 import { HudError } from '../mode/huderror';
+import { CDOTA_BaseNPC_BZ } from '../player/CDOTA_BaseNPC_BZ';
 import { IsValid, mergeArrays } from '../utils/amhc';
+import { ParaAdjuster } from '../utils/paraadjuster';
 import { TSBaseItem } from './tsBaseItem';
 
 /**装备共享 */
 export class ItemShare {
     /**共享组 */
     m_tabShare: {
-        [nEntID: EntityIndex]: CDOTA_BaseNPC[];
+        [nEntID: EntityIndex]: CDOTA_BaseNPC_BZ[];
     } = {};
 
     init() {
-        GameRules.EventManager.Register('Event_ItemMove', (event: ExecuteOrderFilterEvent) => this.onEvent_ItemMove(event), this, 10000);
+        GameRules.EventManager.Register('Event_ItemMove', (event: ExecuteOrderFilterEvent) => this.onEvent_ItemMove(event), this, -10000);
         GameRules.EventManager.Register('Event_ItemAdd', (event: ItemAddedToInventoryFilterEvent) => this.onEvent_ItemAdd(event), this, -10000);
         GameRules.EventManager.Register(
             'Event_ItemDel',
@@ -21,7 +23,7 @@ export class ItemShare {
         );
         GameRules.EventManager.Register('Event_ItemSell', (event: ExecuteOrderFilterEvent) => this.onEvent_ItemSell(event), this, 10000);
         GameRules.EventManager.Register('Event_ItemGive', (event: ExecuteOrderFilterEvent) => this.onEvent_ItemGive(event), this, 10000);
-        GameRules.EventManager.Register('Event_ItemLock', (event: ExecuteOrderFilterEvent) => this.onEvent_ItemLock(event), this, 10000);
+        GameRules.EventManager.Register('Event_ItemLock', (event: ExecuteOrderFilterEvent) => this.onEvent_ItemLock(event), this, -10000);
         GameRules.EventManager.Register('Event_ItemSplit', (event: ExecuteOrderFilterEvent) => this.onEvent_ItemSplit(event), this, -10000);
     }
     /**物品获得 */
@@ -38,10 +40,11 @@ export class ItemShare {
         if (!tab) return;
         print('===ItemShare===onEvent_ItemAdd===2');
 
+        // 英雄主单位
         const entity = EntIndexToHScript(event.inventory_parent_entindex_const) as CDOTA_BaseNPC;
 
-        // 有主单位，物品给主单位再同步共享
-        if (entity['eShareOwner'] && !entity.IsNull() && entity != entity['eShareOwner']) {
+        // 主单位获得装备，延迟同步给兵卒共享
+        if (entity['eShareOwner'] && !entity.IsNull() && entity.IsRealHero()) {
             // print('===ItemShare===onEvent_ItemAdd===3');
             // const item = EntIndexToHScript(event.item_entindex_const) as CDOTA_Item;
             // if (item) {
@@ -61,13 +64,15 @@ export class ItemShare {
             print('===ItemShare===onEvent_ItemAdd===4');
             Timers.CreateTimer(0.1, () => {
                 for (const v of tab) {
-                    if (v != entity && !v.IsNull()) {
+                    if (v && !v.IsNull()) {
                         GameRules.PlayerManager.getPlayer(entity.GetPlayerOwnerID()).syncItem(v);
+                        ParaAdjuster.ModifyBzAttribute(v);
                     }
                 }
             });
-        }else{
-            print("error===ItemShare===onEvent_ItemAdd: BZ no eShareOwner")
+        } else {
+            print('===ItemShare===onEvent_ItemAdd===BZ get item');
+            return;
         }
     }
 
@@ -92,6 +97,7 @@ export class ItemShare {
                 if (bz != e && !bz.IsNull()) {
                     print('===ItemShare===onEvent_ItemDel===4');
                     GameRules.PlayerManager.getPlayer(e.GetPlayerOwnerID()).syncItem(bz);
+                    ParaAdjuster.ModifyBzAttribute(bz);
                 }
             });
         });
@@ -133,6 +139,17 @@ export class ItemShare {
         if (!entity.IsRealHero()) {
             HudError.FireLocalizeError(entity.GetPlayerOwnerID(), 'Error_ItemOprt');
             event['bIgnore'] = true;
+        } else {
+            // 英雄操作，延迟同步兵卒
+            const tab = this.getShareTab(event.units['0']);
+            if (!tab) return;
+            Timers.CreateTimer(() => {
+                for (const v of tab) {
+                    if (v && !v.IsNull()) {
+                        GameRules.PlayerManager.getPlayer(entity.GetPlayerOwnerID()).syncItem(v);
+                    }
+                }
+            });
         }
     }
 
@@ -143,6 +160,17 @@ export class ItemShare {
         if (!entity.IsRealHero()) {
             HudError.FireLocalizeError(entity.GetPlayerOwnerID(), 'Error_ItemOprt');
             event['bIgnore'] = true;
+        } else {
+            // 英雄操作，延迟同步兵卒
+            const tab = this.getShareTab(event.units['0']);
+            if (!tab) return;
+            Timers.CreateTimer(() => {
+                for (const v of tab) {
+                    if (v && !v.IsNull()) {
+                        GameRules.PlayerManager.getPlayer(entity.GetPlayerOwnerID()).syncItem(v);
+                    }
+                }
+            });
         }
     }
 
@@ -153,6 +181,17 @@ export class ItemShare {
         if (!entity.IsRealHero()) {
             HudError.FireLocalizeError(entity.GetPlayerOwnerID(), 'Error_ItemOprt');
             event['bIgnore'] = true;
+        } else {
+            // 英雄操作，延迟同步兵卒
+            const tab = this.getShareTab(event.units['0']);
+            if (!tab) return;
+            Timers.CreateTimer(() => {
+                for (const v of tab) {
+                    if (v && !v.IsNull()) {
+                        GameRules.PlayerManager.getPlayer(entity.GetPlayerOwnerID()).syncItem(v);
+                    }
+                }
+            });
         }
     }
 
@@ -208,7 +247,7 @@ export class ItemShare {
     }
 
     /**设置共享关系 */
-    setShareAdd(entity: CDOTA_BaseNPC, eOwner: CDOTA_BaseNPC_Hero) {
+    setShareAdd(entity: CDOTA_BaseNPC_BZ, eOwner: CDOTA_BaseNPC_Hero) {
         if (entity['eShareOwner'] && eOwner['eShareOwner'] && entity['eShareOwner'] != eOwner['eShareOwner']) return; //存在共享主单位且不同
 
         const tab = this.getShareTab(eOwner.GetEntityIndex());

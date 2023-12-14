@@ -1197,7 +1197,7 @@ export class Player {
     }
 
     /**同步物品 */
-    syncItem(BZ: CDOTA_BaseNPC) {
+    syncItem(BZ: CDOTA_BaseNPC_BZ) {
         const tItemsUnLock = [];
         const tSyncSlot: number[] = [];
         const tHeroItems: CDOTA_Item[] = [];
@@ -1230,9 +1230,13 @@ export class Player {
             }
         }
         print('===syncItem===tHeroItems:');
-        tHeroItems.forEach(item => print('slot:', item.GetItemSlot(), '===', item.GetAbilityName()));
+        tHeroItems.forEach(item => {
+            if (item) print('slot:', item.GetItemSlot(), '===', item.GetAbilityName());
+        });
         print('===syncItem===tBZItems:');
-        tBZItems.forEach(item => print('slot:', item.GetItemSlot(), '===', item.GetAbilityName()));
+        tBZItems.forEach(item => {
+            if (item) print('slot:', item.GetItemSlot(), '===', item.GetAbilityName());
+        });
         print('===syncItem===tSyncSlot:');
         DeepPrintTable(tSyncSlot);
         // 预先锁定
@@ -1252,6 +1256,14 @@ export class Player {
         for (let slot = 0; slot < 9; slot++) {
             if (tHeroItems[slot] && !tHeroItems[slot].IsCombineLocked()) GameRules.ItemShare.lockItem(tBZItems[slot]);
         }
+        // 修正兵卒属性
+        ParaAdjuster.ModifyBzAttribute(BZ);
+        // 修正英雄蓝量属性
+        const curMana = this.m_eHero.GetMana();
+        Timers.CreateTimer(0.01, () => {
+            ParaAdjuster.ModifyMana(this.m_eHero);
+            this.m_eHero.SetMana(curMana);
+        });
     }
 
     // TODO: Card

@@ -1,0 +1,203 @@
+.TradeBody {
+    width: 50%;
+    height: 100%;
+    horizontal-align: right;
+    flow-children: down;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.TradeButton {
+    width: 5%;
+    height: 15%;
+    align: right top;
+    z-index: 0;
+    &.Trade {
+        margin-top: 35%;
+    }
+}
+
+.ButtonText {
+    font-family: titleFont;
+    font-size: 20px;
+}
+
+.TradeActivePanel {
+    width: 35%;
+    height: 40%;
+    horizontal-align: right;
+    margin: 30% 5.5% 0 0;
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#2d2e30), to(#202529));
+    ignore-parent-flow: true;
+    box-shadow: #000000aa 2px 2px 3px 0px;
+    z-index: 1;
+    flow-children: down;
+}
+
+.AuctionActivePanel {
+    width: 35%;
+    height: 40%;
+    horizontal-align: right;
+    margin: 30% 5.5% 0 0;
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#2d2e30), to(#202529));
+    ignore-parent-flow: true;
+    box-shadow: #000000aa 2px 2px 3px 0px;
+    z-index: 1;
+    flow-children: down;
+}
+
+.TradeTitle {
+    width: 100%;
+    height: 10%;
+    margin-left: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(190, 190, 190);
+    text-align: center;
+    font-family: titleFont;
+}
+
+.TradeSelectPlayers {
+    width: 100%;
+    height: 12%;
+    margin: 3px 5px 10px 3px;
+    flow-children: right;
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#1f1f1f), to(#0b0c0d));
+    border-radius: 3px;
+    border: 1px solid black;
+}
+
+.PlayerSelectButton {
+    padding: 17%;
+    margin-left: 2px;
+    margin-right: 2px;
+    vertical-align: middle;
+    border-radius: 3px;
+
+    opacity: 0.8;
+    brightness: 0.6;
+    wash-color: #acbfdd;
+    background-color: rgba(27, 27, 27, 0.753);
+
+    transition-property: opacity, brightness, wash-color, background-color;
+    transition-duration: 0.1s;
+
+    &:hover {
+        opacity: 1;
+        brightness: 1;
+    }
+
+    &.Select {
+        opacity: 1;
+        brightness: 1;
+        wash-color: none;
+        background-color: gold;
+    }
+}
+
+.TradeSelectPath {
+    width: 100%;
+    height: 32%;
+    margin: 10px 3px 10px 3px;
+    flow-children: right-wrap;
+    overflow: clip scroll;
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#1f1f1f), to(#0b0c0d));
+    border-radius: 3px;
+    border: 1px solid black;
+}
+
+.PathSelectButton {
+    height: width-percentage(100%);
+    width: 18.5%;
+    margin: 3px 0 0 3px;
+    border-radius: 3px;
+
+    opacity: 0.8;
+    brightness: 0.6;
+
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    wash-color: #acbfdd;
+
+    transition-property: opacity, brightness, wash-color, background-color;
+    transition-duration: 0.1s;
+
+    &:hover {
+        opacity: 1;
+        brightness: 1;
+    }
+
+    &.Select {
+        opacity: 1;
+        brightness: 1;
+        wash-color: none;
+        border: 1px solid gold;
+    }
+}
+
+.TradeOperate {
+    width: 100%;
+    flow-children: right;
+    padding: 0 10px 0 10px;
+    .HorizontalSlider {
+        width: 57%;
+        margin: 5px 10px 0 0;
+    }
+    .PanelTradeGold {
+        .GoldIcon {
+            background-image: url('s2r://panorama/images/hud/reborn/gold_small_psd.vtex');
+            background-size: 100% 100%;
+            width: 26px;
+            height: 26px;
+            horizontal-align: right;
+            vertical-align: center;
+            margin-right: 10px;
+        }
+    }
+}
+
+.SendTradeButton {
+    horizontal-align: center;
+    vertical-align: center;
+    width: 40%;
+    height: 8%;
+    .SendTradeText {
+        text-overflow: shrink;
+    }
+}
+
+.TradeOperateTitle {
+    width: 100%;
+    height: 6%;
+    flow-children: right;
+}
+
+.ChangeGold {
+    width: 16%;
+    height: 100%;
+    // horizontal-align: right;
+    margin-bottom: 5px;
+
+    .ChangeGoldText {
+        width: 100%;
+        height: 100%;
+        font-size: 12px;
+        text-overflow: noclip;
+        font-weight: bold;
+    }
+
+    &.Up {
+        margin-right: 8px;
+    }
+    &.Down {
+        margin-right: 10px;
+    }
+    &.Floor {
+        margin-left: 16%;
+        margin-right: 10px;
+    }
+
+    &.ButtonBevel {
+        padding: 0;
+    }
+}

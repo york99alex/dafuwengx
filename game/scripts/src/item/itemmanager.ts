@@ -47,11 +47,27 @@ export class ItemManager {
 
         GameRules.ItemShare = new ItemShare();
         GameRules.ItemShare.init();
+
+        ListenToGameEvent('dota_item_combined', event => this.onEvent_ItemCombined(event), this);
+    }
+
+    /**物品合成 */
+    onEvent_ItemCombined(event: GameEventProvidedProperties & DotaItemCombinedEvent) {
+        print('===ItemManager===onEvent_ItemCombined');
+        const player = GameRules.PlayerManager.getPlayer(event.PlayerID);
+        if (!player || !IsValid(player.m_eHero)) return;
+
+        const curMana = player.m_eHero.GetMana();
+        Timers.CreateTimer(0.01, () => {
+            ParaAdjuster.ModifyMana(player.m_eHero);
+            player.m_eHero.SetMana(curMana);
+        });
     }
 
     /**获得物品 */
     onEvent_ItemAdd(event: ItemAddedToInventoryFilterEvent) {
-        const item = EntIndexToHScript(event.item_entindex_const);
+        print('===ItemManager===onEvent_ItemAdd===0');
+        const item = EntIndexToHScript(event.item_entindex_const) as CDOTA_Item;
         const caster = EntIndexToHScript(event.inventory_parent_entindex_const) as CDOTA_BaseNPC;
         if (!IsValid(caster) || !IsValid(item)) return;
 
@@ -59,20 +75,23 @@ export class ItemManager {
         if (npc && npc.IsRealHero()) {
             const curMana = npc.GetMana();
             Timers.CreateTimer(0.01, () => {
+                print('===ItemManager===onEvent_ItemAdd===ModifyMana');
                 ParaAdjuster.ModifyMana(npc);
                 npc.SetMana(curMana);
             });
         }
+        print('===ItemManager===onEvent_ItemAdd===itemName:' + item.GetAbilityName() + '===itemOwner:' + caster.GetUnitName());
     }
 
     onEvent_ItemMove(event: ExecuteOrderFilterEvent) {
-        print("===ItemManager===onEvent_ItemMove");
         if (event['bIgnore']) return;
+        print('===ItemManager===onEvent_ItemMove');
+        DeepPrintTable(event);
         const item = EntIndexToHScript(event.entindex_ability) as CDOTA_Item;
         const caster = EntIndexToHScript(event.units['0']) as CDOTA_BaseNPC;
         if (!IsValid(item)) return;
         if (event.entindex_target < INDEX_ITEM) {
-            // 放入物品蓝
+            // 放入物品栏
             if (item.GetItemSlot() >= INDEX_ITEM) {
                 // 从背包放入
                 if (!IsValid(caster)) return;
@@ -93,13 +112,24 @@ export class ItemManager {
                 }
             }
             if (caster.IsRealHero()) {
+                let curMana0 = caster.GetMana();
+                Timers.CreateTimer(() => {
+                    print('===ItemManager===onEvent_ItemMove===0===ModifyMana');
+                    ParaAdjuster.ModifyMana(caster);
+                    if (curMana0 > caster.GetMaxMana()) curMana0 = caster.GetMaxMana();
+                    caster.SetMana(curMana0);
+                });
                 Timers.CreateTimer(5.9, () => {
-                    if (item.GetItemState() == 0) {
+                    if (!item || item.IsNull()) {
+                        print('===ItemManager===onEvent_ItemMove===item is null');
+                        return;
+                    } else if (item.GetItemState() == 0) {
                         // 物品未就绪
                         return 0.01;
                     } else {
                         // 物品就绪
                         let curMana = caster.GetMana();
+                        print('===ItemManager===onEvent_ItemMove===1===ModifyMana');
                         ParaAdjuster.ModifyMana(caster);
                         // 不允许超出蓝量上限
                         if (curMana > caster.GetMaxMana()) curMana = caster.GetMaxMana();
@@ -133,7 +163,8 @@ export class ItemManager {
             }
             if (caster.IsRealHero()) {
                 let curMana = caster.GetMana();
-                Timers.CreateTimer(0.01, () => {
+                Timers.CreateTimer(() => {
+                    print('===ItemManager===onEvent_ItemMove===2===ModifyMana');
                     ParaAdjuster.ModifyMana(caster);
                     // 不允许超出蓝量上限
                     if (curMana > caster.GetMaxMana()) curMana = caster.GetMaxMana();
@@ -185,7 +216,11 @@ export class ItemManager {
         // 出售价格特效
         AMHC.CreateNumberEffect(caster, nGold, 3, AMHC_MSG.MSG_MISS, [255, 215, 0], 0);
         // 修正蓝量
-        ParaAdjuster.ModifyMana(player.m_eHero);
+        const curMana = player.m_eHero.GetMana();
+        Timers.CreateTimer(() => {
+            ParaAdjuster.ModifyMana(player.m_eHero);
+            player.m_eHero.SetMana(curMana);
+        });
     }
 
     /**给予物品 */
@@ -225,8 +260,15 @@ export class ItemManager {
         }
         // 验证物品商店
         if (itemInfo['SecretShop'] == 1) {
+            print('===ItemManager===onEvent_ItemBuy===BuyState', player.m_typeBuyState);
+            print('player.m_typeBuyState < BuyState_Secret :', player.m_typeBuyState < BuyState_Side);
+            print('player.m_typeBuyState < BuyState_Secret :', player.m_typeBuyState < BuyState_Secret);
+            print('player.m_typeBuyState < BuyState_Secret :', player.m_typeBuyState < BuyState_SideAndSecret);
+            print('player.m_typeBuyState < BuyState_Secret :', player.m_typeBuyState < 1);
+            print('player.m_typeBuyState < BuyState_Secret :', player.m_typeBuyState < 2);
+            print('player.m_typeBuyState < BuyState_Secret :', player.m_typeBuyState < 3);
             // 神秘商店
-            if (player.m_typeBuyState < BuyState_Secret || player.m_eHero.IsInRangeOfShop(ShopType.SECRET, true)) {
+            if (player.m_typeBuyState < BuyState_Secret || !player.m_eHero.IsInRangeOfShop(ShopType.SECRET, true)) {
                 // 不符合条件，提示错误并返回
                 HudError.FireLocalizeError(caster.GetPlayerOwnerID(), 'Error_ItemSecret');
                 const tPath = GameRules.PathManager.getPathByType(TP_SHOP_SECRET);
@@ -264,7 +306,10 @@ export class ItemManager {
     }) {
         // TODO: 检查，移除不能自动移除的不合法Buff
 
-        if (event.entity.IsRealHero()) ParaAdjuster.ModifyMana(event.entity);
+        if (event.entity.IsRealHero()) {
+            print('===ItemManager===onEvent_ItemInvalid===ModifyMana');
+            ParaAdjuster.ModifyMana(event.entity);
+        }
     }
 
     /**物品生效 */
@@ -302,7 +347,10 @@ export class ItemManager {
             sItemName: item.GetAbilityName(),
         });
         unit.RemoveItem(item);
-        if (unit.IsRealHero()) ParaAdjuster.ModifyMana(unit);
+        if (unit.IsRealHero()) {
+            print('===ItemManager===removeItem===ModifyMana');
+            ParaAdjuster.ModifyMana(unit);
+        }
     }
 }
 

@@ -1,37 +1,37 @@
 import { KeyValues } from '../kv';
 import { modifier_agility } from '../modifiers/hero/modifier_agility';
 import { modifier_all } from '../modifiers/hero/modifier_all';
-import { modifier_base_agility } from '../modifiers/hero/modifier_base_agility';
-import { modifier_base_intellect } from '../modifiers/hero/modifier_base_intellect';
-import { modifier_base_strength } from '../modifiers/hero/modifier_base_strength';
 import { modifier_intellect } from '../modifiers/hero/modifier_intellect';
 import { modifier_primary_attribute } from '../modifiers/hero/modifier_primary_attribute';
 import { modifier_strength } from '../modifiers/hero/modifier_strength';
 import { PathDomain } from '../path/pathsdomain/pathdomain';
 import { IsValid } from '../utils/amhc';
 
+/**
+ * TODO: 丑陋，重写！
+ */
 export interface CDOTA_BaseNPC_BZ extends CDOTA_BaseNPC_Creature {
     primaryAttribute: number;
     strength: number;
-    strengthBase: number;
     strengthGain: number;
     agility: number;
-    agilityBase: number;
     agilityGain: number;
     intellect: number;
-    intellectBase: number;
     intellectGain: number;
     strModifier: CDOTA_Buff;
     agiModifier: CDOTA_Buff;
     intModifier: CDOTA_Buff;
     allModifier: CDOTA_Buff;
-    strBaseModifier: CDOTA_Buff;
-    agiBaseModifier: CDOTA_Buff;
-    intBaseModifier: CDOTA_Buff;
     primaryAttributeModifier: CDOTA_Buff;
     ModifyStrength(newStrength: number, bIsBase?: boolean): void;
     ModifyAgility(newAgility: number, bIsBase?: boolean): void;
     ModifyIntellect(newIntellect: number, bIsBase?: boolean): void;
+    SetStrength(unit: CDOTA_BaseNPC_BZ, strength: number): void;
+    SetAgility(unit: CDOTA_BaseNPC_BZ, agility: number): void;
+    SetIntellect(unit: CDOTA_BaseNPC_BZ, intellect: number): void;
+    GetStrength(unit: CDOTA_BaseNPC_BZ): number;
+    GetAgility(unit: CDOTA_BaseNPC_BZ): number;
+    GetIntellect(unit: CDOTA_BaseNPC_BZ): number;
 
     baseManaRegen: number;
 
@@ -81,26 +81,19 @@ export class CDOTA_BaseNPC_BZ {
                 unit.primaryAttribute = PrimaryAttributes[tData.AttributePrimary] ?? Attributes.INVALID;
                 if (unit.primaryAttribute == Attributes.INVALID) return;
 
-                unit.strengthBase = tData.AttributeBaseStrength || 0;
-                unit.strength = unit.strengthBase;
+                unit.strength = tData.AttributeBaseStrength || 0;
                 unit.strengthGain = tData.AttributeStrengthGain || 0;
 
-                unit.agilityBase = tData.AttributeBaseAgility || 0;
-                unit.agility = unit.agilityBase;
+                unit.agility = tData.AttributeBaseAgility || 0;
                 unit.agilityGain = tData.AttributeAgilityGain || 0;
 
-                unit.intellectBase = tData.AttributeBaseIntelligence || 0;
-                unit.intellect = unit.intellectBase;
+                unit.intellect = tData.AttributeBaseIntelligence || 0;
                 unit.intellectGain = tData.AttributeIntelligenceGain || 0;
 
                 unit.strModifier = unit.AddNewModifier(unit, null, modifier_strength.name, { duration: unit.strengthGain });
                 unit.agiModifier = unit.AddNewModifier(unit, null, modifier_agility.name, { duration: unit.agilityGain });
                 unit.intModifier = unit.AddNewModifier(unit, null, modifier_intellect.name, { duration: unit.intellectGain });
                 unit.allModifier = unit.AddNewModifier(unit, null, modifier_all.name, {});
-
-                unit.strBaseModifier = unit.AddNewModifier(unit, null, modifier_base_strength.name, null);
-                unit.agiBaseModifier = unit.AddNewModifier(unit, null, modifier_base_agility.name, null);
-                unit.intBaseModifier = unit.AddNewModifier(unit, null, modifier_base_intellect.name, null);
 
                 unit.primaryAttributeModifier = unit.AddNewModifier(unit, null, modifier_primary_attribute.name, null);
                 unit.primaryAttributeModifier.SetStackCount(unit.primaryAttribute);
@@ -117,6 +110,12 @@ export class CDOTA_BaseNPC_BZ {
                 unit.ModifyStrength = this.ModifyStrength;
                 unit.ModifyAgility = this.ModifyAgility;
                 unit.ModifyIntellect = this.ModifyIntellect;
+                unit.SetStrength = this.SetStrength;
+                unit.SetAgility = this.SetAgility;
+                unit.SetIntellect = this.SetIntellect;
+                unit.GetStrength = this.GetStrength;
+                unit.GetAgility = this.GetAgility;
+                unit.GetIntellect = this.GetIntellect;
 
                 unit.updateStrength(unit);
                 unit.updateAgility(unit);
@@ -130,31 +129,21 @@ export class CDOTA_BaseNPC_BZ {
     GetPrimaryAttribute() {
         return this.primaryAttribute;
     }
-    GetBaseStrength(unit: CDOTA_BaseNPC_BZ) {
-        return unit.strengthBase;
-    }
     GetStrength(unit: CDOTA_BaseNPC_BZ) {
         return unit.strength;
     }
     GetStrengthGain(unit: CDOTA_BaseNPC_BZ) {
         return unit.strengthGain;
     }
-    ModifyStrength(changedVal: number, bIsBase?: boolean) {
+    ModifyStrength(changedVal: number) {
         this.strength += changedVal;
-        if (bIsBase && bIsBase == true) {
-            this.strengthBase += changedVal;
-        }
         this.updateStrength(this);
     }
-    SetBaseStrength(unit: CDOTA_BaseNPC_BZ, strength: number) {
-        unit.ModifyStrength(strength - unit.strengthBase, true);
+    SetStrength(unit: CDOTA_BaseNPC_BZ, strength: number) {
+        unit.ModifyStrength(strength - unit.strength);
     }
     updateStrength(unit: CDOTA_BaseNPC_BZ) {
         unit.strModifier.SetStackCount(math.max(unit.strength, 0));
-        unit.strBaseModifier.SetStackCount(math.max(unit.strengthBase, 0));
-    }
-    GetBaseAgility(unit: CDOTA_BaseNPC_BZ) {
-        return unit.agilityBase;
     }
     GetAgility(unit: CDOTA_BaseNPC_BZ) {
         return unit.agility;
@@ -162,22 +151,15 @@ export class CDOTA_BaseNPC_BZ {
     GetAgilityGain(unit: CDOTA_BaseNPC_BZ) {
         return unit.agilityGain;
     }
-    ModifyAgility(changedVal: number, bIsBase?: boolean) {
+    ModifyAgility(changedVal: number) {
         this.agility += changedVal;
-        if (bIsBase && bIsBase == true) {
-            this.agilityBase += changedVal;
-        }
         this.updateAgility(this);
     }
-    SetBaseAgility(unit: CDOTA_BaseNPC_BZ, agility: number) {
-        unit.ModifyAgility(agility - unit.agilityBase, true);
+    SetAgility(unit: CDOTA_BaseNPC_BZ, agility: number) {
+        unit.ModifyAgility(agility - unit.agility);
     }
     updateAgility(unit: CDOTA_BaseNPC_BZ) {
         unit.agiModifier.SetStackCount(math.max(unit.agility, 0));
-        unit.agiBaseModifier.SetStackCount(math.max(unit.agilityBase, 0));
-    }
-    GetBaseIntellect(unit: CDOTA_BaseNPC_BZ) {
-        return unit.intellectBase;
     }
     GetIntellect(unit: CDOTA_BaseNPC_BZ) {
         return unit.intellect;
@@ -185,19 +167,15 @@ export class CDOTA_BaseNPC_BZ {
     GetIntellectGain(unit: CDOTA_BaseNPC_BZ) {
         return unit.intellectGain;
     }
-    ModifyIntellect(changedVal: number, bIsBase?: boolean) {
+    ModifyIntellect(changedVal: number) {
         this.intellect += changedVal;
-        if (bIsBase && bIsBase == true) {
-            this.intellectBase += changedVal;
-        }
         this.updateIntellect(this);
     }
-    SetBaseIntellect(unit: CDOTA_BaseNPC_BZ, intellect: number) {
-        unit.ModifyIntellect(intellect - unit.intellectBase, true);
+    SetIntellect(unit: CDOTA_BaseNPC_BZ, intellect: number) {
+        unit.ModifyIntellect(intellect - unit.intellect);
     }
     updateIntellect(unit: CDOTA_BaseNPC_BZ) {
         unit.intModifier.SetStackCount(math.max(unit.intellect, 0));
-        unit.intBaseModifier.SetStackCount(math.max(unit.intellectBase, 0));
     }
     updateAll(unit: CDOTA_BaseNPC_BZ) {
         unit.allModifier.SetStackCount(math.max(unit.strength + unit.agility + unit.intellect, 0));
