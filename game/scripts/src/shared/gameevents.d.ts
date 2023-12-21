@@ -29,24 +29,28 @@ declare interface CustomGameEventDeclarations {
         nPathID?: number;
         // 出狱
         nGold?: number;
-        // 交易
-        jPlayerTrade?: {
-            nPlayerTrade: {
-                nPlayerTradeID: number;
-                nGold: number;
-                arrPath: number[];
-            };
-            nPlayerBeTrade: {
-                nPlayerBeTradeID: number;
-                nGold: number;
-                arrPath: number[];
-            };
-        };
+
         nCardID?: number;
         nPosX?: number;
         nPosY?: number;
         nPosZ?: number;
         nTargetEntID?: number;
+        // 交易
+        nPlayerIDTrade?: PlayerID;
+        nPlayerIDTradeBe?: PlayerID;
+        json?: any;
+        // jPlayerTrade?: {
+        //     nPlayerTrade: {
+        //         nPlayerTradeID: number;
+        //         nGold: number;
+        //         arrPath: number[];
+        //     };
+        //     nPlayerBeTrade: {
+        //         nPlayerBeTradeID: number;
+        //         nGold: number;
+        //         arrPath: number[];
+        //     };
+        // };
     };
 
     GM_OperatorFinished: {
@@ -64,6 +68,10 @@ declare interface CustomGameEventDeclarations {
         nPosX: number;
         nPosY: number;
         nPosZ: number;
+        // 交易
+        nPlayerIDTrade?: PlayerID;
+        nPlayerIDTradeBe?: PlayerID;
+        json?: any;
     };
 
     // S2C_GM_OperatorFinished: {

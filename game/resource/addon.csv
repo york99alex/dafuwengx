@@ -469,17 +469,36 @@ Error_CantGCLD_Slef,,自身领地，无法攻城
 Error_CantGCLD_Battling,,攻城中......
 Error_CantGCLD_Stunned,,目标眩晕无法攻城
 Error_CantGCLD_InPrison,,目标被地狱封印无法攻城
-Error_Card_TP,,,,仅传送阵
-Error_NoChichen,,,,鸡儿不足
+Error_Card_TP,,仅传送阵
+Error_NoChichen,,鸡儿不足
+Error_TextNaN,,请输入整数
+Error_Trade_Failed,,发起交易失败，请重试
+Error_Trade_Failed_-1,,交易数据错误
+Error_Trade_Failed_0,,对方拒绝交易
+Error_Trade_Failed_2,,玩家数据错误
+Error_Trade_Failed_3,,金钱错误
+Error_Trade_Failed_5,,包含未拥有路径
+Error_Trade_Failed_6,,有连地错误
+Error_Trade_Failed_7,,包含攻城中的领地
+Error_Trade_Failed_8,,玩家正在交易中
+Error_Trade_Failed_9,,交易玩家死亡
+
+
 
 TradeButtonText,T\nR\nA\nD\nE,交\n易
 AuctionButtonText,A\nU\nC\nT\nI\nO\nN,拍\n卖
-TradeTitle,,交易
+TradeTitle,,发起交易
+BeTradeTitle,,收到交易
 AuctionTitle,,拍卖
 TradeTargetTitle,,选择玩家：
+BeTradeTargetTitle,,发起交易玩家：
 TradePathTargetTitle,,选择领地：
 TradeGoldCost,PRICE,交易价格
 SendTradeButton,INITIATE TRADE,发送交易
+TradeButtonWait,,等待确认...
+ConfirmTrade,,确认
+CancelTrade,,取消
+
 PathName_1,,起点
 PathName_2,,秘密宝藏
 PathName_3,,天辉 ● 其一

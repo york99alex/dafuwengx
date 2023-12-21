@@ -1,4 +1,4 @@
-import { Constant } from '../../mode/constant';
+import { PATH_TO_PRICE, PATH_TOLL_RATE, HERO_TO_BANNER, TypePathState, GAME_MODE, GAME_MODE_ONEPATH, BZ_OUT_ROUND, GCLD_EXP, GCLD_GOLD } from '../../mode/constant';
 import { GS_Begin, PS_AtkHero, PS_InPrison, TypeOprt } from '../../mode/gamemessage';
 import { modifier_unselect } from '../../modifiers/util/modifier_unselect';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
@@ -28,7 +28,7 @@ export class PathDomain extends Path {
         this.m_eBanner = Entities.FindByName(null, 'bann_' + this.m_nID) as CBaseModelEntity;
         this.setBanner();
 
-        this.m_nPrice = Constant.PATH_TO_PRICE[this.m_typePath];
+        this.m_nPrice = PATH_TO_PRICE[this.m_typePath];
 
         this.m_tabENPC = [];
 
@@ -66,7 +66,7 @@ export class PathDomain extends Path {
             if (0 === (PS_InPrison & playerOwn.m_nPlayerState)) {
                 if (this.m_tabENPC.length == 0) {
                     // 交过路费
-                    const nGold = math.floor(this.m_nPrice * Constant.PATH_TOLL_RATE);
+                    const nGold = math.floor(this.m_nPrice * PATH_TOLL_RATE);
                     player.giveGold(nGold, playerOwn);
                     GameRules.GameConfig.showGold(playerOwn, nGold);
                     GameRules.GameConfig.showGold(player, -nGold);
@@ -112,7 +112,7 @@ export class PathDomain extends Path {
         } else {
             this.m_eBanner.SetOrigin(this.m_eCity.GetOrigin());
             print('SetSkin====strHeroName:', strHeroName);
-            this.m_eBanner.SetSkin(Constant.HERO_TO_BANNER[strHeroName] + 1);
+            this.m_eBanner.SetSkin(HERO_TO_BANNER[strHeroName] + 1);
         }
     }
 
@@ -122,7 +122,7 @@ export class PathDomain extends Path {
 
         let nOwnerIDLast = this.m_nOwnerID;
         if (oPlayer == null) {
-            this.setPathState(Constant.TypePathState.None);
+            this.setPathState(TypePathState.None);
             // 移除领主
             this.setBanner();
             this.m_nOwnerID = null;
@@ -166,10 +166,10 @@ export class PathDomain extends Path {
                 print('setBZ===4');
                 return;
             }
-            if (Constant.GAME_MODE == Constant.GAME_MODE_ONEPATH) {
+            if (GAME_MODE == GAME_MODE_ONEPATH) {
                 print('setBZ===5');
                 // 单地起兵模式
-                if (GameRules.GameConfig.m_nRound >= Constant.BZ_OUT_ROUND) {
+                if (GameRules.GameConfig.m_nRound >= BZ_OUT_ROUND) {
                     if (this.m_tabENPC.length > 0) {
                         if (oPlayer.m_nPlayerID != this.m_tabENPC[0].GetPlayerOwnerID()) {
                             this.setAllBZDel();
@@ -183,7 +183,7 @@ export class PathDomain extends Path {
                 } else {
                     // 监听起兵回合
                     GameRules.EventManager.Register('Event_UpdateRound', () => {
-                        if (GameRules.GameConfig.m_nRound >= Constant.BZ_OUT_ROUND) {
+                        if (GameRules.GameConfig.m_nRound >= BZ_OUT_ROUND) {
                             if (!GameRules.GameConfig.m_bOutBZ) {
                                 GameRules.GameConfig.m_bOutBZ = true;
                                 print('======起兵=======');
@@ -418,7 +418,7 @@ export class PathDomain extends Path {
 
         // 无论成功失败,都给双方加经验
         const nLevelBZ = oPlayerOwn.getBzStarLevel(this.m_tabENPC[0]);
-        const nExp = Constant.GCLD_EXP[nLevelBZ];
+        const nExp = GCLD_EXP[nLevelBZ];
         oPlayer.setExpAdd(nExp);
         oPlayerOwn.setExpAdd(nExp);
 
@@ -471,7 +471,7 @@ export class PathDomain extends Path {
             // 攻城失败
             const nLevelBZ = oPlayerOwn.getBzStarLevel(this.m_tabENPC[0]);
             // 扣钱
-            const nGold = Constant.GCLD_GOLD[nLevelBZ];
+            const nGold = GCLD_GOLD[nLevelBZ];
             oPlayer.giveGold(nGold, oPlayerOwn);
             GameRules.GameConfig.showGold(oPlayer, -nGold);
             GameRules.GameConfig.showGold(oPlayerOwn, nGold);

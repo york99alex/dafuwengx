@@ -1,4 +1,4 @@
-import { Constant } from '../../mode/constant';
+import { ATTRIBUTE } from '../../mode/constant';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { BaseModifier, registerModifier } from '../../utils/dota_ts_adapter';
 
@@ -29,7 +29,7 @@ export class modifier_intellect extends BaseModifier {
             const nChanged = nNewStackCount - stackCount;
 
             if (hParent.GetPrimaryAttribute() == Attributes.INTELLECT) {
-                const nValue = nChanged * Constant.ATTRIBUTE.PRIMARY_ATTACK_DAMAGE;
+                const nValue = nChanged * ATTRIBUTE.PRIMARY_ATTACK_DAMAGE;
                 hParent.SetBaseDamageMax(hParent.GetBaseDamageMax() + nValue);
                 hParent.SetBaseDamageMin(hParent.GetBaseDamageMin() + nValue);
             }
@@ -39,6 +39,6 @@ export class modifier_intellect extends BaseModifier {
         return [ModifierFunction.MAGICAL_RESISTANCE_BONUS];
     }
     GetModifierMagicalResistanceBonus(event: ModifierAttackEvent): number {
-        return Constant.ATTRIBUTE.INTELLIGENCE_MAGICAL_RESISTANCE * this.GetStackCount();
+        return ATTRIBUTE.INTELLIGENCE_MAGICAL_RESISTANCE * this.GetStackCount();
     }
 }

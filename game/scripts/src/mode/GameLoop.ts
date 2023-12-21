@@ -1,5 +1,5 @@
 import { EventObject, StateMachine, createMachine, interpret } from '../utils/xstate/xstate-dota';
-import { Constant } from './constant';
+import { TIME_OPERATOR_DISCONNECT, TIME_OPERATOR, TIME_MOVE_MAX } from './constant';
 import { GS_Begin, GS_DeathClearing, GS_Finished, GS_Move, GS_None, GS_ReadyStart, GS_Wait, GS_WaitOperator, TypeOprt } from './gamemessage';
 
 export class GameLoop {
@@ -199,9 +199,9 @@ export class GameLoop {
                 return null;
             }, 0);
             if (oPlayer.m_bDisconnect) {
-                GameRules.GameConfig.m_timeOprt = Constant.TIME_OPERATOR_DISCONNECT;
+                GameRules.GameConfig.m_timeOprt = TIME_OPERATOR_DISCONNECT;
             } else {
-                GameRules.GameConfig.m_timeOprt = Constant.TIME_OPERATOR;
+                GameRules.GameConfig.m_timeOprt = TIME_OPERATOR;
             }
         }
     }
@@ -244,7 +244,7 @@ export class GameLoop {
     GSWait_Entry() {
         this.setGameState(GS_Wait);
         print('GameState_GSWait_Entry');
-        this.m_timeWait = Constant.TIME_MOVE_MAX;
+        this.m_timeWait = TIME_MOVE_MAX;
         Timers.CreateTimer(0, () => {
             // print(this.m_timeWait -= 1)
             if (this.m_timeWait <= 0) {

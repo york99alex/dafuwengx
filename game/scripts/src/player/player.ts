@@ -15,7 +15,21 @@ import {
     TP_DOMAIN_1,
     TP_START,
 } from '../mode/gamemessage';
-import { Constant } from '../mode/constant';
+import {
+    BZ_HUIMO_BEATK_RATE,
+    BZ_HUIMO_RATE_J,
+    BZ_HUIMO_RATE_Y,
+    BZ_LEVELMAX,
+    BZ_MAX_LEVEL,
+    CUSTOM_TEAM,
+    HERO_TO_BZ,
+    INITIAL_GOLD,
+    LEVEL_EXP,
+    PATH_TO_PRICE,
+    ROUND_BZ_HUIXUE_ROTA,
+    ROUND_HERO_HUIXUE_ROTA,
+    TIME_MOVE_MAX,
+} from '../mode/constant';
 import { Path } from '../path/Path';
 import { AMHC, IsValid } from '../utils/amhc';
 import { PathDomain } from '../path/pathsdomain/pathdomain';
@@ -97,7 +111,7 @@ export class Player {
         print('new Player(),nPlayerID:', nPlayerID);
         this.m_nPlayerID = nPlayerID;
         this.m_nSteamID = PlayerResource.GetSteamAccountID(this.m_nPlayerID);
-        this.m_typeTeam = Constant.CUSTOM_TEAM[nPlayerID];
+        this.m_typeTeam = CUSTOM_TEAM[nPlayerID];
 
         PlayerResource.SetCustomTeamAssignment(nPlayerID, DotaTeam.GOODGUYS);
         this.registerEvent();
@@ -143,7 +157,7 @@ export class Player {
             this.m_eHero.SetBaseHealthRegen(-this.m_eHero.GetHealthRegen());
         });
         // 初始化金币
-        this.setGold(Constant.INITIAL_GOLD);
+        this.setGold(INITIAL_GOLD);
         this.setGoldUpdate();
         // 清空英雄物品
         for (let slot = 0; slot < 9; slot++) {
@@ -311,7 +325,7 @@ export class Player {
         this.m_nSumGold = this.m_nGold;
         // 统计领地
         for (const index in this.m_tabMyPath) {
-            this.m_nSumGold += this.m_tabMyPath[index].length * Constant.PATH_TO_PRICE[tonumber(index)];
+            this.m_nSumGold += this.m_tabMyPath[index].length * PATH_TO_PRICE[tonumber(index)];
         }
         // 统计装备
         for (let slot = 0; slot < 9; slot++) {
@@ -553,7 +567,7 @@ export class Player {
         if (this.m_eHero.IsRooted()) {
             print('===player===moveToPath===1');
             // 如果是被缠绕，等待TIME_MOVE_MAX*0.1秒
-            let time_root = Constant.TIME_MOVE_MAX;
+            let time_root = TIME_MOVE_MAX;
             Timers.CreateTimer(0, () => {
                 print('===player===moveToPath===time_root', time_root--);
                 if (time_root <= 0) {
@@ -733,8 +747,8 @@ export class Player {
         return nCount;
     }
 
-    /**给其他玩家连地 */
-    setMyPathsGive(tPaths, player: Player) {
+    /**给其他玩家连地(同类型) */
+    setMyPathsGive(tPaths: Path[], player: Player) {
         // 验证同类型
         let typePath;
         for (const path of tPaths) {
@@ -770,7 +784,7 @@ export class Player {
         nStarLevel = nStarLevel || 1;
 
         // 创建单位
-        let strName = Constant.HERO_TO_BZ[this.m_eHero.GetUnitName()];
+        let strName = HERO_TO_BZ[this.m_eHero.GetUnitName()];
         for (let i = nStarLevel; i >= 2; i--) {
             strName += '1';
         }
@@ -796,9 +810,9 @@ export class Player {
         // 设置兵卒技能等级
         eBZ.m_bAbltBZ = eBZ.GetAbilityByIndex(0);
         // 设置技能
-        if (nStarLevel >= Constant.BZ_MAX_LEVEL) {
+        if (nStarLevel >= BZ_MAX_LEVEL) {
             // 设置巅峰技能
-            AMHC.AddAbilityAndSetLevel(eBZ, 'yjxr_max', Constant.BZ_MAX_LEVEL);
+            AMHC.AddAbilityAndSetLevel(eBZ, 'yjxr_max', BZ_MAX_LEVEL);
             eBZ.SwapAbilities(eBZ.m_bAbltBZ.GetAbilityName(), 'yjxr_max', true, true);
         } else {
             AMHC.AddAbilityAndSetLevel(eBZ, 'yjxr_' + path.m_typePath, nStarLevel);
@@ -963,7 +977,7 @@ export class Player {
         if (eBZ.IsNull()) return;
 
         // 获取要升级的等级
-        let nLevel = Constant.BZ_LEVELMAX[this.getBzStarLevel(eBZ)];
+        let nLevel = BZ_LEVELMAX[this.getBzStarLevel(eBZ)];
         if (this.m_eHero.GetLevel() < nLevel) {
             nLevel = this.m_eHero.GetLevel();
         }
@@ -1472,7 +1486,7 @@ export class Player {
     setExpAdd(nVal: number) {
         const nAddExp = nVal;
         const nCurExp = this.m_eHero.GetCurrentXP();
-        const nLevelUpExp = Constant.LEVEL_EXP[this.m_eHero.GetLevel() + 1];
+        const nLevelUpExp = LEVEL_EXP[this.m_eHero.GetLevel() + 1];
         this.m_eHero.AddExperience(nAddExp, 0, false, false);
 
         if (nLevelUpExp && nCurExp + nAddExp >= nLevelUpExp) {
@@ -1611,7 +1625,7 @@ export class Player {
                     GameRules.EventManager.FireEvent('Event_BZHuiMo', tabEventHuiMo);
                     if (tabEventHuiMo.nHuiMoBase > 0) {
                         // 给兵卒回魔
-                        oVictim.GiveMana(event.damage * Constant.BZ_HUIMO_BEATK_RATE * tabEventHuiMo.nHuiMoBase);
+                        oVictim.GiveMana(event.damage * BZ_HUIMO_BEATK_RATE * tabEventHuiMo.nHuiMoBase);
                     }
                 }
 
@@ -1637,7 +1651,7 @@ export class Player {
             return;
         }
         // 计算回魔量
-        let nHuiMoRate = eBZ.IsRangedAttacker() ? Constant.BZ_HUIMO_RATE_Y : Constant.BZ_HUIMO_RATE_J;
+        let nHuiMoRate = eBZ.IsRangedAttacker() ? BZ_HUIMO_RATE_Y : BZ_HUIMO_RATE_J;
         let tabEventHuiMo = {
             eBz: eBZ,
             nHuiMoBase: 1,
@@ -1674,7 +1688,7 @@ export class Player {
         // 英雄回血
         let tabEventHuiXue = {
             entity: this.m_eHero,
-            nHuiXue: this.m_eHero.GetMaxHealth() * Constant.ROUND_HERO_HUIXUE_ROTA,
+            nHuiXue: this.m_eHero.GetMaxHealth() * ROUND_HERO_HUIXUE_ROTA,
         };
         GameRules.EventManager.FireEvent('Event_ItemHuiXueByRound', tabEventHuiXue);
         this.addHealth(tabEventHuiXue.nHuiXue);
@@ -1683,7 +1697,7 @@ export class Player {
         for (const eBZ of this.m_tabBz) {
             let tabEventBZHuiXue = {
                 entity: eBZ,
-                nHuiXue: eBZ.GetMaxHealth() * Constant.ROUND_BZ_HUIXUE_ROTA,
+                nHuiXue: eBZ.GetMaxHealth() * ROUND_BZ_HUIXUE_ROTA,
             };
             GameRules.EventManager.FireEvent('Event_ItemHuiXueByRound', tabEventBZHuiXue);
             eBZ.SetHealth(eBZ.GetHealth() + tabEventBZHuiXue.nHuiXue);

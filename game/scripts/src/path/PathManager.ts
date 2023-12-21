@@ -1,4 +1,4 @@
-import { Constant } from "../mode/constant";
+import { PATH_VERTEX, TIME_MOVEKASI } from "../mode/constant";
 import { IsValid } from "../utils/amhc";
 import { Path } from "./Path";
 import { PathFactory } from "./pathfactory";
@@ -84,12 +84,12 @@ export class PathManager {
     /**获取路径前方后方的尽头拐角点路径ID */
     static getVertexPathID(nCurID: number) {
         function isQ(nQ: number, nH: number) {
-            for (let i = 0; i < Constant.PATH_VERTEX.length; i++) {
-                if (nQ == Constant.PATH_VERTEX[i]) {
+            for (let i = 0; i < PATH_VERTEX.length; i++) {
+                if (nQ == PATH_VERTEX[i]) {
                     if (i > 0) {
-                        return nH == Constant.PATH_VERTEX[i - 1]
+                        return nH == PATH_VERTEX[i - 1]
                     } else {
-                        return nH == Constant.PATH_VERTEX[Constant.PATH_VERTEX.length - 1]
+                        return nH == PATH_VERTEX[PATH_VERTEX.length - 1]
                     }
                 }
             }
@@ -97,22 +97,22 @@ export class PathManager {
         }
 
         let q: number, h: number
-        for (let i = 0; i < Constant.PATH_VERTEX.length; i++) {
-            if (nCurID > Constant.PATH_VERTEX[i]) {
-                if (!h || isQ(Constant.PATH_VERTEX[i], h)) {
-                    h = Constant.PATH_VERTEX[i]
+        for (let i = 0; i < PATH_VERTEX.length; i++) {
+            if (nCurID > PATH_VERTEX[i]) {
+                if (!h || isQ(PATH_VERTEX[i], h)) {
+                    h = PATH_VERTEX[i]
                 }
-            } else if (nCurID < Constant.PATH_VERTEX[i]) {
-                if (!q || isQ(q, Constant.PATH_VERTEX[i])) {
-                    q = Constant.PATH_VERTEX[i]
+            } else if (nCurID < PATH_VERTEX[i]) {
+                if (!q || isQ(q, PATH_VERTEX[i])) {
+                    q = PATH_VERTEX[i]
                 }
             }
         }
         if (!q) {
-            q = Constant.PATH_VERTEX[0]
+            q = PATH_VERTEX[0]
         }
         if (!h) {
-            h = Constant.PATH_VERTEX[Constant.PATH_VERTEX.length - 1]
+            h = PATH_VERTEX[PATH_VERTEX.length - 1]
         }
         return [q, h]
     }
@@ -222,7 +222,7 @@ export class PathManager {
         function judgeKasi() {
             if (vLocLast == entity.GetAbsOrigin()) {
                 nTimeKasi += 1
-                if (nTimeKasi >= Constant.TIME_MOVEKASI) {
+                if (nTimeKasi >= TIME_MOVEKASI) {
                     // 超过时间,直接设置到目的地
                     entity.SetAbsOrigin(path.m_entity.GetOrigin())
                     FindClearSpaceForUnit(entity, entity.GetAbsOrigin(), true)
@@ -306,7 +306,7 @@ export class PathManager {
         function judgeKasi() {
             if (vLocLast == entity.GetAbsOrigin()) {
                 nTimeKasi += 1
-                if (nTimeKasi >= Constant.TIME_MOVEKASI) {
+                if (nTimeKasi >= TIME_MOVEKASI) {
                     // 超过时间,直接设置到目的地
                     entity.SetAbsOrigin(location)
                     FindClearSpaceForUnit(entity, entity.GetAbsOrigin(), true)

@@ -1,8 +1,8 @@
 import { TSBaseItem } from '../tsBaseItem';
 import { AMHC } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
-import { Constant } from '../../mode/constant';
 import { ParaAdjuster } from '../../utils/paraadjuster';
+import { HERO_AttackCapabilit } from '../../mode/constant';
 
 /**
  * 淬毒之珠，500，debuff-10%移速近战/5%远程，持续2秒
@@ -30,7 +30,7 @@ export class item_qtg_orb_of_venom_modifier extends BaseModifier {
                 this.poison_duration = this.GetAbility().GetSpecialValueFor('poison_duration');
                 if (
                     this.GetParent().IsRangedAttacker() ||
-                    Constant.HERO_AttackCapabilit[this.GetParent().GetUnitName()] == UnitAttackCapability.RANGED_ATTACK
+                    HERO_AttackCapabilit[this.GetParent().GetUnitName()] == UnitAttackCapability.RANGED_ATTACK
                 ) {
                     // 远程 range
                     AMHC.AddNewModifier(event.target, event.attacker, this.GetAbility(), modifier_item_qtg_orb_of_venom_range.name, {

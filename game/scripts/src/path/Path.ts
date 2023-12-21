@@ -1,4 +1,4 @@
-import { Constant } from '../mode/constant';
+import { TypePathState } from '../mode/constant';
 import { Player } from '../player/player';
 
 export class Path {
@@ -32,7 +32,7 @@ export class Path {
         this.m_eUnit = CreateUnitByName('PathLog_' + this.m_nID, this.m_entity.GetAbsOrigin(), false, null, null, DotaTeam.NEUTRALS);
 
         this.initNilPos();
-        this.setPathState(Constant.TypePathState.None);
+        this.setPathState(TypePathState.None);
     }
 
     /** 添加路径上的实体 */
@@ -105,7 +105,8 @@ export class Path {
         });
     }
 
-    setPathState(typeState: number) {
+    /**设置路径交易类型 */
+    setPathState(typeState: TypePathState) {
         this.m_typeState = typeState;
     }
 

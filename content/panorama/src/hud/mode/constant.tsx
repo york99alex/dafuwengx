@@ -30,3 +30,9 @@ export const TypeOprt = {
 };
 
 export type player_info = 'player_info_0' | 'player_info_1' | 'player_info_2' | 'player_info_3' | 'player_info_4' | 'player_info_5';
+
+export const TRADESTATE = {
+    None: 0,
+    Trade: 1,
+    BeTrade: 2,
+};

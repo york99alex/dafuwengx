@@ -1,4 +1,4 @@
-import { Constant } from "../mode/constant"
+import { PRISON_BAOZI_COUNT, GOLD_OUT_PRISON, TIME_OPERATOR_DISCONNECT, TIME_OPERATOR } from "../mode/constant"
 import { PS_InPrison, TypeOprt } from "../mode/gamemessage"
 import { CDOTA_BaseNPC_BZ } from "../player/CDOTA_BaseNPC_BZ"
 import { Player } from "../player/player"
@@ -189,7 +189,7 @@ export class PathPrison extends Path {
             }
         } else if (event.nNum1 == event.nNum2) {
             GameRules.GameConfig.m_nBaoZi++
-            if (GameRules.GameConfig.m_nBaoZi == Constant.PRISON_BAOZI_COUNT) {
+            if (GameRules.GameConfig.m_nBaoZi == PRISON_BAOZI_COUNT) {
                 // 达到入狱豹子次数
                 this.setInPrison(event.player)
                 event.bIgnore = 1
@@ -219,16 +219,16 @@ export class PathPrison extends Path {
         const tabOprt = {
             nPlayerID: GameRules.GameConfig.m_nOrderID,
             typeOprt: TypeOprt.TO_PRISON_OUT,
-            nGold: Constant.GOLD_OUT_PRISON
+            nGold: GOLD_OUT_PRISON
         }
         GameRules.GameConfig.sendOprt(tabOprt)
         // 进入等待操作阶段
         GameRules.GameLoop.GameStateService.send("towaitoprt")
 
         if (event.oPlayer.m_bDisconnect) {
-            GameRules.GameConfig.m_timeOprt = Constant.TIME_OPERATOR_DISCONNECT
+            GameRules.GameConfig.m_timeOprt = TIME_OPERATOR_DISCONNECT
         } else {
-            GameRules.GameConfig.m_timeOprt = Constant.TIME_OPERATOR
+            GameRules.GameConfig.m_timeOprt = TIME_OPERATOR
         }
         // 取消roll操作
         event.bRoll = false

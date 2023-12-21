@@ -1,4 +1,4 @@
-import { Constant } from "../mode/constant";
+import { WAGE_GOLD, WAGE_GOLD_REDUCE } from "../mode/constant";
 import { Player } from "../player/player";
 import { Path } from "./Path";
 
@@ -29,7 +29,7 @@ export class PathStart extends Path {
                 return
             }
 
-            let nGold = Constant.WAGE_GOLD - nGet * Constant.WAGE_GOLD_REDUCE
+            let nGold = WAGE_GOLD - nGet * WAGE_GOLD_REDUCE
             nGold < 0 ? 0 : nGold
             player.setGold(nGold)
             GameRules.GameConfig.showGold(player, nGold)

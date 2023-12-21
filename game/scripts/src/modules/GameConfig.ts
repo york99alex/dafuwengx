@@ -4,7 +4,17 @@ import { CardManager } from '../card/cardmanager';
 import { GameLoop } from '../mode/GameLoop';
 import { HeroSelection } from '../mode/HeroSelection';
 import { Auction } from '../mode/auction';
-import { Constant } from '../mode/constant';
+import {
+    GAME_MODE,
+    GLOBAL_SHOP_ROUND,
+    LEVEL_EXP,
+    PRISON_BAOZI_COUNT,
+    RoundTip,
+    TIME_BAOZI_ADD,
+    TIME_BAOZI_YZ,
+    TIME_OPERATOR,
+    TIME_SELECTHERO,
+} from '../mode/constant';
 import { DeathClearing } from '../mode/deathclearing';
 import { Filters } from '../mode/filters';
 import {
@@ -84,7 +94,7 @@ export class GameConfig {
         GameRules.SetCustomGameSetupTimeout(10);
 
         // 选择英雄时间
-        GameRules.SetHeroSelectionTime(Constant.TIME_SELECTHERO);
+        GameRules.SetHeroSelectionTime(TIME_SELECTHERO);
         GameRules.SetHeroSelectPenaltyTime(0);
         const gamemode = GameRules.GetGameModeEntity();
         gamemode.SetSelectionGoldPenaltyEnabled(false);
@@ -122,7 +132,7 @@ export class GameConfig {
 
         gamemode.SetDaynightCycleDisabled(true); // 是否禁用白天黑夜循环
         GameRules.SetTimeOfDay(0.5); // 白天
-        gamemode.SetCustomXPRequiredToReachNextLevel(Constant.LEVEL_EXP);
+        gamemode.SetCustomXPRequiredToReachNextLevel(LEVEL_EXP);
         gamemode.SetUseCustomHeroLevels(true); // 是否启用自定义英雄等级
         gamemode.SetCustomHeroMaxLevel(25); // 设置自定义英雄最大等级
 
@@ -188,9 +198,10 @@ export class GameConfig {
         AbilityManager.init(); // 技能模块
         GameRules.CardManager = new CardManager(); // 卡牌管理模块
         GameRules.CardManager.init();
-        GameRules.Trade = new Trade();  // 交易模块
+        GameRules.Trade = new Trade(); // 交易模块
         GameRules.Trade.init();
-        // Auction
+        GameRules.Auction = new Auction(); // 拍卖模块
+        GameRules.Auction.init();
         // DeathClearing
         GameRules.ItemManager = new ItemManager();
         GameRules.ItemManager.init();
@@ -201,7 +212,7 @@ export class GameConfig {
 
         this.m_bNoSwap = string.find(GetMapName(), 'no_swap') ? 1 : 0;
         CustomNetTables.SetTableValue('GamingTable', 'game_mode', {
-            typeGameMode: Constant.GAME_MODE,
+            typeGameMode: GAME_MODE,
             bNoSwap: this.m_bNoSwap,
         });
         print('===New GameConfig===Down===');
@@ -648,7 +659,7 @@ export class GameConfig {
         };
         this.broadcastOprt(tabOprt);
         print('===processPrisonOut===GameState:', GameRules.GameLoop.getGameState());
-        this.m_timeOprt = Constant.TIME_OPERATOR;
+        this.m_timeOprt = TIME_OPERATOR;
     }
 
     /**处理打野 */
@@ -863,12 +874,12 @@ export class GameConfig {
                 // 豹子,发送roll点操作
                 this.broadcastOprt({
                     typeOprt: TypeOprt.TO_Roll,
-                    bPrison: tonumber(Constant.PRISON_BAOZI_COUNT - 1 == this.m_nBaoZi),
+                    bPrison: tonumber(PRISON_BAOZI_COUNT - 1 == this.m_nBaoZi),
                     nPlayerID: oPlayer.m_nPlayerID,
                 });
                 // 追加时间
-                if (this.m_timeOprt <= Constant.TIME_BAOZI_YZ) {
-                    this.m_timeOprt = Constant.TIME_BAOZI_YZ + Constant.TIME_BAOZI_ADD;
+                if (this.m_timeOprt <= TIME_BAOZI_YZ) {
+                    this.m_timeOprt = TIME_BAOZI_YZ + TIME_BAOZI_ADD;
                 }
                 return;
             }
@@ -967,7 +978,7 @@ export class GameConfig {
             nRound: this.m_nRound,
         };
 
-        if (Constant.RoundTip[this.m_nRound]) {
+        if (RoundTip[this.m_nRound]) {
             CustomGameEventManager.Send_ServerToAllClients('S2C_round_tip', { sTip: 'false' });
         }
 
@@ -977,12 +988,12 @@ export class GameConfig {
         print('===addRound===tEvtData.isBegin:', tEvtData.isBegin);
         GameRules.GameLoop.m_bRoundBefore = !tEvtData.isBegin;
 
-        if (Constant.RoundTip[this.m_nRound + 1]) {
-            CustomGameEventManager.Send_ServerToAllClients('S2C_round_tip', { sTip: Constant.RoundTip[this.m_nRound + 1] });
+        if (RoundTip[this.m_nRound + 1]) {
+            CustomGameEventManager.Send_ServerToAllClients('S2C_round_tip', { sTip: RoundTip[this.m_nRound + 1] });
         }
 
         // 全图商店
-        if (this.m_nRound == Constant.GLOBAL_SHOP_ROUND) {
+        if (this.m_nRound == GLOBAL_SHOP_ROUND) {
             // 遍历GameRules.Playermanager.m_tabPlayers
             GameRules.PlayerManager.m_tabPlayers.forEach(oPlayer => {
                 oPlayer.setBuyState(BuyState_SideAndSecret, -1);

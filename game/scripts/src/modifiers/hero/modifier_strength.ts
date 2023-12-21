@@ -1,4 +1,4 @@
-import { Constant } from '../../mode/constant';
+import { ATTRIBUTE } from '../../mode/constant';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { BaseModifier, registerModifier } from '../../utils/dota_ts_adapter';
 
@@ -28,10 +28,10 @@ export class modifier_strength extends BaseModifier {
             const nNewStackCount = this.GetStackCount();
             const nChanged = nNewStackCount - stackCount;
 
-            // hParent.SetBaseMaxHealth(hParent.GetMaxHealth() + nChanged * Constant.ATTRIBUTE.STRENGTH_HP);
+            // hParent.SetBaseMaxHealth(hParent.GetMaxHealth() + nChanged * ATTRIBUTE.STRENGTH_HP);
 
             if (hParent.GetPrimaryAttribute() == Attributes.STRENGTH) {
-                const nValue = nChanged * Constant.ATTRIBUTE.PRIMARY_ATTACK_DAMAGE;
+                const nValue = nChanged * ATTRIBUTE.PRIMARY_ATTACK_DAMAGE;
                 hParent.SetBaseDamageMax(hParent.GetBaseDamageMax() + nValue);
                 hParent.SetBaseDamageMin(hParent.GetBaseDamageMin() + nValue);
             }
@@ -41,6 +41,6 @@ export class modifier_strength extends BaseModifier {
         return [ModifierFunction.EXTRA_HEALTH_BONUS];
     }
     GetModifierExtraHealthBonus(): number {
-        return Constant.ATTRIBUTE.STRENGTH_HP * this.GetStackCount();
+        return ATTRIBUTE.STRENGTH_HP * this.GetStackCount();
     }
 }

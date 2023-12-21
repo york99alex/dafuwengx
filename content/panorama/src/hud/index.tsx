@@ -1,7 +1,7 @@
 import 'panorama-polyfill-x/lib/console';
 import 'panorama-polyfill-x/lib/timers';
 
-import { useMemo, type FC } from 'react';
+import { useMemo, type FC, useContext, createContext } from 'react';
 import { render, useNetTableKey } from 'react-panorama-x';
 import { useXNetTableKey } from '../hooks/useXNetTable';
 import { PathPanel } from './PathPanel/components/pathPanel';
@@ -13,6 +13,8 @@ import { BuyItem } from './BuyItem/buyItem';
 import { HudError } from './HudError/hudError';
 import { Tooltip } from './Tooltip/tooltip';
 import { TradePanel } from './Trade/components/tradePanel';
+import { PlayerManager } from './player/playerManager';
+import { GameManager } from './gamemanager';
 
 const Test: FC = () => {
     // const data = useXNetTableKey(`test_table`, `test_key`, { data_1: `HelloWorld` });
@@ -36,8 +38,6 @@ render(
     $.GetContextPanel()
 );
 
-console.log(`Hello, Qing Tian Ge!`);
-
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ACTION_MINIMAP, false);
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_AGHANIMS_STATUS, false);
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_COURIER, false);
@@ -50,3 +50,8 @@ HideHudElement(hud, 'GridNeutralsTab');
 HideHudElement(hud, 'ToggleAdvancedShop');
 HideHudElement(hud, 'inventory_neutral_slot_container');
 // HideHudElement(hud, 'stash');
+
+export const PlayerMgr = new PlayerManager();
+export const GameMgr = new GameManager();
+
+console.log(`Hello, Qing Tian Ge!`);

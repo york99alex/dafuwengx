@@ -4,7 +4,7 @@ import { TSBaseItem } from '../tsBaseItem';
 import { AbilityManager } from '../../ability/abilitymanager';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { Player } from '../../player/player';
-import { Constant } from '../../mode/constant';
+import { HERO_TO_BZ } from '../../mode/constant';
 
 /**
  * 勇气勋章，1500，500甲+500面罩+500石头，5甲，英雄每3回合回复1点蓝，兵卒提升10%回蓝
@@ -37,7 +37,7 @@ export class item_qtg_medallion_of_courage extends TSBaseItem {
         AMHC.AddNewModifier(this.GetCaster(), this.GetCaster(), this, modifier_qtg_medallion_of_courage_debuff.name, {});
         EmitSoundOn('DOTA_Item.MedallionOfCourage.Activate', this.GetCaster());
 
-        if (target == this.GetCaster() || target.GetUnitName().includes(Constant.HERO_TO_BZ[player.m_eHero.GetUnitName()])) {
+        if (target == this.GetCaster() || target.GetUnitName().includes(HERO_TO_BZ[player.m_eHero.GetUnitName()])) {
             // 友军单位buff
             AMHC.AddNewModifier(target, this.GetCaster(), this, modifier_qtg_medallion_of_courage_buff.name, {});
         } else {

@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { PathTradeType, PathType } from '../../path/PathManager';
+import { TRADESTATE } from '../../mode/constant';
 
-export function SelectPathList(props: { pathIDs: number[]; selectID: number; SetSelectID: Function }) {
-    const [isSelect, setSelect] = useState(false);
-
+export function SelectPathList(props: { pathIDs: number[]; selectIDs: number[]; SetSelectIDs: Function; tradeState: number }) {
     function onPathHover(pathID: number, btn: Button) {
         $.GetContextPanel().AddClass('hover');
-        // TODO: 悬浮提示路径信息
+        // 悬浮提示路径信息
         $.DispatchEvent('DOTAShowTextTooltip', btn, $.Localize('#PathName_' + pathID));
     }
 
@@ -17,14 +16,12 @@ export function SelectPathList(props: { pathIDs: number[]; selectID: number; Set
                     return (
                         <Button
                             key={index}
-                            className={'PathSelectButton' + (props.selectID == index && isSelect ? ' Select' : '')}
+                            className={'PathSelectButton' + (props.selectIDs.indexOf(id) > -1 ? ' Select' : '')}
                             onactivate={() => {
-                                if (props.selectID == index && isSelect) {
-                                    props.SetSelectID(-1);
-                                    setSelect(!isSelect);
-                                } else props.SetSelectID(index);
-
-                                if (!isSelect) setSelect(!isSelect);
+                                if (props.tradeState != TRADESTATE.None) return;
+                                if (props.selectIDs.indexOf(id) > -1) {
+                                    props.SetSelectIDs(props.selectIDs.filter(path => path != id));
+                                } else props.SetSelectIDs(props.selectIDs.concat(id));
                             }}
                             onmouseover={btn => onPathHover(id, btn)}
                             onmouseout={btn => $.DispatchEvent('DOTAHideTextTooltip', btn)}

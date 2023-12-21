@@ -1,5 +1,5 @@
 import { item_qtg_tpscroll } from '../item/items/item_qtg_tpscroll';
-import { Constant } from '../mode/constant';
+import { HERO_TO_BANNER, PATH_TOLL_TP, PATH_TO_PRICE, TypePathState } from '../mode/constant';
 import { PS_InPrison, TypeOprt } from '../mode/gamemessage';
 import { modifier_unselect } from '../modifiers/util/modifier_unselect';
 import { Player } from '../player/player';
@@ -19,7 +19,7 @@ export class PathTP extends Path {
         this.m_eCity.AddNewModifier(null, null, modifier_unselect.name, null);
         this.m_eBanner = Entities.FindByName(null, 'bann_' + this.m_nID) as CBaseModelEntity;
         this.setBanner();
-        this.m_nPrice = Constant.PATH_TO_PRICE[this.m_typePath];
+        this.m_nPrice = PATH_TO_PRICE[this.m_typePath];
     }
 
     /** 设置横幅旗帜 */
@@ -29,14 +29,14 @@ export class PathTP extends Path {
             this.m_eBanner.SetOrigin((this.m_eCity.GetOrigin() - Vector(0, 0, 1000)) as Vector);
         } else {
             this.m_eBanner.SetOrigin(this.m_eCity.GetOrigin());
-            this.m_eBanner.SetSkin(Constant.HERO_TO_BANNER[strHeroName] + 1);
+            this.m_eBanner.SetSkin(HERO_TO_BANNER[strHeroName] + 1);
         }
     }
 
     /**设置领主 */
     setOwner(player?: Player) {
         if (player == null) {
-            this.setPathState(Constant.TypePathState.None);
+            this.setPathState(TypePathState.None);
             this.setBanner();
             this.m_nOwnerID = null;
         } else {
@@ -72,7 +72,7 @@ export class PathTP extends Path {
             const playerOwn = GameRules.PlayerManager.getPlayer(this.m_nOwnerID);
             // 领主未进监狱
             if (0 == bit.band(PS_InPrison, playerOwn.m_nPlayerState)) {
-                const nGold = Constant.PATH_TOLL_TP[playerOwn.m_tabMyPath[this.m_typePath].length - 1];
+                const nGold = PATH_TOLL_TP[playerOwn.m_tabMyPath[this.m_typePath].length - 1];
                 player.giveGold(nGold, playerOwn);
                 GameRules.GameConfig.showGold(playerOwn, nGold);
                 GameRules.GameConfig.showGold(player, -nGold);

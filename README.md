@@ -1582,12 +1582,12 @@ GetModifierManaBonus(): number {
     GameRules.EventManager.FireEvent('Event_BZHuiMo', tabEventHuiMo);
     if (tabEventHuiMo.nHuiMoBase > 0) {
         // 给兵卒回魔
-        oVictim.GiveMana(event.damage * Constant.BZ_HUIMO_BEATK_RATE * tabEventHuiMo.nHuiMoBase);
+        oVictim.GiveMana(event.damage * BZ_HUIMO_BEATK_RATE * tabEventHuiMo.nHuiMoBase);
     }
     
     // ===造成伤害===
     // 计算回魔量
-    let nHuiMoRate = eBZ.IsRangedAttacker() ? Constant.BZ_HUIMO_RATE_Y : Constant.BZ_HUIMO_RATE_J;
+    let nHuiMoRate = eBZ.IsRangedAttacker() ? BZ_HUIMO_RATE_Y : BZ_HUIMO_RATE_J;
     let tabEventHuiMo = {
         eBz: eBZ,
         nHuiMoBase: 1,

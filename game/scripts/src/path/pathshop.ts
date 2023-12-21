@@ -1,4 +1,4 @@
-import { Constant } from '../mode/constant';
+import { GLOBAL_SHOP_ROUND } from '../mode/constant';
 import { BuyState_None, BuyState_Secret, BuyState_Side, TP_SHOP_SIDE } from '../mode/gamemessage';
 import { Player } from '../player/player';
 import { Path } from './Path';
@@ -32,7 +32,7 @@ export class PathShop extends Path {
         if (event.player.m_pathCur.m_nID != this.m_nID) return;
         if (event.player.m_pathLast.m_nID == this.m_nID) return;
         print('===PathShop===onEvent_JoinPath===this.m_nID:', this.m_nID);
-        if (GameRules.GameConfig.m_nRound >= Constant.GLOBAL_SHOP_ROUND) return;
+        if (GameRules.GameConfig.m_nRound >= GLOBAL_SHOP_ROUND) return;
         this.setCanBuy(event.player);
     }
 
@@ -40,7 +40,7 @@ export class PathShop extends Path {
     onEvent_LeavePath(event: { player: Player; path: Path }) {
         if (event.path != this) return;
         print('===PathShop===onEvent_LeavePath===this.m_nID:', this.m_nID);
-        if (GameRules.GameConfig.m_nRound >= Constant.GLOBAL_SHOP_ROUND) return;
+        if (GameRules.GameConfig.m_nRound >= GLOBAL_SHOP_ROUND) return;
         event.player.setBuyState(BuyState_None, 0);
     }
 }

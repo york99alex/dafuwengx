@@ -1,4 +1,4 @@
-import { Constant } from '../../mode/constant';
+import { ATTRIBUTE } from '../../mode/constant';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { BaseModifier, registerModifier } from '../../utils/dota_ts_adapter';
 
@@ -29,7 +29,7 @@ export class modifier_agility extends BaseModifier {
             const nChanged = nNewStackCount - stackCount;
 
             if (hParent.GetPrimaryAttribute() == Attributes.AGILITY) {
-                const nValue = nChanged * Constant.ATTRIBUTE.PRIMARY_ATTACK_DAMAGE;
+                const nValue = nChanged * ATTRIBUTE.PRIMARY_ATTACK_DAMAGE;
                 hParent.SetBaseDamageMax(hParent.GetBaseDamageMax() + nValue);
                 hParent.SetBaseDamageMin(hParent.GetBaseDamageMin() + nValue);
             }
@@ -39,9 +39,9 @@ export class modifier_agility extends BaseModifier {
         return [ModifierFunction.ATTACKSPEED_BONUS_CONSTANT, ModifierFunction.PHYSICAL_ARMOR_BONUS];
     }
     GetModifierAttackSpeedBonus_Constant(): number {
-        return Constant.ATTRIBUTE.AGILITY_ATTACK_SPEED * this.GetStackCount();
+        return ATTRIBUTE.AGILITY_ATTACK_SPEED * this.GetStackCount();
     }
     GetModifierPhysicalArmorBonus(event: ModifierAttackEvent): number {
-        return Constant.ATTRIBUTE.AGILITY_PHYSICAL_ARMOR * this.GetStackCount();
+        return ATTRIBUTE.AGILITY_PHYSICAL_ARMOR * this.GetStackCount();
     }
 }

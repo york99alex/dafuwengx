@@ -1,7 +1,7 @@
-import { Constant } from './constant';
+import { TIME_SELECTHERO } from "./constant";
 
 export class HeroSelection {
-    m_timeLast = Constant.TIME_SELECTHERO;
+    m_timeLast = TIME_SELECTHERO;
     m_allHeroName = {};
     m_AllHeroAbility = {};
     m_allSoldierAbility = {};

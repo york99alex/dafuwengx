@@ -1,10 +1,17 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import AuctionActivePanel from './auctionActivePanel';
 import TradeActivePanel from './tradeActivePanel';
+import { PlayerManager } from '../../player/playerManager';
 
 export function TradePanel() {
     const [isTradeOpen, setIsTradeOpen] = useState(false);
     const [isAuctionOpen, setIsAuctionOpen] = useState(false);
+
+    function openTradePanel() {
+        if (isTradeOpen) return;
+        setIsTradeOpen(true);
+        setIsAuctionOpen(false);
+    }
 
     return (
         <Panel className="TradeBody" hittest={false}>
@@ -17,7 +24,7 @@ export function TradePanel() {
             >
                 <Label className="ButtonText" text={$.Localize(`#TradeButtonText`)} />
             </Button>
-            {isTradeOpen && <TradeActivePanel />}
+            {isTradeOpen && <TradeActivePanel openTradePanel={openTradePanel} />}
             {isAuctionOpen && <AuctionActivePanel />}
             <Button
                 className="ButtonBevel TradeButton"

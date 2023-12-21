@@ -3,6 +3,7 @@ import { ItemManager } from '../item/itemmanager';
 import { ItemShare } from '../item/itemshare';
 import { GameLoop } from '../mode/GameLoop';
 import { HeroSelection } from '../mode/HeroSelection';
+import { Auction } from '../mode/auction';
 import { Bot } from '../mode/bot';
 import { Trade } from '../mode/trade';
 import { PathManager } from '../path/PathManager';
@@ -26,6 +27,7 @@ declare global {
         ItemManager: ItemManager;
         ItemShare: ItemShare;
         Trade: Trade;
+        Auction: Auction;
     }
 }
 
