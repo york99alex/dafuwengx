@@ -1,220 +1,568 @@
+/**交易和拍卖的整体Body */
 .TradeBody {
     width: 50%;
     height: 100%;
     horizontal-align: right;
     flow-children: down;
     background-color: rgba(0, 0, 0, 0);
-}
 
-.TradeButton {
-    width: 5%;
-    height: 15%;
-    align: right top;
-    z-index: 0;
-    &.Trade {
-        margin-top: 35%;
-    }
-}
+    /**侧边栏按钮 */
+    .TradeButton {
+        width: 5%;
+        height: 15%;
+        align: right top;
+        z-index: 0;
 
-.ButtonText {
-    font-family: titleFont;
-    font-size: 20px;
-}
+        &.Trade {
+            margin-top: 35%;
+        }
 
-.TradeActivePanel {
-    width: 35%;
-    height: 40%;
-    horizontal-align: right;
-    margin: 30% 5.5% 0 0;
-    background-color: gradient(linear, 0% 0%, 0% 100%, from(#2d2e30), to(#202529));
-    ignore-parent-flow: true;
-    box-shadow: #000000aa 2px 2px 3px 0px;
-    z-index: 1;
-    flow-children: down;
-}
-
-.AuctionActivePanel {
-    width: 35%;
-    height: 40%;
-    horizontal-align: right;
-    margin: 30% 5.5% 0 0;
-    background-color: gradient(linear, 0% 0%, 0% 100%, from(#2d2e30), to(#202529));
-    ignore-parent-flow: true;
-    box-shadow: #000000aa 2px 2px 3px 0px;
-    z-index: 1;
-    flow-children: down;
-}
-
-.TradeTitle {
-    width: 100%;
-    height: 10%;
-    margin-left: 5px;
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 30px;
-    color: rgb(190, 190, 190);
-    text-align: center;
-    font-family: titleFont;
-}
-
-.TradeSelectPlayers {
-    width: 100%;
-    height: 12%;
-    margin: 3px 5px 10px 3px;
-    flow-children: right;
-    background-color: gradient(linear, 0% 0%, 0% 100%, from(#1f1f1f), to(#0b0c0d));
-    border-radius: 3px;
-    border: 1px solid black;
-}
-
-.PlayerSelectButton {
-    padding: 17%;
-    margin-left: 2px;
-    margin-right: 2px;
-    vertical-align: middle;
-    border-radius: 3px;
-
-    opacity: 0.8;
-    brightness: 0.6;
-    wash-color: #acbfdd;
-    background-color: rgba(27, 27, 27, 0.753);
-
-    transition-property: opacity, brightness, wash-color, background-color;
-    transition-duration: 0.1s;
-
-    &:hover {
-        opacity: 1;
-        brightness: 1;
-    }
-
-    &.Select {
-        opacity: 1;
-        brightness: 1;
-        wash-color: none;
-        background-color: gold;
-    }
-}
-
-.TradeSelectPath {
-    width: 100%;
-    height: 32%;
-    margin: 10px 3px 10px 3px;
-    flow-children: right-wrap;
-    overflow: clip scroll;
-    background-color: gradient(linear, 0% 0%, 0% 100%, from(#1f1f1f), to(#0b0c0d));
-    border-radius: 3px;
-    border: 1px solid black;
-}
-
-.PathSelectButton {
-    height: width-percentage(100%);
-    width: 18.5%;
-    margin: 3px 0 0 3px;
-    border-radius: 3px;
-
-    opacity: 0.8;
-    brightness: 0.6;
-
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    wash-color: #acbfdd;
-
-    transition-property: opacity, brightness, wash-color, background-color;
-    transition-duration: 0.1s;
-
-    &:hover {
-        opacity: 1;
-        brightness: 1;
-    }
-
-    &.Select {
-        opacity: 1;
-        brightness: 1;
-        wash-color: none;
-        border: 1px solid gold;
-    }
-}
-
-.TradeOperate {
-    width: 100%;
-    flow-children: right;
-    padding: 0 10px 0 10px;
-    .HorizontalSlider {
-        width: 57%;
-        margin: 5px 10px 0 0;
-    }
-    .PanelTradeGold {
-        .GoldIcon {
-            background-image: url('s2r://panorama/images/hud/reborn/gold_small_psd.vtex');
-            background-size: 100% 100%;
-            width: 26px;
-            height: 26px;
-            horizontal-align: right;
-            vertical-align: center;
-            margin-right: 10px;
+        .ButtonText {
+            font-family: titleFont;
+            font-size: 20px;
         }
     }
-}
 
-.SendTradeButton {
-    horizontal-align: center;
-    vertical-align: center;
-    width: 40%;
-    height: 8%;
-    .SendTradeText {
-        text-overflow: shrink;
+    /**交易面板 */
+    .TradeActivePanel {
+        width: 35%;
+        height: 40%;
+        horizontal-align: right;
+        margin: 30% 5.5% 0 0;
+        background-color: gradient(linear, 0% 0%, 0% 100%, from(#2d2e30), to(#202529));
+        ignore-parent-flow: true;
+        box-shadow: #000000aa 2px 2px 3px 0px;
+        z-index: 1;
+        flow-children: down;
+
+        .TradeTitle {
+            width: 100%;
+            height: 35px;
+            margin-left: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 30px;
+            color: rgb(190, 190, 190);
+            text-align: center;
+            font-family: titleFont;
+        }
+
+        // 选择玩家
+        .TradeSelectPlayers {
+            width: 100%;
+            height: 12%;
+            margin: 3px 5px 10px 3px;
+            flow-children: right;
+            background-color: gradient(linear, 0% 0%, 0% 100%, from(#1f1f1f), to(#0b0c0d));
+            border-radius: 3px;
+            border: 1px solid black;
+
+            .PlayerSelectButton {
+                padding: 17%;
+                margin-left: 2px;
+                margin-right: 2px;
+                vertical-align: middle;
+                border-radius: 3px;
+
+                opacity: 0.8;
+                brightness: 0.6;
+                wash-color: #acbfdd;
+                background-color: rgba(27, 27, 27, 0.753);
+
+                transition-property: opacity, brightness, wash-color, background-color;
+                transition-duration: 0.1s;
+
+                &:hover {
+                    opacity: 1;
+                    brightness: 1;
+                }
+
+                &.Select {
+                    opacity: 1;
+                    brightness: 1;
+                    wash-color: none;
+                    background-color: gold;
+                }
+            }
+        }
+
+        // 选择路径
+        .TradeSelectPath {
+            width: 100%;
+            height: 32%;
+            margin: 10px 3px 10px 3px;
+            flow-children: right-wrap;
+            overflow: clip scroll;
+            background-color: gradient(linear, 0% 0%, 0% 100%, from(#1f1f1f), to(#0b0c0d));
+            border-radius: 3px;
+            border: 1px solid black;
+        }
+
+        // 操作区域：标题、按钮
+        .TradeOperateTitle {
+            width: 100%;
+            height: 6%;
+            flow-children: right;
+
+            .ChangeGold {
+                width: 16%;
+                height: 100%;
+                // horizontal-align: right;
+                margin-bottom: 5px;
+
+                .ChangeGoldText {
+                    width: 100%;
+                    height: 100%;
+                    font-size: 12px;
+                    text-overflow: noclip;
+                    font-weight: bold;
+                }
+
+                &.Up {
+                    margin-right: 8px;
+                }
+                &.Down {
+                    margin-right: 10px;
+                }
+                &.Floor {
+                    margin-left: 16%;
+                    margin-right: 10px;
+                }
+
+                &.ButtonBevel {
+                    padding: 0;
+                }
+            }
+        }
+
+        // 操作区域：滑动条、输入框
+        .TradeOperate {
+            width: 100%;
+            flow-children: right;
+            padding: 0 10px 0 10px;
+
+            .HorizontalSlider {
+                width: 57%;
+                margin: 5px 10px 0 0;
+            }
+
+            .PanelTradeGold {
+                .GoldIcon {
+                    background-image: url('s2r://panorama/images/hud/reborn/gold_small_psd.vtex');
+                    background-size: 100% 100%;
+                    width: 26px;
+                    height: 26px;
+                    horizontal-align: right;
+                    vertical-align: center;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        // 发送按钮
+        .SendTradeButton {
+            horizontal-align: center;
+            vertical-align: center;
+            width: 40%;
+            height: 8%;
+
+            .SendTradeText {
+                text-overflow: shrink;
+            }
+        }
+
+        // 收到交易请求后的确认按钮
+        .CheckTrade {
+            flow-children: right;
+            width: 100%;
+            height: 100%;
+
+            .ConfirmTrade {
+                margin: 10% 0 0 20%;
+                width: 30%;
+                height: 70%;
+            }
+
+            .CancelTrade {
+                margin: 10% 0 0 10%;
+                width: 30%;
+                height: 70%;
+            }
+        }
     }
-}
 
-.CheckTrade {
-    flow-children: right;
-    width: 100%;
-    height: 100%;
-    .ConfirmTrade {
-        margin: 10% 0 0 20%;
-        width: 30%;
-        height: 70%;
+    // 发起拍卖面板
+    .AuctionActivePanel {
+        width: 35%;
+        height: 40%;
+        horizontal-align: right;
+        margin: 30% 5.5% 0 0;
+        background-color: gradient(linear, 0% 0%, 0% 100%, from(#2d2e30), to(#202529));
+        ignore-parent-flow: true;
+        box-shadow: #000000aa 2px 2px 3px 0px;
+        z-index: 1;
+        flow-children: down;
+
+        // 拍卖标题
+        .AuctionTitle {
+            width: 100%;
+            height: 30px;
+            margin-left: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 30px;
+            color: rgb(190, 190, 190);
+            text-align: center;
+            font-family: titleFont;
+        }
+
+        // 拍卖：选择路径
+        .AuctionSelectPath {
+            width: 100%;
+            height: 32%;
+            margin: 10px 3px 0px 3px;
+            flow-children: right-wrap;
+            overflow: clip scroll;
+            background-color: gradient(linear, 0% 0%, 0% 100%, from(#1f1f1f), to(#0b0c0d));
+            border-radius: 3px;
+            border: 1px solid black;
+        }
+
+        // 拍卖：当前价格
+        .AuctionPrice {
+            width: 100%;
+            margin-top: 5px;
+            .TextEntryAuctionPrice {
+                width: 40%;
+                margin-left: 40%;
+                color: #ffcc33;
+            }
+            .GoldIcon {
+                background-image: url('s2r://panorama/images/hud/reborn/gold_small_psd.vtex');
+                background-size: 100% 100%;
+                width: 26px;
+                height: 26px;
+                horizontal-align: right;
+                vertical-align: center;
+                margin-right: 22%;
+            }
+        }
+
+        // 拍卖：按钮操作价格
+        .AuctionPriceButton {
+            width: 100%;
+            height: 6%;
+            margin-top: 8px;
+            flow-children: right;
+
+            .ChangeAuctionGold {
+                width: 25%;
+                height: 100%;
+                margin-left: 6%;
+
+                .ChangeAuctionGoldText {
+                    width: 100%;
+                    height: 100%;
+                    font-size: 15px;
+                    text-overflow: noclip;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        // 发起玩家显示的当前竞拍信息面板
+        .SendBidInfo {
+            width: 100%;
+            height: 13%;
+            margin: 5px 4px 5px 4px;
+            border-radius: 3px;
+            border: 1px solid black;
+            background-color: gradient(linear, 0% 0%, 0% 100%, from(#1f1f1f), to(#0b0c0d));
+            flow-children: right;
+
+            #Icon {
+                width: height-percentage(180%);
+                height: 80%;
+                vertical-align: middle;
+                margin-left: 5px;
+                border: 1px solid black;
+            }
+
+            .PlayerName {
+                width: 100%;
+                height: 50%;
+                font-size: 20px;
+                margin-left: 8px;
+                color: whitesmoke;
+                text-overflow: ellipsis;
+            }
+
+            .BidPriceText {
+                width: 50%;
+                height: 100%;
+                font-size: 20px;
+                text-overflow: noclip;
+                margin-left: 8px;
+            }
+
+            .BidPriceNumber {
+                color: #ffcc33;
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+
+        // 拍卖：发起按钮
+        .SendAuctionButton {
+            width: 45%;
+            height: 7%;
+            margin-bottom: 8px;
+            horizontal-align: center;
+            vertical-align: bottom;
+        }
     }
 
-    .CancelTrade {
-        margin: 10% 0 0 10%;
-        width: 30%;
-        height: 70%;
-    }
-}
+    // 竞拍面板
+    .BidActivePanel {
+        width: 35%;
+        height: 40%;
+        horizontal-align: right;
+        margin: 30% 5.5% 0 0;
+        background-color: gradient(linear, 0% 0%, 0% 100%, from(#2d2e30), to(#202529));
+        ignore-parent-flow: true;
+        box-shadow: #000000aa 2px 2px 3px 0px;
+        z-index: 2;
+        flow-children: down;
 
-.TradeOperateTitle {
-    width: 100%;
-    height: 6%;
-    flow-children: right;
-}
+        // 竞拍标题
+        .BidTitle {
+            width: 100%;
+            height: 30px;
+            margin-left: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 30px;
+            color: rgb(250, 52, 52);
+            text-align: center;
+            font-family: titleFont;
+        }
 
-.ChangeGold {
-    width: 16%;
-    height: 100%;
-    // horizontal-align: right;
-    margin-bottom: 5px;
+        // 竞拍路径
+        .BidSelectPath {
+            width: 100%;
+            height: 15%;
+            margin: 2px 3px 5px 3px;
+            flow-children: right-wrap;
+            overflow: clip scroll;
+            background-color: gradient(linear, 0% 0%, 0% 100%, from(#1f1f1f), to(#0b0c0d));
+            border-radius: 3px;
+            border: 1px solid black;
+        }
 
-    .ChangeGoldText {
-        width: 100%;
-        height: 100%;
-        font-size: 12px;
-        text-overflow: noclip;
-        font-weight: bold;
+        // 发起拍卖玩家信息
+        .SendPlayerInfo {
+            width: 100%;
+            height: 12%;
+            margin: 2px 4px 5px 4px;
+            border-radius: 3px;
+            border: 1px solid black;
+            background-color: gradient(linear, 0% 0%, 0% 100%, from(#1f1f1f), to(#0b0c0d));
+            flow-children: right;
+
+            #Icon {
+                width: height-percentage(170%);
+                height: 90%;
+                vertical-align: middle;
+                margin-left: 3px;
+            }
+
+            .PlayerName {
+                width: 100%;
+                height: 50%;
+                font-size: 20px;
+                margin-left: 8px;
+                color: whitesmoke;
+                text-overflow: ellipsis;
+            }
+
+            .SendPriceText {
+                width: 50%;
+                height: 100%;
+                font-size: 20px;
+                text-overflow: noclip;
+                margin-left: 8px;
+            }
+
+            .SendPriceNumber {
+                color: #ffcc33;
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+
+        // 当前竞拍玩家信息
+        .BidPlayerInfo {
+            width: 100%;
+            height: 12%;
+            margin: 2px 4px 5px 4px;
+            border-radius: 3px;
+            border: 1px solid black;
+            background-color: gradient(linear, 0% 0%, 0% 100%, from(#1f1f1f), to(#0b0c0d));
+            flow-children: right;
+
+            #Icon {
+                width: height-percentage(170%);
+                height: 90%;
+                vertical-align: middle;
+                margin-left: 3px;
+            }
+
+            .PlayerName {
+                width: 100%;
+                height: 50%;
+                font-size: 20px;
+                margin-left: 8px;
+                color: whitesmoke;
+                text-overflow: ellipsis;
+            }
+
+            .BidPriceText {
+                width: 50%;
+                height: 100%;
+                font-size: 20px;
+                text-overflow: noclip;
+                margin-left: 8px;
+            }
+
+            .BidPriceNumber {
+                color: #ffcc33;
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+
+        // 竞拍操作区域：滑动条、输入框
+        .BidOprtPanel {
+            width: 100%;
+            height: 17%;
+            flow-children: right;
+            padding: 0 10px 0 10px;
+
+            .BidSliderAndButton {
+                width: 57%;
+                height: 100%;
+                flow-children: down;
+
+                .HorizontalSlider {
+                    margin: 5px 10px 5px 0;
+                }
+
+                .BidButtons {
+                    width: 100%;
+                    height: 26px;
+                    flow-children: right;
+                    .ChangeBidGold {
+                        width: 26.5%;
+                        height: 100%;
+                        margin-left: 4.5%;
+                        padding: 5% 0 0 0;
+                    }
+
+                    .ChangeBidGoldText {
+                        width: 100%;
+                        height: 100%;
+                        font-size: 14px;
+                        text-overflow: noclip;
+                        font-weight: bold;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .BidNotEnoughGold {
+                width: 57%;
+                height: 60%;
+                margin: 13px 5px 0 0;
+                background-color: red;
+
+                .BidNotEnoughGoldText {
+                    font-size: 22px;
+                    font-weight: bold;
+                    vertical-align: middle;
+                    horizontal-align: center;
+                }
+            }
+
+            .BidPriceText {
+                width: 100%;
+                height: 100%;
+
+                .BidPriceTextEntry {
+                    vertical-align: center;
+                    color: #ffcc33;
+                }
+
+                .GoldIcon {
+                    background-image: url('s2r://panorama/images/hud/reborn/gold_small_psd.vtex');
+                    background-size: 100% 100%;
+                    width: 26px;
+                    height: 26px;
+                    horizontal-align: right;
+                    vertical-align: center;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        // 发送竞拍按钮
+        .SendBidButton {
+            width: 45%;
+            height: 20px;
+            horizontal-align: center;
+            margin-bottom: 3px;
+        }
+
+        .ProgressBar {
+            height: 7px;
+            width: 100%;
+            vertical-align: bottom;
+            background-color: black;
+
+            .CD {
+                background-color: gradient(linear, 0% 0%, 100% 0%, from(#222222ff), to(#b0c3d9));
+                width: 100%;
+                border-radius: 0px;
+            }
+        }
     }
 
-    &.Up {
-        margin-right: 8px;
-    }
-    &.Down {
-        margin-right: 10px;
-    }
-    &.Floor {
-        margin-left: 16%;
-        margin-right: 10px;
-    }
+    // 选择路径按钮（交易拍卖通用）
+    .PathSelectButton {
+        height: width-percentage(100%);
+        width: 18.5%;
+        margin: 3px 0 0 3px;
+        border-radius: 3px;
 
-    &.ButtonBevel {
-        padding: 0;
+        opacity: 0.8;
+        brightness: 0.6;
+
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        wash-color: #acbfdd;
+
+        transition-property: opacity, brightness, wash-color, background-color;
+        transition-duration: 0.1s;
+
+        &:hover {
+            opacity: 1;
+            brightness: 1;
+        }
+
+        &.Select {
+            opacity: 1;
+            brightness: 1;
+            wash-color: none;
+            border: 1px solid gold;
+        }
     }
 }

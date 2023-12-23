@@ -21,10 +21,6 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
     const keyname = ('player_info_' + Players.GetLocalPlayer()) as player_info;
     const nGold = useNetTableKey('GamingTable', keyname)?.nGold ?? 0;
 
-    useEffect(() => {
-        console.log('===TradeActivePanel===selectPlayerID:', selectPlayerID, 'selectPathID:', selectPathIDs);
-    }, [selectPlayerID, selectPathIDs]);
-
     function onSliderChanged(val: number) {
         if (tradeState != TRADESTATE.None) return;
 
@@ -68,14 +64,13 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
     useGameEvent(
         'GM_OperatorFinished',
         event => {
-            console.log('===Trade===GM_OperatorFinished');
-            // console.log(event);
             if (
                 event.typeOprt == TypeOprt.TO_TRADE &&
                 event.nPlayerID == PlayerMgr.playerID &&
                 event.nPlayerIDTrade == PlayerMgr.playerID &&
                 event.nPlayerIDTradeBe == selectPlayerID
             ) {
+                console.log('===Trade===GM_OperatorFinished===【TO_TRADE】', event);
                 if (event.nRequest == 1) {
                     // 发起交易成功，锁定交易面板
                     setTradeState(TRADESTATE.Trade);
@@ -93,14 +88,15 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
                 event.nRequest &&
                 (event.nPlayerIDTrade == PlayerMgr.playerID || event.nPlayerIDTradeBe == PlayerMgr.playerID)
             ) {
-                if(event.nRequest == 1){
+                console.log('===Trade===GM_OperatorFinished===【TO_BE_TRADE】', event);
+                if (event.nRequest == 1) {
                     // 交易成功，重置状态，并提醒玩家
-                }else{
+                } else {
                     // 交易失败
                     GameEvents.SendEventClientSide('dota_hud_error_message', {
                         sequenceNumber: 0,
                         reason: 80,
-                        message: 'Error_Trade_Failed_'+event.nRequest,
+                        message: 'Error_Trade_Failed_' + event.nRequest,
                     });
                 }
                 setTradeState(TRADESTATE.None);
@@ -121,10 +117,8 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
     useGameEvent(
         'GM_Operator',
         event => {
-            console.log('===Trade===Recv===GM_Operator');
-            console.log(event);
-
             if (event.typeOprt == TypeOprt.TO_TRADE_BE && event.nPlayerID == PlayerMgr.playerID && event.nPlayerIDTradeBe == PlayerMgr.playerID) {
+                console.log('===Trade===Recv===GM_Operator===【TO_TRADE_BE】', event);
                 // 收到交易请求，更新交易状态和面板内容
                 setTradeState(TRADESTATE.BeTrade);
                 setSelectPlayerID(event.nPlayerIDTrade!);
@@ -172,7 +166,7 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
     }
 
     return (
-        <Panel className="TradeActivePanel" hittest={true}>
+        <>
             <Label className="TradeTitle" text={tradeState == TRADESTATE.BeTrade ? $.Localize(`#BeTradeTitle`) : $.Localize(`#TradeTitle`)} />
             <Label
                 style={{ marginLeft: '10px' }}
@@ -191,7 +185,7 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
             <Panel className="TradeSelectPath">
                 <SelectPathList
                     // pathIDs={tradeState == TRADESTATE.BeTrade ? tradePaths : [2, 4, 5, 6, 7, 8, 23, 34, 35, 39]}
-                    pathIDs={tradeState == TRADESTATE.BeTrade ? tradePaths : Player.getPlayerPath(Players.GetLocalPlayer())}
+                    pathIDs={Player.getPlayerPath(Players.GetLocalPlayer())}
                     selectIDs={tradeState == TRADESTATE.BeTrade ? tradePaths : selectPathIDs}
                     SetSelectIDs={(ids: number[]) => setSelectPathIDs(ids)}
                     tradeState={tradeState}
@@ -266,6 +260,7 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
                             } else onTextChanged(value);
                         }}
                         enabled={tradeState == TRADESTATE.None}
+                        style={{ color: '#ffcc33' }}
                     />
                     <Panel className="GoldIcon" hittest={false} />
                 </Panel>
@@ -287,6 +282,6 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
                     />
                 </Button>
             )}
-        </Panel>
+        </>
     );
 }

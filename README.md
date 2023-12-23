@@ -1139,34 +1139,34 @@ export const App = () => {	// 根组件
         3. 原因：当新回合开始前会先创建modifier_cd再通过Event_PlayerRoundBegin减少countCD，所以modifier_cd的Think会
         4. 导致错误的情况是，countCD会在回合内减一
 
-10. 给钱异常
+11. 给钱异常
 
-11. 实现CamerManage的前端部分
+12. 实现CamerManage的前端部分
          检查pa一技能使用后镜头是否正确移动
 
-12. 音效:
+13. 音效:
 
       1. 玩家回合倒计时结束自动骰子时声音异常Roll声音会重复发出
 
-13. huderror前端部分实现
+14. huderror前端部分实现
 
-14. GameLoop需重新调整的点
+15. GameLoop需重新调整的点
 
           1. 切换状态是否需要封装？
           2. 新增GSRoundBefore
           3. 重新理清状态图
           0.7(0.3*(1-y))*x=0.98
 
-15. ~~Player.setState重写~~，替换为setPlayerState
+16. ~~Player.setState重写~~，替换为setPlayerState
 
          -  遗留问题: BKB魔法免疫问题
            - 屠夫钩子对bkb
 
-16. 在一个合适的时机通过后端事件通知前端关闭操作提示框
+17. 在一个合适的时机通过后端事件通知前端关闭操作提示框
 
-17. 检查setPlayerMuteTrade能否生效
+18. 检查setPlayerMuteTrade能否生效
 
-18. ==前端相关==
+19. ==前端相关==
 
           1. 关闭以下前端页面:
                  1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
@@ -1180,25 +1180,25 @@ export const App = () => {	// 根组件
           
           4. 移除天赋树属性面板
 
-19. 本地化翻译所有this.m_strCastError
+20. 本地化翻译所有this.m_strCastError
 
-20. ~~setKillCountAdd源码逻辑是否合理~~
+21. ~~setKillCountAdd源码逻辑是否合理~~
 
-21. 重写了技能tsbaseability的GetCastRange
+22. 重写了技能tsbaseability的GetCastRange
 
          1. 需要分清不同技能的情况
          2. 默认重写的tsbaseability中的getcastrange是以路径ID为距离计算返回的整数
          3. 如果分情况需要再对应的技能里重写getcastrange
          4. ==TODO==：调整PA技能范围为格数，而非距离
 
-22. 游戏记录模块 game_record客户端操作, 更新记录面板
+23. 游戏记录模块 game_record客户端操作, 更新记录面板
 
-23. 分开事件, 分开发送？可能没有必要，待确认
+24. 分开事件, 分开发送？可能没有必要，待确认
 
-24. ~~PlaySort与机器人的情况有点问题,总是021~~
+25. ~~PlaySort与机器人的情况有点问题,总是021~~
          注意使用RandInt方法来生成随机数
 
-25. 添加 unit 
+26. 添加 unit 
 
              1. "path_17_diao"
                  	{
@@ -1218,38 +1218,38 @@ export const App = () => {	// 根组件
          1. setDiaoGesture 雕哥施法检查
          2. 雕哥施法鬼畜，第一个飓风不会消除
 
-26. PathRune
+27. PathRune
 
-27. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+28. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
 
-28. Roll点的随机路径平衡机制数值思考
+29. Roll点的随机路径平衡机制数值思考
 
-29. 检查网表GamingTable的nSumGold总资产计算是否正确
+30. 检查网表GamingTable的nSumGold总资产计算是否正确
 
-30. addon_schinese.txt :		"RandomTip"						"随机英雄"
+31. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
-31. 统一所有英雄移速 ? 重新设计移速，290力量300全才/智力310敏捷，再根据强弱适当调整
+32. 统一所有英雄移速 ? 重新设计移速，290力量300全才/智力310敏捷，再根据强弱适当调整
 
-32. 检查FireEvent的args参数为空的情况
+33. 检查FireEvent的args参数为空的情况
 
-33. /**设置结算数据 */
+34. /**设置结算数据 */
              setGameEndData(){}
 
-34. ~~==sendMsg和broadcastMsg的tabData格式==~~
+35. ~~==sendMsg和broadcastMsg的tabData格式==~~
 
-35. ~~gamestate的计时器update是0.1调用一次~~
+36. ~~gamestate的计时器update是0.1调用一次~~
 
-36. ~~// 监听玩家移动回路径~~
+37. ~~// 监听玩家移动回路径~~
 
-37. ~~onMove如何处理gamestateloop~~
+38. ~~onMove如何处理gamestateloop~~
 
-38. 英雄经验系统/数值
+39. 英雄经验系统/数值
 
-39. 客户端,前端 请求传输数据缩减
+40. 客户端,前端 请求传输数据缩减
 
-40. 考虑把莉娜的兵卒技能换成光击阵
+41. 考虑把莉娜的兵卒技能换成光击阵
 
-41. 验证AMHC.Damage
+42. 验证AMHC.Damage
              ```
                          if (tData) {
                              for (const v of tData) {
@@ -1258,26 +1258,26 @@ export const App = () => {	// 根组件
                          }
              ```
 
-42. HudError:FireLocalizeError
+43. HudError:FireLocalizeError
 
-43. ~~Script Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
+44. ~~Script Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
              ~~stack traceback:~~
              ~~[C]: in function '__index'~~
 
          通过  if (IsClient())  return 解决
           但是为什么? 原因? 如何理解
 
-44. custom_sounds 有问题
+45. custom_sounds 有问题
 
              Failed loading resource "soundevents/custom_sounds.vsndevts_c" (ERROR_BADREQUEST: Code error - bad request)
              参考
 
-45. 天赋树
+46. 天赋树
 
          1. 龙骑 2024年1月是哪年的冬季呢
          2. 炸弹人 问涛宝
 
-46. 出狱思路:
+47. 出狱思路:
 
          1. 进入新的回合开始, onEvent_PlayerRoundBegin
              1. 如果在监狱
@@ -1297,11 +1297,13 @@ export const App = () => {	// 根组件
                  2. roll点走到监狱路径
                      - onPath ==> setInPrison
 
-47. 注意前端面板应该仅展示给对应的玩家
+48. 注意前端面板应该仅展示给对应的玩家
 
-48. 做一个动画效果,肉山大转盘, 可以不花钱投,但是轮盘概率会很小中将,
+49. 做一个动画效果,肉山大转盘, 可以不花钱投,但是轮盘概率会很小中将,
         如果给100,中将的就会轮盘区域就会动画过渡变大
         给更多变更大
+
+50. 考虑是否加入玩家交易次数限制，类似商店购买次数
 
 
 ## 注意/调整
@@ -1445,6 +1447,10 @@ GSWaitOprt_Entry()执行Roll点,调用GameConfig.processRoll()方法{
 - 小狗
 - 尸王
 - 炸弹人
+
+
+
+沉默：兵卒：沉默光环，附近英雄不能使用技能
 
 
 

@@ -23,21 +23,6 @@ const Test: FC = () => {
     return <></>;
 };
 
-render(
-    <>
-        {/* <Test /> */}
-        <CountDown />
-        <CardPanel />
-        <PathPanel />
-        <PrisonPanel />
-        <BuyItem />
-        <HudError />
-        <Tooltip />
-        <TradePanel />
-    </>,
-    $.GetContextPanel()
-);
-
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ACTION_MINIMAP, false);
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_AGHANIMS_STATUS, false);
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_COURIER, false);
@@ -53,5 +38,20 @@ HideHudElement(hud, 'inventory_neutral_slot_container');
 
 export const PlayerMgr = new PlayerManager();
 export const GameMgr = new GameManager();
+
+render(
+    <>
+        {/* <Test /> */}
+        <CountDown />
+        <CardPanel />
+        <PathPanel />
+        <PrisonPanel />
+        <BuyItem />
+        <HudError />
+        <Tooltip />
+        <TradePanel />
+    </>,
+    $.GetContextPanel()
+);
 
 console.log(`Hello, Qing Tian Ge!`);

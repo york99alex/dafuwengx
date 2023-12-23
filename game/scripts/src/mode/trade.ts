@@ -266,9 +266,9 @@ export class Trade {
     }
 }
 
-export function PrintSendData(title, data) {
+function PrintSendData(title, data) {
     print('===============================================');
-    print('8Trade->', title);
+    print('===Trade->', title);
     DeepPrintTable(data);
     print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 }

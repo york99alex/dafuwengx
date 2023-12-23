@@ -39,18 +39,8 @@ declare interface CustomGameEventDeclarations {
         nPlayerIDTrade?: PlayerID;
         nPlayerIDTradeBe?: PlayerID;
         json?: any;
-        // jPlayerTrade?: {
-        //     nPlayerTrade: {
-        //         nPlayerTradeID: number;
-        //         nGold: number;
-        //         arrPath: number[];
-        //     };
-        //     nPlayerBeTrade: {
-        //         nPlayerBeTradeID: number;
-        //         nGold: number;
-        //         arrPath: number[];
-        //     };
-        // };
+        // 拍卖
+        nSendPlayerID?: PlayerID;
     };
 
     GM_OperatorFinished: {
@@ -72,6 +62,9 @@ declare interface CustomGameEventDeclarations {
         nPlayerIDTrade?: PlayerID;
         nPlayerIDTradeBe?: PlayerID;
         json?: any;
+        // 拍卖
+        nSendPlayerID?: PlayerID;
+        nGold?: number;
     };
 
     // S2C_GM_OperatorFinished: {

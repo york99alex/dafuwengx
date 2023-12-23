@@ -36,3 +36,21 @@ export const TRADESTATE = {
     Trade: 1,
     BeTrade: 2,
 };
+
+export const AUCTIONSTATE = {
+    None: 0,
+    SendAndWait: 1,
+    Bid: 2,
+};
+
+export const BIDSTATE = {
+    Cannt: -1,
+    None: 0,
+    Wait: 1,
+    Finish: 2,
+};
+
+/**拍卖最低加价 */
+export const AUCTION_ADD_GOLD: number = 50;
+/**竞拍倒计时时间 0.1s */
+export const AUCTION_BID_TIME: number = 100;

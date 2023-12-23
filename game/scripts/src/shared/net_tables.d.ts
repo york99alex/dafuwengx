@@ -19,229 +19,233 @@ declare interface CustomNetTableDeclarations {
     };
     GamingTable: {
         game_mode: {
-            typeGameMode: number
-            bNoSwap: 1 | 0
-        }
-        timeOprt: { time: number }
+            typeGameMode: number;
+            bNoSwap: 1 | 0;
+        };
+        timeOprt: { time: number };
         order: {
-            nPlayerID: number
-            heroName: string
-        }
-        round: { nRound: number }
-        state: { typeState: number }
-        change_gold: any
-        all_playerids: any
+            nPlayerID: number;
+            heroName: string;
+        };
+        round: { nRound: number };
+        state: { typeState: number };
+        change_gold: any;
+        all_playerids: any;
+        auction: {
+            remaining: number;
+            bidData: any;
+        };
         player_info_0: {
-            bRoundFinished: 1 | 0
-            nPathCurID: number
-            nSteamID64: number
-            nSteamID32: any
-            bDisconnect?: 1 | 0
-            nGold?: number
-            nSumGold?: number
-            tabPath?: any
-            tabPathHasBZ?: any
-            nCard?: number
-            nCDSub?: number
-            nManaSub?: number
-            nKill?: number
-            nGCLD?: number
-            nBuyItem?: number
-            typeBuyState?: number
-            bDeathClearing?: 1 | 0
-            nOprtOrder?: number
-            tMuteTradePlayers?: any
-            typeTeam?: number
-            bDie?: 1 | 0
-            tabCanCastCard?: any
-        }
+            bRoundFinished: 1 | 0;
+            nPathCurID: number;
+            nSteamID64: number;
+            nSteamID32: any;
+            bDisconnect?: 1 | 0;
+            nGold?: number;
+            nSumGold?: number;
+            tabPath?: any;
+            tabPathHasBZ?: any;
+            nCard?: number;
+            nCDSub?: number;
+            nManaSub?: number;
+            nKill?: number;
+            nGCLD?: number;
+            nBuyItem?: number;
+            typeBuyState?: number;
+            bDeathClearing?: 1 | 0;
+            nOprtOrder?: number;
+            tMuteTradePlayers?: any;
+            typeTeam?: number;
+            bDie?: 1 | 0;
+            tabCanCastCard?: any;
+        };
         player_info_1: {
-            bRoundFinished: 1 | 0
-            nPathCurID: number
-            nSteamID64: number
-            nSteamID32: any
-            bDisconnect?: 1 | 0
-            nGold?: number
-            nSumGold?: number
-            tabPath?: any
-            tabPathHasBZ?: any
-            nCard?: number
-            nCDSub?: number
-            nManaSub?: number
-            nKill?: number
-            nGCLD?: number
-            nBuyItem?: number
-            typeBuyState?: number
-            bDeathClearing?: 1 | 0
-            nOprtOrder?: number
-            tMuteTradePlayers?: any
-            typeTeam?: number
-            bDie?: 1 | 0
-            tabCanCastCard?: any
-        }
+            bRoundFinished: 1 | 0;
+            nPathCurID: number;
+            nSteamID64: number;
+            nSteamID32: any;
+            bDisconnect?: 1 | 0;
+            nGold?: number;
+            nSumGold?: number;
+            tabPath?: any;
+            tabPathHasBZ?: any;
+            nCard?: number;
+            nCDSub?: number;
+            nManaSub?: number;
+            nKill?: number;
+            nGCLD?: number;
+            nBuyItem?: number;
+            typeBuyState?: number;
+            bDeathClearing?: 1 | 0;
+            nOprtOrder?: number;
+            tMuteTradePlayers?: any;
+            typeTeam?: number;
+            bDie?: 1 | 0;
+            tabCanCastCard?: any;
+        };
         player_info_2: {
-            bRoundFinished: 1 | 0
-            nPathCurID: number
-            nSteamID64: number
-            nSteamID32: any
-            bDisconnect?: 1 | 0
-            nGold?: number
-            nSumGold?: number
-            tabPath?: any
-            tabPathHasBZ?: any
-            nCard?: number
-            nCDSub?: number
-            nManaSub?: number
-            nKill?: number
-            nGCLD?: number
-            nBuyItem?: number
-            typeBuyState?: number
-            bDeathClearing?: 1 | 0
-            nOprtOrder?: number
-            tMuteTradePlayers?: any
-            typeTeam?: number
-            bDie?: 1 | 0
-            tabCanCastCard?: any
-        }
+            bRoundFinished: 1 | 0;
+            nPathCurID: number;
+            nSteamID64: number;
+            nSteamID32: any;
+            bDisconnect?: 1 | 0;
+            nGold?: number;
+            nSumGold?: number;
+            tabPath?: any;
+            tabPathHasBZ?: any;
+            nCard?: number;
+            nCDSub?: number;
+            nManaSub?: number;
+            nKill?: number;
+            nGCLD?: number;
+            nBuyItem?: number;
+            typeBuyState?: number;
+            bDeathClearing?: 1 | 0;
+            nOprtOrder?: number;
+            tMuteTradePlayers?: any;
+            typeTeam?: number;
+            bDie?: 1 | 0;
+            tabCanCastCard?: any;
+        };
         player_info_3: {
-            bRoundFinished: 1 | 0
-            nPathCurID: number
-            nSteamID64: number
-            nSteamID32: any
-            bDisconnect?: 1 | 0
-            nGold?: number
-            nSumGold?: number
-            tabPath?: any
-            tabPathHasBZ?: any
-            nCard?: number
-            nCDSub?: number
-            nManaSub?: number
-            nKill?: number
-            nGCLD?: number
-            nBuyItem?: number
-            typeBuyState?: number
-            bDeathClearing?: 1 | 0
-            nOprtOrder?: number
-            tMuteTradePlayers?: any
-            typeTeam?: number
-            bDie?: 1 | 0
-            tabCanCastCard?: any
-        }
+            bRoundFinished: 1 | 0;
+            nPathCurID: number;
+            nSteamID64: number;
+            nSteamID32: any;
+            bDisconnect?: 1 | 0;
+            nGold?: number;
+            nSumGold?: number;
+            tabPath?: any;
+            tabPathHasBZ?: any;
+            nCard?: number;
+            nCDSub?: number;
+            nManaSub?: number;
+            nKill?: number;
+            nGCLD?: number;
+            nBuyItem?: number;
+            typeBuyState?: number;
+            bDeathClearing?: 1 | 0;
+            nOprtOrder?: number;
+            tMuteTradePlayers?: any;
+            typeTeam?: number;
+            bDie?: 1 | 0;
+            tabCanCastCard?: any;
+        };
         player_info_4: {
-            bRoundFinished: 1 | 0
-            nPathCurID: number
-            nSteamID64: number
-            nSteamID32: any
-            bDisconnect?: 1 | 0
-            nGold?: number
-            nSumGold?: number
-            tabPath?: any
-            tabPathHasBZ?: any
-            nCard?: number
-            nCDSub?: number
-            nManaSub?: number
-            nKill?: number
-            nGCLD?: number
-            nBuyItem?: number
-            typeBuyState?: number
-            bDeathClearing?: 1 | 0
-            nOprtOrder?: number
-            tMuteTradePlayers?: any
-            typeTeam?: number
-            bDie?: 1 | 0
-            tabCanCastCard?: any
-        }
+            bRoundFinished: 1 | 0;
+            nPathCurID: number;
+            nSteamID64: number;
+            nSteamID32: any;
+            bDisconnect?: 1 | 0;
+            nGold?: number;
+            nSumGold?: number;
+            tabPath?: any;
+            tabPathHasBZ?: any;
+            nCard?: number;
+            nCDSub?: number;
+            nManaSub?: number;
+            nKill?: number;
+            nGCLD?: number;
+            nBuyItem?: number;
+            typeBuyState?: number;
+            bDeathClearing?: 1 | 0;
+            nOprtOrder?: number;
+            tMuteTradePlayers?: any;
+            typeTeam?: number;
+            bDie?: 1 | 0;
+            tabCanCastCard?: any;
+        };
         player_info_5: {
-            bRoundFinished: 1 | 0
-            nPathCurID: number
-            nSteamID64: number
-            nSteamID32: any
-            bDisconnect?: 1 | 0
-            nGold?: number
-            nSumGold?: number
-            tabPath?: any
-            tabPathHasBZ?: any
-            nCard?: number
-            nCDSub?: number
-            nManaSub?: number
-            nKill?: number
-            nGCLD?: number
-            nBuyItem?: number
-            typeBuyState?: number
-            bDeathClearing?: 1 | 0
-            nOprtOrder?: number
-            tMuteTradePlayers?: any
-            typeTeam?: number
-            bDie?: 1 | 0
-            tabCanCastCard?: any
-        }
+            bRoundFinished: 1 | 0;
+            nPathCurID: number;
+            nSteamID64: number;
+            nSteamID32: any;
+            bDisconnect?: 1 | 0;
+            nGold?: number;
+            nSumGold?: number;
+            tabPath?: any;
+            tabPathHasBZ?: any;
+            nCard?: number;
+            nCDSub?: number;
+            nManaSub?: number;
+            nKill?: number;
+            nGCLD?: number;
+            nBuyItem?: number;
+            typeBuyState?: number;
+            bDeathClearing?: 1 | 0;
+            nOprtOrder?: number;
+            tMuteTradePlayers?: any;
+            typeTeam?: number;
+            bDie?: 1 | 0;
+            tabCanCastCard?: any;
+        };
         path_info: {
             vPos: {
-                x: number
-                y: number
-                z: number
-            }
-        }[]
-        game_record: any
-        trade:{
-            tabWaitTrade: any
-        }
-    }
+                x: number;
+                y: number;
+                z: number;
+            };
+        }[];
+        game_record: any;
+        trade: {
+            tabWaitTrade: any;
+        };
+    };
 
     EndTable: {
         player_info_0: {
-            nDamageBZ: number,
-            nDamageHero: number,
-            nGCLD: number,
-            nGoldMax: number,
-            nKill: number,
-            nRank: number,
-            nReward: 0,
-        }
+            nDamageBZ: number;
+            nDamageHero: number;
+            nGCLD: number;
+            nGoldMax: number;
+            nKill: number;
+            nRank: number;
+            nReward: 0;
+        };
         player_info_1: {
-            nDamageBZ: number,
-            nDamageHero: number,
-            nGCLD: number,
-            nGoldMax: number,
-            nKill: number,
-            nRank: number,
-            nReward: 0,
-        }
+            nDamageBZ: number;
+            nDamageHero: number;
+            nGCLD: number;
+            nGoldMax: number;
+            nKill: number;
+            nRank: number;
+            nReward: 0;
+        };
         player_info_2: {
-            nDamageBZ: number,
-            nDamageHero: number,
-            nGCLD: number,
-            nGoldMax: number,
-            nKill: number,
-            nRank: number,
-            nReward: 0,
-        }
+            nDamageBZ: number;
+            nDamageHero: number;
+            nGCLD: number;
+            nGoldMax: number;
+            nKill: number;
+            nRank: number;
+            nReward: 0;
+        };
         player_info_3: {
-            nDamageBZ: number,
-            nDamageHero: number,
-            nGCLD: number,
-            nGoldMax: number,
-            nKill: number,
-            nRank: number,
-            nReward: 0,
-        }
+            nDamageBZ: number;
+            nDamageHero: number;
+            nGCLD: number;
+            nGoldMax: number;
+            nKill: number;
+            nRank: number;
+            nReward: 0;
+        };
         player_info_4: {
-            nDamageBZ: number,
-            nDamageHero: number,
-            nGCLD: number,
-            nGoldMax: number,
-            nKill: number,
-            nRank: number,
-            nReward: 0,
-        }
+            nDamageBZ: number;
+            nDamageHero: number;
+            nGCLD: number;
+            nGoldMax: number;
+            nKill: number;
+            nRank: number;
+            nReward: 0;
+        };
         player_info_5: {
-            nDamageBZ: number,
-            nDamageHero: number,
-            nGCLD: number,
-            nGoldMax: number,
-            nKill: number,
-            nRank: number,
-            nReward: 0,
-        }
-    }
+            nDamageBZ: number;
+            nDamageHero: number;
+            nGCLD: number;
+            nGoldMax: number;
+            nKill: number;
+            nRank: number;
+            nReward: 0;
+        };
+    };
 }

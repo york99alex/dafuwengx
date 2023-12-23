@@ -24,8 +24,11 @@ export function TradePanel() {
             >
                 <Label className="ButtonText" text={$.Localize(`#TradeButtonText`)} />
             </Button>
-            {isTradeOpen && <TradeActivePanel openTradePanel={openTradePanel} />}
-            {isAuctionOpen && <AuctionActivePanel />}
+            <Panel className="TradeActivePanel" style={{ visibility: isTradeOpen ? 'visible' : 'collapse' }} hittest={isTradeOpen}>
+                <TradeActivePanel openTradePanel={openTradePanel} />
+            </Panel>
+            <AuctionActivePanel isAuctionOpen={isAuctionOpen} setIsAuctionOpen={setIsAuctionOpen} />
+
             <Button
                 className="ButtonBevel TradeButton"
                 onactivate={() => {
