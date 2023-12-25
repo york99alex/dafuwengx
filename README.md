@@ -2022,6 +2022,12 @@ ItemShare
 
 
 
+## 死亡清算
+
+Player.setGold时判断金币是否小于0，触发 DeathClearing.EvtID.Event_TO_SendDeathClearing
+
+
+
 # 开发草稿
 
 - player 

@@ -5,6 +5,7 @@ import { GameLoop } from '../mode/GameLoop';
 import { HeroSelection } from '../mode/HeroSelection';
 import { Auction } from '../mode/auction';
 import { Bot } from '../mode/bot';
+import { DeathClearing } from '../mode/deathclearing';
 import { Trade } from '../mode/trade';
 import { PathManager } from '../path/PathManager';
 import { PlayerManager } from '../player/playermanager';
@@ -28,6 +29,7 @@ declare global {
         ItemShare: ItemShare;
         Trade: Trade;
         Auction: Auction;
+        DeathClearing: DeathClearing;
     }
 }
 

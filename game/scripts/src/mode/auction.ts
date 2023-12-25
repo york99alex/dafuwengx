@@ -208,12 +208,20 @@ export class Auction {
     /**路径被攻城略地
      */
     onPathGCLD(event: { entity: CDOTA_BaseNPC_Hero; path: PathDomain }) {
-        
+        if (this.state == this.aucState.finish) return;
+        const tabPath = Object.values(this.sendData.json);
+        for (const pathID of tabPath) {
+            if (pathID == event.path.m_nID) {
+                this.Cancle(-1);
+                return;
+            }
+        }
     }
 
     /**拍卖玩家死亡 */
     onPlayerDie(event: { player: Player }) {
-
+        if (this.state == this.aucState.finish) return;
+        if (event.player.m_nPlayerID == this.sendPlayerID) this.Cancle(-2);
     }
 
     /**检查玩家路径 */

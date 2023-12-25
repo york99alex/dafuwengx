@@ -286,7 +286,7 @@ export class Player {
         CustomNetTables.SetTableValue('GamingTable', keyname, info);
 
         if (lastnGold >= 0 != nGold >= 0) {
-            GameRules.EventManager.FireEvent('Event_TO_SendDeathClearing', { nPlayerId: this.m_nPlayerID });
+            GameRules.EventManager.FireEvent('Event_TO_SendDeathClearing', { nPlayerID: this.m_nPlayerID });
         }
 
         Timers.CreateTimer(0.1, () => {

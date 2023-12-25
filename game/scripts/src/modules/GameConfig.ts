@@ -202,7 +202,8 @@ export class GameConfig {
         GameRules.Trade.init();
         GameRules.Auction = new Auction(); // 拍卖模块
         GameRules.Auction.init();
-        // DeathClearing
+        GameRules.DeathClearing = new DeathClearing(); // 死亡清算
+        GameRules.DeathClearing.init();
         GameRules.ItemManager = new ItemManager();
         GameRules.ItemManager.init();
         // Selection
