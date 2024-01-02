@@ -35,6 +35,7 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
 
     /**发送交易请求 */
     function sendTrade() {
+        if (tradeState == TRADESTATE.Trade) return;
         if (selectPlayerID == -1 || tradeState != TRADESTATE.None) {
             // 检查合法性
             GameEvents.SendEventClientSide('dota_hud_error_message', {
@@ -57,6 +58,8 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
                     },
                 },
             });
+            // 发起交易，锁定交易面板
+            setTradeState(TRADESTATE.Trade);
         }
     }
 
@@ -64,6 +67,8 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
     useGameEvent(
         'GM_OperatorFinished',
         event => {
+            console.log('===Trade===GM_OperatorFinished===0===', event);
+            console.log('===Trade===selectPlayerID:', selectPlayerID, 'playerID:', PlayerMgr.playerID);
             if (
                 event.typeOprt == TypeOprt.TO_TRADE &&
                 event.nPlayerID == PlayerMgr.playerID &&
@@ -73,7 +78,7 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
                 console.log('===Trade===GM_OperatorFinished===【TO_TRADE】', event);
                 if (event.nRequest == 1) {
                     // 发起交易成功，锁定交易面板
-                    setTradeState(TRADESTATE.Trade);
+                    // setTradeState(TRADESTATE.Trade);
                 } else {
                     // 发起交易失败
                     GameEvents.SendEventClientSide('dota_hud_error_message', {
@@ -81,6 +86,7 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
                         reason: 80,
                         message: 'Error_Trade_Failed',
                     });
+                    setTradeState(TRADESTATE.None);
                 }
             } else if (
                 // 交易完成后的回包

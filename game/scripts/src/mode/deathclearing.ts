@@ -59,8 +59,13 @@ export class DeathClearing {
                     break;
             }
             GameRules.EventManager.Register(EvtID, () => {
+                print('===Event_Wait_Over===0');
                 if (player.GetGold() < 0 && !player.m_bDie) {
-                    if (this.mDCPlayers.indexOf(player.m_nPlayerID) == -1) this.StartDC(player.m_nPlayerID);
+                    print('===Event_Wait_Over===1');
+                    if (this.mDCPlayers.indexOf(player.m_nPlayerID) == -1) {
+                        this.StartDC(player.m_nPlayerID);
+                        print('===Event_Wait_Over===2');
+                    }
                 }
                 return true;
             });
@@ -94,7 +99,7 @@ export class DeathClearing {
         print('===DeathClearing===StartDC-Before GameLoop.state:' + GameRules.GameLoop.getGameState());
         GameRules.GameLoop.GameStateService.send('todeathclearing');
         GameRules.GameConfig.setOrder(playerID);
-        GameRules.GameConfig.m_timeOprt = TIME_OPERATOR * 1.5;
+        GameRules.GameConfig.m_timeOprt = math.ceil(TIME_OPERATOR * 1.5);
 
         // 设置亡国清算状态，暂停其他操作
         GameRules.GameConfig.m_tabOprtCan = GameRules.GameConfig.m_tabOprtCan.filter(v => v.typeOprt != TypeOprt.TO_DeathClearing);

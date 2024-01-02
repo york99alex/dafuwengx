@@ -44,7 +44,7 @@ export function ActivateModules() {
         // 初始化所有的GameRules模块
         GameRules.XNetTable = new XNetTable();
         GameRules.GameConfig = new GameConfig();
-        // Bot.init();
+        Bot.init();
 
         // 初始化测试模块xD
         new Debug();

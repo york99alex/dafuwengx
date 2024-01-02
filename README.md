@@ -1062,6 +1062,7 @@ export const App = () => {	// 根组件
    6. Modifier name modifier_ability_BZ_pudge_rot_debuff is not lowercase.
           Because CModifierFactoryDictionary is case sensitive, you have probably introduced a bug.
    7. 检查旧兵卒没有新兵卒地的buff问题
+   8. 攻城有bug
 
 5. ==路径相关==
 
@@ -1179,6 +1180,7 @@ export const App = () => {	// 根组件
           3. 禁用天赋树点击事件 参考http://www.dota2rpg.com/forum.php?mod=viewthread&tid=4491&highlight=%3F%3F%3F
           
           4. 移除天赋树属性面板
+          5. 操作面板提示：被野怪打死，结束打野，进入地狱
 
 20. 本地化翻译所有this.m_strCastError
 

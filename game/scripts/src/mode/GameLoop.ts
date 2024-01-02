@@ -210,10 +210,11 @@ export class GameLoop {
             DeepPrintTable(tabOprt);
             GameRules.GameConfig.broadcastOprt(tabOprt);
             // 进入等待操作阶段
-            this.Timer(() => {
-                this.GameStateService.send('towaitoprt');
-                return null;
-            }, 0);
+            if (GameRules.GameConfig.m_typeState != GS_DeathClearing)
+                this.Timer(() => {
+                    this.GameStateService.send('towaitoprt');
+                    return null;
+                }, 0);
             if (oPlayer.m_bDisconnect) {
                 GameRules.GameConfig.m_timeOprt = TIME_OPERATOR_DISCONNECT;
             } else {
@@ -225,6 +226,10 @@ export class GameLoop {
     GSBegin_Exit() {}
 
     GSWaitOprt_Entry() {
+        if (this.getGameState() == 'GSDeathClearing') {
+            this.setGameState(GS_DeathClearing);
+            return;
+        }
         this.setGameState(GS_WaitOperator);
         print('GameState_GSWaitOprt_Entry');
         let hasUrgent = false;
@@ -321,7 +326,7 @@ export class GameLoop {
         this.Timer(() => {
             GameRules.GameConfig.updateTimeOprt();
             const timeOprt = GameRules.GameConfig.m_timeOprt;
-            // print("timeOprt:", timeOprt)
+            print('timeOprt:', timeOprt);
             if (timeOprt < 0) {
                 // 时间结束,自动操作
                 print('自动操作');
@@ -337,6 +342,7 @@ export class GameLoop {
     }
 
     GSDeathClearing_Exit() {
+        print('GameState_GSDeathClearing_Exit');
         //TODO: 死亡清算?
     }
 

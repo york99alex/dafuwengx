@@ -523,6 +523,8 @@ BidFinishTitle,,拍卖完成
 BidFinishPanelTitle,,最终价格：
 FinishBidButton,,确认
 SendPriceText,,起拍价格：
+FinishRound,,结束回合
+FinishDC,,结束清算
 
 PathName_1,,起点
 PathName_2,,秘密宝藏

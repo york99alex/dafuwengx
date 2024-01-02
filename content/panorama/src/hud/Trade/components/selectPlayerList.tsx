@@ -19,7 +19,6 @@ export default function SelectPlayerList(props: { ids: PlayerID[]; selectPlayerI
 
                         if (!isSelect) setSelect(!isSelect);
                     }}
-                    onmouseover={() => $.GetContextPanel().AddClass('hover')}
                 >
                     <DOTAHeroImage heroname={Players.GetPlayerSelectedHero(id)} heroimagestyle="icon" />
                 </Button>

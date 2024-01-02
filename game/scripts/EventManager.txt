@@ -170,3 +170,11 @@
                     }
 
 "Event_ItemHuiXueByRound": { entity: CDOTA_BaseNPC_Hero, nHuiXue: number }
+
+"Event_AtkMosterEnd": {
+                    entity: player.m_eHero,
+                    bMoveBack: bMoveBack,
+                    bInPrison: bInPrison,
+                }
+
+"Event_AtkMoster": { entity: player.m_eHero }

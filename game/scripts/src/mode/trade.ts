@@ -232,7 +232,7 @@ export class Trade {
                 if ((tab.nGold > 0 && tradePlayer.GetGold() < tab.nGold) || tab.nGold < 0) return 3;
 
                 const arrPath = tab.arrPath;
-                if (arrPath && arrPath.length > 0) {
+                if (arrPath && arrPath.length && arrPath.length > 0) {
                     const hasBZPaths = [];
                     for (const pathID of arrPath) {
                         if (!tradePlayer.isHasPath(pathID)) return 5; // 包含未拥有路径

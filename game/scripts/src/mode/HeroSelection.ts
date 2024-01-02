@@ -1,4 +1,4 @@
-import { TIME_SELECTHERO } from "./constant";
+import { TIME_SELECTHERO } from './constant';
 
 export class HeroSelection {
     m_timeLast = TIME_SELECTHERO;
@@ -51,7 +51,7 @@ export class HeroSelection {
             oPlayer.m_nOprtOrder = this.GetPlayerIDIndex(oPlayer.m_nPlayerID);
         }
         // TODO: TEST
-        // this.m_PlayersSort = [1, 0];
+        this.m_PlayersSort = [0, 1];
         print('[PlayersSort]:');
         DeepPrintTable(this.m_PlayersSort);
     }

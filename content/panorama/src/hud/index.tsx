@@ -28,12 +28,13 @@ GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_AGHANIMS_STATU
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_COURIER, false);
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_QUICK_STATS, false);
 
-const hud = $.GetContextPanel().GetParent()!.GetParent()!.GetParent()!;
-HideHudElement(hud, 'CommonItems');
-HideHudElement(hud, 'QuickBuySlot8');
-HideHudElement(hud, 'GridNeutralsTab');
-HideHudElement(hud, 'ToggleAdvancedShop');
-HideHudElement(hud, 'inventory_neutral_slot_container');
+export const UIHud = $.GetContextPanel().GetParent()!.GetParent()!.GetParent()!;
+HideHudElement(UIHud, 'CommonItems');
+HideHudElement(UIHud, 'QuickBuySlot8');
+HideHudElement(UIHud, 'GridNeutralsTab');
+HideHudElement(UIHud, 'ToggleAdvancedShop');
+HideHudElement(UIHud, 'inventory_neutral_slot_container');
+HideHudElement(UIHud, 'ShopButton');
 // HideHudElement(hud, 'stash');
 
 export const PlayerMgr = new PlayerManager();

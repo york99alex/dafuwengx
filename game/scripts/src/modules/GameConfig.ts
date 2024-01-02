@@ -221,7 +221,8 @@ export class GameConfig {
 
     /**更新回合操作时限 */
     updateTimeOprt() {
-        if (this.m_typeState === GS_ReadyStart || this.m_typeState === GS_WaitOperator) {
+        // print('===updateTimeOprt===m_typeState', this.m_typeState, 'GameLoopState:', GameRules.GameLoop.getGameState());
+        if (this.m_typeState == GS_ReadyStart || this.m_typeState == GS_WaitOperator || this.m_typeState == GS_DeathClearing) {
             this.m_timeOprt -= 1;
             // 每一秒更新到网表
             if (this.m_timeOprt % 10 == 0) {
@@ -257,8 +258,12 @@ export class GameConfig {
     checkOprt(tabData: { nPlayerID: number; typeOprt: number }, bDel?: boolean) {
         print('======start checkOprt======');
         if (bDel) {
-            const cdt = (v: { nPlayerID: number; typeOprt: number }) => v.nPlayerID === tabData.nPlayerID && v.typeOprt === tabData.typeOprt;
+            const cdt = (v: { nPlayerID: number; typeOprt: number }) => v.nPlayerID == tabData.nPlayerID && v.typeOprt == tabData.typeOprt;
+            print('bDel m_tabOprtSend.length:', this.m_tabOprtSend.length);
             this.m_tabOprtSend = this.m_tabOprtSend.filter(value => !cdt(value));
+            DeepPrintTable(this.m_tabOprtSend);
+            print('bDel m_tabOprtBroadcast.length:', this.m_tabOprtBroadcast.length);
+            DeepPrintTable(this.m_tabOprtBroadcast);
             this.m_tabOprtBroadcast = this.m_tabOprtBroadcast.filter(value => !cdt(value));
         }
         for (let value of this.m_tabOprtCan) {
@@ -267,7 +272,9 @@ export class GameConfig {
                     print('checkOprt delete:==========');
                     DeepPrintTable(value);
                     print('delete=====================');
-                    this.m_tabOprtCan = this.m_tabOprtCan.filter(v => v !== value);
+                    print('bDel m_tabOprtCan.length:', this.m_tabOprtCan.length);
+                    this.m_tabOprtCan = this.m_tabOprtCan.filter(v => v != value);
+                    DeepPrintTable(this.m_tabOprtCan);
                 }
                 print('checkOprt===success, return:');
                 DeepPrintTable(value);
@@ -494,18 +501,13 @@ export class GameConfig {
 
     /**处理安营扎寨 */
     processAYZZ(tabData: { nPlayerID: number; typeOprt: number; nPathID?: number; nRequest?: number }) {
-        print('处理安营扎寨');
+        print('===processAYZZ 处理安营扎寨:');
+        DeepPrintTable(tabData);
         // 删除可操作
-        const tabOprt = this.checkOprt(tabData) as {
-            nPlayerID: number;
-            typeOprt: number;
-            nPathID?: number;
-            nRequest?: number;
-            bPrison?: number;
-        };
-
+        const tabOprt = this.checkOprt(tabData) as any;
+        tabOprt['nRequest'] = tabData.nRequest;
         let oPlayer: Player, oPath: PathDomain | PathTP;
-
+        print('===processAYZZ===0');
         // 验证操作
         tabOprt.nRequest = (() => {
             if (tabData.nRequest == 1) {
@@ -521,6 +523,7 @@ export class GameConfig {
             }
             return tabData.nRequest;
         })();
+        print('===processAYZZ===1');
 
         if (tabOprt.nRequest == 1) {
             // 广播玩家安营扎寨
@@ -538,14 +541,20 @@ export class GameConfig {
                 strPathName: 'PathName_' + tabOprt.nPathID,
                 nGold: oPath.m_nPrice,
             });
+            print('===processAYZZ===2');
         } else {
             // 回包
             GameRules.PlayerManager.sendMsg('GM_OperatorFinished', tabOprt, tabOprt.nPlayerID);
+            print('===processAYZZ===3');
         }
+        print('===processAYZZ===4===m_timeOprt:', this.m_timeOprt);
 
-        if (tabOprt.nRequest == 0 || tabOprt.nRequest == 1) {
+        if (tabOprt.nRequest == 0 || tabOprt.nRequest == 1 || this.m_timeOprt <= 0) {
+            print('===processAYZZ===5');
             this.checkOprt(tabData, true);
+            print('===processAYZZ===6');
         }
+        print('===processAYZZ===7');
     }
 
     /**处理攻城略地 */
@@ -668,7 +677,7 @@ export class GameConfig {
 
     /**自动处理操作 */
     autoOprt(typeOprt?: number, oPlayer?: Player) {
-        print('this.m_tabOprtCan.length:', this.m_tabOprtCan.length);
+        print('===autoOprt===this.m_tabOprtCan.length:', this.m_tabOprtCan.length);
         for (let v of this.m_tabOprtCan) {
             if (
                 (typeOprt == null || v.typeOprt == typeOprt) && // 指定操作
@@ -683,10 +692,10 @@ export class GameConfig {
                     v.nRequest = 1;
                 } else if (TypeOprt.TO_AYZZ == v.typeOprt) {
                     // 安营扎寨，默认不
-                    v.nRequest = 1;
+                    v.nRequest = 0;
                 } else if (TypeOprt.TO_GCLD == v.typeOprt) {
                     // 攻城略地，默认不
-                    v.nRequest = 1;
+                    v.nRequest = 0;
                 } else if (TypeOprt.TO_TP == v.typeOprt) {
                     // TP传送，默认不
                     v.nRequest = 0;
@@ -694,6 +703,7 @@ export class GameConfig {
                     // 出狱，默认不买活
                     v.nRequest = 0;
                 } else if (TypeOprt.TO_DeathClearing == v.typeOprt) {
+                    // 死亡清算，默认进行
                     v.nRequest = 1;
                 } else if (TypeOprt.TO_AtkMonster == v.typeOprt) {
                     v.nRequest = 0;
