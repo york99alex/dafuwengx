@@ -1,4 +1,4 @@
-import { PS_AtkMonster } from '../../mode/gamemessage';
+import { PS_AtkMonster } from '../../constants/gamemessage';
 import { PathManager } from '../../path/PathManager';
 import { Player, player_info } from '../../player/player';
 import { AMHC } from '../../utils/amhc';

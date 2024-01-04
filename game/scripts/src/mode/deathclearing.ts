@@ -1,6 +1,6 @@
 import { Player } from '../player/player';
-import { TIME_OPERATOR } from './constant';
-import { GS_Move, GS_None, GS_Supply, GS_Wait, TypeOprt } from './gamemessage';
+import { TIME_OPERATOR } from '../constants/constant';
+import { GS_Move, GS_None, GS_Supply, GS_Wait, TypeOprt } from '../constants/gamemessage';
 
 /**死亡清算 */
 export class DeathClearing {
@@ -38,7 +38,7 @@ export class DeathClearing {
         GameRules.EventManager.Register(DeathClearing.EvtID.Event_TO_DeathClearing, event => this.ProcessDC(event), null, 101);
     }
 
-    /**玩家发起亡国清算 */
+    /**玩家发起死亡清算 */
     ProcessSendDC(event: { nPlayerID: PlayerID }) {
         const player = GameRules.PlayerManager.getPlayer(event.nPlayerID);
         print('===ProcessSendDC: playerid ' + event.nPlayerID + ' gold:' + player.GetGold());
@@ -82,7 +82,7 @@ export class DeathClearing {
         }
     }
 
-    /**亡国清算准备 */
+    /**死亡清算准备 */
     StartDC(playerID: PlayerID) {
         if (this.resumeGameTimer) Timers.RemoveTimer(this.resumeGameTimer);
         if (this.beforeGameState == null) {
@@ -101,7 +101,7 @@ export class DeathClearing {
         GameRules.GameConfig.setOrder(playerID);
         GameRules.GameConfig.m_timeOprt = math.ceil(TIME_OPERATOR * 1.5);
 
-        // 设置亡国清算状态，暂停其他操作
+        // 设置死亡清算状态，暂停其他操作
         GameRules.GameConfig.m_tabOprtCan = GameRules.GameConfig.m_tabOprtCan.filter(v => v.typeOprt != TypeOprt.TO_DeathClearing);
         GameRules.GameConfig.m_tabOprtSend = GameRules.GameConfig.m_tabOprtSend.filter(v => v.typeOprt != TypeOprt.TO_DeathClearing);
         GameRules.GameConfig.m_tabOprtBroadcast = GameRules.GameConfig.m_tabOprtBroadcast.filter(v => v.typeOprt != TypeOprt.TO_DeathClearing);
@@ -116,7 +116,7 @@ export class DeathClearing {
         this.PlayerDC(player, true);
     }
 
-    /**处理亡国清算 */
+    /**处理死亡清算 */
     ProcessDC(event) {
         print('===ProcessDC: ', event);
         print('===ProcessDC===this.beforeGameState:', this.beforeGameState);

@@ -1,4 +1,4 @@
-import { AMHC, IsValid } from "../../utils/amhc";
+import { AMHC, IsValid } from "../../../utils/amhc";
 import { PathDomain } from "./pathdomain";
 
 /**领土路径-鵰巢 */

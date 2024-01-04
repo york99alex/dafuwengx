@@ -1,4 +1,4 @@
-import { PS_AbilityImmune, PS_AtkMonster, PS_Die, PS_InPrison } from "../../mode/gamemessage";
+import { PS_AbilityImmune, PS_AtkMonster, PS_Die, PS_InPrison } from "../../constants/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
 import { AMHC } from "../../utils/amhc";

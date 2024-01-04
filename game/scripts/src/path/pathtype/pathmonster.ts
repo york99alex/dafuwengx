@@ -1,7 +1,7 @@
-import { GS_Begin, PS_AtkHero, PS_AtkMonster, TP_MONSTER_1, TP_MONSTER_2, TP_MONSTER_3, TP_PRISON, TypeOprt } from '../mode/gamemessage';
-import { DamageEvent, Player } from '../player/player';
-import { AMHC, IsValid } from '../utils/amhc';
-import { Path } from './Path';
+import { GS_Begin, PS_AtkHero, PS_AtkMonster, TP_MONSTER_1, TP_MONSTER_2, TP_MONSTER_3, TP_PRISON, TypeOprt } from '../../constants/gamemessage';
+import { DamageEvent, Player } from '../../player/player';
+import { AMHC, IsValid } from '../../utils/amhc';
+import { Path } from '../path';
 import { PathPrison } from './pathprison';
 
 /**野怪路径 */
@@ -91,8 +91,8 @@ export class PathMonster extends Path {
 
         this.m_typeMonsterCur = tabInfoOne.typeMonster;
         // 创建野怪
-        print('===spawnMonster create unit data:');
-        DeepPrintTable(tabInfoOne);
+        // print('===spawnMonster create unit data:');
+        // DeepPrintTable(tabInfoOne);
 
         for (const unitName in tabInfoOne.tabMonster) {
             const unitInfo = tabInfoOne.tabMonster[unitName];
@@ -102,7 +102,6 @@ export class PathMonster extends Path {
                     this.m_eCity.GetForwardVector() * unitInfo.tabPos[i - 1][0] +
                     this.m_eCity.GetRightVector() * unitInfo.tabPos[i - 1][1] +
                     this.m_eCity.GetUpVector() * unitInfo.tabPos[i - 1][2]) as Vector;
-                print('===spawnMonster GetForwardVector:', this.m_eCity.GetForwardVector());
                 const eMonster = AMHC.CreateUnit(unitName, vPos, this.m_eCity.GetForwardVector(), null, DotaTeam.NEUTRALS);
                 FindClearSpaceForUnit(eMonster, eMonster.GetOrigin(), true);
                 eMonster['m_bMonster'] = true;

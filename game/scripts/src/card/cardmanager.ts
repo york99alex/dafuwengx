@@ -1,5 +1,5 @@
 import { TSBaseItem } from '../item/tsBaseItem';
-import { CardID_MONSTER, CardID_NONE, TCardCast_Nil, TCardCast_Pos, TCardCast_Target, TypeOprt } from '../mode/gamemessage';
+import { CardID_MONSTER, CardID_NONE, TCardCast_Nil, TCardCast_Pos, TCardCast_Target, TypeOprt } from '../constants/gamemessage';
 import { Player } from '../player/player';
 import { Card } from './card';
 import { CardFactory } from './cardfactory';

@@ -1,4 +1,4 @@
-import { HudError } from '../mode/huderror';
+import { HudError } from '../mode/S2Cmode/huderror';
 import { CDOTA_BaseNPC_BZ } from '../player/CDOTA_BaseNPC_BZ';
 import { IsValid, mergeArrays } from '../utils/amhc';
 import { ParaAdjuster } from '../utils/paraadjuster';

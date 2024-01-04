@@ -3,7 +3,7 @@ import { item_qtg_tpscroll } from '../item/items/item_qtg_tpscroll';
 import { CardManager } from '../card/cardmanager';
 import { GameLoop } from '../mode/GameLoop';
 import { HeroSelection } from '../mode/HeroSelection';
-import { Auction } from '../mode/auction';
+import { Auction } from '../mode/Auction';
 import {
     GAME_MODE,
     GLOBAL_SHOP_ROUND,
@@ -14,9 +14,9 @@ import {
     TIME_BAOZI_YZ,
     TIME_OPERATOR,
     TIME_SELECTHERO,
-} from '../mode/constant';
-import { DeathClearing } from '../mode/deathclearing';
-import { Filters } from '../mode/filters';
+} from '../constants/constant';
+import { DeathClearing } from '../mode/DeathClearing';
+import { Filters } from '../mode/Filters';
 import {
     GS_DeathClearing,
     GS_Finished,
@@ -31,21 +31,24 @@ import {
     TGameRecord_AYZZ,
     TP_PRISON,
     TypeOprt,
-} from '../mode/gamemessage';
-import { GameRecord } from '../mode/gamerecord';
-import { HudError } from '../mode/huderror';
-import { Trade } from '../mode/trade';
+    GS_Supply,
+} from '../constants/gamemessage';
+import { GameRecord } from '../mode/S2Cmode/GameRecord';
+import { HudError } from '../mode/S2Cmode/huderror';
+import { Trade } from '../mode/Trade';
 import { PathManager } from '../path/PathManager';
-import { PathPrison } from '../path/pathprison';
-import { PathDomain } from '../path/pathsdomain/pathdomain';
-import { PathTP } from '../path/pathtp';
+import { PathPrison } from '../path/pathtype/pathprison';
+import { PathDomain } from '../path/pathtype/pathsdomain/pathdomain';
+import { PathTP } from '../path/pathtype/pathtp';
 import { CDOTA_BaseNPC_BZ } from '../player/CDOTA_BaseNPC_BZ';
 import { Player, player_info } from '../player/player';
 import { PlayerManager } from '../player/playermanager';
 import { IsValid } from '../utils/amhc';
-import { EventManager } from '../utils/eventmanager';
+import { EventManager } from '../mode/EventManager';
 import { ParaAdjuster } from '../utils/paraadjuster';
 import { ItemManager } from '../item/itemmanager';
+import { Supply } from '../mode/Supply';
+import { PathMonster } from '../path/pathtype/pathmonster';
 
 export class GameConfig {
     _DotaState: [];
@@ -204,10 +207,10 @@ export class GameConfig {
         GameRules.Auction.init();
         GameRules.DeathClearing = new DeathClearing(); // 死亡清算
         GameRules.DeathClearing.init();
-        GameRules.ItemManager = new ItemManager();
+        GameRules.ItemManager = new ItemManager(); // 物品管理模块
         GameRules.ItemManager.init();
-        // Selection
-        // Supply
+        GameRules.Supply = new Supply(); // 补给模块
+        GameRules.Supply.init();
         GameRules.HeroSelection = new HeroSelection(); // 自动选择英雄模块
         GameRules.HeroSelection.init();
 
@@ -222,7 +225,12 @@ export class GameConfig {
     /**更新回合操作时限 */
     updateTimeOprt() {
         // print('===updateTimeOprt===m_typeState', this.m_typeState, 'GameLoopState:', GameRules.GameLoop.getGameState());
-        if (this.m_typeState == GS_ReadyStart || this.m_typeState == GS_WaitOperator || this.m_typeState == GS_DeathClearing) {
+        if (
+            this.m_typeState == GS_ReadyStart ||
+            this.m_typeState == GS_WaitOperator ||
+            this.m_typeState == GS_DeathClearing ||
+            this.m_typeState == GS_Supply
+        ) {
             this.m_timeOprt -= 1;
             // 每一秒更新到网表
             if (this.m_timeOprt % 10 == 0) {
@@ -266,6 +274,8 @@ export class GameConfig {
             DeepPrintTable(this.m_tabOprtBroadcast);
             this.m_tabOprtBroadcast = this.m_tabOprtBroadcast.filter(value => !cdt(value));
         }
+        print('checkOprt m_tabOprtCan.length:', this.m_tabOprtCan.length);
+        DeepPrintTable(this.m_tabOprtCan);
         for (let value of this.m_tabOprtCan) {
             if (value.nPlayerID == tabData.nPlayerID && value.typeOprt == tabData.typeOprt) {
                 if (bDel) {
@@ -293,10 +303,7 @@ export class GameConfig {
         print('GameConfig.setOrder over======================');
         this.m_nOrderID = nOrder;
         // 同步网表
-        CustomNetTables.SetTableValue('GamingTable', 'order', {
-            nPlayerID: nOrder,
-            heroName: GameRules.PlayerManager.getPlayer(nOrder).m_eHero.GetUnitName(),
-        });
+        CustomNetTables.SetTableValue('GamingTable', 'order', { nPlayerID: nOrder });
     }
 
     /**跳过投骰子 */
@@ -389,7 +396,7 @@ export class GameConfig {
             } else if (tabData.typeOprt == TypeOprt.TO_DeathClearing) {
                 GameRules.EventManager.FireEvent(DeathClearing.EvtID.Event_TO_DeathClearing, tabData);
             } else if (tabData.typeOprt == TypeOprt.TO_Supply) {
-                // Supply
+                GameRules.Supply.processOprt(tabData);
             } else if (tabData.typeOprt == TypeOprt.TO_AtkMonster) {
                 this.processAtkMonster(tabData);
             }
@@ -617,7 +624,10 @@ export class GameConfig {
     }
 
     /**处理TP传送 */
-    processTP(tabData) {}
+    processTP(tabData) {
+        // TODO:
+        print('Error: processTP not implemented.');
+    }
 
     /**处理出狱 */
     processPrisonOut(tabData: { nPlayerID: number; typeOprt: number; nPathID?: number; nRequest?: number }) {
@@ -673,7 +683,41 @@ export class GameConfig {
     }
 
     /**处理打野 */
-    processAtkMonster(tabData) {}
+    processAtkMonster(tabData) {
+        // 删除可操作
+        const tabOprt = this.checkOprt(tabData);
+        tabOprt['nRequest'] = tabData.nRequest;
+        const path = GameRules.PathManager.getPathByID(tabOprt['nPathID']) as PathMonster;
+
+        // 验证操作
+        tabOprt['nRequest'] = (() => {
+            if (tabData.nRequest == 1) {
+                if (this.m_typeState == GS_Wait) {
+                    HudError.FireLocalizeError(tabData.nPlayerID, 'AbilityError_Wait');
+                    return 5; // 等待
+                }
+            }
+            return tabData.nRequest;
+        })();
+
+        print('===processAtkMonster===tabOprt:');
+        print(tabOprt);
+        if (tabOprt['nRequest'] == 1) {
+            // 广播玩家打野
+            GameRules.PlayerManager.broadcastMsg('GM_OperatorFinished', tabOprt);
+            // 玩家打野
+            path.setAtkerAdd(GameRules.PlayerManager.getPlayer(tabOprt['nPlayerID']));
+
+            this.skipRoll(tabOprt['nPlayerID']);
+        } else {
+            // 回包
+            GameRules.PlayerManager.sendMsg('GM_OperatorFinished', tabOprt, tabOprt['nPlayerID']);
+        }
+
+        if (tabOprt['nRequest'] == 0 || tabOprt['nRequest'] == 1) {
+            this.checkOprt(tabData, true);
+        }
+    }
 
     /**自动处理操作 */
     autoOprt(typeOprt?: number, oPlayer?: Player) {

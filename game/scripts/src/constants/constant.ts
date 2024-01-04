@@ -33,7 +33,7 @@ export const TIME_BAOZI_ADD: number = 50;
 // 补给操作时限  /0.1s
 export const TIME_SUPPLY_READY: number = 101;
 // 补给操作时限  /0.1s
-export const TIME_SUPPLY_OPRT: number = 1;
+export const TIME_SUPPLY_OPRT: number = 101;
 // 掉线超时  /1s
 export const TIME_OUT_DISCONNECT: number = 300;
 // 入狱豹子数
@@ -105,11 +105,9 @@ export const LEVEL_EXP: Record<number, number> = {
 // console.log(indexedArray1.foo)
 
 // 补给回合
-export const SUPPLY_ROUND: number[] = [1, 5, 10, 15, 20];
+export const SUPPLY_ROUND: number[] = [1, 5, 10, 15, 20, 25];
 // 每回合补给的开启回合
 export const SUPPLY_ALL_ROUND: number = 30;
-// 补给品数量
-export const SUPPLY_COUNT: number[] = [0, 3, 4, 5, 6, 7];
 
 export const CUSTOM_TEAM = [DotaTeam.CUSTOM_1, DotaTeam.CUSTOM_2, DotaTeam.CUSTOM_3, DotaTeam.CUSTOM_4, DotaTeam.CUSTOM_5, DotaTeam.CUSTOM_6];
 

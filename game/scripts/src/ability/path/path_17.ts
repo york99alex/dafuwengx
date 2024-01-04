@@ -1,6 +1,6 @@
-import { GS_Move, PS_InPrison, PS_Moving, TP_DOMAIN_6 } from '../../mode/gamemessage';
-import { PathDomain } from '../../path/pathsdomain/pathdomain';
-import { PathDomain_6 } from '../../path/pathsdomain/pathdomain_6';
+import { GS_Move, PS_InPrison, PS_Moving, TP_DOMAIN_6 } from '../../constants/gamemessage';
+import { PathDomain } from '../../path/pathtype/pathsdomain/pathdomain';
+import { PathDomain_6 } from '../../path/pathtype/pathsdomain/pathdomain_6';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { Player } from '../../player/player';
 import { AMHC, IsValid } from '../../utils/amhc';

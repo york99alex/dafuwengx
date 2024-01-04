@@ -1,9 +1,9 @@
-import { item_qtg_tpscroll } from '../item/items/item_qtg_tpscroll';
-import { HERO_TO_BANNER, PATH_TOLL_TP, PATH_TO_PRICE, TypePathState } from '../mode/constant';
-import { PS_InPrison, TypeOprt } from '../mode/gamemessage';
-import { modifier_unselect } from '../modifiers/util/modifier_unselect';
-import { Player } from '../player/player';
-import { Path } from './Path';
+import { item_qtg_tpscroll } from '../../item/items/item_qtg_tpscroll';
+import { HERO_TO_BANNER, PATH_TOLL_TP, PATH_TO_PRICE, TypePathState } from '../../constants/constant';
+import { PS_InPrison, TypeOprt } from '../../constants/gamemessage';
+import { modifier_unselect } from '../../modifiers/util/modifier_unselect';
+import { Player } from '../../player/player';
+import { Path } from '../path';
 
 /**TP传送点路径 */
 export class PathTP extends Path {

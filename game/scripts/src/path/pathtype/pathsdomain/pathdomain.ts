@@ -1,11 +1,11 @@
-import { PATH_TO_PRICE, PATH_TOLL_RATE, HERO_TO_BANNER, TypePathState, GAME_MODE, GAME_MODE_ONEPATH, BZ_OUT_ROUND, GCLD_EXP, GCLD_GOLD } from '../../mode/constant';
-import { GS_Begin, PS_AtkHero, PS_InPrison, TypeOprt } from '../../mode/gamemessage';
-import { modifier_unselect } from '../../modifiers/util/modifier_unselect';
-import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
-import { DamageEvent, Player } from '../../player/player';
-import { AMHC, IsValid } from '../../utils/amhc';
-import { ParaAdjuster } from '../../utils/paraadjuster';
-import { Path } from '../Path';
+import { PATH_TO_PRICE, PATH_TOLL_RATE, HERO_TO_BANNER, TypePathState, GAME_MODE, GAME_MODE_ONEPATH, BZ_OUT_ROUND, GCLD_EXP, GCLD_GOLD } from '../../../constants/constant';
+import { GS_Begin, PS_AtkHero, PS_InPrison, TypeOprt } from '../../../constants/gamemessage';
+import { modifier_unselect } from '../../../modifiers/util/modifier_unselect';
+import { CDOTA_BaseNPC_BZ } from '../../../player/CDOTA_BaseNPC_BZ';
+import { DamageEvent, Player } from '../../../player/player';
+import { AMHC, IsValid } from '../../../utils/amhc';
+import { ParaAdjuster } from '../../../utils/paraadjuster';
+import { Path } from '../../path';
 
 /**
  * 领地路径

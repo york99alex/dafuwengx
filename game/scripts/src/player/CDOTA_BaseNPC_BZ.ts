@@ -4,7 +4,7 @@ import { modifier_all } from '../modifiers/hero/modifier_all';
 import { modifier_intellect } from '../modifiers/hero/modifier_intellect';
 import { modifier_primary_attribute } from '../modifiers/hero/modifier_primary_attribute';
 import { modifier_strength } from '../modifiers/hero/modifier_strength';
-import { PathDomain } from '../path/pathsdomain/pathdomain';
+import { PathDomain } from '../path/pathtype/pathsdomain/pathdomain';
 import { IsValid } from '../utils/amhc';
 
 /**

@@ -1,4 +1,4 @@
-import { Player } from "../../player/player";
+import { Player } from "../../../player/player";
 import { PathDomain } from "./pathdomain";
 
 /**领土路径-圣所 */

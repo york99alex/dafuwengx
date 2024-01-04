@@ -14,7 +14,7 @@ import {
     BuyState_None,
     TP_DOMAIN_1,
     TP_START,
-} from '../mode/gamemessage';
+} from '../constants/gamemessage';
 import {
     BZ_HUIMO_BEATK_RATE,
     BZ_HUIMO_RATE_J,
@@ -29,10 +29,10 @@ import {
     ROUND_BZ_HUIXUE_ROTA,
     ROUND_HERO_HUIXUE_ROTA,
     TIME_MOVE_MAX,
-} from '../mode/constant';
-import { Path } from '../path/Path';
+} from '../constants/constant';
+import { Path } from '../path/path';
 import { AMHC, IsValid } from '../utils/amhc';
-import { PathDomain } from '../path/pathsdomain/pathdomain';
+import { PathDomain } from '../path/pathtype/pathsdomain/pathdomain';
 import { CDOTA_BaseNPC_BZ } from './CDOTA_BaseNPC_BZ';
 import { TSBaseAbility } from '../ability/tsBaseAbilty';
 import { ParaAdjuster } from '../utils/paraadjuster';
@@ -56,7 +56,7 @@ export class Player {
     m_bDisconnect: boolean; //  断线
     m_bDie: boolean = false; //  死亡
     m_bAbandon: boolean = false; //  放弃
-    m_bDeathClearing: boolean; //  亡国清算中
+    m_bDeathClearing: boolean; //  死亡清算中
     m_tMuteTradePlayers: number[] = []; //  交易屏蔽玩家id
 
     m_nPlayerID: PlayerID; //  玩家ID

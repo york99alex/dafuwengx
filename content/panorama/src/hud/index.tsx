@@ -15,6 +15,7 @@ import { Tooltip } from './Tooltip/tooltip';
 import { TradePanel } from './Trade/components/tradePanel';
 import { PlayerManager } from './player/playerManager';
 import { GameManager } from './gamemanager';
+import { SupplyPanel } from './Supply/components/SupplyPanel';
 
 const Test: FC = () => {
     // const data = useXNetTableKey(`test_table`, `test_key`, { data_1: `HelloWorld` });
@@ -51,6 +52,7 @@ render(
         <HudError />
         <Tooltip />
         <TradePanel />
+        <SupplyPanel />
     </>,
     $.GetContextPanel()
 );

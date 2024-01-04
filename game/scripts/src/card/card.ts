@@ -1,5 +1,5 @@
-import { GS_Move, GS_Supply, GS_DeathClearing, GS_Wait, PS_InPrison, PS_AtkHero, PS_Die } from '../mode/gamemessage';
-import { HudError } from '../mode/huderror';
+import { GS_Move, GS_Supply, GS_DeathClearing, GS_Wait, PS_InPrison, PS_AtkHero, PS_Die } from '../constants/gamemessage';
+import { HudError } from '../mode/S2Cmode/huderror';
 import { Player } from '../player/player';
 import { IsValid } from '../utils/amhc';
 
@@ -11,6 +11,7 @@ export type CardInfo = {
     ShopItemName?: string;
 };
 
+/**卡牌基类 */
 export class Card {
     /**卡牌ID */
     m_nID: number;
@@ -167,7 +168,7 @@ export class Card {
                 this.m_strCastError = 'AbilityError_Supply';
                 return false;
             }
-            // 亡国阶段不能施法
+            // 死亡清算阶段不能施法
             if (GameRules.GameConfig.m_typeState == GS_DeathClearing) {
                 this.m_strCastError = 'AbilityError_DeathClearing';
                 return false;
@@ -191,7 +192,7 @@ export class Card {
                     this.m_strCastError = 'AbilityError_Battle';
                     return false;
                 }
-                // 亡国清算时不能施法
+                // 死亡清算时不能施法
                 if (oPlayer.m_bDeathClearing) {
                     this.m_strCastError = 'AbilityError_Die';
                     return false;

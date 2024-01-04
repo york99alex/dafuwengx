@@ -1,6 +1,6 @@
 import { KeyValues } from '../kv';
-import { GS_DeathClearing, GS_Move, GS_Supply, GS_Wait, PS_AtkHero, PS_Die, PS_InPrison } from '../mode/gamemessage';
-import { Path } from '../path/Path';
+import { GS_DeathClearing, GS_Move, GS_Supply, GS_Wait, PS_AtkHero, PS_Die, PS_InPrison } from '../constants/gamemessage';
+import { Path } from '../path/path';
 import { PathManager } from '../path/PathManager';
 import { CDOTA_BaseNPC_BZ } from '../player/CDOTA_BaseNPC_BZ';
 import { player_info } from '../player/player';
@@ -289,7 +289,7 @@ export class TSBaseAbility extends BaseAbility {
                 this.m_strCastError = 'AbilityError_Supply';
                 return false;
             }
-            // 亡国阶段不能施法
+            // 死亡清算阶段不能施法
             if (GameRules.GameConfig.m_typeState == GS_DeathClearing) {
                 this.m_strCastError = 'AbilityError_DeathClearing';
                 return false;

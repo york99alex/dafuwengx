@@ -1,4 +1,4 @@
-import { PS_AbilityImmune } from "../../mode/gamemessage";
+import { PS_AbilityImmune } from "../../constants/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { AMHC, IsValid } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";

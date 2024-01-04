@@ -1,4 +1,4 @@
-import { PS_Invis } from "../../mode/gamemessage";
+import { PS_Invis } from "../../constants/gamemessage";
 import { Player } from "../../player/player";
 import { AMHC, IsValid } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";

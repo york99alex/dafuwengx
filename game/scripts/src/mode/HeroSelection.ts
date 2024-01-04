@@ -1,4 +1,4 @@
-import { TIME_SELECTHERO } from './constant';
+import { TIME_SELECTHERO } from '../constants/constant';
 
 export class HeroSelection {
     m_timeLast = TIME_SELECTHERO;

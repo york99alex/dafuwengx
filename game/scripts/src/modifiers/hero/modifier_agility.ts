@@ -1,4 +1,4 @@
-import { ATTRIBUTE } from '../../mode/constant';
+import { ATTRIBUTE } from '../../constants/constant';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { BaseModifier, registerModifier } from '../../utils/dota_ts_adapter';
 

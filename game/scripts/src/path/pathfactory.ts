@@ -15,20 +15,20 @@ import {
     TP_STEPS,
     TP_TP,
     TP_TREASURE,
-} from '../mode/gamemessage';
-import { Path } from './Path';
-import { PathDomain } from './pathsdomain/pathdomain';
-import { PathDomain_2 } from './pathsdomain/pathdomain_2';
-import { PathDomain_6 } from './pathsdomain/pathdomain_6';
-import { PathDomain_7 } from './pathsdomain/pathdomain_7';
-import { PathMonster } from './pathmonster';
-import { PathPrison } from './pathprison';
-import { PathRune } from './pathrune';
-import { PathShop } from './pathshop';
-import { PathStart } from './pathstart';
-import { PathSteps } from './pathsteps';
-import { PathTP } from './pathtp';
-import { PathTreasure } from './pathtreasure';
+} from '../constants/gamemessage';
+import { Path } from './path';
+import { PathDomain } from './pathtype/pathsdomain/pathdomain';
+import { PathDomain_2 } from './pathtype/pathsdomain/pathdomain_2';
+import { PathDomain_6 } from './pathtype/pathsdomain/pathdomain_6';
+import { PathDomain_7 } from './pathtype/pathsdomain/pathdomain_7';
+import { PathMonster } from './pathtype/pathmonster';
+import { PathPrison } from './pathtype/pathprison';
+import { PathRune } from './pathtype/pathrune';
+import { PathShop } from './pathtype/pathshop';
+import { PathStart } from './pathtype/pathstart';
+import { PathSteps } from './pathtype/pathsteps';
+import { PathTP } from './pathtype/pathtp';
+import { PathTreasure } from './pathtype/pathtreasure';
 
 export class PathFactory {
     static create(entity: CBaseEntity) {

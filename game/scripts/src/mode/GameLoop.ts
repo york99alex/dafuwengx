@@ -1,6 +1,17 @@
 import { EventObject, StateMachine, createMachine, interpret } from '../utils/xstate/xstate-dota';
-import { TIME_OPERATOR_DISCONNECT, TIME_OPERATOR, TIME_MOVE_MAX } from './constant';
-import { GS_Begin, GS_DeathClearing, GS_Finished, GS_Move, GS_None, GS_ReadyStart, GS_Wait, GS_WaitOperator, TypeOprt } from './gamemessage';
+import { TIME_OPERATOR_DISCONNECT, TIME_OPERATOR, TIME_MOVE_MAX } from '../constants/constant';
+import {
+    GS_Begin,
+    GS_DeathClearing,
+    GS_Finished,
+    GS_Move,
+    GS_None,
+    GS_ReadyStart,
+    GS_Supply,
+    GS_Wait,
+    GS_WaitOperator,
+    TypeOprt,
+} from '../constants/gamemessage';
 
 export class GameLoop {
     m_timeWait: number = 0;
@@ -26,7 +37,7 @@ export class GameLoop {
             states: {
                 GSNone: { on: { toreadystart: 'GSReadyStart' }, entry: 'GSNone_Entry', exit: 'GSNone_Exit' },
                 GSReadyStart: {
-                    on: { tobegin: 'GSBegin', toRoundBefore: 'GSRoundBefore', todeathclearing: 'GSDeathClearing' },
+                    on: { tobegin: 'GSBegin', toRoundBefore: 'GSRoundBefore', todeathclearing: 'GSDeathClearing', tosupply: 'GSSupply' },
                     entry: 'GSReadyStart_Entry',
                     exit: 'GSReadyStart_Exit',
                 },
@@ -53,7 +64,7 @@ export class GameLoop {
                     exit: 'GSMove_Exit',
                 },
                 GSFinished: {
-                    on: { toRoundBefore: 'GSRoundBefore', todeathclearing: 'GSDeathClearing' },
+                    on: { toRoundBefore: 'GSRoundBefore', todeathclearing: 'GSDeathClearing', tosupply: 'GSSupply' },
                     entry: 'GSFinished_Entry',
                     exit: 'GSFinished_Exit',
                 },
@@ -293,9 +304,35 @@ export class GameLoop {
         this.m_bRoundBefore = null;
     }
 
-    GSSupply_Entry() {}
+    GSSupply_Entry() {
+        this.setGameState(GS_Supply);
+        print('GameState_GSSupply_Entry');
 
-    GSSupply_Exit() {}
+        let hasUrgent = false;
+        this.Timer(() => {
+            GameRules.GameConfig.updateTimeOprt();
+            const timeOprt = GameRules.GameConfig.m_timeOprt;
+            if (timeOprt < 0) {
+                // 时间结束,自动操作
+                GameRules.Supply.onTimeOver();
+                return;
+            } else if (timeOprt == 0) {
+                EmitGlobalSound('Custom.Time.Finish');
+            } else if (0 < timeOprt && timeOprt < 51) {
+                if (timeOprt % 10 == 0 && !hasUrgent) {
+                    EmitGlobalSound('Custom.Time.Urgent');
+                    hasUrgent = true;
+                }
+                if (timeOprt < 50 && hasUrgent) hasUrgent = false;
+            }
+            return 0.1;
+        }, 0);
+    }
+
+    GSSupply_Exit() {
+        print('GameState_GSSupply_Exit');
+        GameRules.EventManager.FireEvent('Event_GSSupply_Over');
+    }
 
     GSFinished_Entry() {
         this.setGameState(GS_Finished);

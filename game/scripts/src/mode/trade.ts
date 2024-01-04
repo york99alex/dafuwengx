@@ -1,5 +1,5 @@
-import { GAME_MODE, GAME_MODE_ALLPATH, TypePathState } from './constant';
-import { PS_Trading, TypeOprt } from './gamemessage';
+import { GAME_MODE, GAME_MODE_ALLPATH, TypePathState } from '../constants/constant';
+import { PS_Trading, TypeOprt } from '../constants/gamemessage';
 
 /**交易模块 */
 export class Trade {

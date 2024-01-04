@@ -3,16 +3,17 @@ import { ItemManager } from '../item/itemmanager';
 import { ItemShare } from '../item/itemshare';
 import { GameLoop } from '../mode/GameLoop';
 import { HeroSelection } from '../mode/HeroSelection';
-import { Auction } from '../mode/auction';
-import { Bot } from '../mode/bot';
-import { DeathClearing } from '../mode/deathclearing';
-import { Trade } from '../mode/trade';
+import { Auction } from '../mode/Auction';
+import { Bot } from '../mode/Bot';
+import { DeathClearing } from '../mode/DeathClearing';
+import { Trade } from '../mode/Trade';
 import { PathManager } from '../path/PathManager';
 import { PlayerManager } from '../player/playermanager';
-import { EventManager } from '../utils/eventmanager';
+import { EventManager } from '../mode/EventManager';
 import { Debug } from './Debug';
 import { GameConfig } from './GameConfig';
 import { XNetTable } from './xnet-table';
+import { Supply } from '../mode/Supply';
 
 declare global {
     interface CDOTAGameRules {
@@ -30,6 +31,7 @@ declare global {
         Trade: Trade;
         Auction: Auction;
         DeathClearing: DeathClearing;
+        Supply: Supply;
     }
 }
 

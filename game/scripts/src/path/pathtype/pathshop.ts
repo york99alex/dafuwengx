@@ -1,7 +1,7 @@
-import { GLOBAL_SHOP_ROUND } from '../mode/constant';
-import { BuyState_None, BuyState_Secret, BuyState_Side, TP_SHOP_SIDE } from '../mode/gamemessage';
-import { Player } from '../player/player';
-import { Path } from './Path';
+import { GLOBAL_SHOP_ROUND } from '../../constants/constant';
+import { BuyState_None, BuyState_Secret, BuyState_Side, TP_SHOP_SIDE } from '../../constants/gamemessage';
+import { Player } from '../../player/player';
+import { Path } from '../path';
 
 /**商店 */
 export class PathShop extends Path {

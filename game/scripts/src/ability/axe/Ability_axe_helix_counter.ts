@@ -1,5 +1,5 @@
-import { PS_AtkHero, PS_AtkMonster } from "../../mode/gamemessage";
-import { PathDomain } from "../../path/pathsdomain/pathdomain";
+import { PS_AtkHero, PS_AtkMonster } from "../../constants/gamemessage";
+import { PathDomain } from "../../path/pathtype/pathsdomain/pathdomain";
 import { AMHC } from "../../utils/amhc";
 import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
 import { TSBaseAbility } from "../tsBaseAbilty";

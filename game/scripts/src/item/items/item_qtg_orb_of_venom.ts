@@ -2,7 +2,7 @@ import { TSBaseItem } from '../tsBaseItem';
 import { AMHC } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { ParaAdjuster } from '../../utils/paraadjuster';
-import { HERO_AttackCapabilit } from '../../mode/constant';
+import { HERO_AttackCapabilit } from '../../constants/constant';
 
 /**
  * 淬毒之珠，500，debuff-10%移速近战/5%远程，持续2秒

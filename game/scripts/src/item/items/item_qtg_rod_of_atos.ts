@@ -2,7 +2,7 @@ import { AMHC, IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { TSBaseItem } from '../tsBaseItem';
 import { AbilityManager } from '../../ability/abilitymanager';
-import { PS_Rooted } from '../../mode/gamemessage';
+import { PS_Rooted } from '../../constants/gamemessage';
 
 /**
  * 阿托斯之棍，2500，1000魔力法杖，1000活力球，500法师长袍，20点智力，300血

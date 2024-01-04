@@ -1,4 +1,4 @@
-import { Path } from "./Path";
+import { Path } from "../path";
 
 export class PathSteps extends Path {
     tSupplyCards: []

@@ -1,8 +1,6 @@
-import { useNetTableKey, useNetTableValues } from 'react-panorama-x';
+import { useNetTableKey } from 'react-panorama-x';
 import { player_info } from '../mode/constant';
 import { PlayerMgr, UIHud } from '..';
-import { HideHudElement } from '../../hero_selection';
-import { useEffect } from 'react';
 
 export function BuyItem() {
     const keyname = ('player_info_' + PlayerMgr.playerID) as player_info;
@@ -13,7 +11,7 @@ export function BuyItem() {
         if (element.BHasClass('ShopOpen')) {
             element.RemoveClass('ShopOpen');
             element.AddClass('ShopClosing');
-        } else if (element.BHasClass('ShopClosing')) {
+        } else {
             element.RemoveClass('ShopClosing');
             element.AddClass('ShopOpen');
         }

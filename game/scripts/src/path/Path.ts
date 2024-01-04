@@ -1,6 +1,7 @@
-import { TypePathState } from '../mode/constant';
+import { TypePathState } from '../constants/constant';
 import { Player } from '../player/player';
 
+/**路径基类 */
 export class Path {
     m_nID: number; // 路径ID
     m_typePath: number; // 路径类型

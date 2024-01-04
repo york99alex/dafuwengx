@@ -1,4 +1,4 @@
-import { PS_AtkHero, PS_AtkMonster, PS_InPrison, PS_Invis } from "../../mode/gamemessage";
+import { PS_AtkHero, PS_AtkMonster, PS_InPrison, PS_Invis } from "../../constants/gamemessage";
 import { Player } from "../../player/player";
 import { AMHC, IsValid } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";

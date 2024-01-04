@@ -10,6 +10,7 @@
         <include src="./CardPanel/styles.less" />
         <include src="./Tooltip/styles.less" />
         <include src="./Trade/styles.less" />
+        <include src="./Supply/styles.less" />
     </styles>
     <Panel class="root" hittest="false" />
 </root>

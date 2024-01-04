@@ -1,7 +1,7 @@
-import { TP_RUNE } from "../mode/gamemessage";
-import { Player } from "../player/player";
-import { AMHC } from "../utils/amhc";
-import { Path } from "./Path";
+import { TP_RUNE } from "../../constants/gamemessage"
+import { Player } from "../../player/player"
+import { AMHC } from "../../utils/amhc"
+import { Path } from "../path"
 
 /**神符路径 */
 export class PathRune extends Path {

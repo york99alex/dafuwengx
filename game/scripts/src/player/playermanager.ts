@@ -1,5 +1,5 @@
-import { PS_None } from '../mode/gamemessage';
-import { Path } from '../path/Path';
+import { PS_None } from '../constants/gamemessage';
+import { Path } from '../path/path';
 import { ParaAdjuster } from '../utils/paraadjuster';
 import { Player } from './player';
 

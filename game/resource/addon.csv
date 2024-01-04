@@ -566,3 +566,9 @@ PathName_37,,神符 ● 下
 PathName_38,,天灾福泽
 PathName_39,,圣所 ● 其一
 PathName_40,,圣所 ● 其二
+
+supply_title,,补给环节
+supply_tip_ready,,准备阶段
+supply_tip_turn,,选择补给品（左键选择，右键于商店查看）
+supply_tip_end,,补给结束
+supply_tip_select,,请挑选

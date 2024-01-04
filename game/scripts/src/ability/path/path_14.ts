@@ -1,5 +1,5 @@
-import { PS_AbilityImmune, PS_InPrison, PS_Rooted, TP_DOMAIN_3 } from "../../mode/gamemessage";
-import { PathDomain } from "../../path/pathsdomain/pathdomain";
+import { PS_AbilityImmune, PS_InPrison, PS_Rooted, TP_DOMAIN_3 } from "../../constants/gamemessage";
+import { PathDomain } from "../../path/pathtype/pathsdomain/pathdomain";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
 import { AMHC, IsValid } from "../../utils/amhc";

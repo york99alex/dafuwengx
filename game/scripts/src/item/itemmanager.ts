@@ -3,8 +3,8 @@ import { Player } from '../player/player';
 import { AMHC, AMHC_MSG, IsValid, fireMouseAction_symbol } from '../utils/amhc';
 import { ParaAdjuster } from '../utils/paraadjuster';
 import { KeyValues } from '../kv';
-import { BuyState_Secret, BuyState_Side, BuyState_SideAndSecret, TP_SHOP_SECRET, TP_SHOP_SIDE } from '../mode/gamemessage';
-import { HudError } from '../mode/huderror';
+import { BuyState_Secret, BuyState_Side, BuyState_SideAndSecret, TP_SHOP_SECRET, TP_SHOP_SIDE } from '../constants/gamemessage';
+import { HudError } from '../mode/S2Cmode/huderror';
 import { ItemShare } from './itemshare';
 
 const INDEX_ITEM = 6;

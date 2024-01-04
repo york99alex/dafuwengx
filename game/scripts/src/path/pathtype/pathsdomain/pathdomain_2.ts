@@ -1,6 +1,6 @@
-import { Player } from "../../player/player";
-import { AMHC } from "../../utils/amhc";
-import { ParaAdjuster } from "../../utils/paraadjuster";
+import { Player } from "../../../player/player";
+import { AMHC } from "../../../utils/amhc";
+import { ParaAdjuster } from "../../../utils/paraadjuster";
 import { PathDomain } from "./pathdomain";
 
 /**领土路径-河道 */

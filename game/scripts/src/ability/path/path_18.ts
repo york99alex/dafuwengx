@@ -1,6 +1,6 @@
-import { PS_InPrison, TP_DOMAIN_7 } from "../../mode/gamemessage";
-import { Path } from "../../path/Path";
-import { PathDomain } from "../../path/pathsdomain/pathdomain";
+import { PS_InPrison, TP_DOMAIN_7 } from "../../constants/gamemessage";
+import { Path } from "../../path/path";
+import { PathDomain } from "../../path/pathtype/pathsdomain/pathdomain";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { DamageEvent, Player } from "../../player/player";
 import { AMHC, IsValid } from "../../utils/amhc";

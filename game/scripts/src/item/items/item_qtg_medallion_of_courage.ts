@@ -4,7 +4,7 @@ import { TSBaseItem } from '../tsBaseItem';
 import { AbilityManager } from '../../ability/abilitymanager';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { Player } from '../../player/player';
-import { HERO_TO_BZ } from '../../mode/constant';
+import { HERO_TO_BZ } from '../../constants/constant';
 
 /**
  * 勇气勋章，1500，500甲+500面罩+500石头，5甲，英雄每3回合回复1点蓝，兵卒提升10%回蓝

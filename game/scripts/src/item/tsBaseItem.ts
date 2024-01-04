@@ -1,5 +1,5 @@
-import { GS_Move, GS_Supply, GS_DeathClearing, GS_Wait, PS_InPrison, PS_AtkHero, PS_Die } from '../mode/gamemessage';
-import { Path } from '../path/Path';
+import { GS_Move, GS_Supply, GS_DeathClearing, GS_Wait, PS_InPrison, PS_AtkHero, PS_Die } from '../constants/gamemessage';
+import { Path } from '../path/path';
 import { player_info } from '../player/player';
 import { BaseItem } from '../utils/dota_ts_adapter';
 
@@ -93,7 +93,7 @@ export class TSBaseItem extends BaseItem {
                 return false;
             }
             print('isCanCast===5');
-            // 亡国阶段不能施法
+            // 死亡清算阶段不能施法
             if (GameRules.GameConfig.m_typeState == GS_DeathClearing) {
                 this.m_strCastError = 'AbilityError_DeathClearing';
                 return false;

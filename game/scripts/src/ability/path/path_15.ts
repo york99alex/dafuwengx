@@ -1,4 +1,4 @@
-import { TP_DOMAIN_4 } from "../../mode/gamemessage";
+import { TP_DOMAIN_4 } from "../../constants/gamemessage";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { Player } from "../../player/player";
 import { AMHC, IsValid } from "../../utils/amhc";

@@ -1,5 +1,5 @@
-import { CameraManage } from "../../mode/CameraManage";
-import { PS_AtkHero, PS_AtkMonster, PS_InPrison, PS_Invis } from "../../mode/gamemessage";
+import { CameraManage } from "../../mode/S2Cmode/CameraManage";
+import { PS_AtkHero, PS_AtkMonster, PS_InPrison, PS_Invis } from "../../constants/gamemessage";
 import { Player } from "../../player/player";
 import { AMHC } from "../../utils/amhc";
 import { registerAbility } from "../../utils/dota_ts_adapter";

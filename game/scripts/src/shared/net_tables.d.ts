@@ -24,8 +24,7 @@ declare interface CustomNetTableDeclarations {
         };
         timeOprt: { time: number };
         order: {
-            nPlayerID: number;
-            heroName: string;
+            nPlayerID: PlayerID;
         };
         round: { nRound: number };
         state: { typeState: number };
@@ -34,6 +33,11 @@ declare interface CustomNetTableDeclarations {
         auction: {
             remaining: number;
             bidData: any;
+        };
+        supply: {
+            nPlayerIDOprt: PlayerID;
+            tabPlayerID: any;
+            tabSupplyInfo: any;
         };
         player_info_0: {
             bRoundFinished: 1 | 0;

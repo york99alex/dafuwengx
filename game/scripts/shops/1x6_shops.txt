@@ -231,8 +231,6 @@
 		"item"		"item_qtg_ring_of_health"
 		// 虚无宝石，1000，英雄每2回合回复1点蓝，兵卒提升20%回蓝
 		"item"		"item_qtg_void_stone"
-		// 丰饶之环，2500，每回合英雄/兵卒回复12%生命值，英雄每2回合回复1点蓝，兵卒提升20%回蓝，10点攻击力
-		"item"		"item_qtg_cornucopia"
 		// 能量之球，1000，2点蓝上限
 		"item"		"item_qtg_energy_booster"
 		// 活力之球，1000，300生命值
@@ -244,6 +242,8 @@
 		"item"		"item_hyperstone"
 		// 极限法球，2000，10全属性
 		"item"		"item_ultimate_orb"
+		// 丰饶之环，2500，每回合英雄/兵卒回复12%生命值，英雄每2回合回复1点蓝，兵卒提升20%回蓝，10点攻击力
+		"item"		"item_qtg_cornucopia"
 		// 恶魔刀锋，2500，40攻
 		"item"		"item_demon_edge"
 		// 神秘法杖，2500，25智力

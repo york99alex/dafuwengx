@@ -942,7 +942,7 @@ export const App = () => {	// 根组件
 
 - 
 
-## 亡国清算逻辑
+## 死亡清算逻辑
 
 所有修改的金币时检查是否没钱了:
 
@@ -1956,6 +1956,18 @@ ItemShare
 
 
 
+#### 物品补给模块
+
+开局和第5回合	1级 随机统一价500或1000
+
+10回合	2级 随机统一价1000或1500
+
+15回合	3级 随机统一价1500或2000
+
+20回合	4级 随机统一价2000或2500
+
+25回合	5级 随机统一价2500或3000
+
 
 
 ## 卡牌
@@ -2087,6 +2099,22 @@ Path的类class name应以	path_corner
 前端按钮触发GM_Operator,后端服务端监听到
 
 
+
+## 发操作sendOprt
+
+打野onPath：   
+
+ GameRules.GameConfig.sendOprt({
+
+​      nPlayerID: oPlayer.m_nPlayerID,
+
+​      typeOprt: TypeOprt.TO_AtkMonster,
+
+​      typePath: this.m_typePath,
+
+​      nPathID: this.m_nID,
+
+​    });
 
 
 

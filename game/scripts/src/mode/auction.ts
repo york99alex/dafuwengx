@@ -1,8 +1,8 @@
-import { PathDomain } from '../path/pathsdomain/pathdomain';
+import { PathDomain } from '../path/pathtype/pathsdomain/pathdomain';
 import { Player } from '../player/player';
 import { reloadable } from '../utils/tstl-utils';
-import { AUCTION_ADD_GOLD, AUCTION_BID_TIME, GAME_MODE, GAME_MODE_ALLPATH, TypePathState } from './constant';
-import { TypeOprt } from './gamemessage';
+import { AUCTION_ADD_GOLD, AUCTION_BID_TIME, GAME_MODE, GAME_MODE_ALLPATH, TypePathState } from '../constants/constant';
+import { TypeOprt } from '../constants/gamemessage';
 
 const CancleReason = {
     GCLD: -1,

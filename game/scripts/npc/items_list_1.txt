@@ -5,6 +5,1592 @@
 // Template: https://github.com/XavierCHN/x-template
 "XLSXContent"
 {
+	"item_recipe_qtg_orb_of_corrosion" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_orb_of_corrosion"
+		"ItemRequirements" {
+			"01" "item_qtg_orb_of_venom;item_qtg_blight_stone;item_fluffy_hat"
+		}
+	}
+	"item_recipe_qtg_falcon_blade" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_falcon_blade"
+		"ItemRequirements" {
+			"01" "item_fluffy_hat;item_qtg_sobi_mask;item_blades_of_attack"
+		}
+	}
+	"item_recipe_qtg_oblivion_staff" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_oblivion_staff"
+		"ItemRequirements" {
+			"01" "item_quarterstaff;item_robe"
+		}
+	}
+	"item_recipe_qtg_mask_of_madness" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1634"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_mask_of_madness"
+		"ItemRequirements" {
+			"01" "item_lifesteal;item_quarterstaff"
+		}
+	}
+	"item_recipe_qtg_tranquil_boots" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1637"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_tranquil_boots"
+		"ItemRequirements" {
+			"01" "item_boots;item_qtg_ring_of_regen"
+		}
+	}
+	"item_recipe_qtg_medallion_of_courage" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1639"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_medallion_of_courage"
+		"ItemRequirements" {
+			"01" "item_chainmail;item_qtg_sobi_mask;item_qtg_blight_stone"
+		}
+	}
+	"item_recipe_qtg_arcane_boots" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1641"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_arcane_boots"
+		"ItemRequirements" {
+			"01" "item_boots;item_qtg_energy_booster"
+		}
+	}
+	"item_recipe_qtg_witch_blade" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1645"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_witch_blade"
+		"ItemRequirements" {
+			"01" "item_gloves;item_staff_of_wizardry;item_chainmail;item_quarterstaff"
+		}
+	}
+	"item_recipe_qtg_orchid" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1648"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_orchid"
+		"ItemRequirements" {
+			"01" "item_staff_of_wizardry;item_quarterstaff;item_qtg_void_stone"
+		}
+	}
+	"item_recipe_qtg_solar_crest" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1650"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_solar_crest"
+		"ItemRequirements" {
+			"01" "item_qtg_medallion_of_courage;item_crown;item_quarterstaff"
+		}
+	}
+	"item_recipe_qtg_rod_of_atos" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1652"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_rod_of_atos"
+		"ItemRequirements" {
+			"01" "item_staff_of_wizardry;item_vitality_booster;item_robe"
+		}
+	}
+	"item_recipe_qtg_refresher" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1654"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_refresher"
+		"ItemRequirements" {
+			"01" "item_qtg_cornucopia;item_qtg_cornucopia"
+		}
+	}
+	"item_recipe_qtg_octarine_core" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1656"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_octarine_core"
+		"ItemRequirements" {
+			"01" "item_qtg_void_stone;item_qtg_void_stone;item_vitality_booster;item_qtg_energy_booster"
+		}
+	}
+	"item_recipe_qtg_sheepstick" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1658"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_sheepstick"
+		"ItemRequirements" {
+			"01" "item_mystic_staff;item_ultimate_orb;item_qtg_void_stone"
+		}
+	}
+	"item_recipe_vanguard" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_vanguard"
+		"ItemRequirements" {
+			"01" "item_qtg_ring_of_health;item_vitality_booster"
+		}
+	}
+	"item_recipe_qtg_blade_mail" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1661"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_blade_mail"
+		"ItemRequirements" {
+			"01" "item_claymore;item_platemail"
+		}
+	}
+	"item_recipe_qtg_soul_booster" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_soul_booster"
+		"ItemRequirements" {
+			"01" "item_vitality_booster;item_qtg_energy_booster;item_qtg_ring_of_health"
+		}
+	}
+	"item_recipe_qtg_crimson_guard" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1664"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_crimson_guard"
+		"ItemRequirements" {
+			"01" "item_vanguard;item_qtg_helm_of_iron_will"
+		}
+	}
+	"item_recipe_shivas_guard" {
+		"BaseClass" "item_recipe_shivas_guard"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+			"01" "item_platemail;item_mystic_staff"
+		}
+	}
+	"item_recipe_assault" {
+		"BaseClass" "item_recipe_assault"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+			"01" "item_platemail;item_platemail;item_hyperstone"
+		}
+	}
+	"item_recipe_lesser_crit" {
+		"BaseClass" "item_recipe_lesser_crit"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+			"01" "item_claymore;item_blades_of_attack;item_blades_of_attack"
+		}
+	}
+	"item_recipe_desolator" {
+		"BaseClass" "item_recipe_desolator"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+			"01" "item_claymore;item_blades_of_attack;item_qtg_blight_stone"
+		}
+	}
+	"item_recipe_ethereal_blade" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_ethereal_blade"
+		"ItemRequirements" {
+			"01" "item_kaya;item_qtg_ghost"
+		}
+	}
+	"item_recipe_butterfly" {
+		"BaseClass" "item_recipe_butterfly"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+			"01" "item_eagle;item_quarterstaff"
+		}
+	}
+	"item_recipe_radiance" {
+		"BaseClass" "item_recipe_radiance"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+			"01" "item_relic;item_claymore"
+		}
+	}
+	"item_recipe_greater_crit" {
+		"BaseClass" "item_recipe_greater_crit"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+			"01" "item_lesser_crit;item_demon_edge"
+		}
+	}
+	"item_recipe_qtg_bloodthorn" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1685"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_bloodthorn"
+		"ItemRequirements" {
+			"01" "item_qtg_orchid;item_mage_slayer"
+		}
+	}
+	"item_recipe_qtg_revenants_brooch" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ID" "1687"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_revenants_brooch"
+		"ItemRequirements" {
+			"01" "item_qtg_witch_blade;item_mystic_staff"
+		}
+	}
+	"item_recipe_sange" {
+		"BaseClass" "item_recipe_sange"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+		}
+	}
+	"item_recipe_yasha" {
+		"BaseClass" "item_recipe_yasha"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+		}
+	}
+	"item_recipe_kaya" {
+		"BaseClass" "item_recipe_kaya"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+		}
+	}
+	"item_recipe_mage_slayer" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"ItemRecipe" "1"
+		"ItemResult" "item_mage_slayer"
+		"ItemRequirements" {
+			"01" "item_cloak;item_qtg_oblivion_staff"
+		}
+	}
+	"item_recipe_kaya_and_sange" {
+		"BaseClass" "item_recipe_kaya_and_sange"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+		}
+	}
+	"item_recipe_kaya_and_sange" {
+		"BaseClass" "item_recipe_kaya_and_sange"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+		}
+	}
+	"item_recipe_yasha_and_kaya" {
+		"BaseClass" "item_recipe_yasha_and_kaya"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+		}
+	}
+	"item_recipe_skadi" {
+		"BaseClass" "item_recipe_skadi"
+		"AbilityValues" {
+		}
+		"ItemCost" "0"
+		"ItemRequirements" {
+			"01" "item_ultimate_orb;item_ultimate_orb;item_vitality_booster"
+		}
+	}
+	"item_faerie_fire" {
+		"BaseClass" "item_faerie_fire"
+		"AbilityValues" {
+			"bonus_damage" "5"
+			"hp_restore" "100"
+		}
+		"ItemCost" "100"
+		"ItemRequirements" {
+		}
+	}
+	"item_famango" {
+		"BaseClass" "item_famango"
+		"AbilityValues" {
+			"replenish_amount" "2"
+		}
+		"ItemCost" "100"
+		"ItemRequirements" {
+		}
+	}
+	"item_belt_of_strength" {
+		"BaseClass" "item_belt_of_strength"
+		"AbilityValues" {
+		}
+		"ItemCost" "500"
+		"IsSupply" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_boots_of_elves" {
+		"BaseClass" "item_boots_of_elves"
+		"AbilityValues" {
+		}
+		"ItemCost" "500"
+		"IsSupply" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_robe" {
+		"BaseClass" "item_robe"
+		"AbilityValues" {
+		}
+		"ItemCost" "500"
+		"IsSupply" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_crown" {
+		"BaseClass" "item_crown"
+		"AbilityValues" {
+		}
+		"ItemCost" "500"
+		"IsSupply" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_orb_of_venom" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_orb_of_venom"
+		"AbilityValues" {
+			"poison_movement_speed_melee" "-10"
+			"poison_movement_speed_range" "-5"
+			"poison_duration" "2.0"
+		}
+		"ItemCost" "500"
+		"ID" "1608"
+		"IsSupply" "1"
+		"ItemQuality" "component"
+		"AbilityTextureName" "item_orb_of_venom"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_blight_stone" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_blight_stone"
+		"AbilityValues" {
+			"corruption_armor" "-3"
+			"corruption_duration" "2.0"
+		}
+		"ItemCost" "500"
+		"ID" "1609"
+		"IsSupply" "1"
+		"ItemQuality" "component"
+		"AbilityTextureName" "item_blight_stone"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_blades_of_attack" {
+		"BaseClass" "item_blades_of_attack"
+		"AbilityValues" {
+			"bonus_damage" "10"
+		}
+		"ItemCost" "500"
+		"IsSupply" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_gloves" {
+		"BaseClass" "item_gloves"
+		"AbilityValues" {
+			"bonus_attack_speed" "20"
+		}
+		"ItemCost" "500"
+		"IsSupply" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_chainmail" {
+		"BaseClass" "item_chainmail"
+		"AbilityValues" {
+			"bonus_armor" "4"
+		}
+		"ItemCost" "500"
+		"IsSupply" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_ring_of_regen" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_ring_of_regen"
+		"AbilityValues" {
+			"health_regen_hero" "5"
+			"health_regen_bz" "5"
+		}
+		"ItemCost" "500"
+		"ID" "1616"
+		"IsSupply" "1"
+		"ItemQuality" "component"
+		"AbilityTextureName" "item_ring_of_regen"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_sobi_mask" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_sobi_mask"
+		"AbilityValues" {
+			"mana_regen_hero" "1"
+			"mana_regen_bz" "10"
+		}
+		"ItemCost" "500"
+		"ID" "1617"
+		"IsSupply" "1"
+		"ItemQuality" "component"
+		"AbilityCooldown" "4"
+		"AbilityTextureName" "item_sobi_mask"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_fluffy_hat" {
+		"BaseClass" "item_fluffy_hat"
+		"AbilityValues" {
+			"bonus_health" "200"
+		}
+		"ItemCost" "500"
+		"IsSupply" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_boots" {
+		"BaseClass" "item_boots"
+		"AbilityValues" {
+			"bonus_movement_speed" "20"
+		}
+		"ItemCost" "500"
+		"IsSupply" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_recipe_qtg_heart" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "500"
+		"ID" "1668"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"AbilityTextureName" "item_recipe_heart"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_heart"
+		"ItemRequirements" {
+			"01" "item_vitality_booster;item_reaver"
+		}
+	}
+	"item_recipe_qtg_overwhelming_blink" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "500"
+		"ID" "1706"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"AbilityTextureName" "item_recipe_overwhelming_blink"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_overwhelming_blink"
+		"ItemRequirements" {
+			"01" "item_qtg_blink;item_reaver"
+		}
+	}
+	"item_recipe_qtg_swift_blink" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "500"
+		"ID" "1708"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"AbilityTextureName" "item_recipe_swift_blink"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_swift_blink"
+		"ItemRequirements" {
+			"01" "item_qtg_blink;item_eagle"
+		}
+	}
+	"item_recipe_qtg_arcane_blink" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "500"
+		"ID" "1710"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"AbilityTextureName" "item_recipe_arcane_blink"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_arcane_blink"
+		"ItemRequirements" {
+			"01" "item_qtg_blink;item_mystic_staff"
+		}
+	}
+	"item_qtg_iron_talon" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_iron_talon"
+		"AbilityValues" {
+			"bonus_attack_speed" "10"
+			"bonus_armor" "4"
+			"cd_getcard" "5"
+		}
+		"ItemCost" "1000"
+		"ID" "1607"
+		"IsSupply" "2"
+		"ItemQuality" "component"
+		"Model" "models/props_gameplay/quelling_blade.vmdl"
+		"AbilityCooldown" "5"
+		"AbilityTextureName" "item_iron_talon"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_quarterstaff" {
+		"BaseClass" "item_quarterstaff"
+		"AbilityValues" {
+			"bonus_speed" "10"
+			"bonus_damage" "10"
+		}
+		"ItemCost" "1000"
+		"IsSupply" "2"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_helm_of_iron_will" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_helm_of_iron_will"
+		"AbilityValues" {
+			"bonus_armor" "5"
+			"health_regen_hero" "5"
+			"health_regen_bz" "5"
+		}
+		"ItemCost" "1000"
+		"ID" "1614"
+		"IsSupply" "2"
+		"ItemQuality" "component"
+		"AbilityTextureName" "item_helm_of_iron_will"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_cloak" {
+		"BaseClass" "item_cloak"
+		"AbilityValues" {
+			"bonus_magical_armor" "20"
+		}
+		"ItemCost" "1000"
+		"IsSupply" "2"
+		"ItemRequirements" {
+		}
+	}
+	"item_lifesteal" {
+		"BaseClass" "item_lifesteal"
+		"AbilityValues" {
+			"lifesteal_percent" "20"
+			"creep_lifesteal_reduction_pct" "40"
+		}
+		"ItemCost" "1000"
+		"IsSupply" "2"
+		"ItemRequirements" {
+		}
+	}
+	"item_voodoo_mask" {
+		"BaseClass" "item_voodoo_mask"
+		"AbilityValues" {
+			"spell_lifesteal" "10"
+		}
+		"ItemCost" "1000"
+		"IsSupply" "2"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_tranquil_boots" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_tranquil_boots"
+		"AbilityValues" {
+			"health_regen_hero" "5"
+			"health_regen_bz" "5"
+			"bonus_regen" "10"
+			"bonus_movement_speed" "30"
+		}
+		"ItemCost" "1000"
+		"ID" "1638"
+		"IsSupply" "2"
+		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_tranquil_boots"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_recipe_qtg_pipe" {
+		"BaseClass" "item_datadriven"
+		"AbilityValues" {
+		}
+		"ItemCost" "1000"
+		"ID" "1643"
+		"Model" "models/props_gameplay/recipe.vmdl"
+		"AbilityTextureName" "item_recipe_pipe"
+		"ItemRecipe" "1"
+		"ItemResult" "item_qtg_pipe"
+		"ItemRequirements" {
+			"01" "item_cloak;item_qtg_ring_of_regen;item_qtg_ring_of_health"
+		}
+	}
+	"item_qtg_ring_of_health" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_ring_of_health"
+		"AbilityValues" {
+			"health_regen_hero" "10"
+			"health_regen_bz" "10"
+		}
+		"ItemCost" "1000"
+		"ID" "1712"
+		"IsSupply" "2"
+		"ItemQuality" "component"
+		"SecretShop" "1"
+		"AbilityTextureName" "item_ring_of_health"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_void_stone" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_void_stone"
+		"AbilityValues" {
+			"mana_regen_hero" "1"
+			"mana_regen_bz" "20"
+		}
+		"ItemCost" "1000"
+		"ID" "1713"
+		"IsSupply" "2"
+		"ItemQuality" "component"
+		"SecretShop" "1"
+		"AbilityCooldown" "2"
+		"AbilityTextureName" "item_void_stone"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_energy_booster" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_energy_booster"
+		"AbilityValues" {
+			"bonus_mana" "2"
+		}
+		"ItemCost" "1000"
+		"ID" "1715"
+		"IsSupply" "2"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
+		"AbilityTextureName" "item_energy_booster"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_vitality_booster" {
+		"BaseClass" "item_vitality_booster"
+		"AbilityValues" {
+			"bonus_health" "300"
+		}
+		"ItemCost" "1000"
+		"IsSupply" "2"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_claymore" {
+		"BaseClass" "item_claymore"
+		"AbilityValues" {
+			"bonus_damage" "20"
+		}
+		"ItemCost" "1500"
+		"IsSupply" "3"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_ghost" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_ghost"
+		"AbilityValues" {
+			"bonus_all_stats" "5"
+			"extra_spell_damage_percent" "-30"
+			"duration" "1"
+		}
+		"ItemCost" "1500"
+		"ID" "1623"
+		"IsSupply" "3"
+		"ItemQuality" "component"
+		"AbilityCooldown" "5"
+		"AbilityTextureName" "item_ghost"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_orb_of_corrosion" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_orb_of_corrosion"
+		"AbilityValues" {
+			"armor" "-4"
+			"slow_melee" "15"
+			"slow_range" "10"
+			"duration" "2"
+			"health_bonus" "250"
+		}
+		"ItemCost" "1500"
+		"ID" "1626"
+		"IsSupply" "3"
+		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_orb_of_corrosion"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_falcon_blade" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_falcon_blade"
+		"AbilityValues" {
+			"bonus_health" "300"
+			"mana_regen_hero" "1"
+			"mana_regen_bz" "10"
+			"bonus_damage" "12"
+		}
+		"ItemCost" "1500"
+		"ID" "1628"
+		"IsSupply" "3"
+		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityCooldown" "3"
+		"AbilityTextureName" "item_falcon_blade"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_power_treads" {
+		"BaseClass" "item_power_treads"
+		"AbilityValues" {
+			"bonus_movement_speed_ranged" "20"
+			"bonus_movement_speed_melee" "30"
+			"bonus_stat" "10"
+			"bonus_attack_speed" "25"
+			"bonus_damage" "0"
+		}
+		"ItemCost" "1500"
+		"IsSupply" "3"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_phase_boots" {
+		"BaseClass" "item_phase_boots"
+		"AbilityValues" {
+			"bonus_movement_speed" "25"
+			"phase_duration" "10.0"
+		}
+		"ItemCost" "1500"
+		"IsSupply" "3"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityCooldown" "3"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_oblivion_staff" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_oblivion_staff"
+		"AbilityValues" {
+			"bonus_damage" "15"
+			"bonus_intellect" "10"
+			"bonus_attack_speed" "10"
+		}
+		"ItemCost" "1500"
+		"ID" "1633"
+		"IsSupply" "3"
+		"ItemQuality" "common"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_oblivion_staff"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_medallion_of_courage" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_medallion_of_courage"
+		"AbilityValues" {
+			"bonus_armor" "5"
+			"mana_regen_hero" "1"
+			"mana_regen_hero_cd" "3"
+			"mana_regen_bz" "10"
+			"armor_reduction" "-6"
+			"duration" "1"
+		}
+		"ItemCost" "1500"
+		"ID" "1640"
+		"IsSupply" "3"
+		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityCooldown" "3"
+		"AbilityTextureName" "item_medallion_of_courage"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_NO"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_arcane_boots" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_arcane_boots"
+		"AbilityValues" {
+			"bonus_movement" "20"
+			"bonus_mana" "2"
+			"replenish_hero" "4"
+			"replenish_bz" "40"
+		}
+		"ItemCost" "1500"
+		"ID" "1642"
+		"IsSupply" "3"
+		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityCooldown" "4"
+		"AbilityTextureName" "item_arcane_boots"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"ItemRequirements" {
+		}
+	}
+	"item_sange" {
+		"BaseClass" "item_sange"
+		"AbilityValues" {
+			"bonus_strength" "16"
+			"status_resistance" "0"
+			"hp_regen_amp" "0"
+		}
+		"ItemCost" "1500"
+		"IsSupply" "3"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_yasha" {
+		"BaseClass" "item_yasha"
+		"AbilityValues" {
+			"movement_speed_percent_bonus" "0"
+		}
+		"ItemCost" "1500"
+		"IsSupply" "3"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_kaya" {
+		"BaseClass" "item_kaya"
+		"AbilityValues" {
+			"mana_regen_multiplier" "0"
+		}
+		"ItemCost" "1500"
+		"IsSupply" "3"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_platemail" {
+		"BaseClass" "item_platemail"
+		"AbilityValues" {
+			"bonus_armor" "10"
+		}
+		"ItemCost" "1500"
+		"IsSupply" "3"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_blink" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_blink"
+		"AbilityValues" {
+		}
+		"ItemCost" "2000"
+		"ID" "1624"
+		"IsSupply" "4"
+		"ItemQuality" "component"
+		"AbilityCooldown" "1"
+		"AbilityTextureName" "item_blink"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_mask_of_madness" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_mask_of_madness"
+		"AbilityValues" {
+			"bonus_damage" "10"
+			"bonus_attack_speed" "10"
+			"lifesteal_percent" "25"
+			"creep_lifesteal_reduction_pct" "40"
+			"berserk_bonus_attack_speed" "100"
+			"berserk_bonus_movement_speed" "20"
+			"berserk_armor_reduction" "8"
+			"duration" "1"
+			"bonus_attack_speed" "50"
+			"bonus_speed_percent" "10"
+		}
+		"ItemCost" "2000"
+		"ID" "1635"
+		"IsSupply" "4"
+		"ItemQuality" "artifact"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityCooldown" "5"
+		"AbilityManaCost" "1"
+		"AbilityTextureName" "item_mask_of_madness"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"ItemRequirements" {
+		}
+	}
+	"item_vanguard" {
+		"BaseClass" "item_vanguard"
+		"AbilityValues" {
+			"bonus_health" "300"
+			"bonus_health_regen" "0"
+			"health_regen" "10"
+		}
+		"ItemCost" "2000"
+		"IsSupply" "4"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_hyperstone" {
+		"BaseClass" "item_hyperstone"
+		"AbilityValues" {
+			"bonus_attack_speed" "60"
+		}
+		"ItemCost" "2000"
+		"IsSupply" "4"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_ultimate_orb" {
+		"BaseClass" "item_ultimate_orb"
+		"AbilityValues" {
+			"bonus_all_stats" "10"
+		}
+		"ItemCost" "2000"
+		"IsSupply" "4"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_rod_of_atos" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_rod_of_atos"
+		"AbilityValues" {
+			"bonus_intellect" "20"
+			"bonus_health" "300"
+			"duration" "1"
+		}
+		"ItemCost" "2500"
+		"ID" "1653"
+		"IsSupply" "5"
+		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityCooldown" "5"
+		"AbilityManaCost" "2"
+		"AbilityTextureName" "item_rod_of_atos"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"ItemRequirements" {
+		}
+	}
+	"item_lesser_crit" {
+		"BaseClass" "item_lesser_crit"
+		"AbilityValues" {
+			"bonus_damage" "40"
+		}
+		"ItemCost" "2500"
+		"IsSupply" "5"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_mage_slayer" {
+		"BaseClass" "item_mage_slayer"
+		"AbilityValues" {
+			"bonus_magical_armor" "20"
+			"bonus_attack_speed" "15"
+			"bonus_mana_regen" "0"
+			"duration" "3"
+		}
+		"ItemCost" "2500"
+		"IsSupply" "5"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_cornucopia" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_cornucopia"
+		"AbilityValues" {
+			"bonus_damage" "15"
+			"health_regen_hero" "12"
+			"health_regen_bz" "12"
+			"mana_regen_hero" "1"
+			"mana_regen_bz" "20"
+		}
+		"ItemCost" "2500"
+		"ID" "1714"
+		"IsSupply" "5"
+		"ItemQuality" "common"
+		"SecretShop" "1"
+		"AbilityCooldown" "2"
+		"AbilityTextureName" "item_cornucopia"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements" {
+		}
+	}
+	"item_demon_edge" {
+		"BaseClass" "item_demon_edge"
+		"AbilityValues" {
+			"bonus_damage" "40"
+		}
+		"ItemCost" "2500"
+		"IsSupply" "5"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_mystic_staff" {
+		"BaseClass" "item_mystic_staff"
+		"AbilityValues" {
+			"bonus_intellect" "25"
+		}
+		"ItemCost" "2500"
+		"IsSupply" "5"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_reaver" {
+		"BaseClass" "item_reaver"
+		"AbilityValues" {
+			"bonus_strength" "25"
+		}
+		"ItemCost" "2500"
+		"IsSupply" "5"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_eagle" {
+		"BaseClass" "item_eagle"
+		"AbilityValues" {
+			"bonus_agility" "25"
+		}
+		"ItemCost" "2500"
+		"IsSupply" "5"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_witch_blade" {
+		"AbilityValues" {
+		}
+		"ItemCost" "3000"
+		"ID" "1646"
+		"IsSupply" "6"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_witch_blade"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_orchid" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_orchid"
+		"AbilityValues" {
+			"bonus_attack_speed" "20"
+			"bonus_damage" "15"
+			"bonus_intellect" "12"
+			"mana_regen_hero" "1"
+			"mana_regen_hero_cd" "2"
+			"mana_regen_bz" "20"
+			"silence_duration" "1"
+		}
+		"ItemCost" "3000"
+		"ID" "1649"
+		"IsSupply" "6"
+		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityCooldown" "5"
+		"AbilityManaCost" "2"
+		"AbilityTextureName" "item_orchid"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_solar_crest" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_solar_crest"
+		"AbilityValues" {
+			"bonus_armor" "6"
+			"bonus_all_stats" "6"
+			"bonus_attack_speed" "12"
+			"bonus_damage" "12"
+			"mana_regen_bz" "12"
+			"mana_regen_hero" "1"
+			"mana_regen_hero_cd" "3"
+			"target_armor" "8"
+			"target_attack_speed" "60"
+			"target_movement_speed" "15"
+			"duration" "1"
+		}
+		"ItemCost" "3000"
+		"ID" "1651"
+		"IsSupply" "6"
+		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityCooldown" "3"
+		"AbilityTextureName" "item_solar_crest"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_NO"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_blade_mail" {
+		"AbilityValues" {
+		}
+		"ItemCost" "3000"
+		"ID" "1662"
+		"IsSupply" "6"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_blade_mail"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_soul_booster" {
+		"BaseClass" "item_lua"
+		"AbilityValues" {
+		}
+		"ItemCost" "3000"
+		"ID" "1663"
+		"IsSupply" "6"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_soul_booster"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_crimson_guard" {
+		"AbilityValues" {
+		}
+		"ItemCost" "3000"
+		"ID" "1665"
+		"IsSupply" "6"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_crimson_guard"
+		"ItemRequirements" {
+		}
+	}
+	"item_ethereal_blade" {
+		"BaseClass" "item_ethereal_blade"
+		"AbilityValues" {
+			"mana_regen_multiplier" "0"
+		}
+		"ItemCost" "3000"
+		"IsSupply" "6"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_kaya_and_sange" {
+		"BaseClass" "item_kaya_and_sange"
+		"AbilityValues" {
+			"hp_regen_amp" "0"
+			"mana_regen_multiplier" "0"
+			"status_resistance" "0"
+		}
+		"ItemCost" "3000"
+		"IsSupply" "6"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_sange_and_yasha" {
+		"BaseClass" "item_sange_and_yasha"
+		"AbilityValues" {
+			"status_resistance" "0"
+			"movement_speed_percent_bonus" "0"
+			"hp_regen_amp" "0"
+		}
+		"ItemCost" "3000"
+		"IsSupply" "6"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_yasha_and_kaya" {
+		"BaseClass" "item_yasha_and_kaya"
+		"AbilityValues" {
+			"mana_regen_multiplier" "0"
+			"movement_speed_percent_bonus" "0"
+		}
+		"ItemCost" "3000"
+		"IsSupply" "6"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_pipe" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_pipe"
+		"AbilityValues" {
+			"bonus_magical_armor" "30"
+			"health_regen_hero" "18"
+			"health_regen_bz" "18"
+			"resist_perct" "35"
+			"resisit_mana" "1"
+		}
+		"ItemCost" "3500"
+		"ID" "1644"
+		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_pipe"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"ItemRequirements" {
+		}
+	}
+	"item_desolator" {
+		"BaseClass" "item_desolator"
+		"AbilityValues" {
+			"bonus_damage" "50"
+		}
+		"ItemCost" "3500"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_butterfly" {
+		"BaseClass" "item_butterfly"
+		"AbilityValues" {
+			"bonus_evasion" "0"
+		}
+		"ItemCost" "3500"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_relic" {
+		"BaseClass" "item_relic"
+		"AbilityValues" {
+			"bonus_damage" "60"
+		}
+		"ItemCost" "3500"
+		"ItemQuality" "secret_shop"
+		"SecretShop" "1"
+		"ItemRequirements" {
+		}
+	}
+	"item_moon_shard" {
+		"BaseClass" "item_moon_shard"
+		"AbilityValues" {
+		}
+		"ItemCost" "4000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_octarine_core" {
+		"AbilityValues" {
+		}
+		"ItemCost" "4000"
+		"ID" "1657"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_octarine_core"
+		"ItemRequirements" {
+		}
+	}
+	"item_shivas_guard" {
+		"BaseClass" "item_shivas_guard"
+		"AbilityValues" {
+		}
+		"ItemCost" "4000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_heart" {
+		"BaseClass" "item_heart"
+		"AbilityValues" {
+			"bonus_strength" "40"
+			"bonus_health" "300"
+			"health_regen_pct" "0"
+			"health_regen" "20"
+		}
+		"ItemCost" "4000"
+		"ID" "1669"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_heart"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_refresher" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_refresher"
+		"AbilityValues" {
+			"bonus_damage" "30"
+			"mana_regen_bz" "40"
+			"mana_regen_hero" "2"
+			"mana_regen_hero_cd" "2"
+			"health_regen_hero" "24"
+			"health_regen_bz" "24"
+		}
+		"ItemCost" "5000"
+		"ID" "1655"
+		"ItemQuality" "rare"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityCooldown" "5"
+		"AbilityManaCost" "3"
+		"AbilityTextureName" "item_refresher"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"ItemRequirements" {
+		}
+	}
+	"item_assault" {
+		"BaseClass" "item_assault"
+		"AbilityValues" {
+			"bonus_attack_speed" "60"
+			"bonus_armor" "25"
+			"aura_radius" "800"
+			"aura_positive_armor" "0"
+			"aura_negative_armor" "-10"
+			"aura_attack_speed" "0"
+		}
+		"ItemCost" "5000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_radiance" {
+		"BaseClass" "item_radiance"
+		"AbilityValues" {
+			"bonus_damage" "80"
+			"evasion" "0"
+			"blind_pct" "0"
+		}
+		"ItemCost" "5000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_greater_crit" {
+		"BaseClass" "item_greater_crit"
+		"AbilityValues" {
+		}
+		"ItemCost" "5000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_satanic" {
+		"BaseClass" "item_satanic"
+		"AbilityValues" {
+		}
+		"ItemCost" "5000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_skadi" {
+		"BaseClass" "item_skadi"
+		"AbilityValues" {
+			"bonus_mana" "0"
+			"bonus_health" "350"
+		}
+		"ItemCost" "5000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_overwhelming_blink" {
+		"BaseClass" "item_overwhelming_blink"
+		"AbilityValues" {
+		}
+		"ItemCost" "5000"
+		"ID" "1707"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_overwhelming_blink"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_swift_blink" {
+		"BaseClass" "item_swift_blink"
+		"AbilityValues" {
+		}
+		"ItemCost" "5000"
+		"ID" "1709"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_swift_blink"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_arcane_blink" {
+		"BaseClass" "item_arcane_blink"
+		"AbilityValues" {
+		}
+		"ItemCost" "5000"
+		"ID" "1711"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_arcane_blink"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_sheepstick" {
+		"AbilityValues" {
+		}
+		"ItemCost" "5500"
+		"ID" "1659"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_sheepstick"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_bloodthorn" {
+		"AbilityValues" {
+		}
+		"ItemCost" "5500"
+		"ID" "1686"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_bloodthorn"
+		"ItemRequirements" {
+		}
+	}
+	"item_qtg_revenants_brooch" {
+		"AbilityValues" {
+		}
+		"ItemCost" "5500"
+		"ID" "1688"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_revenants_brooch"
+		"ItemRequirements" {
+		}
+	}
+	"item_rapier" {
+		"BaseClass" "item_rapier"
+		"AbilityValues" {
+		}
+		"ItemCost" "6000"
+		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemRequirements" {
+		}
+	}
 	"item_kv_generator_test1" {
 		"BaseClass" "item_lua"
 		"AbilityValues" {
@@ -38,1536 +1624,10 @@
 		"ItemRequirements" {
 		}
 	}
-	"item_faerie_fire" {
-		"BaseClass" "item_faerie_fire"
-		"AbilityValues" {
-			"bonus_damage" "5"
-			"hp_restore" "100"
-		}
-		"ItemCost" "100"
-		"ItemRequirements" {
-		}
-	}
-	"item_famango" {
-		"BaseClass" "item_famango"
-		"AbilityValues" {
-			"replenish_amount" "2"
-		}
-		"ItemCost" "100"
-		"ItemRequirements" {
-		}
-	}
-	"item_belt_of_strength" {
-		"BaseClass" "item_belt_of_strength"
-		"AbilityValues" {
-		}
-		"ItemCost" "500"
-		"ItemRequirements" {
-		}
-	}
-	"item_boots_of_elves" {
-		"BaseClass" "item_boots_of_elves"
-		"AbilityValues" {
-		}
-		"ItemCost" "500"
-		"ItemRequirements" {
-		}
-	}
-	"item_robe" {
-		"BaseClass" "item_robe"
-		"AbilityValues" {
-		}
-		"ItemCost" "500"
-		"ItemRequirements" {
-		}
-	}
-	"item_crown" {
-		"BaseClass" "item_crown"
-		"AbilityValues" {
-		}
-		"ItemCost" "500"
-		"ItemRequirements" {
-		}
-	}
-	"item_qtg_iron_talon" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_iron_talon"
-		"AbilityValues" {
-			"bonus_attack_speed" "10"
-			"bonus_armor" "4"
-			"cd_getcard" "5"
-		}
-		"ItemCost" "1000"
-		"ID" "1607"
-		"ItemQuality" "component"
-		"Model" "models/props_gameplay/quelling_blade.vmdl"
-		"AbilityCooldown" "5"
-		"AbilityTextureName" "item_iron_talon"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_qtg_orb_of_venom" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_orb_of_venom"
-		"AbilityValues" {
-			"poison_movement_speed_melee" "-10"
-			"poison_movement_speed_range" "-5"
-			"poison_duration" "2.0"
-		}
-		"ItemCost" "500"
-		"ID" "1608"
-		"ItemQuality" "component"
-		"AbilityTextureName" "item_orb_of_venom"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_qtg_blight_stone" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_blight_stone"
-		"AbilityValues" {
-			"corruption_armor" "-3"
-			"corruption_duration" "2.0"
-		}
-		"ItemCost" "500"
-		"ID" "1609"
-		"ItemQuality" "component"
-		"AbilityTextureName" "item_blight_stone"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_blades_of_attack" {
-		"BaseClass" "item_blades_of_attack"
-		"AbilityValues" {
-			"bonus_damage" "10"
-		}
-		"ItemCost" "500"
-		"ItemRequirements" {
-		}
-	}
-	"item_gloves" {
-		"BaseClass" "item_gloves"
-		"AbilityValues" {
-			"bonus_attack_speed" "20"
-		}
-		"ItemCost" "500"
-		"ItemRequirements" {
-		}
-	}
-	"item_chainmail" {
-		"BaseClass" "item_chainmail"
-		"AbilityValues" {
-			"bonus_armor" "4"
-		}
-		"ItemCost" "500"
-		"ItemRequirements" {
-		}
-	}
-	"item_quarterstaff" {
-		"BaseClass" "item_quarterstaff"
-		"AbilityValues" {
-			"bonus_speed" "10"
-			"bonus_damage" "10"
-		}
-		"ItemCost" "1000"
-		"ItemRequirements" {
-		}
-	}
-	"item_qtg_helm_of_iron_will" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_helm_of_iron_will"
-		"AbilityValues" {
-			"bonus_armor" "5"
-			"health_regen_hero" "5"
-			"health_regen_bz" "5"
-		}
-		"ItemCost" "1000"
-		"ID" "1614"
-		"ItemQuality" "component"
-		"AbilityTextureName" "item_helm_of_iron_will"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_claymore" {
-		"BaseClass" "item_claymore"
-		"AbilityValues" {
-			"bonus_damage" "20"
-		}
-		"ItemCost" "1500"
-		"ItemRequirements" {
-		}
-	}
-	"item_qtg_ring_of_regen" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_ring_of_regen"
-		"AbilityValues" {
-			"health_regen_hero" "5"
-			"health_regen_bz" "5"
-		}
-		"ItemCost" "500"
-		"ID" "1616"
-		"ItemQuality" "component"
-		"AbilityTextureName" "item_ring_of_regen"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_qtg_sobi_mask" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_sobi_mask"
-		"AbilityValues" {
-			"mana_regen_hero" "1"
-			"mana_regen_bz" "10"
-		}
-		"ItemCost" "500"
-		"ID" "1617"
-		"ItemQuality" "component"
-		"AbilityCooldown" "4"
-		"AbilityTextureName" "item_sobi_mask"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_fluffy_hat" {
-		"BaseClass" "item_fluffy_hat"
-		"AbilityValues" {
-			"bonus_health" "200"
-		}
-		"ItemCost" "500"
-		"ItemRequirements" {
-		}
-	}
-	"item_cloak" {
-		"BaseClass" "item_cloak"
-		"AbilityValues" {
-			"bonus_magical_armor" "20"
-		}
-		"ItemCost" "1000"
-		"ItemRequirements" {
-		}
-	}
-	"item_boots" {
-		"BaseClass" "item_boots"
-		"AbilityValues" {
-			"bonus_movement_speed" "20"
-		}
-		"ItemCost" "500"
-		"ItemRequirements" {
-		}
-	}
-	"item_lifesteal" {
-		"BaseClass" "item_lifesteal"
-		"AbilityValues" {
-			"lifesteal_percent" "20"
-			"creep_lifesteal_reduction_pct" "40"
-		}
-		"ItemCost" "1000"
-		"ItemRequirements" {
-		}
-	}
-	"item_voodoo_mask" {
-		"BaseClass" "item_voodoo_mask"
-		"AbilityValues" {
-			"spell_lifesteal" "10"
-		}
-		"ItemCost" "1000"
-		"ItemRequirements" {
-		}
-	}
-	"item_qtg_ghost" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_ghost"
-		"AbilityValues" {
-			"bonus_all_stats" "5"
-			"extra_spell_damage_percent" "-30"
-			"duration" "1"
-		}
-		"ItemCost" "1500"
-		"ID" "1623"
-		"ItemQuality" "component"
-		"AbilityCooldown" "5"
-		"AbilityTextureName" "item_ghost"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"ItemRequirements" {
-		}
-	}
-	"item_qtg_blink" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_blink"
-		"AbilityValues" {
-		}
-		"ItemCost" "2000"
-		"ID" "1624"
-		"ItemQuality" "component"
-		"AbilityCooldown" "1"
-		"AbilityTextureName" "item_blink"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_orb_of_corrosion" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_orb_of_corrosion"
-		"ItemRequirements" {
-			"01" "item_qtg_orb_of_venom;item_qtg_blight_stone;item_fluffy_hat"
-		}
-	}
-	"item_qtg_orb_of_corrosion" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_orb_of_corrosion"
-		"AbilityValues" {
-			"armor" "-4"
-			"slow_melee" "15"
-			"slow_range" "10"
-			"duration" "2"
-			"health_bonus" "250"
-		}
-		"ItemCost" "1500"
-		"ID" "1626"
-		"ItemQuality" "rare"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_orb_of_corrosion"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_falcon_blade" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_falcon_blade"
-		"ItemRequirements" {
-			"01" "item_fluffy_hat;item_qtg_sobi_mask;item_blades_of_attack"
-		}
-	}
-	"item_qtg_falcon_blade" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_falcon_blade"
-		"AbilityValues" {
-			"bonus_health" "300"
-			"mana_regen_hero" "1"
-			"mana_regen_bz" "10"
-			"bonus_damage" "12"
-		}
-		"ItemCost" "1500"
-		"ID" "1628"
-		"ItemQuality" "rare"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityCooldown" "3"
-		"AbilityTextureName" "item_falcon_blade"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_power_treads" {
-		"BaseClass" "item_power_treads"
-		"AbilityValues" {
-			"bonus_movement_speed_ranged" "20"
-			"bonus_movement_speed_melee" "30"
-			"bonus_stat" "10"
-			"bonus_attack_speed" "25"
-			"bonus_damage" "0"
-		}
-		"ItemCost" "1500"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_phase_boots" {
-		"BaseClass" "item_phase_boots"
-		"AbilityValues" {
-			"bonus_movement_speed" "25"
-			"phase_duration" "10.0"
-		}
-		"ItemCost" "1500"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityCooldown" "3"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_oblivion_staff" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_oblivion_staff"
-		"ItemRequirements" {
-			"01" "item_quarterstaff;item_robe"
-		}
-	}
-	"item_qtg_oblivion_staff" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_oblivion_staff"
-		"AbilityValues" {
-			"bonus_damage" "15"
-			"bonus_intellect" "10"
-			"bonus_attack_speed" "10"
-		}
-		"ItemCost" "1500"
-		"ID" "1633"
-		"ItemQuality" "common"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_oblivion_staff"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_mask_of_madness" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1634"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_mask_of_madness"
-		"ItemRequirements" {
-			"01" "item_lifesteal;item_quarterstaff"
-		}
-	}
-	"item_qtg_mask_of_madness" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_mask_of_madness"
-		"AbilityValues" {
-			"bonus_damage" "10"
-			"bonus_attack_speed" "10"
-			"lifesteal_percent" "25"
-			"creep_lifesteal_reduction_pct" "40"
-			"berserk_bonus_attack_speed" "100"
-			"berserk_bonus_movement_speed" "20"
-			"berserk_armor_reduction" "8"
-			"duration" "1"
-			"bonus_attack_speed" "50"
-			"bonus_speed_percent" "10"
-		}
-		"ItemCost" "2000"
-		"ID" "1635"
-		"ItemQuality" "artifact"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityCooldown" "5"
-		"AbilityManaCost" "1"
-		"AbilityTextureName" "item_mask_of_madness"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"ItemRequirements" {
-		}
-	}
-	"item_moon_shard" {
-		"BaseClass" "item_moon_shard"
-		"AbilityValues" {
-		}
-		"ItemCost" "4000"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_tranquil_boots" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1637"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_tranquil_boots"
-		"ItemRequirements" {
-			"01" "item_boots;item_qtg_ring_of_regen"
-		}
-	}
-	"item_qtg_tranquil_boots" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_tranquil_boots"
-		"AbilityValues" {
-			"health_regen_hero" "5"
-			"health_regen_bz" "5"
-			"bonus_regen" "10"
-			"bonus_movement_speed" "30"
-		}
-		"ItemCost" "1000"
-		"ID" "1638"
-		"ItemQuality" "rare"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_tranquil_boots"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_medallion_of_courage" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1639"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_medallion_of_courage"
-		"ItemRequirements" {
-			"01" "item_chainmail;item_qtg_sobi_mask;item_qtg_blight_stone"
-		}
-	}
-	"item_qtg_medallion_of_courage" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_medallion_of_courage"
-		"AbilityValues" {
-			"bonus_armor" "5"
-			"mana_regen_hero" "1"
-			"mana_regen_hero_cd" "3"
-			"mana_regen_bz" "10"
-			"armor_reduction" "-6"
-			"duration" "1"
-		}
-		"ItemCost" "1500"
-		"ID" "1640"
-		"ItemQuality" "rare"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityCooldown" "3"
-		"AbilityTextureName" "item_medallion_of_courage"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_NO"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_arcane_boots" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1641"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_arcane_boots"
-		"ItemRequirements" {
-			"01" "item_boots;item_qtg_energy_booster"
-		}
-	}
-	"item_qtg_arcane_boots" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_arcane_boots"
-		"AbilityValues" {
-			"bonus_movement" "20"
-			"bonus_mana" "2"
-			"replenish_hero" "4"
-			"replenish_bz" "40"
-		}
-		"ItemCost" "1500"
-		"ID" "1642"
-		"ItemQuality" "rare"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityCooldown" "4"
-		"AbilityTextureName" "item_arcane_boots"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_pipe" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "1000"
-		"ID" "1643"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"AbilityTextureName" "item_recipe_pipe"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_pipe"
-		"ItemRequirements" {
-			"01" "item_cloak;item_qtg_ring_of_regen;item_qtg_ring_of_health"
-		}
-	}
-	"item_qtg_pipe" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_pipe"
-		"AbilityValues" {
-			"bonus_magical_armor" "30"
-			"health_regen_hero" "18"
-			"health_regen_bz" "18"
-			"resist_perct" "35"
-			"resisit_mana" "1"
-		}
-		"ItemCost" "3500"
-		"ID" "1644"
-		"ItemQuality" "rare"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_pipe"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_witch_blade" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1645"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_witch_blade"
-		"ItemRequirements" {
-			"01" "item_gloves;item_staff_of_wizardry;item_chainmail;item_quarterstaff"
-		}
-	}
-	"item_qtg_witch_blade" {
-		"AbilityValues" {
-		}
-		"ItemCost" "3000"
-		"ID" "1646"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_witch_blade"
-		"ItemRequirements" {
-		}
-	}
 	"item_qtg_dagon" {
 		"AbilityValues" {
 		}
 		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_orchid" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1648"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_orchid"
-		"ItemRequirements" {
-			"01" "item_staff_of_wizardry;item_quarterstaff;item_qtg_void_stone"
-		}
-	}
-	"item_qtg_orchid" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_orchid"
-		"AbilityValues" {
-			"bonus_attack_speed" "20"
-			"bonus_damage" "15"
-			"bonus_intellect" "12"
-			"mana_regen_hero" "1"
-			"mana_regen_hero_cd" "2"
-			"mana_regen_bz" "20"
-			"silence_duration" "1"
-		}
-		"ItemCost" "3000"
-		"ID" "1649"
-		"ItemQuality" "rare"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityCooldown" "5"
-		"AbilityManaCost" "2"
-		"AbilityTextureName" "item_orchid"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_solar_crest" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1650"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_solar_crest"
-		"ItemRequirements" {
-			"01" "item_qtg_medallion_of_courage;item_crown;item_quarterstaff"
-		}
-	}
-	"item_qtg_solar_crest" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_solar_crest"
-		"AbilityValues" {
-			"bonus_armor" "6"
-			"bonus_all_stats" "6"
-			"bonus_attack_speed" "12"
-			"bonus_damage" "12"
-			"mana_regen_bz" "12"
-			"mana_regen_hero" "1"
-			"mana_regen_hero_cd" "3"
-			"target_armor" "8"
-			"target_attack_speed" "60"
-			"target_movement_speed" "15"
-			"duration" "1"
-		}
-		"ItemCost" "3000"
-		"ID" "1651"
-		"ItemQuality" "rare"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityCooldown" "3"
-		"AbilityTextureName" "item_solar_crest"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_NO"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_rod_of_atos" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1652"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_rod_of_atos"
-		"ItemRequirements" {
-			"01" "item_staff_of_wizardry;item_vitality_booster;item_robe"
-		}
-	}
-	"item_qtg_rod_of_atos" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_rod_of_atos"
-		"AbilityValues" {
-			"bonus_intellect" "20"
-			"bonus_health" "300"
-			"duration" "1"
-		}
-		"ItemCost" "2500"
-		"ID" "1653"
-		"ItemQuality" "rare"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityCooldown" "5"
-		"AbilityManaCost" "2"
-		"AbilityTextureName" "item_rod_of_atos"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_refresher" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1654"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_refresher"
-		"ItemRequirements" {
-			"01" "item_qtg_cornucopia;item_qtg_cornucopia"
-		}
-	}
-	"item_qtg_refresher" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_refresher"
-		"AbilityValues" {
-			"bonus_damage" "30"
-			"mana_regen_bz" "40"
-			"mana_regen_hero" "2"
-			"mana_regen_hero_cd" "2"
-			"health_regen_hero" "24"
-			"health_regen_bz" "24"
-		}
-		"ItemCost" "5000"
-		"ID" "1655"
-		"ItemQuality" "rare"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityCooldown" "5"
-		"AbilityManaCost" "3"
-		"AbilityTextureName" "item_refresher"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_octarine_core" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1656"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_octarine_core"
-		"ItemRequirements" {
-			"01" "item_qtg_void_stone;item_qtg_void_stone;item_vitality_booster;item_qtg_energy_booster"
-		}
-	}
-	"item_qtg_octarine_core" {
-		"AbilityValues" {
-		}
-		"ItemCost" "4000"
-		"ID" "1657"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_octarine_core"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_sheepstick" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1658"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_sheepstick"
-		"ItemRequirements" {
-			"01" "item_mystic_staff;item_ultimate_orb;item_qtg_void_stone"
-		}
-	}
-	"item_qtg_sheepstick" {
-		"AbilityValues" {
-		}
-		"ItemCost" "5500"
-		"ID" "1659"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_sheepstick"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_vanguard" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_vanguard"
-		"ItemRequirements" {
-			"01" "item_qtg_ring_of_health;item_vitality_booster"
-		}
-	}
-	"item_vanguard" {
-		"BaseClass" "item_vanguard"
-		"AbilityValues" {
-			"bonus_health" "300"
-			"bonus_health_regen" "0"
-			"health_regen" "10"
-		}
-		"ItemCost" "2000"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_blade_mail" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1661"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_blade_mail"
-		"ItemRequirements" {
-			"01" "item_claymore;item_platemail"
-		}
-	}
-	"item_qtg_blade_mail" {
-		"AbilityValues" {
-		}
-		"ItemCost" "3000"
-		"ID" "1662"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_blade_mail"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_soul_booster" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_soul_booster"
-		"ItemRequirements" {
-			"01" "item_vitality_booster;item_qtg_energy_booster;item_qtg_ring_of_health"
-		}
-	}
-	"item_qtg_soul_booster" {
-		"BaseClass" "item_lua"
-		"AbilityValues" {
-		}
-		"ItemCost" "3000"
-		"ID" "1663"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_soul_booster"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_crimson_guard" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1664"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_crimson_guard"
-		"ItemRequirements" {
-			"01" "item_vanguard;item_qtg_helm_of_iron_will"
-		}
-	}
-	"item_qtg_crimson_guard" {
-		"AbilityValues" {
-		}
-		"ItemCost" "3000"
-		"ID" "1665"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_crimson_guard"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_shivas_guard" {
-		"BaseClass" "item_recipe_shivas_guard"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-			"01" "item_platemail;item_mystic_staff"
-		}
-	}
-	"item_shivas_guard" {
-		"BaseClass" "item_shivas_guard"
-		"AbilityValues" {
-		}
-		"ItemCost" "4000"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_heart" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "500"
-		"ID" "1668"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"AbilityTextureName" "item_recipe_heart"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_heart"
-		"ItemRequirements" {
-			"01" "item_vitality_booster;item_reaver"
-		}
-	}
-	"item_qtg_heart" {
-		"BaseClass" "item_heart"
-		"AbilityValues" {
-			"bonus_strength" "40"
-			"bonus_health" "300"
-			"health_regen_pct" "0"
-			"health_regen" "20"
-		}
-		"ItemCost" "4000"
-		"ID" "1669"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_heart"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_assault" {
-		"BaseClass" "item_recipe_assault"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-			"01" "item_platemail;item_platemail;item_hyperstone"
-		}
-	}
-	"item_assault" {
-		"BaseClass" "item_assault"
-		"AbilityValues" {
-			"bonus_attack_speed" "60"
-			"bonus_armor" "25"
-			"aura_radius" "800"
-			"aura_positive_armor" "0"
-			"aura_negative_armor" "-10"
-			"aura_attack_speed" "0"
-		}
-		"ItemCost" "5000"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_lesser_crit" {
-		"BaseClass" "item_recipe_lesser_crit"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-			"01" "item_claymore;item_blades_of_attack;item_blades_of_attack"
-		}
-	}
-	"item_lesser_crit" {
-		"BaseClass" "item_lesser_crit"
-		"AbilityValues" {
-			"bonus_damage" "40"
-		}
-		"ItemCost" "2500"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_desolator" {
-		"BaseClass" "item_recipe_desolator"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-			"01" "item_claymore;item_blades_of_attack;item_qtg_blight_stone"
-		}
-	}
-	"item_desolator" {
-		"BaseClass" "item_desolator"
-		"AbilityValues" {
-			"bonus_damage" "50"
-		}
-		"ItemCost" "3500"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_ethereal_blade" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_ethereal_blade"
-		"ItemRequirements" {
-			"01" "item_kaya;item_qtg_ghost"
-		}
-	}
-	"item_ethereal_blade" {
-		"BaseClass" "item_ethereal_blade"
-		"AbilityValues" {
-			"mana_regen_multiplier" "0"
-		}
-		"ItemCost" "3000"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_butterfly" {
-		"BaseClass" "item_recipe_butterfly"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-			"01" "item_eagle;item_quarterstaff"
-		}
-	}
-	"item_butterfly" {
-		"BaseClass" "item_butterfly"
-		"AbilityValues" {
-			"bonus_evasion" "0"
-		}
-		"ItemCost" "3500"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_radiance" {
-		"BaseClass" "item_recipe_radiance"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-			"01" "item_relic;item_claymore"
-		}
-	}
-	"item_radiance" {
-		"BaseClass" "item_radiance"
-		"AbilityValues" {
-			"bonus_damage" "80"
-			"evasion" "0"
-			"blind_pct" "0"
-		}
-		"ItemCost" "5000"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_greater_crit" {
-		"BaseClass" "item_recipe_greater_crit"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-			"01" "item_lesser_crit;item_demon_edge"
-		}
-	}
-	"item_greater_crit" {
-		"BaseClass" "item_greater_crit"
-		"AbilityValues" {
-		}
-		"ItemCost" "5000"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_rapier" {
-		"BaseClass" "item_rapier"
-		"AbilityValues" {
-		}
-		"ItemCost" "6000"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_bloodthorn" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1685"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_bloodthorn"
-		"ItemRequirements" {
-			"01" "item_qtg_orchid;item_mage_slayer"
-		}
-	}
-	"item_qtg_bloodthorn" {
-		"AbilityValues" {
-		}
-		"ItemCost" "5500"
-		"ID" "1686"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_bloodthorn"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_revenants_brooch" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ID" "1687"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_revenants_brooch"
-		"ItemRequirements" {
-			"01" "item_qtg_witch_blade;item_mystic_staff"
-		}
-	}
-	"item_qtg_revenants_brooch" {
-		"AbilityValues" {
-		}
-		"ItemCost" "5500"
-		"ID" "1688"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_revenants_brooch"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_sange" {
-		"BaseClass" "item_recipe_sange"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-		}
-	}
-	"item_sange" {
-		"BaseClass" "item_sange"
-		"AbilityValues" {
-			"bonus_strength" "16"
-			"status_resistance" "0"
-			"hp_regen_amp" "0"
-		}
-		"ItemCost" "1500"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_yasha" {
-		"BaseClass" "item_recipe_yasha"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-		}
-	}
-	"item_yasha" {
-		"BaseClass" "item_yasha"
-		"AbilityValues" {
-			"movement_speed_percent_bonus" "0"
-		}
-		"ItemCost" "1500"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_kaya" {
-		"BaseClass" "item_recipe_kaya"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-		}
-	}
-	"item_kaya" {
-		"BaseClass" "item_kaya"
-		"AbilityValues" {
-			"mana_regen_multiplier" "0"
-		}
-		"ItemCost" "1500"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_mage_slayer" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"ItemRecipe" "1"
-		"ItemResult" "item_mage_slayer"
-		"ItemRequirements" {
-			"01" "item_cloak;item_qtg_oblivion_staff"
-		}
-	}
-	"item_mage_slayer" {
-		"BaseClass" "item_mage_slayer"
-		"AbilityValues" {
-			"bonus_magical_armor" "20"
-			"bonus_attack_speed" "15"
-			"bonus_mana_regen" "0"
-			"duration" "3"
-		}
-		"ItemCost" "2500"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_kaya_and_sange" {
-		"BaseClass" "item_recipe_kaya_and_sange"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-		}
-	}
-	"item_kaya_and_sange" {
-		"BaseClass" "item_kaya_and_sange"
-		"AbilityValues" {
-			"hp_regen_amp" "0"
-			"mana_regen_multiplier" "0"
-			"status_resistance" "0"
-		}
-		"ItemCost" "3000"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_kaya_and_sange" {
-		"BaseClass" "item_recipe_kaya_and_sange"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-		}
-	}
-	"item_sange_and_yasha" {
-		"BaseClass" "item_sange_and_yasha"
-		"AbilityValues" {
-			"status_resistance" "0"
-			"movement_speed_percent_bonus" "0"
-			"hp_regen_amp" "0"
-		}
-		"ItemCost" "3000"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_yasha_and_kaya" {
-		"BaseClass" "item_recipe_yasha_and_kaya"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-		}
-	}
-	"item_yasha_and_kaya" {
-		"BaseClass" "item_yasha_and_kaya"
-		"AbilityValues" {
-			"mana_regen_multiplier" "0"
-			"movement_speed_percent_bonus" "0"
-		}
-		"ItemCost" "3000"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_satanic" {
-		"BaseClass" "item_satanic"
-		"AbilityValues" {
-		}
-		"ItemCost" "5000"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_skadi" {
-		"BaseClass" "item_recipe_skadi"
-		"AbilityValues" {
-		}
-		"ItemCost" "0"
-		"ItemRequirements" {
-			"01" "item_ultimate_orb;item_ultimate_orb;item_vitality_booster"
-		}
-	}
-	"item_skadi" {
-		"BaseClass" "item_skadi"
-		"AbilityValues" {
-			"bonus_mana" "0"
-			"bonus_health" "350"
-		}
-		"ItemCost" "5000"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_overwhelming_blink" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "500"
-		"ID" "1706"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"AbilityTextureName" "item_recipe_overwhelming_blink"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_overwhelming_blink"
-		"ItemRequirements" {
-			"01" "item_qtg_blink;item_reaver"
-		}
-	}
-	"item_qtg_overwhelming_blink" {
-		"BaseClass" "item_overwhelming_blink"
-		"AbilityValues" {
-		}
-		"ItemCost" "5000"
-		"ID" "1707"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_overwhelming_blink"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_swift_blink" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "500"
-		"ID" "1708"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"AbilityTextureName" "item_recipe_swift_blink"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_swift_blink"
-		"ItemRequirements" {
-			"01" "item_qtg_blink;item_eagle"
-		}
-	}
-	"item_qtg_swift_blink" {
-		"BaseClass" "item_swift_blink"
-		"AbilityValues" {
-		}
-		"ItemCost" "5000"
-		"ID" "1709"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_swift_blink"
-		"ItemRequirements" {
-		}
-	}
-	"item_recipe_qtg_arcane_blink" {
-		"BaseClass" "item_datadriven"
-		"AbilityValues" {
-		}
-		"ItemCost" "500"
-		"ID" "1710"
-		"Model" "models/props_gameplay/recipe.vmdl"
-		"AbilityTextureName" "item_recipe_arcane_blink"
-		"ItemRecipe" "1"
-		"ItemResult" "item_qtg_arcane_blink"
-		"ItemRequirements" {
-			"01" "item_qtg_blink;item_mystic_staff"
-		}
-	}
-	"item_qtg_arcane_blink" {
-		"BaseClass" "item_arcane_blink"
-		"AbilityValues" {
-		}
-		"ItemCost" "5000"
-		"ID" "1711"
-		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
-		"AbilityTextureName" "item_arcane_blink"
-		"ItemRequirements" {
-		}
-	}
-	"item_qtg_ring_of_health" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_ring_of_health"
-		"AbilityValues" {
-			"health_regen_hero" "10"
-			"health_regen_bz" "10"
-		}
-		"ItemCost" "1000"
-		"ID" "1712"
-		"ItemQuality" "component"
-		"SecretShop" "1"
-		"AbilityTextureName" "item_ring_of_health"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_qtg_void_stone" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_void_stone"
-		"AbilityValues" {
-			"mana_regen_hero" "1"
-			"mana_regen_bz" "20"
-		}
-		"ItemCost" "1000"
-		"ID" "1713"
-		"ItemQuality" "component"
-		"SecretShop" "1"
-		"AbilityCooldown" "2"
-		"AbilityTextureName" "item_void_stone"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_qtg_cornucopia" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_cornucopia"
-		"AbilityValues" {
-			"bonus_damage" "15"
-			"health_regen_hero" "12"
-			"health_regen_bz" "12"
-			"mana_regen_hero" "1"
-			"mana_regen_bz" "20"
-		}
-		"ItemCost" "2500"
-		"ID" "1714"
-		"ItemQuality" "common"
-		"SecretShop" "1"
-		"AbilityCooldown" "2"
-		"AbilityTextureName" "item_cornucopia"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_qtg_energy_booster" {
-		"BaseClass" "item_lua"
-		"ScriptFile" "item/items/item_qtg_energy_booster"
-		"AbilityValues" {
-			"bonus_mana" "2"
-		}
-		"ItemCost" "1000"
-		"ID" "1715"
-		"ItemQuality" "secret_shop"
-		"SecretShop" "1"
-		"AbilityTextureName" "item_energy_booster"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ItemRequirements" {
-		}
-	}
-	"item_vitality_booster" {
-		"BaseClass" "item_vitality_booster"
-		"AbilityValues" {
-			"bonus_health" "300"
-		}
-		"ItemCost" "1000"
-		"ItemQuality" "secret_shop"
-		"SecretShop" "1"
-		"ItemRequirements" {
-		}
-	}
-	"item_platemail" {
-		"BaseClass" "item_platemail"
-		"AbilityValues" {
-			"bonus_armor" "10"
-		}
-		"ItemCost" "1500"
-		"ItemQuality" "secret_shop"
-		"SecretShop" "1"
-		"ItemRequirements" {
-		}
-	}
-	"item_hyperstone" {
-		"BaseClass" "item_hyperstone"
-		"AbilityValues" {
-			"bonus_attack_speed" "60"
-		}
-		"ItemCost" "2000"
-		"ItemQuality" "secret_shop"
-		"SecretShop" "1"
-		"ItemRequirements" {
-		}
-	}
-	"item_ultimate_orb" {
-		"BaseClass" "item_ultimate_orb"
-		"AbilityValues" {
-			"bonus_all_stats" "10"
-		}
-		"ItemCost" "2000"
-		"ItemQuality" "secret_shop"
-		"SecretShop" "1"
-		"ItemRequirements" {
-		}
-	}
-	"item_demon_edge" {
-		"BaseClass" "item_demon_edge"
-		"AbilityValues" {
-			"bonus_damage" "40"
-		}
-		"ItemCost" "2500"
-		"ItemQuality" "secret_shop"
-		"SecretShop" "1"
-		"ItemRequirements" {
-		}
-	}
-	"item_mystic_staff" {
-		"BaseClass" "item_mystic_staff"
-		"AbilityValues" {
-			"bonus_intellect" "25"
-		}
-		"ItemCost" "2500"
-		"ItemQuality" "secret_shop"
-		"SecretShop" "1"
-		"ItemRequirements" {
-		}
-	}
-	"item_reaver" {
-		"BaseClass" "item_reaver"
-		"AbilityValues" {
-			"bonus_strength" "25"
-		}
-		"ItemCost" "2500"
-		"ItemQuality" "secret_shop"
-		"SecretShop" "1"
-		"ItemRequirements" {
-		}
-	}
-	"item_eagle" {
-		"BaseClass" "item_eagle"
-		"AbilityValues" {
-			"bonus_agility" "25"
-		}
-		"ItemCost" "2500"
-		"ItemQuality" "secret_shop"
-		"SecretShop" "1"
-		"ItemRequirements" {
-		}
-	}
-	"item_relic" {
-		"BaseClass" "item_relic"
-		"AbilityValues" {
-			"bonus_damage" "60"
-		}
-		"ItemCost" "3500"
-		"ItemQuality" "secret_shop"
-		"SecretShop" "1"
 		"ItemRequirements" {
 		}
 	}
