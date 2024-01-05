@@ -71,11 +71,21 @@ export class ParaAdjuster {
         if (IsClient()) return;
         const maxmana = GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID()).m_nManaMaxBase;
         print('===ModifyMana===Round:', GameRules.GameConfig.m_nRound, 'oprtID:', GameRules.GameConfig.m_nOrderID, 'curMana:', unit.GetMana());
-        print('===ModifyMana===unit_name:', unit.GetName(), 'unitID:', unit.GetPlayerOwnerID(), 'maxmana:', maxmana, 'curMaxMana:', unit.GetMaxMana());
+        print(
+            '===ModifyMana===unit_name:',
+            unit.GetName(),
+            'unitID:',
+            unit.GetPlayerOwnerID(),
+            'maxmana:',
+            maxmana,
+            'curMaxMana:',
+            unit.GetMaxMana()
+        );
         // 移除modifier_special_bonus_attributes
         unit.RemoveModifierByName('modifier_special_bonus_attributes');
         unit.SetBaseHealthRegen(0);
         unit.SetBaseHealthRegen(-unit.GetHealthRegen());
+
         unit.SetBaseManaRegen(0);
         unit.SetBaseManaRegen(-unit.GetManaRegen());
 

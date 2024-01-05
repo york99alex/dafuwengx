@@ -12,26 +12,20 @@ export function SupplyPanel() {
     const [supplyList, setSupplyList] = useState<any[]>([]);
     const [leftList, setLeftList] = useState<PlayerID[]>([]);
     const [rightList, setRightList] = useState<PlayerID[]>([]);
-    const [selectData, setSelectData] = useState<any>({});
 
     // supply有data就始终打开面板
     useEffect(() => {
-        console.log('===SupplyPanle useEffect supplyData:', supplyData);
-        if (!supplyData) {
+        if (!supplyData || supplyData.nPlayerIDOprt < -1) {
+            console.log('===SupplyPanle data null, supply end');
             root.current?.AddClass('Hidden');
             setPlayerList([]);
             return;
         } else root.current?.RemoveClass('Hidden');
+        console.log('===SupplyPanle useEffect supplyData:', supplyData);
         const tList: PlayerID[] = Object.values(supplyData.tabPlayerID);
         if (playerList.length != tList.length && tList.every((value, index) => value != playerList[index])) setPlayerList(tList);
         setSupplyList(Object.values(supplyData.tabSupplyInfo));
         setOprtID(supplyData.nPlayerIDOprt);
-        // setPlayerList([0, 1, 1, 0, 0, 1]);
-        // setSupplyList([
-        //     { itemName: 'item_rapier', type: 'item' },
-        //     { itemName: 'item_rapier', type: 'item' },
-        //     { pathID: '3', type: 'path' },
-        // ]);
     }, [supplyData]);
 
     // 左右两侧playerList分列
@@ -44,13 +38,6 @@ export function SupplyPanel() {
             }
         }
     }, [playerList]);
-
-    useEffect(() => {
-        // console.log('===SupplyPanle playerList:', playerList);
-        // console.log('===SupplyPanle leftList:', leftList);
-        // console.log('===SupplyPanle rightList:', rightList);
-        // console.log('===SupplyPanle supplyList:', supplyList);
-    });
 
     function getTipLabel(oprtID: number) {
         switch (oprtID) {
@@ -84,7 +71,7 @@ export function SupplyPanel() {
             <Panel className="SupplyContain">
                 <Panel className="PlayerGrid Left">
                     {leftList.map((playerID, index) => (
-                        <PlayerPanel key={index} playerID={playerID} data={selectData} oprtID={oprtID} />
+                        <PlayerPanel key={index} playerID={playerID} data={supplyList} oprtID={oprtID} />
                     ))}
                 </Panel>
                 <Panel className="CenterContain">
@@ -94,7 +81,7 @@ export function SupplyPanel() {
                 </Panel>
                 <Panel className="PlayerGrid Right">
                     {rightList.map((playerID, index) => (
-                        <PlayerPanel key={index} playerID={playerID} data={selectData} oprtID={oprtID} />
+                        <PlayerPanel key={index} playerID={playerID} data={supplyList} oprtID={oprtID} />
                     ))}
                 </Panel>
             </Panel>

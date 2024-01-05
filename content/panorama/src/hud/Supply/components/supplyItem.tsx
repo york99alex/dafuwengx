@@ -1,14 +1,13 @@
+import { useEffect, useRef } from 'react';
 import { GameMgr, PlayerMgr } from '../..';
 import { TypeOprt } from '../../mode/constant';
 import { PathType } from '../../path/PathManager';
 
 export function SupplyItem(props: { data: any; index: number }) {
+    const item = useRef<Panel>(null);
+
     function onClick() {
-        console.log('===SupplyItem Onclick', {
-            nPlayerID: PlayerMgr.playerID,
-            typeOprt: TypeOprt.TO_Supply,
-            nRequest: props.index + 1,
-        });
+        if (item.current?.BHasClass('Select')) return;
 
         GameMgr.SendOperatorToServer({
             nPlayerID: PlayerMgr.playerID,
@@ -30,8 +29,15 @@ export function SupplyItem(props: { data: any; index: number }) {
         }
     }
 
+    useEffect(() => {
+        if (!props.data) return;
+        if (props.data.nOwnerID) {
+            item.current?.AddClass('Select');
+        }
+    }, [props.data]);
+
     return (
-        <Panel className="CenterItem">
+        <Panel className="CenterItem" ref={item}>
             {props.data.type == 'item' ? (
                 <DOTAItemImage className="Item" itemname={props.data.itemName} showtooltip={true} onactivate={onClick} oncontextmenu={onRightClick} />
             ) : (

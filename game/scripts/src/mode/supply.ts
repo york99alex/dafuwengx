@@ -2,6 +2,7 @@ import { GAME_MODE, GAME_MODE_ALLPATH, SUPPLY_ALL_ROUND, SUPPLY_ROUND, TIME_SUPP
 import { GS_Supply, TypeOprt } from '../constants/gamemessage';
 import { KeyValues } from '../kv';
 import { Player } from '../player/player';
+import { AMHC, AMHC_MSG, IsValid } from '../utils/amhc';
 import { HudError } from './S2Cmode/huderror';
 
 /**补给模块 */
@@ -11,7 +12,7 @@ export class Supply {
     /**上次轮抽首位玩家ID */
     m_nFirstID: number;
     /**记录轮抽后的首位操作玩家 */
-    m_nGMOrder: number;
+    m_nGMOrder: PlayerID;
 
     init() {
         GameRules.EventManager.Register('Event_UpdateRound', (event: { isBegin: boolean; nRound: number }) => this.onEvent_UpdateRound(event), this);
@@ -232,7 +233,67 @@ export class Supply {
      * @param tData tabSupplyInfo
      * @param nDataIndex 补给的索引
      */
-    getSupply(tData: any, nDataIndex: number) {}
+    getSupply(tData: any, nDataIndex: number) {
+        const supplyInfo = tData.tabSupplyInfo[tostring(nDataIndex)];
+        if (!supplyInfo) {
+            print('===getSupply Data error');
+            return;
+        }
+        // 设置补给主人
+        supplyInfo.nOwnerID = tData.nPlayerIDOprt;
+        const player = GameRules.PlayerManager.getPlayer(tData.nPlayerIDOprt);
+
+        if (player && !player.m_bDie) {
+            print('===getSupply===tData:', tData, 'index:', nDataIndex, 'index type:', typeof nDataIndex);
+            DeepPrintTable(tData);
+            if (supplyInfo.type == 'item') {
+                // 添加物品
+                if (player.m_eHero.GetNumItemsInInventory() < 9) {
+                    print('===Supply AddItem:', supplyInfo.itemName, 'to hero:', player.m_eHero.GetUnitName());
+                    const item = player.m_eHero.AddItemByName(supplyInfo.itemName);
+                    if (item) item.SetPurchaseTime(0);
+                    player.setSumGold();
+                } else {
+                    // 满了自动卖掉
+                    const nGold = math.floor(GetItemCost(supplyInfo.itemName) * 0.5);
+                    GameRules.GameConfig.showGold(player, nGold);
+                    player.setGold(nGold);
+                    EmitSoundOnClient('Custom.Gold.Sell', player.m_oCDataPlayer);
+                    AMHC.CreateNumberEffect(player.m_eHero, nGold, 3, AMHC_MSG.MSG_MISS, [255, 215, 0], 0);
+                }
+            } else if (supplyInfo.type == 'path') {
+                // 添加领地
+                const path = GameRules.PathManager.getPathByID(tonumber(supplyInfo.pathID));
+                if (path) player.setMyPathAdd(path);
+            }
+        }
+
+        // 设置下一个玩家操作，或者结束
+        const tPlayerID: number[] = [];
+        let oPrtIndex: number;
+        for (const index in tData.tabPlayerID) {
+            tPlayerID[tonumber(index) - 1] = tData.tabPlayerID[index];
+            if (tData.tabPlayerID[index] == tData.nPlayerIDOprt) oPrtIndex = tonumber(index) - 1;
+        }
+        print('===Supply tPlayerID:', tPlayerID);
+        if (tPlayerID.length - 1 == oPrtIndex) {
+            // 结束
+            this.setEnd(tData);
+        } else {
+            tData.nPlayerIDOprt = tPlayerID[oPrtIndex + 1];
+            if (GameRules.PlayerManager.isAlivePlayer(tData.nPlayerIDOprt)) {
+                GameRules.GameConfig.m_timeOprt = TIME_SUPPLY_OPRT;
+            } else {
+                GameRules.GameConfig.m_timeOprt = 2;
+            }
+            GameRules.GameConfig.setOrder(tData.nPlayerIDOprt);
+            GameRules.GameConfig.sendOprt({
+                typeOprt: TypeOprt.TO_Supply,
+                nPlayerID: tData.nPlayerIDOprt,
+            });
+            CustomNetTables.SetTableValue('GamingTable', 'supply', tData);
+        }
+    }
 
     /**处理操作 */
     processOprt(tOprt: { nRequest: number; typeOprt: number; nPlayerID: number }) {
@@ -277,5 +338,21 @@ export class Supply {
         }
     }
 
-    setEnd() {}
+    /**结束补给阶段 */
+    setEnd(tData?: any) {
+        tData = tData || CustomNetTables.GetTableValue('GamingTable', 'supply');
+        if (tData) {
+            // 结束，2秒后清空补给阶段数据
+            tData.nPlayerIDOprt = -2;
+            CustomNetTables.SetTableValue('GamingTable', 'supply', tData);
+            Timers.CreateTimer(2, () => {
+                CustomNetTables.SetTableValue('GamingTable', 'supply', null);
+            });
+        }
+
+        // 重新进入begin
+        GameRules.GameConfig.setOrder(this.m_nGMOrder);
+        this.m_nGMOrder = null;
+        Timers.CreateTimer(0.1, () => GameRules.GameLoop.GameStateService.send('tobegin'));
+    }
 }

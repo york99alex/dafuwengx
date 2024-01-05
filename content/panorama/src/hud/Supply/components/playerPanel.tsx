@@ -1,11 +1,38 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { PathType } from '../../path/PathManager';
 
 export function PlayerPanel(props: { playerID: PlayerID; data: any; oprtID: number }) {
     const [heroname, setHeroname] = useState('');
+    const item = useRef<Panel>(null);
+    const [supplyInfo, setSupplyInfo] = useState<{ name: any; type: string }>();
 
     useEffect(() => {
         setHeroname(Players.GetPlayerSelectedHero(props.playerID));
     }, [props.playerID]);
+
+    useEffect(() => {
+        if (!props.data) return;
+        for (const supply of props.data) {
+            if (supply.nOwnerID && supply.nOwnerID == props.playerID) {
+                item.current!.visible = true;
+                setSupplyInfo({
+                    name: supply.itemName || supply.pathID,
+                    type: supply.type,
+                });
+            }
+        }
+    }, [props.data]);
+
+    function onRightClick() {
+        if (supplyInfo?.type == 'item')
+            GameEvents.SendEventClientSide('dota_link_clicked', {
+                link: 'dota.item.' + supplyInfo?.name,
+                shop: 0,
+                recipe: 0,
+                nav: 0,
+                nav_back: 0,
+            });
+    }
 
     return (
         <Panel className="PlayerPanel">
@@ -21,8 +48,26 @@ export function PlayerPanel(props: { playerID: PlayerID; data: any; oprtID: numb
                     <Label className="PlayerTipLabel" text={$.Localize('#supply_tip_select')} />
                 </Panel>
                 <Panel className="ItemGrid">
-                    <Panel className="PlayerItem">
-                        <DOTAItemImage style={{ width: '100%', height: '100%' }} itemname="" showtooltip={true} />
+                    <Panel className="PlayerItem" visible={false} ref={item}>
+                        {supplyInfo &&
+                            (supplyInfo.type == 'item' ? (
+                                <DOTAItemImage
+                                    className="Item"
+                                    itemname={supplyInfo?.name}
+                                    showtooltip={true}
+                                    onactivate={onRightClick}
+                                    oncontextmenu={onRightClick}
+                                />
+                            ) : supplyInfo.type == 'path' ? (
+                                <Image
+                                    className="Path"
+                                    src={`file://{images}/custom_game/path/path${PathType[supplyInfo.name]}.png`}
+                                    onmouseover={panel => $.DispatchEvent('DOTAShowTextTooltip', panel, $.Localize('#PathName_' + supplyInfo.name))}
+                                    onmouseout={panel => $.DispatchEvent('DOTAHideTextTooltip', panel)}
+                                />
+                            ) : (
+                                <></>
+                            ))}
                     </Panel>
                 </Panel>
                 {/* <Panel className="PlayerItemTip">

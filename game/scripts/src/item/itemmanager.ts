@@ -74,7 +74,8 @@ export class ItemManager {
         const npc = EntIndexToHScript(event.inventory_parent_entindex_const) as CDOTA_BaseNPC;
         if (npc && npc.IsRealHero()) {
             const curMana = npc.GetMana();
-            Timers.CreateTimer(0.01, () => {
+            print('===ItemManager===onEvent_ItemAdd===ModifyMana===curMana:', curMana);
+            Timers.CreateTimer(0, () => {
                 print('===ItemManager===onEvent_ItemAdd===ModifyMana');
                 ParaAdjuster.ModifyMana(npc);
                 npc.SetMana(curMana);

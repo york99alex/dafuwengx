@@ -111,6 +111,10 @@ export class GameLoop {
         GameRules.GetGameModeEntity().SetContextThink(this.m_thinkName, callback, delay);
     }
 
+    StopTimer() {
+        if (this.m_thinkName) GameRules.GetGameModeEntity().StopThink(this.m_thinkName);
+    }
+
     constructor() {}
 
     GamestateStart() {
@@ -315,7 +319,6 @@ export class GameLoop {
             if (timeOprt < 0) {
                 // 时间结束,自动操作
                 GameRules.Supply.onTimeOver();
-                return;
             } else if (timeOprt == 0) {
                 EmitGlobalSound('Custom.Time.Finish');
             } else if (0 < timeOprt && timeOprt < 51) {
@@ -332,6 +335,7 @@ export class GameLoop {
     GSSupply_Exit() {
         print('GameState_GSSupply_Exit');
         GameRules.EventManager.FireEvent('Event_GSSupply_Over');
+        this.StopTimer();
     }
 
     GSFinished_Entry() {
