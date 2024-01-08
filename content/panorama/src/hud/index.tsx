@@ -4,9 +4,7 @@ import 'panorama-polyfill-x/lib/timers';
 import { useMemo, type FC, useContext, createContext } from 'react';
 import { render, useNetTableKey } from 'react-panorama-x';
 import { useXNetTableKey } from '../hooks/useXNetTable';
-import { PathPanel } from './PathPanel/components/pathPanel';
 import { CountDown } from './CountDown/components/countDown';
-import { PrisonPanel } from './PathPanel/components/prisonPanel';
 import { HideHudElement } from '../hero_selection';
 import CardPanel from './CardPanel/components/cardPanel';
 import { BuyItem } from './BuyItem/buyItem';
@@ -16,6 +14,7 @@ import { TradePanel } from './Trade/components/tradePanel';
 import { PlayerManager } from './player/playerManager';
 import { GameManager } from './gamemanager';
 import { SupplyPanel } from './Supply/components/SupplyPanel';
+import { PathPanel } from './PathPanel/components/pathPanel';
 
 const Test: FC = () => {
     // const data = useXNetTableKey(`test_table`, `test_key`, { data_1: `HelloWorld` });
@@ -46,10 +45,9 @@ render(
         {/* <Test /> */}
         <CountDown />
         <CardPanel />
-        <PathPanel />
-        <PrisonPanel />
         <BuyItem />
         <HudError />
+        <PathPanel />
         <Tooltip />
         <TradePanel />
         <SupplyPanel />

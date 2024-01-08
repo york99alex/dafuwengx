@@ -40,6 +40,7 @@ export default function Precache(context: CScriptPrecacheContext) {
             'models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl',
             'particles/neutral_fx/tornado_ambient.vpcf',
             'particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_purification_ti6_immortal.vpcf',
+            'particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf',
             // 'particles/water_impact/water_splash_03.vpcf',
             // 'particles/water_impact/water_splash_02.vpcf',
             // 'particles/water_impact/water_splash_01.vpcf',
@@ -85,6 +86,8 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/custom/item_pipe_miss_2.vpcf',
             'particles/custom/item_pipe_miss_3.vpcf',
             'particles/econ/items/oracle/oracle_fortune_ti7/oracle_fortune_ti7_purge_root_pnt.vpcf',
+            'particles/econ/events/ti9/shovel_revealed_loot_variant_0_treasure.vpcf',
+            'particles/generic_gameplay/rune_bounty_gold.vpcf',
         ],
         context
     );

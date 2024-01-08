@@ -14,8 +14,10 @@ export function CountDown() {
     useGameEvent(
         'GM_OperatorFinished',
         event => {
-            setNum1(event.nNum1);
-            setNum2(event.nNum2);
+            if (event.nNum1 && event.nNum2) {
+                setNum1(event.nNum1);
+                setNum2(event.nNum2);
+            }
         },
         []
     );
@@ -58,18 +60,6 @@ export function CountDown() {
 
             <TextButton
                 className="ButtonBevel"
-                text="攻城略地"
-                onactivate={() => {
-                    GameEvents.SendCustomGameEventToServer('GM_Operator', {
-                        nPlayerID: Players.GetLocalPlayer(),
-                        typeOprt: 3,
-                        nRequest: 1,
-                    });
-                }}
-            />
-
-            <TextButton
-                className="ButtonBevel"
                 text={isDC ? $.Localize('#FinishDC') : $.Localize('#FinishRound')}
                 onactivate={() => {
                     GameEvents.SendCustomGameEventToServer('GM_Operator', {
@@ -81,7 +71,7 @@ export function CountDown() {
 
             <Panel style={{ flowChildren: 'right' }}>
                 <Label text={`当前回合玩家：`} />
-                <DOTAHeroImage heroimagestyle="icon" heroname={Players.GetPlayerSelectedHero(nPlayerID)} />
+                <DOTAHeroImage heroimagestyle="icon" heroname={Players.GetPlayerSelectedHero(nPlayerID ?? -1)} />
             </Panel>
         </Panel>
     );

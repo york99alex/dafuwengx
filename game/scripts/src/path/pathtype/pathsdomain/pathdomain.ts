@@ -1,4 +1,14 @@
-import { PATH_TO_PRICE, PATH_TOLL_RATE, HERO_TO_BANNER, TypePathState, GAME_MODE, GAME_MODE_ONEPATH, BZ_OUT_ROUND, GCLD_EXP, GCLD_GOLD } from '../../../constants/constant';
+import {
+    PATH_TO_PRICE,
+    PATH_TOLL_RATE,
+    HERO_TO_BANNER,
+    TypePathState,
+    GAME_MODE,
+    GAME_MODE_ONEPATH,
+    BZ_OUT_ROUND,
+    GCLD_EXP,
+    GCLD_GOLD,
+} from '../../../constants/constant';
 import { GS_Begin, PS_AtkHero, PS_InPrison, TypeOprt } from '../../../constants/gamemessage';
 import { modifier_unselect } from '../../../modifiers/util/modifier_unselect';
 import { CDOTA_BaseNPC_BZ } from '../../../player/CDOTA_BaseNPC_BZ';
@@ -298,6 +308,7 @@ export class PathDomain extends Path {
     /**玩家攻城 */
     atkCity(oPlayer: Player) {
         if (!this.m_tabENPC[0] || this.m_tabENPC[0].IsNull() || this.m_nPlayerIDGCLD || this.m_tabENPC[0].m_bBattle) {
+            print('===PathDomain atkCity error: BZ null or invalid');
             return;
         }
         this.m_tEventIDGCLD = [];
@@ -313,6 +324,7 @@ export class PathDomain extends Path {
         // 移动到兵卒前
         oPlayer.moveToPos((this.m_eCity.GetAbsOrigin() + this.m_eCity.GetForwardVector() * 100) as Vector, (bSuccess: boolean) => {
             if (!bSuccess || this.m_nPlayerIDGCLD != oPlayer.m_nPlayerID) {
+                print('===PathDomain atkCity error: moveToPos error');
                 return;
             }
 
@@ -326,7 +338,13 @@ export class PathDomain extends Path {
                 false,
                 oPlayer.m_eHero
             );
-            ParticleManager.SetParticleControl(this.m_nPtclIDGCLD, 0, this.m_eCity.GetAbsOrigin());
+            ParticleManager.SetParticleControlOrientation(
+                this.m_nPtclIDGCLD,
+                0,
+                oPlayer.m_eHero.GetForwardVector(),
+                oPlayer.m_eHero.GetRightVector(),
+                oPlayer.m_eHero.GetUpVector()
+            );
 
             // 音效
             EmitSoundOn('Hero_LegionCommander.Duel', oPlayer.m_eHero);

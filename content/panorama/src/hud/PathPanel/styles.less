@@ -1,59 +1,240 @@
-.oprtTip {
-    width: 600px;
-    height: 400px;
-    background-color: grey;
+.PathPanel {
+    width: 680px;
+    min-width: 450px;
+    height: 500px;
+
     horizontal-align: center;
     vertical-align: center;
+
+    flow-children: down;
+    padding: 10px;
+
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#272d2eee), to(#131617ee));
+    border: 1px solid #5e6869;
+    box-shadow: black 0px 0px 2px 2px;
+
+    animation-name: links-and-more-button-focus;
+    animation-duration: 0.6s;
+    animation-delay: 0s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    
+    visibility: visible;
+
+    transition-property: transform, pre-transform-scale2d, background-color, height, visibility;
     transition-duration: 0.2s;
-    transition-property: opacity;
+    transition-timing-function: ease-in;
+    transition-delay: 0s;
 
-    &.open {
-        opacity: 1;
+    &.Hidden {
+        visibility: collapse;
+        pre-transform-scale2d: 1.25;
+        transform: translateY(-10px);
     }
 
-    &.close {
-        opacity: 0;
+    .PathTitle {
+        width: 100%;
+
+        .LabelTitle {
+            horizontal-align: center;
+            color: #eeeeee;
+            letter-spacing: 3px;
+            font-size: 36px;
+            font-weight: thin;
+            font-family: titleFont;
+            text-shadow: 0px 0px 8px #00809498;
+        }
+    }
+
+    .PathTitleTip {
+        width: 100%;
+        margin: 5px 0 20px 0;
+        border-bottom: 1px solid #aaaaaa22;
+        flow-children: right;
+
+        Label {
+            width: 300px;
+            margin-left: 40px;
+            color: #626263;
+            font-size: 14px;
+            letter-spacing: 2px;
+            font-weight: thin;
+            text-transform: uppercase;
+        }
+    }
+
+    .PathDescription {
+        horizontal-align: center;
+        flow-children: right;
+
+        .PathContain {
+            width: 330px;
+            height: 300px;
+
+            flow-children: down;
+
+            &.Left {
+                border-right: 1px solid #aaaaaa22;
+            }
+
+            .PathName {
+                color: #eeeeee;
+                horizontal-align: center;
+                font-size: 24px;
+                letter-spacing: 2px;
+                font-weight: bold;
+                text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.164);
+            }
+
+            .PathImage {
+                horizontal-align: center;
+                width: 140px;
+                height: 140px;
+
+                .Path {
+                    width: 100px;
+                    height: 100px;
+                    horizontal-align: center;
+                    vertical-align: center;
+                }
+
+                .PathBG {
+                    width: 130px;
+                    height: 140px;
+                    horizontal-align: center;
+                }
+            }
+
+            .SoldierContain {
+                width: fit-children;
+                height: fill-parent-flow(1);
+
+                horizontal-align: center;
+                flow-children: down;
+
+                position: 0 0 0;
+
+                .SoldierLine {
+                    flow-children: right;
+                    margin-bottom: 3px;
+
+                    .LeftLabel {
+                        width: 150px;
+                        font-size: 18px;
+                        text-align: right;
+                    }
+
+                    .RightLabel {
+                        width: 140px;
+                        margin-left: 10px;
+                        margin-bottom: 2px;
+                        font-size: 18px;
+                        vertical-align: bottom;
+                    }
+                }
+
+                .PathGCLDDescription {
+                    font-size: 16px;
+                    margin: 0 5px 0 10px;
+                    line-height: 1.2;
+                    text-align: right;
+                }
+            }
+
+            &.Right {
+                width: 330px;
+                height: 300px;
+
+                flow-children: down;
+            }
+
+            .BuffName {
+                color: #eeeeee;
+                horizontal-align: center;
+                font-size: 24px;
+                letter-spacing: 2px;
+                font-weight: bold;
+                text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.164);
+            }
+
+            .BuffDescription {
+                font-size: 18px;
+                margin: 5px 0px 10px 15px;
+                line-height: 1.3;
+            }
+
+            .BuffAttribute {
+                horizontal-align: center;
+                vertical-align: bottom;
+
+                margin-bottom: 10px;
+                flow-children: down;
+
+                .BuffLine {
+                    flow-children: right;
+
+                    .BuffKey {
+                        width: 150px;
+
+                        font-size: 18px;
+                        text-align: right;
+                    }
+
+                    .BuffValue {
+                        width: 140px;
+                        margin-left: 10px;
+                        margin-bottom: 2px;
+                        font-size: 18px;
+                        vertical-align: bottom;
+                    }
+                }
+            }
+        }
+    }
+
+    .OprtTip {
+        margin: 5px 0 5px 0;
+        width: 100%;
+
+        .TipLabel {
+            horizontal-align: center;
+            letter-spacing: 1px;
+            font-size: 24px;
+            color: #e6e6e6;
+            text-shadow: 0px 0px 20px #acacac28;
+        }
+    }
+
+    .OprtGroup {
+        width: fit-children;
+        vertical-align: bottom;
+
+        flow-children: right;
+        horizontal-align: center;
+
+        Button {
+            margin: 0px 10px 15px 10px;
+
+            Label {
+                font-size: 18px;
+                color: #ffffff;
+                letter-spacing: 2px;
+            }
+        }
     }
 }
 
-.AYZZ {
-    margin-bottom: 20px;
-    margin-left: 40px;
-    vertical-align: bottom;
-    horizontal-align: left;
-}
+@keyframes links-and-more-button-focus {
+    from {
+        background-color: gradient(linear, 0% 0%, 0% 100%, from(#a9c8daee), to(#000000ee));
+    }
 
-.BuyBack {
-    margin-bottom: 20px;
-    margin-left: 40px;
-    vertical-align: bottom;
-    horizontal-align: left;
-}
+    50% {
+        background-color: gradient(linear, 0% 0%, 0% 100%, from(#272d2eee), to(#131617ee));
+    }
 
-.Cannel {
-    margin-bottom: 20px;
-    margin-right: 40px;
-    vertical-align: bottom;
-    horizontal-align: right;
-}
-
-.PathTitle {
-    font-size: 40px;
-    color: darkred;
-    horizontal-align: center;
-}
-
-.PathDetail {
-    font-size: 20px;
-    color: gainsboro;
-    horizontal-align: center;
-    vertical-align: center;
-}
-
-.BuyResult {
-    font-size: 30px;
-    color: darkred;
-    horizontal-align: center;
-    vertical-align: bottom;
-    margin-bottom: 20%;
+    to {
+        background-color: gradient(linear, 0% 0%, 0% 100%, from(#272d2eee), to(#131617ee));
+    }
 }

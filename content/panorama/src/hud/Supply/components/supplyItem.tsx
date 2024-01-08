@@ -31,7 +31,7 @@ export function SupplyItem(props: { data: any; index: number }) {
 
     useEffect(() => {
         if (!props.data) return;
-        if (props.data.nOwnerID) {
+        if (props.data.nOwnerID != null) {
             item.current?.AddClass('Select');
         }
     }, [props.data]);

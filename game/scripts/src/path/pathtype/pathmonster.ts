@@ -1,6 +1,7 @@
 import { GS_Begin, PS_AtkHero, PS_AtkMonster, TP_MONSTER_1, TP_MONSTER_2, TP_MONSTER_3, TP_PRISON, TypeOprt } from '../../constants/gamemessage';
 import { DamageEvent, Player } from '../../player/player';
 import { AMHC, IsValid } from '../../utils/amhc';
+import { ParaAdjuster } from '../../utils/paraadjuster';
 import { Path } from '../path';
 import { PathPrison } from './pathprison';
 
@@ -126,7 +127,7 @@ export class PathMonster extends Path {
         player.setPlayerState(PS_AtkHero + PS_AtkMonster);
 
         if (blinkPath) player.blinkToPath(this);
-        player.moveToPos((this.m_eCity.GetAbsOrigin() + this.m_eCity.GetForwardVector() * 100) as Vector, (bSuccess: boolean) => {
+        player.moveToPos(this.m_eCity.GetAbsOrigin(), (bSuccess: boolean) => {
             if (bSuccess) {
                 player.m_eHero.MoveToTargetToAttack(this.m_tabEMonster[0]);
                 this.setMonsterAtk();
@@ -171,12 +172,14 @@ export class PathMonster extends Path {
             // 不可攻击
             for (const unit of this.m_tabEMonster) {
                 AMHC.AddAbilityAndSetLevel(unit, 'jiaoxie');
+                unit.SetAcquisitionRange(0);
             }
         } else {
             // 可攻击
             for (const unit of this.m_tabEMonster) {
                 AMHC.RemoveAbilityAndModifier(unit, 'jiaoxie');
                 unit.MoveToTargetToAttack(this.m_tabAtker[0]);
+                unit.SetAcquisitionRange(150);
             }
         }
     }
@@ -268,7 +271,8 @@ export class PathMonster extends Path {
                     const nExp = this.getMonsterExp(unit.GetUnitName());
                     // 增加经验
                     const player = GameRules.PlayerManager.getPlayer(atker.GetPlayerOwnerID());
-                    if (IsValid(player)) player.setExpAdd(nExp);
+                    print('===onEvent_entityKilled atker:', atker.GetUnitName(), 'killedEntity:', unit.GetUnitName(), 'nExp:', nExp);
+                    if (player) player.setExpAdd(nExp);
 
                     // 记录收获
                     const nAddGold = unit.GetGoldBounty();
@@ -280,7 +284,14 @@ export class PathMonster extends Path {
                     player.setGold(nAddGold);
                     GameRules.GameConfig.showGold(player, nAddGold);
 
+                    this.m_tabEMonster.forEach(unit => {
+                        print('===entity killed before tab unit:', unit.GetUnitName());
+                    });
                     this.m_tabEMonster.splice(this.m_tabEMonster.indexOf(unit), 1);
+
+                    this.m_tabEMonster.forEach(unit => {
+                        print('===entity killed after tab unit:', unit.GetUnitName());
+                    });
                     if (this.m_tabEMonster.length == 0) {
                         // 结束打野
                         this.EndBattle();
@@ -362,23 +373,32 @@ export class PathMonster extends Path {
             if (unit.GetEntityIndex() == event.entindex_attacker_const) {
                 bFound = true;
                 break;
-            } else if (unit.GetEntityIndex() == event.entindex_victim_const) {
-                player = GameRules.PlayerManager.getPlayer(unit.GetPlayerOwnerID());
-                break;
             }
         }
         if (!bFound) return; // 攻击者不是野怪
-        if (!player) return;
+        for (const hero of this.m_tabEHero) {
+            if (hero.GetEntityIndex() == event.entindex_victim_const) {
+                player = GameRules.PlayerManager.getPlayer(hero.GetPlayerOwnerID());
+                break;
+            }
+        }
+        if (!player) {
+            // 受伤者不是打野英雄，忽略这次伤害
+            event.bIgnore = true;
+            return;
+        }
+        Timers.CreateTimer(() => ParaAdjuster.ModifyMana(player.m_eHero));
 
         if (event.damage >= player.m_eHero.GetHealth()) {
             // 被野怪打死，结束打野，进入地狱
-            print('===pathMonster: Event_Atk: killed by moster');
+            print('===pathMonster: Event_Atk 4: killed by moster');
             event.bIgnore = true;
             player.m_eHero.ModifyHealth(player.m_eHero.GetMaxHealth(), null, false, 0);
             this.setAtkerDel(player, false, true);
             const pathPrison = GameRules.PathManager.getPathByType(TP_PRISON)[0] as PathPrison;
             pathPrison.setInPrison(player);
         } else {
+            print('===pathMonster: Event_Atk===5');
             // 不扣钱,扣血
             event.bIgnoreGold = true;
         }
@@ -427,7 +447,7 @@ const MONSTER_SETTINGS: MONSTER_SETTING[][] = [
             tabMonster: {
                 npc_dota_neutral_ghost: { nCount: 1, nExp: 1, tabPos: [[0, 0, 0]] },
                 npc_dota_neutral_fel_beast: {
-                    nCount: 1,
+                    nCount: 2,
                     nExp: 1,
                     tabPos: [
                         [-100, 50, 0],
@@ -462,7 +482,7 @@ const MONSTER_SETTINGS: MONSTER_SETTING[][] = [
             tabMonster: {
                 npc_dota_neutral_alpha_wolf: { nCount: 1, nExp: 2, tabPos: [[0, 0, 0]] },
                 npc_dota_neutral_giant_wolf: {
-                    nCount: 1,
+                    nCount: 2,
                     nExp: 1,
                     tabPos: [
                         [-100, 50, 0],

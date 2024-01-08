@@ -46,7 +46,11 @@ export class GameLoop {
                     entry: 'GSRoundBefore_Entry',
                     exit: 'GSRoundBefore_Exit',
                 },
-                GSSupply: { on: { tobegin: 'GSBegin', todeathclearing: 'GSDeathClearing' }, entry: 'GSSupply_Entry', exit: 'GSSupply_Exit' },
+                GSSupply: {
+                    on: { toRoundBefore: 'GSRoundBefore', todeathclearing: 'GSDeathClearing' },
+                    entry: 'GSSupply_Entry',
+                    exit: 'GSSupply_Exit',
+                },
                 GSBegin: {
                     on: { towaitoprt: 'GSWaitOprt', tofinished: 'GSFinished', todeathclearing: 'GSDeathClearing' },
                     entry: 'GSBegin_Entry',
@@ -109,10 +113,6 @@ export class GameLoop {
         if (this.m_thinkName) GameRules.GetGameModeEntity().StopThink(this.m_thinkName);
         this.m_thinkName = DoUniqueString('timer');
         GameRules.GetGameModeEntity().SetContextThink(this.m_thinkName, callback, delay);
-    }
-
-    StopTimer() {
-        if (this.m_thinkName) GameRules.GetGameModeEntity().StopThink(this.m_thinkName);
     }
 
     constructor() {}
@@ -335,7 +335,6 @@ export class GameLoop {
     GSSupply_Exit() {
         print('GameState_GSSupply_Exit');
         GameRules.EventManager.FireEvent('Event_GSSupply_Over');
-        this.StopTimer();
     }
 
     GSFinished_Entry() {
@@ -352,10 +351,13 @@ export class GameLoop {
         if (GameRules.GameConfig.m_nOrderFirst == GameRules.GameConfig.m_nOrderID && oPlayer.m_bRoundFinished) {
             GameRules.GameConfig.addRound();
         }
-        this.Timer(() => {
-            this.GameStateService.send('toRoundBefore');
-            return null;
-        }, 0);
+        if (GameRules.GameConfig.m_typeState != GS_Supply) {
+            this.Timer(() => {
+                this.GameStateService.send('toRoundBefore');
+                return null;
+            }, 0);
+        }
+        // Supply结束手动跳转至toRoundBefore
     }
 
     GSFinished_Exit() {}

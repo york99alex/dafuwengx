@@ -432,11 +432,10 @@
 		"BaseClass" "ability_lua"
 		"ScriptFile" "ability/path/path_16"
 		"AbilityValues" {
-			"shangxian" "1 2 4"
 			"huimo" "1"
-			"huimo_bz" "10 20 40"
+			"huimo_bz" "15 25 40"
 			"no_mana_chance" "15 25 40"
-			"no_cd_chance" "0 20 40"
+			"no_cd_chance" "1 20 40"
 			"spell_amp" "10 20 30"
 		}
 		"MaxLevel" "3"

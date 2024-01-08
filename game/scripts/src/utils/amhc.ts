@@ -45,6 +45,7 @@ export class AMHC {
             }
             return true;
         }
+        return false;
     }
 
     static AddNewModifier(

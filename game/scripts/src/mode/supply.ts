@@ -15,7 +15,12 @@ export class Supply {
     m_nGMOrder: PlayerID;
 
     init() {
-        GameRules.EventManager.Register('Event_UpdateRound', (event: { isBegin: boolean; nRound: number }) => this.onEvent_UpdateRound(event), this);
+        GameRules.EventManager.Register(
+            'Event_UpdateRound',
+            (event: { isBegin: boolean; nRound: number }) => this.onEvent_UpdateRound(event),
+            this,
+            10000
+        );
         GameRules.EventManager.Register('Event_PlayerDie', (event: { player: Player }) => this.onEvent_PlayerDie(event), this, 10000);
 
         // 获取补给品
@@ -59,7 +64,7 @@ export class Supply {
             // 设置游戏状态和操作时间
             GameRules.GameLoop.GameStateService.send('tosupply');
             GameRules.GameConfig.m_timeOprt = TIME_SUPPLY_READY;
-            GameRules.Supply.m_nGMOrder = GameRules.GameConfig.m_nOrderID;
+            this.m_nGMOrder = GameRules.GameConfig.m_nOrderID;
             GameRules.GameConfig.setOrder(-1);
         }
     }
@@ -195,7 +200,6 @@ export class Supply {
         const tData = CustomNetTables.GetTableValue('GamingTable', 'supply');
         if (!tData) {
             this.setEnd();
-            return;
         }
         if (tData.nPlayerIDOprt == -1) {
             // 开始操作
@@ -236,7 +240,6 @@ export class Supply {
     getSupply(tData: any, nDataIndex: number) {
         const supplyInfo = tData.tabSupplyInfo[tostring(nDataIndex)];
         if (!supplyInfo) {
-            print('===getSupply Data error');
             return;
         }
         // 设置补给主人
@@ -244,12 +247,12 @@ export class Supply {
         const player = GameRules.PlayerManager.getPlayer(tData.nPlayerIDOprt);
 
         if (player && !player.m_bDie) {
-            print('===getSupply===tData:', tData, 'index:', nDataIndex, 'index type:', typeof nDataIndex);
-            DeepPrintTable(tData);
+            // print('===getSupply===tData:', tData, 'index:', nDataIndex, 'index type:', typeof nDataIndex);
+            // DeepPrintTable(tData);
             if (supplyInfo.type == 'item') {
                 // 添加物品
                 if (player.m_eHero.GetNumItemsInInventory() < 9) {
-                    print('===Supply AddItem:', supplyInfo.itemName, 'to hero:', player.m_eHero.GetUnitName());
+                    // print('===Supply AddItem:', supplyInfo.itemName, 'to hero:', player.m_eHero.GetUnitName());
                     const item = player.m_eHero.AddItemByName(supplyInfo.itemName);
                     if (item) item.SetPurchaseTime(0);
                     player.setSumGold();
@@ -340,6 +343,7 @@ export class Supply {
 
     /**结束补给阶段 */
     setEnd(tData?: any) {
+        print('===Supply setEnd===');
         tData = tData || CustomNetTables.GetTableValue('GamingTable', 'supply');
         if (tData) {
             // 结束，2秒后清空补给阶段数据
@@ -353,6 +357,7 @@ export class Supply {
         // 重新进入begin
         GameRules.GameConfig.setOrder(this.m_nGMOrder);
         this.m_nGMOrder = null;
-        Timers.CreateTimer(0.1, () => GameRules.GameLoop.GameStateService.send('tobegin'));
+        GameRules.GameLoop.m_bRoundBefore = false;
+        GameRules.GameLoop.GameStateService.send('toRoundBefore');
     }
 }

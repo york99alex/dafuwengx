@@ -15,10 +15,18 @@ export function SupplyPanel() {
 
     // supply有data就始终打开面板
     useEffect(() => {
-        if (!supplyData || supplyData.nPlayerIDOprt < -1) {
+        if (!supplyData) {
             console.log('===SupplyPanle data null, supply end');
             root.current?.AddClass('Hidden');
-            setPlayerList([]);
+            return;
+        } else if (supplyData.nPlayerIDOprt < -1) {
+            console.log('===SupplyPanle oprtID == -2, supply end in 2s, data:', supplyData);
+            setSupplyList(Object.values(supplyData.tabSupplyInfo));
+            setOprtID(supplyData.nPlayerIDOprt);
+            setTimeout(() => {
+                root.current?.AddClass('Hidden');
+                resetState();
+            }, 2000);
             return;
         } else root.current?.RemoveClass('Hidden');
         console.log('===SupplyPanle useEffect supplyData:', supplyData);
@@ -39,6 +47,10 @@ export function SupplyPanel() {
         }
     }, [playerList]);
 
+    useEffect(() => {
+        console.log('===SupplyPanle leftList:', leftList, 'rightList:', rightList);
+    }, [leftList, rightList]);
+
     function getTipLabel(oprtID: number) {
         switch (oprtID) {
             case -1:
@@ -48,6 +60,11 @@ export function SupplyPanel() {
             default:
                 return $.Localize('#supply_tip_turn');
         }
+    }
+
+    function resetState() {
+        setOprtID(-1);
+        setSupplyList([]);
     }
 
     useGameEvent('GM_Operator', event => {

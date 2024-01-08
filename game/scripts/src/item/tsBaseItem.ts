@@ -64,13 +64,13 @@ export class TSBaseItem extends BaseItem {
     isCanCast(eTarget?: CDOTA_BaseNPC): boolean {
         print('isCanCast===0===isserver:', IsServer(), 'isclient:', IsClient());
         if (GameRules.GameConfig != null) {
-            print('isCanCast===1');
+            // print('isCanCast===1');
             // 准备阶段不能施法
             if (GameRules.GameConfig.m_nRound == 0) {
                 this.m_strCastError = 'AbilityError_Round0';
                 return false;
             }
-            print('isCanCast===2');
+            // print('isCanCast===2');
             // 非自己阶段不能施法
             if (!this.isCanCastOtherRound() && this.GetCaster().GetPlayerOwnerID() != GameRules.GameConfig.m_nOrderID) {
                 this.m_strCastError = 'AbilityError_NotSelfRound';
@@ -80,32 +80,32 @@ export class TSBaseItem extends BaseItem {
                 this.m_strCastError = 'AbilityError_BZCantCast';
                 return false;
             }
-            print('isCanCast===3');
+            // print('isCanCast===3');
             // 移动阶段不能施法
             if (!this.isCanCastMove() && GameRules.GameConfig.m_typeState == GS_Move) {
                 this.m_strCastError = 'AbilityError_Move';
                 return false;
             }
-            print('isCanCast===4');
+            // print('isCanCast===4');
             // 补给阶段不能施法
             if (!this.isCanCastSupply() && GameRules.GameConfig.m_typeState == GS_Supply) {
                 this.m_strCastError = 'AbilityError_Supply';
                 return false;
             }
-            print('isCanCast===5');
+            // print('isCanCast===5');
             // 死亡清算阶段不能施法
             if (GameRules.GameConfig.m_typeState == GS_DeathClearing) {
                 this.m_strCastError = 'AbilityError_DeathClearing';
                 return false;
             }
-            print('isCanCast===6');
+            // print('isCanCast===6');
             // 等待阶段不能施法
             if (GameRules.GameConfig.m_typeState == GS_Wait && !this.yieldWait) {
                 this.m_strCastError = 'AbilityError_Wait';
                 return false;
             }
 
-            print('isCanCast===7');
+            // print('isCanCast===7');
             // 验证施法玩家
             const oPlayer = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID());
             if (oPlayer != null) {
@@ -114,7 +114,7 @@ export class TSBaseItem extends BaseItem {
                     this.m_strCastError = 'AbilityError_InPrison';
                     return false;
                 }
-                print('isCanCast===8');
+                // print('isCanCast===8');
                 // 在英雄攻击时不能施法
                 if (!this.isCanCastHeroAtk() && (PS_AtkHero & oPlayer.m_nPlayerState) > 0) {
                     this.m_strCastError = 'AbilityError_Battle';
@@ -122,19 +122,19 @@ export class TSBaseItem extends BaseItem {
                 }
             }
 
-            print('isCanCast===9');
+            // print('isCanCast===9');
             if (!this.isCanCastAtk() && oPlayer.m_bGCLD) {
                 this.m_strCastError = 'AbilityError_Battle';
                 return false;
             }
 
-            print('isCanCast===10');
+            // print('isCanCast===10');
             // 验证目标单位
             if (eTarget && !this.checkTarget(eTarget)) {
                 // this.m_strCastError = 'AbilityError_Target';
                 return false;
             }
-            print('isCanCast===11');
+            // print('isCanCast===11');
             return true;
         }
     }

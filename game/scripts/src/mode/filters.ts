@@ -10,7 +10,7 @@ export class Filters {
         GameMode.SetHealingFilter(() => true, this);
         GameMode.SetItemAddedToInventoryFilter(event => this.ItemAddedToInventoryFilter(event), this);
         GameMode.SetModifierGainedFilter(() => true, this);
-        GameMode.SetModifyExperienceFilter(() => true, this);
+        GameMode.SetModifyExperienceFilter(() => false, this);
         GameMode.SetModifyGoldFilter(() => true, this);
         GameMode.SetRuneSpawnFilter(() => false, this);
         GameMode.SetTrackingProjectileFilter(() => true, this);

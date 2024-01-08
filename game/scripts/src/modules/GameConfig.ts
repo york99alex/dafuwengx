@@ -224,7 +224,7 @@ export class GameConfig {
 
     /**更新回合操作时限 */
     updateTimeOprt() {
-        // print('===updateTimeOprt===m_typeState', this.m_typeState, 'GameLoopState:', GameRules.GameLoop.getGameState());
+        // print('===updateTimeOprt===m_typeState', this.m_typeState, 'time:', this.m_timeOprt);
         if (
             this.m_typeState == GS_ReadyStart ||
             this.m_typeState == GS_WaitOperator ||
@@ -429,6 +429,7 @@ export class GameConfig {
 
         const oPlayer = GameRules.PlayerManager.getPlayer(tabData.nPlayerID);
         const bInPrison: boolean = 0 < (PS_InPrison & oPlayer.m_nPlayerState);
+        print('===processRoll bInPrison: ', bInPrison);
 
         // 有tp和攻城跳过
         this.autoOprt(TypeOprt.TO_TP);
@@ -477,7 +478,10 @@ export class GameConfig {
         // 删除操作
         const tabOprt = this.checkOprt(tabData, true);
         // TODO: 检查bug
-        if (tabOprt == false) return;
+        if (tabOprt == false) {
+            print('===processRoll tabOprt: false');
+            return;
+        }
 
         tabOprt['nNum1'] = nNum1;
         tabOprt['nNum2'] = nNum2;
@@ -653,9 +657,7 @@ export class GameConfig {
         DeepPrintTable(tabOprt as any);
         // 回包
         GameRules.PlayerManager.sendMsg('GM_OperatorFinished', tabOprt, tabData.nPlayerID);
-        if (tabOprt['nRequest'] > 1) {
-            return;
-        }
+        if (tabOprt['nRequest'] > 1) return;
 
         // 成功删除操作
         this.checkOprt(tabData, true);

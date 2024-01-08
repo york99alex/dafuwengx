@@ -206,17 +206,20 @@ export class TSBaseAbility extends BaseAbility {
         }
         // 监听兵卒可攻击
         GameRules.EventManager.Register('Event_BZCanAtk', (event: { entity: CDOTA_BaseNPC_BZ }) => {
+            print('===Event_BZCanAtk===0');
             if (this.IsNull()) {
+                print('===Event_BZCanAtk===error: this is null!');
                 return true;
             }
             if (this.GetCaster() != event.entity) {
                 return;
             }
             if (!AbilityManager.isCanOnAblt(this.GetCaster())) {
+                print('===Event_BZCanAtk===error: Can not cast!');
                 return;
             }
             const nManaCast = this.GetManaCost(this.GetLevel() - 1);
-            // print("===BZ_AI===0_nManaCast:", nManaCast)
+            print('===Event_BZCanAtk===nManaCast:', nManaCast);
             // 持续进行施法判断
             const tEventID = [];
             tEventID.push(
@@ -226,23 +229,25 @@ export class TSBaseAbility extends BaseAbility {
                     }
                 })
             );
-            // print("===BZ_AI===1")
+            print('===Event_BZCanAtk===1');
             const strTimerName = Timers.CreateTimer(() => {
                 if (IsValid(this)) {
-                    // print("===BZ_AI===2")
                     if (IsValid(this.GetCaster()['m_eAtkTarget']) && this.IsCooldownReady() && this.GetCaster().GetMana() == nManaCast) {
-                        // print("===BZ_AI===3")
                         // 蓝满了放技能
-                        ExecuteOrderFromTable({
-                            UnitIndex: this.GetCaster().entindex(),
-                            OrderType: UnitOrder.CAST_NO_TARGET,
-                            TargetIndex: null,
-                            AbilityIndex: this.GetEntityIndex(),
-                            Position: null,
-                            Queue: false,
-                        });
+                        try {
+                            ExecuteOrderFromTable({
+                                UnitIndex: this.GetCaster().entindex(),
+                                OrderType: UnitOrder.CAST_NO_TARGET,
+                                TargetIndex: null,
+                                AbilityIndex: this.GetEntityIndex(),
+                                Position: null,
+                                Queue: false,
+                            });
+                        } catch (error) {
+                            print('===BZ_AI===2 Cast Error:');
+                            print(error);
+                        }
                     }
-                    // print("===BZ_AI===4_GetMana", this.GetCaster().GetMana())
                     return 0.1;
                 }
             });

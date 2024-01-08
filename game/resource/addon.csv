@@ -492,6 +492,7 @@ Error_Bid_LessThanLeast,,低于最低加价
 Error_SendBid_Failed_0,,拍卖数据错误
 Error_SendBid_Failed_2,,竞拍玩家错误
 Error_SendBid_Failed_3,,竞拍金币错误
+Error_AYZZ_Failed,,安营扎寨失败
 
 TradeButtonText,T\nR\nA\nD\nE,交\n易\n行
 AuctionButtonText,A\nU\nC\nT\nI\nO\nN,拍\n卖\n场
@@ -536,7 +537,7 @@ PathName_7,,野区 ● 小
 PathName_8,,上河道下坡
 PathName_9,,河道 ● 上路
 PathName_10,,上河道上坡
-PathName_11,,镇妖宝塔
+PathName_11,,炎魔炼狱
 PathName_12,,当铺
 PathName_13,,蛇沼 ● 之一
 PathName_14,,蛇沼 ● 之二
@@ -572,3 +573,146 @@ supply_tip_ready,,准备阶段
 supply_tip_turn,,选择补给品（左键选择，右键于商店查看）
 supply_tip_end,,补给结束
 supply_tip_select,,请挑选
+
+// 通用文本
+text_understand,,了解
+text_give_up,,放弃
+text_go_to,,前往
+
+// 路径面板
+TypeOperator_AYZZ,,安营扎寨
+TypeOperator_AtkMonster,,猎野
+PathTitleTip_text,,领地
+PathTitleTip_buff,,增益
+PathTitleTip_AtkMonster,,前往猎野？
+Capture,,占领
+TypeOperator_AYZZ_Description,,是否耗资占领？
+TypeOperator_AYZZ_Owner,, 获得该领地
+TypeOperator_PRISON_title,,炎魔炼狱
+TypeOperator_GCLD,,攻城掠地
+Prison_Out,,买活
+
+// 攻城描述
+PathGCLDDescription,,与敌方兵卒决斗，直到有一方战败。<br>或下个自身回合开始。双方都可提升经验。<br><font color='#FFFF00'>胜利：击杀敌兵，抢占领地。</font><br><font color='#FF0000'>失败：被打败，交纳金币。</font> <br>兵卒★：1经验，100金币。<br>兵卒★★：2经验，200金币。<br>兵卒★★★：3经验，300金币。
+PathTitleTip_GCLD,,是否攻城？
+
+//===领地描述===
+// TP
+SoldierKey1_3,,TP有一 :
+SoldierKey2_3,,TP有二 :
+SoldierKey3_3,,TP有三 :
+SoldierKey4_3,,TP有四 :
+SoldierVal1_3,,<font color='#FFFF00'> 100 </font>过路费
+SoldierVal2_3,,<font color='#FFFF00'> 200 </font>过路费
+SoldierVal3_3,,<font color='#FFFF00'> 300 </font>过路费
+SoldierVal4_3,,<font color='#FFFF00'> 400 </font>过路费
+Capture_3,,<font color='#FFFF00'> 200 </font>耗资
+PathBuff_3,,传送阵
+PathBuffDescription_3,,进入己方传送阵时<br>获得一张 <font color='#0099ff'> 传送卷轴 </font>
+
+// 天辉
+SoldierKey1_12,,★兵卒 :
+SoldierKey2_12,,★★兵卒 :
+SoldierKey3_12,,★★★兵卒 :
+SoldierVal1_12,,占领天辉
+SoldierVal2_12,,<font color='#FFFF00'> 500 </font>升级
+SoldierVal3_12,,<font color='#FFFF00'> 1000 </font>升级
+Capture_12,,<font color='#FFFF00'> 300 </font>耗资
+PathBuff_12,,辉光普照
+PathBuffDescription_12,,天辉大地因世界树充满活力。全军将受到世界树的庇护防御抗性提升。<br>【满级效果 : 融合】<br>天辉兵卒融合成传说中的天辉巨人。<br>（等级，射程，体型是普通兵卒的 2 倍）
+PathBuffKey1_12,,护甲提升 : 
+PathBuffVal1_12,,5/10/20
+PathBuffKey2_12,,魔抗提升 : 
+PathBuffVal2_12,,10%/15%/25%
+// 野怪路径
+PathBuffDescription_9,,前往野区猎杀野怪获得金钱经验！<br>如果被野怪击杀，会坠入<font color='#FF0000'>炎魔炼狱</font>。
+PathBuffDescription_7,,身处地狱，封锁全部领地。<br>地狱惩戒：（持续入狱）<br>第3回合：损失100金币。<br>第4回合损失200金币。<br>第5回合：损失400金币。<br> 以此类推...<br><br> 囚禁于炼狱之中，可选择花费金币买活<br>或者放弃买活后Roll到相同点数复活。
+OperatorBody_Hell,,是否买活
+// 上河道
+SoldierKey1_13,,★兵卒 :
+SoldierKey2_13,,★★兵卒 :
+SoldierKey3_13,,★★★兵卒 :
+SoldierVal1_13,,占领河道
+SoldierVal2_13,,<font color='#FFFF00'> 1000 </font>升级
+SoldierVal3_13,,<font color='#FFFF00'> 1500 </font>升级
+Capture_13,,<font color='#FFFF00'> 300 </font>耗资
+PathBuff_13,,寒流
+PathBuffDescription_13,,肃杀的世界连流水同样冰冷，刺骨之寒透过坚硬的盔甲。
+PathBuffKey1_13,,上路护甲穿透 : 
+PathBuffVal1_13,,15% / 25% / 35%
+PathBuffKey2_13,,下路魔抗穿透 :
+PathBuffVal2_13,,15% / 25% / 35%
+// 蛇沼
+SoldierKey1_14,,★兵卒 :
+SoldierKey2_14,,★★兵卒 :
+SoldierKey3_14,,★★★兵卒 :
+SoldierVal1_14,,占领蛇沼
+SoldierVal2_14,,<font color='#FFFF00'> 500 </font>升级
+SoldierVal3_14,,<font color='#FFFF00'> 1000 </font>升级
+Capture_14,,<font color='#FFFF00'> 300 </font>耗资
+PathBuff_14,,缚足
+PathBuffDescription_14,,敌人经过有概率被群蛇束缚。穿行沼泽的确不是件轻松活，好在有蛇蛇们的帮助。<br>【满级效果 : 扩张】<br>作用全部己方领地。
+PathBuffKey1_14,,束缚时间 : 
+PathBuffVal1_14,,1 / 1.5 / 2 秒
+PathBuffKey2_14,,束缚概率 :
+PathBuffVal2_14,,25%
+// 夜魇
+SoldierKey1_15,,★兵卒 :
+SoldierKey2_15,,★★兵卒 :
+SoldierKey3_15,,★★★兵卒 :
+SoldierVal1_15,,占领夜魇
+SoldierVal2_15,,<font color='#FFFF00'> 500 </font>升级
+SoldierVal3_15,,<font color='#FFFF00'> 1000 </font>升级
+Capture_15,,<font color='#FFFF00'> 300 </font>耗资
+PathBuff_15,,癫狂
+PathBuffDescription_15,,至邪的源泉侵蚀它的子民，失去了灵魂换得他人的恐惧。<br>【满级效果 : 癫狂】<br>夜魇兵卒双倍提升，被沉默无法施法兵卒技。
+PathBuffKey1_15,,攻速提升 : 
+PathBuffVal1_15,,25 / 50 / 100
+PathBuffKey2_15,,移速提升 : 
+PathBuffVal2_15,,10 / 20 / 40
+// 龙谷
+SoldierKey1_16,,★兵卒 :
+SoldierKey2_16,,★★兵卒 :
+SoldierKey3_16,,★★★兵卒 :
+SoldierVal1_16,,占领龙谷
+SoldierVal2_16,,<font color='#FFFF00'> 500 </font>升级
+SoldierVal3_16,,<font color='#FFFF00'> 1000 </font>升级
+Capture_16,,<font color='#FFFF00'> 300 </font>耗资
+PathBuff_16,,神龙赐法
+PathBuffDescription_16,,全军魔法回复提升。神秘的古老种族，掌管着最纯粹的魔法。<br>【特殊效果 : 萃魔】<br>施法有概率返还魔法。<br>【特殊效果 : 刷新】<br>施法有概率刷新技能。
+PathBuffKey1_16,,英雄回魔提升 : 
+PathBuffVal1_16,,1
+PathBuffKey2_16,,兵卒回魔提升 : 
+PathBuffVal2_16,,15% / 25% / 40%
+PathBuffKey3_16,,萃魔概率 : 
+PathBuffVal3_16,,15% / 25% / 40%
+PathBuffKey4_16,,刷新概率 : 
+PathBuffVal4_16,, 1% / 20% / 40%
+PathBuffKey5_16,,技能增强 : 
+PathBuffVal5_16,,10% / 20% / 30%
+// 雕巢
+SoldierKey1_17,,★兵卒 :
+SoldierKey2_17,,★★兵卒 :
+SoldierKey3_17,,★★★兵卒 :
+SoldierVal1_17,,占领鵰巢
+SoldierVal2_17,,<font color='#FFFF00'> 500 </font>升级
+SoldierVal3_17,,<font color='#FFFF00'> 1000 </font>升级
+Capture_17,,<font color='#FFFF00'> 300 </font>耗资
+PathBuff_17,,圣兽
+PathBuffDescription_17,,圣兽刮起飓风，伤害经过的敌人。<br>唤醒沉睡的圣兽，无谓的战争引燃它的怒火。<br>【满级效果 : 扩张 】<br>作用全部己方领地。
+PathBuffKey1_17,,持续伤害 : 
+PathBuffVal1_17,,30
+PathBuffKey2_17,,减速 : 
+PathBuffVal2_17,,10% / 20% / 40%
+// 圣所
+SoldierKey1_18,,★兵卒 :
+SoldierKey2_18,,★★兵卒 :
+SoldierKey3_18,,★★★兵卒 :
+SoldierVal1_18,,占领圣所
+SoldierVal2_18,,<font color='#FFFF00'> 1000 </font>升级
+SoldierVal3_18,,<font color='#FFFF00'> 2000 </font>升级
+Capture_18,,<font color='#FFFF00'> 400 </font>耗资
+PathBuff_18,,圣洁净土
+PathBuffDescription_18,,对驻足在圣所的敌人造成神圣伤害。<br>神圣的殿堂前没有纷争也没有不速之客。<br>【特殊效果 : 石佛】<br>圣所兵卒无法攻击。无法被攻城。
+PathBuffKey1_18,,纯粹伤害 : 
+PathBuffVal1_18,,1000 / 2000 / 4000

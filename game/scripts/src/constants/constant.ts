@@ -21,7 +21,7 @@ export enum TypePathState {
 // 选择英雄时间  /1s
 export const TIME_SELECTHERO: number = 60;
 // 回合操作时限  /0.1s
-export const TIME_OPERATOR: number = 101;
+export const TIME_OPERATOR: number = 201;
 // 回合操作时限（掉线）  /0.1s
 export const TIME_OPERATOR_DISCONNECT: number = 51;
 // 豹子加时阈值  /0.1s
@@ -125,9 +125,9 @@ PATH_TO_PRICE[TP_DOMAIN_1] = 300;
 PATH_TO_PRICE[TP_DOMAIN_2] = 300;
 PATH_TO_PRICE[TP_DOMAIN_3] = 300;
 PATH_TO_PRICE[TP_DOMAIN_4] = 300;
-PATH_TO_PRICE[TP_DOMAIN_5] = 400;
-PATH_TO_PRICE[TP_DOMAIN_6] = 400;
-PATH_TO_PRICE[TP_DOMAIN_7] = 500;
+PATH_TO_PRICE[TP_DOMAIN_5] = 300;
+PATH_TO_PRICE[TP_DOMAIN_6] = 300;
+PATH_TO_PRICE[TP_DOMAIN_7] = 400;
 PATH_TO_PRICE[TP_DOMAIN_8] = 550;
 PATH_TO_PRICE[TP_TP] = 200;
 

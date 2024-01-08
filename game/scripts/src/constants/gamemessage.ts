@@ -167,3 +167,7 @@ export const CardID_MONSTER = {
 export const TCardCast_Nil = 1; // 无目标
 export const TCardCast_Pos = 2; // 地点目标
 export const TCardCast_Target = 4; // 单位目标
+
+// 宝藏类型
+export const Treasure_Gold = 1; // 金币
+export const Treasure_Item = 2; // 装备

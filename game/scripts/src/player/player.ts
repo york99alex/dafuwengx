@@ -1028,9 +1028,12 @@ export class Player {
 
     /**设置兵卒攻击状态 */
     setBzAttack(eBz: CDOTA_BaseNPC_BZ, bCan?: boolean) {
-        if (eBz == null) return;
+        if (eBz == null) {
+            print('===Player.setBzAttack===error: eBz is null!');
+            return;
+        }
         if (bCan == null) {
-            bCan = 0 < (this.m_nPlayerState & PS_AtkBZ) && (this.m_nPlayerState & PS_InPrison) == 0;
+            bCan = 0 < bit.band(this.m_nPlayerState, PS_AtkBZ) && 0 == bit.band(this.m_nPlayerState, PS_InPrison);
         }
         for (const value of this.m_tabBz) {
             if (value == eBz) {
@@ -1088,13 +1091,16 @@ export class Player {
 
     /**设置攻击目标给兵卒 */
     setBzAtker(eBz: CDOTA_BaseNPC_BZ, eAtaker?: CDOTA_BaseNPC_Hero, bDel?: boolean) {
-        if (eBz == null || this.m_tabBz.indexOf(eBz) == -1) return;
+        if (eBz == null || !this.m_tabBz.includes(eBz)) {
+            print('===setBzAtker===error: eBz is null!');
+            return;
+        }
         if (eBz.m_tabAtker == null) eBz.m_tabAtker = [];
 
         if (bDel) {
             AMHC.removeAll(eBz.m_tabAtker, eAtaker);
         } else {
-            if (eBz.m_tabAtker.indexOf(eAtaker) == -1) eBz.m_tabAtker.push(eAtaker);
+            if (!eBz.m_tabAtker.includes(eAtaker)) eBz.m_tabAtker.push(eAtaker);
             this.ctrlBzAtk(eBz);
         }
     }
@@ -1133,7 +1139,10 @@ export class Player {
                     const nRange = eBz.Script_GetAttackRange();
                     if (nDis <= nRange) {
                         // 达到攻击距离
-                        if (AMHC.RemoveAbilityAndModifier(eBz, 'jiaoxie')) {
+                        if (!eBz.HasAbility('jiaoxie')) {
+                            if (eBz.GetMana() != eBz.GetMaxMana()) eBz.MoveToTargetToAttack(value);
+                            return 0.1;
+                        } else if (AMHC.RemoveAbilityAndModifier(eBz, 'jiaoxie')) {
                             eBz.SetDayTimeVisionRange(nRange);
                             eBz.SetNightTimeVisionRange(nRange);
                             eBz.MoveToTargetToAttack(value);
@@ -1148,6 +1157,7 @@ export class Player {
                 }
             }
             eBz._ctrlBzAtk_thinkID = null;
+            return;
         });
     }
 
@@ -1566,7 +1576,6 @@ export class Player {
                 this.m_nLastAtkPlayerID = oAttacker.GetPlayerOwnerID();
                 this.m_nRoundDamage += event.damage;
                 oPlayerAtk = GameRules.PlayerManager.getPlayer(oAttacker.GetPlayerOwnerID());
-                oPlayerAtk.m_nRoundDamage += event.damage;
                 // 统计伤害
                 if (oPlayerAtk) {
                     if (oAttacker.IsRealHero()) {

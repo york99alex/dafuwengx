@@ -27,7 +27,6 @@ export class modifier_path_16_l1 extends BaseModifier {
     tEventID: number[];
     huimo_bz: number;
     huimo: number;
-    shangxian: number;
     no_cd_chance: number;
     no_mana_chance: number;
     spell_amp: number;
@@ -52,7 +51,6 @@ export class modifier_path_16_l1 extends BaseModifier {
     OnDestroy(): void {
         print('ability=modifier=OnDestroy===name:', this.GetName());
         if (this.oPlayer) {
-            this.oPlayer.m_nManaMaxBase -= this.shangxian;
             for (const eBZ of this.oPlayer.m_tabBz) {
                 if (IsValid(eBZ)) {
                     AMHC.RemoveModifierByName(this.GetName(), eBZ);
@@ -79,13 +77,11 @@ export class modifier_path_16_l1 extends BaseModifier {
         const ability = this.GetAbility();
         this.huimo_bz = ability.GetSpecialValueFor('huimo_bz');
         this.huimo = ability.GetSpecialValueFor('huimo');
-        this.shangxian = ability.GetSpecialValueFor('shangxian');
         this.no_cd_chance = ability.GetSpecialValueFor('no_cd_chance');
         this.no_mana_chance = ability.GetSpecialValueFor('no_mana_chance');
         this.spell_amp = ability.GetSpecialValueFor('spell_amp');
         print(this.GetName(), '===this.huimo_bz', this.huimo_bz);
         print(this.GetName(), '===this.huimo', this.huimo);
-        print(this.GetName(), '===this.shangxian', this.shangxian);
         print(this.GetName(), '===this.no_cd_chance', this.no_cd_chance);
         print(this.GetName(), '===this.no_mana_chance', this.no_mana_chance);
         print(this.GetName(), '===this.spell_amp', this.spell_amp);
@@ -114,9 +110,6 @@ export class modifier_path_16_l1 extends BaseModifier {
             }
         });
         this.tEventID = [];
-        // 提升玩家魔法上限
-        this.oPlayer.m_nManaMaxBase += this.shangxian;
-        ParaAdjuster.ModifyMana(this.oPlayer.m_eHero);
         // 监听玩家回合回魔
         this.tEventID.push(
             GameRules.EventManager.Register('Event_HeroHuiMoByRound', (event: { oPlayer: Player; nHuiMo: number }) => {

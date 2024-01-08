@@ -10,7 +10,7 @@ export const PathType: { [key: number]: number } = {
     8: 0,
     9: 13,
     10: 0,
-    11: 0,
+    11: 7,
     12: 0,
     13: 14,
     14: 14,
@@ -43,5 +43,9 @@ export const PathType: { [key: number]: number } = {
 };
 
 export const PathTradeType = [3, 12, 13, 14, 15, 16, 17, 18];
+
+export const PathDomainsType = [3, 12, 13, 14, 15, 16, 17, 18];
+export const PathMonstersType = [9, 10, 11];
+export const PathPrisonType = 7;
 
 export class PathManager {}

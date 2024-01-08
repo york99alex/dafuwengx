@@ -4,21 +4,31 @@ import { PathType } from '../../path/PathManager';
 export function PlayerPanel(props: { playerID: PlayerID; data: any; oprtID: number }) {
     const [heroname, setHeroname] = useState('');
     const item = useRef<Panel>(null);
-    const [supplyInfo, setSupplyInfo] = useState<{ name: any; type: string }>();
+    const [supplyInfo, setSupplyInfo] = useState<{ name?: any; type?: string }>();
 
     useEffect(() => {
         setHeroname(Players.GetPlayerSelectedHero(props.playerID));
     }, [props.playerID]);
 
     useEffect(() => {
+        if (props.oprtID && props.oprtID == -2) {
+            setTimeout(() => {
+                item.current!.visible = false;
+                setSupplyInfo({});
+            }, 2000);
+        }
+    }, [props.oprtID]);
+
+    useEffect(() => {
         if (!props.data) return;
         for (const supply of props.data) {
-            if (supply.nOwnerID && supply.nOwnerID == props.playerID) {
+            if (supply.nOwnerID != null && supply.nOwnerID == props.playerID.valueOf()) {
                 item.current!.visible = true;
                 setSupplyInfo({
                     name: supply.itemName || supply.pathID,
                     type: supply.type,
                 });
+                return;
             }
         }
     }, [props.data]);

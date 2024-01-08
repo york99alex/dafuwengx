@@ -67,8 +67,6 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
     useGameEvent(
         'GM_OperatorFinished',
         event => {
-            console.log('===Trade===GM_OperatorFinished===0===', event);
-            console.log('===Trade===selectPlayerID:', selectPlayerID, 'playerID:', PlayerMgr.playerID);
             if (
                 event.typeOprt == TypeOprt.TO_TRADE &&
                 event.nPlayerID == PlayerMgr.playerID &&

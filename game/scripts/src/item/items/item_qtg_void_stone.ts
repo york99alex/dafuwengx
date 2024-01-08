@@ -68,6 +68,7 @@ export class item_qtg_void_stone_modifier extends BaseModifier {
     OnIntervalThink(): void {
         if (!this.GetAbility().IsFullyCastable()) return;
 
+        if (this.GetParent().GetMana() == this.GetParent().GetMaxMana()) return;
         if ((this.GetAbility() as TSBaseItem).isCanCast()) {
             this.GetCaster().CastAbilityNoTarget(this.GetAbility(), this.GetCaster().GetPlayerOwnerID());
         }

@@ -30,6 +30,8 @@ export class PlayerManager {
         ListenToGameEvent('dota_player_used_ability', event => this.onEvent_dota_player_used_ability(event), this);
         // 玩家聊天
         ListenToGameEvent('player_chat', event => this.onEvent_player_chat(event), this);
+        // 玩家英雄升级
+        // ListenToGameEvent('dota_player_gained_level', event => this.onEvent_dota_player_gained_level(event), this);
     }
 
     // 玩家断线
@@ -142,6 +144,10 @@ export class PlayerManager {
 
     // 玩家聊天
     onEvent_player_chat(event: GameEventProvidedProperties & PlayerChatEvent): void {}
+
+    // 玩家英雄升级
+    // onEvent_dota_player_gained_level(event: GameEventProvidedProperties & DotaPlayerGainedLevelEvent): void {
+    // }
 
     /**
      * getPlayer

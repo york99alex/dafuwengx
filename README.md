@@ -1062,7 +1062,9 @@ export const App = () => {	// 根组件
    6. Modifier name modifier_ability_BZ_pudge_rot_debuff is not lowercase.
           Because CModifierFactoryDictionary is case sensitive, you have probably introduced a bug.
    7. 检查旧兵卒没有新兵卒地的buff问题
-   8. 攻城有bug
+   8. ==攻城==：
+      1. 兵卒自动施法错误
+      2. 兵卒攻击第一下后不会继续攻击
 
 5. ==路径相关==
 
@@ -1139,6 +1141,8 @@ export const App = () => {	// 根组件
         2. 不存在modifier_cd
         3. 原因：当新回合开始前会先创建modifier_cd再通过Event_PlayerRoundBegin减少countCD，所以modifier_cd的Think会
         4. 导致错误的情况是，countCD会在回合内减一
+        
+    7. 
 
 11. 给钱异常
 
@@ -1169,18 +1173,37 @@ export const App = () => {	// 根组件
 
 19. ==前端相关==
 
-          1. 关闭以下前端页面:
-                 1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
-                 2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
-          
-                 3. Label id="AbilityBuildComment"  #AbilityBuildComment
-          
-          2. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
-          
-          3. 禁用天赋树点击事件 参考http://www.dota2rpg.com/forum.php?mod=viewthread&tid=4491&highlight=%3F%3F%3F
-          
-          4. 移除天赋树属性面板
-          5. 操作面板提示：被野怪打死，结束打野，进入地狱
+    
+
+      1. 关闭以下前端页面:
+             1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
+             2. Label class="AbilityBuildHeader"  .AbilityBuildHeader
+             
+             3. Label id="AbilityBuildComment"  #AbilityBuildComment
+
+      2. 新回合开始要关闭前端操作面板?或者重新考虑逻辑
+
+      3. 禁用天赋树点击事件 参考http://www.dota2rpg.com/forum.php?mod=viewthread&tid=4491&highlight=%3F%3F%3F
+
+      4. 移除天赋树属性面板
+      5. 操作面板提示：被野怪打死，结束打野，进入地狱
+      6. 补给前端面板右侧英雄物品未刷新
+
+      7. ```
+           JS Exception! *** Skipping rest of script *** 
+           
+           F:\SteamLibrary\steamapps\common\dota 2 beta\content\dota_addons\dafuwengx\panorama\layout\custom_game\hud\index.js
+           line:22944, col:348
+           
+           >>                 } }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Panel, Object.assign({ style: { flowChildren: 'right' } }, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Label, { text: `当前回合玩家：` }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DOTAHeroImage, { heroimagestyle: "icon", heroname: Players.GetPlayerSelectedHero(nPlayerID) })] }))] })));
+           
+           Uncaught V8ParamToPanoramaType expected Number type to convert, but got something else (undefined)
+           V8ParamToPanoramaType expected Number type to convert, but got something else (undefined)
+           ```
+
+      8. 
+
+      
 
 20. 本地化翻译所有this.m_strCastError
 
@@ -1958,15 +1981,31 @@ ItemShare
 
 #### 物品补给模块
 
-开局和第5回合	1级 随机统一价500或1000
+开局和第5回合	1级 随机统一价500或1000	24件随
 
-10回合	2级 随机统一价1000或1500
+10回合	2级 随机统一价1000或1500	24件随
 
-15回合	3级 随机统一价1500或2000
+15回合	3级 随机统一价1500或2000	18件随
 
-20回合	4级 随机统一价2000或2500
+20回合	4级 随机统一价2000或2500	13件随
 
-25回合	5级 随机统一价2500或3000
+25回合	5级 随机统一价2500或3000	18件随
+
+
+
+500有13件
+
+1000有11件 其中4件神秘
+
+1500有13件 其中1件神秘
+
+2000有5件 其中2件神秘
+
+2500有8件 其中5件神秘
+
+3000有10件
+
+3000以上21件
 
 
 
@@ -2115,6 +2154,79 @@ Path的类class name应以	path_corner
 ​      nPathID: this.m_nID,
 
 ​    });
+
+
+
+## 路径面板
+
+1. roll点，广播玩家roll点结果 GM_OperatorFinished
+
+   1. FireEvent Event_Roll，调用onEvent_Roll，成功到达，触发onPath发送sendOprt	==GM_Operator==
+      onPath情况：
+
+      1. pathdomain 领地：
+
+         - 无主，以及 ==pathTP无主==
+
+           ​        nPlayerID: player.m_nPlayerID,
+
+           ​        typeOprt: TypeOprt.TO_AYZZ,
+
+           ​        typePath: this.m_typePath,
+
+           ​        nPathID: this.m_nID,
+
+           - 购买成功后广播提示安营扎寨 ==GM_OperatorFinished== 
+
+         - 有主可攻击
+
+           ​            nPlayerID: player.m_nPlayerID,
+
+           ​            typeOprt: TypeOprt.TO_GCLD,
+
+           ​            typePath: this.m_typePath,
+
+           ​            nPathID: this.m_nID,
+
+      2. pathMonster 野怪：
+
+         ​      nPlayerID: oPlayer.m_nPlayerID,
+
+         ​      typeOprt: TypeOprt.TO_AtkMonster,
+
+         ​      typePath: this.m_typePath,
+
+         ​      nPathID: this.m_nID,
+
+      3. pathRune 符文，无sendOprt，直接激活符文
+
+      4. pathShop 无，后端设置购买次数
+
+      5. pathTreasure，broadcastMsg ==GM_OperatorFinished==
+
+         ​	  nPlayerID: player.m_nBuyItem,
+
+         ​      typeOprt: TypeOprt.TO_TREASURE,
+
+         ​      typePath: this.m_typePath,
+
+         ​      nPathID: this.m_nID,
+
+         ​      data:  {type: number, treasure: string | number} 
+
+      6. 特殊情况：pathPrison
+
+         1. 走到直接设置到监狱，无sendOprt
+
+         2. 如果在监狱，每回合开始onEvent_PlayerRoundBegin
+            sendOprt   ==GM_Operator==
+                   nPlayerID: GameRules.GameConfig.m_nOrderID,
+
+            ​      typeOprt: TypeOprt.TO_PRISON_OUT,
+
+            ​      nGold: GOLD_OUT_PRISON,
+
+      7. TODO：pathStep，
 
 
 
