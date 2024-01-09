@@ -567,6 +567,39 @@ PathName_37,,神符 ● 下
 PathName_38,,天灾福泽
 PathName_39,,圣所 ● 其一
 PathName_40,,圣所 ● 其二
+PathLog_3,,天辉 ● 其一
+PathLog_4,,天辉 ● 其二
+PathLog_5,,天辉 ● 其三
+PathLog_6,,传送 ● 西
+PathLog_9,,河道 ● 上路
+PathLog_13,,蛇沼 ● 之一
+PathLog_14,,蛇沼 ● 之二
+PathLog_15,,蛇沼 ● 之三
+PathLog_16,,传送 ● 北
+PathLog_17,,神符 ● 上
+PathLog_18,,夜魇 ● 其一
+PathLog_19,,夜魇 ● 其二
+PathLog_20,,夜魇 ● 其三
+PathLog_23,,龙谷 ● 之一
+PathLog_24,,龙谷 ● 之二
+PathLog_25,,龙谷 ● 之三
+PathLog_26,,传送 ● 东
+PathLog_29,,河道 ● 下路
+PathLog_33,,鵰巢 ● 之一
+PathLog_34,,鵰巢 ● 之二
+PathLog_35,,鵰巢 ● 之三
+PathLog_36,,传送 ● 南
+PathLog_39,,圣所 ● 其一
+PathLog_40,,圣所 ● 其二
+rune_0,,双倍伤害
+rune_1,,极速
+rune_3,,隐身
+rune_4,,恢复
+rune_5,,赏金
+rune_6,,奥术
+rune_8,,智慧
+rune_9,,护盾
+
 
 supply_title,,补给环节
 supply_tip_ready,,准备阶段
