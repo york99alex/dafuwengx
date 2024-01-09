@@ -41,3 +41,16 @@ content/panorama/src/shared
 #ignore local test scripts
 scripts/.test
 game/maps/1x6.vpk
+scripts/
+
+.vscode/
+.gitattributes
+.gitignore
+.npmrc
+.prettierignore
+.prettierrc.js
+GUGUGU.MD
+LICENSE
+gulpfile.ts
+package-lock.json
+yarn.lock
