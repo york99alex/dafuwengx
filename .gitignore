@@ -54,3 +54,6 @@ LICENSE
 gulpfile.ts
 package-lock.json
 yarn.lock
+.eslintignore
+.eslintrc
+package.json
