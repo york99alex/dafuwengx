@@ -648,6 +648,8 @@ https://www.jiyik.com/tm/xwzj/web_834.html
 - filter
 - reduce
 
+[js数组方法forEach、map、filter、reduce、every、some总结](https://segmentfault.com/a/1190000016025949)
+
 
 
 ### 引入第三方库
@@ -1376,7 +1378,7 @@ export const App = () => {	// 根组件
 
      - !! 并在constant.ts中给HERO_TO_BANNER和HERO_TO_BZ数组添加对应内容
 
-     - !! 还要更改旗帜模型的skin设置, 添加新英雄头像, 重新编译地图
+     - !! 还要更改旗帜模型的skin设置, 添加新英雄头像, 重新编译地图 models/banner_bz.vmdl
 
      - 注意: 可能还要给兵卒单独定义和编写技能
 
@@ -1442,32 +1444,34 @@ GSWaitOprt_Entry()执行Roll点,调用GameConfig.processRoll()方法{
   - 1技能 忽悠
   - 2技能 洗劫 平a增加层数可增加忽悠伤害
   - 兵卒技能 洗劫
-
 - 屠夫 npc_dota_hero_pudge
   - 1技能 肉钩
   - 2技能 腐烂
   - 兵卒技能 腐烂
-
 - 火女 npc_dota_hero_lina
   - 1技能 龙破斩
   - 2技能 光击阵
   - 兵卒技能 光击阵
-
 - 宙斯 npc_dota_hero_zuus
   - 1技能 弧形闪电
 
   - 2技能 雷击
 
   - 兵卒技能 雷击
-
 - 斧王 npc_dota_hero_axe
   - 1技能 战斗饥渴
-
   - 2技能 反击螺旋
-
   - 兵卒技能 反击螺旋
-- TODO:
-- 血魔
+- 工程师/炸弹人 npc_dota_hero_techies
+  - 1技能 埋雷 Ability_techies_land_mines
+  - 2技能 雷区标识 Ability_techies_minefield_sign
+  - 兵卒技能 自动埋雷 
+
+- 血魔 npc_dota_hero_bloodseeker
+  - 1技能 割裂 Ability_bloodseeker_rupture
+  - 2技能 焦渴 Ability_bloodseeker_thirst
+  - 兵卒技能 焦渴 
+
 - 龙骑
 - 小狗
 - 尸王
@@ -2227,6 +2231,23 @@ Path的类class name应以	path_corner
             ​      nGold: GOLD_OUT_PRISON,
 
       7. TODO：pathStep，
+
+
+
+## 炸弹感应标识
+
+玩家实例对象的属性 tBombs 和 tBombSigns 分别存储炸弹和标识，
+以路径ID为索引，索引值为炸弹数组和标识数组。
+
+```typescript
+    tBombs: { [key: number]: CDOTA_BaseNPC[] } = {};
+    tBombSigns: { [key: number]: CDOTA_BaseNPC[] } = {};
+```
+
+1. 技能给英雄单位创建检测buff：modifier_techies_minefield_sign
+   1. Oncreated注册事件监听玩家踩到路径 Event_CurPathChange
+   2. 去player.tBombSigns查找是否有标识， 遍历每个标识计算RandomInt触发
+      1. 触发事件 "Event_BombDetonate": { path: Path, player:Player, target?: CDOTA_BaseNPC_Hero}
 
 
 

@@ -33,6 +33,24 @@
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
 		"StatusHealth"	"1"
 	}
+	//地雷
+	"bomb"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Model"	"models/heroes/techies/fx_techiesfx_mine.vmdl"
+		"ModelScale"	"1"
+		"Level"	"1"
+		"Ability1"	"no_all_select"
+		"Ability2"	"no_bar"
+		"Ability4"	"no_collision"
+		"Ability5"	"jiaoxie"
+		"Ability6"	"magic_immune"
+		"Ability7"	"physical_immune"
+
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"	"300"
+		"MovementTurnRate"	"0"
+	}
 
 	// 符文
 	"rune_0"

@@ -827,7 +827,7 @@
 		"Ability6" ""
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
-		"MovementSpeed" "295"
+		"MovementSpeed" "300"
 		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
@@ -886,7 +886,7 @@
 		"Ability6" ""
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
-		"MovementSpeed" "295"
+		"MovementSpeed" "300"
 		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
@@ -943,7 +943,7 @@
 		"Ability6" ""
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
-		"MovementSpeed" "295"
+		"MovementSpeed" "300"
 		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -1000,7 +1000,7 @@
 		"Ability6" ""
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
-		"MovementSpeed" "295"
+		"MovementSpeed" "300"
 		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -1057,7 +1057,7 @@
 		"Ability6" ""
 		"ConsideredHero" "1"
 		"HealthBarOffset" "-1"
-		"MovementSpeed" "295"
+		"MovementSpeed" "300"
 		"MovementTurnRate" "0.1000"
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -1086,6 +1086,359 @@
 		"AttributeAgilityGain" "3.2000"
 		"AttributeBaseIntelligence" "18"
 		"AttributeIntelligenceGain" "2.6000"
+	}
+	"bz_bloodseeker_1" {
+		"Searchable" "1"
+		"Cost" "1"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/blood_seeker/blood_seeker.vmdl"
+		"ModelScale" "0.8000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "69" }
+				"2" { "ItemDef" "70" }
+				"3" { "ItemDef" "71" }
+				"4" { "ItemDef" "72" }
+				"5" { "ItemDef" "73" }
+				"6" { "ItemDef" "74" }
+				"7" { "ItemDef" "257" }
+			}
+		}
+		"SoundSet" "Hero_Bloodseeker"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_bloodseeker.vsndevts"
+		"Ability1" "Ability_bloodseeker_thirst"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "300"
+		"MovementTurnRate" "0.1000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "3"
+		"MagicalResistance" "25"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "33"
+		"AttackDamageMax" "39"
+		"AttackRate" "1.7000"
+		"AttackAnimationPoint" "0.4300"
+		"AttackAcquisitionRange" "600"
+		"AttackRange" "300"
+		"RingRadius" "60"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength" "24"
+		"AttributeStrengthGain" "1.7000"
+		"AttributeBaseAgility" "24"
+		"AttributeAgilityGain" "2.1000"
+		"AttributeBaseIntelligence" "18"
+		"AttributeIntelligenceGain" "0.7000"
+	}
+	"bz_bloodseeker_11" {
+		"Searchable" "1"
+		"Cost" "2"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/blood_seeker/blood_seeker.vmdl"
+		"ModelScale" "0.9000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "12718" }
+				"2" { "ItemDef" "12719" }
+				"3" { "ItemDef" "12720" }
+				"4" { "ItemDef" "12721" }
+				"6" { "ItemDef" "12723" }
+			}
+		}
+		"SoundSet" "Hero_Bloodseeker"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_bloodseeker.vsndevts"
+		"Ability1" "Ability_bloodseeker_thirst"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "300"
+		"MovementTurnRate" "0.1000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "3"
+		"MagicalResistance" "25"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "33"
+		"AttackDamageMax" "39"
+		"AttackRate" "1.7000"
+		"AttackAnimationPoint" "0.4300"
+		"AttackAcquisitionRange" "600"
+		"AttackRange" "300"
+		"RingRadius" "60"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength" "24"
+		"AttributeStrengthGain" "2.7000"
+		"AttributeBaseAgility" "24"
+		"AttributeAgilityGain" "3.1000"
+		"AttributeBaseIntelligence" "18"
+		"AttributeIntelligenceGain" "1.7000"
+	}
+	"bz_bloodseeker_111" {
+		"Searchable" "1"
+		"Cost" "3"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/blood_seeker/blood_seeker.vmdl"
+		"ModelScale" "1"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "12719" }
+				"2" { "ItemDef" "12720" }
+				"3" { "ItemDef" "12721" }
+				"4" { "ItemDef" "12722" }
+				"5" { "ItemDef" "9241" }
+				"6" { "ItemDef" "7425" }
+				"7" { "ItemDef" "7426" }
+			}
+		}
+		"SoundSet" "Hero_Bloodseeker"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_bloodseeker.vsndevts"
+		"Ability1" "Ability_bloodseeker_thirst"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "300"
+		"MovementTurnRate" "0.1000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "3"
+		"MagicalResistance" "25"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "33"
+		"AttackDamageMax" "39"
+		"AttackRate" "1.7000"
+		"AttackAnimationPoint" "0.4300"
+		"AttackAcquisitionRange" "600"
+		"AttackRange" "300"
+		"RingRadius" "60"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength" "24"
+		"AttributeStrengthGain" "3.7000"
+		"AttributeBaseAgility" "24"
+		"AttributeAgilityGain" "4.1000"
+		"AttributeBaseIntelligence" "18"
+		"AttributeIntelligenceGain" "2.7000"
+	}
+	"bz_techies_1" {
+		"Searchable" "1"
+		"Cost" "1"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/techies/techies.vmdl"
+		"ModelScale" "0.6000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "394" }
+				"2" { "ItemDef" "487" }
+				"3" { "ItemDef" "489" }
+				"4" { "ItemDef" "490" }
+				"5" { "ItemDef" "491" }
+				"6" { "ItemDef" "492" }
+				"7" { "ItemDef" "499" }
+			}
+		}
+		"SoundSet" "Hero_Techies"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_techies.vsndevts"
+		"Ability1" "Ability_BZ_techies_land_mines"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "300"
+		"MovementTurnRate" "0.1000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "5"
+		"MagicalResistance" "25"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "9"
+		"AttackDamageMax" "11"
+		"AttackRate" "1.7000"
+		"AttackAnimationPoint" "0.5000"
+		"AttackAcquisitionRange" "800"
+		"AttackRange" "500"
+		"RingRadius" "60"
+		"ProjectileModel" "particles/units/heroes/hero_techies/techies_base_attack.vpcf"
+		"ProjectileSpeed" "900"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_ALL"
+		"AttributeBaseStrength" "19"
+		"AttributeStrengthGain" "2.5000"
+		"AttributeBaseAgility" "14"
+		"AttributeAgilityGain" "1.3000"
+		"AttributeBaseIntelligence" "25"
+		"AttributeIntelligenceGain" "3.3000"
+	}
+	"bz_techies_11" {
+		"Searchable" "1"
+		"Cost" "2"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/techies/techies.vmdl"
+		"ModelScale" "0.7000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "9961" }
+				"2" { "ItemDef" "9963" }
+				"3" { "ItemDef" "9964" }
+				"4" { "ItemDef" "9966" }
+				"5" { "ItemDef" "9962" }
+				"6" { "ItemDef" "9960" }
+				"7" { "ItemDef" "9965" }
+				"8" { "ItemDef" "21211" }
+			}
+		}
+		"SoundSet" "Hero_Techies"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_techies.vsndevts"
+		"Ability1" "Ability_BZ_techies_land_mines"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "300"
+		"MovementTurnRate" "0.1000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "5"
+		"MagicalResistance" "25"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "9"
+		"AttackDamageMax" "11"
+		"AttackRate" "1.7000"
+		"AttackAnimationPoint" "0.5000"
+		"AttackAcquisitionRange" "800"
+		"AttackRange" "500"
+		"RingRadius" "60"
+		"ProjectileModel" "particles/units/heroes/hero_techies/techies_base_attack.vpcf"
+		"ProjectileSpeed" "900"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_ALL"
+		"AttributeBaseStrength" "19"
+		"AttributeStrengthGain" "3.5000"
+		"AttributeBaseAgility" "14"
+		"AttributeAgilityGain" "2.3000"
+		"AttributeBaseIntelligence" "25"
+		"AttributeIntelligenceGain" "4.3000"
+	}
+	"bz_techies_111" {
+		"Searchable" "1"
+		"Cost" "3"
+		"BaseClass" "npc_dota_creature"
+		"Model" "models/heroes/techies/techies.vmdl"
+		"ModelScale" "0.8000"
+		"Creature" {
+			"AttachWearables" {
+				"1" { "ItemDef" "6879" }
+				"2" { "ItemDef" "12834" }
+				"3" { "ItemDef" "12835" }
+				"4" { "ItemDef" "12836" }
+				"5" { "ItemDef" "12839" }
+				"6" { "ItemDef" "12840" }
+				"7" { "ItemDef" "12833" }
+			}
+		}
+		"SoundSet" "Hero_Techies"
+		"GameSoundsFile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+		"VoiceFile" "soundevents/voscripts/game_sounds_vo_techies.vsndevts"
+		"Ability1" "Ability_BZ_techies_land_mines"
+		"Ability2" ""
+		"Ability3" ""
+		"Ability4" ""
+		"Ability5" ""
+		"Ability6" ""
+		"ConsideredHero" "1"
+		"HealthBarOffset" "-1"
+		"MovementSpeed" "300"
+		"MovementTurnRate" "0.1000"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"ArmorPhysical" "5"
+		"MagicalResistance" "25"
+		"StatusHealth" "200"
+		"StatusHealthRegen" "0"
+		"StatusMana" "100"
+		"StatusManaRegen" "0"
+		"BountyGoldMin" "0"
+		"BountyGoldMax" "0"
+		"AttackDamageMin" "9"
+		"AttackDamageMax" "11"
+		"AttackRate" "1.7000"
+		"AttackAnimationPoint" "0.5000"
+		"AttackAcquisitionRange" "800"
+		"AttackRange" "500"
+		"RingRadius" "60"
+		"ProjectileModel" "particles/units/heroes/hero_techies/techies_base_attack.vpcf"
+		"ProjectileSpeed" "900"
+		"Level" "1"
+		"HasInventory" "1"
+		"AttributePrimary" "DOTA_ATTRIBUTE_ALL"
+		"AttributeBaseStrength" "19"
+		"AttributeStrengthGain" "4.5000"
+		"AttributeBaseAgility" "14"
+		"AttributeAgilityGain" "3.3000"
+		"AttributeBaseIntelligence" "25"
+		"AttributeIntelligenceGain" "5.3000"
 	}
 
 }

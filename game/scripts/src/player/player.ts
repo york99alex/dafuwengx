@@ -49,6 +49,7 @@ export type DamageEvent = {
     bIgnoreGold?: boolean;
     bIgnoreDamageSelf?: boolean;
     bIgnoreBZHuiMo?: boolean;
+    bBladeMail?: boolean; // 来源是否为刃甲
 };
 
 export class Player {
@@ -106,6 +107,8 @@ export class Player {
     __init: boolean = false; //
     m_bGCLD: boolean; // 玩家英雄是否在攻城
     private _setState_Invis_onUsedAbltID: number;
+    tBombs: { [key: number]: CDOTA_BaseNPC[] } = {};
+    tBombSigns: { [key: number]: CDOTA_BaseNPC[] } = {};
 
     constructor(nPlayerID: PlayerID) {
         print('new Player(),nPlayerID:', nPlayerID);

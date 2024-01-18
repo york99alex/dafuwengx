@@ -236,15 +236,13 @@ export class AbilityManager {
     /**兵卒能否放技能 */
     static isCanOnAblt(eBZ: CDOTA_BaseNPC): boolean {
         const tabBuffs = eBZ.FindAllModifiers();
-        print('===isCanOnAblt===1===');
         for (const buff of tabBuffs) {
             const strBuff = buff.GetName().split('_').pop() ?? '';
             if (strBuff == 'chenmo') {
-                print('===isCanOnAblt===2===');
+                print('===cast error: silenced!===');
                 return false;
             }
         }
-        print('===isCanOnAblt===3===');
         return true;
     }
 

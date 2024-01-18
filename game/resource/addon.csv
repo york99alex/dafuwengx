@@ -88,6 +88,42 @@ DOTA_Tooltip_ability_Ability_axe_helix_counter_radius,,半径 :
 DOTA_Tooltip_ability_Ability_axe_helix_counter_trigger_attacks,,触发次数 :
 DOTA_Tooltip_ability_Ability_axe_helix_counter_damage,,伤害 :
 DOTA_Tooltip_Modifier_Ability_axe_helix_counter,,反击螺旋
+DOTA_Tooltip_ability_Ability_bloodseeker_rupture,,割裂
+DOTA_Tooltip_ability_Ability_bloodseeker_rupture_Description,,让一个敌方单位皮开肉绽，将根据移动格数受到当前生命比例伤害。
+DOTA_Tooltip_ability_Ability_bloodseeker_rupture_Lore,,当血魔猎杀你时，受伤就意味着死亡。
+DOTA_Tooltip_ability_Ability_bloodseeker_rupture_duration,,持续回合 :
+DOTA_Tooltip_ability_Ability_bloodseeker_rupture_damage,,% 损失当前生命 :
+DOTA_Tooltip_modifier_ability_rupture,,割裂
+DOTA_Tooltip_modifier_ability_rupture_Description,,移动会损失当前生命，持续 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> 回合。
+DOTA_Tooltip_ability_Ability_bloodseeker_thirst,,焦渴
+DOTA_Tooltip_ability_Ability_bloodseeker_thirst_Description,,血魔能够感知到敌人伤口中涌出的鲜血，每个血量低于%min_bonus_pct%%%的单位，都会让血魔得到攻击速度和移动速度的提升。
+DOTA_Tooltip_ability_Ability_bloodseeker_thirst_Lore,,史德利古尔闻到血腥味就会变得无比狂热。
+DOTA_Tooltip_ability_Ability_bloodseeker_thirst_min_bonus_pct,,% 触发焦渴临界生命值 :
+DOTA_Tooltip_ability_Ability_bloodseeker_thirst_bonus_movement_speed,,每层移动速度提升 :
+DOTA_Tooltip_ability_Ability_bloodseeker_thirst_bonus_attack_speed,,每层攻击速度提升 :
+DOTA_Tooltip_modifier_ability_bloodseeker_thirst_active,,焦渴
+DOTA_Tooltip_modifier_ability_bloodseeker_thirst_active_Description,,涌动的鲜血激发血魔的狂热，总和提升 <font color='#00FF00'>%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%</font> 攻击速度，<font color='#00FF00'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%</font> 移动速度。
+DOTA_Tooltip_ability_Ability_techies_land_mines,,地雷
+DOTA_Tooltip_ability_Ability_techies_land_mines_Description,,埋布地雷在自身范围3格区域内，敌人驻足该区域将引爆，对该区域的英雄和兵卒造成伤害。
+DOTA_Tooltip_ability_Ability_techies_land_mines_Lore,,起重港的噩梦！
+DOTA_Tooltip_ability_Ability_techies_land_mines_damage,,伤害 :
+DOTA_Tooltip_ability_Ability_techies_minefield_sign,,感应标识
+DOTA_Tooltip_ability_Ability_techies_minefield_sign_Description,,布置一个感应装置在地雷区域，敌人经过有概率引爆该区域全部地雷。
+DOTA_Tooltip_ability_Ability_techies_minefield_sign_Lore,,别四处乱跑！
+DOTA_Tooltip_ability_Ability_techies_minefield_sign_chance,,% 引爆概率 :
+DOTA_Tooltip_ability_Ability_techies_minefield_sign_Note0,,多个同区域感应标识概率非线性叠加。
+DOTA_Tooltip_ability_Ability_BZ_techies_land_mines,,地雷
+DOTA_Tooltip_ability_Ability_BZ_techies_land_mines_Description,,<font color='#00FF00'>自动</font> 埋布地雷在自身区域内，敌人驻足该区域将引爆，对该区域的英雄和兵卒造成伤害。
+DOTA_Tooltip_ability_Ability_BZ_techies_land_mines_Lore,,起重港的噩梦！
+DOTA_Tooltip_ability_Ability_BZ_techies_land_mines_damage,,伤害 :
+
+
+
+AbilityError_Target,,目标错误
+AbilityError_Range,,不在范围内
+AbilityError_TargetPath,,仅路径目标
+AbilityError_NoBomb,,没有地雷无需标识
+
 bz_pa_1,PA★,幻影刺客★
 bz_pa_11,PA★★,幻影刺客★★
 bz_pa_111,PA★★★,幻影刺客★★★

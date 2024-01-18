@@ -88,6 +88,10 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/econ/items/oracle/oracle_fortune_ti7/oracle_fortune_ti7_purge_root_pnt.vpcf',
             'particles/econ/events/ti9/shovel_revealed_loot_variant_0_treasure.vpcf',
             'particles/generic_gameplay/rune_bounty_gold.vpcf',
+            'particles/units/heroes/hero_bloodseeker/bloodseeker_rupture.vpcf',
+            'particles/units/heroes/hero_bloodseeker/bloodseeker_thirst_owner.vpcf',
+            'models/heroes/techies/fx_techiesfx_mine.vmdl',
+            'particles/units/heroes/hero_techies/techies_suicide.vpcf',
         ],
         context
     );

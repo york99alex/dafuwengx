@@ -1,5 +1,6 @@
 import { TypePathState } from '../constants/constant';
 import { Player } from '../player/player';
+import { IsValid } from '../utils/amhc';
 
 /**路径基类 */
 export class Path {
@@ -9,7 +10,7 @@ export class Path {
     m_entity: CBaseEntity; // 路径实体
     m_eUnit = null; // 路径提示单位
 
-    m_tabEJoin: CEntityInstance[]; // 停留在路径上的实体
+    m_tabEJoin: CDOTA_BaseNPC[]; // 停留在路径上的实体
     m_tabPos: {
         entity: CEntityInstance;
         vPos: Vector;
@@ -47,7 +48,7 @@ export class Path {
             }
         }
         if (!bHas) {
-            this.m_tabEJoin = this.m_tabEJoin.concat(entity);
+            this.m_tabEJoin.push(entity);
         }
         // 设置朝向下一个路径
         const pathNext = GameRules.PathManager.getNextPath(this, 1);
@@ -142,5 +143,17 @@ export class Path {
             path: this,
             entity: player.m_eHero,
         });
+    }
+
+    /**获取驻足在此地英雄 */
+    getJoinEnt() {
+        const tEnt = [];
+        for (const entity of this.m_tabEJoin) {
+            if (IsValid(entity)) {
+                const path = GameRules.PathManager.getClosePath(entity.GetAbsOrigin());
+                if (path == this) tEnt.push(entity);
+            }
+        }
+        return tEnt;
     }
 }

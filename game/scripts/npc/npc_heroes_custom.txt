@@ -248,8 +248,8 @@
 		// "HealthBarOffset"			"100"					//血条高度
 		// 技能槽数量，最低4个，最高为6个，单位可以同时拥有最多16个技能
 		"AbilityLayout"	"2"
-		"Ability1"	"Ability_bloodseeker_rupture"
-		"Ability2"	"Ability_bloodseeker_thirst"
+		"Ability1"	"Ability_bloodseeker_thirst"
+		"Ability2"	"Ability_bloodseeker_rupture"
 		"Ability3"	""
 		"Ability4"	""
 		"Ability5"	""

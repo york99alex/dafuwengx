@@ -21,7 +21,7 @@ export enum TypePathState {
 // 选择英雄时间  /1s
 export const TIME_SELECTHERO: number = 60;
 // 回合操作时限  /0.1s
-export const TIME_OPERATOR: number = 201;
+export const TIME_OPERATOR: number = 101;
 // 回合操作时限（掉线）  /0.1s
 export const TIME_OPERATOR_DISCONNECT: number = 51;
 // 豹子加时阈值  /0.1s

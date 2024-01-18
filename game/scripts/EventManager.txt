@@ -178,3 +178,5 @@
                 }
 
 "Event_AtkMoster": { entity: player.m_eHero }
+
+"Event_BombDetonate": { path: Path, player:Player, target?: CDOTA_BaseNPC_Hero}

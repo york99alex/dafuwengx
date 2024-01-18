@@ -370,6 +370,110 @@
 		"AbilityCastRange" "300"
 		"AbilityCastAnimation" "ACT_DOTA_CAST_ABILITY_3"
 	}
+	"Ability_bloodseeker_thirst" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/bloodseeker/Ability_bloodseeker_thirst"
+		"AbilityValues" {
+			"min_bonus_pct" "50"
+			"bonus_movement_speed" "10 15 25"
+			"bonus_attack_speed" "15 25 40"
+		}
+		"MaxLevel" "3"
+		"RequiredLevel" "0"
+		"LevelsBetweenUpgrades" "10"
+		"ID" "5017"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" "bloodseeker_thirst"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityCastAnimation" "ACT_DOTA_CAST_ABILITY_3"
+	}
+	"Ability_bloodseeker_rupture" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/bloodseeker/Ability_bloodseeker_rupture"
+		"AbilityValues" {
+			"duration" "1 1 2"
+			"damage" "2 3 4"
+		}
+		"MaxLevel" "3"
+		"RequiredLevel" "0"
+		"LevelsBetweenUpgrades" "10"
+		"AbilityCooldown" "2"
+		"AbilityManaCost" "2"
+		"ID" "5018"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityTextureName" "bloodseeker_rupture"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType" "DAMAGE_TYPE_PURE"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilitySound" "hero_bloodseeker.rupture"
+		"AbilityCastRange" "0"
+		"AbilityCastPoint" "0.4000"
+		"AbilityCastAnimation" "ACT_DOTA_CAST_ABILITY_4"
+	}
+	"Ability_techies_land_mines" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/techies/Ability_techies_land_mines"
+		"AbilityValues" {
+			"damage" "150 200 250"
+			"range" "3"
+		}
+		"MaxLevel" "3"
+		"RequiredLevel" "0"
+		"LevelsBetweenUpgrades" "10"
+		"AbilityCooldown" "2"
+		"AbilityManaCost" "2"
+		"ID" "5599"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName" "techies_land_mines"
+		"AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilitySound" "Hero_Techies.LandMine.Plant"
+		"AbilityCastRange" "100"
+		"AbilityCastPoint" "0"
+		"AbilityCastAnimation" "ACT_DOTA_CAST_ABILITY_1"
+	}
+	"Ability_techies_minefield_sign" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/techies/Ability_techies_minefield_sign"
+		"AbilityValues" {
+			"chance" "30 40 50"
+		}
+		"MaxLevel" "3"
+		"RequiredLevel" "0"
+		"LevelsBetweenUpgrades" "10"
+		"AbilityCooldown" "3"
+		"AbilityManaCost" "1"
+		"ID" "5644"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName" "techies_minefield_sign"
+		"AbilitySound" "Hero_Techies.Sign"
+		"AbilityCastAnimation" "ACT_DOTA_CAST_ABILITY_1"
+	}
+	"Ability_BZ_techies_land_mines" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/techies/Ability_BZ_techies_land_mines"
+		"AbilityValues" {
+			"damage" "150 200 250"
+		}
+		"MaxLevel" "3"
+		"RequiredLevel" "0"
+		"LevelsBetweenUpgrades" "10"
+		"AbilityCooldown" "1"
+		"AbilityManaCost" "100"
+		"ID" "5599"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName" "techies_land_mines"
+		"AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilitySound" "Hero_Techies.LandMine.Plant"
+		"AbilityCastRange" "100"
+		"AbilityCastPoint" "0"
+		"AbilityCastAnimation" "ACT_DOTA_CAST_ABILITY_1"
+	}
 	"path_12" {
 		"BaseClass" "ability_lua"
 		"ScriptFile" "ability/path/path_12"
