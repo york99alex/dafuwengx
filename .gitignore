@@ -41,7 +41,7 @@ content/panorama/src/shared
 #ignore local test scripts
 scripts/.test
 game/maps/1x6.vpk
-scripts/
+/scripts/
 
 .vscode/
 .gitattributes
