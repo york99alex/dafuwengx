@@ -16,7 +16,7 @@ import {
     TP_TP,
     TP_TREASURE,
 } from '../constants/gamemessage';
-import { Path } from './path';
+import { Path } from './Path';
 import { PathDomain } from './pathtype/pathsdomain/pathdomain';
 import { PathDomain_2 } from './pathtype/pathsdomain/pathdomain_2';
 import { PathDomain_6 } from './pathtype/pathsdomain/pathdomain_6';

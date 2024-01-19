@@ -1,5 +1,5 @@
 import { PS_InPrison, TP_DOMAIN_7 } from "../../constants/gamemessage";
-import { Path } from "../../path/path";
+import { Path } from "../../path/Path";
 import { PathDomain } from "../../path/pathtype/pathsdomain/pathdomain";
 import { CDOTA_BaseNPC_BZ } from "../../player/CDOTA_BaseNPC_BZ";
 import { DamageEvent, Player } from "../../player/player";

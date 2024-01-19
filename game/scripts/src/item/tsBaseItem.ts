@@ -1,6 +1,5 @@
 import { GS_Move, GS_Supply, GS_DeathClearing, GS_Wait, PS_InPrison, PS_AtkHero, PS_Die } from '../constants/gamemessage';
-import { Path } from '../path/path';
-import { player_info } from '../player/player';
+import { Path } from '../path/Path';
 import { BaseItem } from '../utils/dota_ts_adapter';
 
 export class TSBaseItem extends BaseItem {
@@ -62,7 +61,7 @@ export class TSBaseItem extends BaseItem {
      * 通用判断装备技能施法
      */
     isCanCast(eTarget?: CDOTA_BaseNPC): boolean {
-        print('isCanCast===0===isserver:', IsServer(), 'isclient:', IsClient());
+        // print('isCanCast===0===isserver:', IsServer(), 'isclient:', IsClient());
         if (GameRules.GameConfig != null) {
             // print('isCanCast===1');
             // 准备阶段不能施法

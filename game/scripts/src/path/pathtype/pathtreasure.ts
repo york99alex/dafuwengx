@@ -1,8 +1,7 @@
 import { Treasure_Gold, Treasure_Item, TypeOprt } from '../../constants/gamemessage';
 import { Player } from '../../player/player';
 import { AMHC } from '../../utils/amhc';
-import { PathManager } from '../PathManager';
-import { Path } from '../path';
+import { Path } from '../Path';
 
 /**宝藏路径 */
 export class PathTreasure extends Path {

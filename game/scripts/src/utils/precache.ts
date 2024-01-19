@@ -92,6 +92,17 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/units/heroes/hero_bloodseeker/bloodseeker_thirst_owner.vpcf',
             'models/heroes/techies/fx_techiesfx_mine.vmdl',
             'particles/units/heroes/hero_techies/techies_suicide.vpcf',
+            'particles/generic_gameplay/generic_silenced.vpcf',
+            'particles/custom/abilitys/dragon_knight/dragon_knight_breathe_fire_0.vpcf',
+            'particles/custom/abilitys/dragon_knight/dragon_knight_breathe_fire_2.vpcf',
+            'particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf',
+            'particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red.vpcf',
+            'particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf',
+            'particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf',
+            'particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf',
+            'particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_fire.vpcf',
+            'models/heroes/dragon_knight/dragon_knight.vmdl',
+            'models/heroes/dragon_knight/dragon_knight_dragon.vmdl',
         ],
         context
     );

@@ -1,5 +1,5 @@
 import { PS_AbilityImmune, PS_Die, PS_InPrison } from '../../constants/gamemessage';
-import { Path } from '../../path/path';
+import { Path } from '../../path/Path';
 import { DamageEvent, Player } from '../../player/player';
 import { AMHC, IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';

@@ -1,6 +1,6 @@
 import { PATH_VERTEX, TIME_MOVEKASI } from '../constants/constant';
 import { IsValid } from '../utils/amhc';
-import { Path } from './path';
+import { Path } from './Path';
 import { PathFactory } from './pathfactory';
 import { PathDomain } from './pathtype/pathsdomain/pathdomain';
 import { PathTP } from './pathtype/pathtp';
@@ -43,7 +43,7 @@ export class PathManager {
             if (this.m_tabPaths[index] == pathCur) {
                 let nIndex = index + nDis;
                 if (nIndex > this.m_tabPaths.length - 1) nIndex = nIndex % this.m_tabPaths.length;
-                else if (nIndex <= 0) nIndex += this.m_tabPaths.length;
+                else if (nIndex < 0) nIndex += this.m_tabPaths.length;
                 return this.m_tabPaths[nIndex];
             }
         }
@@ -115,6 +115,11 @@ export class PathManager {
         }
         return [q, h];
     }
+
+    // static getVertexPath(pathCur: Path) {
+    //     const [q, h] = this.getVertexPathID(pathCur.m_nID);
+    //     return [GameRules.PathManager.getPathByID(q), GameRules.PathManager.getPathByID(h)];
+    // }
 
     /** 获取路径对象 by pathType */
     getPathByType(type: number) {

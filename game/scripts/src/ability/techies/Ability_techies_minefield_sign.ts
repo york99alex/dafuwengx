@@ -1,5 +1,5 @@
 import { PS_AbilityImmune } from '../../constants/gamemessage';
-import { Path } from '../../path/path';
+import { Path } from '../../path/Path';
 import { Player } from '../../player/player';
 import { AMHC, IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';

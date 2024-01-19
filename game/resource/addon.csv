@@ -116,7 +116,26 @@ DOTA_Tooltip_ability_Ability_BZ_techies_land_mines,,地雷
 DOTA_Tooltip_ability_Ability_BZ_techies_land_mines_Description,,<font color='#00FF00'>自动</font> 埋布地雷在自身区域内，敌人驻足该区域将引爆，对该区域的英雄和兵卒造成伤害。
 DOTA_Tooltip_ability_Ability_BZ_techies_land_mines_Lore,,起重港的噩梦！
 DOTA_Tooltip_ability_Ability_BZ_techies_land_mines_damage,,伤害 :
-
+DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire,,真龙烈焰
+DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire_Description,,向指定方向喷射出一团火焰，烧灼碰到的敌人。不同形态时附带不同效果。\n<h1><font color='#ffffff'>人形态</font> - 虚无谎言</h1>谎言使其目标被沉默，持续%duration%回合。\n<h1><font color='#9acd32'>碧龙形态</font> - 碧龙毒焰</h1>毒焰腐蚀目标%debuff_armor_sub%点护甲，持续%duration%回合。\n<h1><font color='#ff0000'>赤龙形态</font> - 本源真炎</h1>引用本源真炎，其射程范围是普通真龙烈焰的%debuff_range_rate%倍。\n<h1><font color='#87ceeb'>苍龙形态</font> - 苍灵冰焰</h1>冰焰降低敌人%debuff_move_speed_sub%%%的移动速度，持续%duration%回合。
+DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire_Lore,,龙骑士达维安的气息已经变成了神龙斯莱瑞克的古龙之息，人们还记得它将无数骑士烧成了焦炭。
+DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire_range_tip,,范围格数 :
+DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire_damage,,伤害 :
+DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_0,,真龙烈焰-毒焰
+DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_0_Description,,护甲削减 <font color='#FF0000'>%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%</font>，持续%dMODIFIER_PROPERTY_TOOLTIP%回合。
+DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_2,,真龙烈焰-冰焰
+DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_2_Description,,移动速度减缓 <font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font>，持续%dMODIFIER_PROPERTY_TOOLTIP%回合。
+DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_01,,真龙烈焰-慌言
+DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_01_Description,,被沉默，持续%dMODIFIER_PROPERTY_TOOLTIP%回合。
+DOTA_Tooltip_ability_Ability_dragon_knight_elder_dragon_form,,古龙形态
+DOTA_Tooltip_ability_Ability_dragon_knight_elder_dragon_form_Description,,龙骑士能够变身成为三种古龙形态之一，龙形态攻击距离加成%atk_range%，同时觉醒真龙烈焰的内在力量，而且还有新的能力。\n<h1><font color='#ffffff'>人</font> - 铁甲依然</h1>拥有%armor_bonus%点额外护甲，%magic_resistance_bonus%%%额外魔法抗性。\n<h1><font color='#9acd32'>碧龙</font> - 腐蚀吐息</h1>攻击时附带毒素，腐蚀目标%debuff_armor_sub%点护甲，持续%deuff_duration%秒。\n<h1><font color='#ff0000'>赤龙</font> - 真炎吐息</h1>攻击敌人后赋予炎息印记，使用真龙烈焰将其引爆，每层造成%debuff_fire_damage%额外魔法伤害。\n<h1><font color='#87ceeb'>苍龙</font> - 冰霜吐息</h1>攻击降低敌人%debuff_move_speed_sub%%%移动速度，持续%debuff_duration%秒。
+DOTA_Tooltip_ability_Ability_dragon_knight_elder_dragon_form_Lore,,达维安体内休眠着一个更为强大的形态正在休眠，一个将骑士之力和古龙之威完美结合的形态。 
+DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_0,,碧龙-腐蚀吐息
+DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_0_Description,,护甲削减 <font color='#FF0000'>%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%</font> 。
+DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_1,,赤龙-炎息印记
+DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_1_Description,,炎息印记被真龙烈焰引爆会造成 <font color='#FF0000'>%dMODIFIER_PROPERTY_TOOLTIP%</font> 的额外魔法伤害。
+DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_2,,苍龙-冰霜吐息
+DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_2_Description,,移动速度减缓 <font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font> 移动速度。
 
 
 AbilityError_Target,,目标错误
@@ -444,7 +463,7 @@ DOTA_Tooltip_Ability_item_qtg_orchid_bonus_attack_speed,,+$attack
 DOTA_Tooltip_Ability_item_qtg_orchid_bonus_damage,,+$damage
 DOTA_Tooltip_Ability_item_qtg_orchid_mana_regen_bz,,%+兵卒蓝量获取提升
 DOTA_Tooltip_modifier_qtg_orchid_cd,,紫怨的英雄回蓝
-DOTA_Tooltip_modifier_qtg_orchid_cd,,英雄回蓝冷却中，剩余回合数。
+DOTA_Tooltip_modifier_qtg_orchid_cd_Description,,英雄回蓝冷却中，剩余回合数。
 DOTA_Tooltip_modifier_qtg_orchid_debuff,,灵魂枷锁
 DOTA_Tooltip_modifier_qtg_orchid_debuff_Description,,被沉默。
 DOTA_Tooltip_Ability_item_qtg_solar_crest,,炎阳纹章

@@ -3,7 +3,7 @@ import { PS_InPrison, TypeOprt } from '../../constants/gamemessage';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { Player } from '../../player/player';
 import { AMHC, IsValid } from '../../utils/amhc';
-import { Path } from '../path';
+import { Path } from '../Path';
 
 export class PathPrison extends Path {
     m_tabENPC: CDOTA_BaseNPC_Hero[] = null; // 路径上的全部NPC实体（监狱玩家）

@@ -30,7 +30,7 @@ import {
     ROUND_HERO_HUIXUE_ROTA,
     TIME_MOVE_MAX,
 } from '../constants/constant';
-import { Path } from '../path/path';
+import { Path } from '../path/Path';
 import { AMHC, IsValid } from '../utils/amhc';
 import { PathDomain } from '../path/pathtype/pathsdomain/pathdomain';
 import { CDOTA_BaseNPC_BZ } from './CDOTA_BaseNPC_BZ';

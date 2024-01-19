@@ -4,7 +4,7 @@ import { ItemShare } from '../item/itemshare';
 import { GameLoop } from '../mode/GameLoop';
 import { HeroSelection } from '../mode/HeroSelection';
 import { Auction } from '../mode/Auction';
-import { Bot } from '../mode/Bot';
+import { Bot } from '../mode/bot';
 import { DeathClearing } from '../mode/DeathClearing';
 import { Trade } from '../mode/Trade';
 import { PathManager } from '../path/PathManager';
@@ -46,7 +46,7 @@ export function ActivateModules() {
         // 初始化所有的GameRules模块
         GameRules.XNetTable = new XNetTable();
         GameRules.GameConfig = new GameConfig();
-        // Bot.init();
+        Bot.init();
 
         // 初始化测试模块xD
         new Debug();

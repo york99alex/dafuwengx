@@ -17,6 +17,7 @@ declare interface CustomNetTableDeclarations {
         key_1: number;
         key_2: string;
     };
+    common: any;
     GamingTable: {
         game_mode: {
             typeGameMode: number;

@@ -1,6 +1,6 @@
 import { KeyValues } from '../kv';
 import { GS_DeathClearing, GS_Move, GS_Supply, GS_Wait, PS_AtkHero, PS_Die, PS_InPrison } from '../constants/gamemessage';
-import { Path } from '../path/path';
+import { Path } from '../path/Path';
 import { PathManager } from '../path/PathManager';
 import { CDOTA_BaseNPC_BZ } from '../player/CDOTA_BaseNPC_BZ';
 import { player_info } from '../player/player';
@@ -418,12 +418,12 @@ export class TSBaseAbility extends BaseAbility {
         return false;
     }
 
-    // 能否在英雄攻击时释放
+    /**能否在英雄攻击时释放 */
     isCanCastHeroAtk() {
         return false;
     }
 
-    // 能否在该单位攻击时释放
+    /**能否在该单位攻击时释放 */
     isCanCastAtk() {
         return false;
     }

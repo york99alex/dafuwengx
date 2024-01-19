@@ -3,7 +3,7 @@ import { HERO_TO_BANNER, PATH_TOLL_TP, PATH_TO_PRICE, TypePathState } from '../.
 import { PS_InPrison, TypeOprt } from '../../constants/gamemessage';
 import { modifier_unselect } from '../../modifiers/util/modifier_unselect';
 import { Player } from '../../player/player';
-import { Path } from '../path';
+import { Path } from '../Path';
 
 /**TP传送点路径 */
 export class PathTP extends Path {

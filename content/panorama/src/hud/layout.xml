@@ -6,11 +6,11 @@
         <include src="s2r://panorama/styles/dotastyles.vcss_c" />
         <include src="./styles.less" />
         <include src="./CountDown/styles.less" />
-        <include src="./PathPanel/styles.less" />
         <include src="./CardPanel/styles.less" />
         <include src="./Tooltip/styles.less" />
         <include src="./Trade/styles.less" />
         <include src="./Supply/styles.less" />
+        <include src="./PathPanel/styles.less" />
     </styles>
     <Panel class="root" hittest="false" />
 </root>

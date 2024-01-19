@@ -2,7 +2,7 @@ import { GS_Begin, PS_AtkHero, PS_AtkMonster, TP_MONSTER_1, TP_MONSTER_2, TP_MON
 import { DamageEvent, Player } from '../../player/player';
 import { AMHC, IsValid } from '../../utils/amhc';
 import { ParaAdjuster } from '../../utils/paraadjuster';
-import { Path } from '../path';
+import { Path } from '../Path';
 import { PathPrison } from './pathprison';
 
 /**野怪路径 */

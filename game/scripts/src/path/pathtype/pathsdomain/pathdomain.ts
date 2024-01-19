@@ -15,7 +15,7 @@ import { CDOTA_BaseNPC_BZ } from '../../../player/CDOTA_BaseNPC_BZ';
 import { DamageEvent, Player } from '../../../player/player';
 import { AMHC, IsValid } from '../../../utils/amhc';
 import { ParaAdjuster } from '../../../utils/paraadjuster';
-import { Path } from '../../path';
+import { Path } from '../../Path';
 
 /**
  * 领地路径

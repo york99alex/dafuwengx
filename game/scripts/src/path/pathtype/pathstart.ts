@@ -1,6 +1,6 @@
 import { WAGE_GOLD, WAGE_GOLD_REDUCE } from '../../constants/constant';
 import { Player } from '../../player/player';
-import { Path } from '../path';
+import { Path } from '../Path';
 
 export class PathStart extends Path {
     m_tPlayerGetCount: number[];
