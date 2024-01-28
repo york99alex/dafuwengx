@@ -103,6 +103,13 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_fire.vpcf',
             'models/heroes/dragon_knight/dragon_knight.vmdl',
             'models/heroes/dragon_knight/dragon_knight_dragon.vmdl',
+            'particles/units/heroes/hero_undying/undying_soul_rip_heal.vpcf',
+            'particles/units/heroes/hero_undying/undying_soul_rip_damage.vpcf',
+            'models/heroes/undying/undying_flesh_golem.vmdl',
+            'models/items/undying/flesh_golem/davy_jones_set_davy_jones_set_kraken/davy_jones_set_davy_jones_set_kraken.vmdl',
+            'models/items/undying/flesh_golem/ti9_cache_undying_carnivorous_parasitism_golem/ti9_cache_undying_carnivorous_parasitism_golem.vmdl',
+            'models/heroes/undying/undying_tower.vmdl',
+            'particles/econ/items/lifestealer/ls_ti9_immortal/ls_ti9_open_wounds.vpcf',
         ],
         context
     );

@@ -648,8 +648,6 @@ https://www.jiyik.com/tm/xwzj/web_834.html
 - filter
 - reduce
 
-[js数组方法forEach、map、filter、reduce、every、some总结](https://segmentfault.com/a/1190000016025949)
-
 
 
 ### 引入第三方库
@@ -967,8 +965,9 @@ export const App = () => {	// 根组件
 
 
 
-
 # 思路
+
+==以下内容部分为本地图专用思路整理==
 
 - addon_game_mode : Precache预加载和初始化
   - 初始化时调用gmmanager并初始化GMManager:init, 设置所有游戏规则
@@ -1332,6 +1331,12 @@ export const App = () => {	// 根组件
 
 50. 考虑是否加入玩家交易次数限制，类似商店购买次数
 
+51. 尸王
+
+    1. 变身墓碑以后没有生成小僵尸
+    1. 尸王兵卒血量和护甲记得改回去
+
+
 
 ## 注意/调整
 
@@ -1371,6 +1376,8 @@ export const App = () => {	// 根组件
 
 ## 编写一个新英雄的过程
 
+以下为刀富翁本项目特有，不具有普遍性
+
 1. npc_heroes_custom.txt 定义英雄
 2. npc_abilities_custom.txt 定义技能(x模板里用kv.excel的abilities)
 3. 实现lua技能的对应的script代码
@@ -1378,7 +1385,7 @@ export const App = () => {	// 根组件
 
      - !! 并在constant.ts中给HERO_TO_BANNER和HERO_TO_BZ数组添加对应内容
 
-     - !! 还要更改旗帜模型的skin设置, 添加新英雄头像, 重新编译地图 models/banner_bz.vmdl
+     - !! 还要更改旗帜模型的skin设置, 添加新英雄头像, 重新编译地图
 
      - 注意: 可能还要给兵卒单独定义和编写技能
 
@@ -1460,22 +1467,33 @@ GSWaitOprt_Entry()执行Roll点,调用GameConfig.processRoll()方法{
   - 兵卒技能 雷击
 - 斧王 npc_dota_hero_axe
   - 1技能 战斗饥渴
+
   - 2技能 反击螺旋
+
   - 兵卒技能 反击螺旋
-- 工程师/炸弹人 npc_dota_hero_techies
+- 炸弹人 npc_dota_hero_techies
   - 1技能 埋雷 Ability_techies_land_mines
   - 2技能 雷区标识 Ability_techies_minefield_sign
-  - 兵卒技能 自动埋雷 
+  - 兵卒技能 埋雷（自动）
 
 - 血魔 npc_dota_hero_bloodseeker
-  - 1技能 割裂 Ability_bloodseeker_rupture
-  - 2技能 焦渴 Ability_bloodseeker_thirst
-  - 兵卒技能 焦渴 
+  - 1技能 焦渴 Ability_bloodseeker_thirst
+  - 2技能 割裂 Ability_bloodseeker_rupture
+  - 兵卒技能 焦渴
 
-- 龙骑
-- 小狗
+- 龙骑 npc_dota_hero_dragon_knight
+  - 1技能 喷火 Ability_dragon_knight_breathe_fire
+  - 2技能 变龙 Ability_dragon_knight_elder_dragon_form
+  - 兵卒技能 变龙
+
 - 尸王
-- 炸弹人
+  - 1技能 噬魂 Ability_undying_soul_rip
+  - 2技能 血肉傀儡 Ability_undying_flesh_golem
+  - 兵卒技能 墓碑
+
+- 小狗/噬魂鬼
+  1技能，撕裂伤口，加深15%/20%/25%目标受到的伤害，加深的额外伤害来源属于小狗且小狗可以从中获得收益，持续1/1/2回合
+  2技能/兵卒技能，盛宴，每次攻击造成0.8%/1.4%/2%目标最大生命值的伤害，同时回复目标最大生命值1.8%/2.6%/3.4%，被动地增加20/35/50的攻速
 
 
 
@@ -1486,6 +1504,20 @@ GSWaitOprt_Entry()执行Roll点,调用GameConfig.processRoll()方法{
 Ti决赛壁画英雄
 
 兽王 美杜莎 滚滚 白虎 土猫
+
+
+
+## 兵卒
+
+### 数值
+
+1级兵卒，基础属性一样，成长*0.7，四舍五入保留一位小数
+=ROUND(INDIRECT(ADDRESS(ROW()+1, COLUMN())) * 0.7,1)
+
+2级兵卒基础属性与成长与原版dota一样，可在 [dota2fandom](https://dota2.fandom.com/zh/wiki/Dota_2_Wiki) 中查找英雄0级数据
+
+3级兵卒，基础属性一样，成长*1.4，四舍五入保留一位小数
+=ROUND(INDIRECT(ADDRESS(ROW()-1, COLUMN())) *1.4,1)
 
 
 
@@ -2234,20 +2266,10 @@ Path的类class name应以	path_corner
 
 
 
-## 炸弹感应标识
+## 尸王墓碑
 
-玩家实例对象的属性 tBombs 和 tBombSigns 分别存储炸弹和标识，
-以路径ID为索引，索引值为炸弹数组和标识数组。
-
-```typescript
-    tBombs: { [key: number]: CDOTA_BaseNPC[] } = {};
-    tBombSigns: { [key: number]: CDOTA_BaseNPC[] } = {};
-```
-
-1. 技能给英雄单位创建检测buff：modifier_techies_minefield_sign
-   1. Oncreated注册事件监听玩家踩到路径 Event_CurPathChange
-   2. 去player.tBombSigns查找是否有标识， 遍历每个标识计算RandomInt触发
-      1. 触发事件 "Event_BombDetonate": { path: Path, player:Player, target?: CDOTA_BaseNPC_Hero}
+npc_dota_hero_undying "Ability2"	"Ability_undying_flesh_golem"
+被敌人攻城击杀后，化身一座墓碑。敌人经过墓碑会在其身边产生僵尸攻击他们。僵尸拥有死亡渴望技能，使他们的攻击带有减速效果，僵尸的攻击和移动速度会提升。
 
 
 

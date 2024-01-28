@@ -112,12 +112,7 @@
             bMoveBack?: boolean
         }
 
-"Event_GCLDEnd", {
-            entity: oPlayer.m_eHero,
-            path: this,
-            bWin: bWin,
-            bSwap: true
-        }
+"Event_GCLDEnd", { entity: CDOTA_BaseNPC_Hero; path: PathDomain; bWin: boolean; bSwap: boolean }
 
 "Event_PlayerMoveEnd", { player: Player }
 

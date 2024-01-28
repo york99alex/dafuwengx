@@ -277,7 +277,7 @@ export class AbilityManager {
         strBuff: string,
         eTarget: CDOTA_BaseNPC,
         eCaster: CDOTA_BaseNPC,
-        ability: BaseAbility | TSBaseItem,
+        ability: CDOTABaseAbility | TSBaseItem,
         tBuffData?: object,
         bStack?: boolean,
         oBuffOld?: CDOTA_Buff

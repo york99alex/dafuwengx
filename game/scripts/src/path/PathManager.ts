@@ -1,4 +1,5 @@
 import { PATH_VERTEX, TIME_MOVEKASI } from '../constants/constant';
+import { CDOTA_BaseNPC_BZ } from '../player/CDOTA_BaseNPC_BZ';
 import { IsValid } from '../utils/amhc';
 import { Path } from './Path';
 import { PathFactory } from './pathfactory';
@@ -148,6 +149,17 @@ export class PathManager {
             }
         }
         return tabPath;
+    }
+
+    /**通过兵卒获取路径对象 */
+    getPathByBZEntity(entity: CDOTA_BaseNPC): PathDomain {
+        for (const path of this.m_tabPaths) {
+            if (path['m_tabENPC'] && path['m_tabENPC'].length && path['m_tabENPC'].length > 0) {
+                for (const npc of path['m_tabENPC']) {
+                    if (npc && npc == entity) return path as PathDomain;
+                }
+            }
+        }
     }
 
     /**获取A路径到B路径的路径距离 */

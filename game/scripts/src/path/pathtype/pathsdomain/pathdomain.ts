@@ -29,6 +29,7 @@ export class PathDomain extends Path {
     m_nPlayerIDGCLD: number; // 正在攻城玩家ID
     m_nPtclIDGCLD: ParticleID; // 攻城特效ID
     m_tEventIDGCLD: number[]; // 攻城事件ID数组
+    isTombstone?: boolean; // 是否为墓碑
 
     constructor(entity: CBaseEntity) {
         super(entity);

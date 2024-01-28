@@ -49,6 +49,7 @@ export type DamageEvent = {
     bIgnoreGold?: boolean;
     bIgnoreDamageSelf?: boolean;
     bIgnoreBZHuiMo?: boolean;
+    bIgnoreRepeat?: boolean;
     bBladeMail?: boolean; // 来源是否为刃甲
 };
 
@@ -671,7 +672,7 @@ export class Player {
             this.m_pathCur = path;
             GameRules.EventManager.FireEvent('Event_CurPathChange', { player: this });
         }
-        this.m_pathCur = path;
+        this.m_eHero.m_path = path;
 
         if (!bPass || bPass == null) {
             GameRules.EventManager.FireEvent('Event_JoinPath', { player: this });

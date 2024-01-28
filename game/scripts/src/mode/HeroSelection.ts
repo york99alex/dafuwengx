@@ -51,7 +51,7 @@ export class HeroSelection {
             oPlayer.m_nOprtOrder = this.GetPlayerIDIndex(oPlayer.m_nPlayerID);
         }
         // TODO: TEST
-        this.m_PlayersSort = [1, 0];
+        // this.m_PlayersSort = [1, 0];
         print('[PlayersSort]:');
         DeepPrintTable(this.m_PlayersSort);
     }

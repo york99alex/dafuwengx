@@ -1,8 +1,8 @@
-import { Player } from "../../player/player";
-import { AMHC } from "../../utils/amhc";
-import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
-import { AbilityManager } from "../abilitymanager";
-import { TSBaseAbility } from "../tsBaseAbilty";
+import { Player } from '../../player/player';
+import { AMHC } from '../../utils/amhc';
+import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
+import { AbilityManager } from '../abilitymanager';
+import { TSBaseAbility } from '../tsBaseAbilty';
 
 /**
  * 
@@ -17,116 +17,109 @@ import { TSBaseAbility } from "../tsBaseAbilty";
  */
 @registerAbility()
 export class Ability_axe_battle_hunger extends TSBaseAbility {
-
     GetCastRange(location: Vector, target: CDOTA_BaseNPC): number {
-        return 0
+        return 0;
     }
 
     /**选择目标时 */
     CastFilterResultTarget(target: CDOTA_BaseNPC): UnitFilterResult {
         if (!this.isCanCast(target)) {
-            return UnitFilterResult.FAIL_CUSTOM
+            return UnitFilterResult.FAIL_CUSTOM;
         }
 
         // 不能是自己
         if (target.GetPlayerOwnerID() == this.GetCaster().GetPlayerOwnerID()) {
-            this.m_strCastError = "AbilityError_SelfCant"
-            return UnitFilterResult.FAIL_CUSTOM
+            this.m_strCastError = 'AbilityError_SelfCant';
+            return UnitFilterResult.FAIL_CUSTOM;
         }
-        return UnitFilterResult.SUCCESS
+        return UnitFilterResult.SUCCESS;
     }
 
     /**开始技能效果 */
     OnSpellStart(): void {
-        const oPlayer = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID())
-        const target = this.GetCursorTarget()
+        const oPlayer = GameRules.PlayerManager.getPlayer(this.GetCaster().GetPlayerOwnerID());
+        const target = this.GetCursorTarget();
 
         // 添加减攻击buff
-        AbilityManager.setCopyBuff(modifier_ability_axe_battle_hunger.name
-            , target, this.GetCaster(), this)
-        EmitGlobalSound("Hero_Axe.Battle_Hunger")
+        AbilityManager.setCopyBuff(modifier_ability_axe_battle_hunger.name, target, this.GetCaster(), this);
+        EmitGlobalSound('Hero_Axe.Battle_Hunger');
 
         // 触发耗蓝
-        GameRules.EventManager.FireEvent("Event_HeroManaChange", { player: oPlayer, oAblt: this })
+        GameRules.EventManager.FireEvent('Event_HeroManaChange', { player: oPlayer, oAblt: this });
         // 设置冷却
-        AbilityManager.setRoundCD(oPlayer, this)
+        AbilityManager.setRoundCD(oPlayer, this);
     }
 }
 
 @registerModifier()
 export class modifier_ability_axe_battle_hunger extends BaseModifier {
-
-    m_tEventID: number[]
-    m_nRound: number
-    m_nDamage: number
+    m_tEventID: number[];
+    m_nRound: number;
+    m_nDamage: number;
 
     IsDebuff(): boolean {
-        return true
+        return true;
     }
 
     IsPurgable(): boolean {
-        return true
+        return true;
     }
 
     GetTexture(): string {
-        return "axe_battle_hunger"
+        return 'axe_battle_hunger';
     }
 
     GetEffectName(): string {
-        return "particles/units/heroes/hero_axe/axe_battle_hunger.vpcf"
+        return 'particles/units/heroes/hero_axe/axe_battle_hunger.vpcf';
     }
 
     GetEffectAttachType(): ParticleAttachment {
-        return ParticleAttachment.OVERHEAD_FOLLOW
+        return ParticleAttachment.OVERHEAD_FOLLOW;
     }
 
     DeclareFunctions(): ModifierFunction[] {
-        return [
-            ModifierFunction.DAMAGEOUTGOING_PERCENTAGE,
-            ModifierFunction.BONUS_DAY_VISION,
-            ModifierFunction.BONUS_NIGHT_VISION
-        ]
+        return [ModifierFunction.DAMAGEOUTGOING_PERCENTAGE, ModifierFunction.BONUS_DAY_VISION, ModifierFunction.BONUS_NIGHT_VISION];
     }
 
     OnDestroy(): void {
-        if (IsClient())
-            return
-        GameRules.EventManager.FireEvent("modifier_ability_axe_battle_hunger", this)
-        GameRules.EventManager.UnRegisterByIDs(this.m_tEventID)
+        if (IsClient()) return;
+        GameRules.EventManager.FireEvent('modifier_ability_axe_battle_hunger', this);
+        GameRules.EventManager.UnRegisterByIDs(this.m_tEventID);
     }
 
     OnCreated(params: object): void {
-        this.m_nRound = this.GetAbility().GetSpecialValueFor("duration")
-        this.m_nDamage = this.GetAbility().GetSpecialValueFor("damage")
+        this.m_nRound = this.GetAbility().GetSpecialValueFor('duration');
+        this.m_nDamage = this.GetAbility().GetSpecialValueFor('damage');
 
-        if (IsClient())
-            return
+        if (IsClient()) return;
 
-        AbilityManager.judgeBuffRound(this.GetCaster().GetPlayerOwnerID(), this)
+        AbilityManager.judgeBuffRound(this.GetCaster().GetPlayerOwnerID(), this);
 
-        this.m_tEventID = []
+        this.m_tEventID = [];
         // 检测目标玩家每轮开始
-        this.m_tEventID.push(GameRules.EventManager.Register("Event_PlayerRoundBegin", (event: { oPlayer: Player }) => {
-            if (!this) {
-                return true
-            }
-            if (this.GetParent().GetPlayerOwnerID() != event.oPlayer.m_nPlayerID) {
-                return
-            }
-            // 造成伤害
-            AMHC.Damage(this.GetCaster(), this.GetParent(), this.m_nDamage, this.GetAbility().GetAbilityDamageType(), this.GetAbility())
-        }))
+        this.m_tEventID.push(
+            GameRules.EventManager.Register('Event_PlayerRoundBegin', (event: { oPlayer: Player }) => {
+                if (!this) {
+                    return true;
+                }
+                if (this.GetParent().GetPlayerOwnerID() != event.oPlayer.m_nPlayerID) {
+                    return;
+                }
+                // 造成伤害
+                AMHC.Damage(this.GetCaster(), this.GetParent(), this.m_nDamage, this.GetAbility().GetAbilityDamageType(), this.GetAbility());
+            })
+        );
     }
 
     GetModifierDamageOutgoing_Percentage(event: ModifierAttackEvent): number {
-        return this.GetAbility().GetSpecialValueFor("bonus_atk")
+        return this.GetAbility().GetSpecialValueFor('bonus_atk');
     }
 
     GetBonusDayVision(): number {
-        return this.m_nDamage
+        return this.m_nDamage;
     }
 
     GetBonusNightVision(): number {
-        return this.m_nRound
+        return this.m_nRound;
     }
 }

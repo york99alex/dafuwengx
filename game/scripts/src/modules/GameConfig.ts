@@ -469,8 +469,8 @@ export class GameConfig {
             }
         }
         // if (oPlayer.m_eHero.GetUnitName() == "npc_dota_hero_phantom_assassin") {
-        nNum1 = 1;
-        nNum2 = 2;
+        // nNum1 = 1;
+        // nNum2 = 3;
         // }else{
         //     nNum1 = 3
         //     nNum2 = 5
@@ -731,10 +731,10 @@ export class GameConfig {
             ) {
                 print('验证操作');
                 if (TypeOprt.TO_Finish == v.typeOprt) {
-                    // 结束回合
+                    // 结束回合，默认是
                     v.nRequest = 1;
                 } else if (TypeOprt.TO_Roll == v.typeOprt) {
-                    // roll点
+                    // roll点，默认是
                     v.nRequest = 1;
                 } else if (TypeOprt.TO_AYZZ == v.typeOprt) {
                     // 安营扎寨，默认不
