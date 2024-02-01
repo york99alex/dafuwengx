@@ -1,0 +1,288 @@
+.root {
+    width: 100%;
+    height: 40%;
+    min-height: 256px;
+
+    .HudTopBar {
+        width: 100%;
+        height: 50%;
+
+        .Flag {
+            width: 100%;
+            height: 100%;
+            background-image: url('file://{images}/custom_game/hud/flag_png.png');
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: 0 -100px;
+            wash-color: rgb(0, 0, 0);
+        }
+
+        .GameClock {
+            width: 90px;
+            height: 100%;
+            horizontal-align: center;
+
+            .GameClockIcon {
+                width: 24px;
+                height: 24px;
+                background-size: cover;
+                horizontal-align: center;
+
+                &.Day {
+                    background-image: url('s2r://panorama/images/hud/reborn/icon_sun_psd.vtex');
+                }
+
+                &.Night {
+                    background-image: url('s2r://panorama/images/hud/reborn/icon_sun_psd.vtex');
+                }
+            }
+
+            .GameClockTime {
+                width: 80px;
+                horizontal-align: center;
+                margin-top: 25px;
+
+                font-size: 18px;
+                font-weight: bold;
+                text-align: center;
+                color: #adadad;
+                letter-spacing: 1px;
+                font-family: defaultFont;
+            }
+        }
+
+        .Top {
+            width: 50%;
+            height: 100%;
+            &.Left {
+                flow-children: left;
+                position: -50px 0 0;
+            }
+            &.Right {
+                flow-children: right;
+                horizontal-align: right;
+                position: 50px 0 0;
+            }
+        }
+
+        .Mask {
+            height: 82px;
+            width: 82px;
+
+            horizontal-align: center;
+            position: 0 -34px 0;
+
+            opacity-mask: url('s2r://materials/vgui/hud/ui_skill_autocast_channel_psd_69d3a99b.vtex');
+            overflow: clip;
+
+            .Mask1 {
+                height: 100%;
+                width: 100%;
+
+                background-color: gradient(
+                    linear,
+                    0% 0%,
+                    0% 100%,
+                    from(rgb(255, 255, 255)),
+                    color-stop(0.2, rgb(255, 255, 255)),
+                    color-stop(0.3, rgba(255, 255, 255, 0.2)),
+                    to(#00000000)
+                );
+                opacity-mask: url('file://{images}/custom_game/hud/radialsweep_psd.png');
+
+                pre-transform-scale2d: 2;
+
+                animation-name: MaskAnim1;
+                animation-duration: 1s;
+                animation-timing-function: ease-in-out;
+                animation-iteration-count: infinite;
+            }
+
+            .Mask2 {
+                height: 100%;
+                width: 100%;
+
+                background-color: gradient(
+                    linear,
+                    0% 0%,
+                    0% 100%,
+                    from(rgb(255, 255, 255)),
+                    color-stop(0.2, rgb(255, 255, 255)),
+                    color-stop(0.3, rgba(255, 255, 255, 0.2)),
+                    to(#00000000)
+                );
+                opacity-mask: url('file://{images}/custom_game/hud/radialsweep_psd.png');
+
+                pre-transform-scale2d: 2;
+
+                animation-name: MaskAnim2;
+                animation-duration: 1s;
+                animation-timing-function: ease-in-out;
+                animation-iteration-count: infinite;
+            }
+        }
+
+        .Player {
+            width: 110px;
+            height: 100%;
+
+            .Head {
+                height: 500px;
+                horizontal-align: center;
+
+                .HeroImageBG {
+                    height: 100px;
+                    width: 100px;
+
+                    position: 0px -40px 0;
+
+                    background-image: url('file://{images}/custom_game/hud/head_bg_png.png');
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;
+                }
+
+                .HeroImage {
+                    height: 43px;
+                    width: 72px;
+                    horizontal-align: center;
+
+                    border: 1px solid #000000;
+
+                    opacity: 1;
+                    wash-color: none;
+                    saturation: 1;
+
+                    &.Death {
+                        wash-color: #898989;
+                        saturation: 0;
+                    }
+                }
+
+                .Disconnect {
+                    width: 80px;
+                    height: width-percentage(29.8%);
+
+                    horizontal-align: center;
+                    margin-top: 10px;
+
+                    background-image: url('s2r://panorama/images/hud/reborn/icon_disconnect_png.vtex');
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+
+                    opacity: 0;
+
+                    &.False {
+                        opacity: 0;
+                    }
+
+                    &.True {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .Gold {
+                width: 60px;
+
+                margin-top: 50px;
+
+                font-size: 18px;
+                font-weight: bold;
+                text-align: center;
+                color: #d49f00;
+                text-shadow: 1px 1px 1px 2 #000000;
+
+                horizontal-align: center;
+            }
+
+            .ChangeGold {
+                width: 110px;
+
+                margin-top: 120px;
+                horizontal-align: center;
+
+                transition-property: ui-scale, scale3d;
+                transition-duration: 0.05s;
+                transition-timing-function: ease-in-out;
+
+                animation-duration: 1s;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: forwards;
+
+                &.Changing {
+                    ui-scale: 120%;
+                    animation-name: ChangeGoldPlus;
+                }
+
+                .ChangeGoldLabel {
+                    width: 110px;
+                    vertical-align: center;
+
+                    color: red;
+                    color: green;
+                    font-size: 24px;
+                    font-size: 32px;
+                    font-weight: thin;
+                    font-weight: bold;
+                    font-family: monospaceNumbersFont;
+
+                    text-align: center;
+                    text-shadow: 1px 1px 1px 2 #000000;
+                }
+
+                &.Add {
+                    .ChangeGoldLabel {
+                        color: green;
+                    }
+                }
+                &.Cut {
+                    .ChangeGoldLabel {
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes MaskAnim1 {
+    0% {
+        transform: rotateZ(45deg);
+    }
+    50% {
+        transform: rotateZ(135deg);
+    }
+    100% {
+        transform: rotateZ(225deg);
+    }
+}
+
+@keyframes MaskAnim2 {
+    0% {
+        transform: rotateZ(225deg);
+    }
+    50% {
+        transform: rotateZ(315deg);
+    }
+    100% {
+        transform: rotateZ(405deg);
+    }
+}
+
+@keyframes ChangeGoldPlus {
+    0% {
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+    }
+    10% {
+        transform: scale3d(1.1, 1.1, 1);
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale3d(0.8, 0.8, 1);
+    }
+}

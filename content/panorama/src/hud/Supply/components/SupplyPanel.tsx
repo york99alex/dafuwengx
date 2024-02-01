@@ -16,11 +16,11 @@ export function SupplyPanel() {
     // supply有data就始终打开面板
     useEffect(() => {
         if (!supplyData) {
-            console.log('===SupplyPanle data null, supply end');
+            // console.log('===SupplyPanle data null, supply end');
             root.current?.AddClass('Hidden');
             return;
         } else if (supplyData.nPlayerIDOprt < -1) {
-            console.log('===SupplyPanle oprtID == -2, supply end in 2s, data:', supplyData);
+            // console.log('===SupplyPanle oprtID == -2, supply end in 2s, data:', supplyData);
             setSupplyList(Object.values(supplyData.tabSupplyInfo));
             setOprtID(supplyData.nPlayerIDOprt);
             setTimeout(() => {
@@ -29,7 +29,7 @@ export function SupplyPanel() {
             }, 2000);
             return;
         } else root.current?.RemoveClass('Hidden');
-        console.log('===SupplyPanle useEffect supplyData:', supplyData);
+        // console.log('===SupplyPanle useEffect supplyData:', supplyData);
         const tList: PlayerID[] = Object.values(supplyData.tabPlayerID);
         if (playerList.length != tList.length && tList.every((value, index) => value != playerList[index])) setPlayerList(tList);
         setSupplyList(Object.values(supplyData.tabSupplyInfo));
@@ -48,7 +48,7 @@ export function SupplyPanel() {
     }, [playerList]);
 
     useEffect(() => {
-        console.log('===SupplyPanle leftList:', leftList, 'rightList:', rightList);
+        // console.log('===SupplyPanle leftList:', leftList, 'rightList:', rightList);
     }, [leftList, rightList]);
 
     function getTipLabel(oprtID: number) {
@@ -69,13 +69,13 @@ export function SupplyPanel() {
 
     useGameEvent('GM_Operator', event => {
         if (event.typeOprt == TypeOprt.TO_Supply) {
-            console.log('===Supply GM_Operator event:', event);
+            // console.log('===Supply GM_Operator event:', event);
         }
     });
 
     useGameEvent('GM_OperatorFinished', event => {
         if (event.typeOprt == TypeOprt.TO_Supply) {
-            console.log('===Supply GM_OperatorFinished event:', event);
+            // console.log('===Supply GM_OperatorFinished event:', event);
         }
     });
 

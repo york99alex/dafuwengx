@@ -5,7 +5,6 @@ import { TypeOprt } from '../../mode/constant';
 export function CountDown() {
     const { time } = useNetTableKey('GamingTable', 'timeOprt') ?? { time: 0 };
     const { nRound } = useNetTableKey('GamingTable', 'round') ?? { nRound: 0 };
-    const { nPlayerID } = useNetTableKey('GamingTable', 'order') ?? { nPlayerID: -1 };
     const [isDC, setDC] = useState(false);
 
     const [nNum1, setNum1] = useState(0);
@@ -68,11 +67,6 @@ export function CountDown() {
                     });
                 }}
             />
-
-            <Panel style={{ flowChildren: 'right' }}>
-                <Label text={`当前回合玩家：`} />
-                <DOTAHeroImage heroimagestyle="icon" heroname={Players.GetPlayerSelectedHero(nPlayerID ?? -1)} />
-            </Panel>
         </Panel>
     );
 }

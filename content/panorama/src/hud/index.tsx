@@ -23,10 +23,17 @@ const Test: FC = () => {
     return <></>;
 };
 
+// for (let index = -1; index <= 32; index++) {
+//     GameUI.SetDefaultUIEnabled(index, true);
+// }
+
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ACTION_MINIMAP, false);
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_AGHANIMS_STATUS, false);
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_COURIER, false);
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_QUICK_STATS, false);
+GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_QUICKBUY, false);
+GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_GOLD, false);
+GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR, false);
 
 export const UIHud = $.GetContextPanel().GetParent()!.GetParent()!.GetParent()!;
 HideHudElement(UIHud, 'CommonItems');
@@ -35,6 +42,7 @@ HideHudElement(UIHud, 'GridNeutralsTab');
 HideHudElement(UIHud, 'ToggleAdvancedShop');
 HideHudElement(UIHud, 'inventory_neutral_slot_container');
 HideHudElement(UIHud, 'ShopButton');
+HideHudElement(UIHud, 'shop_launcher_bg');
 // HideHudElement(hud, 'stash');
 
 export const PlayerMgr = new PlayerManager();

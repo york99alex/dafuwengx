@@ -5,6 +5,8 @@
         "hero_list",
         "game_timer",
         "GamingTable",
+        "HeroSelection",
+        "common",
         "EndTable",
     ]
 }

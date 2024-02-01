@@ -54,6 +54,7 @@ export class HeroSelection {
         // this.m_PlayersSort = [1, 0];
         print('[PlayersSort]:');
         DeepPrintTable(this.m_PlayersSort);
+        CustomNetTables.SetTableValue('HeroSelection', 'PlayersSort', this.m_PlayersSort);
     }
 
     /** 获得(this.m_PlayersSort)玩家ID对应的index */

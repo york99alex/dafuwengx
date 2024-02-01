@@ -2266,10 +2266,46 @@ Path的类class name应以	path_corner
 
 
 
-## 尸王墓碑
+## TopBar面板
 
-npc_dota_hero_undying "Ability2"	"Ability_undying_flesh_golem"
-被敌人攻城击杀后，化身一座墓碑。敌人经过墓碑会在其身边产生僵尸攻击他们。僵尸拥有死亡渴望技能，使他们的攻击带有减速效果，僵尸的攻击和移动速度会提升。
+### 倒计时
+
+后端：GameConfig. 
+
+​	CustomNetTables.SetTableValue('GamingTable', 'timeOprt', { time: this.m_timeOprt / 10 });
+
+### 金币
+
+- 后端
+
+  1. setGold：CustomNetTables.SetTableValue('GamingTable', keyname, info);
+     					info.nGold
+
+  2. showGold：
+         CustomGameEventManager.Send_ServerToAllClients('S2C_GM_ShowGold', {
+
+     ​      nGold: nGold,
+
+     ​      nPlayerID: oPlayer.m_nPlayerID,
+
+     ​    });
+
+     -   网表： 
+       S2C_GM_ShowGold: {
+
+       ​    nGold: number;
+
+       ​    nPlayerID: number;
+
+         };
+
+- 前端
+
+  - 
+
+
+
+
 
 
 
