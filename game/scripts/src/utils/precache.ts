@@ -110,6 +110,8 @@ export default function Precache(context: CScriptPrecacheContext) {
             'models/items/undying/flesh_golem/ti9_cache_undying_carnivorous_parasitism_golem/ti9_cache_undying_carnivorous_parasitism_golem.vmdl',
             'models/heroes/undying/undying_tower.vmdl',
             'particles/econ/items/lifestealer/ls_ti9_immortal/ls_ti9_open_wounds.vpcf',
+            'particles/econ/items/bloodseeker/bloodseeker_eztzhok_weapon/bloodseeker_bloodrage_ground_eztzhok_arc.vpcf',
+            'particles/econ/items/ogre_magi/ogre_magi_jackpot/ogre_magi_jackpot_spindle_rig.vpcf',
         ],
         context
     );

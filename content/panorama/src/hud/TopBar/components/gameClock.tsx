@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNetTableKey } from 'react-panorama-x';
 
 export function GameClock() {
     const [isDay, setIsDay] = useState(true);
     const [time, setTime] = useState('0:0');
+    const { nRound } = useNetTableKey('GamingTable', 'round') ?? { nRound: 0 };
 
     useEffect(() => {
         updateTime();
@@ -22,6 +24,8 @@ export function GameClock() {
             <Panel className="Flag" />
             <Panel className={'GameClockIcon' + (isDay ? ' Day' : ' Night')} />
             <Label className="GameClockTime" text={time} />
+            <Panel className="Round" />
+            <Label className="RoundText" html={true} text={$.Language() == 'schinese' ? '第' + nRound + '回合' : 'Round<br>' + nRound} />
         </Panel>
     );
 }

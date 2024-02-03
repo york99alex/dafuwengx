@@ -637,6 +637,7 @@ FinishBidButton,,确认
 SendPriceText,,起拍价格：
 FinishRound,,结束回合
 FinishDC,,结束清算
+RoundText,Round,回合
 
 PathName_1,,起点
 PathName_2,,秘密宝藏

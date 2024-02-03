@@ -469,8 +469,8 @@ export class GameConfig {
             }
         }
         // if (oPlayer.m_eHero.GetUnitName() == "npc_dota_hero_phantom_assassin") {
-        // nNum1 = 1;
-        // nNum2 = 3;
+        // nNum1 = 2;
+        // nNum2 = 2;
         // }else{
         //     nNum1 = 3
         //     nNum2 = 5
@@ -499,6 +499,9 @@ export class GameConfig {
             // 设置roll点记录
             // TODO: GameRecord.setGameRecord()
 
+            if (nNum1 == nNum2) {
+                EmitGlobalSound('coins_wager.x1');
+            }
             GameRules.GameLoop.GameStateService.send('towaitoprt');
             // 触发roll事件
             GameRules.EventManager.FireEvent('Event_Roll', {

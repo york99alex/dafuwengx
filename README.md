@@ -2299,9 +2299,25 @@ Path的类class name应以	path_corner
 
          };
 
-- 前端
 
-  - 
+
+### 操作面板
+
+#### Roll点
+
+- 后端
+
+  1. GameLoop.GSBegin_Entry，广播roll点操作
+
+     GameRules.PlayerManager.broadcastMsg('GM_Operator', {
+
+     ​        nPlayerID: GameRules.GameConfig.m_nOrderID,
+
+     ​        typeOprt: TypeOprt.TO_Roll,
+
+     ​      })
+
+  2. 
 
 
 

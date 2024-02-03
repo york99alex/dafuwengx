@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { render, useNetTableKey, useNetTableValues } from 'react-panorama-x';
 import { PlayerInfo } from './components/playerInfo';
 import { GameClock } from './components/gameClock';
+import { OprtButton } from './components/oprtButton';
 
 render(<TopBar />, $.GetContextPanel());
 
@@ -9,6 +10,7 @@ export function TopBar() {
     const [leftPlayers, setLeftPlayers] = useState<PlayerID[] | null>(null);
     const [rightPlayers, setRightPlayers] = useState<PlayerID[] | null>(null);
     const playersData = useNetTableKey('HeroSelection', 'PlayersSort');
+    const { time } = useNetTableKey('GamingTable', 'timeOprt') ?? { time: 0 };
 
     useEffect(() => {
         if (playersData == null) return;
@@ -24,7 +26,7 @@ export function TopBar() {
     }, [leftPlayers, rightPlayers]);
 
     return (
-        <Panel className="HudTopBar" id="TimeOfDayBG">
+        <Panel className="HudTopBar" hittest={false}>
             <Panel className="Top Left">
                 {leftPlayers?.map(playerID => (
                     <PlayerInfo key={playerID} playerID={playerID} />
@@ -35,6 +37,20 @@ export function TopBar() {
                 {rightPlayers?.map(playerID => (
                     <PlayerInfo key={playerID} playerID={playerID} />
                 ))}
+            </Panel>
+            <Panel className="OprtPanel">
+                <Panel className="CountDown">
+                    <DOTAScenePanel
+                        id="CountDownScene"
+                        hittest={false}
+                        map="maps/countdown.vmap"
+                        camera="point_camera"
+                        light="global_light"
+                        particleonly={false}
+                    />
+                    <Label className="CDLabel" text={time} />
+                </Panel>
+                <OprtButton />
             </Panel>
         </Panel>
     );

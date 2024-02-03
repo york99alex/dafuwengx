@@ -112,12 +112,12 @@ export default function CardPanel() {
     function PlayerUseFaild() {}
 
     /**游戏开始时配合动画修改透明度 */
-    useEffect(() => {
-        const curPanel = $.GetContextPanel().FindChildrenWithClassTraverse('CardPanel')[0];
-        setTimeout(() => {
-            curPanel.style.opacity = '0.95';
-        }, 3000);
-    }, []);
+    // useEffect(() => {
+    //     const curPanel = $.GetContextPanel().FindChildrenWithClassTraverse('CardPanel')[0];
+    //     setTimeout(() => {
+    //         curPanel.style.opacity = '0.95';
+    //     }, 3000);
+    // }, []);
 
     return (
         <Panel id="CardBody" hittest={false}>
