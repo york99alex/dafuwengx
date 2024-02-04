@@ -234,8 +234,36 @@
 		//"Ability6"	"no_all_select"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
 		"StatusHealth"	"1"
+	}	
+	"PathLog_7"
+	{
+		"BaseClass"		"npc_dota_building"//"npc_dota_base_additive"
+		"Model"			"models/development/invisiblebox.vmdl"
+		"ModelScale"	"10"
+		"Ability1"	"jiaoxie"
+		"Ability2"	"no_bar"
+		"Ability3"	"no_collision"
+		"Ability4"	"magic_immune"
+		"Ability5"	"physical_immune"
+		//"Ability6"	"no_all_select"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"StatusHealth"	"1"
 	}
 	"PathLog_9"
+	{
+		"BaseClass"		"npc_dota_building"//"npc_dota_base_additive"
+		"Model"			"models/development/invisiblebox.vmdl"
+		"ModelScale"	"10"
+		"Ability1"	"jiaoxie"
+		"Ability2"	"no_bar"
+		"Ability3"	"no_collision"
+		"Ability4"	"magic_immune"
+		"Ability5"	"physical_immune"
+		//"Ability6"	"no_all_select"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"StatusHealth"	"1"
+	}
+	"PathLog_11"
 	{
 		"BaseClass"		"npc_dota_building"//"npc_dota_base_additive"
 		"Model"			"models/development/invisiblebox.vmdl"
@@ -403,7 +431,35 @@
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
 		"StatusHealth"	"1"
 	}
+	"PathLog_27"
+	{
+		"BaseClass"		"npc_dota_building"//"npc_dota_base_additive"
+		"Model"			"models/development/invisiblebox.vmdl"
+		"ModelScale"	"10"
+		"Ability1"	"jiaoxie"
+		"Ability2"	"no_bar"
+		"Ability3"	"no_collision"
+		"Ability4"	"magic_immune"
+		"Ability5"	"physical_immune"
+		//"Ability6"	"no_all_select"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"StatusHealth"	"1"
+	}
 	"PathLog_29"
+	{
+		"BaseClass"		"npc_dota_building"//"npc_dota_base_additive"
+		"Model"			"models/development/invisiblebox.vmdl"
+		"ModelScale"	"10"
+		"Ability1"	"jiaoxie"
+		"Ability2"	"no_bar"
+		"Ability3"	"no_collision"
+		"Ability4"	"magic_immune"
+		"Ability5"	"physical_immune"
+		//"Ability6"	"no_all_select"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"StatusHealth"	"1"
+	}
+	"PathLog_31"
 	{
 		"BaseClass"		"npc_dota_building"//"npc_dota_base_additive"
 		"Model"			"models/development/invisiblebox.vmdl"

@@ -71,7 +71,7 @@ export class DeathClearing {
             });
             return;
         }
-        if (this.mDCPlayers.indexOf(player.m_nPlayerID) == -1 && player.GetGold() < 0) this.StartDC(player.m_nPlayerID);
+        if (!this.mDCPlayers.includes(player.m_nPlayerID) && player.GetGold() < 0) this.StartDC(player.m_nPlayerID);
         else {
             this.ProcessDC({
                 PlayerID: event.nPlayerID,

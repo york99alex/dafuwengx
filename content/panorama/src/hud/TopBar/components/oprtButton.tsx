@@ -1,4 +1,4 @@
-import { useGameEvent } from 'react-panorama-x';
+import { useGameEvent, useNetTableKey } from 'react-panorama-x';
 import { PlayerMgr } from '../..';
 import { TypeOprt } from '../../mode/constant';
 import { useRef, useState } from 'react';
@@ -8,7 +8,7 @@ import { useRef, useState } from 'react';
  * 负责Roll点按钮及动画，结束回合按钮，结束死亡清算按钮
  */
 export function OprtButton() {
-    const [typeOprt, setTypeOprt] = useState(1);
+    const [typeOprt, setTypeOprt] = useState(-1);
     const [baoziTip, setBaoziTip] = useState(false);
     const rollPanel = useRef<Panel>(null);
     const num1Panel = useRef<Panel>(null);
@@ -22,6 +22,7 @@ export function OprtButton() {
                 switch (event.typeOprt) {
                     case TypeOprt.TO_Roll: {
                         setTypeOprt(TypeOprt.TO_Roll);
+                        setBaoziTip(false);
                         // 启动提示骰子动画
                         if (num1Panel.current) {
                             num1Panel.current.style.animationName = 'waitRoll';
@@ -37,12 +38,14 @@ export function OprtButton() {
                         }
                         break;
                     }
-                    case TypeOprt.TO_Finish:
+                    case TypeOprt.TO_Finish: {
                         setTypeOprt(TypeOprt.TO_Finish);
                         break;
-                    case TypeOprt.TO_DeathClearing:
+                    }
+                    case TypeOprt.TO_DeathClearing: {
                         setTypeOprt(TypeOprt.TO_DeathClearing);
                         break;
+                    }
                 }
             }
         },
@@ -73,9 +76,14 @@ export function OprtButton() {
                         break;
                     }
                     case TypeOprt.TO_Finish: {
+                        if (event.nRequest == 1) {
+                            // 结束回合请求成功，前端重置state
+                            resetState();
+                        }
                         break;
                     }
                     case TypeOprt.TO_DeathClearing: {
+                        resetState();
                         break;
                     }
                 }
@@ -84,9 +92,15 @@ export function OprtButton() {
         []
     );
 
-    // TODO: 结束回合成功后重置state
+    // 重置state
+    function resetState() {
+        setTypeOprt(-1);
+        setBaoziTip(false);
+    }
 
+    /**发送操作 */
     function sendOprt(oprtType: number) {
+        if (Game.IsGamePaused() || oprtType != typeOprt) return;
         GameEvents.SendCustomGameEventToServer('GM_Operator', {
             nPlayerID: PlayerMgr.playerID,
             typeOprt: oprtType,
@@ -163,8 +177,16 @@ export function OprtButton() {
                 )}
             </Panel>
 
-            <Panel className="FinishPanel" visible={typeOprt == TypeOprt.TO_Finish}></Panel>
-            <Panel className="DCPanel" visible={typeOprt == TypeOprt.TO_DeathClearing}></Panel>
+            <Panel className="FinishPanel" visible={typeOprt == TypeOprt.TO_Finish} onactivate={() => sendOprt(TypeOprt.TO_Finish)}>
+                <Label id="FinishLabel" text={$.Localize('#FinishRound')} />
+            </Panel>
+            <Panel
+                className="FinishPanel DeathClearing"
+                visible={typeOprt == TypeOprt.TO_DeathClearing}
+                onactivate={() => sendOprt(TypeOprt.TO_DeathClearing)}
+            >
+                <Label id="DCLabel" text={$.Localize('#FinishDC')} />
+            </Panel>
         </Panel>
     );
 }

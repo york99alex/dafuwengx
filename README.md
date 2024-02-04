@@ -472,12 +472,40 @@ GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_HUD_VISIBILITY_ACTION_MIN
 
 
 
+## DOTAScenePanel 
+
+在前端UI创建3D场景或者引用特效展示。[DOTAScenePanel](https://moddota.com/panorama/dotascenepanel)
+
+1. 打开vmap创建new地图，菜单栏Map-Map Properties的Map Type一项选择==UI Background==
+
+2. 添加两个实体，env_global_light、point_camera，并分别==命名==name
+
+3. 添加需要展示的model、特效等，调整camera的角度、镜头等参数达到想要的效果
+   点击View-Align Selection to Active View可以将视角切换至镜头视角
+
+4. 保存为命名.vmap，==并进行编译==
+
+5. 在前端引用：
+
+   ```tsx
+   ```
+
+   
+
+
+
 # 本地化
 
 addon_schinese.txt 是本地化文件，可以修改技能描述等。
  Lore是传记描述
  Note是技能补充描述 Note0 Note1按住alt时技能额外显示的内容
  npc_abilities_custom.txt中定义特殊值，再在本地化文件中用%%调用
+
+`$.Language()` 可以获取当前语言，返回字符串，例如schinese
+
+
+
+
 
 
 
@@ -790,6 +818,11 @@ export const App = () => {	// 根组件
 - [Dota2常用测试-作弊-指令大全（含物品中英对照）](https://www.magese.com/2020/12/28/Dota2%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95-%E4%BD%9C%E5%BC%8A-%E6%8C%87%E4%BB%A4%E5%A4%A7%E5%85%A8/)
 - https://github.com/Nibuja05/dota_particle_editor_tutorial
 - [熔火STUDIO 核弹级新手保姆发电教程 (shimo.im)](https://shimo.im/docs/L9kBBNa8MLFDKokK/read)
+- UI
+   - [如何在一个react页面内控制另一个页面的开关显示 (shimo.im)](https://shimo.im/docs/gXqmewLn0GHnedqo/read)
+   - [ 制作自定义的ui背景 (shimo.im)](https://shimo.im/docs/dPkpKvV7Y4ueDpqO/read)
+   - 
+
 
 ## ==文件目录/路径==
 
@@ -940,28 +973,7 @@ export const App = () => {	// 根组件
   
 - 神秘法杖改回来
 
-- 
-
-## 死亡清算逻辑
-
-所有修改的金币时检查是否没钱了:
-
-```lua
-	if (lastnGold >= 0) ~= (nGold >= 0) then
-		print("self.m_nPlayerID:",self.m_nPlayerID)
-		EventManager:fireEvent(DeathClearing.EvtID.Event_TO_SendDeathClearing, { nPlayerID = self.m_nPlayerID })
-	end
-```
-
-是的话触发事件Event_TO_SendDeathClearing, 该事件在初始化时注册
-
-
-
-![image-20230705213809885](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/05/21-38-10-a90a318a18a4c1d6c5dca9fd62c8adee-image-20230705213809885-eff308.png)
-
-![image-20230705213828000](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/05/21-38-28-981fca2a549ac484af04e8f44fa51b74-image-20230705213828000-05b5dd.png)
-
-
+  
 
 
 
@@ -2305,23 +2317,91 @@ Path的类class name应以	path_corner
 
 #### Roll点
 
-- 后端
+1. ==后端== GameLoop.GSBegin_Entry，广播roll点操作允许
 
-  1. GameLoop.GSBegin_Entry，广播roll点操作
+   GameRules.PlayerManager.broadcastMsg('GM_Operator', {
 
-     GameRules.PlayerManager.broadcastMsg('GM_Operator', {
+   ​        nPlayerID: GameRules.GameConfig.m_nOrderID,
 
-     ​        nPlayerID: GameRules.GameConfig.m_nOrderID,
+   ​        typeOprt: TypeOprt.TO_Roll,
 
-     ​        typeOprt: TypeOprt.TO_Roll,
+   ​      })
+   ​	
+
+   - CustomGameEventManager.Send_ServerToAllClients('GM_Operator', tabData);
+
+2. ==前端==，通过点击发送roll操作
+    GameEvents.SendCustomGameEventToServer('GM_Operator', {
+
+   ​      nPlayerID: PlayerMgr.playerID,
+
+   ​      typeOprt: oprtType,
+
+   ​    })
+
+3. ==后端==，处理roll点，广播玩家roll点操作
+
+   ​    GameRules.PlayerManager.broadcastMsg('GM_OperatorFinished', tabOprt);
+
+4. 如果豹子则重复1~3步
+
+
+
+#### 结束回合
+
+1. ==后端==，Roll点结束后onEvent_Roll或者skipRoll，发送操作允许，完成回合
+
+    GameRules.GameConfig.broadcastOprt({
+
+   ​        typeOprt: TypeOprt.TO_Finish,
+
+   ​        nPlayerID: nPlayerID,
+
+   ​      });
+
+2. ==前端==，<OprtButton\>点击发送回合结束操作请求GameEvents.SendCustomGameEventToServer('GM_Operator'...
+
+3. ==后端==，processFinish回包，
+   sendMsg('GM_OperatorFinished', { nRequest: 1 }, tabData.nPlayerID)
+
+4. ==前端==，重置状态，关闭按钮
+
+
+
+#### 死亡清算
+
+1. ==后端==，player.setGold每次检查金币是否小于0，则发送Event_TO_SendDeathClearing事件
+
+   - 触发DeathClearing.ProcessSendDC，再到StartDC死亡清算准备
+
+   - 广播 broadcastOprt{      nPlayerID: playerID,
+
+     ​      typeOprt: TypeOprt.TO_DeathClearing   };
+
+   - 同时设置 player.m_bDeathClearing为true
+
+2. ==前端==，<OprtButton\>点击发送回合结束操作请求GameEvents.SendCustomGameEventToServer('GM_Operator'...
+
+3. ==后端==，ProcessDC，
+
+   - 如果清算金币小于0，则设置为死亡
+
+   - 如果清算金币大于0，则广播恢复之前的操作，并最后再广播
+
+   - broadcastMsg('GM_OperatorFinished', {
+
+     ​        nPlayerID: event.nPlayerID,
+
+     ​        typeOprt: TypeOprt.TO_DeathClearing,
 
      ​      })
 
-  2. 
 
 
+## 卡牌
 
-
+- 骰子卡
+  - 重置游戏中玩家的先后顺序，立即生效。
 
 
 

@@ -683,7 +683,9 @@ PathLog_3,,天辉 ● 其一
 PathLog_4,,天辉 ● 其二
 PathLog_5,,天辉 ● 其三
 PathLog_6,,传送 ● 西
+PathLog_7,,野区 ● 小
 PathLog_9,,河道 ● 上路
+PathLog_11,,炎魔炼狱
 PathLog_13,,蛇沼 ● 之一
 PathLog_14,,蛇沼 ● 之二
 PathLog_15,,蛇沼 ● 之三
@@ -696,7 +698,9 @@ PathLog_23,,龙谷 ● 之一
 PathLog_24,,龙谷 ● 之二
 PathLog_25,,龙谷 ● 之三
 PathLog_26,,传送 ● 东
+PathLog_27,,野区 ● 大
 PathLog_29,,河道 ● 下路
+PathLog_31,,野区 ● 远古
 PathLog_33,,鵰巢 ● 之一
 PathLog_34,,鵰巢 ● 之二
 PathLog_35,,鵰巢 ● 之三
@@ -711,6 +715,22 @@ rune_5,,赏金
 rune_6,,奥术
 rune_8,,智慧
 rune_9,,护盾
+DOTA_Tooltip_Modifier_rune_0,,双倍伤害
+DOTA_Tooltip_Modifier_rune_0_Description,,基础攻击翻倍。持续到下个自身回合结束。
+DOTA_Tooltip_Modifier_rune_1,,极速
+DOTA_Tooltip_Modifier_rune_1_Description,,感受移动速度的极致。持续到下个自身回合结束。
+DOTA_Tooltip_Modifier_rune_3,,隐身
+DOTA_Tooltip_Modifier_rune_3_Description,,隐身的英雄无法被攻击。持续到下个自身回合结束。<br>攻击或者施法后结束隐身
+DOTA_Tooltip_Modifier_rune_4,,恢复
+DOTA_Tooltip_Modifier_rune_4_Description,,恢复英雄和兵卒全部的生命和魔法。
+DOTA_Tooltip_Modifier_rune_5,,赏金
+DOTA_Tooltip_Modifier_rune_5_Description,,获得500金币
+DOTA_Tooltip_Modifier_rune_6,,奥术
+DOTA_Tooltip_Modifier_rune_6_Description,,释放技能冷却时间 -1 。<br>全部技能和卡牌魔法消耗 -1 。<br>持续到下个自身回合结束。<br>（冷却最低为1）
+DOTA_Tooltip_Modifier_rune_8,,智慧
+DOTA_Tooltip_Modifier_rune_8_Description,,获得5点经验
+DOTA_Tooltip_Modifier_rune_9,,护盾
+DOTA_Tooltip_Modifier_rune_9_Description,,制造一个英雄最大生命值50%的护盾，可以庇佑其受到的伤害并不损失金币
 
 
 supply_title,,补给环节

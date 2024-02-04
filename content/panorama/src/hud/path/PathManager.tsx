@@ -48,4 +48,13 @@ export const PathDomainsType = [3, 12, 13, 14, 15, 16, 17, 18];
 export const PathMonstersType = [9, 10, 11];
 export const PathPrisonType = 7;
 
-export class PathManager {}
+export class PathManager {
+    // cursorTargetEnts: number[] = [];
+    cursorHoverIndex: EntityIndex | null = null;
+    tipPanel: Panel | null = null;
+    cursorName: string | null = null;
+
+    resetTip() {
+        // this.cursorTargetEnts = [];
+    }
+}

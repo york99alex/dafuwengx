@@ -20,11 +20,6 @@ export function TopBar() {
         setRightPlayers(players.slice(Math.ceil(players.length / 2)));
     }, [playersData]);
 
-    useEffect(() => {
-        console.log('leftPlayers', leftPlayers);
-        console.log('rightPlayers', rightPlayers);
-    }, [leftPlayers, rightPlayers]);
-
     return (
         <Panel className="HudTopBar" hittest={false}>
             <Panel className="Top Left">

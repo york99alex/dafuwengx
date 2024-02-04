@@ -1,17 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { useGameEvent } from 'react-panorama-x';
-import { PathDomainsType, PathMonstersType, PathType } from '../../path/PathManager';
-import { GameMgr, PlayerMgr } from '../..';
+import { PathDomainsType, PathMonstersType, PathPrisonType, PathType } from '../../path/PathManager';
+import { GameMgr, PathMgr, PlayerMgr } from '../..';
 import { TP_PRISON, TypeOprt } from '../../mode/constant';
 import { SoldierLine } from './soldierLine';
 import { BuffLine } from './buffLine';
 import { SafeLocalize } from '../../../utils/useful';
+import { UIHelper } from '../../utils/UIHelper';
 
 export function PathPanel() {
     const [event, setEvent] = useState<any>();
     const [title, setTitle] = useState('');
     const pathPanel = useRef<Panel>(null);
-    const tipLabel = useRef<LabelPanel>(null);
+    const [tipLabel, setTipLabel] = useState('');
+    const oprtPanel = useRef<Panel>(null);
     const [btnYesText, setBtnYesText] = useState('');
     const [btnNoText, setBtnNoText] = useState('');
     const [GCLD, setGCLD] = useState(false);
@@ -30,7 +32,7 @@ export function PathPanel() {
                 setTitle($.Localize('#TypeOperator_PRISON_title'));
                 setBtnYesText($.Localize('#Prison_Out') + "<font color='#FFFF00'> " + data.nGold + ' </font>');
                 setBtnNoText($.Localize('#text_give_up'));
-                tipLabel.current!.text = $.Localize('#OperatorBody_Hell');
+                setTipLabel($.Localize('#OperatorBody_Hell'));
                 return;
             } else if (data.typeOprt == TypeOprt.TO_GCLD) {
                 // 攻城略地 { typePath: 12, nPathID: 4, nPlayerID: 1, typeOprt: 3 }
@@ -40,7 +42,7 @@ export function PathPanel() {
                 setTitle($.Localize('#TypeOperator_GCLD'));
                 setBtnYesText("<font color='#FF0000'> " + $.Localize('#TypeOperator_GCLD') + ' </font>');
                 setBtnNoText($.Localize('#text_give_up'));
-                tipLabel.current!.text = $.Localize('#PathTitleTip_GCLD');
+                setTipLabel($.Localize('#PathTitleTip_GCLD'));
                 setGCLD(true);
                 pathPanel.current!.RemoveClass('Hidden');
                 return;
@@ -60,7 +62,7 @@ export function PathPanel() {
                 setTitle($.Localize('#TypeOperator_AtkMonster'));
                 setBtnYesText($.Localize('#TypeOperator_AtkMonster'));
                 setBtnNoText($.Localize('#text_give_up'));
-                tipLabel.current!.text = $.Localize('#PathTitleTip_AtkMonster');
+                setTipLabel($.Localize('#PathTitleTip_AtkMonster'));
             }
         },
         []
@@ -74,8 +76,7 @@ export function PathPanel() {
             if (data.typeOprt == TypeOprt.TO_AYZZ) {
                 if (data.nRequest == 1) {
                     // 占领成功
-                    tipLabel.current!.text =
-                        $.Localize('#' + Players.GetPlayerSelectedHero(PlayerMgr.playerID)) + $.Localize('#TypeOperator_AYZZ_Owner');
+                    setTipLabel($.Localize('#' + Players.GetPlayerSelectedHero(PlayerMgr.playerID)) + $.Localize('#TypeOperator_AYZZ_Owner'));
                     $('#YES').visible = false;
                     setBtnNoText($.Localize('#text_understand'));
                 } else if (data.nPlayerID == PlayerMgr.playerID) {
@@ -140,12 +141,107 @@ export function PathPanel() {
     }
 
     function resetState() {
-        tipLabel.current!.text = '';
+        setTipLabel('');
+        setGCLD(false);
         setEvent(null);
         setTitle('');
+        oprtPanel.current!.style.visibility = 'visible';
         $('#YES').visible = true;
-        setGCLD(false);
+        $('#NO').visible = true;
     }
+
+    /**悬浮提示路径信息 */
+    function ShowPathTip() {
+        const cursorTargetEnts = [];
+        let cursorEntities = GameUI.FindScreenEntities(GameUI.GetCursorPosition());
+
+        for (const entity of cursorEntities) {
+            cursorTargetEnts.push(entity.entityIndex);
+            let unitname = Entities.GetUnitName(entity.entityIndex);
+            if (unitname.length && unitname.length >= 4) {
+                // console.log('===unitname:', unitname, 'Hidden?:', pathPanel.current?.BHasClass('Hidden'));
+                if (unitname.includes('rune_') && PathMgr.tipPanel == null) {
+                    PathMgr.cursorName = unitname;
+                    PathMgr.cursorHoverIndex = entity.entityIndex;
+                    PathMgr.tipPanel = $.CreatePanel('Panel', $.GetContextPanel(), 'PathTipPanel');
+                    const abs = Entities.GetAbsOrigin(PathMgr.cursorHoverIndex);
+                    PathMgr.tipPanel.style.position =
+                        (Game.WorldToScreenX(abs[0], abs[1], abs[2]) / Game.GetScreenWidth()) * 100 +
+                        '% ' +
+                        (Game.WorldToScreenY(abs[0], abs[1], abs[2]) / Game.GetScreenHeight()) * 100 +
+                        '% 0';
+                    PathMgr.tipPanel.style.tooltipPosition = 'top';
+                    PathMgr.tipPanel.style.tooltipArrowPosition = '50% 50%';
+                    PathMgr.tipPanel.style.tooltipBodyPosition = '50% 50%';
+                    $.DispatchEvent('DOTAShowBuffTooltip', PathMgr.tipPanel, PathMgr.cursorHoverIndex, 1, true);
+                    const buffName = UIHelper.findOtheXMLPanel('DOTABuffTooltip')?.FindChildTraverse('BuffName') as LabelPanel;
+                    const buffDescription = UIHelper.findOtheXMLPanel('DOTABuffTooltip')?.FindChildTraverse('BuffDescription') as LabelPanel;
+                    if (buffName != null && buffDescription != null) {
+                        buffName.text = $.Localize('#DOTA_Tooltip_Modifier_' + unitname);
+                        buffDescription.text = $.Localize('#DOTA_Tooltip_Modifier_' + unitname + '_Description');
+                    }
+                    break;
+                } else if (unitname.includes('PathLog_') && pathPanel.current != null && pathPanel.current.BHasClass('Hidden')) {
+                    PathMgr.cursorName = unitname;
+                    PathMgr.cursorHoverIndex = entity.entityIndex;
+
+                    unitname = unitname.substring(8);
+                    console.log('===PathTip===ID:', unitname);
+
+                    // 启动<PathPanel>
+                    // resetState();
+                    const pathType = PathType[parseInt(unitname)];
+                    setEvent({
+                        typePath: pathType,
+                        nPathID: parseInt(unitname),
+                    });
+                    pathPanel.current.RemoveClass('Hidden');
+                    oprtPanel.current!.style.visibility = 'collapse';
+
+                    if (PathDomainsType.includes(pathType)) {
+                        // 领地路径
+                        setTitle($.Localize('#TypeOperator_AYZZ'));
+                    } else if (PathMonstersType.includes(pathType)) {
+                        // 打野路径
+                        setTitle($.Localize('#TypeOperator_AtkMonster'));
+                    } else if (pathType == PathPrisonType) {
+                        setTitle($.Localize('#TypeOperator_PRISON_title'));
+                    }
+                    break;
+                }
+            }
+        }
+        // console.log('===1:', PathMgr.tipPanel != null);
+        // console.log('===2:', !pathPanel.current?.BHasClass('Hidden'));
+        // console.log('===3:', PathMgr.cursorHoverIndex != null);
+        // console.log('===4:', PathMgr.cursorHoverIndex != null ? !PathMgr.cursorTargetEnts.includes(PathMgr.cursorHoverIndex) : false);
+
+        if (
+            (PathMgr.tipPanel != null || !pathPanel.current?.BHasClass('Hidden')) &&
+            PathMgr.cursorHoverIndex != null &&
+            !cursorTargetEnts.includes(PathMgr.cursorHoverIndex)
+        ) {
+            console.log('===PathTip');
+            $.DispatchEvent('DOTAHideBuffTooltip');
+
+            if (PathMgr.tipPanel != null && PathMgr.cursorName?.includes('rune_')) {
+                PathMgr.tipPanel.visible = false;
+                PathMgr.tipPanel.DeleteAsync(0);
+                PathMgr.tipPanel = null;
+            } else if (!pathPanel.current?.BHasClass('Hidden')) {
+                pathPanel.current?.AddClass('Hidden');
+                PathMgr.tipPanel = null;
+                resetState();
+                $.Schedule(1, ShowPathTip);
+                return;
+            }
+            PathMgr.cursorName = null;
+            PathMgr.cursorHoverIndex = null;
+        } else {
+            $.Schedule(0.2, ShowPathTip);
+        }
+    }
+    ShowPathTip();
 
     return (
         <Panel className="PathPanel Hidden" ref={pathPanel} hittest={true}>
@@ -193,9 +289,9 @@ export function PathPanel() {
                 </Panel>
             </Panel>
             <Panel className="OprtTip">
-                <Label className="TipLabel" html={true} ref={tipLabel} />
+                <Label className="TipLabel" html={true} text={tipLabel} />
             </Panel>
-            <Panel className="OprtGroup">
+            <Panel className="OprtGroup" ref={oprtPanel}>
                 <Button id="YES" className="ButtonBevel" onactivate={() => ButtonOprt(true)}>
                     <Label text={btnYesText} html={true} />
                 </Button>

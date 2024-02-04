@@ -366,8 +366,50 @@
                 }
 
                 .FinishPanel {
-                    width: 100%;
-                    height: 100%;
+                    width: height-percentage(300%);
+                    height: 80%;
+                    horizontal-align: center;
+
+                    border-radius: 2px;
+                    brightness: 0.8;
+                    background-color: gradient(linear, 0% 0%, 0% 100%, from(#68686815), to(#686868b2));
+                    border: 1px solid #c9c9c93a;
+                    box-shadow: #585858dd 0px 0px 1px 2px;
+
+                    Label {
+                        vertical-align: center;
+                        horizontal-align: center;
+
+                        font-size: 38px;
+                        color: white;
+                        text-shadow: 0px 0px 20px 1.5 #583c009c;
+                        font-family: titleFont;
+                    }
+
+                    &:active {
+                        transform: translate3d(0px, 0px, -20px);
+                    }
+
+                    &:hover {
+                        box-shadow: #6d6d6d 0px 0px 1px 2px;
+                        border: 1px solid #c9c9c9d3;
+                    }
+
+                    &.DeathClearing {
+                        background-color: gradient(linear, 0% 0%, 0% 100%, from(#0d002252), to(#0d0022));
+                        border: 1px solid #ff00003a;
+                        box-shadow: #585858dd 0px 0px 1px 2px;
+
+                        &:hover {
+                            box-shadow: #0d0022 0px 0px 1px 2px;
+                            border: 1px solid #ff00009c;
+                        }
+
+                        #DCLabel {
+                            color: #ff0000;
+                            text-shadow: 1px 1px 1px 1 #000000c2;
+                        }
+                    }
                 }
 
                 .DCPanel {

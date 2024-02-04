@@ -415,9 +415,8 @@ export class GameConfig {
         }, 0);
         // 删除操作
         this.checkOprt(tabData, true);
-        const tabOprt = { nRequest: 1 };
         // 回包
-        GameRules.PlayerManager.sendMsg('GM_OperatorFinished', tabOprt, tabData.nPlayerID);
+        GameRules.PlayerManager.sendMsg('GM_OperatorFinished', { nRequest: 1 }, tabData.nPlayerID);
 
         this.autoOprt(null, GameRules.PlayerManager.getPlayer(tabData.nPlayerID));
     }
