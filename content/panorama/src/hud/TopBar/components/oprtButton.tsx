@@ -75,18 +75,15 @@ export function OprtButton() {
                         }
                         break;
                     }
-                    case TypeOprt.TO_Finish: {
-                        if (event.nRequest == 1) {
-                            // 结束回合请求成功，前端重置state
-                            resetState();
-                        }
-                        break;
-                    }
                     case TypeOprt.TO_DeathClearing: {
                         resetState();
                         break;
                     }
                 }
+            } else if (event.typeOprt == TypeOprt.TO_Finish && event.nRequest == 1) {
+                console.log('===Receive Finish Round:', event);
+                // 结束回合请求成功，前端重置state
+                resetState();
             }
         },
         []

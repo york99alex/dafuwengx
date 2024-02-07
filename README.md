@@ -1026,16 +1026,14 @@ export const App = () => {	// 根组件
 
 1. 还剩二三十件装备技能效果
    还剩三十张卡牌策划及实现
-   还剩商店和坡道路径实现
-   还剩拍卖系统
-   还剩交易系统
-   还剩前端计分板设计
-   还剩前端UI综合美化
+   还剩坡道路径实现
+   测试拍卖系统
+   测试交易系统
    还剩前端游戏事件记录面板设计
-   还剩前端路径点提示框
    还剩前端结算页面设计
    还剩本地化文本
-
+   ==记分板本地玩家高亮==
+   
 2. 什么是pathlog?
 
    self.m_eLog = Entities:FindByName(nil, "PathLog_" .. self.m_nID)
@@ -2126,6 +2124,19 @@ ItemShare
 ## 死亡清算
 
 Player.setGold时判断金币是否小于0，触发 DeathClearing.EvtID.Event_TO_SendDeathClearing
+
+
+
+## Event_OnDamage
+
+Filter.DamageFilter.FireEvent('Event_OnDamage', tEvent);
+
+- 
+- 0 === 小狗盛宴 Ability_life_stealer_feast追加最大生命值额外伤害
+- -10000===小狗撕裂伤口 Ability_life_stealer_open_wounds，AMHC.Damage新造成额外伤害
+- ？===刃甲 反弹伤害
+- -100000===监听攻城
+- -987654321===Player.onEvent_OnDamage 处理最终伤害
 
 
 

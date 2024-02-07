@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { PathTradeType, PathType } from '../../path/PathManager';
 import { AUCTIONSTATE, TRADESTATE } from '../../mode/constant';
 

@@ -112,6 +112,8 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/econ/items/lifestealer/ls_ti9_immortal/ls_ti9_open_wounds.vpcf',
             'particles/econ/items/bloodseeker/bloodseeker_eztzhok_weapon/bloodseeker_bloodrage_ground_eztzhok_arc.vpcf',
             'particles/econ/items/ogre_magi/ogre_magi_jackpot/ogre_magi_jackpot_spindle_rig.vpcf',
+            'particles/items_fx/blademail.vpcf',
+            'particles/custom/item_crimson_guard.vpcf',
         ],
         context
     );

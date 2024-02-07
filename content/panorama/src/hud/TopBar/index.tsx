@@ -22,18 +22,25 @@ export function TopBar() {
 
     return (
         <Panel className="HudTopBar" hittest={false}>
-            <Panel className="Top Left">
+            <Button
+                className="ToggleButton Scoreboard"
+                onactivate={() => {
+                    GameUI.OnToggleScoreboard();
+                }}
+            ></Button>
+
+            <Panel className="Top Left" hittest={false}>
                 {leftPlayers?.map(playerID => (
                     <PlayerInfo key={playerID} playerID={playerID} />
                 ))}
             </Panel>
             <GameClock />
-            <Panel className="Top Right">
+            <Panel className="Top Right" hittest={false}>
                 {rightPlayers?.map(playerID => (
                     <PlayerInfo key={playerID} playerID={playerID} />
                 ))}
             </Panel>
-            <Panel className="OprtPanel">
+            <Panel className="OprtPanel" hittest={false}>
                 <Panel className="CountDown">
                     <DOTAScenePanel
                         id="CountDownScene"

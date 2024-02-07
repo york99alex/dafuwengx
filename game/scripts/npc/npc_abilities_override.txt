@@ -133,7 +133,7 @@
 // Level 3 - Purple Recipes	
 // "defense"
 	"item_hood_of_defiance"   "REMOVE"
-	// "item_vanguard"   "REMOVE"
+	"item_vanguard"   "REMOVE"
 	"item_blade_mail"   "REMOVE"
 	"item_aeon_disk"	   "REMOVE"
 	"item_soul_booster"   "REMOVE"

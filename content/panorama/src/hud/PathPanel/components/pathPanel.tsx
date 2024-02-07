@@ -151,97 +151,94 @@ export function PathPanel() {
     }
 
     /**悬浮提示路径信息 */
-    function ShowPathTip() {
-        const cursorTargetEnts = [];
-        let cursorEntities = GameUI.FindScreenEntities(GameUI.GetCursorPosition());
+    // function ShowPathTip() {
+    //     const cursorTargetEnts = [];
+    //     let cursorEntities = GameUI.FindScreenEntities(GameUI.GetCursorPosition());
 
-        for (const entity of cursorEntities) {
-            cursorTargetEnts.push(entity.entityIndex);
-            let unitname = Entities.GetUnitName(entity.entityIndex);
-            if (unitname.length && unitname.length >= 4) {
-                // console.log('===unitname:', unitname, 'Hidden?:', pathPanel.current?.BHasClass('Hidden'));
-                if (unitname.includes('rune_') && PathMgr.tipPanel == null) {
-                    PathMgr.cursorName = unitname;
-                    PathMgr.cursorHoverIndex = entity.entityIndex;
-                    PathMgr.tipPanel = $.CreatePanel('Panel', $.GetContextPanel(), 'PathTipPanel');
-                    const abs = Entities.GetAbsOrigin(PathMgr.cursorHoverIndex);
-                    PathMgr.tipPanel.style.position =
-                        (Game.WorldToScreenX(abs[0], abs[1], abs[2]) / Game.GetScreenWidth()) * 100 +
-                        '% ' +
-                        (Game.WorldToScreenY(abs[0], abs[1], abs[2]) / Game.GetScreenHeight()) * 100 +
-                        '% 0';
-                    PathMgr.tipPanel.style.tooltipPosition = 'top';
-                    PathMgr.tipPanel.style.tooltipArrowPosition = '50% 50%';
-                    PathMgr.tipPanel.style.tooltipBodyPosition = '50% 50%';
-                    $.DispatchEvent('DOTAShowBuffTooltip', PathMgr.tipPanel, PathMgr.cursorHoverIndex, 1, true);
-                    const buffName = UIHelper.findOtheXMLPanel('DOTABuffTooltip')?.FindChildTraverse('BuffName') as LabelPanel;
-                    const buffDescription = UIHelper.findOtheXMLPanel('DOTABuffTooltip')?.FindChildTraverse('BuffDescription') as LabelPanel;
-                    if (buffName != null && buffDescription != null) {
-                        buffName.text = $.Localize('#DOTA_Tooltip_Modifier_' + unitname);
-                        buffDescription.text = $.Localize('#DOTA_Tooltip_Modifier_' + unitname + '_Description');
-                    }
-                    break;
-                } else if (unitname.includes('PathLog_') && pathPanel.current != null && pathPanel.current.BHasClass('Hidden')) {
-                    PathMgr.cursorName = unitname;
-                    PathMgr.cursorHoverIndex = entity.entityIndex;
+    //     for (const entity of cursorEntities) {
+    //         cursorTargetEnts.push(entity.entityIndex);
+    //         let unitname = Entities.GetUnitName(entity.entityIndex);
+    //         if (unitname.length && unitname.length >= 4) {
+    //             if (unitname.includes('rune_') && PathMgr.tipPanel == null) {
+    //                 PathMgr.cursorName = unitname;
+    //                 PathMgr.cursorHoverIndex = entity.entityIndex;
+    //                 PathMgr.tipPanel = $.CreatePanel('Panel', $.GetContextPanel(), 'PathTipPanel');
+    //                 const abs = Entities.GetAbsOrigin(PathMgr.cursorHoverIndex);
+    //                 PathMgr.tipPanel.style.position =
+    //                     (Game.WorldToScreenX(abs[0], abs[1], abs[2]) / Game.GetScreenWidth()) * 100 +
+    //                     '% ' +
+    //                     (Game.WorldToScreenY(abs[0], abs[1], abs[2]) / Game.GetScreenHeight()) * 100 +
+    //                     '% 0';
+    //                 PathMgr.tipPanel.style.tooltipPosition = 'top';
+    //                 PathMgr.tipPanel.style.tooltipArrowPosition = '50% 50%';
+    //                 PathMgr.tipPanel.style.tooltipBodyPosition = '50% 50%';
+    //                 $.DispatchEvent('DOTAShowBuffTooltip', PathMgr.tipPanel, PathMgr.cursorHoverIndex, 1, true);
+    //                 const buffName = UIHelper.findOtheXMLPanel('DOTABuffTooltip')?.FindChildTraverse('BuffName') as LabelPanel;
+    //                 const buffDescription = UIHelper.findOtheXMLPanel('DOTABuffTooltip')?.FindChildTraverse('BuffDescription') as LabelPanel;
+    //                 if (buffName != null && buffDescription != null) {
+    //                     buffName.text = $.Localize('#DOTA_Tooltip_Modifier_' + unitname);
+    //                     buffDescription.text = $.Localize('#DOTA_Tooltip_Modifier_' + unitname + '_Description');
+    //                 }
+    //                 break;
+    //             } else if (unitname.includes('PathLog_') && pathPanel.current != null && pathPanel.current.BHasClass('Hidden')) {
+    //                 PathMgr.cursorName = unitname;
+    //                 PathMgr.cursorHoverIndex = entity.entityIndex;
 
-                    unitname = unitname.substring(8);
-                    console.log('===PathTip===ID:', unitname);
+    //                 unitname = unitname.substring(8);
 
-                    // 启动<PathPanel>
-                    // resetState();
-                    const pathType = PathType[parseInt(unitname)];
-                    setEvent({
-                        typePath: pathType,
-                        nPathID: parseInt(unitname),
-                    });
-                    pathPanel.current.RemoveClass('Hidden');
-                    oprtPanel.current!.style.visibility = 'collapse';
+    //                 // 启动<PathPanel>
+    //                 // resetState();
+    //                 const pathType = PathType[parseInt(unitname)];
+    //                 setEvent({
+    //                     typePath: pathType,
+    //                     nPathID: parseInt(unitname),
+    //                 });
+    //                 pathPanel.current.RemoveClass('Hidden');
+    //                 oprtPanel.current!.style.visibility = 'collapse';
 
-                    if (PathDomainsType.includes(pathType)) {
-                        // 领地路径
-                        setTitle($.Localize('#TypeOperator_AYZZ'));
-                    } else if (PathMonstersType.includes(pathType)) {
-                        // 打野路径
-                        setTitle($.Localize('#TypeOperator_AtkMonster'));
-                    } else if (pathType == PathPrisonType) {
-                        setTitle($.Localize('#TypeOperator_PRISON_title'));
-                    }
-                    break;
-                }
-            }
-        }
-        // console.log('===1:', PathMgr.tipPanel != null);
-        // console.log('===2:', !pathPanel.current?.BHasClass('Hidden'));
-        // console.log('===3:', PathMgr.cursorHoverIndex != null);
-        // console.log('===4:', PathMgr.cursorHoverIndex != null ? !PathMgr.cursorTargetEnts.includes(PathMgr.cursorHoverIndex) : false);
+    //                 if (PathDomainsType.includes(pathType)) {
+    //                     // 领地路径
+    //                     setTitle($.Localize('#TypeOperator_AYZZ'));
+    //                 } else if (PathMonstersType.includes(pathType)) {
+    //                     // 打野路径
+    //                     setTitle($.Localize('#TypeOperator_AtkMonster'));
+    //                 } else if (pathType == PathPrisonType) {
+    //                     setTitle($.Localize('#TypeOperator_PRISON_title'));
+    //                 }
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     // console.log('===1:', PathMgr.tipPanel != null);
+    //     // console.log('===2:', !pathPanel.current?.BHasClass('Hidden'));
+    //     // console.log('===3:', PathMgr.cursorHoverIndex != null);
+    //     // console.log('===4:', PathMgr.cursorHoverIndex != null ? !PathMgr.cursorTargetEnts.includes(PathMgr.cursorHoverIndex) : false);
 
-        if (
-            (PathMgr.tipPanel != null || !pathPanel.current?.BHasClass('Hidden')) &&
-            PathMgr.cursorHoverIndex != null &&
-            !cursorTargetEnts.includes(PathMgr.cursorHoverIndex)
-        ) {
-            console.log('===PathTip');
-            $.DispatchEvent('DOTAHideBuffTooltip');
+    //     if (
+    //         (PathMgr.tipPanel != null || !pathPanel.current?.BHasClass('Hidden')) &&
+    //         PathMgr.cursorHoverIndex != null &&
+    //         !cursorTargetEnts.includes(PathMgr.cursorHoverIndex)
+    //     ) {
+    //         $.DispatchEvent('DOTAHideBuffTooltip');
 
-            if (PathMgr.tipPanel != null && PathMgr.cursorName?.includes('rune_')) {
-                PathMgr.tipPanel.visible = false;
-                PathMgr.tipPanel.DeleteAsync(0);
-                PathMgr.tipPanel = null;
-            } else if (!pathPanel.current?.BHasClass('Hidden')) {
-                pathPanel.current?.AddClass('Hidden');
-                PathMgr.tipPanel = null;
-                resetState();
-                $.Schedule(1, ShowPathTip);
-                return;
-            }
-            PathMgr.cursorName = null;
-            PathMgr.cursorHoverIndex = null;
-        } else {
-            $.Schedule(0.2, ShowPathTip);
-        }
-    }
-    ShowPathTip();
+    //         if (PathMgr.tipPanel != null && PathMgr.cursorName?.includes('rune_')) {
+    //             PathMgr.tipPanel.visible = false;
+    //             PathMgr.tipPanel.DeleteAsync(0);
+    //             PathMgr.tipPanel = null;
+    //         } else if (!pathPanel.current?.BHasClass('Hidden')) {
+    //             pathPanel.current?.AddClass('Hidden');
+    //             PathMgr.tipPanel = null;
+    //             resetState();
+    //             $.Schedule(1, ShowPathTip);
+    //             return;
+    //         }
+    //         PathMgr.cursorName = null;
+    //         PathMgr.cursorHoverIndex = null;
+    //     } else {
+    //         $.Schedule(0.2, ShowPathTip);
+    //     }
+    // }
+    // ShowPathTip();
 
     return (
         <Panel className="PathPanel Hidden" ref={pathPanel} hittest={true}>

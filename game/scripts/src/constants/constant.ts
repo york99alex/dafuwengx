@@ -73,7 +73,7 @@ export const GOLD_OUT_PRISON: number = 300;
 // 抽卡消耗
 export const SKIN_RANDOM_GOLD: number = 30;
 
-// 每等级经验
+/**每等级经验 */
 export const LEVEL_EXP: Record<number, number> = {
     1: 1,
     2: 2,
@@ -144,6 +144,21 @@ export const HERO_TO_BANNER = {
     npc_dota_hero_dragon_knight: 9,
     npc_dota_hero_undying: 10,
     npc_dota_hero_life_stealer: 11,
+};
+
+/**英雄对应攻击能力 */
+export const HERO_TO_AttackCap = {
+    npc_dota_hero_phantom_assassin: UnitAttackCapability.MELEE_ATTACK,
+    npc_dota_hero_meepo: UnitAttackCapability.MELEE_ATTACK,
+    npc_dota_hero_pudge: UnitAttackCapability.MELEE_ATTACK,
+    npc_dota_hero_lina: UnitAttackCapability.RANGED_ATTACK,
+    npc_dota_hero_zuus: UnitAttackCapability.RANGED_ATTACK,
+    npc_dota_hero_axe: UnitAttackCapability.MELEE_ATTACK,
+    npc_dota_hero_techies: UnitAttackCapability.RANGED_ATTACK,
+    npc_dota_hero_bloodseeker: UnitAttackCapability.MELEE_ATTACK,
+    npc_dota_hero_dragon_knight: UnitAttackCapability.MELEE_ATTACK,
+    npc_dota_hero_undying:UnitAttackCapability.MELEE_ATTACK,
+    npc_dota_hero_life_stealer: UnitAttackCapability.MELEE_ATTACK,
 };
 
 /**英雄对应兵卒名 */

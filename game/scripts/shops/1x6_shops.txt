@@ -135,10 +135,11 @@
 		"item"		"item_qtg_rod_of_atos"
 		// 刷新球，5000，2500丰饶*2，5回合CD 3点耗蓝，每回合英雄/兵卒回复24%生命值，英雄2回合回2蓝，兵卒提升40%回蓝，30点攻击力
 		"item"		"item_qtg_refresher"
-		// 玲珑心，4000，2回蓝+1活力球+1能量球，300血，2点蓝上限，2点回蓝
+		// 玲珑心，4000，2回蓝+1活力球+1能量球，300血，2点蓝上限，每2回合回2点蓝，50%兵卒回蓝提升，CD-1回合
 		"item"		"item_qtg_octarine_core"
-		// 邪恶镰刀，5500，2500+2000+1000，3点蓝上限，3点回蓝
-		"item"		"item_qtg_sheepstick"
+		// 邪恶镰刀，5500，2500+2000+1000，3点蓝上限，每1回合回1点蓝
+		// TODO:
+		// "item"		"item_qtg_sheepstick"
 		// 缚灵索
 		// "item"		"item_gungir"
 	}
@@ -147,12 +148,12 @@
 	"defense"   // 防具
 	{
 		// 先锋盾，2000，1000活力球+1000治疗指环
-		"item"		"item_vanguard"
+		"item"		"item_qtg_vanguard"
 		// 刃甲，3000，1500大剑+1500的板甲
 		"item"		"item_qtg_blade_mail"
 		// 振魂石，设计为将受到的魔法伤害转变为生命值？
 		// 3000，1000活力球，1000能量球，1000治疗指环
-		"item"		"item_qtg_soul_booster" // 振魂石,再次鼓起丧失的勇气
+		// "item"		"item_qtg_soul_booster" // 振魂石,再次鼓起丧失的勇气
 		// 赤红甲，2000先锋盾+1000头盔（+500？卷轴）
 		"item"		"item_qtg_crimson_guard"		
 		// 黑皇杖，1000斧头+1500大剑+1500卷轴

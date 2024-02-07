@@ -1,5 +1,5 @@
 ﻿Tokens,English,SChinese
-addon_game_name,Big General Monopoly,擎天阁大富翁
+addon_game_name,Big General Monopoly,刀富翁
 1x6,1x6,1x6
 DOTA_Tooltip_ability_tt1,WAY,让我能去改变能改变的事
 DOTA_Tooltip_ability_tt2,YOUR,请赋予我勇气
@@ -154,7 +154,7 @@ DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_slow,,%移动�
 DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_bonus_move_speed,,%移动速度加成：
 DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_bonus_attack_speed,,攻击速度加成：
 DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike,,死亡渴望
-DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike_debuff_Description,,增加%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%攻击速度，增加%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%移动速度。
+DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike_Description,,增加%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%攻击速度，增加%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%移动速度。
 DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike_debuff,,死亡渴望减速
 DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike_debuff_Description,,死亡渴望减速%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%
 DOTA_Tooltip_ability_Ability_undying_flesh_golem,,血肉傀儡
@@ -180,13 +180,10 @@ DOTA_Tooltip_ability_Ability_life_stealer_feast_Note0,,回复和伤害都仅在�
 DOTA_Tooltip_ability_Ability_life_stealer_feast_Note1,,额外伤害直接附加在原始伤害中，视为同一次伤害。
 DOTA_Tooltip_modifier_ability_life_stealer_open_wounds,,撕裂伤口
 DOTA_Tooltip_modifier_ability_life_stealer_open_wounds_Description,,移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%
-
-
 AbilityError_Target,,目标错误
 AbilityError_Range,,不在范围内
 AbilityError_TargetPath,,仅路径目标
 AbilityError_NoBomb,,没有地雷无需标识
-
 bz_pa_1,PA★,幻影刺客★
 bz_pa_11,PA★★,幻影刺客★★
 bz_pa_111,PA★★★,幻影刺客★★★
@@ -511,6 +508,14 @@ DOTA_Tooltip_Ability_item_qtg_pipe_health_regen_hero,,%+每回合英雄回复最
 DOTA_Tooltip_Ability_item_qtg_pipe_health_regen_bz,,%+每回合兵卒回复最大生命值
 DOTA_Tooltip_modifier_qtg_pipe_active,,一如法术序列
 DOTA_Tooltip_modifier_qtg_pipe_active_Description,,受到魔法伤害时有35%%概率消耗1点蓝量抵挡该次伤害。
+DOTA_Tooltip_Ability_item_qtg_witch_blade,Witch Blade,巫师之刃
+DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_attack_speed,,+$attack
+DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_intellect,,+$int
+DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_armor,,+$armor
+DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_damage,,+$damage
+DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_project_speed,,+攻击弹道速度
+DOTA_Tooltip_Ability_item_qtg_witch_blade_Description,,<h1>被动：巫师之刃</h1>每次攻击命中后额外造成玩家英雄智力%attack_intell%%%的魔法伤害。
+DOTA_Tooltip_Ability_item_qtg_witch_blade_Lore,A spiteful blade inadvertently possessed by the soul of its incautious creator.,一把怨毒的战刃，它鲁莽的创造者不慎将自己的灵魂依附在上面。
 DOTA_Tooltip_Ability_item_qtg_orchid,,紫怨
 DOTA_Tooltip_Ability_item_qtg_orchid_Description,,<h1>主动：灵魂枷锁</h1>沉默目标英雄及其所有兵卒%silence_duration%回合。\n\n<h1>被动：英雄回蓝</h1>每%mana_regen_hero_cd%回合回复英雄%mana_regen_hero%点蓝量。
 DOTA_Tooltip_Ability_item_qtg_orchid_Lore,,一颗诞自火焰恶魔精华的榴石。
@@ -554,7 +559,34 @@ DOTA_Tooltip_Ability_item_qtg_refresher_health_regen_hero,,%+每回合英雄回�
 DOTA_Tooltip_Ability_item_qtg_refresher_health_regen_bz,,%+每回合兵卒回复最大生命值
 DOTA_Tooltip_modifier_qtg_refresher_cd,,刷新球的英雄回蓝
 DOTA_Tooltip_modifier_qtg_refresher_cd_Description,,英雄回蓝冷却中，剩余回合数。
-
+DOTA_Tooltip_Ability_item_qtg_octarine_core,,玲珑心
+DOTA_Tooltip_Ability_item_qtg_octarine_core_bonus_health,,+$health
+DOTA_Tooltip_Ability_item_qtg_octarine_core_bonus_mana,,+$mana
+DOTA_Tooltip_Ability_item_qtg_octarine_core_mana_regen_bz,,%+兵卒蓝量获取提升
+DOTA_Tooltip_Ability_item_qtg_octarine_core_Description,,<h1>被动：英雄回蓝</h1>每%mana_regen_hero_cd%回合回复英雄%mana_regen_hero%点蓝量。\n\n<h1>被动：冷却减少</h1>降低英雄所有回合类技能<font color='#7e8c9d'> %cd_sub% </font>回合的冷却时间和<font color='#7e8c9d'> %mana_sub% </font>点的魔法消耗。
+DOTA_Tooltip_Ability_item_qtg_octarine_core_Lore,At the core of spellcraft are spectrums only the very gifted can sense.,位于法术技艺核心的，是只有身负异能之人才能感知的光带。
+DOTA_Tooltip_Ability_item_qtg_vanguard,,先锋盾
+DOTA_Tooltip_Ability_item_qtg_vanguard_bonus_health,,+$health
+DOTA_Tooltip_Ability_item_qtg_vanguard_health_regen_hero,,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_vanguard_health_regen_bz,,%+每回合兵卒回复最大生命值
+DOTA_Tooltip_ability_item_qtg_vanguard_Description,,<h1>被动：伤害格挡</h1> 拥有%block_chance%%%几率格挡伤害，近战英雄可格挡%block_damage_melee%点伤害，远程英雄可格挡%block_damage_ranged%点。
+DOTA_Tooltip_Ability_item_qtg_vanguard_Lore,,能够让持有者躲过最致命攻击的强力盾牌。
+DOTA_Tooltip_Ability_item_qtg_blade_mail,,刃甲
+DOTA_Tooltip_Ability_item_qtg_blade_mail_bonus_damage,,+$damage
+DOTA_Tooltip_Ability_item_qtg_blade_mail_bonus_armor,,+$armor
+DOTA_Tooltip_Ability_item_qtg_blade_mail_Description,,<h1>主动：伤害反弹</h1>在一回合内，所有来源的伤害都会被反弹并可以从中获得金币。对所有兵卒生效。
+DOTA_Tooltip_Ability_item_qtg_blade_mail_Lore,,覆盖着尖锐剃刀的盔甲，战斗中可以用来做出不顾自身安危的烈士行为。
+DOTA_Tooltip_modifier_item_qtg_blade_mail_buff,,刃甲反射
+DOTA_Tooltip_modifier_item_qtg_blade_mail_buff_Description,,正在将伤害反弹给攻击单位
+DOTA_Tooltip_Ability_item_qtg_crimson_guard,,赤红甲
+DOTA_Tooltip_Ability_item_qtg_crimson_guard_bonus_health,,+$health
+DOTA_Tooltip_Ability_item_qtg_crimson_guard_bonus_armor,,+$armor
+DOTA_Tooltip_Ability_item_qtg_crimson_guard_health_regen_hero,,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_crimson_guard_health_regen_bz,,%+每回合兵卒回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_crimson_guard_Description,,<h1>主动：坚盾</h1>使英雄和所有友方兵卒每次受到物理攻击都有%active_chance%%%几率格挡%block_damage_melee%点伤害，持续%duration%回合。\n\n<h1>被动：伤害格挡</h1>近战英雄每次受到攻击都有%block_chance%%%几率格挡%block_damage_melee%点伤害，远程英雄则是格挡%block_damage_ranged%点。
+DOTA_Tooltip_Ability_item_qtg_crimson_guard_Lore,,原为抵御可怕的年兽所打造的铠甲。
+DOTA_Tooltip_modifier_item_qtg_crimson_guard_buff,,坚盾
+DOTA_Tooltip_modifier_item_qtg_crimson_guard_buff_Description,,每次受到攻击都有100%%几率格挡%dMODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK%点伤害。
 
 Card_20005,,阎刃
 Card_20005_Description,,指定玩家出狱或入狱
@@ -566,8 +598,6 @@ Card_10007,,远古禁地
 Card_10007_Description,,入侵远古禁地
 Card_10008,,拉野
 Card_10008_Description,,刷新目标野区生物
-
-
 Error_ItemMax,,物品栏已满
 Error_ItemSide,,限边路商店购买
 Error_ItemSecret,,限神秘商店购买
@@ -604,7 +634,6 @@ Error_SendBid_Failed_0,,拍卖数据错误
 Error_SendBid_Failed_2,,竞拍玩家错误
 Error_SendBid_Failed_3,,竞拍金币错误
 Error_AYZZ_Failed,,安营扎寨失败
-
 TradeButtonText,T\nR\nA\nD\nE,交\n易\n行
 AuctionButtonText,A\nU\nC\nT\nI\nO\nN,拍\n卖\n场
 TradeTitle,,发起交易
@@ -638,7 +667,6 @@ SendPriceText,,起拍价格：
 FinishRound,,结束回合
 FinishDC,,结束清算
 RoundText,Round,回合
-
 PathName_1,,起点
 PathName_2,,秘密宝藏
 PathName_3,,天辉 ● 其一
@@ -731,19 +759,15 @@ DOTA_Tooltip_Modifier_rune_8,,智慧
 DOTA_Tooltip_Modifier_rune_8_Description,,获得5点经验
 DOTA_Tooltip_Modifier_rune_9,,护盾
 DOTA_Tooltip_Modifier_rune_9_Description,,制造一个英雄最大生命值50%的护盾，可以庇佑其受到的伤害并不损失金币
-
-
 supply_title,,补给环节
 supply_tip_ready,,准备阶段
 supply_tip_turn,,选择补给品（左键选择，右键于商店查看）
 supply_tip_end,,补给结束
 supply_tip_select,,请挑选
-
 // 通用文本
 text_understand,,了解
 text_give_up,,放弃
 text_go_to,,前往
-
 // 路径面板
 TypeOperator_AYZZ,,安营扎寨
 TypeOperator_AtkMonster,,猎野
@@ -756,11 +780,9 @@ TypeOperator_AYZZ_Owner,, 获得该领地
 TypeOperator_PRISON_title,,炎魔炼狱
 TypeOperator_GCLD,,攻城掠地
 Prison_Out,,买活
-
 // 攻城描述
 PathGCLDDescription,,与敌方兵卒决斗，直到有一方战败。<br>或下个自身回合开始。双方都可提升经验。<br><font color='#FFFF00'>胜利：击杀敌兵，抢占领地。</font><br><font color='#FF0000'>失败：被打败，交纳金币。</font> <br>兵卒★：1经验，100金币。<br>兵卒★★：2经验，200金币。<br>兵卒★★★：3经验，300金币。
 PathTitleTip_GCLD,,是否攻城？
-
 //===领地描述===
 // TP
 SoldierKey1_3,,TP有一 :
@@ -774,7 +796,6 @@ SoldierVal4_3,,<font color='#FFFF00'> 400 </font>过路费
 Capture_3,,<font color='#FFFF00'> 200 </font>耗资
 PathBuff_3,,传送阵
 PathBuffDescription_3,,进入己方传送阵时<br>获得一张 <font color='#0099ff'> 传送卷轴 </font>
-
 // 天辉
 SoldierKey1_12,,★兵卒 :
 SoldierKey2_12,,★★兵卒 :
@@ -881,3 +902,12 @@ PathBuff_18,,圣洁净土
 PathBuffDescription_18,,对驻足在圣所的敌人造成神圣伤害。<br>神圣的殿堂前没有纷争也没有不速之客。<br>【特殊效果 : 石佛】<br>圣所兵卒无法攻击。无法被攻城。
 PathBuffKey1_18,,纯粹伤害 : 
 PathBuffVal1_18,,1000 / 2000 / 4000
+// tab计分板
+scoreboard_title_level,LEVEL,等级
+scoreboard_title_total,TOTAL,总资产
+scoreboard_title_gold,GOLD,金钱
+scoreboard_title_path,CAMP,地产
+scoreboard_title_kills,K,击
+scoreboard_title_gcld,SIEGE,攻
+scoreboard_title_mute,MUTE,屏蔽
+scoreboard_tool_tip_mute_trade,Reject his trade,拒绝他的交易（还未实现=w=）

@@ -27,6 +27,7 @@ export const TypeOprt = {
     TO_BidAuction: 1008,
     TO_FinishAuction: 1009,
     TO_UseCard: 1010,
+    TO_MuteTrade: 1011,
 };
 
 export type player_info = 'player_info_0' | 'player_info_1' | 'player_info_2' | 'player_info_3' | 'player_info_4' | 'player_info_5';
@@ -106,3 +107,32 @@ export const TP_SHOP_SIDE = 1002;
 export const TP_SHOP_SECRET = 1003;
 /**野怪路径集合 */
 export const TP_MONSTERS = [TP_MONSTER_1, TP_MONSTER_2, TP_MONSTER_3];
+
+/**每等级经验 */
+export const LEVEL_EXP: Record<number, number> = {
+    1: 1,
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5,
+    6: 6,
+    7: 8,
+    8: 10,
+    9: 12,
+    10: 14,
+    11: 16,
+    12: 18,
+    13: 20,
+    14: 22,
+    15: 24,
+    16: 27,
+    17: 30,
+    18: 33,
+    19: 36,
+    20: 39,
+    21: 42,
+    22: 45,
+    23: 48,
+    24: 51,
+    25: 54,
+};

@@ -140,6 +140,7 @@ export class GameConfig {
         gamemode.SetCustomHeroMaxLevel(25); // 设置自定义英雄最大等级
 
         gamemode.SetInnateMeleeDamageBlockAmount(0); // 设置近战英雄天生格挡的伤害
+        gamemode.SetInnateMeleeDamageBlockPercent(0); // 设置近战英雄天生格挡的几率
         gamemode.SetTPScrollSlotItemOverride(item_qtg_tpscroll.name); // 设置TP卷轴槽位覆盖装备
 
         gamemode.SetCanSellAnywhere(true);
@@ -376,8 +377,8 @@ export class GameConfig {
                 GameRules.EventManager.FireEvent(Auction.EvtID.Event_TO_BidAuction, tabData);
             } else if (tabData.typeOprt == TypeOprt.TO_UseCard) {
                 GameRules.EventManager.FireEvent(CardManager.EvtID.Event_CardUseRequest, tabData);
-            } else {
-                //
+            } else if (tabData.typeOprt == TypeOprt.TO_MultTrade) {
+                this.processMultTrade(tabData);
             }
             // } else {
         } else if (this.checkOprt(tabData) != false) {
@@ -416,7 +417,7 @@ export class GameConfig {
         // 删除操作
         this.checkOprt(tabData, true);
         // 回包
-        GameRules.PlayerManager.sendMsg('GM_OperatorFinished', { nRequest: 1 }, tabData.nPlayerID);
+        GameRules.PlayerManager.sendMsg('GM_OperatorFinished', { typeOprt: TypeOprt.TO_Finish, nRequest: 1 }, tabData.nPlayerID);
 
         this.autoOprt(null, GameRules.PlayerManager.getPlayer(tabData.nPlayerID));
     }
@@ -468,7 +469,7 @@ export class GameConfig {
             }
         }
         // if (oPlayer.m_eHero.GetUnitName() == "npc_dota_hero_phantom_assassin") {
-        // nNum1 = 2;
+        // nNum1 = 1;
         // nNum2 = 2;
         // }else{
         //     nNum1 = 3
@@ -721,6 +722,13 @@ export class GameConfig {
         if (tabOprt['nRequest'] == 0 || tabOprt['nRequest'] == 1) {
             this.checkOprt(tabData, true);
         }
+    }
+
+    /**处理屏蔽交易 */
+    processMultTrade(tabData) {
+        // TODO:
+        // print('Process_TO_MultTrade: data is ');
+        // DeepPrintTable(tabData);
     }
 
     /**自动处理操作 */

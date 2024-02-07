@@ -1,3 +1,6 @@
+import { useNetTableKey } from 'react-panorama-x';
+import { player_info } from '../mode/constant';
+
 export class PlayerManager {
     /**当前玩家ID */
     playerID: PlayerID = Players.GetLocalPlayer();
@@ -22,5 +25,15 @@ export class PlayerManager {
         }
         const ids: PlayerID[] = Object.values(players ?? []);
         return ids;
+    }
+
+    getPlayerSumGold(playerID: PlayerID): number {
+        const keyname = ('player_info_' + playerID) as player_info;
+        return useNetTableKey('GamingTable', keyname)?.nSumGold ?? 0;
+    }
+
+    getPlayerGold(playerID: PlayerID): number {
+        const keyname = ('player_info_' + playerID) as player_info;
+        return useNetTableKey('GamingTable', keyname)?.nGold ?? 0;
     }
 }

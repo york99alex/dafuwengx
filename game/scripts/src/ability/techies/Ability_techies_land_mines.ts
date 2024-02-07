@@ -194,7 +194,12 @@ export class modifier_techies_land_mines extends BaseModifier {
                 'Event_OnDamage',
                 (event: DamageEvent) => {
                     if (event.bBladeMail) {
-                        // TODO: 处理刃甲，刃甲反炸弹的伤害，不回蓝
+                        if (IsValid(event.ability) && event.ability.GetAbilityName) {
+                            if (event.ability.GetAbilityName() == 'Ability_techies_land_mines') {
+                                // 刃甲反炸弹的伤害，不回蓝
+                                event.bIgnoreBZHuiMo = true;
+                            }
+                        }
                     }
                 },
                 this

@@ -379,7 +379,7 @@ export class PathDomain extends Path {
                     }
                 },
                 this,
-                10000
+                -100000
             )
         );
 

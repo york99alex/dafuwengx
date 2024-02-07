@@ -34,6 +34,7 @@ GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_QUICK_STATS, f
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_QUICKBUY, false);
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_GOLD, false);
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR, false);
+GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_FLYOUT_SCOREBOARD, false);
 
 export const UIHud = $.GetContextPanel().GetParent()!.GetParent()!.GetParent()!;
 HideHudElement(UIHud, 'CommonItems');
@@ -43,7 +44,8 @@ HideHudElement(UIHud, 'ToggleAdvancedShop');
 HideHudElement(UIHud, 'inventory_neutral_slot_container');
 HideHudElement(UIHud, 'ShopButton');
 HideHudElement(UIHud, 'shop_launcher_bg');
-// HideHudElement(hud, 'stash');
+HideHudElement(UIHud, 'ToggleScoreboardButton');
+// HideHudElement(UIHud, 'stash');
 
 export const PlayerMgr = new PlayerManager();
 export const GameMgr = new GameManager();

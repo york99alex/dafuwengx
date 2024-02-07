@@ -3,14 +3,17 @@ import { IsValid } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { AbilityManager } from '../../ability/abilitymanager';
+import { Player } from '../../player/player';
 
 /**
- * 虚无宝石，1000，英雄每2回合回复1点蓝，兵卒提升20%回蓝
- * mana_regen_hero 1	mana_regen_bz 20
- * CD：2
+ * 玲珑心，4000，2回蓝+1活力球+1能量球，300血，2点蓝上限，每2回合回2点蓝，50%兵卒回蓝提升，CD-1回合
+ * bonus_health 300	bonus_mana 2
+ * mana_regen_hero 2	mana_regen_hero_cd 2
+ * mana_regen_bz 50
+ * cd_sub 1 mana_sub 1
  */
 @registerAbility()
-export class item_qtg_void_stone extends TSBaseItem {
+export class item_qtg_octarine_core extends TSBaseItem {
     IsPassive(): boolean {
         return true;
     }
@@ -40,19 +43,33 @@ export class item_qtg_void_stone extends TSBaseItem {
 }
 
 @registerModifier()
-export class item_qtg_void_stone_modifier extends BaseModifier {
+export class item_qtg_octarine_core_modifier extends BaseModifier {
+    bonus_health: number;
+    bonus_mana: number;
     mana_regen_bz: number;
+    cd_sub: number;
+    mana_sub: number;
     eventID: number;
+    player: Player;
     IsHidden(): boolean {
         return true;
     }
     OnCreated(params: object): void {
         if (!IsValid(this)) return;
         if (!IsValid(this.GetAbility())) return;
+        this.bonus_health = this.GetAbility().GetSpecialValueFor('bonus_health');
+        this.bonus_mana = this.GetParent().IsRealHero() ? this.GetAbility().GetSpecialValueFor('bonus_mana') : 0;
         this.mana_regen_bz = this.GetAbility().GetSpecialValueFor('mana_regen_bz');
+        this.cd_sub = this.GetAbility().GetSpecialValueFor('cd_sub');
+        this.mana_sub = this.GetAbility().GetSpecialValueFor('mana_sub');
 
         if (!IsServer()) return;
+
+        this.player = GameRules.PlayerManager.getPlayer(this.GetParent().GetPlayerOwnerID());
         if (this.GetParent().IsRealHero()) {
+            this.player.m_nManaMaxBase += this.bonus_mana;
+            this.player.setCDSub(this.player.m_nCDSub + this.cd_sub);
+            this.player.setManaSub(this.player.m_nManaSub + this.mana_sub);
             // 英雄回蓝
             this.StartIntervalThink(0.1);
         } else {
@@ -77,9 +94,23 @@ export class item_qtg_void_stone_modifier extends BaseModifier {
         if (!IsServer()) return;
         if (!this.eventID) return;
         GameRules.EventManager.UnRegisterByID(this.eventID);
+        if (this.GetParent().IsRealHero()) {
+            this.player.m_nManaMaxBase -= this.bonus_mana;
+            this.player.setCDSub(this.player.m_nCDSub + this.cd_sub);
+            this.player.setManaSub(this.player.m_nManaSub + this.mana_sub);
+        }
         this.eventID = null;
     }
     GetAttributes(): ModifierAttribute {
         return ModifierAttribute.MULTIPLE;
+    }
+    DeclareFunctions(): ModifierFunction[] {
+        return [ModifierFunction.HEALTH_BONUS, ModifierFunction.MANA_BONUS];
+    }
+    GetModifierHealthBonus(): number {
+        return this.bonus_health;
+    }
+    GetModifierManaBonus(): number {
+        return this.bonus_mana;
     }
 }

@@ -37,6 +37,7 @@ import { CDOTA_BaseNPC_BZ } from './CDOTA_BaseNPC_BZ';
 import { TSBaseAbility } from '../ability/tsBaseAbilty';
 import { ParaAdjuster } from '../utils/paraadjuster';
 import { Card } from '../card/card';
+import { BaseAbility } from '../utils/dota_ts_adapter';
 
 export type player_info = 'player_info_0' | 'player_info_1' | 'player_info_2' | 'player_info_3' | 'player_info_4' | 'player_info_5';
 export type DamageEvent = {
@@ -51,6 +52,7 @@ export type DamageEvent = {
     bIgnoreBZHuiMo?: boolean;
     bIgnoreRepeat?: boolean;
     bBladeMail?: boolean; // 来源是否为刃甲
+    ability?: BaseAbility;
 };
 
 export class Player {

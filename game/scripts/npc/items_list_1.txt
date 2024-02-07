@@ -177,14 +177,14 @@
 			"01" "item_mystic_staff;item_ultimate_orb;item_qtg_void_stone"
 		}
 	}
-	"item_recipe_vanguard" {
+	"item_recipe_qtg_vanguard" {
 		"BaseClass" "item_datadriven"
 		"AbilityValues" {
 		}
 		"ItemCost" "0"
 		"Model" "models/props_gameplay/recipe.vmdl"
 		"ItemRecipe" "1"
-		"ItemResult" "item_vanguard"
+		"ItemResult" "item_qtg_vanguard"
 		"ItemRequirements" {
 			"01" "item_qtg_ring_of_health;item_vitality_booster"
 		}
@@ -223,7 +223,7 @@
 		"ItemRecipe" "1"
 		"ItemResult" "item_qtg_crimson_guard"
 		"ItemRequirements" {
-			"01" "item_vanguard;item_qtg_helm_of_iron_will"
+			"01" "item_qtg_vanguard;item_qtg_helm_of_iron_will"
 		}
 	}
 	"item_recipe_shivas_guard" {
@@ -1045,16 +1045,24 @@
 		"ItemRequirements" {
 		}
 	}
-	"item_vanguard" {
-		"BaseClass" "item_vanguard"
+	"item_qtg_vanguard" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_vanguard"
 		"AbilityValues" {
 			"bonus_health" "300"
-			"bonus_health_regen" "0"
-			"health_regen" "10"
+			"health_regen_hero" "10"
+			"health_regen_bz" "10"
+			"block_damage_melee" "50"
+			"block_damage_ranged" "25"
+			"block_chance" "60"
 		}
 		"ItemCost" "2000"
+		"ID" "1636"
 		"IsSupply" "4"
+		"ItemQuality" "epic"
 		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityTextureName" "item_vanguard"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
 		}
 	}
@@ -1199,13 +1207,22 @@
 		}
 	}
 	"item_qtg_witch_blade" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_witch_blade"
 		"AbilityValues" {
+			"bonus_attack_speed" "30"
+			"bonus_intellect" "12"
+			"bonus_armor" "6"
+			"bonus_damage" "10"
+			"bonus_project_speed" "300"
+			"attack_intell" "40"
 		}
 		"ItemCost" "3000"
 		"ID" "1646"
 		"IsSupply" "6"
 		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 		"AbilityTextureName" "item_witch_blade"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
 		}
 	}
@@ -1266,13 +1283,21 @@
 		}
 	}
 	"item_qtg_blade_mail" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_blade_mail"
 		"AbilityValues" {
+			"bonus_damage" "20"
+			"bonus_armor" "10"
 		}
 		"ItemCost" "3000"
 		"ID" "1662"
 		"IsSupply" "6"
+		"ItemQuality" "epic"
 		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityCooldown" "5"
+		"AbilityManaCost" "3"
 		"AbilityTextureName" "item_blade_mail"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"ItemRequirements" {
 		}
 	}
@@ -1289,13 +1314,28 @@
 		}
 	}
 	"item_qtg_crimson_guard" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_crimson_guard"
 		"AbilityValues" {
+			"bonus_health" "350"
+			"bonus_armor" "5"
+			"health_regen_hero" "15"
+			"health_regen_bz" "15"
+			"block_damage_melee" "70"
+			"block_damage_ranged" "35"
+			"block_chance" "60"
+			"duration" "1"
+			"active_chance" "100"
 		}
 		"ItemCost" "3000"
 		"ID" "1665"
 		"IsSupply" "6"
+		"ItemQuality" "epic"
 		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityCooldown" "4"
+		"AbilityManaCost" "2"
 		"AbilityTextureName" "item_crimson_guard"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ItemRequirements" {
 		}
 	}
@@ -1408,12 +1448,24 @@
 		}
 	}
 	"item_qtg_octarine_core" {
+		"BaseClass" "item_lua"
+		"ScriptFile" "item/items/item_qtg_octarine_core"
 		"AbilityValues" {
+			"bonus_health" "300"
+			"bonus_mana" "2"
+			"mana_regen_hero" "2"
+			"mana_regen_hero_cd" "2"
+			"mana_regen_bz" "50"
+			"cd_sub" "1"
+			"mana_sub" "1"
 		}
 		"ItemCost" "4000"
 		"ID" "1657"
+		"ItemQuality" "rare"
 		"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityCooldown" "2"
 		"AbilityTextureName" "item_octarine_core"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ItemRequirements" {
 		}
 	}
