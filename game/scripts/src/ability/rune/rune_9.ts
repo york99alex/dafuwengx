@@ -1,16 +1,15 @@
-import { AMHC, IsValid } from "../../utils/amhc";
-import { BaseModifier, registerAbility, registerModifier } from "../../utils/dota_ts_adapter";
-import { ParaAdjuster } from "../../utils/paraadjuster";
-import { TSBaseAbility } from "../tsBaseAbilty";
+import { AMHC, IsValid } from '../../utils/amhc';
+import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
+import { ParaAdjuster } from '../../utils/paraadjuster';
+import { TSBaseAbility } from '../tsBaseAbilty';
 
 /**
  * 符文技能：护盾神符
  */
 @registerAbility()
 export class rune_9 extends TSBaseAbility {
-
     GetIntrinsicModifierName() {
-        return "modifier_" + this.GetAbilityName()
+        return 'modifier_' + this.GetAbilityName();
     }
 }
 
@@ -19,68 +18,65 @@ export class rune_9 extends TSBaseAbility {
  */
 @registerModifier()
 export class modifier_rune_9 extends BaseModifier {
-    blockCount: number
+    /**剩余护盾值 */
+    shiledVal: number;
+    /**最大护盾值 */
+    shieldMax: number;
 
     GetTexture(): string {
-        return "rune_shield"
+        return 'rune_shield';
     }
     IsPassive() {
-        return true
+        return true;
     }
     GetStatusEffectName(): string {
-        return "particles/status_fx/status_effect_shield_rune.vpcf"
+        return 'particles/status_fx/status_effect_shield_rune.vpcf';
     }
     OnCreated(params: object): void {
-        if (!IsValid(this)) return
-        if (!IsValid(this.GetAbility())) return
-        if (IsClient()) return
-        const oPlayer = GameRules.PlayerManager.getPlayer(this.GetParent().GetPlayerOwnerID())
-        if (!oPlayer) {
-            return
-        }
-        const ability = this.GetAbility()
-        this.blockCount = oPlayer.m_eHero.GetMaxHealth() * ability.GetSpecialValueFor("shield") * 0.01
-        print("===rune_shield===blockCount:", this.blockCount)
-        this.SetHasCustomTransmitterData(true)
-        ParaAdjuster.ModifyMana(oPlayer.m_eHero)
+        if (!IsValid(this)) return;
+        if (!IsValid(this.GetAbility())) return;
+
+        this.shieldMax = this.GetCaster().GetMaxHealth() * this.GetAbility().GetSpecialValueFor('shield') * 0.01;
+        this.shiledVal = this.shieldMax;
+        this.SetHasCustomTransmitterData(true);
+
+        if (!IsServer()) return;
+        const oPlayer = GameRules.PlayerManager.getPlayer(this.GetParent().GetPlayerOwnerID());
+        if (!oPlayer) return;
+        ParaAdjuster.ModifyMana(oPlayer.m_eHero);
     }
     /**接受数据 这段代码仅在客户端执行 */
-    HandleCustomTransmitterData(data: { blockCount: number }) {
-        this.blockCount = data.blockCount
+    HandleCustomTransmitterData(data: { shiledVal: number }) {
+        this.shiledVal = data.shiledVal;
     }
     /**发送数据 这段代码仅在服务端执行 */
-    AddCustomTransmitterData(): { blockCount: number } {
+    AddCustomTransmitterData(): { shiledVal: number } {
         return {
-            blockCount: this.blockCount
-        }
+            shiledVal: this.shiledVal,
+        };
     }
     DeclareFunctions(): ModifierFunction[] {
         return [
-            ModifierFunction.INCOMING_DAMAGE_CONSTANT,  // 金色 全伤害
-            ModifierFunction.INCOMING_PHYSICAL_DAMAGE_CONSTANT, // 红色 物理伤害
-            ModifierFunction.INCOMING_SPELL_DAMAGE_CONSTANT // 蓝色 魔法
-        ]
+            ModifierFunction.INCOMING_DAMAGE_CONSTANT, // 金色 全伤害
+            // ModifierFunction.INCOMING_PHYSICAL_DAMAGE_CONSTANT, // 红色 物理伤害
+            // ModifierFunction.INCOMING_SPELL_DAMAGE_CONSTANT // 蓝色 魔法
+        ];
     }
     GetModifierIncomingDamageConstant(event: ModifierAttackEvent): number {
-        if (event.damage == 0) return this.blockCount    // 没有伤害, 返回护盾值
-        if (event.damage > this.blockCount + this.GetParent().GetHealth()) {
-            this.blockCount = 0
-            if (IsServer()) this.SendBuffRefreshToClients() // 刷新黄条
-            return 0    // 伤害足够击杀, 护盾不敌当
-        }
-        if (event.damage > this.blockCount) {
-            const block = this.blockCount
-            this.blockCount = 0
-            if (IsServer()) {
-                this.SendBuffRefreshToClients() // 刷新黄条
-                AMHC.RemoveAbilityAndModifier(this.GetParent(), this.GetAbility().GetAbilityName())
-            }
-            return -block   // 返回多少, 伤害就会加上多少, 返回负值以抵挡伤害
+        if (!IsServer()) {
+            if (event.report_max) return this.shieldMax;
+            return this.shiledVal;
         } else {
-            const block = event.damage
-            this.blockCount -= block
-            if (IsServer()) this.SendBuffRefreshToClients()
-            return -block
+            this.shiledVal -= event.damage; // 扣除伤害
+            if (this.shiledVal < 0) {
+                const overDamge = this.shiledVal;
+                this.shiledVal = 0;
+                this.SendBuffRefreshToClients();
+                AMHC.RemoveAbilityAndModifier(this.GetParent(), this.GetAbility().GetAbilityName());
+                return overDamge; // 返回溢出伤害
+            }
+            this.SendBuffRefreshToClients();
+            return -event.damage; // 返回多少, 参数中的event.damage最后就会加上多少, 返回负值以抵挡伤害
         }
     }
 }

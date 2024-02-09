@@ -10,6 +10,7 @@ import { useRef, useState } from 'react';
 export function OprtButton() {
     const [typeOprt, setTypeOprt] = useState(-1);
     const [baoziTip, setBaoziTip] = useState(false);
+    const [eventPlayerID, setEventPlayerID] = useState(-1);
     const rollPanel = useRef<Panel>(null);
     const num1Panel = useRef<Panel>(null);
     const num2Panel = useRef<Panel>(null);
@@ -18,6 +19,7 @@ export function OprtButton() {
     useGameEvent(
         'GM_Operator',
         event => {
+            setEventPlayerID(event.nPlayerID);
             if (event.nPlayerID == PlayerMgr.playerID) {
                 switch (event.typeOprt) {
                     case TypeOprt.TO_Roll: {
@@ -42,11 +44,9 @@ export function OprtButton() {
                         setTypeOprt(TypeOprt.TO_Finish);
                         break;
                     }
-                    case TypeOprt.TO_DeathClearing: {
-                        setTypeOprt(TypeOprt.TO_DeathClearing);
-                        break;
-                    }
                 }
+            } else if (event.typeOprt == TypeOprt.TO_DeathClearing) {
+                setTypeOprt(TypeOprt.TO_DeathClearing);
             }
         },
         []
@@ -56,34 +56,27 @@ export function OprtButton() {
     useGameEvent(
         'GM_OperatorFinished',
         event => {
-            if (event.nPlayerID == PlayerMgr.playerID) {
-                console.log('===Receive OprtFinished:', event);
-                switch (event.typeOprt) {
-                    case TypeOprt.TO_Roll: {
-                        // 向上扔骰子动画
-                        if (rollPanel.current) {
-                            rollPanel.current.style.animationName = 'upRoll';
-                            rollPanel.current.style.animationDuration = '0.8s';
-                            rollPanel.current.style.animationTimingFunction = 'ease-in-out';
-                            rollPanel.current.style.animationIterationCount = '1';
-                        }
-                        animateRoll(num1Panel.current!, event.nNum1);
-                        animateRoll(num2Panel.current!, event.nNum2);
-                        if (event.nNum1 == event.nNum2) {
-                            console.log('===Roll Baozi!!!');
-                            setTimeout(() => setBaoziTip(true), 1500);
-                        }
-                        break;
-                    }
-                    case TypeOprt.TO_DeathClearing: {
-                        resetState();
-                        break;
-                    }
-                }
+            if (event.typeOprt == TypeOprt.TO_DeathClearing && event.nPlayerID == PlayerMgr.playerID) {
+                resetState();
             } else if (event.typeOprt == TypeOprt.TO_Finish && event.nRequest == 1) {
                 console.log('===Receive Finish Round:', event);
                 // 结束回合请求成功，前端重置state
                 resetState();
+            } else if (event.typeOprt == TypeOprt.TO_Roll) {
+                // 向上扔骰子动画
+                setTypeOprt(TypeOprt.TO_Roll);
+                if (rollPanel.current) {
+                    rollPanel.current.style.animationName = 'upRoll';
+                    rollPanel.current.style.animationDuration = '0.8s';
+                    rollPanel.current.style.animationTimingFunction = 'ease-in-out';
+                    rollPanel.current.style.animationIterationCount = '1';
+                }
+                animateRoll(num1Panel.current!, event.nNum1);
+                animateRoll(num2Panel.current!, event.nNum2);
+                if (event.nNum1 == event.nNum2) {
+                    console.log('===Roll Baozi!!!');
+                    setTimeout(() => setBaoziTip(true), 1500);
+                }
             }
         },
         []
@@ -93,11 +86,13 @@ export function OprtButton() {
     function resetState() {
         setTypeOprt(-1);
         setBaoziTip(false);
+        setEventPlayerID(-1);
     }
 
     /**发送操作 */
     function sendOprt(oprtType: number) {
         if (Game.IsGamePaused() || oprtType != typeOprt) return;
+        if (eventPlayerID >= 0 && eventPlayerID != PlayerMgr.playerID) return;
         GameEvents.SendCustomGameEventToServer('GM_Operator', {
             nPlayerID: PlayerMgr.playerID,
             typeOprt: oprtType,
@@ -179,7 +174,7 @@ export function OprtButton() {
             </Panel>
             <Panel
                 className="FinishPanel DeathClearing"
-                visible={typeOprt == TypeOprt.TO_DeathClearing}
+                visible={typeOprt == TypeOprt.TO_DeathClearing && eventPlayerID == PlayerMgr.playerID}
                 onactivate={() => sendOprt(TypeOprt.TO_DeathClearing)}
             >
                 <Label id="DCLabel" text={$.Localize('#FinishDC')} />

@@ -65,9 +65,9 @@ export const WAGE_GOLD_REDUCE: number = 100;
 // 全图购物回合
 export const GLOBAL_SHOP_ROUND: number = 25;
 // 英雄每回合回血百分百
-export const ROUND_HERO_HUIXUE_ROTA: number = 0.1;
+export const ROUND_HERO_HUIXUE_RATE: number = 0.1;
 // 兵卒每回合回血百分百
-export const ROUND_BZ_HUIXUE_ROTA: number = 0.1;
+export const ROUND_BZ_HUIXUE_RATE: number = 0.1;
 // 出狱金币
 export const GOLD_OUT_PRISON: number = 300;
 // 抽卡消耗
@@ -157,12 +157,12 @@ export const HERO_TO_AttackCap = {
     npc_dota_hero_techies: UnitAttackCapability.RANGED_ATTACK,
     npc_dota_hero_bloodseeker: UnitAttackCapability.MELEE_ATTACK,
     npc_dota_hero_dragon_knight: UnitAttackCapability.MELEE_ATTACK,
-    npc_dota_hero_undying:UnitAttackCapability.MELEE_ATTACK,
+    npc_dota_hero_undying: UnitAttackCapability.MELEE_ATTACK,
     npc_dota_hero_life_stealer: UnitAttackCapability.MELEE_ATTACK,
 };
 
 /**英雄对应兵卒名 */
-export const HERO_TO_BZ = {
+export const HERO_TO_BZ: Record<string, string> = {
     npc_dota_hero_phantom_assassin: 'bz_pa_1',
     npc_dota_hero_meepo: 'bz_meepo_1',
     npc_dota_hero_pudge: 'bz_pudge_1',

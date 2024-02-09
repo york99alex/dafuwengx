@@ -1033,8 +1033,13 @@ export const App = () => {	// 根组件
    还剩前端结算页面设计
    还剩本地化文本
    ==记分板本地玩家高亮==
-   
-2. 什么是pathlog?
+2. 添加回合超时按钮，点击后时间延长，1秒10块，每5秒翻倍
+
+
+
+
+
+1. 什么是pathlog?
 
    self.m_eLog = Entities:FindByName(nil, "PathLog_" .. self.m_nID)
 
@@ -1056,9 +1061,9 @@ export const App = () => {	// 根组件
 
      end
 
-3. CGameParticleManager::SetParticleControlEnt: Unable to lookup attachment attach_attack1 on model  for entity npc_dota_creature
+2. CGameParticleManager::SetParticleControlEnt: Unable to lookup attachment attach_attack1 on model  for entity npc_dota_creature
 
-4. ==兵卒相关==
+3. ==兵卒相关==
 
    1. ==调整==:
       1. m_bBattle: boolean = null  由bz定义 
@@ -1077,13 +1082,13 @@ export const App = () => {	// 根组件
       1. 兵卒自动施法错误
       2. 兵卒攻击第一下后不会继续攻击
 
-5. ==路径相关==
+4. ==路径相关==
 
    1. path_13_hundun 三级双河道buff? 造成伤害时，物理视为魔法，魔法视为物理?
    2. 测试path_13护甲穿透和魔法穿透是否生效
    3. 经过符文路径会无法自动结束回合，无限roll点？
 
-6. ==回合相关==
+5. ==回合相关==
 
    1. 如果回合开始前有操作, 需要设置GameLoop.==m_bRoundBefore==为true, 并在回合前操作完成后去手动跳转至begin GameLoop.GameStateService.send("tobegin")
       1. GSFinished_Entry会调用addRound, addRound会触发事件==Event_UpdateRound==, 所有在回合前有操作的都会注册该事件并至少做两件事:
@@ -1092,9 +1097,9 @@ export const App = () => {	// 根组件
          2. 进行回合前操作,手动跳转至对应的GameLoopState
 
          3. 操作完成后手动跳转回对应的begin
-   2. 会在
+   2. ==死亡清算==
 
-7. ==蓝量相关==, 重做修改属性的方法, 主要是蓝量
+6. ==蓝量相关==, 重做修改属性的方法, 主要是蓝量
 
    1. ParaAdjuster.ModifyMana(英雄单位, 额外蓝量, 修正系数)
       	额外蓝量: 每回合给Player增加的m_nManaMaxBase
@@ -1118,73 +1123,73 @@ export const App = () => {	// 根组件
    7. 攻城未结束时回合开始，玩家蓝量未得到回合开始的更新
 
       1. 同时之后每次受到伤害蓝量和蓝量上限增加一点
-      
+
    8. 出售神秘法杖会导致当前蓝量降低
 
-8. UnRegister Failed Event Move?
+   9. 击杀野怪结束后，蓝量未修正
+
+7. UnRegister Failed Event Move?
 
    1. 以及所有注销事件的调用尽量用ByID
 
-9. judgeBuffRound和 player的setRoundFinished触发的Event_PlayerRoundFinished存在问题？
+8. judgeBuffRound和 player的setRoundFinished触发的Event_PlayerRoundFinished存在问题？
 
-10. ==装备/卡牌相关==
+9. ==装备/卡牌相关==
 
-    1. 测试CD物品在监狱的情况，比如猎野爪
+   1. 测试CD物品在监狱的情况，比如猎野爪
 
-    2. ==TODO==
-        1. 完成CardFactory
+   2. ==TODO==
+       1. 完成CardFactory
 
-        2. 测试Player.setCardAdd里的sendMsg部分的JSON.stringify能不能正确json化字符
+       2. 测试Player.setCardAdd里的sendMsg部分的JSON.stringify能不能正确json化字符
 
-        3. 继续item_qtg_iron_talon.OnSpellStart里的onItem_getCard(this, player, "MONSTER")整个逻辑
+       3. 继续item_qtg_iron_talon.OnSpellStart里的onItem_getCard(this, player, "MONSTER")整个逻辑
 
-    3. 装备合成时一些通过modifier_cd和定时器实现的回蓝CD需要注意技能CD，吗？
+   3. 装备合成时一些通过modifier_cd和定时器实现的回蓝CD需要注意技能CD，吗？
 
-        参考原版情况：连击刀CD在装备技能的CD上，合成鱼叉后连击的CD在modifier里，如果CD中的连击刀合成了鱼叉，鱼叉可以立马释放连击。。。所以应该保留该特色？
+       参考原版情况：连击刀CD在装备技能的CD上，合成鱼叉后连击的CD在modifier里，如果CD中的连击刀合成了鱼叉，鱼叉可以立马释放连击。。。所以应该保留该特色？
 
-    4. 装备合成时应该保留之前的CD
+   4. 装备合成时应该保留之前的CD
 
-    5. 交换装备会导致蓝量异常
+   5. 交换装备会导致蓝量异常
 
-    6. 刷新球/等通过modifier_cd和定时器实现回蓝的在特定情况下会异常
+   6. 刷新球/等通过modifier_cd和定时器实现回蓝的在特定情况下会异常
 
-        1. 蓝量未到上限，可以回蓝
-        2. 不存在modifier_cd
-        3. 原因：当新回合开始前会先创建modifier_cd再通过Event_PlayerRoundBegin减少countCD，所以modifier_cd的Think会
-        4. 导致错误的情况是，countCD会在回合内减一
-        
-    7. 
+       1. 蓝量未到上限，可以回蓝
+       2. 不存在modifier_cd
+       3. 原因：当新回合开始前会先创建modifier_cd再通过Event_PlayerRoundBegin减少countCD，所以modifier_cd的Think会
+       4. 导致错误的情况是，countCD会在回合内减一
+       
+   7. 重做回血装备，除龙心外，每回合回复为额外固定值
 
-11. 给钱异常
+10. 给钱异常
 
-12. 实现CamerManage的前端部分
+11. 实现CamerManage的前端部分
          检查pa一技能使用后镜头是否正确移动
 
-13. 音效:
+12. 音效:
 
       1. 玩家回合倒计时结束自动骰子时声音异常Roll声音会重复发出
 
-14. huderror前端部分实现
+13. huderror前端部分实现
 
-15. GameLoop需重新调整的点
+14. GameLoop需重新调整的点
 
           1. 切换状态是否需要封装？
           2. 新增GSRoundBefore
           3. 重新理清状态图
           0.7(0.3*(1-y))*x=0.98
 
-16. ~~Player.setState重写~~，替换为setPlayerState
+15. ~~Player.setState重写~~，替换为setPlayerState
 
          -  遗留问题: BKB魔法免疫问题
            - 屠夫钩子对bkb
 
-17. 在一个合适的时机通过后端事件通知前端关闭操作提示框
+16. 在一个合适的时机通过后端事件通知前端关闭操作提示框
 
-18. 检查setPlayerMuteTrade能否生效
+17. 检查setPlayerMuteTrade能否生效
 
-19. ==前端相关==
-
-    
+18. ==前端相关==
 
       1. 关闭以下前端页面:
              1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
@@ -1212,29 +1217,34 @@ export const App = () => {	// 根组件
            V8ParamToPanoramaType expected Number type to convert, but got something else (undefined)
            ```
 
-      8. 
+      8. 机器人选择为米波时自己未选择，超时随机选择后，记分板会出现两个米波![image-20240209094521307](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2024/02/09/09-45-21-7b67be852398487330420bf45bdd6fb0-image-20240209094521307-e0c3fc.png)
+
+      9. 玩家顺序显示错误，下图实际排序是米波，火女，宙斯
+           ![image-20240209165228839](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2024/02/09/16-52-28-c95ade3c36b30fa1602d3a518cc7ee9d-image-20240209165228839-086578.png)
+
+      10. ==紧急！==，前端进监狱骰子面板有问题，不显示
 
       
 
-20. 本地化翻译所有this.m_strCastError
+19. 本地化翻译所有this.m_strCastError
 
-21. ~~setKillCountAdd源码逻辑是否合理~~
+20. ~~setKillCountAdd源码逻辑是否合理~~
 
-22. 重写了技能tsbaseability的GetCastRange
+21. 重写了技能tsbaseability的GetCastRange
 
          1. 需要分清不同技能的情况
          2. 默认重写的tsbaseability中的getcastrange是以路径ID为距离计算返回的整数
          3. 如果分情况需要再对应的技能里重写getcastrange
          4. ==TODO==：调整PA技能范围为格数，而非距离
 
-23. 游戏记录模块 game_record客户端操作, 更新记录面板
+22. 游戏记录模块 game_record客户端操作, 更新记录面板
 
-24. 分开事件, 分开发送？可能没有必要，待确认
+23. 分开事件, 分开发送？可能没有必要，待确认
 
-25. ~~PlaySort与机器人的情况有点问题,总是021~~
+24. ~~PlaySort与机器人的情况有点问题,总是021~~
          注意使用RandInt方法来生成随机数
 
-26. 添加 unit 
+25. 添加 unit 
 
              1. "path_17_diao"
                  	{
@@ -1254,38 +1264,38 @@ export const App = () => {	// 根组件
          1. setDiaoGesture 雕哥施法检查
          2. 雕哥施法鬼畜，第一个飓风不会消除
 
-27. PathRune
+26. PathRune
 
-28. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+27. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
 
-29. Roll点的随机路径平衡机制数值思考
+28. Roll点的随机路径平衡机制数值思考
 
-30. 检查网表GamingTable的nSumGold总资产计算是否正确
+29. 检查网表GamingTable的nSumGold总资产计算是否正确
 
-31. addon_schinese.txt :		"RandomTip"						"随机英雄"
+30. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
-32. 统一所有英雄移速 ? 重新设计移速，290力量300全才/智力310敏捷，再根据强弱适当调整
+31. 统一所有英雄移速 ? 重新设计移速，290力量300全才/智力310敏捷，再根据强弱适当调整
 
-33. 检查FireEvent的args参数为空的情况
+32. 检查FireEvent的args参数为空的情况
 
-34. /**设置结算数据 */
+33. /**设置结算数据 */
              setGameEndData(){}
 
-35. ~~==sendMsg和broadcastMsg的tabData格式==~~
+34. ~~==sendMsg和broadcastMsg的tabData格式==~~
 
-36. ~~gamestate的计时器update是0.1调用一次~~
+35. ~~gamestate的计时器update是0.1调用一次~~
 
-37. ~~// 监听玩家移动回路径~~
+36. ~~// 监听玩家移动回路径~~
 
-38. ~~onMove如何处理gamestateloop~~
+37. ~~onMove如何处理gamestateloop~~
 
-39. 英雄经验系统/数值
+38. 英雄经验系统/数值
 
-40. 客户端,前端 请求传输数据缩减
+39. 客户端,前端 请求传输数据缩减
 
-41. 考虑把莉娜的兵卒技能换成光击阵
+40. 考虑把莉娜的兵卒技能换成光击阵
 
-42. 验证AMHC.Damage
+41. 验证AMHC.Damage
              ```
                          if (tData) {
                              for (const v of tData) {
@@ -1294,26 +1304,26 @@ export const App = () => {	// 根组件
                          }
              ```
 
-43. HudError:FireLocalizeError
+42. HudError:FireLocalizeError
 
-44. ~~Script Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
+43. ~~Script Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
              ~~stack traceback:~~
              ~~[C]: in function '__index'~~
 
          通过  if (IsClient())  return 解决
           但是为什么? 原因? 如何理解
 
-45. custom_sounds 有问题
+44. custom_sounds 有问题
 
              Failed loading resource "soundevents/custom_sounds.vsndevts_c" (ERROR_BADREQUEST: Code error - bad request)
              参考
 
-46. 天赋树
+45. 天赋树
 
          1. 龙骑 2024年1月是哪年的冬季呢
          2. 炸弹人 问涛宝
 
-47. 出狱思路:
+46. 出狱思路:
 
          1. 进入新的回合开始, onEvent_PlayerRoundBegin
              1. 如果在监狱
@@ -1333,18 +1343,20 @@ export const App = () => {	// 根组件
                  2. roll点走到监狱路径
                      - onPath ==> setInPrison
 
-48. 注意前端面板应该仅展示给对应的玩家
+47. 注意前端面板应该仅展示给对应的玩家
 
-49. 做一个动画效果,肉山大转盘, 可以不花钱投,但是轮盘概率会很小中将,
+48. 做一个动画效果,肉山大转盘, 可以不花钱投,但是轮盘概率会很小中将,
         如果给100,中将的就会轮盘区域就会动画过渡变大
         给更多变更大
 
-50. 考虑是否加入玩家交易次数限制，类似商店购买次数
+49. 考虑是否加入玩家交易次数限制，类似商店购买次数
 
-51. 尸王
+50. 尸王
 
     1. 变身墓碑以后没有生成小僵尸
     1. 尸王兵卒血量和护甲记得改回去
+
+51. 在一个技能同时造成两位玩家扣钱变为负数要进行死亡清算时还是有问题，只会先进行一名，再恢复之前操作玩家回合后再结算另一名。。。
 
 
 
@@ -2113,11 +2125,56 @@ ItemShare
 
 ### cardlist
 
-- 阎刃	"Card_MAGIC_InfernalBlade"
-- 刀刀兄弟，全员补给
-- 赏金符全体+钱
-- 商店卡
-- 海妖娜迦，大招，移动范围睡眠，持续两回合
+获得卡牌的方式：
+
+- 装备获得卡牌（10005～10008）
+- 坡道路径随机抽卡
+  1. 从可补给牌库中随机两张卡牌（14张技能＋10张增益事件＋6张减益事件）30张补给卡牌
+  2. 如果都不想要可以再从剩下牌库中随机一张直接加入手牌
+     - 如果是事件卡，将直接使用
+
+
+
+- 技能卡 ，14张补给＋6张神符
+  - 10005＝＝＝小型狩猎场，1蓝耗
+  - 10006＝＝＝大型狩猎场，2蓝耗
+  - 10007＝＝＝远古禁地，3蓝耗
+  - 10008＝＝＝拉野，2蓝耗
+  - 20001＝＝＝窃取，3蓝，补给
+  - 20002＝＝＝移形换位，3蓝，补给
+  - 20003＝＝＝两级反转，5蓝，补给
+  - 20004＝＝＝恶念瞥视，2蓝，补给
+  - 20005＝＝＝阎刃，2蓝，补给
+  - 20006＝＝＝魔瓶，1蓝，补给
+    - 所有魔瓶对应神符卡，不补给，使用不耗蓝
+  - 20020＝＝＝血怒，2蓝，补给
+    - 使目标造成伤害和受到伤害增加
+  - 20021＝＝＝暗影之境，3蓝，补给
+    - 移动且不成为攻击目标
+  - 20022＝＝＝海妖娜迦大招，5蓝，补给
+    - 移动范围睡眠，持续两回合，可以使英雄玩家无法操作／跳过
+  - 20023＝＝＝忍术，1蓝，对1格距离的目标使用，偷窃其150金币 
+- 事件卡，全部参与补给且不耗蓝
+  - 增益 ==10张==
+    - 30001＝＝＝刀刀兄弟，立即暂停当前操作，进入补给环节，使用卡牌之人先选然后按正常补给顺序
+    - 30002＝＝＝商店卡，本回合可以无视次数和路径限制购买
+    - 30003＝＝＝阎刃2，不耗蓝，一样，如果未选择目标，将随机一名场外其他玩家进入监狱
+    - 30004＝＝＝上帝之手，使所有英雄／兵卒恢复50％的最大生命值
+    - 30005＝＝＝跳刀，可指定瞬移到一个路径，如果未指定则瞬移到起点。
+    - 30006＝＝＝团队之手，所有玩家＋500
+    - 30007＝＝＝玻璃大炮，使用后玩家所有单位获得buff，增加30％输出，增加15％受到伤害。持续1回合
+    - 30008＝＝＝卡牌双雄，使用后随机获得两张卡牌。
+    - 30009＝＝＝刷新球碎片，使用后刷新所有技能和装备。
+    - 30010＝＝＝奶酪，使用后恢复100％生命值和魔法值，并额外生成50％的护盾。
+  - 减益 ==6张==
+    - 40001＝＝＝感觉不如刀塔
+      如果你不是第一名，你将损失648金币。如果你是第一名，你将获得328金币。（总资产排名？)
+    - 40002＝＝＝永失吾爱，举目破败
+      失去随机一块领地，并获得该地等级乘以5的经验，如果没有地皮，将没有效果。
+    - 40004＝＝＝破碎的阎刃，使自己进入监狱
+    - 40004＝＝＝破碎的跳刀，随机瞬移至一个路径
+    - 40005＝＝＝破碎的猎野刀，随机传送到一个野怪路径并直接进行打野
+    - 40006＝＝＝破碎的团队之手，向随机一名玩家赠送150金币
 
 
 
@@ -2134,7 +2191,7 @@ Filter.DamageFilter.FireEvent('Event_OnDamage', tEvent);
 - 
 - 0 === 小狗盛宴 Ability_life_stealer_feast追加最大生命值额外伤害
 - -10000===小狗撕裂伤口 Ability_life_stealer_open_wounds，AMHC.Damage新造成额外伤害
-- ？===刃甲 反弹伤害
+- -20000===刃甲 反弹伤害
 - -100000===监听攻城
 - -987654321===Player.onEvent_OnDamage 处理最终伤害
 

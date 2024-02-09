@@ -26,8 +26,8 @@ import {
     INITIAL_GOLD,
     LEVEL_EXP,
     PATH_TO_PRICE,
-    ROUND_BZ_HUIXUE_ROTA,
-    ROUND_HERO_HUIXUE_ROTA,
+    ROUND_BZ_HUIXUE_RATE,
+    ROUND_HERO_HUIXUE_RATE,
     TIME_MOVE_MAX,
 } from '../constants/constant';
 import { Path } from '../path/Path';
@@ -38,6 +38,7 @@ import { TSBaseAbility } from '../ability/tsBaseAbilty';
 import { ParaAdjuster } from '../utils/paraadjuster';
 import { Card } from '../card/card';
 import { BaseAbility } from '../utils/dota_ts_adapter';
+import { HudError } from '../mode/S2Cmode/huderror';
 
 export type player_info = 'player_info_0' | 'player_info_1' | 'player_info_2' | 'player_info_3' | 'player_info_4' | 'player_info_5';
 export type DamageEvent = {
@@ -1703,7 +1704,7 @@ export class Player {
         // 英雄回血
         let tabEventHuiXue = {
             entity: this.m_eHero,
-            nHuiXue: this.m_eHero.GetMaxHealth() * ROUND_HERO_HUIXUE_ROTA,
+            nHuiXue: this.m_eHero.GetMaxHealth() * ROUND_HERO_HUIXUE_RATE,
         };
         GameRules.EventManager.FireEvent('Event_ItemHuiXueByRound', tabEventHuiXue);
         this.addHealth(tabEventHuiXue.nHuiXue);
@@ -1712,7 +1713,7 @@ export class Player {
         for (const eBZ of this.m_tabBz) {
             let tabEventBZHuiXue = {
                 entity: eBZ,
-                nHuiXue: eBZ.GetMaxHealth() * ROUND_BZ_HUIXUE_ROTA,
+                nHuiXue: eBZ.GetMaxHealth() * ROUND_BZ_HUIXUE_RATE,
             };
             GameRules.EventManager.FireEvent('Event_ItemHuiXueByRound', tabEventBZHuiXue);
             eBZ.SetHealth(eBZ.GetHealth() + tabEventBZHuiXue.nHuiXue);
@@ -1843,6 +1844,39 @@ export class Player {
         }
 
         if (this.m_eHero) {
+            // 圣剑掉落
+            if (this.m_eHero.HasItemInInventory('item_qtg_rapier')) {
+                const dropItem = this.m_eHero.FindItemInInventory('item_qtg_rapier');
+                this.m_eHero.DropItemAtPositionImmediate(dropItem, this.m_pathCur.m_entity.GetAbsOrigin());
+                const rapierPath = this.m_pathCur;
+                GameRules.EventManager.Register('Event_OnPath', (event: { path: Path; entity: CDOTA_BaseNPC_Hero }) => {
+                    if (event.path == rapierPath) {
+                        let canPick = false;
+                        // 检查装备栏位置
+                        for (let i = 0; i < 6; i++) {
+                            const item = event.entity.GetItemInSlot(i);
+                            if (!item || item.IsNull()) {
+                                canPick = true;
+                                break;
+                            }
+                        }
+                        if (!dropItem || dropItem.IsNull()) {
+                            print('===Error DropItem is null===Rapier');
+                            return true;
+                        }
+                        if (canPick) {
+                            event.entity.AddItemByName('item_qtg_rapier');
+                            dropItem.GetContainer().RemoveSelf();
+                            dropItem.RemoveSelf();
+                            // event.entity.AddItem(dropItem);
+                            // dropItem.SetOwner(event.entity);
+                            return true;
+                        }
+                        HudError.FireLocalizeError(event.entity.GetPlayerOwnerID(), 'Error_NoSpaceForRapier');
+                    }
+                });
+            }
+
             this.m_eHero.SetRespawnsDisabled(true);
             this.m_eHero.ForceKill(true);
         }

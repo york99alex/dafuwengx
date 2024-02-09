@@ -16,7 +16,7 @@ export function TopBar() {
         if (playersData == null) return;
         const players = Object.values(playersData);
         // const players: PlayerID[] = [0, 0, 0];
-        setLeftPlayers(players.slice(0, Math.ceil(players.length / 2)));
+        setLeftPlayers(players.slice(0, Math.ceil(players.length / 2)).reverse());
         setRightPlayers(players.slice(Math.ceil(players.length / 2)));
     }, [playersData]);
 

@@ -364,8 +364,7 @@ export class GameLoop {
 
     GSDeathClearing_Entry() {
         this.setGameState(GS_DeathClearing);
-        print('GameState_GSDeathClearing_Entry');
-        print('=========DeathClearing=========');
+        print('GameState_GSDeathClearing_Entry=========DeathClearing=========');
         this.Timer(() => {
             GameRules.GameConfig.updateTimeOprt();
             const timeOprt = GameRules.GameConfig.m_timeOprt;
@@ -386,7 +385,6 @@ export class GameLoop {
 
     GSDeathClearing_Exit() {
         print('GameState_GSDeathClearing_Exit');
-        //TODO: 死亡清算?
     }
 
     GSEnd_Entry() {}

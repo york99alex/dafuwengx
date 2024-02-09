@@ -41,7 +41,7 @@ export class DeathClearing {
     /**玩家发起死亡清算 */
     ProcessSendDC(event: { nPlayerID: PlayerID }) {
         const player = GameRules.PlayerManager.getPlayer(event.nPlayerID);
-        print('===ProcessSendDC: playerid ' + event.nPlayerID + ' gold:' + player.GetGold());
+        print('===ProcessSendDC===hero:', player.m_eHero.GetUnitName(), 'playerid ' + event.nPlayerID + ' gold:' + player.GetGold());
         const gameState = GameRules.GameConfig.m_typeState;
         print('===DeathClearing===m_typeState:', gameState, 'GameLoop.state:' + GameRules.GameLoop.getGameState());
 
@@ -94,12 +94,14 @@ export class DeathClearing {
                 m_tabOprtBroadcast: Object.assign(GameRules.GameConfig.m_tabOprtBroadcast),
             };
         }
+        DeepPrintTable(this.beforeGameState);
 
         this.mDCPlayers.push(playerID);
         print('===DeathClearing===StartDC-Before GameLoop.state:' + GameRules.GameLoop.getGameState());
-        GameRules.GameLoop.GameStateService.send('todeathclearing');
         GameRules.GameConfig.setOrder(playerID);
         GameRules.GameConfig.m_timeOprt = math.ceil(TIME_OPERATOR * 1.5);
+        GameRules.GameLoop.GameStateService.send('todeathclearing');
+        print('===StartDC===hero:', GameRules.PlayerManager.getPlayer(playerID).m_eHero.GetUnitName(), 'playerid:' + playerID);
 
         // 设置死亡清算状态，暂停其他操作
         GameRules.GameConfig.m_tabOprtCan = GameRules.GameConfig.m_tabOprtCan.filter(v => v.typeOprt != TypeOprt.TO_DeathClearing);
@@ -111,7 +113,6 @@ export class DeathClearing {
             typeOprt: TypeOprt.TO_DeathClearing,
         };
         GameRules.GameConfig.broadcastOprt(sendAllData);
-        print('===DeathClearing===StartDC-broadcastOprt:', sendAllData);
         const player = GameRules.PlayerManager.getPlayer(playerID);
         this.PlayerDC(player, true);
     }
@@ -119,14 +120,15 @@ export class DeathClearing {
     /**处理死亡清算 */
     ProcessDC(event) {
         print('===ProcessDC: ', event);
-        print('===ProcessDC===this.beforeGameState:', this.beforeGameState);
+        print('===ProcessDC===this.beforeGameState:');
+        DeepPrintTable(this.beforeGameState);
         if (this.beforeGameState == null) return;
 
         const checkOprt = GameRules.GameConfig.checkOprt(event, true);
-        print('===ProcessDC===checkOprt:', checkOprt);
         if (checkOprt != false) {
             const player = GameRules.PlayerManager.getPlayer(event.nPlayerID);
             this.mDCPlayers.splice(this.mDCPlayers.indexOf(player.m_nPlayerID), 1);
+            print('===ProcessDC End===mDCPlayers:', this.mDCPlayers);
 
             let playerDie = false;
             print('player:GetGold():', player.GetGold());
@@ -143,8 +145,7 @@ export class DeathClearing {
                     GameRules.GameLoop.GameStateService.send('tofinished');
                 } else {
                     print('===ProcessDC===beforeGameState typeState is ', this.beforeGameState.m_typeState);
-                    // TODO:
-                    // GameRules.GameLoop.setGameState(this.beforeGameState.m_typeState);
+                    GameRules.GameLoop.setGameState(this.beforeGameState.m_typeState);
                 }
                 print('===ProcessDC:m_tabOprtCan.length', GameRules.GameConfig.m_tabOprtCan.length);
                 if (GameRules.GameConfig.m_tabOprtCan.length > 0) {

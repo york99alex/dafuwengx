@@ -1,6 +1,6 @@
 import { useGameEvent, useNetTableKey } from 'react-panorama-x';
 import { player_info } from '../../mode/constant';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { judgeNetBoolean } from '../../mode/utils';
 
 export function PlayerInfo(props: { playerID: PlayerID }) {
@@ -8,7 +8,7 @@ export function PlayerInfo(props: { playerID: PlayerID }) {
     const changeGold = useRef<Panel>(null);
 
     // 后端setGold更新网表
-    const { nGold, bDie, bDisconnect } = useNetTableKey('GamingTable', ('player_info_' + props.playerID) as player_info)!;
+    const { nGold, bDie, bDisconnect, bDeathClearing } = useNetTableKey('GamingTable', ('player_info_' + props.playerID) as player_info)!;
     const { nPlayerID } = useNetTableKey('GamingTable', 'order') ?? { nPlayerID: -1 };
 
     /** 玩家飘金showGold */
@@ -48,8 +48,8 @@ export function PlayerInfo(props: { playerID: PlayerID }) {
                 <Panel className="Flag" />
                 <Panel className="HeroImageBG" onactivate={() => onClickPlayer(props.playerID)} />
                 <Panel className="Mask" visible={nPlayerID == props.playerID}>
-                    <Panel className="Mask1" />
-                    <Panel className="Mask2" />
+                    <Panel className={'Mask1' + (judgeNetBoolean(bDeathClearing) ? ' DC' : '')} />
+                    <Panel className={'Mask2' + (judgeNetBoolean(bDeathClearing) ? ' DC' : '')} />
                 </Panel>
                 <DOTAHeroImage
                     className={'HeroImage' + (judgeNetBoolean(bDie) ? ' Death' : '')}

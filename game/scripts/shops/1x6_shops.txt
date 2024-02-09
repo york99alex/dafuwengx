@@ -163,32 +163,32 @@
 		// "item"		"item_hurricane_pike"	
 		// "item"		"item_sphere"
 		// 希瓦的守护，4000，1500板甲+2500
-		"item"		"item_shivas_guard"
+		"item"		"item_qtg_shivas_guard"
 		// 恐鳌之心，4000，1000球+2500+500卷轴，20%回血
 		"item"		"item_qtg_heart"	
 		// 强袭胸甲，5000，1500板甲+1500板甲+2000振奋，60攻速+25甲，光环-10点甲
-		"item"		"item_assault"
+		"item"		"item_qtg_assault"
 	}
 			
 	"weapons"   // 兵刃
 	{	
 		// 水晶剑，2500，大剑1500+攻击之爪500+攻击之爪500，40攻击力
-		"item"		"item_lesser_crit"	
- 		// 黯灭，3500，大剑1500+大剑+枯萎之石500，50攻击力
-		"item"		"item_desolator"	
-		// 虚灵之刃，3000，慧光1500+绿杖1500，移除魔法回复增强
-		"item"		"item_ethereal_blade"
+		"item"		"item_qtg_lesser_crit"	
+ 		// 黯灭，2500，大剑1500+攻击之爪500+枯萎之石500，30攻击力
+		"item"		"item_qtg_desolator"	
+		// 虚灵之刃，3000，慧光1500+绿杖1500，移除魔法回复增强 TODO:
+		// "item"		"item_ethereal_blade"
 		// "item"		"item_nullifier"	
 		// 蝴蝶，3500，2500+1000，3500，移除闪避
-		"item"		"item_butterfly"
+		"item"		"item_qtg_butterfly"
 		// 	辉耀，5500，3500+1500大剑，80攻击力，移除闪避
-		"item"		"item_radiance"
+		// "item"		"item_radiance"
 		// 代达罗斯之殇，2500+2500，80攻击力
-		"item"		"item_greater_crit"
-		// 圣剑，6000，3500+2500，350攻击力
-		"item"		"item_rapier"
+		"item"		"item_qtg_greater_crit"
+		// 圣剑，6000，3500+2500，350攻击力，25%技能增强
+		"item"		"item_qtg_rapier"
 		// 血棘，5500，3000紫怨+2500法师克星 TODO:
-		"item"		"item_qtg_bloodthorn"
+		// "item"		"item_qtg_bloodthorn"
 		// 英灵胸针，5500，3000巫师之刃+2500神秘法杖
 		// 每次攻击附带造成0.6的智力值
 		"item"		"item_qtg_revenants_brooch"	
