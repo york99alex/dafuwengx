@@ -199,31 +199,31 @@
 	{	
 		// 魔龙枪
  		// "item"		"item_dragon_lance"
-		// 散华，1500，移除20%回复增强
-		"item"		"item_sange"
- 		// 夜叉，1500，移除10%移速
-		"item"		"item_yasha"
- 		// 慧光，1500，移除魔法回复增强
-		"item"		"item_kaya"
+		// 散华，1500，16力量，15%减速抗性，15%回复增强
+		"item"		"item_qtg_sange"
+ 		// 夜叉，1500，16敏捷，10攻速，7%移速
+		"item"		"item_qtg_yasha"
+ 		// 慧光，1500，16智力，10%技能增强，24%技能吸血增强
+		"item"		"item_qtg_kaya"
  		// 法师克星，2500，20%魔抗，15攻速，20攻击力，10智力
 		// 1000魔抗斗篷20%魔抗+1500的空明杖，10攻速，15攻击力，10智力
-		"item"		"item_mage_slayer"
- 		// 散慧对剑，3000，移除回复增强，移除魔法回复增强，状态抗性？
-		"item"		"item_kaya_and_sange"
- 		// 散夜对剑，3000，移除移速和回复增强
-		"item"		"item_sange_and_yasha"
- 		// 慧夜对剑，3000，移除移速和技能吸血增强
-		"item"		"item_yasha_and_kaya"
- 		// 撒旦之邪力，5000，1000+1500+2500
-		"item"		"item_satanic"		
- 		// 斯嘉蒂之眼，5000，2000+2000+1000（活力之球）,350血
-		"item"		"item_skadi" 
- 		// 盛势闪光，5000，2000+2500+500卷轴
-		"item"		"item_qtg_overwhelming_blink"		
- 		// 迅疾闪光，5000，2000+2500+500卷轴
-		"item"		"item_qtg_swift_blink"		
- 		// 迅疾闪光，5000，2000+2500+500卷轴
-		"item"		"item_qtg_arcane_blink"		
+		"item"		"item_qtg_mage_slayer"
+ 		// 散慧对剑，3000
+		"item"		"item_qtg_kaya_and_sange"
+ 		// 散夜对剑，3000
+		"item"		"item_qtg_sange_and_yasha"
+ 		// 慧夜对剑，3000
+		"item"		"item_qtg_yasha_and_kaya"
+ 		// // 撒旦之邪力，5000，1000+1500+2500
+		// "item"		"item_qtg_satanic"		
+ 		// // 斯嘉蒂之眼，5000，2000+2000+1000（活力之球）,350血
+		// "item"		"item_qtg_skadi" 
+ 		// // 盛势闪光，5000，2000+2500+500卷轴
+		// "item"		"item_qtg_overwhelming_blink"		
+ 		// // 迅疾闪光，5000，2000+2500+500卷轴
+		// "item"		"item_qtg_swift_blink"		
+ 		// // 迅疾闪光，5000，2000+2500+500卷轴
+		// "item"		"item_qtg_arcane_blink"		
 	}
 
 	"secretshop"

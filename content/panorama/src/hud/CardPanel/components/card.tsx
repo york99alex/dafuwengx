@@ -30,7 +30,9 @@ export default function Card({ card, count }: { card: HandCard; count: number })
 
     const OnDragStart = (panel: string, dragCallBack: DragSettings) => {
         // dragCallBack.displayPanel = cardContainer.current!;
+        GameUI.OnToggleCardCancelTip(true);
         dragCallBack.displayPanel = $.CreatePanel('Panel', cardContainer.current!, 'cache');
+        console.log('===OnDragStart===castType:', card.castType, 'isNilCastCard:', isNilCastCard(card.castType));
         if (isNilCastCard(card.castType)) {
             // 无施法目标
             // TODO: 没有施法目标的卡牌该如何设置打出引导的效果
@@ -39,9 +41,9 @@ export default function Card({ card, count }: { card: HandCard; count: number })
             IsHiddenArrow(false, cardContainer.current!);
         }
     };
-    // TODO: 鼠标拖回卡牌区域，箭头变为隐藏或者红色，表示放弃操作
     // 依据箭头类型
     const OnDragEnd = (panel: string, displayPanel: Panel) => {
+        GameUI.OnToggleCardCancelTip(false);
         displayPanel.DeleteAsync(0);
         IsHiddenArrow(true, cardContainer.current!);
         let mouseCursor = GameUI.GetCursorPosition();
@@ -161,12 +163,8 @@ export default function Card({ card, count }: { card: HandCard; count: number })
             </Panel>
             <Panel className="CardImage" style={{ backgroundImage: `url('file://{images}/custom_game/card/card_${card.cardType}_png.png')` }} />
             <Panel className="CardBottom">
-                <Label className="CardDescription" text={$.Localize(`#Card_${card.cardType}_Description`)} />
+                <Label className="CardDescription" html={true} text={$.Localize(`#Card_${card.cardType}_Description`)} />
             </Panel>
-            <Label
-                style={{ fontSize: '40px' }}
-                text={card.nCardID + '\n' + card.cardType + '\n' + card.cardKind + '\n' + card.cardType + '\n' + card.nManaCost}
-            />
         </Panel>
     );
 }

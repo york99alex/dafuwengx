@@ -70,8 +70,9 @@ export class PathMonster extends Path {
     }
 
     /**刷新野怪 */
-    spawnMonster() {
-        if (!this.m_eCity || this.m_tabEMonster.length > 0) return;
+    spawnMonster(force?: boolean) {
+        if (!this.m_eCity) return;
+        if (!force && this.m_tabEMonster.length > 0) return;
 
         // 随机一种野怪
         this.m_typeMonsterLast = this.m_typeMonsterCur;
@@ -127,12 +128,17 @@ export class PathMonster extends Path {
         player.setPlayerState(PS_AtkHero + PS_AtkMonster);
 
         if (blinkPath) player.blinkToPath(this);
-        player.moveToPos(this.m_eCity.GetAbsOrigin(), (bSuccess: boolean) => {
-            if (bSuccess) {
-                player.m_eHero.MoveToTargetToAttack(this.m_tabEMonster[0]);
-                this.setMonsterAtk();
-            }
-        });
+
+        player.m_eHero.SetAbsOrigin(this.m_eCity.GetAbsOrigin());
+        FindClearSpaceForUnit(player.m_eHero, player.m_eHero.GetAbsOrigin(), true);
+        player.m_eHero.MoveToTargetToAttack(this.m_tabEMonster[0]);
+        this.setMonsterAtk();
+        // player.moveToPos(this.m_eCity.GetAbsOrigin(), (bSuccess: boolean) => {
+        //     if (bSuccess) {
+        //         player.m_eHero.MoveToTargetToAttack(this.m_tabEMonster[0]);
+        //         this.setMonsterAtk();
+        //     }
+        // });
 
         const tEventID = [];
         tEventID.push(
@@ -245,20 +251,24 @@ export class PathMonster extends Path {
         );
         GameRules.EventManager.Register('Event_PlayerDie', (event: { player: Player }) => this.onEvent_PlayerDie(event), this);
         GameRules.EventManager.Register('Event_Atk', (event: DamageEvent) => this.Event_Atk(event), this);
+        GameRules.EventManager.Register('Event_UpdateRound', () => {
+            this.spawnMonster();
+            return;
+        });
 
-        if (this.m_typePath == TP_MONSTER_2 || this.m_typePath == TP_MONSTER_3) {
-            GameRules.EventManager.Register('Event_UpdateRound', () => {
-                if (GameRules.GameConfig.m_nRound == 5 * (this.m_typePath - TP_MONSTER_2 + 1)) {
-                    this.spawnMonster();
-                    return true;
-                }
-            });
-        } else {
-            GameRules.EventManager.Register('Event_GameStart', () => {
-                this.spawnMonster();
-                return true;
-            });
-        }
+        // if (this.m_typePath == TP_MONSTER_2 || this.m_typePath == TP_MONSTER_3) {
+        //     GameRules.EventManager.Register('Event_UpdateRound', () => {
+        //         if (GameRules.GameConfig.m_nRound == 5 * (this.m_typePath - TP_MONSTER_2 + 1)) {
+        //             this.spawnMonster();
+        //             return;
+        //         }
+        //     });
+        // } else {
+        //     GameRules.EventManager.Register('Event_GameStart', () => {
+        //         this.spawnMonster();
+        //         return true;
+        //     });
+        // }
     }
 
     /**野怪死亡 */

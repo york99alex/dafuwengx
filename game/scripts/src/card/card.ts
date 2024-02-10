@@ -1,5 +1,6 @@
 import { GS_Move, GS_Supply, GS_DeathClearing, GS_Wait, PS_InPrison, PS_AtkHero, PS_Die } from '../constants/gamemessage';
 import { HudError } from '../mode/S2Cmode/huderror';
+import { Path } from '../path/Path';
 import { Player } from '../player/player';
 import { IsValid } from '../utils/amhc';
 
@@ -10,6 +11,9 @@ export type CardInfo = {
     CardKind: number;
     ShopItemName?: string;
 };
+export interface Card {
+    OnSpellStart(): void;
+}
 
 /**卡牌基类 */
 export class Card {
@@ -38,6 +42,8 @@ export class Card {
     m_eTarget: CDOTA_BaseNPC;
     /**目标点 */
     m_vTargetPos: Vector;
+    /**目标路径 */
+    mTargetPath?: Path;
 
     constructor(cardInfo: CardInfo, nPlayerID: PlayerID) {
         this.m_typeCard = tonumber(cardInfo.CardType);
@@ -342,9 +348,6 @@ export class Card {
     isCanCastRune() {
         return false;
     }
-
-    /**卡牌释放 */
-    OnSpellStart() {}
 
     /**卡牌更新 */
     update() {

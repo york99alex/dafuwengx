@@ -89,10 +89,11 @@ declare interface CustomGameEventDeclarations {
     };
 
     GM_CameraCtrl: {
-        pos: number;
+        pos: any;
         lerp: number;
         nPlayerID?: number;
     };
+
     /**通知卡牌添加 */
     S2C_GM_CardAdd: {
         nPlayerID: number;

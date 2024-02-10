@@ -51,6 +51,10 @@ export const PlayerMgr = new PlayerManager();
 export const GameMgr = new GameManager();
 export const PathMgr = new PathManager();
 
+GameUI.SetCameraDistance(1134);
+GameUI.SetCameraPitchMin(0);
+GameUI.SetCameraPitchMax(65);
+
 render(
     <>
         {/* <Test /> */}

@@ -342,6 +342,7 @@ export class PathManager {
             if (funCallBack) {
                 funCallBack(false);
             }
+            print('===Error PathManager moveToPos cannt FindPath:', entity.GetUnitName());
             return;
         }
         location = Vector(location.x, location.y, entity.GetAbsOrigin().z);

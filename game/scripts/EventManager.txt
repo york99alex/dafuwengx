@@ -166,12 +166,10 @@
 
 "Event_ItemHuiXueByRound": { entity: CDOTA_BaseNPC_Hero, nHuiXue: number }
 
-"Event_AtkMosterEnd": {
-                    entity: player.m_eHero,
-                    bMoveBack: bMoveBack,
-                    bInPrison: bInPrison,
-                }
+"Event_AtkMosterEnd":  { entity: CDOTA_BaseNPC_Hero; bMoveBack: boolean; bInPrison: boolean }
 
 "Event_AtkMoster": { entity: player.m_eHero }
 
 "Event_BombDetonate": { path: Path, player:Player, target?: CDOTA_BaseNPC_Hero}
+
+"Event_WageGold": { player: Player, bIgonre: boolean }

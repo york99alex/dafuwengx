@@ -43,6 +43,31 @@
     }
 }
 
+.CancelTip {
+    width: 25%;
+    height: 20%;
+    vertical-align: bottom;
+    background-color: red;
+    opacity: 0;
+    animation-name: GameStart;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+.CancelTipLabel {
+    width: 25%;
+    font-size: 40px;
+    vertical-align: bottom;
+    margin-bottom: 15%;
+    margin-left: 10%;
+    color: rgb(255, 0, 0);
+    text-shadow: 1px 1px 1px #272727;
+    font-family: titleFont;
+    opacity: 0.9;
+    z-index: 3;
+}
+
 .CardPanel {
     width: 25%;
     height: 40%;
@@ -120,15 +145,17 @@
     .CardBottom {
         width: 100%;
         height: width-percentage(50%);
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(0, 0, 0, 0.6);
         margin-top: -40%;
         .CardDescription {
+            opacity: 1;
             font-size: 20px;
             color: white;
             vertical-align: middle;
             horizontal-align: center;
             font-family: titleFont;
             text-align: center;
+            text-overflow: shrink;
         }
     }
 }

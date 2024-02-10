@@ -184,6 +184,7 @@ AbilityError_Target,,目标错误
 AbilityError_Range,,不在范围内
 AbilityError_TargetPath,,仅路径目标
 AbilityError_NoBomb,,没有地雷无需标识
+AbilityError_TargetNotPlayer,,目标不是玩家英雄
 bz_pa_1,PA★,幻影刺客★
 bz_pa_11,PA★★,幻影刺客★★
 bz_pa_111,PA★★★,幻影刺客★★★
@@ -642,10 +643,58 @@ DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_armor,,+$armor
 DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_damage,,+$damage
 DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_project_speed,,+攻击弹道速度
 DOTA_Tooltip_Ability_item_qtg_revenants_brooch_Description,,<h1>被动：英灵之刃</h1>每次攻击命中后额外造成玩家英雄智力%attack_intell%%%的魔法伤害。
+DOTA_Tooltip_Ability_item_qtg_sange,,散华
+DOTA_Tooltip_Ability_item_qtg_sange_bonus_strength,,+$str
+DOTA_Tooltip_Ability_item_qtg_sange_slow_resistance,,%+减速抗性
+DOTA_Tooltip_Ability_item_qtg_sange_regen_amp,,%+生命恢复和吸血增强
+DOTA_Tooltip_Ability_item_qtg_sange_Lore,,散华是一把异常精准的武器，会自动寻找对方的弱点所在。
+DOTA_Tooltip_Ability_item_qtg_yasha,,夜叉
+DOTA_Tooltip_Ability_item_qtg_yasha_bonus_agility,,+$agi
+DOTA_Tooltip_Ability_item_qtg_yasha_bonus_attack_speed,,+$attack
+DOTA_Tooltip_Ability_item_qtg_yasha_movement_speed_percent_bonus,,%+$move_speed
+DOTA_Tooltip_Ability_item_qtg_yasha_Lore,,夜叉可以称得上有史以来最轻巧的武器。
+DOTA_Tooltip_Ability_item_qtg_yasha_Note0,,不会与其他夜叉、散夜对剑提供的移动速度加成叠加。
+DOTA_Tooltip_Ability_item_qtg_kaya,,慧光
+DOTA_Tooltip_Ability_item_qtg_kaya_bonus_intellect,,+$int
+DOTA_Tooltip_Ability_item_qtg_kaya_spell_amp,,%+技能增强
+DOTA_Tooltip_Ability_item_qtg_kaya_spell_lifesteal_amp,,%+技能吸血增强
+DOTA_Tooltip_Ability_item_qtg_kaya_Lore,,一位闻名遐迩的女巫师手上的法杖，已经失落了上万年。
+DOTA_Tooltip_Ability_item_qtg_kaya_Note0,,不会与其他慧光、散慧对剑提供的技能增强加成叠加。
+DOTA_Tooltip_Ability_item_qtg_mage_slayer,,法师克星
+DOTA_Tooltip_Ability_item_qtg_mage_slayer_bonus_magical_armor,,%+$spell_resist
+DOTA_Tooltip_Ability_item_qtg_mage_slayer_bonus_attack_speed,,+$attack
+DOTA_Tooltip_Ability_item_qtg_mage_slayer_bonus_damage,,+$damage
+DOTA_Tooltip_Ability_item_qtg_mage_slayer_bonus_intellect,,+$int
+DOTA_Tooltip_Ability_item_qtg_mage_slayer_Description,,<h1>被动：法师克星</h1>攻击敌人时施加一个负面效果，并且使目标造成的技能伤害降低%spell_amp_debuff%%%，持续%duration%秒。
+DOTA_Tooltip_Ability_item_qtg_mage_slayer_Lore,,在天瑶城的第三纪元由一个秘密教团打造，意图扳倒冒牌的大帝。
+DOTA_Tooltip_modifier_item_qtg_mage_slayer_debuff,,法师克星
+DOTA_Tooltip_modifier_item_qtg_mage_slayer_debuff_Description,,造成的技能伤害减少%dMODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE%%%。
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange,,散慧对剑
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_bonus_strength,,+$str
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_bonus_intellect,,+$int
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_spell_amp,,%+技能增强
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_slow_resistance,,%+减速抗性
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_spell_lifesteal_amp,,%+技能吸血增强
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_regen_amp,,%+生命恢复和吸血增强
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_Lore,,这是三大利器的其中两件，因为他们都蕴含着不可思议的力量，很多人相信他们全是在同一个附魔师的熔炉中打造的。
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha,,散夜对剑
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_bonus_strength,,+$str
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_bonus_agility,,+$agi
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_bonus_attack_speed,,+$attack
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_movement_speed_percent_bonus,,%+$move_speed
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_slow_resistance,,%+减速抗性
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_regen_amp,,%+生命恢复和吸血增强
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha__Lore,,散华和夜叉经过月光的照耀而产生共鸣，双剑合璧发挥出更大的威力。
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_Note0,,不会与其他夜叉、散夜对剑提供的移动速度加成叠加。
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya,,慧夜对剑
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_bonus_intellect,,+$int
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_bonus_agility,,+$agi
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_bonus_attack_speed,,+$attack
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_movement_speed_percent_bonus,,%+$move_speed
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_spell_amp,,%+技能增强
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_spell_lifesteal_amp,,%+技能吸血增强
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_Lore,,夜叉和慧光配成一对时会产生共鸣。
 
-
-Card_20005,,阎刃
-Card_20005_Description,,指定玩家出狱或入狱
 Card_10005,,小型猎野场
 Card_10005_Description,,入侵小野区
 Card_10006,,大型猎野场
@@ -654,6 +703,21 @@ Card_10007,,远古禁地
 Card_10007_Description,,入侵远古禁地
 Card_10008,,拉野
 Card_10008_Description,,刷新目标野区生物
+Card_20001,,窃取
+Card_20001_Description,,获取目标上次使用的卡牌
+Card_20002,,移形换位
+Card_20002_Description,,与目标英雄互换位置
+Card_20003,,两级反转
+Card_20003_Description,,将敌人都拖拽至前方一格<br>无法影响入狱和战斗中的单位
+Card_20004,,恶念瞥视
+Card_20004_Description,,让目标回到上一次所在位置<br>将触发到达效果
+Card_20005,,阎刃
+Card_20005_Description,,指定玩家出狱或入狱
+Card_20020,,血怒
+Card_20020_Description,,加深目标20%的造成和承受伤害
+
+
+CardError_NoLastCard,,没有可窃取卡牌
 Error_ItemMax,,物品栏已满
 Error_ItemSide,,限边路商店购买
 Error_ItemSecret,,限神秘商店购买
@@ -824,6 +888,7 @@ supply_tip_select,,请挑选
 // 通用文本
 text_understand,,了解
 text_give_up,,放弃
+text_cancel,,取消
 text_go_to,,前往
 // 路径面板
 TypeOperator_AYZZ,,安营扎寨
@@ -968,3 +1033,7 @@ scoreboard_title_kills,K,击
 scoreboard_title_gcld,SIEGE,攻
 scoreboard_title_mute,MUTE,屏蔽
 scoreboard_tool_tip_mute_trade,Reject his trade,拒绝他的交易（还未实现=w=）
+
+// 战斗广播
+Custom_GetGoodCard,,{s:player_name} 获得了卡牌·<font color='#FFFF00'>{s:locstring_value}</font>
+Custom_GetBadCard,,{s:player_name} 获得了卡牌·<font color='#207777'>{s:locstring_value}</font>

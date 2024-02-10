@@ -114,6 +114,16 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/econ/items/ogre_magi/ogre_magi_jackpot/ogre_magi_jackpot_spindle_rig.vpcf',
             'particles/items_fx/blademail.vpcf',
             'particles/custom/item_crimson_guard.vpcf',
+            'particles/units/heroes/hero_rubick/rubick_spell_steal.vpcf',
+            'soundevents/game_sounds_heroes/game_sounds_rubick.vsndevts',
+            'particles/units/heroes/hero_vengeful/vengeful_nether_swap.vpcf',
+            'soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts',
+            'particles/units/heroes/hero_disruptor/disruptor_glimpse_targetstart.vpcf',
+            'particles/units/heroes/hero_disruptor/disruptor_glimpse_travel.vpcf',
+            'particles/units/heroes/hero_disruptor/disruptor_glimpse_targetend.vpcf',
+            'soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts',
+            'particles/units/heroes/hero_magnataur/magnataur_reverse_polarity.vpcf',
+            'soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts',
         ],
         context
     );

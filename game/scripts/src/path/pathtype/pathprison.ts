@@ -1,5 +1,7 @@
+import { CardFactory } from '../../card/cardfactory';
 import { PRISON_BAOZI_COUNT, GOLD_OUT_PRISON, TIME_OPERATOR_DISCONNECT, TIME_OPERATOR } from '../../constants/constant';
 import { PS_InPrison, TypeOprt } from '../../constants/gamemessage';
+import { GameRecord } from '../../mode/S2Cmode/GameRecord';
 import { CDOTA_BaseNPC_BZ } from '../../player/CDOTA_BaseNPC_BZ';
 import { Player } from '../../player/player';
 import { AMHC, IsValid } from '../../utils/amhc';
@@ -50,7 +52,15 @@ export class PathPrison extends Path {
 
         // 触发阎刃卡
         if (player.m_nRollMove == 1) {
-            // TODO:
+            const card = GameRules.CardFactory.create(CardType.Card_MAGIC_InfernalBlade, player.m_nPlayerID);
+            // const card = GameRules.CardFactory.create(CardType.Card_MAGIC_InfernalBlade, player.m_nPlayerID);
+            if (card) {
+                player.setCardAdd(card);
+                GameRecord.gameBroadcast(player.m_nPlayerID, BroadcastType.GetGoodCard, {
+                    locstring_value: '阎刃',
+                });
+                // TODO: 设置游戏记录
+            }
         }
     }
 

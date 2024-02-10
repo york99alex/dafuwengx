@@ -91,7 +91,7 @@ export class CardManager {
             nRequest: nResult,
             typeOprt: TypeOprt.TO_UseCard,
         };
-        print('use card nResult=' + nResult, '(1为失败, 0为成功)');
+        print('use card nResult = ' + (nResult == 0 ? '成功' : '失败'));
         if (nResult == 0) {
             tabData['CardType'] = card.m_typeCard;
             tabData['CardKind'] = card.m_typeKind;
@@ -160,7 +160,7 @@ export class CardManager {
         const cardID = this.getCardType(cardType, player, item);
         print('===onItem_getCard===itemname:', item.GetName(), 'cardID:', cardID);
         if (cardID) {
-            const card = CardFactory.create(cardID, player.m_nPlayerID);
+            const card = GameRules.CardFactory.create(cardID, player.m_nPlayerID);
             if (card) {
                 player.setCardAdd(card);
             }

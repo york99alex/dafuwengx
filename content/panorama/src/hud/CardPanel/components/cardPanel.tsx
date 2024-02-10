@@ -11,7 +11,14 @@ export default function CardPanel() {
     };
     // 初始化
     const [cardlist, setCardList] = useState<CardList>({});
+    const [cancelTip, setCancelTip] = useState(false);
     const arrows = [0, 1, 2, 3, 4, 5, 6];
+
+    useEffect(() => {
+        GameUI.OnToggleCardCancelTip = (bOpen: boolean) => {
+            setCancelTip(bOpen);
+        };
+    });
 
     // 更新手牌方法
     function updateCardList(cardID: number, handCard?: HandCard) {
@@ -129,12 +136,14 @@ export default function CardPanel() {
                             id={`arrow_${num}`}
                             className="arrowsize"
                             hittest={false}
-                            visible={false}
+                            visible={cancelTip}
                             src={`file://{images}/custom_game/arrow_png.png`}
                         />
                     );
                 })}
             </Panel>
+            <Label className="CancelTipLabel" visible={cancelTip} text={$.Localize('#text_cancel')} />
+            <Panel className="CancelTip" hittest={false} visible={cancelTip}></Panel>
             <Panel className="CardPanel" hittest={false} visible={true}>
                 {Object.entries(cardlist || {}).map(([cardID, handCard]) => {
                     return <Card key={cardID} card={handCard} count={Object.keys(cardlist || {}).length} />;

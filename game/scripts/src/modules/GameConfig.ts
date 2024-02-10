@@ -49,6 +49,7 @@ import { ParaAdjuster } from '../utils/paraadjuster';
 import { ItemManager } from '../item/itemmanager';
 import { Supply } from '../mode/Supply';
 import { PathMonster } from '../path/pathtype/pathmonster';
+import { CardFactory } from '../card/cardfactory';
 
 export class GameConfig {
     _DotaState: [];
@@ -200,6 +201,7 @@ export class GameConfig {
         GameRules.PathManager = new PathManager(); // 路径管理模块
         GameRules.PathManager.init();
         AbilityManager.init(); // 技能模块
+        GameRules.CardFactory = new CardFactory(); // 卡牌工厂模块
         GameRules.CardManager = new CardManager(); // 卡牌管理模块
         GameRules.CardManager.init();
         GameRules.Trade = new Trade(); // 交易模块
@@ -469,8 +471,8 @@ export class GameConfig {
             }
         }
         // if (oPlayer.m_eHero.GetUnitName() == "npc_dota_hero_phantom_assassin") {
-        // nNum1 = 1;
-        // nNum2 = 2;
+        // nNum1 = 4;
+        // nNum2 = 6;
         // }else{
         //     nNum1 = 3
         //     nNum2 = 5

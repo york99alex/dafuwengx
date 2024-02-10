@@ -552,6 +552,7 @@ export class Player {
             if (funCallBack) {
                 funCallBack(false);
             }
+            print('===Error player moveToPos cannt FindPath', this.m_eHero.GetUnitName());
             return;
         }
 

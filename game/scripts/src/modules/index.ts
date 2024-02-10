@@ -14,6 +14,7 @@ import { Debug } from './Debug';
 import { GameConfig } from './GameConfig';
 import { XNetTable } from './xnet-table';
 import { Supply } from '../mode/Supply';
+import { CardFactory } from '../card/cardfactory';
 
 declare global {
     interface CDOTAGameRules {
@@ -25,6 +26,7 @@ declare global {
         PathManager: PathManager;
         HeroSelection: HeroSelection;
         GameConfig: GameConfig;
+        CardFactory: CardFactory;
         CardManager: CardManager;
         ItemManager: ItemManager;
         ItemShare: ItemShare;

@@ -435,3 +435,15 @@ export function mergeArrays(arr1: any[], arr2: any[]): any[] {
 
     return uniqueValues;
 }
+
+/**生成范围内的n个不重复随机数 */
+export function getRandomsInRange(min: number, max: number, n: number): number[] {
+    const result: Set<number> = new Set();
+
+    while (result.size < n) {
+        const randomNumber = RandomInt(min, max);
+        result.add(randomNumber);
+    }
+
+    return Array.from(result);
+}

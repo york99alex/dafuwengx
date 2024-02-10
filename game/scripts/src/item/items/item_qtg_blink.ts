@@ -2,6 +2,7 @@ import { AMHC, IsValid } from '../../utils/amhc';
 import { registerAbility } from '../../utils/dota_ts_adapter';
 import { TSBaseItem } from '../tsBaseItem';
 import { AbilityManager } from '../../ability/abilitymanager';
+import { CameraManage } from '../../mode/S2Cmode/CameraManage';
 
 /**
  * 闪烁匕首 2000，5回合CD
@@ -59,7 +60,7 @@ export class item_qtg_blink extends TSBaseItem {
         ParticleManager.SetParticleControl(nPtclID, 0, player.m_eHero.GetAbsOrigin());
 
         // 视角
-        // TODO: CameraManage.LookAt()
+        CameraManage.LookAt(player.m_nPlayerID, player.m_eHero.GetAbsOrigin(), 0.1);
 
         // 设置冷却
         AbilityManager.setRoundCD(player, this);

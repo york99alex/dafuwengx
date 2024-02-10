@@ -1,33 +1,31 @@
 export class CameraManage {
-
-    m_tCameraFollow: {}
+    m_tCameraFollow: {};
 
     constructor() {
-        this.m_tCameraFollow = {}
+        this.m_tCameraFollow = {};
     }
 
-    static LookAt(nPlayerID: number, Pos, Lerp) {
-        print("nPlayerID:", nPlayerID)
+    static LookAt(nPlayerID: number, Pos: Vector, Lerp) {
+        print('nPlayerID:', nPlayerID);
         if (nPlayerID == -1) {
             this.SendToAllPlayer({
                 pos: Pos,
-                lerp: Lerp
-            })
+                lerp: Lerp,
+            });
         } else {
             this.SendToPlayer({
                 pos: Pos,
                 lerp: Lerp,
-                nPlayerID: nPlayerID
-            })
+                nPlayerID: nPlayerID,
+            });
         }
-
     }
 
     static SendToPlayer(data) {
-        GameRules.PlayerManager.sendMsg("GM_CameraCtrl", data, data.nPlayerID)
+        GameRules.PlayerManager.sendMsg('GM_CameraCtrl', data, data.nPlayerID);
     }
 
     static SendToAllPlayer(data) {
-        GameRules.PlayerManager.broadcastMsg("GM_CameraCtrl", data)
+        GameRules.PlayerManager.broadcastMsg('GM_CameraCtrl', data);
     }
 }

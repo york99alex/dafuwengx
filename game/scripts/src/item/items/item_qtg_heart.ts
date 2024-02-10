@@ -36,6 +36,9 @@ export class item_qtg_heart_modifier extends BaseModifier {
     IsHidden(): boolean {
         return true;
     }
+    IsPurgable(): boolean {
+        return false;
+    }
     OnCreated(params: object): void {
         if (!IsValid(this)) return;
         if (!IsValid(this.GetAbility())) return;
@@ -44,10 +47,10 @@ export class item_qtg_heart_modifier extends BaseModifier {
         this.health_regen_hero = this.GetAbility().GetSpecialValueFor('health_regen_hero');
         this.health_regen_bz = this.GetAbility().GetSpecialValueFor('health_regen_bz');
 
-        this.shieldMax = this.GetCaster().GetMaxHealth() * this.shield_pct * 0.01;
-        this.shiledVal = 0;
         this.shield_eff = this.GetAbility().GetSpecialValueFor('shield_eff');
         this.shield_pct = this.GetAbility().GetSpecialValueFor('shield_pct');
+        this.shieldMax = this.GetCaster().GetMaxHealth() * this.shield_pct * 0.01;
+        this.shiledVal = 0;
         this.SetHasCustomTransmitterData(true);
 
         if (!IsServer()) return;
@@ -133,6 +136,7 @@ export class item_qtg_heart_modifier extends BaseModifier {
             return this.shiledVal;
         } else {
             if (event.damage == 0) return this.shiledVal;
+            if (this.shiledVal == 0) return;
             this.shiledVal -= event.damage; // 扣除伤害
             if (this.shiledVal < 0) {
                 const overDamge = this.shiledVal;
