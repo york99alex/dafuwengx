@@ -213,7 +213,7 @@ export class ItemManager {
         GameRules.GameConfig.showGold(player, nGold);
         player.setGold(nGold);
         // 音效
-        EmitSoundOnClient('Custom.Gold.Sell', player.m_oCDataPlayer);
+        EmitSoundOnClient('Custom.Gold.Sell', PlayerResource.GetPlayer(player.m_nPlayerID));
         // 出售价格特效
         AMHC.CreateNumberEffect(caster, nGold, 3, AMHC_MSG.MSG_MISS, [255, 215, 0], 0);
         // 修正蓝量
@@ -274,7 +274,7 @@ export class ItemManager {
                 HudError.FireLocalizeError(caster.GetPlayerOwnerID(), 'Error_ItemSecret');
                 const tPath = GameRules.PathManager.getPathByType(TP_SHOP_SECRET);
                 for (const path of tPath) {
-                    fireMouseAction_symbol(path.m_entity.GetAbsOrigin(), player.m_oCDataPlayer, true);
+                    fireMouseAction_symbol(path.m_entity.GetAbsOrigin(), PlayerResource.GetPlayer(player.m_nPlayerID), true);
                 }
                 return;
             }
@@ -285,7 +285,7 @@ export class ItemManager {
                 HudError.FireLocalizeError(caster.GetPlayerOwnerID(), 'Error_ItemSide');
                 const tPath = GameRules.PathManager.getPathByType(TP_SHOP_SIDE);
                 for (const path of tPath) {
-                    fireMouseAction_symbol(path.m_entity.GetAbsOrigin(), player.m_oCDataPlayer, true);
+                    fireMouseAction_symbol(path.m_entity.GetAbsOrigin(), PlayerResource.GetPlayer(player.m_nPlayerID), true);
                 }
                 return;
             }

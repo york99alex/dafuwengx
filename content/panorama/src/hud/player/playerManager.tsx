@@ -2,12 +2,14 @@ import { useNetTableKey } from 'react-panorama-x';
 import { player_info } from '../mode/constant';
 
 export class PlayerManager {
-    /**当前玩家ID */
-    playerID: PlayerID = Players.GetLocalPlayer();
     /**其他玩家ID[] */
     otherPlayers: PlayerID[] = this.getOtherPlayerIDs();
     /**sortPlayers */
     sortPlayers: PlayerID[] = this.getSortedPlayers();
+
+    constructor() {
+        console.log('===PlayerManager===init', Players.GetLocalPlayer(), Players.GetPlayerSelectedHero(Players.GetLocalPlayer()));
+    }
 
     getOtherPlayerIDs(): PlayerID[] {
         const ids: PlayerID[] = Object.values(CustomNetTables.GetTableValue('GamingTable', 'all_playerids') ?? {});

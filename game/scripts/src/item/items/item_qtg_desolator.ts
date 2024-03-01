@@ -20,6 +20,9 @@ export class item_qtg_desolator_modifier extends BaseModifier {
     IsHidden(): boolean {
         return true;
     }
+    IsPurgable(): boolean {
+        return false;
+    }
     DeclareFunctions(): ModifierFunction[] {
         return [ModifierFunction.PREATTACK_BONUS_DAMAGE, ModifierFunction.ON_ATTACK_LANDED];
     }

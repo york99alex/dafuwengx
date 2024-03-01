@@ -261,7 +261,7 @@ export class Supply {
                     const nGold = math.floor(GetItemCost(supplyInfo.itemName) * 0.5);
                     GameRules.GameConfig.showGold(player, nGold);
                     player.setGold(nGold);
-                    EmitSoundOnClient('Custom.Gold.Sell', player.m_oCDataPlayer);
+                    EmitSoundOnClient('Custom.Gold.Sell', PlayerResource.GetPlayer(player.m_nPlayerID));
                     AMHC.CreateNumberEffect(player.m_eHero, nGold, 3, AMHC_MSG.MSG_MISS, [255, 215, 0], 0);
                 }
             } else if (supplyInfo.type == 'path') {

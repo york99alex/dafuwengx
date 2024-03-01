@@ -59,6 +59,9 @@ export class item_qtg_mask_of_madness_modifier extends BaseModifier {
     IsHidden(): boolean {
         return true;
     }
+    IsPurgable(): boolean {
+        return false;
+    }
     OnCreated(params: object): void {
         if (!IsValid(this)) return;
         if (!IsValid(this.GetAbility())) return;

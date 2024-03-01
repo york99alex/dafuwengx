@@ -3,7 +3,7 @@ import { player_info } from '../mode/constant';
 import { PlayerMgr, UIHud } from '..';
 
 export function BuyItem() {
-    const { nBuyItem, nGold } = useNetTableKey('GamingTable', ('player_info_' + PlayerMgr.playerID) as player_info)!;
+    const { nBuyItem, nGold } = useNetTableKey('GamingTable', ('player_info_' + Players.GetLocalPlayer()) as player_info)!;
 
     function onclick() {
         const element = UIHud.FindChildTraverse('shop')!;

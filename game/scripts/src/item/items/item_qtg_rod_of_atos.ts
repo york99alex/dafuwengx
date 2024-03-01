@@ -51,6 +51,9 @@ export class item_qtg_rod_of_atos_modifier extends BaseModifier {
     IsHidden(): boolean {
         return true;
     }
+    IsPurgable(): boolean {
+        return false;
+    }
     GetAttributes(): ModifierAttribute {
         return ModifierAttribute.MULTIPLE;
     }

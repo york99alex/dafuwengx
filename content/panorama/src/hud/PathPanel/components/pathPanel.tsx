@@ -75,11 +75,18 @@ export function PathPanel() {
             // { typeOprt: 2, nRequest: 1, nPlayerID: 1, nPathID: 3, typePath: 12 }
             if (data.typeOprt == TypeOprt.TO_AYZZ) {
                 if (data.nRequest == 1) {
+                    if (data.nPlayerID != Players.GetLocalPlayer()) {
+                        // 领地路径
+                        resetState();
+                        setEvent(data);
+                        pathPanel.current!.RemoveClass('Hidden');
+                        setTitle($.Localize('#TypeOperator_AYZZ'));
+                    }
                     // 占领成功
-                    setTipLabel($.Localize('#' + Players.GetPlayerSelectedHero(PlayerMgr.playerID)) + $.Localize('#TypeOperator_AYZZ_Owner'));
+                    setTipLabel($.Localize('#' + Players.GetPlayerSelectedHero(data.nPlayerID)) + $.Localize('#TypeOperator_AYZZ_Owner'));
                     $('#YES').visible = false;
                     setBtnNoText($.Localize('#text_understand'));
-                } else if (data.nPlayerID == PlayerMgr.playerID) {
+                } else if (data.nPlayerID == Players.GetLocalPlayer()) {
                     // 占领失败
                     resetState();
                     pathPanel.current!.AddClass('Hidden');
@@ -99,13 +106,13 @@ export function PathPanel() {
         if (event.typeOprt == TypeOprt.TO_AYZZ) {
             if (PathDomainsType.includes(event.typePath)) {
                 GameMgr.SendOperatorToServer({
-                    nPlayerID: PlayerMgr.playerID,
+                    nPlayerID: Players.GetLocalPlayer(),
                     typeOprt: TypeOprt.TO_AYZZ,
                     nRequest: bVal ? 1 : 0,
                 });
             } else if (PathMonstersType.includes(event.typePath)) {
                 GameMgr.SendOperatorToServer({
-                    nPlayerID: PlayerMgr.playerID,
+                    nPlayerID: Players.GetLocalPlayer(),
                     typeOprt: TypeOprt.TO_AtkMonster,
                     nRequest: bVal ? 1 : 0,
                 });
@@ -114,7 +121,7 @@ export function PathPanel() {
             }
         } else if (event.typeOprt == TypeOprt.TO_PRISON_OUT) {
             GameMgr.SendOperatorToServer({
-                nPlayerID: PlayerMgr.playerID,
+                nPlayerID: Players.GetLocalPlayer(),
                 typeOprt: TypeOprt.TO_PRISON_OUT,
                 nRequest: bVal ? 1 : 0,
                 nGold: event.nGold,
@@ -123,7 +130,7 @@ export function PathPanel() {
             resetState();
         } else if (event.typeOprt == TypeOprt.TO_GCLD) {
             GameMgr.SendOperatorToServer({
-                nPlayerID: PlayerMgr.playerID,
+                nPlayerID: Players.GetLocalPlayer(),
                 typeOprt: TypeOprt.TO_GCLD,
                 nRequest: bVal ? 1 : 0,
             });
@@ -131,7 +138,7 @@ export function PathPanel() {
             resetState();
         } else if (event.typeOprt == TypeOprt.TO_AtkMonster) {
             GameMgr.SendOperatorToServer({
-                nPlayerID: PlayerMgr.playerID,
+                nPlayerID: Players.GetLocalPlayer(),
                 typeOprt: TypeOprt.TO_AtkMonster,
                 nRequest: bVal ? 1 : 0,
             });
@@ -149,96 +156,6 @@ export function PathPanel() {
         $('#YES').visible = true;
         $('#NO').visible = true;
     }
-
-    /**悬浮提示路径信息 */
-    // function ShowPathTip() {
-    //     const cursorTargetEnts = [];
-    //     let cursorEntities = GameUI.FindScreenEntities(GameUI.GetCursorPosition());
-
-    //     for (const entity of cursorEntities) {
-    //         cursorTargetEnts.push(entity.entityIndex);
-    //         let unitname = Entities.GetUnitName(entity.entityIndex);
-    //         if (unitname.length && unitname.length >= 4) {
-    //             if (unitname.includes('rune_') && PathMgr.tipPanel == null) {
-    //                 PathMgr.cursorName = unitname;
-    //                 PathMgr.cursorHoverIndex = entity.entityIndex;
-    //                 PathMgr.tipPanel = $.CreatePanel('Panel', $.GetContextPanel(), 'PathTipPanel');
-    //                 const abs = Entities.GetAbsOrigin(PathMgr.cursorHoverIndex);
-    //                 PathMgr.tipPanel.style.position =
-    //                     (Game.WorldToScreenX(abs[0], abs[1], abs[2]) / Game.GetScreenWidth()) * 100 +
-    //                     '% ' +
-    //                     (Game.WorldToScreenY(abs[0], abs[1], abs[2]) / Game.GetScreenHeight()) * 100 +
-    //                     '% 0';
-    //                 PathMgr.tipPanel.style.tooltipPosition = 'top';
-    //                 PathMgr.tipPanel.style.tooltipArrowPosition = '50% 50%';
-    //                 PathMgr.tipPanel.style.tooltipBodyPosition = '50% 50%';
-    //                 $.DispatchEvent('DOTAShowBuffTooltip', PathMgr.tipPanel, PathMgr.cursorHoverIndex, 1, true);
-    //                 const buffName = UIHelper.findOtheXMLPanel('DOTABuffTooltip')?.FindChildTraverse('BuffName') as LabelPanel;
-    //                 const buffDescription = UIHelper.findOtheXMLPanel('DOTABuffTooltip')?.FindChildTraverse('BuffDescription') as LabelPanel;
-    //                 if (buffName != null && buffDescription != null) {
-    //                     buffName.text = $.Localize('#DOTA_Tooltip_Modifier_' + unitname);
-    //                     buffDescription.text = $.Localize('#DOTA_Tooltip_Modifier_' + unitname + '_Description');
-    //                 }
-    //                 break;
-    //             } else if (unitname.includes('PathLog_') && pathPanel.current != null && pathPanel.current.BHasClass('Hidden')) {
-    //                 PathMgr.cursorName = unitname;
-    //                 PathMgr.cursorHoverIndex = entity.entityIndex;
-
-    //                 unitname = unitname.substring(8);
-
-    //                 // 启动<PathPanel>
-    //                 // resetState();
-    //                 const pathType = PathType[parseInt(unitname)];
-    //                 setEvent({
-    //                     typePath: pathType,
-    //                     nPathID: parseInt(unitname),
-    //                 });
-    //                 pathPanel.current.RemoveClass('Hidden');
-    //                 oprtPanel.current!.style.visibility = 'collapse';
-
-    //                 if (PathDomainsType.includes(pathType)) {
-    //                     // 领地路径
-    //                     setTitle($.Localize('#TypeOperator_AYZZ'));
-    //                 } else if (PathMonstersType.includes(pathType)) {
-    //                     // 打野路径
-    //                     setTitle($.Localize('#TypeOperator_AtkMonster'));
-    //                 } else if (pathType == PathPrisonType) {
-    //                     setTitle($.Localize('#TypeOperator_PRISON_title'));
-    //                 }
-    //                 break;
-    //             }
-    //         }
-    //     }
-    //     // console.log('===1:', PathMgr.tipPanel != null);
-    //     // console.log('===2:', !pathPanel.current?.BHasClass('Hidden'));
-    //     // console.log('===3:', PathMgr.cursorHoverIndex != null);
-    //     // console.log('===4:', PathMgr.cursorHoverIndex != null ? !PathMgr.cursorTargetEnts.includes(PathMgr.cursorHoverIndex) : false);
-
-    //     if (
-    //         (PathMgr.tipPanel != null || !pathPanel.current?.BHasClass('Hidden')) &&
-    //         PathMgr.cursorHoverIndex != null &&
-    //         !cursorTargetEnts.includes(PathMgr.cursorHoverIndex)
-    //     ) {
-    //         $.DispatchEvent('DOTAHideBuffTooltip');
-
-    //         if (PathMgr.tipPanel != null && PathMgr.cursorName?.includes('rune_')) {
-    //             PathMgr.tipPanel.visible = false;
-    //             PathMgr.tipPanel.DeleteAsync(0);
-    //             PathMgr.tipPanel = null;
-    //         } else if (!pathPanel.current?.BHasClass('Hidden')) {
-    //             pathPanel.current?.AddClass('Hidden');
-    //             PathMgr.tipPanel = null;
-    //             resetState();
-    //             $.Schedule(1, ShowPathTip);
-    //             return;
-    //         }
-    //         PathMgr.cursorName = null;
-    //         PathMgr.cursorHoverIndex = null;
-    //     } else {
-    //         $.Schedule(0.2, ShowPathTip);
-    //     }
-    // }
-    // ShowPathTip();
 
     return (
         <Panel className="PathPanel Hidden" ref={pathPanel} hittest={true}>

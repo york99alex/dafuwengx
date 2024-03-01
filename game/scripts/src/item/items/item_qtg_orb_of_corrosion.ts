@@ -21,6 +21,9 @@ export class item_qtg_orb_of_corrosion_modifier extends BaseModifier {
     IsHidden(): boolean {
         return true;
     }
+    IsPurgable(): boolean {
+        return false;
+    }
     DeclareFunctions(): ModifierFunction[] {
         return [ModifierFunction.ON_ATTACK_LANDED, , ModifierFunction.HEALTH_BONUS];
     }

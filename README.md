@@ -1024,9 +1024,9 @@ export const App = () => {	// 根组件
 
 ## Todo
 
-1. 还剩二三十件装备技能效果
-   还剩三十张卡牌策划及实现
-   还剩坡道路径实现
+1. 还剩装备
+   还剩卡牌
+   还剩坡道路径完善
    测试拍卖系统
    测试交易系统
    还剩前端游戏事件记录面板设计
@@ -1034,36 +1034,14 @@ export const App = () => {	// 根组件
    还剩本地化文本
    ==记分板本地玩家高亮==
 2. 添加回合超时按钮，点击后时间延长，1秒10块，每5秒翻倍
+3. ==前端测试问题==：
+   1. 卡牌面板，待测试
 
 
 
 
 
-1. 什么是pathlog?
-
-   self.m_eLog = Entities:FindByName(nil, "PathLog_" .. self.m_nID)
-
-   if self.m_eLog then
-
-   ​    ----创建log单位
-
-   ​    self.m_eUnit = CreateUnitByName("PathLog_" .. self.m_nID, self.m_eLog:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-
-   ​    self.m_eUnit.m_path = self
-
-   ​    ---- entity:SetModel(self.m_eLog:GetModelName())
-
-   ​    ---- entity:SetOriginalModel(self.m_eLog:GetModelName())
-
-   ​    ---- entity:SetForwardVector(self.m_eLog:GetForwardVector())
-
-   ​    ---- self.m_eLog:SetOrigin(self.m_eLog:GetOrigin() - Vector(0, 0, 1000))
-
-     end
-
-2. CGameParticleManager::SetParticleControlEnt: Unable to lookup attachment attach_attack1 on model  for entity npc_dota_creature
-
-3. ==兵卒相关==
+1. ==兵卒相关==
 
    1. ==调整==:
       1. m_bBattle: boolean = null  由bz定义 
@@ -1082,13 +1060,13 @@ export const App = () => {	// 根组件
       1. 兵卒自动施法错误
       2. 兵卒攻击第一下后不会继续攻击
 
-4. ==路径相关==
+2. ==路径相关==
 
    1. path_13_hundun 三级双河道buff? 造成伤害时，物理视为魔法，魔法视为物理?
    2. 测试path_13护甲穿透和魔法穿透是否生效
    3. 经过符文路径会无法自动结束回合，无限roll点？
 
-5. ==回合相关==
+3. ==回合相关==
 
    1. 如果回合开始前有操作, 需要设置GameLoop.==m_bRoundBefore==为true, 并在回合前操作完成后去手动跳转至begin GameLoop.GameStateService.send("tobegin")
       1. GSFinished_Entry会调用addRound, addRound会触发事件==Event_UpdateRound==, 所有在回合前有操作的都会注册该事件并至少做两件事:
@@ -1099,7 +1077,7 @@ export const App = () => {	// 根组件
          3. 操作完成后手动跳转回对应的begin
    2. ==死亡清算==
 
-6. ==蓝量相关==, 重做修改属性的方法, 主要是蓝量
+4. ==蓝量相关==, 重做修改属性的方法, 主要是蓝量
 
    1. ParaAdjuster.ModifyMana(英雄单位, 额外蓝量, 修正系数)
       	额外蓝量: 每回合给Player增加的m_nManaMaxBase
@@ -1128,13 +1106,13 @@ export const App = () => {	// 根组件
 
    9. 击杀野怪结束后，蓝量未修正
 
-7. UnRegister Failed Event Move?
+5. UnRegister Failed Event Move?
 
    1. 以及所有注销事件的调用尽量用ByID
 
-8. judgeBuffRound和 player的setRoundFinished触发的Event_PlayerRoundFinished存在问题？
+6. judgeBuffRound和 player的setRoundFinished触发的Event_PlayerRoundFinished存在问题？
 
-9. ==装备/卡牌相关==
+7. ==装备/卡牌相关==
 
    1. 测试CD物品在监狱的情况，比如猎野爪
 
@@ -1162,34 +1140,34 @@ export const App = () => {	// 根组件
        
    7. 重做回血装备，除龙心外，每回合回复为额外固定值
 
-10. 给钱异常
+8. 给钱异常
 
-11. 实现CamerManage的前端部分
-         检查pa一技能使用后镜头是否正确移动
+9. 实现CamerManage的前端部分
+        检查pa一技能使用后镜头是否正确移动
 
-12. 音效:
+10. 音效:
 
       1. 玩家回合倒计时结束自动骰子时声音异常Roll声音会重复发出
 
-13. huderror前端部分实现
+11. huderror前端部分实现
 
-14. GameLoop需重新调整的点
+12. GameLoop需重新调整的点
 
           1. 切换状态是否需要封装？
           2. 新增GSRoundBefore
           3. 重新理清状态图
           0.7(0.3*(1-y))*x=0.98
 
-15. ~~Player.setState重写~~，替换为setPlayerState
+13. ~~Player.setState重写~~，替换为setPlayerState
 
          -  遗留问题: BKB魔法免疫问题
            - 屠夫钩子对bkb
 
-16. 在一个合适的时机通过后端事件通知前端关闭操作提示框
+14. 在一个合适的时机通过后端事件通知前端关闭操作提示框
 
-17. 检查setPlayerMuteTrade能否生效
+15. 检查setPlayerMuteTrade能否生效
 
-18. ==前端相关==
+16. ==前端相关==
 
       1. 关闭以下前端页面:
              1. Pannel id="AbilityGameplayChanges"  #AbilityGameplayChanges
@@ -1226,25 +1204,25 @@ export const App = () => {	// 根组件
 
       
 
-19. 本地化翻译所有this.m_strCastError
+17. 本地化翻译所有this.m_strCastError
 
-20. ~~setKillCountAdd源码逻辑是否合理~~
+18. ~~setKillCountAdd源码逻辑是否合理~~
 
-21. 重写了技能tsbaseability的GetCastRange
+19. 重写了技能tsbaseability的GetCastRange
 
          1. 需要分清不同技能的情况
          2. 默认重写的tsbaseability中的getcastrange是以路径ID为距离计算返回的整数
          3. 如果分情况需要再对应的技能里重写getcastrange
          4. ==TODO==：调整PA技能范围为格数，而非距离
 
-22. 游戏记录模块 game_record客户端操作, 更新记录面板
+20. 游戏记录模块 game_record客户端操作, 更新记录面板
 
-23. 分开事件, 分开发送？可能没有必要，待确认
+21. 分开事件, 分开发送？可能没有必要，待确认
 
-24. ~~PlaySort与机器人的情况有点问题,总是021~~
+22. ~~PlaySort与机器人的情况有点问题,总是021~~
          注意使用RandInt方法来生成随机数
 
-25. 添加 unit 
+23. 添加 unit 
 
              1. "path_17_diao"
                  	{
@@ -1264,38 +1242,38 @@ export const App = () => {	// 根组件
          1. setDiaoGesture 雕哥施法检查
          2. 雕哥施法鬼畜，第一个飓风不会消除
 
-26. PathRune
+24. PathRune
 
-27. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+25. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
 
-28. Roll点的随机路径平衡机制数值思考
+26. Roll点的随机路径平衡机制数值思考
 
-29. 检查网表GamingTable的nSumGold总资产计算是否正确
+27. 检查网表GamingTable的nSumGold总资产计算是否正确
 
-30. addon_schinese.txt :		"RandomTip"						"随机英雄"
+28. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
-31. 统一所有英雄移速 ? 重新设计移速，290力量300全才/智力310敏捷，再根据强弱适当调整
+29. 统一所有英雄移速 ? 重新设计移速，290力量300全才/智力310敏捷，再根据强弱适当调整
 
-32. 检查FireEvent的args参数为空的情况
+30. 检查FireEvent的args参数为空的情况
 
-33. /**设置结算数据 */
+31. /**设置结算数据 */
              setGameEndData(){}
 
-34. ~~==sendMsg和broadcastMsg的tabData格式==~~
+32. ~~==sendMsg和broadcastMsg的tabData格式==~~
 
-35. ~~gamestate的计时器update是0.1调用一次~~
+33. ~~gamestate的计时器update是0.1调用一次~~
 
-36. ~~// 监听玩家移动回路径~~
+34. ~~// 监听玩家移动回路径~~
 
-37. ~~onMove如何处理gamestateloop~~
+35. ~~onMove如何处理gamestateloop~~
 
-38. 英雄经验系统/数值
+36. 英雄经验系统/数值
 
-39. 客户端,前端 请求传输数据缩减
+37. 客户端,前端 请求传输数据缩减
 
-40. 考虑把莉娜的兵卒技能换成光击阵
+38. 考虑把莉娜的兵卒技能换成光击阵
 
-41. 验证AMHC.Damage
+39. 验证AMHC.Damage
              ```
                          if (tData) {
                              for (const v of tData) {
@@ -1304,26 +1282,26 @@ export const App = () => {	// 根组件
                          }
              ```
 
-42. HudError:FireLocalizeError
+40. HudError:FireLocalizeError
 
-43. ~~Script Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
+41. ~~Script Runtime Error: ...ripts\vscripts\ability\axe\Ability_axe_battle_hunger.ts:92: attempt to index field 'EventManager' (a nil value)~~
              ~~stack traceback:~~
              ~~[C]: in function '__index'~~
 
          通过  if (IsClient())  return 解决
           但是为什么? 原因? 如何理解
 
-44. custom_sounds 有问题
+42. custom_sounds 有问题
 
              Failed loading resource "soundevents/custom_sounds.vsndevts_c" (ERROR_BADREQUEST: Code error - bad request)
              参考
 
-45. 天赋树
+43. 天赋树
 
          1. 龙骑 2024年1月是哪年的冬季呢
          2. 炸弹人 问涛宝
 
-46. 出狱思路:
+44. 出狱思路:
 
          1. 进入新的回合开始, onEvent_PlayerRoundBegin
              1. 如果在监狱
@@ -1343,22 +1321,22 @@ export const App = () => {	// 根组件
                  2. roll点走到监狱路径
                      - onPath ==> setInPrison
 
-47. 注意前端面板应该仅展示给对应的玩家
+45. 注意前端面板应该仅展示给对应的玩家
 
-48. 做一个动画效果,肉山大转盘, 可以不花钱投,但是轮盘概率会很小中将,
+46. 做一个动画效果,肉山大转盘, 可以不花钱投,但是轮盘概率会很小中将,
         如果给100,中将的就会轮盘区域就会动画过渡变大
         给更多变更大
 
-49. 考虑是否加入玩家交易次数限制，类似商店购买次数
+47. 考虑是否加入玩家交易次数限制，类似商店购买次数
 
-50. 尸王
+48. 尸王
 
     1. 变身墓碑以后没有生成小僵尸
     1. 尸王兵卒血量和护甲记得改回去
 
-51. 在一个技能同时造成两位玩家扣钱变为负数要进行死亡清算时还是有问题，只会先进行一名，再恢复之前操作玩家回合后再结算另一名。。。
+49. 在一个技能同时造成两位玩家扣钱变为负数要进行死亡清算时还是有问题，只会先进行一名，再恢复之前操作玩家回合后再结算另一名。。。
 
-52. 所有装备的固有buff，手动写上不能驱散
+50. 所有装备的固有buff，手动写上不能驱散
 
 
 
@@ -2439,7 +2417,7 @@ Path的类class name应以	path_corner
 2. ==前端==，通过点击发送roll操作
     GameEvents.SendCustomGameEventToServer('GM_Operator', {
 
-   ​      nPlayerID: PlayerMgr.playerID,
+   ​      nPlayerID: Players.GetLocalPlayer(),
 
    ​      typeOprt: oprtType,
 

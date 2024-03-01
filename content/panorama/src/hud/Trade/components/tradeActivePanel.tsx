@@ -47,9 +47,9 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
         } else {
             // 发送交易请求
             GameEvents.SendCustomGameEventToServer('GM_Operator', {
-                nPlayerID: PlayerMgr.playerID,
+                nPlayerID: Players.GetLocalPlayer(),
                 typeOprt: TypeOprt.TO_TRADE,
-                nPlayerIDTrade: PlayerMgr.playerID,
+                nPlayerIDTrade: Players.GetLocalPlayer(),
                 nPlayerIDTradeBe: selectPlayerID,
                 json: {
                     trade: {
@@ -69,8 +69,8 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
         event => {
             if (
                 event.typeOprt == TypeOprt.TO_TRADE &&
-                event.nPlayerID == PlayerMgr.playerID &&
-                event.nPlayerIDTrade == PlayerMgr.playerID &&
+                event.nPlayerID == Players.GetLocalPlayer() &&
+                event.nPlayerIDTrade == Players.GetLocalPlayer() &&
                 event.nPlayerIDTradeBe == selectPlayerID
             ) {
                 console.log('===Trade===GM_OperatorFinished===【TO_TRADE】', event);
@@ -90,7 +90,7 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
                 // 交易完成后的回包
                 event.typeOprt == TypeOprt.TO_TRADE_BE &&
                 event.nRequest &&
-                (event.nPlayerIDTrade == PlayerMgr.playerID || event.nPlayerIDTradeBe == PlayerMgr.playerID)
+                (event.nPlayerIDTrade == Players.GetLocalPlayer() || event.nPlayerIDTradeBe == Players.GetLocalPlayer())
             ) {
                 console.log('===Trade===GM_OperatorFinished===【TO_BE_TRADE】', event);
                 if (event.nRequest == 1) {
@@ -121,7 +121,7 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
     useGameEvent(
         'GM_Operator',
         event => {
-            if (event.typeOprt == TypeOprt.TO_TRADE_BE && event.nPlayerID == PlayerMgr.playerID && event.nPlayerIDTradeBe == PlayerMgr.playerID) {
+            if (event.typeOprt == TypeOprt.TO_TRADE_BE && event.nPlayerID == Players.GetLocalPlayer() && event.nPlayerIDTradeBe == Players.GetLocalPlayer()) {
                 console.log('===Trade===Recv===GM_Operator===【TO_TRADE_BE】', event);
                 // 收到交易请求，更新交易状态和面板内容
                 setTradeState(TRADESTATE.BeTrade);
@@ -151,7 +151,7 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
     function confirmTrade() {
         const data = recvData;
         data.nRequest = 1;
-        data.nPlayerID = PlayerMgr.playerID;
+        data.nPlayerID = Players.GetLocalPlayer();
         GameEvents.SendCustomGameEventToServer('GM_Operator', data);
     }
 
@@ -159,7 +159,7 @@ export default function TradeActivePanel(props: { openTradePanel: Function }) {
     function cancelTrade() {
         const data = recvData;
         data.nRequest = 0;
-        data.nPlayerID = PlayerMgr.playerID;
+        data.nPlayerID = Players.GetLocalPlayer();
         data.typeOprt = TypeOprt.TO_TRADE_BE;
         GameEvents.SendCustomGameEventToServer('GM_Operator', data);
     }

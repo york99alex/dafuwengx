@@ -166,7 +166,7 @@ export class EventManager {
                     print('FireEvent Success==>eventName:' + eventName);
                 } catch (err) {
                     print('FireEvent Error==>eventName:' + eventName);
-                    error(err);
+                    print(err);
                 }
             } else {
                 bDeleteHandler = true;

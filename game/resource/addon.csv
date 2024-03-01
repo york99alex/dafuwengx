@@ -9,152 +9,151 @@ DOTA_Tooltip_ability_tt5,THE,花开者谢必早
 DOTA_Tooltip_ability_tt6,MAY,久伏者飞必高
 DOTA_Tooltip_ability_tt7,DOTA,思而不学则殆
 DOTA_Tooltip_ability_tt8,ENJOY,学而不思则罔
-DOTA_Tooltip_ability_Ability_phantom_strike,,幻影突袭
-DOTA_Tooltip_ability_Ability_phantom_strike_Description,,闪烁到一个目标身边，并攻击%attack_times%次。
-DOTA_Tooltip_ability_Ability_phantom_strike_attack_times,,攻击次数 :
-DOTA_Tooltip_ability_Ability_phantom_strike_range,,施法范围 :
-DOTA_Tooltip_ability_Ability_meepo_ransack,,洗劫
-DOTA_Tooltip_ability_Ability_meepo_ransack_Description,,每次攻击从敌人身体汲取神秘的能量，以永久提升忽悠伤害。
-DOTA_Tooltip_ability_Ability_meepo_ransack_addsh,,伤害提升 :
-DOTA_Tooltip_Modifier_Ability_meepo_ransack,,洗劫
-DOTA_Tooltip_Modifier_Ability_meepo_ransack_Description,,伤害提升
-DOTA_Tooltip_ability_Ability_meepo_poof,,忽悠
-DOTA_Tooltip_ability_Ability_meepo_poof_Description,,通过从大地中汲取神秘的能量，一个米波可以在施法1.5秒后传送至另一个米波或自身所在之处，在离开和到达的区域都造成伤害。
-DOTA_Tooltip_ability_Ability_meepo_poof_Lore,,有时候打碎一块影墟水晶可以作为自己摆脱陷阱的方法，或者是另外一个自己。
-DOTA_Tooltip_ability_Ability_meepo_poof_range,,作用格数 :
-DOTA_Tooltip_ability_Ability_meepo_poof_poof_damage,,忽悠伤害 :
-AbilityError_not_meepo,,目标不是米波
-DOTA_Tooltip_ability_Ability_pudge_meat_hook,,肉钩
-DOTA_Tooltip_ability_Ability_pudge_meat_hook_Description,,向英雄射出血腥的肉钩，并将它拖到帕吉的身边。
-DOTA_Tooltip_ability_Ability_pudge_meat_hook_Lore,,屠夫的肉钩是噩梦的象征，锋利的倒钩暗示了他嗜血的本性。
-DOTA_Tooltip_ability_Ability_pudge_meat_hook_damage,,伤害 :
-DOTA_Tooltip_ability_Ability_pudge_rot,,腐烂
-DOTA_Tooltip_ability_Ability_pudge_rot_Description,,<font color='#4169E1'>开启/关闭</font> 持续性的毒性云雾，移动阶段伤害经过的英雄，并使其移速减缓。\n移动期间产生过伤害，消耗 <font color='#1E90FF'>■</font> <font color='#FFFFFF'><b>1</b></font>。
-DOTA_Tooltip_ability_Ability_pudge_rot_Lore,,从屠夫腐烂肿胀的肉体中放出的有毒气体，气体恶心的令人窒息。
-DOTA_Tooltip_ability_Ability_pudge_rot_range,,作用范围 :
-DOTA_Tooltip_ability_Ability_pudge_rot_damage,,伤害 :
-DOTA_Tooltip_ability_Ability_pudge_rot_rot_slow,,%减速 :
-AbilityError_NeedMana_1,,至少需要1点魔法
-DOTA_Tooltip_modifier_ability_pudge_rot_debuff,,腐烂
-DOTA_Tooltip_modifier_ability_pudge_rot_debuff_Description,,被腐烂减速<font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font>
-DOTA_Tooltip_ability_Ability_BZ_pudge_rot,,腐烂
-DOTA_Tooltip_ability_Ability_BZ_pudge_rot_Description,,<font color='#00FF00'>自动</font> 魔法至100%时，对经过的英雄造成持续伤害的毒性云雾，并使其移速减缓。
-DOTA_Tooltip_ability_Ability_BZ_pudge_rot_Lore,,从屠夫腐烂肿胀的肉体中放出的有毒气体，气体恶心的令人窒息。
-DOTA_Tooltip_ability_Ability_BZ_pudge_rot_range,,作用范围 :
-DOTA_Tooltip_ability_Ability_BZ_pudge_rot_damage,,伤害 :
-DOTA_Tooltip_ability_Ability_BZ_pudge_rot_rot_slow,,%减速 :
-DOTA_Tooltip_ability_Ability_lina_dragon_slave,,龙破斩
-DOTA_Tooltip_ability_Ability_lina_dragon_slave_Description,,莉娜引导龙的吐息，放出一波火焰，烧焦前方全部敌人。
-DOTA_Tooltip_ability_Ability_lina_dragon_slave_Lore,,在纷争之国的荒焦之地，为了娱乐，莉娜学会了操控沙漠龙的火焰吐息。
+DOTA_Tooltip_ability_Ability_phantom_strike,Phantom Strike,幻影突袭
+DOTA_Tooltip_ability_Ability_phantom_strike_Description,Blink to a target's side and attack %attack_times% times.,闪烁到一个目标身边，并攻击%attack_times%次。
+DOTA_Tooltip_ability_Ability_phantom_strike_attack_times,ATTACK COUNT:,攻击次数 :
+DOTA_Tooltip_ability_Ability_phantom_strike_range,CAST RANGE:,施法范围 :
+DOTA_Tooltip_ability_Ability_meepo_ransack,Ransack,洗劫
+DOTA_Tooltip_ability_Ability_meepo_ransack_Description,Each attack siphons mysterious energy from the enemy  permanently boosting Poof damage.,每次攻击从敌人身体汲取神秘的能量，以永久提升忽悠伤害。
+DOTA_Tooltip_ability_Ability_meepo_ransack_addsh,BONUS DAMAGE :,伤害提升 :
+DOTA_Tooltip_Modifier_Ability_meepo_ransack,Ransack,洗劫
+DOTA_Tooltip_Modifier_Ability_meepo_ransack_Description,Ransack bonus damage,伤害提升
+DOTA_Tooltip_ability_Ability_meepo_poof,Poof,忽悠
+DOTA_Tooltip_ability_Ability_meepo_poof_Description,By tapping into mystical energy from the earth a Meepo can teleport to another Meepo or its current location after channeling for 1.5 seconds dealing damage in both departure and arrival areas.,通过从大地中汲取神秘的能量，一个米波可以在施法1.5秒后传送至另一个米波或自身所在之处，在离开和到达的区域都造成伤害。
+DOTA_Tooltip_ability_Ability_meepo_poof_Lore,Sometimes breaking one of the Riftshadow Crystals can be just the trick for getting yourself out of a bind.  Or your other self.,有时候打碎一块影墟水晶可以作为自己摆脱陷阱的方法，或者是另外一个自己。
+DOTA_Tooltip_ability_Ability_meepo_poof_range,RADIUS :,作用格数 :
+DOTA_Tooltip_ability_Ability_meepo_poof_poof_damage,DAMAGE :,忽悠伤害 :
+AbilityError_not_meepo,NOT MEPPO,目标不是米波
+DOTA_Tooltip_ability_Ability_pudge_meat_hook,Meet Hook,肉钩
+DOTA_Tooltip_ability_Ability_pudge_meat_hook_Description,Fires out a bloody meat hook towards a hero and drags them to Pudge.,向英雄射出血腥的肉钩，并将它拖到帕吉的身边。
+DOTA_Tooltip_ability_Ability_pudge_meat_hook_Lore,The Butcher's hook is a symbolic nightmare its curved blade a frightening reminder of his slaughterous intent.,屠夫的肉钩是噩梦的象征，锋利的倒钩暗示了他嗜血的本性。
+DOTA_Tooltip_ability_Ability_pudge_meat_hook_damage,DAMAGE :,伤害 :
+DOTA_Tooltip_ability_Ability_pudge_rot,Rot,腐烂
+DOTA_Tooltip_ability_Ability_pudge_rot_Description,<font color='#4169E1'>Activate/Deactivate</font> a persistent toxic cloud  damaging and slowing heroes that pass through it. \nDeals damage during movement  costing <font color='#1E90FF'>■</font> <font color='#FFFFFF'><b>1</b></font>.,<font color='#4169E1'>开启/关闭</font> 持续性的毒性云雾，移动阶段伤害经过的英雄，并使其移速减缓。\n移动期间产生过伤害，消耗 <font color='#1E90FF'>■</font> <font color='#FFFFFF'><b>1</b></font>。
+DOTA_Tooltip_ability_Ability_pudge_rot_Lore,A foul odor precedes a toxic choking gas emanating from the Butcher's putrid ever-swelling mass.,从屠夫腐烂肿胀的肉体中放出的有毒气体，气体恶心的令人窒息。
+DOTA_Tooltip_ability_Ability_pudge_rot_range,RADIUS :,作用范围 :
+DOTA_Tooltip_ability_Ability_pudge_rot_damage,DAMAGE :,伤害 :
+DOTA_Tooltip_ability_Ability_pudge_rot_rot_slow,%SLOW :,%减速 :
+AbilityError_NeedMana_1,LEAST 1 MANA,至少需要1点魔法
+DOTA_Tooltip_modifier_ability_pudge_rot_debuff,Rot,腐烂
+DOTA_Tooltip_modifier_ability_pudge_rot_debuff_Description,Slowed by Rot: <font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font>,被腐烂减速<font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font>
+DOTA_Tooltip_ability_Ability_BZ_pudge_rot,Rot,腐烂
+DOTA_Tooltip_ability_Ability_BZ_pudge_rot_Description,<font color='#00FF00'>AUTO</font> when mana reaches 100% emits a toxic cloud that deals continuous damage and slows heroes that pass through it.,<font color='#00FF00'>自动</font> 魔法至100%时，对经过的英雄造成持续伤害的毒性云雾，并使其移速减缓。
+DOTA_Tooltip_ability_Ability_BZ_pudge_rot_Lore,A foul odor precedes a toxic choking gas emanating from the Butcher's putrid ever-swelling mass.,从屠夫腐烂肿胀的肉体中放出的有毒气体，气体恶心的令人窒息。
+DOTA_Tooltip_ability_Ability_BZ_pudge_rot_range,RANGE :,作用范围 :
+DOTA_Tooltip_ability_Ability_BZ_pudge_rot_damage,DAMAGE :,伤害 :
+DOTA_Tooltip_ability_Ability_BZ_pudge_rot_rot_slow,%SLOW :,%减速 :
+DOTA_Tooltip_ability_Ability_lina_dragon_slave,Dragon Slave,龙破斩
+DOTA_Tooltip_ability_Ability_lina_dragon_slave_Description,Lina channels the breath of a dragon sending out a wave of fire that scorches every enemy in its path and burns them over time.,莉娜引导龙的吐息，放出一波火焰，烧焦前方全部敌人。
+DOTA_Tooltip_ability_Ability_lina_dragon_slave_Lore,In the scorched barren of Misrule Lina learned to manipulate the fiery breath of the Desert Wyrm as a form of entertainment.,在纷争之国的荒焦之地，为了娱乐，莉娜学会了操控沙漠龙的火焰吐息。
 DOTA_Tooltip_ability_Ability_lina_dragon_slave_dragon_slave_damage,,伤害 :
-DOTA_Tooltip_ability_Ability_lina_light_strike_array,,光击阵
-DOTA_Tooltip_ability_Ability_lina_light_strike_array_Description,,召唤柱状火焰伤害并眩晕敌人。目标地为中心的%range%格范围。
-DOTA_Tooltip_ability_Ability_lina_light_strike_array_Lore,,莉娜的精华让她能够集中太阳的能量，随时让空气燃烧。
-DOTA_Tooltip_ability_Ability_lina_light_strike_array_light_strike_array_damage,,伤害 :
-DOTA_Tooltip_ability_Ability_lina_light_strike_array_range,,范围格数 :
-DOTA_Tooltip_ability_Ability_lina_light_strike_array_light_strike_array_stun_duration,,眩晕回合 :
-DOTA_Tooltip_Modifier_Ability_lina_light_strike_array,,光击阵
-DOTA_Tooltip_Modifier_Ability_lina_light_strike_array_Description,,眩晕 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> 回合 ：跳过自身回合无法操作。兵卒眩晕无法攻击，无法触发攻城。
-DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave,,龙破斩
-DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave_Description,,<font color='#00FF00'>自动</font> 莉娜引导龙的吐息，放出一波火焰，烧焦经过的敌人。
-DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave_Lore,,在纷争之国的荒焦之地，为了娱乐，莉娜学会了操控沙漠龙的火焰吐息。
-DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave_dragon_slave_damage,,伤害 :
-DOTA_Tooltip_ability_Ability_zuus_arc_lightning,,弧形闪电
-DOTA_Tooltip_ability_Ability_zuus_arc_lightning_Description,,释放一道会跳跃穿越附近敌人的闪电。每次在目标<font color='#FFFFFF'> 5 </font>格范围跳跃。
-DOTA_Tooltip_ability_Ability_zuus_arc_lightning_Lore,,弧形闪电是宙斯在对付渺小的凡人时最喜欢用的法术。
-DOTA_Tooltip_ability_Ability_zuus_arc_lightning_arc_damage,,伤害 :
-DOTA_Tooltip_ability_Ability_zuus_arc_lightning_jump_count,,跳跃次数 :
-DOTA_Tooltip_ability_Ability_zuus_lightning_bolt,,雷击
-DOTA_Tooltip_ability_Ability_zuus_lightning_bolt_Description,,召唤一道闪电打击一个敌方英雄。
-DOTA_Tooltip_ability_Ability_zuus_lightning_bolt_Lore,,对那些反叛的异教徒最震慑的天罚。
-DOTA_Tooltip_ability_Ability_zuus_lightning_bolt_damage,,伤害 :
-DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt,,雷击
-DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt_Description,,<font color='#00FF00'>自动</font> 召唤一道闪电打击经过的敌人。
-DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt_Lore,,对那些反叛的异教徒最震慑的天罚。
-DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt_damage,,伤害 :
-DOTA_Tooltip_ability_Ability_axe_battle_hunger,,战斗威吓
-DOTA_Tooltip_ability_Ability_axe_battle_hunger_Description,,恐吓一个敌方单位，降低他的攻击力，并且在其自身回合开始受到伤害。
-DOTA_Tooltip_ability_Ability_axe_battle_hunger_Lore,,通常英雄无法抵挡蒙哥可汗的战斗狂怒，他们会一直畏惧，直到蒙哥可汗的狂怒平息。
-DOTA_Tooltip_ability_Ability_axe_battle_hunger_duration,,持续回合 :
-DOTA_Tooltip_ability_Ability_axe_battle_hunger_bonus_atk,,%攻击力降低 :
-DOTA_Tooltip_ability_Ability_axe_battle_hunger_damage,,每回合伤害 
-DOTA_Tooltip_Modifier_Ability_axe_battle_hunger,,战斗威吓
-DOTA_Tooltip_Modifier_Ability_axe_battle_hunger_Description,,持续 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%</font> 回合：降低 <font color='#FF0000'>%dMODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE%%%</font> 的攻击力，回合开始时受到 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> 点魔法伤害
-DOTA_Tooltip_ability_Ability_axe_helix_counter,,反击螺旋
-DOTA_Tooltip_ability_Ability_axe_helix_counter_Description,,受到攻击时，斧王有几率做出反击螺旋，对范围内的所有敌方单位造成纯粹伤害。如果受到一定次数攻击后，斧王还没做出反击螺旋，会愤怒地释放一次。
-DOTA_Tooltip_ability_Ability_axe_helix_counter_Lore,,我买了个小风车~呼呼呼
-DOTA_Tooltip_ability_Ability_axe_helix_counter_chance,,%触发概率 :
-DOTA_Tooltip_ability_Ability_axe_helix_counter_radius,,半径 :
-DOTA_Tooltip_ability_Ability_axe_helix_counter_trigger_attacks,,触发次数 :
-DOTA_Tooltip_ability_Ability_axe_helix_counter_damage,,伤害 :
-DOTA_Tooltip_Modifier_Ability_axe_helix_counter,,反击螺旋
-DOTA_Tooltip_ability_Ability_bloodseeker_rupture,,割裂
-DOTA_Tooltip_ability_Ability_bloodseeker_rupture_Description,,让一个敌方单位皮开肉绽，将根据移动格数受到当前生命比例伤害。
-DOTA_Tooltip_ability_Ability_bloodseeker_rupture_Lore,,当血魔猎杀你时，受伤就意味着死亡。
-DOTA_Tooltip_ability_Ability_bloodseeker_rupture_duration,,持续回合 :
-DOTA_Tooltip_ability_Ability_bloodseeker_rupture_damage,,% 损失当前生命 :
-DOTA_Tooltip_modifier_ability_rupture,,割裂
-DOTA_Tooltip_modifier_ability_rupture_Description,,移动会损失当前生命，持续 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> 回合。
-DOTA_Tooltip_ability_Ability_bloodseeker_thirst,,焦渴
-DOTA_Tooltip_ability_Ability_bloodseeker_thirst_Description,,血魔能够感知到敌人伤口中涌出的鲜血，每个血量低于%min_bonus_pct%%%的单位，都会让血魔得到攻击速度和移动速度的提升。
-DOTA_Tooltip_ability_Ability_bloodseeker_thirst_Lore,,史德利古尔闻到血腥味就会变得无比狂热。
-DOTA_Tooltip_ability_Ability_bloodseeker_thirst_min_bonus_pct,,% 触发焦渴临界生命值 :
-DOTA_Tooltip_ability_Ability_bloodseeker_thirst_bonus_movement_speed,,每层移动速度提升 :
-DOTA_Tooltip_ability_Ability_bloodseeker_thirst_bonus_attack_speed,,每层攻击速度提升 :
-DOTA_Tooltip_modifier_ability_bloodseeker_thirst_active,,焦渴
-DOTA_Tooltip_modifier_ability_bloodseeker_thirst_active_Description,,涌动的鲜血激发血魔的狂热，总和提升 <font color='#00FF00'>%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%</font> 攻击速度，<font color='#00FF00'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%</font> 移动速度。
-DOTA_Tooltip_ability_Ability_techies_land_mines,,地雷
-DOTA_Tooltip_ability_Ability_techies_land_mines_Description,,埋布地雷在自身范围3格区域内，敌人驻足该区域将引爆，对该区域的英雄和兵卒造成伤害。
-DOTA_Tooltip_ability_Ability_techies_land_mines_Lore,,起重港的噩梦！
-DOTA_Tooltip_ability_Ability_techies_land_mines_damage,,伤害 :
-DOTA_Tooltip_ability_Ability_techies_minefield_sign,,感应标识
-DOTA_Tooltip_ability_Ability_techies_minefield_sign_Description,,布置一个感应装置在地雷区域，敌人经过有概率引爆该区域全部地雷。
-DOTA_Tooltip_ability_Ability_techies_minefield_sign_Lore,,别四处乱跑！
-DOTA_Tooltip_ability_Ability_techies_minefield_sign_chance,,% 引爆概率 :
-DOTA_Tooltip_ability_Ability_techies_minefield_sign_Note0,,多个同区域感应标识概率非线性叠加。
-DOTA_Tooltip_ability_Ability_BZ_techies_land_mines,,地雷
-DOTA_Tooltip_ability_Ability_BZ_techies_land_mines_Description,,<font color='#00FF00'>自动</font> 埋布地雷在自身区域内，敌人驻足该区域将引爆，对该区域的英雄和兵卒造成伤害。
-DOTA_Tooltip_ability_Ability_BZ_techies_land_mines_Lore,,起重港的噩梦！
-DOTA_Tooltip_ability_Ability_BZ_techies_land_mines_damage,,伤害 :
-DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire,,真龙烈焰
-DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire_Description,,向指定方向喷射出一团火焰，烧灼碰到的敌人。不同形态时附带不同效果。\n<h1><font color='#ffffff'>人形态</font> - 虚无谎言</h1>谎言使其目标被沉默，持续%duration%回合。\n<h1><font color='#9acd32'>碧龙形态</font> - 碧龙毒焰</h1>毒焰腐蚀目标%debuff_armor_sub%点护甲，持续%duration%回合。\n<h1><font color='#ff0000'>赤龙形态</font> - 本源真炎</h1>引用本源真炎，其射程范围是普通真龙烈焰的%debuff_range_rate%倍。\n<h1><font color='#87ceeb'>苍龙形态</font> - 苍灵冰焰</h1>冰焰降低敌人%debuff_move_speed_sub%%%的移动速度，持续%duration%回合。
-DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire_Lore,,龙骑士达维安的气息已经变成了神龙斯莱瑞克的古龙之息，人们还记得它将无数骑士烧成了焦炭。
-DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire_range_tip,,范围格数 :
-DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire_damage,,伤害 :
-DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_0,,真龙烈焰-毒焰
-DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_0_Description,,护甲削减 <font color='#FF0000'>%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%</font>，持续%dMODIFIER_PROPERTY_TOOLTIP%回合。
-DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_2,,真龙烈焰-冰焰
-DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_2_Description,,移动速度减缓 <font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font>，持续%dMODIFIER_PROPERTY_TOOLTIP%回合。
-DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_01,,真龙烈焰-慌言
-DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_01_Description,,被沉默，持续%dMODIFIER_PROPERTY_TOOLTIP%回合。
-DOTA_Tooltip_ability_Ability_dragon_knight_elder_dragon_form,,古龙形态
-DOTA_Tooltip_ability_Ability_dragon_knight_elder_dragon_form_Description,,龙骑士能够变身成为三种古龙形态之一，龙形态攻击距离加成%atk_range%，同时觉醒真龙烈焰的内在力量，而且还有新的能力。\n<h1><font color='#ffffff'>人</font> - 铁甲依然</h1>拥有%armor_bonus%点额外护甲，%magic_resistance_bonus%%%额外魔法抗性。\n<h1><font color='#9acd32'>碧龙</font> - 腐蚀吐息</h1>攻击时附带毒素，腐蚀目标%debuff_armor_sub%点护甲，持续%deuff_duration%秒。\n<h1><font color='#ff0000'>赤龙</font> - 真炎吐息</h1>攻击敌人后赋予炎息印记，使用真龙烈焰将其引爆，每层造成%debuff_fire_damage%额外魔法伤害。\n<h1><font color='#87ceeb'>苍龙</font> - 冰霜吐息</h1>攻击降低敌人%debuff_move_speed_sub%%%移动速度，持续%debuff_duration%秒。
-DOTA_Tooltip_ability_Ability_dragon_knight_elder_dragon_form_Lore,,达维安体内休眠着一个更为强大的形态正在休眠，一个将骑士之力和古龙之威完美结合的形态。 
-DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_0,,碧龙-腐蚀吐息
-DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_0_Description,,护甲削减 <font color='#FF0000'>%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%</font> 。
-DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_1,,赤龙-炎息印记
-DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_1_Description,,炎息印记被真龙烈焰引爆会造成 <font color='#FF0000'>%dMODIFIER_PROPERTY_TOOLTIP%</font> 的额外魔法伤害。
-DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_2,,苍龙-冰霜吐息
-DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_2_Description,,移动速度减缓 <font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font> 移动速度。
-DOTA_Tooltip_ability_Ability_undying_soul_rip,,噬魂
-DOTA_Tooltip_ability_Ability_undying_soul_rip_Description,,不朽尸王从所有单位身上扯出生命力，并使用它治疗队友或伤害敌人。可以使用噬魂治疗墓碑。
-DOTA_Tooltip_ability_Ability_undying_soul_rip_Lore,,即使是友军也能从不朽尸王的存在中感受到绝望。
-DOTA_Tooltip_ability_Ability_undying_soul_rip_Note0,,可以治疗墓碑，但是不能治疗或伤害其他建筑。
-DOTA_Tooltip_ability_Ability_undying_soul_rip_damage_per_unit,,每个单位提供伤害/治疗量：
-DOTA_Tooltip_ability_Ability_undying_soul_rip_damage_per_unit		每个单位提供伤害/治疗量：
-DOTA_Tooltip_ability_Ability_undying_tombstone,,墓碑
-DOTA_Tooltip_ability_Ability_undying_tombstone_Description,,被敌人攻城击杀后，化身一座墓碑。敌人经过墓碑会在其身边产生僵尸攻击他们。僵尸拥有死亡渴望技能，使他们的攻击带有减速效果，僵尸的攻击和移动速度会提升。
-DOTA_Tooltip_ability_Ability_undying_tombstone_Lore,,挽歌召唤他倒下的战友为死亡之神作战。
-DOTA_Tooltip_ability_Ability_undying_tombstone_radius,,僵尸产生范围：
-DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_interval,,僵尸产生间隔：
-DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike,,死亡渴望
-DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_Description,,僵尸会获得移动和攻击速度加成，攻击时对敌方单位造成减速。
-DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_duration,,减速持续时间：
-DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_slow,,%移动速度减缓：
-DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_bonus_move_speed,,%移动速度加成：
-DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_bonus_attack_speed,,攻击速度加成：
-DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike,,死亡渴望
-DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike_Description,,增加%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%攻击速度，增加%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%移动速度。
+DOTA_Tooltip_ability_Ability_lina_light_strike_array,Light Strike Array,光击阵
+DOTA_Tooltip_ability_Ability_lina_light_strike_array_Description,Summons a pillar of flame to damage and stun enemies. The area of effect is %range% grids centered on the target location.,召唤柱状火焰伤害并眩晕敌人。目标地为中心的%range%格范围。
+DOTA_Tooltip_ability_Ability_lina_light_strike_array_Lore,Lina's essence allows her to focus the sun's energies causing air to combust at will.,莉娜的精华让她能够集中太阳的能量，随时让空气燃烧。
+DOTA_Tooltip_ability_Ability_lina_light_strike_array_light_strike_array_damage,DAMAGE :,伤害 :
+DOTA_Tooltip_ability_Ability_lina_light_strike_array_range,RANGE :,范围格数 :
+DOTA_Tooltip_ability_Ability_lina_light_strike_array_light_strike_array_stun_duration,STUNNED ROUND :,眩晕回合 :
+DOTA_Tooltip_Modifier_Ability_lina_light_strike_array,Light Strike Array,光击阵
+DOTA_Tooltip_Modifier_Ability_lina_light_strike_array_Description,STUNNED <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> turns: Skips own turn unable to act. Stunned units cannot attack and cannot trigger siege.,眩晕 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> 回合 ：跳过自身回合无法操作。兵卒眩晕无法攻击，无法触发攻城。
+DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave,Dragon Slave,龙破斩
+DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave_Description,<font color='#00FF00'>AUTO</font> Lina channels the breath of a dragon releasing a wave of flames that scorches enemies that pass through.,<font color='#00FF00'>自动</font> 莉娜引导龙的吐息，放出一波火焰，烧焦经过的敌人。
+DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave_Lore,In the scorched barren of Misrule Lina learned to manipulate the fiery breath of the Desert Wyrm as a form of entertainment.,在纷争之国的荒焦之地，为了娱乐，莉娜学会了操控沙漠龙的火焰吐息。
+DOTA_Tooltip_ability_Ability_BZ_lina_dragon_slave_dragon_slave_damage,DAMAGE :,伤害 :
+DOTA_Tooltip_ability_Ability_zuus_arc_lightning,Arc Lightning,弧形闪电
+DOTA_Tooltip_ability_Ability_zuus_arc_lightning_Description,Release a lightning bolt that jumps through nearby enemies jumping to a new target within a range of <font color='#FFFFFF'>5</font> grids each time.,释放一道会跳跃穿越附近敌人的闪电。每次在目标<font color='#FFFFFF'> 5 </font>格范围跳跃。
+DOTA_Tooltip_ability_Ability_zuus_arc_lightning_Lore,Arc Lightning is Zeus' favorite spell to use against puny mortals,弧形闪电是宙斯在对付渺小的凡人时最喜欢用的法术。
+DOTA_Tooltip_ability_Ability_zuus_arc_lightning_arc_damage,DAMAGE :,伤害 :
+DOTA_Tooltip_ability_Ability_zuus_arc_lightning_jump_count,JUMPS :,跳跃次数 :
+DOTA_Tooltip_ability_Ability_zuus_lightning_bolt,Lightning Bolt,雷击
+DOTA_Tooltip_ability_Ability_zuus_lightning_bolt_Description,Calls down a bolt of lightning to strike an enemy unit.,召唤一道闪电打击一个敌方英雄。
+DOTA_Tooltip_ability_Ability_zuus_lightning_bolt_Lore,A shocking punishment for rebellious heathen.,对那些反叛的异教徒最震慑的天罚。
+DOTA_Tooltip_ability_Ability_zuus_lightning_bolt_damage,DAMAGE :,伤害 :
+DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt,Lightning Bolt,雷击
+DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt_Description,<font color='#00FF00'>AUTO</font> Summon a lightning strike that hits enemies passing by.,<font color='#00FF00'>自动</font> 召唤一道闪电打击经过的敌人。
+DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt_Lore,A shocking punishment for rebellious heathen.,对那些反叛的异教徒最震慑的天罚。
+DOTA_Tooltip_ability_Ability_BZ_zuus_lightning_bolt_damage,DAMAGE :,伤害 :
+DOTA_Tooltip_ability_Ability_axe_battle_hunger,Batter_Hunger,战斗威吓
+DOTA_Tooltip_ability_Ability_axe_battle_hunger_Description,Intimidate an enemy unit reducing its attack power and causing it to take damage at the beginning of its own turn.,恐吓一个敌方单位，降低他的攻击力，并且在其自身回合开始受到伤害。
+DOTA_Tooltip_ability_Ability_axe_battle_hunger_Lore,Ordinary heroes cannot withstand Mogul Khan's rage for battle such that it injures them until it is satisfied.,通常英雄无法抵挡蒙哥可汗的战斗狂怒，他们会一直畏惧，直到蒙哥可汗的狂怒平息。
+DOTA_Tooltip_ability_Ability_axe_battle_hunger_duration,ROUND :,持续回合 :
+DOTA_Tooltip_ability_Ability_axe_battle_hunger_bonus_atk,%ATTACK REDUCTION :,%攻击力降低 :
+DOTA_Tooltip_ability_Ability_axe_battle_hunger_damage,DAMAGE :,每回合伤害 
+DOTA_Tooltip_Modifier_Ability_axe_battle_hunger,Batter_Hunger,战斗威吓
+DOTA_Tooltip_Modifier_Ability_axe_battle_hunger_Description,Lasts <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%</font> rounds: Reduces attack power by <font color='#FF0000'>%dMODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE%%%</font> takes <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> magic damage at the beginning of the turn.,持续 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%</font> 回合：降低 <font color='#FF0000'>%dMODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE%%%</font> 的攻击力，回合开始时受到 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> 点魔法伤害
+DOTA_Tooltip_ability_Ability_axe_helix_counter,Helix Counter,反击螺旋
+DOTA_Tooltip_ability_Ability_axe_helix_counter_Description,When attacked Axe has a chance to perform a Counter Helix dealing pure damage to all nearby enemy units. If he hasn't performed Counter Helix after a certain number of attacks Axe will angrily release one.,受到攻击时，斧王有几率做出反击螺旋，对范围内的所有敌方单位造成纯粹伤害。如果受到一定次数攻击后，斧王还没做出反击螺旋，会愤怒地释放一次。
+DOTA_Tooltip_ability_Ability_axe_helix_counter_Lore,I bought a small windmill~ whoosh whoosh,我买了个小风车~呼呼呼
+DOTA_Tooltip_ability_Ability_axe_helix_counter_chance,CHANCE TO HELIX :,%触发概率 :
+DOTA_Tooltip_ability_Ability_axe_helix_counter_radius,RADIUS :,半径 :
+DOTA_Tooltip_ability_Ability_axe_helix_counter_trigger_attacks,ATTACK TO HELIX :,触发次数 :
+DOTA_Tooltip_ability_Ability_axe_helix_counter_damage,DAMAGE :,伤害 :
+DOTA_Tooltip_Modifier_Ability_axe_helix_counter,Helix Counter,反击螺旋
+DOTA_Tooltip_ability_Ability_bloodseeker_rupture,Rupture,割裂
+DOTA_Tooltip_ability_Ability_bloodseeker_rupture_Description,Expose an enemy unit causing damage based on the current percentage of their health depending on the number of grids moved.,让一个敌方单位皮开肉绽，将根据移动格数受到当前生命比例伤害。
+DOTA_Tooltip_ability_Ability_bloodseeker_rupture_Lore,When the Bloodseeker hunts you injuries become fatalities.,当血魔猎杀你时，受伤就意味着死亡。
+DOTA_Tooltip_ability_Ability_bloodseeker_rupture_duration,ROUND :,持续回合 :
+DOTA_Tooltip_ability_Ability_bloodseeker_rupture_damage,%HEALTH DAMAGE :,% 损失当前生命 :
+DOTA_Tooltip_modifier_ability_rupture,Rupture,割裂
+DOTA_Tooltip_modifier_ability_rupture_Description,Moving will cause the loss of current health lasting <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> rounds.,移动会损失当前生命，持续 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> 回合。
+DOTA_Tooltip_ability_Ability_bloodseeker_thirst,Thirst,焦渴
+DOTA_Tooltip_ability_Ability_bloodseeker_thirst_Description,Bloodseeker can sense the blood pouring from enemies' wounds. Each unit with health lower than %min_bonus_pct%%% grants Bloodseeker an increase in attack speed and movement speed.,血魔能够感知到敌人伤口中涌出的鲜血，每个血量低于%min_bonus_pct%%%的单位，都会让血魔得到攻击速度和移动速度的提升。
+DOTA_Tooltip_ability_Ability_bloodseeker_thirst_Lore,Strygwyr becomes frenzied when blood is spilled.,史德利古尔闻到血腥味就会变得无比狂热。
+DOTA_Tooltip_ability_Ability_bloodseeker_thirst_min_bonus_pct,%THRESHOLD HEALTH :,% 触发焦渴临界生命值 :
+DOTA_Tooltip_ability_Ability_bloodseeker_thirst_bonus_movement_speed,STACK BONUS MOVEMENT :,每层移动速度提升 :
+DOTA_Tooltip_ability_Ability_bloodseeker_thirst_bonus_attack_speed,STACK BONUS ATTACK SPEED :,每层攻击速度提升 :
+DOTA_Tooltip_modifier_ability_bloodseeker_thirst_active,Thirst,焦渴
+DOTA_Tooltip_modifier_ability_bloodseeker_thirst_active_Description,The surging blood fuels Bloodseeker's frenzy granting a total increase of <font color='#00FF00'>%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%</font> attack speed and <font color='#00FF00'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%</font> movement speed.,涌动的鲜血激发血魔的狂热，总和提升 <font color='#00FF00'>%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%</font> 攻击速度，<font color='#00FF00'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%</font> 移动速度。
+DOTA_Tooltip_ability_Ability_techies_land_mines,Land Mines,地雷
+DOTA_Tooltip_ability_Ability_techies_land_mines_Description,Lay mines within a 3-grid radius of oneself. Enemies stepping into this area will trigger an explosion damaging heroes and creeps within the area.,埋布地雷在自身范围3格区域内，敌人驻足该区域将引爆，对该区域的英雄和兵卒造成伤害。
+DOTA_Tooltip_ability_Ability_techies_land_mines_Lore,The bane of Toterin!,起重港的噩梦！
+DOTA_Tooltip_ability_Ability_techies_land_mines_damage,DAMAGE :,伤害 :
+DOTA_Tooltip_ability_Ability_techies_minefield_sign,Minefield Sign,感应标识
+DOTA_Tooltip_ability_Ability_techies_minefield_sign_Description,Set up a sensor device in the minefield area. Enemies passing through have a chance to detonate all mines in that area.,布置一个感应装置在地雷区域，敌人经过有概率引爆该区域全部地雷。
+DOTA_Tooltip_ability_Ability_techies_minefield_sign_Lore,Watch your step!,别四处乱跑！
+DOTA_Tooltip_ability_Ability_techies_minefield_sign_chance,%CHANCE :,% 引爆概率 :
+DOTA_Tooltip_ability_Ability_techies_minefield_sign_Note0,The probabilities of multiple sensor markers in the same area do not linearly stack.,多个同区域感应标识概率非线性叠加。
+DOTA_Tooltip_ability_Ability_BZ_techies_land_mines,Land Mines,地雷
+DOTA_Tooltip_ability_Ability_BZ_techies_land_mines_Description,<font color='#00FF00'>AUTO</font> Lay mines within the area around oneself. Enemies stepping into this area will trigger an explosion damaging heroes and creeps within the area.,<font color='#00FF00'>自动</font> 埋布地雷在自身区域内，敌人驻足该区域将引爆，对该区域的英雄和兵卒造成伤害。
+DOTA_Tooltip_ability_Ability_BZ_techies_land_mines_Lore,The bane of Toterin!,起重港的噩梦！
+DOTA_Tooltip_ability_Ability_BZ_techies_land_mines_damage,DAMAGE :,伤害 :
+DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire,Breathe Fire,真龙烈焰
+DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire_Description,Spray a burst of flames in the specified direction scorching enemies hit. Different forms come with different effects. \n<h1><font color='#ffffff'>Human Form</font> - Illusory Deceit</h1> Deceit silences its target lasting %duration% rounds. \n<h1><font color='#9acd32'>Emerald Dragon Form</font> -  lasting %duration% rounds. \n<h1><font color='#ff0000'>Crimson Dragon Form</font> - Primordial True Flame</h1> Channels the Primordial True FlameEmerald Dragon's Poison Flame</h1> The poison flame corrodes the target's armor by %debuff_armor_sub% points with a range %debuff_range_rate% times that of the regular True Dragon Flame. \n<h1><font color='#87ceeb'>Azure Dragon Form</font> - Azure Spirit's Frost Flame</h1> The frost flame reduces enemy movement speed by %debuff_move_speed_sub%% lasting %duration% rounds.,向指定方向喷射出一团火焰，烧灼碰到的敌人。不同形态时附带不同效果。\n<h1><font color='#ffffff'>人形态</font> - 虚无谎言</h1>谎言使其目标被沉默，持续%duration%回合。\n<h1><font color='#9acd32'>碧龙形态</font> - 碧龙毒焰</h1>毒焰腐蚀目标%debuff_armor_sub%点护甲，持续%duration%回合。\n<h1><font color='#ff0000'>赤龙形态</font> - 本源真炎</h1>引用本源真炎，其射程范围是普通真龙烈焰的%debuff_range_rate%倍。\n<h1><font color='#87ceeb'>苍龙形态</font> - 苍灵冰焰</h1>冰焰降低敌人%debuff_move_speed_sub%%%的移动速度，持续%duration%回合。
+DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire_Lore,Knight Davion's breath has become that of the mighty Eldwurm Slyrak remembered for burning numerous other knights to a crisp.,龙骑士达维安的气息已经变成了神龙斯莱瑞克的古龙之息，人们还记得它将无数骑士烧成了焦炭。
+DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire_range_tip,RANGE :,范围格数 :
+DOTA_Tooltip_ability_Ability_dragon_knight_breathe_fire_damage,DAMAGE :,伤害 :
+DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_0,Breathe Fire - Poison Flame,真龙烈焰-毒焰
+DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_0_Description,Armor reduced by <font color='#FF0000'>%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%</font> lasting %dMODIFIER_PROPERTY_TOOLTIP% rounds.,护甲削减 <font color='#FF0000'>%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%</font>，持续%dMODIFIER_PROPERTY_TOOLTIP%回合。
+DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_2,Breathe Fire - Frost Flame,真龙烈焰-冰焰
+DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_2_Description,Movement speed slowed by <font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font> lasting %dMODIFIER_PROPERTY_TOOLTIP% rounds.,移动速度减缓 <font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font>，持续%dMODIFIER_PROPERTY_TOOLTIP%回合。
+DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_01,Breathe Fire - Panic Speech,真龙烈焰-慌言
+DOTA_Tooltip_Modifier_dragon_knight_breathe_fire_debuff_01_Description,Silenced lasting %dMODIFIER_PROPERTY_TOOLTIP% rounds.,被沉默，持续%dMODIFIER_PROPERTY_TOOLTIP%回合。
+DOTA_Tooltip_ability_Ability_dragon_knight_elder_dragon_form,Elder Dragon Form,古龙形态
+DOTA_Tooltip_ability_Ability_dragon_knight_elder_dragon_form_Description,Dragon Knight can transform into one of three ancient dragon forms. In Dragon Form he gains %atk_range% bonus attack range and awakens the innate power of Breathe Fire along with new abilities. \n<h1><font color='#ffffff'>Human</font> - Ironclad Resilience</h1> Grants %armor_bonus% additional armor and %magic_resistance_bonus%%% extra magic resistance. \n<h1><font color='#9acd32'>Emerald Dragon</font> - Corrosive Breath</h1> Inflicts poison with attacks corroding the target's armor by %debuff_armor_sub% points lasting %debuff_duration% seconds. \n<h1><font color='#ff0000'>Crimson Dragon</font> - True Flame Breath</h1> Imprints enemies with Flame Breath after attacks. Using Breathe Fire detonates it dealing %debuff_fire_damage% additional magic damage per stack. \n<h1><font color='#87ceeb'>Azure Dragon</font> - Frost Breath</h1> Reduces enemy movement speed by %debuff_move_speed_sub%%% upon attack lasting %debuff_duration% seconds.,龙骑士能够变身成为三种古龙形态之一，龙形态攻击距离加成%atk_range%，同时觉醒真龙烈焰的内在力量，而且还有新的能力。\n<h1><font color='#ffffff'>人</font> - 铁甲依然</h1>拥有%armor_bonus%点额外护甲，%magic_resistance_bonus%%%额外魔法抗性。\n<h1><font color='#9acd32'>碧龙</font> - 腐蚀吐息</h1>攻击时附带毒素，腐蚀目标%debuff_armor_sub%点护甲，持续%deuff_duration%秒。\n<h1><font color='#ff0000'>赤龙</font> - 真炎吐息</h1>攻击敌人后赋予炎息印记，使用真龙烈焰将其引爆，每层造成%debuff_fire_damage%额外魔法伤害。\n<h1><font color='#87ceeb'>苍龙</font> - 冰霜吐息</h1>攻击降低敌人%debuff_move_speed_sub%%%移动速度，持续%debuff_duration%秒。
+DOTA_Tooltip_ability_Ability_dragon_knight_elder_dragon_form_Lore,The dormant dragon power springs forth from within Davion combining the powers of a legendary knight with a legendary Eldwurm.,达维安体内休眠着一个更为强大的形态正在休眠，一个将骑士之力和古龙之威完美结合的形态。 
+DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_0,Emerald Dragon - Corrosive Breath,碧龙-腐蚀吐息
+DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_0_Description,Armor reduced by <font color='#FF0000'>%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%</font>.,护甲削减 <font color='#FF0000'>%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%</font> 。
+DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_1,Crimson Dragon - Flame Breath Mark,赤龙-炎息印记
+DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_1_Description,Detonating Flame Breath Mark with Breathe Fire will inflict an additional <font color='#FF0000'>%dMODIFIER_PROPERTY_TOOLTIP%</font> magic damage.,炎息印记被真龙烈焰引爆会造成 <font color='#FF0000'>%dMODIFIER_PROPERTY_TOOLTIP%</font> 的额外魔法伤害。
+DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_2,Azure Dragon - Frost Breath,苍龙-冰霜吐息
+DOTA_Tooltip_Modifier_dragon_knight_elder_dragon_form_debuff_2_Description,Movement speed slowed by <font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font>.,移动速度减缓 <font color='#FF0000'>%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%</font> 移动速度。
+DOTA_Tooltip_ability_Ability_undying_soul_rip,Soul Rip,噬魂
+DOTA_Tooltip_ability_Ability_undying_soul_rip_Description,The Undying draws vitality from all units and uses it to heal allies or damage enemies. Can use Soul Rip to heal Tombstone.,不朽尸王从所有单位身上扯出生命力，并使用它治疗队友或伤害敌人。可以使用噬魂治疗墓碑。
+DOTA_Tooltip_ability_Ability_undying_soul_rip_Lore,Even allies feel despair in Undying's presence.,即使是友军也能从不朽尸王的存在中感受到绝望。
+DOTA_Tooltip_ability_Ability_undying_soul_rip_Note0,Can heal Tombstone but cannot heal or damage other buildings.,可以治疗墓碑，但是不能治疗或伤害其他建筑。
+DOTA_Tooltip_ability_Ability_undying_soul_rip_damage_per_unit,DAMAGE/HEAL PER UNIT :,每个单位提供伤害/治疗量：
+DOTA_Tooltip_ability_Ability_undying_tombstone,Tombstone,墓碑
+DOTA_Tooltip_ability_Ability_undying_tombstone_Description, slowing enemies with their attacks. The zombies' attack and movement speed will increase.When killed by enemies attacking buildings transforms into a Tombstone. Enemies passing by the Tombstone will spawn zombies around them. Zombies possess Deathlust,被敌人攻城击杀后，化身一座墓碑。敌人经过墓碑会在其身边产生僵尸攻击他们。僵尸拥有死亡渴望技能，使他们的攻击带有减速效果，僵尸的攻击和移动速度会提升。
+DOTA_Tooltip_ability_Ability_undying_tombstone_Lore,Dirge calls on his fallen brothers to fight for the Dead God.,挽歌召唤他倒下的战友为死亡之神作战。
+DOTA_Tooltip_ability_Ability_undying_tombstone_radius,ZOMBIE SPAWN RADIUS :,僵尸产生范围：
+DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_interval,ZOMBIE SPAWN INTERVAL :,僵尸产生间隔：
+DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike,Deathstrike,死亡渴望
+DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_Description,The zombies gain movement and attack speed bonuses and apply a slow effect to enemy units when attacking.,僵尸会获得移动和攻击速度加成，攻击时对敌方单位造成减速。
+DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_duration,SLOW DURATION :,减速持续时间：
+DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_slow,%SLOW :,%移动速度减缓：
+DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_bonus_move_speed,%SPEED :,%移动速度加成：
+DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_bonus_attack_speed,BONUS ATTACK SPEED :,攻击速度加成：
+DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike,Deathstrike,死亡渴望
+DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike_Description,Increase attack speed by %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT% and increase movement speed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%.,增加%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%攻击速度，增加%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%移动速度。
 DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike_debuff,,死亡渴望减速
 DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike_debuff_Description,,死亡渴望减速%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%
 DOTA_Tooltip_ability_Ability_undying_flesh_golem,,血肉傀儡
@@ -515,7 +514,7 @@ DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_attack_speed,,+$attack
 DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_intellect,,+$int
 DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_armor,,+$armor
 DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_project_speed,,+攻击弹道速度
+DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_project_speed,,#NAME?
 DOTA_Tooltip_Ability_item_qtg_witch_blade_Description,,<h1>被动：巫师之刃</h1>每次攻击命中后额外造成玩家英雄智力%attack_intell%%%的魔法伤害。
 DOTA_Tooltip_Ability_item_qtg_witch_blade_Lore,A spiteful blade inadvertently possessed by the soul of its incautious creator.,一把怨毒的战刃，它鲁莽的创造者不慎将自己的灵魂依附在上面。
 DOTA_Tooltip_Ability_item_qtg_orchid,,紫怨
@@ -641,7 +640,7 @@ DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_attack_speed,,+$attack
 DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_intellect,,+$int
 DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_armor,,+$armor
 DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_project_speed,,+攻击弹道速度
+DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_project_speed,,#NAME?
 DOTA_Tooltip_Ability_item_qtg_revenants_brooch_Description,,<h1>被动：英灵之刃</h1>每次攻击命中后额外造成玩家英雄智力%attack_intell%%%的魔法伤害。
 DOTA_Tooltip_Ability_item_qtg_sange,,散华
 DOTA_Tooltip_Ability_item_qtg_sange_bonus_strength,,+$str
@@ -694,7 +693,7 @@ DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_movement_speed_percent_bonus,,%+$mo
 DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_spell_amp,,%+技能增强
 DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_spell_lifesteal_amp,,%+技能吸血增强
 DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_Lore,,夜叉和慧光配成一对时会产生共鸣。
-
+,,
 Card_10005,,小型猎野场
 Card_10005_Description,,入侵小野区
 Card_10006,,大型猎野场
@@ -808,7 +807,7 @@ PathName_17,,神符 ● 上
 PathName_18,,夜魇 ● 其一
 PathName_19,,夜魇 ● 其二
 PathName_20,,夜魇 ● 其三
-PathName_21,,肉山
+PathName_21,,肉山巢穴
 PathName_22,,天灾福泽
 PathName_23,,龙谷 ● 之一
 PathName_24,,龙谷 ● 之二
@@ -825,37 +824,39 @@ PathName_34,,鵰巢 ● 之二
 PathName_35,,鵰巢 ● 之三
 PathName_36,,传送 ● 南
 PathName_37,,神符 ● 下
-PathName_38,,天灾福泽
+PathName_38,,当铺
 PathName_39,,圣所 ● 其一
 PathName_40,,圣所 ● 其二
-PathLog_3,,天辉 ● 其一
-PathLog_4,,天辉 ● 其二
-PathLog_5,,天辉 ● 其三
-PathLog_6,,传送 ● 西
-PathLog_7,,野区 ● 小
-PathLog_9,,河道 ● 上路
-PathLog_11,,炎魔炼狱
-PathLog_13,,蛇沼 ● 之一
-PathLog_14,,蛇沼 ● 之二
-PathLog_15,,蛇沼 ● 之三
-PathLog_16,,传送 ● 北
-PathLog_17,,神符 ● 上
-PathLog_18,,夜魇 ● 其一
-PathLog_19,,夜魇 ● 其二
-PathLog_20,,夜魇 ● 其三
-PathLog_23,,龙谷 ● 之一
-PathLog_24,,龙谷 ● 之二
-PathLog_25,,龙谷 ● 之三
-PathLog_26,,传送 ● 东
-PathLog_27,,野区 ● 大
-PathLog_29,,河道 ● 下路
-PathLog_31,,野区 ● 远古
-PathLog_33,,鵰巢 ● 之一
-PathLog_34,,鵰巢 ● 之二
-PathLog_35,,鵰巢 ● 之三
-PathLog_36,,传送 ● 南
-PathLog_39,,圣所 ● 其一
-PathLog_40,,圣所 ● 其二
+DOTA_Tooltip_Ability_path_text_1,,起点
+DOTA_Tooltip_Ability_path_text_1_Description,,到达<font color='#EEEEEE'>【起点】</font>时都会获得<font color='#FFFF00'>金币</font>奖励。<br><br>第一次为<font color='#FFFF00'>1000</font>，之后每次递减100，最低为0。
+DOTA_Tooltip_Ability_path_text_treasure,,秘密宝藏
+DOTA_Tooltip_Ability_path_text_treasure_Description,,到达<font color='#EEEEEE'>【秘密宝藏】</font>会随机获得<font color='#FFFF00'>100~1000金币</font>或者金币数量内的<font color='#FFFF00'>补给装备</font>。
+DOTA_Tooltip_Ability_path_text_12,,天辉
+DOTA_Tooltip_Ability_path_text_12_Description,,占领后可获得<font color='#EEEEEE'>【辉光普照】</font>领地增益。<br><br>天辉大地因世界树充满活力。全军将受到世界树的庇护防御抗性提升。
+DOTA_Tooltip_Ability_path_text_tp,,传送
+DOTA_Tooltip_Ability_path_text_tp_Description,,进入己方传送阵时获得一张<font color='#0099ff'>传送卷轴</font>。
+DOTA_Tooltip_Ability_path_text_monster,,野区
+DOTA_Tooltip_Ability_path_text_monster_Description,,前往野区猎杀野怪获得<font color='#FFFF00'>金钱经验</font>。<br>如果被野怪击杀，会坠入<font color='#FF0000'>炎魔炼狱</font>。
+DOTA_Tooltip_Ability_path_text_card,,上下坡
+DOTA_Tooltip_Ability_path_text_card_Description,,到达<font color='#EEEEEE'>【上坡】</font>或<font color='#EEEEEE'>【下坡】</font>路径时会随机抽取一张<font color='#0099ff'>卡牌</font>。
+DOTA_Tooltip_Ability_path_text_upriver,,河道 ● 上路
+DOTA_Tooltip_Ability_path_text_upriver_Description,,占领后可获得<font color='#EEEEEE'>【寒流】</font>领地增益。<br><br>肃杀的世界连流水同样冰冷，刺骨之寒透过坚硬的盔甲。
+DOTA_Tooltip_Ability_path_text_prison,,炎魔炼狱
+DOTA_Tooltip_Ability_path_text_prison_Description,,到达此处的玩家将坠入<font color='#FF0000'>炎魔炼狱</font>。<br><br>身处地狱时，会被封锁全部领地，同时每回合<font color='#FF0000'>损失金币</font>。
+DOTA_Tooltip_Ability_path_text_shop,,当铺
+DOTA_Tooltip_Ability_path_text_shop_Description,,到达<font color='#EEEEEE'>【当铺】</font>会获得<font color='#FFFF00'>一次</font>购物的机会。
+DOTA_Tooltip_Ability_path_text_14,,蛇沼
+DOTA_Tooltip_Ability_path_text_14_Description,,占领后可获得<font color='#EEEEEE'>【缚足】</font>领地增益。<br><br>敌人经过有概率被群蛇束缚。
+DOTA_Tooltip_Ability_path_text_15,,夜魇
+DOTA_Tooltip_Ability_path_text_15_Description,,占领后可获得<font color='#EEEEEE'>【癫狂】</font>领地增益。<br><br>至邪的源泉侵蚀它的子民，失去了灵魂换得他人的恐惧。
+DOTA_Tooltip_Ability_path_text_16,,龙谷
+DOTA_Tooltip_Ability_path_text_16_Description,,占领后可获得<font color='#EEEEEE'>【神龙赐法】</font>领地增益。<br><br>全军魔法回复提升。神秘的古老种族，掌管着最纯粹的魔法。
+DOTA_Tooltip_Ability_path_text_17,,鵰巢
+DOTA_Tooltip_Ability_path_text_17_Description,,占领后可获得<font color='#EEEEEE'>【圣兽】</font>领地增益。<br><br>圣兽刮起飓风，伤害经过的敌人。
+DOTA_Tooltip_Ability_path_text_18,,圣所
+DOTA_Tooltip_Ability_path_text_18_Description,,占领后可获得<font color='#EEEEEE'>【圣洁净土】</font>领地增益。<br><br>对驻足在圣所的敌人造成神圣伤害。
+DOTA_Tooltip_Ability_path_text_roshan,,肉山巢穴
+DOTA_Tooltip_Ability_path_text_roshan_Description,,肉山正在路上...
 rune_0,,双倍伤害
 rune_1,,极速
 rune_3,,隐身
@@ -885,12 +886,12 @@ supply_tip_ready,,准备阶段
 supply_tip_turn,,选择补给品（左键选择，右键于商店查看）
 supply_tip_end,,补给结束
 supply_tip_select,,请挑选
-// 通用文本
+// 通用文本,,
 text_understand,,了解
 text_give_up,,放弃
 text_cancel,,取消
 text_go_to,,前往
-// 路径面板
+// 路径面板,,
 TypeOperator_AYZZ,,安营扎寨
 TypeOperator_AtkMonster,,猎野
 PathTitleTip_text,,领地
@@ -902,11 +903,11 @@ TypeOperator_AYZZ_Owner,, 获得该领地
 TypeOperator_PRISON_title,,炎魔炼狱
 TypeOperator_GCLD,,攻城掠地
 Prison_Out,,买活
-// 攻城描述
+// 攻城描述,,
 PathGCLDDescription,,与敌方兵卒决斗，直到有一方战败。<br>或下个自身回合开始。双方都可提升经验。<br><font color='#FFFF00'>胜利：击杀敌兵，抢占领地。</font><br><font color='#FF0000'>失败：被打败，交纳金币。</font> <br>兵卒★：1经验，100金币。<br>兵卒★★：2经验，200金币。<br>兵卒★★★：3经验，300金币。
 PathTitleTip_GCLD,,是否攻城？
-//===领地描述===
-// TP
+//===领地描述===,,
+// TP,,
 SoldierKey1_3,,TP有一 :
 SoldierKey2_3,,TP有二 :
 SoldierKey3_3,,TP有三 :
@@ -918,7 +919,7 @@ SoldierVal4_3,,<font color='#FFFF00'> 400 </font>过路费
 Capture_3,,<font color='#FFFF00'> 200 </font>耗资
 PathBuff_3,,传送阵
 PathBuffDescription_3,,进入己方传送阵时<br>获得一张 <font color='#0099ff'> 传送卷轴 </font>
-// 天辉
+// 天辉,,
 SoldierKey1_12,,★兵卒 :
 SoldierKey2_12,,★★兵卒 :
 SoldierKey3_12,,★★★兵卒 :
@@ -932,11 +933,11 @@ PathBuffKey1_12,,护甲提升 :
 PathBuffVal1_12,,5/10/20
 PathBuffKey2_12,,魔抗提升 : 
 PathBuffVal2_12,,10%/15%/25%
-// 野怪路径
+// 野怪路径,,
 PathBuffDescription_9,,前往野区猎杀野怪获得金钱经验！<br>如果被野怪击杀，会坠入<font color='#FF0000'>炎魔炼狱</font>。
 PathBuffDescription_7,,身处地狱，封锁全部领地。<br>地狱惩戒：（持续入狱）<br>第3回合：损失100金币。<br>第4回合损失200金币。<br>第5回合：损失400金币。<br> 以此类推...<br><br> 囚禁于炼狱之中，可选择花费金币买活<br>或者放弃买活后Roll到相同点数复活。
 OperatorBody_Hell,,是否买活
-// 上河道
+// 上河道,,
 SoldierKey1_13,,★兵卒 :
 SoldierKey2_13,,★★兵卒 :
 SoldierKey3_13,,★★★兵卒 :
@@ -950,7 +951,7 @@ PathBuffKey1_13,,上路护甲穿透 :
 PathBuffVal1_13,,15% / 25% / 35%
 PathBuffKey2_13,,下路魔抗穿透 :
 PathBuffVal2_13,,15% / 25% / 35%
-// 蛇沼
+// 蛇沼,,
 SoldierKey1_14,,★兵卒 :
 SoldierKey2_14,,★★兵卒 :
 SoldierKey3_14,,★★★兵卒 :
@@ -964,7 +965,7 @@ PathBuffKey1_14,,束缚时间 :
 PathBuffVal1_14,,1 / 1.5 / 2 秒
 PathBuffKey2_14,,束缚概率 :
 PathBuffVal2_14,,25%
-// 夜魇
+// 夜魇,,
 SoldierKey1_15,,★兵卒 :
 SoldierKey2_15,,★★兵卒 :
 SoldierKey3_15,,★★★兵卒 :
@@ -978,7 +979,7 @@ PathBuffKey1_15,,攻速提升 :
 PathBuffVal1_15,,25 / 50 / 100
 PathBuffKey2_15,,移速提升 : 
 PathBuffVal2_15,,10 / 20 / 40
-// 龙谷
+// 龙谷,,
 SoldierKey1_16,,★兵卒 :
 SoldierKey2_16,,★★兵卒 :
 SoldierKey3_16,,★★★兵卒 :
@@ -998,7 +999,7 @@ PathBuffKey4_16,,刷新概率 :
 PathBuffVal4_16,, 1% / 20% / 40%
 PathBuffKey5_16,,技能增强 : 
 PathBuffVal5_16,,10% / 20% / 30%
-// 雕巢
+// 雕巢,,
 SoldierKey1_17,,★兵卒 :
 SoldierKey2_17,,★★兵卒 :
 SoldierKey3_17,,★★★兵卒 :
@@ -1012,7 +1013,7 @@ PathBuffKey1_17,,持续伤害 :
 PathBuffVal1_17,,30
 PathBuffKey2_17,,减速 : 
 PathBuffVal2_17,,10% / 20% / 40%
-// 圣所
+// 圣所,,
 SoldierKey1_18,,★兵卒 :
 SoldierKey2_18,,★★兵卒 :
 SoldierKey3_18,,★★★兵卒 :
@@ -1024,7 +1025,7 @@ PathBuff_18,,圣洁净土
 PathBuffDescription_18,,对驻足在圣所的敌人造成神圣伤害。<br>神圣的殿堂前没有纷争也没有不速之客。<br>【特殊效果 : 石佛】<br>圣所兵卒无法攻击。无法被攻城。
 PathBuffKey1_18,,纯粹伤害 : 
 PathBuffVal1_18,,1000 / 2000 / 4000
-// tab计分板
+// tab计分板,,
 scoreboard_title_level,LEVEL,等级
 scoreboard_title_total,TOTAL,总资产
 scoreboard_title_gold,GOLD,金钱
@@ -1033,7 +1034,7 @@ scoreboard_title_kills,K,击
 scoreboard_title_gcld,SIEGE,攻
 scoreboard_title_mute,MUTE,屏蔽
 scoreboard_tool_tip_mute_trade,Reject his trade,拒绝他的交易（还未实现=w=）
-
-// 战斗广播
+,,
+// 战斗广播,,
 Custom_GetGoodCard,,{s:player_name} 获得了卡牌·<font color='#FFFF00'>{s:locstring_value}</font>
 Custom_GetBadCard,,{s:player_name} 获得了卡牌·<font color='#207777'>{s:locstring_value}</font>

@@ -26,7 +26,7 @@ export function BidActivePanel(props: {
 
     function onSliderChanged(val: number) {
         const bidPrice = props.recvOprtData?.nGold ?? 0;
-        setBidPrice(bidPrice + ((Players.GetGold(PlayerMgr.playerID) - bidPrice) * val) / 100);
+        setBidPrice(bidPrice + ((Players.GetGold(Players.GetLocalPlayer()) - bidPrice) * val) / 100);
         console.log('===setSliderValue===4');
         setSliderValue(val);
     }
@@ -55,7 +55,7 @@ export function BidActivePanel(props: {
     /**发送叫价 */
     function sendBid() {
         console.log('===sendBid:', props.bidState);
-        // if (props.bidState == BIDSTATE.Cannt || props.bidState == BIDSTATE.Wait || props.recvOprtData?.nPlayerID == PlayerMgr.playerID) return;
+        // if (props.bidState == BIDSTATE.Cannt || props.bidState == BIDSTATE.Wait || props.recvOprtData?.nPlayerID == Players.GetLocalPlayer()) return;
         if (props.bidState == BIDSTATE.Finish) {
             // 完成拍卖，点击确认重置面板和状态
             props.setBidState(BIDSTATE.None);
@@ -72,7 +72,7 @@ export function BidActivePanel(props: {
             errorMessage('Error_NeedGold');
         } else {
             GameMgr.SendOperatorToServer({
-                nPlayerID: PlayerMgr.playerID,
+                nPlayerID: Players.GetLocalPlayer(),
                 typeOprt: TypeOprt.TO_BidAuction,
                 nGold: bidPrice,
                 json: Object.values(props.recvOprtData?.json || []),
@@ -152,9 +152,9 @@ export function BidActivePanel(props: {
                     id="Icon"
                     heroname={props.recvOprtData ? Players.GetPlayerSelectedHero(props.recvOprtData.nPlayerID) : 'npc_dota_hero_wisp'}
                     heroimagestyle="landscape"
-                    visible={props.recvOprtData?.nPlayerID != PlayerMgr.playerID}
+                    visible={props.recvOprtData?.nPlayerID != Players.GetLocalPlayer()}
                 />
-                <Panel style={{ width: '100%', height: '100%', flowChildren: 'down' }} visible={props.recvOprtData?.nPlayerID != PlayerMgr.playerID}>
+                <Panel style={{ width: '100%', height: '100%', flowChildren: 'down' }} visible={props.recvOprtData?.nPlayerID != Players.GetLocalPlayer()}>
                     <Label className="PlayerName" text={props.recvOprtData ? Players.GetPlayerName(props.recvOprtData?.nPlayerID) : ''} />
                     <Panel style={{ width: '100%', height: '100%', flowChildren: 'right' }}>
                         <Label
@@ -189,7 +189,7 @@ export function BidActivePanel(props: {
                                     setSliderValue(
                                         Math.floor(
                                             ((bidVal - (props.recvOprtData?.nGold ?? 0)) * 100) /
-                                                (Players.GetGold(PlayerMgr.playerID) - (props.recvOprtData?.nGold ?? 0))
+                                                (Players.GetGold(Players.GetLocalPlayer()) - (props.recvOprtData?.nGold ?? 0))
                                         )
                                     );
                                     setBidPrice(bidVal);
@@ -209,7 +209,7 @@ export function BidActivePanel(props: {
                                     setSliderValue(
                                         Math.floor(
                                             ((bidVal - (props.recvOprtData?.nGold ?? 0)) * 100) /
-                                                (Players.GetGold(PlayerMgr.playerID) - (props.recvOprtData?.nGold ?? 0))
+                                                (Players.GetGold(Players.GetLocalPlayer()) - (props.recvOprtData?.nGold ?? 0))
                                         )
                                     );
                                     setBidPrice(bidVal);
@@ -226,7 +226,7 @@ export function BidActivePanel(props: {
                                     setSliderValue(
                                         Math.floor(
                                             ((bidVal - (props.recvOprtData?.nGold ?? 0)) * 100) /
-                                                (Players.GetGold(PlayerMgr.playerID) - (props.recvOprtData?.nGold ?? 0))
+                                                (Players.GetGold(Players.GetLocalPlayer()) - (props.recvOprtData?.nGold ?? 0))
                                         )
                                     );
                                     setBidPrice(bidVal);
@@ -258,13 +258,13 @@ export function BidActivePanel(props: {
                             } else {
                                 if (!checkGold(value)) {
                                     errorMessage('Error_NeedGold');
-                                    setBidPrice(Players.GetGold(PlayerMgr.playerID));
+                                    setBidPrice(Players.GetGold(Players.GetLocalPlayer()));
                                     return;
                                 } else {
                                     setSliderValue(
                                         Math.floor(
                                             ((value - (props.recvOprtData?.nGold ?? 0)) * 100) /
-                                                (Players.GetGold(PlayerMgr.playerID) - (props.recvOprtData?.nGold ?? 0))
+                                                (Players.GetGold(Players.GetLocalPlayer()) - (props.recvOprtData?.nGold ?? 0))
                                         )
                                     );
                                     setBidPrice(value);
@@ -278,7 +278,7 @@ export function BidActivePanel(props: {
             <Button
                 className="SendBidButton ButtonBevel"
                 onactivate={sendBid}
-                // enabled={props.bidState != BIDSTATE.Cannt && props.bidState != BIDSTATE.Wait && props.recvOprtData?.nPlayerID != PlayerMgr.playerID}
+                // enabled={props.bidState != BIDSTATE.Cannt && props.bidState != BIDSTATE.Wait && props.recvOprtData?.nPlayerID != Players.GetLocalPlayer()}
             >
                 <Label className="SendBidText" text={switchButtonText(props.bidState)} />
             </Button>

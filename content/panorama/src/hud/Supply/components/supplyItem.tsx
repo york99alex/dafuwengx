@@ -10,7 +10,7 @@ export function SupplyItem(props: { data: any; index: number }) {
         if (item.current?.BHasClass('Select')) return;
 
         GameMgr.SendOperatorToServer({
-            nPlayerID: PlayerMgr.playerID,
+            nPlayerID: Players.GetLocalPlayer(),
             typeOprt: TypeOprt.TO_Supply,
             nRequest: props.index + 1,
         });

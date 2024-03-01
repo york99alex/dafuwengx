@@ -4,14 +4,9 @@ import { ParaAdjuster } from '../utils/paraadjuster';
 import { Player } from './player';
 
 export class PlayerManager {
-    m_bAllPlayerInit: boolean;
-    m_tabPlayers: Player[];
+    m_bAllPlayerInit: boolean = false; // 全部玩家初始化完成
+    m_tabPlayers: Player[] = [null, null, null, null, null, null]; // 全部玩家数据
     nInit: number; // 初始化人数
-
-    constructor() {
-        (this.m_bAllPlayerInit = false), // 全部玩家初始化完成
-            (this.m_tabPlayers = []); // 全部玩家数据
-    }
 
     init() {
         if (IsServer()) {
@@ -45,16 +40,15 @@ export class PlayerManager {
         if (player == null) {
             player = new Player(event.PlayerID);
             this.m_tabPlayers[event.PlayerID] = player;
-            player.m_oCDataPlayer = PlayerResource.GetPlayer(event.PlayerID);
         }
         // 掉线随机英雄
         if (
             PlayerResource.GetSelectedHeroID(event.PlayerID) == -1 &&
-            player.m_oCDataPlayer != null &&
+            PlayerResource.GetPlayer(player.m_nPlayerID) != null &&
             GameRules.State_Get() == GameState.HERO_SELECTION
         ) {
             print('PlayerID:', event.PlayerID, 'MakeRandomHeroSelection');
-            player.m_oCDataPlayer.MakeRandomHeroSelection();
+            PlayerResource.GetPlayer(player.m_nPlayerID).MakeRandomHeroSelection();
             GameRules.HeroSelection.m_SelectHeroPlayerID.push(player.m_nPlayerID);
         }
 
@@ -66,14 +60,14 @@ export class PlayerManager {
 
     // 玩家连接
     onEvent_playerConnectFull(event: GameEventProvidedProperties & PlayerConnectFullEvent) {
+        print('===onEvent_playerConnectFull:');
+        DeepPrintTable(event);
         if (event.userid < 0) return;
         let oPlayer = GameRules.PlayerManager.getPlayer(event.PlayerID);
         if (oPlayer == null) {
             oPlayer = new Player(event.PlayerID);
             this.m_tabPlayers[event.PlayerID] = oPlayer;
-            oPlayer.m_oCDataPlayer = PlayerResource.GetPlayer(oPlayer.m_nPlayerID);
         } else {
-            oPlayer.m_oCDataPlayer = PlayerResource.GetPlayer(oPlayer.m_nPlayerID);
             // 断线重连
             oPlayer.setDisconnect(false);
             // 重新发送手牌
@@ -183,9 +177,11 @@ export class PlayerManager {
 
     /**发送事件消息给某玩家 */
     sendMsg(strMgsID: string, tabData, nPlayerID: number) {
-        const oPlayer = this.getPlayer(nPlayerID);
+        const oPlayer = GameRules.PlayerManager.getPlayer(nPlayerID);
         if (oPlayer) {
             oPlayer.sendMsg(strMgsID, tabData);
+        } else {
+            print('===error: sendMsg===未找到玩家:', nPlayerID);
         }
     }
 

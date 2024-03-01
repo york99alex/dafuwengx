@@ -46,12 +46,16 @@ HideHudElement(UIHud, 'ShopButton');
 HideHudElement(UIHud, 'shop_launcher_bg');
 HideHudElement(UIHud, 'ToggleScoreboardButton');
 // HideHudElement(UIHud, 'stash');
+HideHudElement(UIHud, 'StatBranch');
+HideHudElement(UIHud, 'level_stats_frame');
+
+
 
 export const PlayerMgr = new PlayerManager();
 export const GameMgr = new GameManager();
 export const PathMgr = new PathManager();
 
-GameUI.SetCameraDistance(1134);
+GameUI.SetCameraDistance(1300);
 GameUI.SetCameraPitchMin(0);
 GameUI.SetCameraPitchMax(65);
 

@@ -22,7 +22,7 @@ export default function AuctionActivePanel(props: { isAuctionOpen: boolean; setI
     /**发起拍卖 */
     function startAuction() {
         GameMgr.SendOperatorToServer({
-            nPlayerID: PlayerMgr.playerID,
+            nPlayerID: Players.GetLocalPlayer(),
             typeOprt: TypeOprt.TO_SendAuction,
             nGold: auctPrice,
             json: selectPathIDs,
@@ -67,7 +67,7 @@ export default function AuctionActivePanel(props: { isAuctionOpen: boolean; setI
                  */
                 setRecvOprtData(event);
                 props.setIsAuctionOpen(true);
-                if (event.nSendPlayerID == PlayerMgr.playerID) {
+                if (event.nSendPlayerID == Players.GetLocalPlayer()) {
                     // 自己发起的拍卖，锁定面板更新
 
                     setAuctState(AUCTIONSTATE.Bid);
@@ -94,7 +94,7 @@ export default function AuctionActivePanel(props: { isAuctionOpen: boolean; setI
     useGameEvent(
         'GM_OperatorFinished',
         event => {
-            if (event.nPlayerID == PlayerMgr.playerID && event.typeOprt != TypeOprt.TO_FinishAuction) {
+            if (event.nPlayerID == Players.GetLocalPlayer() && event.typeOprt != TypeOprt.TO_FinishAuction) {
                 if (event.typeOprt == TypeOprt.TO_SendAuction) {
                     console.log('===Auction===GM_OperatorFinished===TO_SendAuction', event);
                     // 发起拍卖回包
@@ -121,7 +121,7 @@ export default function AuctionActivePanel(props: { isAuctionOpen: boolean; setI
                      * nRequest
                      */
                     if (event.nRequest == 1) {
-                        if (event.nPlayerID == PlayerMgr.playerID) {
+                        if (event.nPlayerID == Players.GetLocalPlayer()) {
                             // 叫价成功
                             setBidState(BIDSTATE.Wait);
                         }
@@ -162,7 +162,7 @@ export default function AuctionActivePanel(props: { isAuctionOpen: boolean; setI
                 <Panel className="AuctionSelectPath">
                     <SelectPathList
                         // pathIDs={auctState != AUCTIONSTATE.None ? auctPaths : [2, 4, 5, 6, 7, 8, 23, 34, 35, 39]}
-                        pathIDs={Player.getPlayerPath(PlayerMgr.playerID)}
+                        pathIDs={Player.getPlayerPath(Players.GetLocalPlayer())}
                         selectIDs={auctState != AUCTIONSTATE.None ? auctPaths : selectPathIDs}
                         SetSelectIDs={(ids: number[]) => setSelectPathIDs(ids)}
                         tradeState={auctState}
@@ -275,5 +275,5 @@ export function errorMessage(message: string) {
 
 /**检查金钱 */
 export function checkGold(price: number): boolean {
-    return Players.GetGold(PlayerMgr.playerID) >= price;
+    return Players.GetGold(Players.GetLocalPlayer()) >= price;
 }

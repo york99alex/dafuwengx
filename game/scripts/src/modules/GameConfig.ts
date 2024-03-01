@@ -471,8 +471,8 @@ export class GameConfig {
             }
         }
         // if (oPlayer.m_eHero.GetUnitName() == "npc_dota_hero_phantom_assassin") {
-        // nNum1 = 4;
-        // nNum2 = 6;
+        // nNum1 = 1;
+        // nNum2 = 2;
         // }else{
         //     nNum1 = 3
         //     nNum2 = 5

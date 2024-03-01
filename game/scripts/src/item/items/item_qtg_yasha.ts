@@ -21,6 +21,9 @@ export class item_qtg_yasha_modifier extends BaseModifier {
     IsHidden(): boolean {
         return true;
     }
+    IsPurgable(): boolean {
+        return false;
+    }
     OnCreated(params: object): void {
         if (!IsValid(this)) return;
         if (!IsValid(this.GetAbility())) return;
@@ -32,7 +35,11 @@ export class item_qtg_yasha_modifier extends BaseModifier {
         return ModifierAttribute.MULTIPLE;
     }
     DeclareFunctions(): ModifierFunction[] {
-        return [ModifierFunction.STATS_AGILITY_BONUS, ModifierFunction.ATTACKSPEED_BONUS_CONSTANT, ModifierFunction.MOVESPEED_BONUS_PERCENTAGE_UNIQUE];
+        return [
+            ModifierFunction.STATS_AGILITY_BONUS,
+            ModifierFunction.ATTACKSPEED_BONUS_CONSTANT,
+            ModifierFunction.MOVESPEED_BONUS_PERCENTAGE_UNIQUE,
+        ];
     }
     GetModifierBonusStats_Agility(): number {
         return this.bonus_agility;

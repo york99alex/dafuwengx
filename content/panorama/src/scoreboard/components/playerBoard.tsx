@@ -14,7 +14,7 @@ export function PlayerBoard(props: { playerID: PlayerID }) {
         setMute(!mute);
         GameMgr.SendOperatorToServer({
             typeOprt: TypeOprt.TO_MuteTrade,
-            nPlayerID: PlayerMgr.playerID,
+            nPlayerID: Players.GetLocalPlayer(),
             nPlayerMute: props.playerID,
             bMute: !mute,
         });
@@ -26,7 +26,7 @@ export function PlayerBoard(props: { playerID: PlayerID }) {
                 <DOTAAvatarImage
                     id="AvatarImage"
                     className="ScoreboardAvatar"
-                    steamid={PlayerMgr.playerID == props.playerID ? 'local' : String(Player.getPlayerSteamID(props.playerID))}
+                    steamid={Players.GetLocalPlayer() == props.playerID ? 'local' : String(Player.getPlayerSteamID(props.playerID))}
                     style={{
                         width: '38px',
                         height: '38px',
@@ -43,12 +43,12 @@ export function PlayerBoard(props: { playerID: PlayerID }) {
                 <Panel id="PlayerAndHeroNameContainer" className="TopBottomFlow">
                     <Label
                         id="PlayerNameLabel"
-                        className={'PlayerNameLabel' + (PlayerMgr.playerID == props.playerID ? ' LocalPlayer' : '')}
+                        className={'PlayerNameLabel' + (Players.GetLocalPlayer() == props.playerID ? ' LocalPlayer' : '')}
                         text={props.playerID >= 0 ? Players.GetPlayerName(props.playerID) : ''}
                     />
                     <Label
                         id="HeroNameLabel"
-                        className={'HeroNameLabel' + (PlayerMgr.playerID == props.playerID ? ' LocalPlayer' : '')}
+                        className={'HeroNameLabel' + (Players.GetLocalPlayer() == props.playerID ? ' LocalPlayer' : '')}
                         text={SafeLocalize('#' + Players.GetPlayerSelectedHero(props.playerID))}
                     />
                 </Panel>
@@ -87,17 +87,17 @@ export function PlayerBoard(props: { playerID: PlayerID }) {
                 </Panel>
 
                 <Label
-                    className={'KDANumbers KDAKills MonoNumbersFont' + (PlayerMgr.playerID == props.playerID ? ' LocalPlayer' : '')}
+                    className={'KDANumbers KDAKills MonoNumbersFont' + (Players.GetLocalPlayer() == props.playerID ? ' LocalPlayer' : '')}
                     text={useNetTableKey('GamingTable', ('player_info_' + props.playerID) as player_info)?.nKill ?? 0}
                 />
                 <Label
-                    className={'KDANumbers MonoNumbersFont' + (PlayerMgr.playerID == props.playerID ? ' LocalPlayer' : '')}
+                    className={'KDANumbers MonoNumbersFont' + (Players.GetLocalPlayer() == props.playerID ? ' LocalPlayer' : '')}
                     text={useNetTableKey('GamingTable', ('player_info_' + props.playerID) as player_info)?.nGCLD ?? 0}
                 />
                 <Panel
                     ref={muteRef}
                     id="ScoreboardMuteButtons"
-                    className={'LeftRightFlow' + (PlayerMgr.playerID == props.playerID ? ' LocalPlayer' : '')}
+                    className={'LeftRightFlow' + (Players.GetLocalPlayer() == props.playerID ? ' LocalPlayer' : '')}
                 >
                     <ToggleButton
                         id="VoiceMute"

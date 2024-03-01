@@ -32,7 +32,7 @@ export class PathStart extends Path {
                 }
 
                 let nGold = WAGE_GOLD - nGet * WAGE_GOLD_REDUCE;
-                nGold < 0 ? 0 : nGold;
+                nGold = nGold < 0 ? 0 : nGold;
                 player.setGold(nGold);
                 GameRules.GameConfig.showGold(player, nGold);
 

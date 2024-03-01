@@ -21,7 +21,7 @@ declare interface CustomGameEventDeclarations {
     };
 
     GM_Operator: {
-        nPlayerID: number;
+        nPlayerID: PlayerID;
         typeOprt: number;
         nRequest?: number;
         // 路径
@@ -44,7 +44,7 @@ declare interface CustomGameEventDeclarations {
     };
 
     GM_OperatorFinished: {
-        nPlayerID: number;
+        nPlayerID: PlayerID;
         typeOprt: number;
         nRequest: number;
         nNum1: number;

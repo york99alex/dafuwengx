@@ -91,7 +91,6 @@ export class Player {
     m_typeBuyState: number = BuyState_None; //  购物状态
     m_typeTeam: DotaTeam; //  自定义队伍
 
-    m_oCDataPlayer: CDOTAPlayerController; //  官方CDOTAPlayer脚本
     m_eHero: CDOTA_BaseNPC_Hero; //  英雄单位
 
     m_pathCur: Path = null; //  当前英雄所在路径
@@ -219,7 +218,7 @@ export class Player {
     /**发送消息给玩家 */
     sendMsg(strMgsID: string, tabData) {
         //@ts-ignore
-        CustomGameEventManager.Send_ServerToPlayer(this.m_oCDataPlayer, strMgsID, tabData);
+        CustomGameEventManager.Send_ServerToPlayer(PlayerResource.GetPlayer(this.m_nPlayerID), strMgsID, tabData);
     }
 
     /** 设置玩家网表信息 */

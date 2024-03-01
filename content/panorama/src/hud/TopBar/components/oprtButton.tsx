@@ -20,7 +20,7 @@ export function OprtButton() {
         'GM_Operator',
         event => {
             setEventPlayerID(event.nPlayerID);
-            if (event.nPlayerID == PlayerMgr.playerID) {
+            if (event.nPlayerID == Players.GetLocalPlayer()) {
                 switch (event.typeOprt) {
                     case TypeOprt.TO_Roll: {
                         setTypeOprt(TypeOprt.TO_Roll);
@@ -56,7 +56,7 @@ export function OprtButton() {
     useGameEvent(
         'GM_OperatorFinished',
         event => {
-            if (event.typeOprt == TypeOprt.TO_DeathClearing && event.nPlayerID == PlayerMgr.playerID) {
+            if (event.typeOprt == TypeOprt.TO_DeathClearing && event.nPlayerID == Players.GetLocalPlayer()) {
                 resetState();
             } else if (event.typeOprt == TypeOprt.TO_Finish && event.nRequest == 1) {
                 console.log('===Receive Finish Round:', event);
@@ -92,13 +92,13 @@ export function OprtButton() {
     /**发送操作 */
     function sendOprt(oprtType: number) {
         if (Game.IsGamePaused() || oprtType != typeOprt) return;
-        if (eventPlayerID >= 0 && eventPlayerID != PlayerMgr.playerID) return;
+        if (eventPlayerID >= 0 && eventPlayerID != Players.GetLocalPlayer()) return;
         GameEvents.SendCustomGameEventToServer('GM_Operator', {
-            nPlayerID: PlayerMgr.playerID,
+            nPlayerID: Players.GetLocalPlayer(),
             typeOprt: oprtType,
         });
         console.log('===SendOprt:', {
-            nPlayerID: PlayerMgr.playerID,
+            nPlayerID: Players.GetLocalPlayer(),
             typeOprt: oprtType,
         });
     }
@@ -174,7 +174,7 @@ export function OprtButton() {
             </Panel>
             <Panel
                 className="FinishPanel DeathClearing"
-                visible={typeOprt == TypeOprt.TO_DeathClearing && eventPlayerID == PlayerMgr.playerID}
+                visible={typeOprt == TypeOprt.TO_DeathClearing && eventPlayerID == Players.GetLocalPlayer()}
                 onactivate={() => sendOprt(TypeOprt.TO_DeathClearing)}
             >
                 <Label id="DCLabel" text={$.Localize('#FinishDC')} />

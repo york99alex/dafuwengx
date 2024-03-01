@@ -64,6 +64,9 @@ export class item_qtg_blade_mail_modifier extends BaseModifier {
     IsHidden(): boolean {
         return true;
     }
+    IsPurgable(): boolean {
+        return false;
+    }
     OnCreated(params: object): void {
         if (!IsValid(this) || !IsValid(this.GetAbility())) return;
         this.bonus_damage = this.GetAbility().GetSpecialValueFor('bonus_attack_speed');

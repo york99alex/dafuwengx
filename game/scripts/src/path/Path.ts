@@ -31,7 +31,7 @@ export class Path {
         this.m_nID = tonumber(strName);
 
         // 创建提示单位
-        this.m_eUnit = CreateUnitByName('PathLog_' + this.m_nID, this.m_entity.GetAbsOrigin(), false, null, null, DotaTeam.NEUTRALS);
+        this.m_eUnit = CreateUnitByName('PathName_' + this.m_nID, this.m_entity.GetAbsOrigin(), false, null, null, DotaTeam.GOODGUYS);
 
         this.initNilPos();
         this.setPathState(TypePathState.None);
