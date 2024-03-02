@@ -1,4 +1,4 @@
-import { useGameEvent, useNetTableKey } from 'react-panorama-x';
+import { useGameEvent } from 'react-panorama-x';
 import { HandCard } from '../handCard';
 import { useEffect, useState } from 'react';
 import Card from './card';

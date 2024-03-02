@@ -2,7 +2,7 @@ import { CameraManage } from '../../mode/S2Cmode/CameraManage';
 import { AMHC, IsValid } from '../../utils/amhc';
 import { Card } from '../card';
 
-/**恶念瞥视 */
+/**恶念瞥视 20004 */
 export class Card_MAGIC_Glimpse extends Card {
     isCanCastSelf(): boolean {
         return true;

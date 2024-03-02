@@ -1,5 +1,14 @@
 import { KeyValues } from '../kv';
 import { Card, CardInfo } from './card';
+import { Card_MAGIC_Bottle } from './cards/Card_MAGIC_Bottle';
+import { Card_MAGIC_BottleArcane } from './cards/Card_MAGIC_BottleArcane';
+import { Card_MAGIC_BottleBounty } from './cards/Card_MAGIC_BottleBounty';
+import { Card_MAGIC_BottleDouble } from './cards/Card_MAGIC_BottleDouble';
+import { Card_MAGIC_BottleHaste } from './cards/Card_MAGIC_BottleHaste';
+import { Card_MAGIC_BottleInvisibility } from './cards/Card_MAGIC_BottleInvisibility';
+import { Card_MAGIC_BottleRegeneration } from './cards/Card_MAGIC_BottleRegeneration';
+import { Card_MAGIC_BottleShield } from './cards/Card_MAGIC_BottleShield';
+import { Card_MAGIC_BottleXP } from './cards/Card_MAGIC_BottleXP';
 import { Card_MAGIC_Card_Steal } from './cards/Card_MAGIC_Card_Steal';
 import { Card_MAGIC_Glimpse } from './cards/Card_MAGIC_Glimpse';
 import { Card_MAGIC_InfernalBlade } from './cards/Card_MAGIC_InfernalBlade';
@@ -34,11 +43,20 @@ function createCardInstance(className: string, cardInfo: CardInfo, nPlayerID: Pl
         Card_MONSTER_LARGE,
         Card_MONSTER_ANCIENT,
         Card_MONSTER_CREEP_STACKING,
-        Card_MAGIC_InfernalBlade,
         Card_MAGIC_Card_Steal,
         Card_MAGIC_Swap,
         Card_MAGIC_ReversePolarity,
         Card_MAGIC_Glimpse,
+        Card_MAGIC_InfernalBlade,
+        Card_MAGIC_Bottle,
+        Card_MAGIC_BottleArcane,
+        Card_MAGIC_BottleBounty,
+        Card_MAGIC_BottleDouble,
+        Card_MAGIC_BottleHaste,
+        Card_MAGIC_BottleInvisibility,
+        Card_MAGIC_BottleRegeneration,
+        Card_MAGIC_BottleShield,
+        Card_MAGIC_BottleXP,
     };
 
     const selectedClass = classMap[className];

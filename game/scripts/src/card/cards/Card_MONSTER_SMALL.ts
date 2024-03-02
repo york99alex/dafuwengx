@@ -3,7 +3,7 @@ import { PathMonster } from '../../path/pathtype/pathmonster';
 import { Player } from '../../player/player';
 import { Card } from '../card';
 
-/**小野 */
+/**小野 10005 */
 export class Card_MONSTER_SMALL extends Card {
     CastFilterResult(): UnitFilterResult {
         print('===Card CastFilterResult', Card_MONSTER_SMALL.name);

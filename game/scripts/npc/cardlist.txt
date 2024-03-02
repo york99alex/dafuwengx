@@ -82,20 +82,101 @@
         "IsSupply"          "1"
     }
     //魔瓶
-    // "Card_MAGIC_Bottle"
-    // {
-    //     "CardType"          "20006"
-    //     "ManaCost"          "1"
-    //     "CastType"          "4"
-    //     "CardKind"          "2"
-    //     "IsSupply"          "1"
-    // }
-    //血怒
-    "Card_BUFF_Bloodrage"
+    "Card_MAGIC_Bottle"
     {
-        "CardType"          "20020"
+        "CardType"          "20006"
         "ManaCost"          "2"
         "CastType"          "4"
+        "CardKind"          "2"
+        "IsSupply"          "1"
+    }
+    //魔瓶（双倍神符）
+    "Card_MAGIC_BottleDouble"
+    {
+        "CardType"          "20007"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //魔瓶（极速神符）
+    "Card_MAGIC_BottleHaste"
+    {
+        "CardType"          "20008"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //魔瓶（隐身神符）
+    "Card_MAGIC_BottleInvisibility"
+    {
+        "CardType"          "20010"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //魔瓶（回复神符）
+    "Card_MAGIC_BottleRegeneration"
+    {
+        "CardType"          "20011"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //魔瓶（赏金神符）
+    "Card_MAGIC_BottleBounty"
+    {
+        "CardType"          "20012"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //魔瓶（奥术神符）
+    "Card_MAGIC_BottleArcane"
+    {
+        "CardType"          "20013"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //魔瓶（智慧神符）
+    "Card_MAGIC_BottleXP"
+    {
+        "CardType"          "20014"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //魔瓶（护盾神符）
+    "Card_MAGIC_BottleShield"
+    {
+        "CardType"          "20015"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //血怒
+    // "Card_BUFF_Bloodrage"
+    // {
+    //     "CardType"          "20020"
+    //     "ManaCost"          "2"
+    //     "CastType"          "4"
+    //     "CardKind"          "3"
+    //     "IsSupply"          "1"
+    // }
+    // 刀刀兄弟
+    "Card_EVENT_DoDoBrother"
+    {
+        "CardType"          "30001"
+        "ManaCost"          "0"
+        "CastType"          "1"
         "CardKind"          "3"
         "IsSupply"          "1"
     }

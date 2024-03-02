@@ -1,7 +1,7 @@
 import { AMHC, IsValid } from '../../utils/amhc';
 import { Card } from '../card';
 
-/**移形换位 */
+/**移形换位 20002 */
 export class Card_MAGIC_Swap extends Card {
     isCanCastBZ(): boolean {
         return false;

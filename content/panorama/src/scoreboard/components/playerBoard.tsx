@@ -1,4 +1,3 @@
-import { useNetTableKey } from 'react-panorama-x';
 import { GameMgr, PlayerMgr } from '../../hud';
 import { Player } from '../../hud/player/player';
 import { SafeLocalize } from '../../utils/useful';
@@ -76,23 +75,23 @@ export function PlayerBoard(props: { playerID: PlayerID }) {
                 <Panel id="GoldContainerTotal" className="GoldContainer">
                     <Label
                         className="ScoreboardGold MonoNumbersFont"
-                        text={useNetTableKey('GamingTable', ('player_info_' + props.playerID) as player_info)?.nSumGold ?? 0}
+                        text={CustomNetTables.GetTableValue('GamingTable', ('player_info_' + props.playerID) as player_info)?.nSumGold ?? 0}
                     />
                 </Panel>
                 <Panel id="GoldContainer" className="GoldContainer">
                     <Label
                         className="ScoreboardGold MonoNumbersFont"
-                        text={useNetTableKey('GamingTable', ('player_info_' + props.playerID) as player_info)?.nGold ?? 0}
+                        text={CustomNetTables.GetTableValue('GamingTable', ('player_info_' + props.playerID) as player_info)?.nGold ?? 0}
                     />
                 </Panel>
 
                 <Label
                     className={'KDANumbers KDAKills MonoNumbersFont' + (Players.GetLocalPlayer() == props.playerID ? ' LocalPlayer' : '')}
-                    text={useNetTableKey('GamingTable', ('player_info_' + props.playerID) as player_info)?.nKill ?? 0}
+                    text={CustomNetTables.GetTableValue('GamingTable', ('player_info_' + props.playerID) as player_info)?.nKill ?? 0}
                 />
                 <Label
                     className={'KDANumbers MonoNumbersFont' + (Players.GetLocalPlayer() == props.playerID ? ' LocalPlayer' : '')}
-                    text={useNetTableKey('GamingTable', ('player_info_' + props.playerID) as player_info)?.nGCLD ?? 0}
+                    text={CustomNetTables.GetTableValue('GamingTable', ('player_info_' + props.playerID) as player_info)?.nGCLD ?? 0}
                 />
                 <Panel
                     ref={muteRef}

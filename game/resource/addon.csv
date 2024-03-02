@@ -712,11 +712,32 @@ Card_20004,,恶念瞥视
 Card_20004_Description,,让目标回到上一次所在位置<br>将触发到达效果
 Card_20005,,阎刃
 Card_20005_Description,,指定玩家出狱或入狱
+Card_20006,,魔瓶
+Card_20006_Description,,灌装一个神符目标
+Card_20007,,双倍神符
+Card_20007_Description,,激活神符
+Card_20008,,极速神符
+Card_20008_Description,,激活神符
+Card_20010,,隐身神符
+Card_20010_Description,,激活神符
+Card_20011,,恢复神符
+Card_20011_Description,,激活神符
+Card_20012,,赏金神符
+Card_20012_Description,,激活神符
+Card_20013,,奥术神符
+Card_20013_Description,,激活神符
+Card_20014,,智慧神符
+Card_20014_Description,,激活神符
+Card_20015,,护盾神符
+Card_20015_Description,,激活神符
 Card_20020,,血怒
 Card_20020_Description,,加深目标20%的造成和承受伤害
+Card_30001,,刀刀兄弟
+Card_30001_Description,,立即进入补给环节
 
 
 CardError_NoLastCard,,没有可窃取卡牌
+CardError_TargetNotRune,,目标不是神符
 Error_ItemMax,,物品栏已满
 Error_ItemSide,,限边路商店购买
 Error_ItemSecret,,限神秘商店购买
@@ -865,6 +886,22 @@ rune_5,,赏金
 rune_6,,奥术
 rune_8,,智慧
 rune_9,,护盾
+DOTA_Tooltip_Ability_rune_text_0,,双倍伤害
+DOTA_Tooltip_Ability_rune_text_0_Description,,到达路径后拾取神符，基础攻击翻倍。持续到下个自身回合结束。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_1,,极速
+DOTA_Tooltip_Ability_rune_text_1_Description,,到达路径后拾取神符，感受移动速度的极致。持续到下个自身回合结束。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_3,,隐身
+DOTA_Tooltip_Ability_rune_text_3_Description,,到达路径后拾取神符，进入隐身状态，隐身的英雄无法被攻击。持续到下个自身回合结束。<br>攻击或者施法后结束隐身。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_4,,恢复
+DOTA_Tooltip_Ability_rune_text_4_Description,,到达路径后拾取神符，恢复英雄和兵卒全部的生命和魔法。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_5,,赏金
+DOTA_Tooltip_Ability_rune_text_5_Description,,到达路径后拾取神符，获得500金币。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_6,,奥术
+DOTA_Tooltip_Ability_rune_text_6_Description,,到达路径后拾取神符，释放技能冷却时间 -1 。<br>全部技能和卡牌魔法消耗 -1 。<br>持续到下个自身回合结束。<br>（冷却最低为1）<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_8,,智慧
+DOTA_Tooltip_Ability_rune_text_8_Description,,到达路径后拾取神符，获得5点经验。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_9,,护盾
+DOTA_Tooltip_Ability_rune_text_9_Description,,到达路径后拾取神符，制造一个英雄最大生命值50%的护盾，可以庇佑其受到的伤害并不损失金币。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
 DOTA_Tooltip_Modifier_rune_0,,双倍伤害
 DOTA_Tooltip_Modifier_rune_0_Description,,基础攻击翻倍。持续到下个自身回合结束。
 DOTA_Tooltip_Modifier_rune_1,,极速

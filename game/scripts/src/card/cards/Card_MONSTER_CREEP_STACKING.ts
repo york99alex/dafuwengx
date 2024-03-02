@@ -2,7 +2,7 @@ import { TP_MONSTER_1, TP_MONSTER_2, TP_MONSTER_3 } from '../../constants/gameme
 import { PathMonster } from '../../path/pathtype/pathmonster';
 import { Card } from '../card';
 
-/**拉野 */
+/**拉野 10008 */
 export class Card_MONSTER_CREEP_STACKING extends Card {
     CastFilterResultLocation(location: Vector): UnitFilterResult {
         print('===Card_CastFilterResultLocation', Card_MONSTER_CREEP_STACKING.name);

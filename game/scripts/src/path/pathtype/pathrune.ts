@@ -93,10 +93,10 @@ export class PathRune extends Path {
 
     createRune(location: Vector, runeType: RuneType) {
         const settings = RUNE_SETTINGS[runeType];
-        const entity = CreateUnitByName('rune_' + runeType, location, false, null, null, DotaTeam.NEUTRALS);
+        const entity = CreateUnitByName('rune_' + runeType, location, false, null, null, DotaTeam.GOODGUYS);
         this.m_typeRune = runeType;
-        entity['m_bRune'] = true;
-        entity['m_path'] = this;
+        entity.m_bRune = true;
+        entity.m_path = this;
         entity.SetModel(settings.model);
         entity.SetOriginalModel(settings.model);
         this.m_nPtclID = ParticleManager.CreateParticle(settings.particle, ParticleAttachment.ABSORIGIN_FOLLOW, entity);

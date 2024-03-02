@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNetTableKey } from 'react-panorama-x';
 
 export function GameClock() {

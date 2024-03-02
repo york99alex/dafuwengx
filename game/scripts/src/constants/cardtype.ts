@@ -20,4 +20,24 @@ declare const enum CardType {
     Card_MAGIC_InfernalBlade = 20005,
     /**血怒 */
     Card_BUFF_Bloodrage = 20020,
+    /**魔瓶 */
+    Card_MAGIC_Bottle = 20006,
+    /**魔瓶（双倍神符） */
+    Card_MAGIC_BottleDouble = 20007,
+    /**魔瓶（加速神符） */
+    Card_MAGIC_BottleHaste = 20008,
+    /**魔瓶（隐身神符） */
+    Card_MAGIC_BottleInvisibility = 20010,
+    /**魔瓶（回复神符） */
+    Card_MAGIC_BottleRegeneration = 20011,
+    /**魔瓶（赏金神符） */
+    Card_MAGIC_BottleBounty = 20012,
+    /**魔瓶（奥术神符） */
+    Card_MAGIC_BottleArcane = 20013,
+    /**魔瓶（智慧神符） */
+    Card_MAGIC_BottleXP = 20014,
+    /**魔瓶（护盾神符） */
+    Card_MAGIC_BottleShield = 20015,
+    /**刀刀兄弟 */
+    Card_EVENT_DoDoBrother = 30001,
 }

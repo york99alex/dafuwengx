@@ -1036,6 +1036,14 @@ export const App = () => {	// 根组件
 2. 添加回合超时按钮，点击后时间延长，1秒10块，每5秒翻倍
 3. ==前端测试问题==：
    1. 卡牌面板，待测试
+   2. 非主机玩家，金币显示错误为0
+      ![image-20240302151933638](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2024/03/02/15-19-34-101170dee5831f37f01bd2cefa037c42-image-20240302151933638-c7d96b.png)
+   3. 开局总资产未正常刷新
+      ![image-20240302152052310](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2024/03/02/15-20-52-7e8e34759cc2a451fb952813b8cfa348-image-20240302152052310-4977ec.png)
+   4. 初始化以后，对局以后也p2也未正常显示资产和金钱
+4. 卡牌优化
+   1. 蓝量不足提醒
+
 
 
 
@@ -2191,6 +2199,14 @@ ItemShare
 4. 本地化，例如：
    Card_20001,,窃取
    Card_20001_Description,,获取目标上次使用的卡牌
+
+5. 前端页面图片资源：
+   content\panorama\images\custom_game\card
+   按照card_ + cardtype数字命名，例如card_20001_png.png 窃取
+   卡片背景图片宽高比为1：1.5
+
+   - 注意，编译
+
 
 
 

@@ -3,7 +3,7 @@ import { CameraManage } from '../../mode/S2Cmode/CameraManage';
 import { AMHC } from '../../utils/amhc';
 import { Card } from '../card';
 
-/**两级反转 */
+/**两级反转 20003 */
 export class Card_MAGIC_ReversePolarity extends Card {
     OnSpellStart(): void {
         const owner = this.GetOwner();

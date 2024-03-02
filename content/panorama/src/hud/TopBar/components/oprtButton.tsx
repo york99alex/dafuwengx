@@ -1,5 +1,4 @@
-import { useGameEvent, useNetTableKey } from 'react-panorama-x';
-import { PlayerMgr } from '../..';
+import { useGameEvent } from 'react-panorama-x';
 import { TypeOprt } from '../../mode/constant';
 import { useRef, useState } from 'react';
 

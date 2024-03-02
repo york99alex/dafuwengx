@@ -3,7 +3,7 @@ import { PathPrison } from '../../path/pathtype/pathprison';
 import { IsValid } from '../../utils/amhc';
 import { Card } from '../card';
 
-/**阎刃 */
+/**阎刃 20005 */
 export class Card_MAGIC_InfernalBlade extends Card {
     isCanCastInPrison(): boolean {
         return true;

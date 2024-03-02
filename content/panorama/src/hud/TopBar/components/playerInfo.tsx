@@ -55,7 +55,7 @@ export function PlayerInfo(props: { playerID: PlayerID }) {
                     className={'HeroImage' + (judgeNetBoolean(bDie) ? ' Death' : '')}
                     heroname={Players.GetPlayerSelectedHero(props.playerID)}
                 />
-                <Panel className={'Disconnect' + judgeNetBoolean(bDisconnect) ? ' True' : ' False'} />
+                <Panel className={'Disconnect' + (judgeNetBoolean(bDisconnect) ? ' True' : ' False')} />
             </Panel>
             <Label className="Gold" text={nGold} />
             <Panel className="ChangeGold" ref={changeGold} visible={false}>
