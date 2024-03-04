@@ -40,4 +40,8 @@ declare const enum CardType {
     Card_MAGIC_BottleShield = 20015,
     /**刀刀兄弟 */
     Card_EVENT_DoDoBrother = 30001,
+    /**商店卡 */
+    Card_EVENT_Shop = 30002,
+    /**阎刃333 */
+    Card_EVENT_Infernal_Blade_333 = 30003,
 }

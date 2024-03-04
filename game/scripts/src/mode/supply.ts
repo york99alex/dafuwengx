@@ -357,7 +357,14 @@ export class Supply {
         // 重新进入begin
         GameRules.GameConfig.setOrder(this.m_nGMOrder);
         this.m_nGMOrder = null;
-        GameRules.GameLoop.m_bRoundBefore = false;
-        GameRules.GameLoop.GameStateService.send('toRoundBefore');
+
+        if (GameRules.GameConfig.m_timeTemp >= 0) {
+            GameRules.GameLoop.GameStateService.send('towaitoprt');
+            GameRules.GameConfig.m_timeOprt = GameRules.GameConfig.m_timeTemp;
+            GameRules.GameConfig.m_timeTemp = -1;
+        } else {
+            GameRules.GameLoop.m_bRoundBefore = false;
+            GameRules.GameLoop.GameStateService.send('toRoundBefore');
+        }
     }
 }

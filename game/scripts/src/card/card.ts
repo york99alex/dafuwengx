@@ -324,7 +324,8 @@ export class Card {
     // 能否对监狱中玩家释放
     isCanCastInPrisonTarget() {
         return false;
-    } // 能否对战斗中玩家释放
+    }
+    // 能否对战斗中玩家释放
     isCanCastBattleTarget() {
         return true;
     }

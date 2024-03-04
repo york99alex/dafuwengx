@@ -47,7 +47,7 @@ export class GameLoop {
                     exit: 'GSRoundBefore_Exit',
                 },
                 GSSupply: {
-                    on: { toRoundBefore: 'GSRoundBefore', todeathclearing: 'GSDeathClearing' },
+                    on: { toRoundBefore: 'GSRoundBefore',towaitoprt: 'GSWaitOprt', todeathclearing: 'GSDeathClearing' },
                     entry: 'GSSupply_Entry',
                     exit: 'GSSupply_Exit',
                 },
@@ -57,7 +57,7 @@ export class GameLoop {
                     exit: 'GSBegin_Exit',
                 },
                 GSWaitOprt: {
-                    on: { tomove: 'GSMove', towait: 'GSWait', tofinished: 'GSFinished', todeathclearing: 'GSDeathClearing' },
+                    on: { tomove: 'GSMove', towait: 'GSWait', tofinished: 'GSFinished', tosupply: 'GSSupply', todeathclearing: 'GSDeathClearing' },
                     entry: 'GSWaitOprt_Entry',
                     exit: 'GSWaitOprt_Exit',
                 },

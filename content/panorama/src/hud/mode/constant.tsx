@@ -4,6 +4,20 @@ export const TypeCard = {
     TCardCast_Target: 4,
 };
 
+//  游戏状态
+export const GS_None = 0;
+export const GS_Begin = 1;
+export const GS_RoundBefore = 1;
+export const GS_Wait = 2;
+export const GS_WaitOperator = 3;
+export const GS_Move = 4;
+export const GS_Finished = 5;
+export const GS_DeathClearing = 6;
+export const GS_Supply = 7; //  补给阶段
+export const GS_ReadyStart = 8; //  准备开始
+export const GS_End = 9;
+
+
 export const TypeOprt = {
     TO_Finish: 0,
     TO_Roll: 1,

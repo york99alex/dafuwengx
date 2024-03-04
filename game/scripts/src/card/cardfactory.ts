@@ -1,5 +1,9 @@
 import { KeyValues } from '../kv';
 import { Card, CardInfo } from './card';
+import { Card_BUFF_Bloodrage } from './cards/Card_BUFF_Bloodrage';
+import { Card_EVENT_DoDoBrother } from './cards/Card_EVENT_DoDoBrother';
+import { Card_EVENT_Infernal_Blade_333 } from './cards/Card_EVENT_Infernal_Blade_333';
+import { Card_EVENT_Shop } from './cards/Card_EVENT_Shop';
 import { Card_MAGIC_Bottle } from './cards/Card_MAGIC_Bottle';
 import { Card_MAGIC_BottleArcane } from './cards/Card_MAGIC_BottleArcane';
 import { Card_MAGIC_BottleBounty } from './cards/Card_MAGIC_BottleBounty';
@@ -57,6 +61,10 @@ function createCardInstance(className: string, cardInfo: CardInfo, nPlayerID: Pl
         Card_MAGIC_BottleRegeneration,
         Card_MAGIC_BottleShield,
         Card_MAGIC_BottleXP,
+        Card_BUFF_Bloodrage,
+        Card_EVENT_DoDoBrother,
+        Card_EVENT_Shop,
+        Card_EVENT_Infernal_Blade_333,
     };
 
     const selectedClass = classMap[className];

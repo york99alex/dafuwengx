@@ -163,18 +163,36 @@
         "IsSupply"          "0"
     }
     //血怒
-    // "Card_BUFF_Bloodrage"
-    // {
-    //     "CardType"          "20020"
-    //     "ManaCost"          "2"
-    //     "CastType"          "4"
-    //     "CardKind"          "3"
-    //     "IsSupply"          "1"
-    // }
+    "Card_BUFF_Bloodrage"
+    {
+        "CardType"          "20020"
+        "ManaCost"          "2"
+        "CastType"          "4"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
     // 刀刀兄弟
     "Card_EVENT_DoDoBrother"
     {
         "CardType"          "30001"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
+    // 商店卡
+    "Card_EVENT_Shop"
+    {
+        "CardType"          "30002"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
+    // 阎刃333
+    "Card_EVENT_Infernal_Blade_333"
+    {
+        "CardType"          "30003"
         "ManaCost"          "0"
         "CastType"          "1"
         "CardKind"          "3"

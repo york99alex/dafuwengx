@@ -124,6 +124,7 @@ export default function Precache(context: CScriptPrecacheContext) {
             'soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts',
             'particles/units/heroes/hero_magnataur/magnataur_reverse_polarity.vpcf',
             'soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts',
+            'particles/units/heroes/hero_bloodseeker/bloodseeker_bloodrage.vpcf',
         ],
         context
     );

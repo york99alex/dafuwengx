@@ -731,10 +731,18 @@ Card_20014_Description,,激活神符
 Card_20015,,护盾神符
 Card_20015_Description,,激活神符
 Card_20020,,血怒
-Card_20020_Description,,加深目标20%的造成和承受伤害
+Card_20020_Description,,加深目标20%的输出和承受伤害<br>持续一回合
 Card_30001,,刀刀兄弟
 Card_30001_Description,,立即进入补给环节
+Card_30002,,商店卡
+Card_30002_Description,,可在任意地点购物一次<br>（神秘商店物品除外）
+Card_30003,,阎刃 ● 333
+Card_30003_Description,,随机让一名英雄坠入或脱离炼狱
 
+DOTA_Tooltip_modifier_prison,,<font color='#FF0000'>炎魔炼狱</font>
+DOTA_Tooltip_modifier_prison_Description,,身处<font color='#FF0000'>炎魔炼狱</font>，被封锁全部领地。同时每回合损失金币。
+DOTA_Tooltip_modifier_bloodseeker_bloodrage_card,,血怒
+DOTA_Tooltip_modifier_bloodseeker_bloodrage_card_Description,,加深%dMODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE%%%的输出和承受伤害
 
 CardError_NoLastCard,,没有可窃取卡牌
 CardError_TargetNotRune,,目标不是神符

@@ -21,6 +21,7 @@ export class PathSteps extends Path {
         super.onPath(player);
 
         const card = GameRules.CardFactory.create(this.tSupplyCards[RandomInt(0, this.tSupplyCards.length - 1)].CardType, player.m_nPlayerID);
+        // const card = GameRules.CardFactory.create(CardType.Card_BUFF_Bloodrage, player.m_nPlayerID);
         if (card) player.setCardAdd(card);
     }
 

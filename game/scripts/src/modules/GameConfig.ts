@@ -62,6 +62,7 @@ export class GameConfig {
     m_nOrderIndex = -1;
     m_nOrderFirstIndex = 0; // 首操作index
     m_timeOprt: number = -1; // 回合剩余时限
+    m_timeTemp: number = -1;    // 临时记录时间
     m_nRound = 0; // 当前回合数
     m_nBaoZi = 0; // 当前玩家豹子次数
     m_bFinalBattle = false; // 终局决战

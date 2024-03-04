@@ -231,11 +231,24 @@ export class PlayerManager {
     getAlivePlayerCount() {
         let nCount = 0;
         for (const player of this.m_tabPlayers) {
-            if (this.isAlivePlayer(player.m_nPlayerID)) {
+            if (GameRules.PlayerManager.isAlivePlayer(player.m_nPlayerID)) {
                 nCount++;
             }
         }
         return nCount;
+    }
+
+    /**获取存活玩家数量 */
+    getAlivePlayers() {
+        const players = [];
+        for (const player of this.m_tabPlayers) {
+            if (GameRules.PlayerManager.isAlivePlayer(player.m_nPlayerID)) {
+                print('===alive playerID:', player.m_nPlayerID);
+                players.push(player);
+            }
+        }
+        if (players.length == 0) return null;
+        return players;
     }
 
     /**找到距离我最近路径的玩家 */

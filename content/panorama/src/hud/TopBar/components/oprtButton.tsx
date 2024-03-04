@@ -1,5 +1,5 @@
 import { useGameEvent } from 'react-panorama-x';
-import { TypeOprt } from '../../mode/constant';
+import { GS_Supply, TypeOprt } from '../../mode/constant';
 import { useRef, useState } from 'react';
 
 /**
@@ -91,6 +91,7 @@ export function OprtButton() {
     /**发送操作 */
     function sendOprt(oprtType: number) {
         if (Game.IsGamePaused() || oprtType != typeOprt) return;
+        if (CustomNetTables.GetTableValue('GamingTable', 'state')?.typeState == GS_Supply) return;
         if (eventPlayerID >= 0 && eventPlayerID != Players.GetLocalPlayer()) return;
         GameEvents.SendCustomGameEventToServer('GM_Operator', {
             nPlayerID: Players.GetLocalPlayer(),
