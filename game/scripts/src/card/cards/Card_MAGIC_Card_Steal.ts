@@ -3,6 +3,7 @@ import { Card } from '../card';
 
 /**窃取 20001 */
 export class Card_MAGIC_Card_Steal extends Card {
+    m_sName: string = '窃取';
     CastFilterResultTarget(target: CDOTA_BaseNPC): UnitFilterResult {
         if (!IsValid(target)) return UnitFilterResult.FAIL_CUSTOM;
         if (!this.CanUseCard(target)) return UnitFilterResult.FAIL_CUSTOM;

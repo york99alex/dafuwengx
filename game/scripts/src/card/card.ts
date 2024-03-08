@@ -37,6 +37,8 @@ export class Card {
     m_typeCast: number;
     /**卡牌种类 */
     m_typeKind: number;
+    /**卡牌名称 */
+    m_sName: string;
 
     /**目标单位 */
     m_eTarget: CDOTA_BaseNPC;
@@ -199,7 +201,7 @@ export class Card {
                     return false;
                 }
                 // 死亡清算时不能施法
-                if (oPlayer.m_bDeathClearing) {
+                if (oPlayer.m_bDeathClearing || oPlayer.m_bDie) {
                     this.m_strCastError = 'AbilityError_Die';
                     return false;
                 }
@@ -265,6 +267,12 @@ export class Card {
                 this.m_strCastError = 'AbilityError_HeroCant';
                 return false;
             }
+        } else if (target.GetModelName().includes('rune')) {
+            // 神符
+            if (!this.isCanCastRune()) {
+                this.m_strCastError = 'AbilityError_RuneCant';
+                return false;
+            }
         } else if (!target.IsRealHero()) {
             // 兵卒
             if (!this.isCanCastBZ()) {
@@ -276,12 +284,6 @@ export class Card {
             if (!this.isCanCastMonster()) {
                 // 需要玩家控制，不能是野怪
                 this.m_strCastError = 'AbilityError_MonsterCant';
-                return false;
-            }
-        } else if (target.GetModelName().includes('rune')) {
-            // 神符
-            if (!this.isCanCastRune()) {
-                this.m_strCastError = 'AbilityError_RuneCant';
                 return false;
             }
         } else {

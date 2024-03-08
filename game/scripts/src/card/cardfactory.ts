@@ -1,7 +1,16 @@
 import { KeyValues } from '../kv';
 import { Card, CardInfo } from './card';
 import { Card_BUFF_Bloodrage } from './cards/Card_BUFF_Bloodrage';
+import { Card_EVENT_Blink } from './cards/Card_EVENT_Blink';
+import { Card_EVENT_Card_Cheese } from './cards/Card_EVENT_Card_Cheese';
+import { Card_EVENT_Card_Double } from './cards/Card_EVENT_Card_Double';
+import { Card_EVENT_Card_Refresher } from './cards/Card_EVENT_Card_Refresher';
+import { Card_EVENT_Card_Roll_3 } from './cards/Card_EVENT_Card_Roll_3';
+import { Card_EVENT_Card_Roll_6 } from './cards/Card_EVENT_Card_Roll_6';
 import { Card_EVENT_DoDoBrother } from './cards/Card_EVENT_DoDoBrother';
+import { Card_EVENT_Glass_Canon } from './cards/Card_EVENT_Glass_Canon';
+import { Card_EVENT_Hand_Of_God } from './cards/Card_EVENT_Hand_Of_God';
+import { Card_EVENT_Hand_Of_Midas } from './cards/Card_EVENT_Hand_Of_Midas';
 import { Card_EVENT_Infernal_Blade_333 } from './cards/Card_EVENT_Infernal_Blade_333';
 import { Card_EVENT_Shop } from './cards/Card_EVENT_Shop';
 import { Card_MAGIC_Bottle } from './cards/Card_MAGIC_Bottle';
@@ -65,6 +74,15 @@ function createCardInstance(className: string, cardInfo: CardInfo, nPlayerID: Pl
         Card_EVENT_DoDoBrother,
         Card_EVENT_Shop,
         Card_EVENT_Infernal_Blade_333,
+        Card_EVENT_Hand_Of_God,
+        Card_EVENT_Blink,
+        Card_EVENT_Hand_Of_Midas,
+        Card_EVENT_Glass_Canon,
+        Card_EVENT_Card_Double,
+        Card_EVENT_Card_Refresher,
+        Card_EVENT_Card_Cheese,
+        Card_EVENT_Card_Roll_6,
+        Card_EVENT_Card_Roll_3,
     };
 
     const selectedClass = classMap[className];

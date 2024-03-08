@@ -39,6 +39,7 @@ import { ParaAdjuster } from '../utils/paraadjuster';
 import { Card } from '../card/card';
 import { BaseAbility } from '../utils/dota_ts_adapter';
 import { HudError } from '../mode/S2Cmode/huderror';
+import { GameRecord } from '../mode/S2Cmode/GameRecord';
 
 export type player_info = 'player_info_0' | 'player_info_1' | 'player_info_2' | 'player_info_3' | 'player_info_4' | 'player_info_5';
 export type DamageEvent = {
@@ -1323,6 +1324,9 @@ export class Player {
         this.sendMsg('S2C_GM_CardAdd', {
             nPlayerID: this.m_nPlayerID,
             json: json.encode(card.encodeJsonData()),
+        });
+        GameRecord.gameBroadcast(this.m_nPlayerID, BroadcastType.GetGoodCard, {
+            locstring_value: card.m_sName,
         });
         this.setCardCanCast();
 

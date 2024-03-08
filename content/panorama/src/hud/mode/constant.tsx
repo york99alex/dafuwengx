@@ -17,7 +17,6 @@ export const GS_Supply = 7; //  补给阶段
 export const GS_ReadyStart = 8; //  准备开始
 export const GS_End = 9;
 
-
 export const TypeOprt = {
     TO_Finish: 0,
     TO_Roll: 1,
@@ -149,4 +148,18 @@ export const LEVEL_EXP: Record<number, number> = {
     23: 48,
     24: 51,
     25: 54,
+};
+
+export const BZ_Ability: Record<string, string> = {
+    npc_dota_hero_phantom_assassin: 'phantom_assassin_coup_de_grace',
+    npc_dota_hero_meepo: 'Ability_meepo_ransack',
+    npc_dota_hero_pudge: 'Ability_BZ_pudge_rot',
+    npc_dota_hero_lina: 'Ability_BZ_lina_dragon_slave',
+    npc_dota_hero_zuus: 'Ability_BZ_zuus_lightning_bolt',
+    npc_dota_hero_axe: 'Ability_axe_helix_counter',
+    npc_dota_hero_bloodseeker: 'Ability_bloodseeker_thirst',
+    npc_dota_hero_techies: 'Ability_BZ_techies_land_mines',
+    npc_dota_hero_dragon_knight: 'Ability_dragon_knight_elder_dragon_form',
+    npc_dota_hero_undying: 'Ability_undying_tombstone',
+    npc_dota_hero_life_stealer: 'Ability_life_stealer_feast',
 };

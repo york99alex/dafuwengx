@@ -40,7 +40,7 @@ export class HeroSelection {
 
     /** 随机回合顺序 */
     GiveAllPlayersSort() {
-        this.m_PlayersSort = this.m_SelectHeroPlayerID.concat(this.m_RandomHeroPlayerID);
+        if (GameRules.State_Get() != GameState.GAME_IN_PROGRESS) this.m_PlayersSort = this.m_SelectHeroPlayerID.concat(this.m_RandomHeroPlayerID);
         for (let index = this.m_PlayersSort.length - 1; index > 0; index--) {
             const idx = RandomInt(0, index);
             const temp = this.m_PlayersSort[idx];

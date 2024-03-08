@@ -4,6 +4,7 @@ import { Card } from '../card';
 
 /**恶念瞥视 20004 */
 export class Card_MAGIC_Glimpse extends Card {
+    m_sName: string = '恶念瞥视';
     isCanCastSelf(): boolean {
         return true;
     }

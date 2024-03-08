@@ -5,6 +5,7 @@ import { Card } from '../card';
 
 /**阎刃 20005 */
 export class Card_MAGIC_InfernalBlade extends Card {
+    m_sName: string = '阎刃';
     isCanCastInPrison(): boolean {
         return true;
     }

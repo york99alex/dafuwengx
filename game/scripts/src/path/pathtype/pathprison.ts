@@ -53,14 +53,7 @@ export class PathPrison extends Path {
         // 触发阎刃卡
         if (player.m_nRollMove == 1) {
             const card = GameRules.CardFactory.create(CardType.Card_MAGIC_InfernalBlade, player.m_nPlayerID);
-            // const card = GameRules.CardFactory.create(CardType.Card_MAGIC_InfernalBlade, player.m_nPlayerID);
-            if (card) {
-                player.setCardAdd(card);
-                GameRecord.gameBroadcast(player.m_nPlayerID, BroadcastType.GetGoodCard, {
-                    locstring_value: '阎刃',
-                });
-                // TODO: 设置游戏记录
-            }
+            if (card) player.setCardAdd(card);
         }
     }
 

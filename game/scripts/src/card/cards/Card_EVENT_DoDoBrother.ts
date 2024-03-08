@@ -3,6 +3,7 @@ import { Card } from '../card';
 
 /**刀刀兄弟 30001 */
 export class Card_EVENT_DoDoBrother extends Card {
+    m_sName: string = '刀刀兄弟';
     OnSpellStart(): void {
         // 记录当前回合剩余操作时间
         GameRules.GameConfig.m_timeTemp = GameRules.GameConfig.m_timeOprt;

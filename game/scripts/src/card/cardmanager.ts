@@ -15,6 +15,7 @@ export class CardManager {
         };
     } = {}; // 记录给玩家发牌的数量{playerid,{type,count}}
     m_nIncludeID = 0;
+    tSupplyCards: any[] = []; // 参与补给的卡牌KV
 
     /**初始化 */
     init() {
@@ -50,13 +51,15 @@ export class CardManager {
         DeepPrintTable(event);
         if (!event.nCardID || !event.nPlayerID) return;
         const player = GameRules.PlayerManager.getPlayer(event.nPlayerID);
-        const card = this.getCardByID(event.nCardID);
+        const card = GameRules.CardManager.getCardByID(event.nCardID);
         let castType = 0;
         let nResult = 1;
         if (card) {
             if (event.nPlayerID == card.m_nOwnerID) {
                 // 判断施法目标
                 if ((card.m_typeCast & TCardCast_Target) > 0) {
+                    print('===castfilert===0 targetname:', EntIndexToHScript(event.nTargetEntID).GetName());
+                    print('===castfilert===0 GetModelName:', EntIndexToHScript(event.nTargetEntID).GetModelName());
                     if (
                         event.nTargetEntID &&
                         UnitFilterResult.SUCCESS == card.CastFilterResultTarget(EntIndexToHScript(event.nTargetEntID) as CDOTA_BaseNPC)
@@ -79,11 +82,12 @@ export class CardManager {
                         castType = TCardCast_Nil;
                         nResult = 0;
                     }
-                } else {
-                    card.onCastError();
                 }
                 print('[onEvent_CardUseRequest]: card type is ', card.m_typeCard, '  card cast type is ', card.m_typeCast);
             }
+        } else if (card == null) {
+            print('error!:===card is null===');
+            return;
         }
         const tabData = {
             nPlayerID: event.nPlayerID,
@@ -115,6 +119,7 @@ export class CardManager {
         } else {
             // 失败，通知请求玩家
             player.sendMsg('GM_OperatorFinished', tabData);
+            card.onCastError();
         }
 
         print('GM_OperatorFinished=========================');
@@ -129,6 +134,10 @@ export class CardManager {
 
     /**通过ID获取卡牌 */
     getCardByID(cardID: number) {
+        print('===getCardByID: ', cardID);
+        this.m_tabCards.forEach(card => {
+            print('cardID: ', card.m_nID, '===cardName:', card.m_typeCard);
+        });
         for (const card of this.m_tabCards) {
             if (card.m_nID == cardID) return card;
         }

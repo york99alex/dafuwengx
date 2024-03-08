@@ -3,6 +3,7 @@ import { Card } from '../card';
 
 /**移形换位 20002 */
 export class Card_MAGIC_Swap extends Card {
+    m_sName: string = '移形换位';
     isCanCastBZ(): boolean {
         return false;
     }

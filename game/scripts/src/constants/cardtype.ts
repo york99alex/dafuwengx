@@ -44,4 +44,22 @@ declare const enum CardType {
     Card_EVENT_Shop = 30002,
     /**阎刃333 */
     Card_EVENT_Infernal_Blade_333 = 30003,
+    /**上帝之手 */
+    Card_EVENT_Hand_Of_God = 30004,
+    /**事件 闪烁匕首 */
+    Card_EVENT_Blink = 30005,
+    /**团队之手 */
+    Card_EVENT_Hand_Of_Midas = 30006,
+    /**玻璃大炮 */
+    Card_EVENT_Glass_Canon = 30007,
+    /**卡牌双雄 */
+    Card_EVENT_Card_Double = 30008,
+    /**刷新球碎片 */
+    Card_EVENT_Card_Refresher = 30009,
+    /**奶酪 */
+    Card_EVENT_Card_Cheese = 30010,
+    /**骰子-6 */
+    Card_EVENT_Card_Roll_6 = 30011,
+    /**骰子-3 */
+    Card_EVENT_Card_Roll_3 = 30012,
 }

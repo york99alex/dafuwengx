@@ -154,36 +154,36 @@ DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_bonus_move_spe
 DOTA_Tooltip_ability_Ability_undying_tombstone_zombie_deathstrike_bonus_attack_speed,BONUS ATTACK SPEED :,攻击速度加成：
 DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike,Deathstrike,死亡渴望
 DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike_Description,Increase attack speed by %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT% and increase movement speed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%.,增加%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%攻击速度，增加%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%移动速度。
-DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike_debuff,,死亡渴望减速
-DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike_debuff_Description,,死亡渴望减速%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%
-DOTA_Tooltip_ability_Ability_undying_flesh_golem,,血肉傀儡
-DOTA_Tooltip_ability_Ability_undying_flesh_golem_Description,,不朽尸王变身为一具令人毛骨悚然的血肉傀儡。<br>苏醒墓碑下的亡兵，同时全军狂暴获得鲜血渴望技能。
-DOTA_Tooltip_ability_Ability_undying_flesh_golem_Lore,,新近死者的血肉增强了挽歌瘟疫的力量。
-DOTA_Tooltip_ability_Ability_undying_flesh_golem_health_bonus,,额外生命值：
-DOTA_Tooltip_ability_Ability_undying_flesh_golem_duration,,持续回合：
-DOTA_Tooltip_modifier_Ability_undying_flesh_golem,,血肉傀儡
-DOTA_Tooltip_modifier_Ability_undying_flesh_golem_Description,,令人毛骨悚然的血肉傀儡，拥有鲜血渴望和额外%MODIFIER_PROPERTY_HEALTH_BONUS%生命值。
-DOTA_Tooltip_ability_Ability_life_stealer_open_wounds,,撕裂伤口
-DOTA_Tooltip_ability_Ability_life_stealer_open_wounds_Description,,噬魂鬼撕裂一个敌方单位，减缓受害者的移动速度，并使所有单位在攻击该受害者时造成一定比例原始伤害的额外伤害。额外伤害的来源和收益均为噬魂鬼本鬼。
-DOTA_Tooltip_ability_Ability_life_stealer_open_wounds_amplify,,%额外伤害比例：
-DOTA_Tooltip_ability_Ability_life_stealer_open_wounds_slow_pct,,%移动速度减缓：
-DOTA_Tooltip_ability_Ability_life_stealer_open_wounds_duration,,持续回合：
-DOTA_Tooltip_ability_Ability_life_stealer_open_wounds_Lore,,新鲜的伤口和鲜血的芳香通常能引来清道夫清理善后。
-DOTA_Tooltip_ability_Ability_life_stealer_open_wounds_Note0,,原始伤害与额外伤害互相独立计算，伤害类型等保持一致。
-DOTA_Tooltip_ability_Ability_life_stealer_feast,,盛宴
-DOTA_Tooltip_ability_Ability_life_stealer_feast_Description,,噬魂鬼每次攻击时还会根据目标最大生命值造成额外伤害，同时自身回复一定量的生命。被动地提供攻击速度加成。
-DOTA_Tooltip_ability_Ability_life_stealer_feast_max_health_damage,,%最大生命值伤害：
-DOTA_Tooltip_ability_Ability_life_stealer_feast_max_health_heal,,%最大生命值回复：
-DOTA_Tooltip_ability_Ability_life_stealer_feast_Lore,,金币也能维持血肉和生命。
-DOTA_Tooltip_ability_Ability_life_stealer_feast_Note0,,回复和伤害都仅在攻击命中时才生效。
-DOTA_Tooltip_ability_Ability_life_stealer_feast_Note1,,额外伤害直接附加在原始伤害中，视为同一次伤害。
-DOTA_Tooltip_modifier_ability_life_stealer_open_wounds,,撕裂伤口
-DOTA_Tooltip_modifier_ability_life_stealer_open_wounds_Description,,移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%
-AbilityError_Target,,目标错误
-AbilityError_Range,,不在范围内
-AbilityError_TargetPath,,仅路径目标
-AbilityError_NoBomb,,没有地雷无需标识
-AbilityError_TargetNotPlayer,,目标不是玩家英雄
+DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike_debuff,Deathstrike Slow,死亡渴望减速
+DOTA_Tooltip_modifier_ability_undying_tombstone_zombie_deathstrike_debuff_Description,Slowed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% from Deathstrike,死亡渴望减速%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%
+DOTA_Tooltip_ability_Ability_undying_flesh_golem,Flesh Golem,血肉傀儡
+DOTA_Tooltip_ability_Ability_undying_flesh_golem_Description,A horrifying Flesh Golem with Deathstrike and %MODIFIER_PROPERTY_HEALTH_BONUS% bonus health.,令人毛骨悚然的血肉傀儡，拥有死亡渴望和额外%MODIFIER_PROPERTY_HEALTH_BONUS%生命值。
+DOTA_Tooltip_ability_Ability_undying_flesh_golem_Lore,The flesh of the recently dead add to the power of Dirge's plague.,新近死者的血肉增强了挽歌瘟疫的力量。
+DOTA_Tooltip_ability_Ability_undying_flesh_golem_health_bonus,HEALTH BONUS:,额外生命值：
+DOTA_Tooltip_ability_Ability_undying_flesh_golem_duration,DURATION:,持续回合：
+DOTA_Tooltip_modifier_Ability_undying_flesh_golem,Flesh Golem,血肉傀儡
+DOTA_Tooltip_modifier_Ability_undying_flesh_golem_Description,A horrifying Flesh Golem with Deathstrike and %MODIFIER_PROPERTY_HEALTH_BONUS% bonus health.,令人毛骨悚然的血肉傀儡，拥有鲜血渴望和额外%MODIFIER_PROPERTY_HEALTH_BONUS%生命值。
+DOTA_Tooltip_ability_Ability_life_stealer_open_wounds,Open Wounds,撕裂伤口
+DOTA_Tooltip_ability_Ability_life_stealer_open_wounds_Description,"Lifestealer rips open an enemy unit, slowing its movement and causing all units that attack it to deal a percentage of their attack damage as additional damage of the same type. The source and beneficiary of the additional damage is Lifestealer.",噬魂鬼撕裂一个敌方单位，减缓受害者的移动速度，并使所有单位在攻击该受害者时造成一定比例原始伤害的额外伤害。额外伤害的来源和收益均为噬魂鬼本鬼。
+DOTA_Tooltip_ability_Ability_life_stealer_open_wounds_amplify,%BONUS DAMAGE:,%额外伤害比例：
+DOTA_Tooltip_ability_Ability_life_stealer_open_wounds_slow_pct,%SLOW:,%移动速度减缓：
+DOTA_Tooltip_ability_Ability_life_stealer_open_wounds_duration,DURATION:,持续回合：
+DOTA_Tooltip_ability_Ability_life_stealer_open_wounds_Lore,Fresh wounds and the scent of blood often draw out the scavengers to finish the job.,新鲜的伤口和鲜血的芳香通常能引来清道夫清理善后。
+DOTA_Tooltip_ability_Ability_life_stealer_open_wounds_Note0,Bonus damage is calculated separately from normal damage but shares the same damage type.,原始伤害与额外伤害互相独立计算，伤害类型等保持一致。
+DOTA_Tooltip_ability_Ability_life_stealer_feast,Feast,盛宴
+DOTA_Tooltip_ability_Ability_life_stealer_feast_Description,"Lifestealer's attacks deal bonus damage based on the target's maximum health, and heal him for a portion of the damage dealt. Passive bonus attack speed is also provided.",噬魂鬼每次攻击时还会根据目标最大生命值造成额外伤害，同时自身回复一定量的生命。被动地提供攻击速度加成。
+DOTA_Tooltip_ability_Ability_life_stealer_feast_max_health_damage,%MAX HEALTH DAMAGE:,%最大生命值伤害：
+DOTA_Tooltip_ability_Ability_life_stealer_feast_max_health_heal,%MAX HEALTH LIFE STEAL:,%最大生命值回复：
+DOTA_Tooltip_ability_Ability_life_stealer_feast_Lore,Wealth can sustain flesh and life.,金币也能维持血肉和生命。
+DOTA_Tooltip_ability_Ability_life_stealer_feast_Note0,Heal and bonus damage only apply on attack hits.,回复和伤害都仅在攻击命中时才生效。
+DOTA_Tooltip_ability_Ability_life_stealer_feast_Note1,Bonus damage is bundled with the normal attack damage as a single damage instance.,额外伤害直接附加在原始伤害中，视为同一次伤害。
+DOTA_Tooltip_modifier_ability_life_stealer_open_wounds,Open Wounds,撕裂伤口
+DOTA_Tooltip_modifier_ability_life_stealer_open_wounds_Description,Slowed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%,移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%
+AbilityError_Target,TARGET ERROR,目标错误
+AbilityError_Range,NOT IN RANGE,不在范围内
+AbilityError_TargetPath,ONLY PATH TARGET,仅路径目标
+AbilityError_NoBomb,NO BOMB,没有地雷无需标识
+AbilityError_TargetNotPlayer,TARGET NOT PLAYER,目标不是玩家英雄
 bz_pa_1,PA★,幻影刺客★
 bz_pa_11,PA★★,幻影刺客★★
 bz_pa_111,PA★★★,幻影刺客★★★
@@ -202,698 +202,716 @@ bz_zuus_111,Zuus★★★,宙斯★★★
 bz_axe_1,Axe★,斧王★
 bz_axe_11,Axe★★,斧王★★
 bz_axe_111,Axe★★★,斧王★★★
-bz_bloodseeker_1,,血魔★
-bz_bloodseeker_11,,血魔★★
-bz_bloodseeker_111,,血魔★★★
-bz_techies_1,,工程师★
-bz_techies_11,,工程师★★
-bz_techies_111,,工程师★★★
-bz_dragon_knight_1,,龙骑士★
-bz_dragon_knight_11,,龙骑士★★
-bz_dragon_knight_111,,龙骑士★★★
-bz_undying_1,,不朽尸王★
-bz_undying_11,,不朽尸王★★
-bz_undying_111,,不朽尸王★★★
-DOTA_Tooltip_ability_yjxr_12,,养精蓄锐
-DOTA_Tooltip_ability_yjxr_12_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_12_Lore,,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_12_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_12_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_13,,养精蓄锐
-DOTA_Tooltip_ability_yjxr_13_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_13_Lore,,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_13_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_13_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_14,,养精蓄锐
-DOTA_Tooltip_ability_yjxr_14_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_14_Lore,,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_14_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_14_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_15,,养精蓄锐
-DOTA_Tooltip_ability_yjxr_15_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_15_Lore,,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_15_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_15_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_16,,养精蓄锐
-DOTA_Tooltip_ability_yjxr_16_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_16_Lore,,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_16_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_16_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_17,,养精蓄锐
-DOTA_Tooltip_ability_yjxr_17_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_17_Lore,,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_17_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_17_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_18,,养精蓄锐
-DOTA_Tooltip_ability_yjxr_18_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_18_Lore,,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_18_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_18_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_yjxr_19,,养精蓄锐
-DOTA_Tooltip_ability_yjxr_19_Description,,提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
-DOTA_Tooltip_ability_yjxr_19_Lore,,来来，吃头牛。
-DOTA_Tooltip_ability_yjxr_19_goldcost,,<font color='#FFFF00'>消耗金币 :</font>
-DOTA_Tooltip_ability_yjxr_19_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_12,,解甲归田
-DOTA_Tooltip_ability_xj_12_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_12_Description,,降低兵卒★级，返还一半金币。
+bz_bloodseeker_1,Bloodseeker★,血魔★
+bz_bloodseeker_11,Bloodseeker★★,血魔★★
+bz_bloodseeker_111,Bloodseeker★★★,血魔★★★
+bz_techies_1,Techies★,工程师★
+bz_techies_11,Techies★★,工程师★★
+bz_techies_111,Techies★★★,工程师★★★
+bz_dragon_knight_1,Dragon Knight★,龙骑士★
+bz_dragon_knight_11,Dragon Knight★★,龙骑士★★
+bz_dragon_knight_111,Dragon Knight★★★,龙骑士★★★
+bz_undying_1,Undying★,不朽尸王★
+bz_undying_11,Undying★★,不朽尸王★★
+bz_undying_111,Undying★★★,不朽尸王★★★
+DOTA_Tooltip_ability_yjxr_12,Upgrade,养精蓄锐
+DOTA_Tooltip_ability_yjxr_12_Description,"Increase the Soldier★ Level, breaking the level cap, while restoring all health.",提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_12_Lore,"Come on, eat a cow.",来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_12_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_12_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_13,Upgrade,养精蓄锐
+DOTA_Tooltip_ability_yjxr_13_Description,"Increase the Soldier★ Level, breaking the level cap, while restoring all health.",提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_13_Lore,"Come on, eat a cow.",来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_13_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_13_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_14,Upgrade,养精蓄锐
+DOTA_Tooltip_ability_yjxr_14_Description,"Increase the Soldier★ Level, breaking the level cap, while restoring all health.",提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_14_Lore,"Come on, eat a cow.",来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_14_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_14_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_15,Upgrade,养精蓄锐
+DOTA_Tooltip_ability_yjxr_15_Description,"Increase the Soldier★ Level, breaking the level cap, while restoring all health.",提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_15_Lore,"Come on, eat a cow.",来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_15_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_15_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_16,Upgrade,养精蓄锐
+DOTA_Tooltip_ability_yjxr_16_Description,"Increase the Soldier★ Level, breaking the level cap, while restoring all health.",提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_16_Lore,"Come on, eat a cow.",来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_16_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_16_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_17,Upgrade,养精蓄锐
+DOTA_Tooltip_ability_yjxr_17_Description,"Increase the Soldier★ Level, breaking the level cap, while restoring all health.",提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_17_Lore,"Come on, eat a cow.",来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_17_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_17_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_18,Upgrade,养精蓄锐
+DOTA_Tooltip_ability_yjxr_18_Description,"Increase the Soldier★ Level, breaking the level cap, while restoring all health.",提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_18_Lore,"Come on, eat a cow.",来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_18_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_18_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_yjxr_19,Upgrade,养精蓄锐
+DOTA_Tooltip_ability_yjxr_19_Description,"Increase the Soldier★ Level, breaking the level cap, while restoring all health.",提升兵卒★级，突破等级瓶颈，同时恢复全部血量。
+DOTA_Tooltip_ability_yjxr_19_Lore,"Come on, eat a cow.",来来，吃头牛。
+DOTA_Tooltip_ability_yjxr_19_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>消耗金币 :</font>
+DOTA_Tooltip_ability_yjxr_19_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_12,Downgrade,解甲归田
+DOTA_Tooltip_ability_xj_12_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_12_Description,Lower your Soldier ★ and return half your gold.,降低兵卒★级，返还一半金币。
 DOTA_Tooltip_ability_xj_12_Lore,,
-DOTA_Tooltip_ability_xj_12_goldcost,,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_13,,解甲归田
-DOTA_Tooltip_ability_xj_13_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_13_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_12_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_13,Downgrade,解甲归田
+DOTA_Tooltip_ability_xj_13_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_13_Description,Lower your Soldier ★ and return half your gold.,降低兵卒★级，返还一半金币。
 DOTA_Tooltip_ability_xj_13_Lore,,
-DOTA_Tooltip_ability_xj_13_goldcost,,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_14,,解甲归田
-DOTA_Tooltip_ability_xj_14_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_14_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_13_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_14,Downgrade,解甲归田
+DOTA_Tooltip_ability_xj_14_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_14_Description,Lower your Soldier ★ and return half your gold.,降低兵卒★级，返还一半金币。
 DOTA_Tooltip_ability_xj_14_Lore,,
-DOTA_Tooltip_ability_xj_14_goldcost,,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_15,,解甲归田
-DOTA_Tooltip_ability_xj_15_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_15_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_14_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_15,Downgrade,解甲归田
+DOTA_Tooltip_ability_xj_15_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_15_Description,Lower your Soldier ★ and return half your gold.,降低兵卒★级，返还一半金币。
 DOTA_Tooltip_ability_xj_15_Lore,,
-DOTA_Tooltip_ability_xj_15_goldcost,,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_16,,解甲归田
-DOTA_Tooltip_ability_xj_16_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_16_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_15_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_16,Downgrade,解甲归田
+DOTA_Tooltip_ability_xj_16_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_16_Description,Lower your Soldier ★ and return half your gold.,降低兵卒★级，返还一半金币。
 DOTA_Tooltip_ability_xj_16_Lore,,
-DOTA_Tooltip_ability_xj_16_goldcost,,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_17,,解甲归田
-DOTA_Tooltip_ability_xj_17_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_17_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_16_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_17,Downgrade,解甲归田
+DOTA_Tooltip_ability_xj_17_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_17_Description,Lower your Soldier ★ and return half your gold.,降低兵卒★级，返还一半金币。
 DOTA_Tooltip_ability_xj_17_Lore,,
-DOTA_Tooltip_ability_xj_17_goldcost,,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_18,,解甲归田
-DOTA_Tooltip_ability_xj_18_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_18_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_17_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_18,Downgrade,解甲归田
+DOTA_Tooltip_ability_xj_18_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_18_Description,Lower your Soldier ★ and return half your gold.,降低兵卒★级，返还一半金币。
 DOTA_Tooltip_ability_xj_18_Lore,,
-DOTA_Tooltip_ability_xj_18_goldcost,,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_xj_19,,解甲归田
-DOTA_Tooltip_ability_xj_19_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_xj_19_Description,,降低兵卒★级，返还一半金币。
+DOTA_Tooltip_ability_xj_18_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_xj_19,Downgrade,解甲归田
+DOTA_Tooltip_ability_xj_19_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_xj_19_Description,Lower your Soldier ★ and return half your gold.,降低兵卒★级，返还一半金币。
 DOTA_Tooltip_ability_xj_19_Lore,,
-DOTA_Tooltip_ability_xj_19_goldcost,,<font color='#FFFF00'>返还金币 :</font>
-DOTA_Tooltip_ability_yjxr_max,,养精蓄锐
-DOTA_Tooltip_ability_yjxr_max_Description,,顶级兵卒
-DOTA_Tooltip_ability_yjxr_max_Lore,,我感觉人生已经到达了巅峰!!!
-DOTA_Tooltip_ability_yjxr_max_level_max,,<font color='#FF0000'>封顶等级 :</font>
-DOTA_Tooltip_ability_path_12,,天辉
-DOTA_Tooltip_ability_path_12_Description,,<h1>【领地增益 : 辉光普照】</h1>护甲提升 : <font color='#FFFFFF'>5 / 10 / 10</font> <br>魔抗提升 : <font color='#FFFFFF'>15% / 30% / 30%</font> \n<h1>【满级效果 : 融合】</h1>天辉兵卒融合成传说中的天辉巨人。<br>（等级，射程，体型是普通兵卒的 2 倍）\n<h1>【增益等级规则】</h1>一级 : 需★天辉兵卒 x  1<br>二级 : 需★★天辉兵卒 x  2<br>三级 : 需★★★天辉兵卒 x 3
-DOTA_Tooltip_ability_path_12_Lore,,天辉大地因世界树充满活力。受到世界树的庇护，全军防御抗性提升。
-DOTA_Tooltip_Modifier_path_12_l1,,辉光普照
-DOTA_Tooltip_Modifier_path_12_l1_Description,,护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。<br><font color='#FFFF00'>下个等级 : ★★天辉兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_12_l2,,辉光普照
-DOTA_Tooltip_Modifier_path_12_l2_Description,,护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。<br><font color='#FFFF00'>下个等级 : ★★★天辉兵卒 x3</font>
-DOTA_Tooltip_Modifier_path_12_l3,,辉光普照
-DOTA_Tooltip_Modifier_path_12_l3_Description,,护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。
-DOTA_Tooltip_ability_path_13,,河道
-DOTA_Tooltip_ability_path_13_Description,,<h1>【领地增益 ：寒流】</h1>护甲穿透（上河道） : <font color='#FFFFFF'>15% / 25% / 35%</font> <br>魔抗穿透（下河道） : <font color='#FFFFFF'>15% / 25% / 35%</font>\n<h1>【增益等级规则】</h1>一级 : 需★河道兵卒 x 1<br>二级 : 需★★河道兵卒 x 1<br>三级 : 需★★★河道兵卒 x 1
-DOTA_Tooltip_ability_path_13_Lore,,肃杀的世界连流水同样冰冷，刺骨之寒透过坚硬的盔甲。
-DOTA_Tooltip_Modifier_path_13_hujia_l1,,寒流 : 物理穿透
-DOTA_Tooltip_Modifier_path_13_hujia_l1_Description,,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。<br><font color='#FFFF00'>下个等级 : ★★上河道兵卒 x1</font>
-DOTA_Tooltip_Modifier_path_13_mokang_l1,,寒流 : 魔法穿透
-DOTA_Tooltip_Modifier_path_13_mokang_l1_Description,,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性 。<br><font color='#FFFF00'>下个等级 : ★★下河道兵卒  x1</font>
-DOTA_Tooltip_Modifier_path_13_hujia_l2,,寒流 : 物理穿透
-DOTA_Tooltip_Modifier_path_13_hujia_l2_Description,,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。<br><font color='#FFFF00'>下个等级 : ★★★上河道兵卒 x1</font>
-DOTA_Tooltip_Modifier_path_13_mokang_l2,,寒流 : 魔法穿透
-DOTA_Tooltip_Modifier_path_13_mokang_l2_Description,,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性。<br><font color='#FFFF00'>下个等级 : ★★★下河道兵卒 x1</font>
-DOTA_Tooltip_Modifier_path_13_hujia_l3,,寒流 : 物理穿透
-DOTA_Tooltip_Modifier_path_13_hujia_l3_Description,,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。
-DOTA_Tooltip_Modifier_path_13_mokang_l3,,寒流 : 魔法穿透
-DOTA_Tooltip_Modifier_path_13_mokang_l3_Description,,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性。
-DOTA_Tooltip_ability_path_14,,蛇沼
-DOTA_Tooltip_ability_path_14_Description,,<h1>【领地增益 ：缚足】</h1>敌人经过此地有概率被群蛇束缚。\n束缚概率 : <font color='#FFFFFF'>25%</font> <br>束缚时间 : <font color='#FFFFFF'>1 / 2 / 2</font>\n<h1>【满级效果 : 扩张】</h1>作用全部己方领地\n<h1>【增益等级规则】</h1>一级 : 需★蛇沼兵卒 x 1<br>二级 : 需★★蛇沼兵卒 x 2<br>三级 : 需★★★蛇沼兵卒 x 3
-DOTA_Tooltip_ability_path_14_Lore,,穿行沼泽的确不是件轻松活，好在有蛇蛇们的帮助。
-DOTA_Tooltip_Modifier_path_14_l1,,缚足
-DOTA_Tooltip_Modifier_path_14_l1_Description,,敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）<br><font color='#FFFF00'>下个等级 : ★★蛇沼兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_14_l2,,缚足
-DOTA_Tooltip_Modifier_path_14_l2_Description,,敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）<br><font color='#FFFF00'>下个等级 : ★★★蛇沼兵卒 x3</font>
-DOTA_Tooltip_Modifier_path_14_l3,,缚足
-DOTA_Tooltip_Modifier_path_14_l3_Description,,敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）
-DOTA_Tooltip_ability_path_15,,夜魇
-DOTA_Tooltip_ability_path_15_Description,,<h1>【领地增益 ：癫狂】</h1>攻速提升 : <font color='#FFFFFF'>25 / 50 / 100</font> <br>移速提升 : <font color='#FFFFFF'>10 / 20 / 40</font>\n<h1>【满级效果 : 癫狂】</h1>夜魇兵卒双倍提升，被沉默无法施法兵卒技。\n<h1>【增益等级规则】</h1>一级 : 需★夜魇兵卒 x 1<br>二级 : 需★★夜魇兵卒 x 2<br>三级 : 需★★★夜魇兵卒 x 3
-DOTA_Tooltip_ability_path_15_Lore,,至邪的源泉侵蚀它的子民，失去了灵魂换得他人的恐惧。
-DOTA_Tooltip_Modifier_path_15_l1,,癫狂
-DOTA_Tooltip_Modifier_path_15_l1_Description,,全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。<br><font color='#FFFF00'>下个等级 : ★★夜魇兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_15_l2,,癫狂
-DOTA_Tooltip_Modifier_path_15_l2_Description,,全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。<br><font color='#FFFF00'>下个等级 : ★★★夜魇兵卒 x3</font>
-DOTA_Tooltip_Modifier_path_15_l3,,癫狂
-DOTA_Tooltip_Modifier_path_15_l3_Description,,全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。夜魇兵卒双倍提升，沉默自身。
-DOTA_Tooltip_Modifier_path_15_chenmo,,癫狂反噬
-DOTA_Tooltip_Modifier_path_15_chenmo_Description,,失去理性，无法释放技能。
-DOTA_Tooltip_ability_path_16,,龙谷
-DOTA_Tooltip_ability_path_16_Description,,<h1>【领地增益 ：神龙赐法】</h1>英雄回魔提升 : <font color='#FFFFFF'>1</font><br>兵卒蓝量获取提升 : <font color='#FFFFFF'>40%</font><br>萃魔概率 : <font color='#FFFFFF'>15% / 30% / 50%</font><br>刷新概率 : <font color='#FFFFFF'>0% / 15% / 50%</font>\n<h1>【特殊效果 : 萃魔】</h1>施法有概率返还魔法\n<h1>【特殊效果 : 刷新】</h1>施法有概率刷新技能\n<h1>【增益等级规则】</h1>一级 : 需★龙谷兵卒 x 1<br>二级 : 需★★龙谷兵卒 x 2<br>三级 : 需★★★龙谷兵卒 x 3
-DOTA_Tooltip_ability_path_16_Lore,,神秘的古老种族，掌管着最纯粹的魔法。
-DOTA_Tooltip_Modifier_path_16_l1,,神龙赐法
-DOTA_Tooltip_Modifier_path_16_l1_Description,,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 15%% 返还魔耗。<br><font color='#FFFF00'>下个等级 : ★★龙谷兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_16_l2,,神龙赐法
-DOTA_Tooltip_Modifier_path_16_l2_Description,,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 30%% 返还魔耗。<br>施法 15%% 刷新冷却。<br><font color='#FFFF00'>下个等级 : ★★★龙谷兵卒 x3</font>
-DOTA_Tooltip_Modifier_path_16_l3,,神龙赐法
-DOTA_Tooltip_Modifier_path_16_l3_Description,,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 50%% 返还魔耗。<br>施法 50%% 刷新冷却。
-DOTA_Tooltip_Modifier_path_16_l1_BZ,,神龙赐法
-DOTA_Tooltip_Modifier_path_16_l1_BZ_Description,,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 15%% 返还魔耗。<br><font color='#FFFF00'>下个等级 : ★★龙谷兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_16_l2_BZ,,神龙赐法
-DOTA_Tooltip_Modifier_path_16_l2_BZ_Description,,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 30%% 返还魔耗。<br>施法 15%% 刷新冷却。<br><font color='#FFFF00'>下个等级 : ★★★龙谷兵卒 x3</font>
-DOTA_Tooltip_Modifier_path_16_l3_BZ,,神龙赐法
-DOTA_Tooltip_Modifier_path_16_l3_BZ_Description,,英雄回魔 +1，兵卒回魔 +40%%。<br>施法 50%% 返还魔耗。<br>施法 50%% 刷新冷却。
-DOTA_Tooltip_ability_path_17,,鵰巢
-DOTA_Tooltip_ability_path_17_Description,,<h1>【领地增益 ：圣兽之怒】</h1>圣兽刮起飓风，伤害经过的敌人。\n持续魔法伤害 : <font color='#FFFFFF'>30</font><br>减速 : <font color='#FFFFFF'>0% / 50% / 50%</font>\n<h1>【二级效果 : 减速】</h1>飓风造成减速\n<h1>【满级效果 : 扩张】</h1>作用全部己方领地\n<h1>【增益等级规则】</h1>一级 : 需★鵰巢兵卒 x 1<br>二级 : 需★★鵰巢兵卒 x 2<br>三级 : 需★★★鵰巢兵卒 x 3
-DOTA_Tooltip_ability_path_17_Lore,,唤醒圣兽，刮起飓风，触碰的敌人被持续减速，并造成魔法伤害。唤醒沉睡的圣兽，无谓的战争引燃它的怒火。
-DOTA_Tooltip_Modifier_path_17_l1,,圣兽
-DOTA_Tooltip_Modifier_path_17_l1_Description,,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害。<br><font color='#FFFF00'>下个等级 : ★★鵰巢兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_17_l2,,圣兽
-DOTA_Tooltip_Modifier_path_17_l2_Description,,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害，并减速 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%。<br><font color='#FFFF00'>下个等级 : ★★★鵰巢兵卒 x3</font>
-DOTA_Tooltip_Modifier_path_17_l3,,圣兽
-DOTA_Tooltip_Modifier_path_17_l3_Description,,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害，并减速 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%。
-DOTA_Tooltip_Modifier_path_17_debuff,,圣兽
-DOTA_Tooltip_Modifier_path_17_debuff_Description,,飓风减速 %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%
-DOTA_Tooltip_ability_path_18,,圣所
-DOTA_Tooltip_ability_path_18_Description,,<h1>【领地增益 ：圣洁净土】</h1>对驻足在圣所的敌人造成神圣伤害。\n纯粹伤害 : <font color='#FFFFFF'>1000 / 2000 / 4000</font>\n<h1>【特殊效果 : 石佛】</h1>圣所兵卒无法攻击。无法被攻城。\n<h1>【增益等级规则】</h1>一级 : 需★圣所兵卒 x 2<br>二级 : 需★★圣所兵卒 x 2<br>三级 : 需★★★圣所兵卒 x 2
-DOTA_Tooltip_ability_path_18_Lore,,神圣的殿堂前没有纷争也没有不速之客。
-DOTA_Tooltip_Modifier_path_18_l1,,圣洁净土
-DOTA_Tooltip_Modifier_path_18_l1_Description,,对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★圣所兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_18_l2,,圣洁净土
-DOTA_Tooltip_Modifier_path_18_l2_Description,,对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★★圣所兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_18_l3,,圣洁净土
-DOTA_Tooltip_Modifier_path_18_l3_Description,,对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。
-DOTA_Tooltip_Modifier_path_18_l1_BZ,,圣洁净土
-DOTA_Tooltip_Modifier_path_18_l1_BZ_Description,,化身石佛守护圣所，对驻足在圣所的敌人造成 1000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★圣所兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_18_l2_BZ,,圣洁净土
-DOTA_Tooltip_Modifier_path_18_l2_BZ_Description,,化身石佛守护圣所，对驻足在圣所的敌人造成 2000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★★圣所兵卒 x2</font>
-DOTA_Tooltip_Modifier_path_18_l3_BZ,,圣洁净土
-DOTA_Tooltip_Modifier_path_18_l3_BZ_Description,,化身石佛守护圣所，对驻足在圣所的敌人造成 4000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。
-TypeOperator_Hell,,地狱之门
-DescriptionContent_Hell,,身处地狱，封锁全部领地。\n地狱惩戒：（持续入狱）\n第3回合：损失100金币。\n第4回合：损失200金币。\n第5回合：损失400金币。\n 以此类推...
-DOTA_Tooltip_ability_item_qtg_tpscroll,,传送卷轴
-DOTA_Tooltip_ability_item_qtg_tpscroll_Description,,<h1>使用：传送</h1>传送至指定传送阵。
-DOTA_Tooltip_ability_item_qtg_tpscroll_Lore,,疾风已有归途，落叶总会归根
-DOTA_Tooltip_ability_item_qtg_tpscroll_Note0,,如果是别人的可要过路费哦
-DOTA_Tooltip_ability_item_qtg_iron_talon,,猎野爪
-DOTA_Tooltip_ability_item_qtg_iron_talon_bonus_attack_speed,,+$attack
-DOTA_Tooltip_ability_item_qtg_iron_talon_bonus_armor,,+$armor
-DOTA_Tooltip_ability_item_qtg_iron_talon_Description,,<h1>被动：卡牌</h1>每<font color='#7e8c9d'> %cd_getcard% </font>回合获得一张猎野牌。
-DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will,,铁意头盔
-DOTA_Tooltip_ability_item_qtg_helm_of_iron_will_Lore,,一位战死沙场的传奇战士身故时戴着的头盔。
-DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will_bonus_armor,,+$armor
-DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will_health_regen_hero,,%+每回合英雄回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will_health_regen_bz,,%+每回合兵卒回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_ring_of_regen,,回复戒指
-DOTA_Tooltip_Ability_item_qtg_ring_of_regen_Lore,,一些侏儒迷信这个戒指能带来好运气。
-DOTA_Tooltip_Ability_item_qtg_ring_of_regen_health_regen_hero,,%+每回合英雄回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_ring_of_regen_health_regen_bz,,%+每回合兵卒回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_sobi_mask,,贤者面罩
-DOTA_Tooltip_Ability_item_qtg_sobi_mask_Lore,,法师和术士在各类祭祀中常用的面罩。
-DOTA_Tooltip_Ability_item_qtg_sobi_mask_mana_regen_bz,,%+兵卒蓝量获取提升
-DOTA_Tooltip_Ability_item_qtg_sobi_mask_Description,,<h1>被动：英雄回蓝</h1>英雄回复%mana_regen_hero%点蓝量。
-DOTA_Tooltip_Ability_item_qtg_ghost,,幽魂权杖
-DOTA_Tooltip_Ability_item_qtg_ghost_bonus_all_stats,,+$all
-DOTA_Tooltip_Ability_item_qtg_ghost_Lore,,赐予使用者幽灵般的姿态，让他们避开物理性的伤害，但是代价是什么呢。
-DOTA_Tooltip_Ability_item_qtg_ghost_Note0,,与虚灵之刃共享冷却时间。
-DOTA_Tooltip_Ability_item_qtg_ghost_Description,,<h1>主动：幽灵形态</h1> 进入虚无状态，持续%duration%回合，期间无法进行普通攻击也不会受到物理伤害，但会受到%extra_spell_damage_percent%%%的额外魔法伤害。
-DOTA_Tooltip_modifier_qtg_ghost_state,,虚灵形态
-DOTA_Tooltip_modifier_qtg_ghost_state_Description,,幽魂形态。受到%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%%%法术攻击加成并且不能进行物理攻击或被攻击。
-DOTA_Tooltip_Ability_item_qtg_blink,,闪烁匕首
+DOTA_Tooltip_ability_xj_19_goldcost,<font color='#FFFF00'> Gold Cost :</font>,<font color='#FFFF00'>返还金币 :</font>
+DOTA_Tooltip_ability_yjxr_max,Upgrade,养精蓄锐
+DOTA_Tooltip_ability_yjxr_max_Description,Top Soldier,顶级兵卒
+DOTA_Tooltip_ability_yjxr_max_Lore,I feel my life has reached the peak!!!,我感觉人生已经到达了巅峰!!!
+DOTA_Tooltip_ability_yjxr_max_level_max,<font color='#FF0000'> Top Level :</font>,<font color='#FF0000'>封顶等级 :</font>
+DOTA_Tooltip_ability_path_12,Radiant,天辉
+DOTA_Tooltip_ability_path_12_Description,"<h1>【Path Buff: Radiant Glow】</h1> Armor Increase: <font color='#FFFFFF'>5 / 10 / 10</font> <br>Magic Resistance Increase: <font color='#FFFFFF'>15% / 30% / 30%</font> \n <h1>【Full Level Effect: Fusion】</h1> Radiant Soldier fuses into the legendary Radiant Giant. <br>(Level, range, and size are twice as much as ordinary Soldier) \n <h1>【Boost Level Rules】</h1> Level 1: Requires ★Radiant Soldier x 1<br>Level 2: Requires ★★Radiant Soldier x 2<br>Level 3: Requires ★★★Radiant Soldier x 3",<h1>【领地增益 : 辉光普照】</h1>护甲提升 : <font color='#FFFFFF'>5 / 10 / 10</font> <br>魔抗提升 : <font color='#FFFFFF'>15% / 30% / 30%</font> \n<h1>【满级效果 : 融合】</h1>天辉兵卒融合成传说中的天辉巨人。<br>（等级，射程，体型是普通兵卒的 2 倍）\n<h1>【增益等级规则】</h1>一级 : 需★天辉兵卒 x  1<br>二级 : 需★★天辉兵卒 x  2<br>三级 : 需★★★天辉兵卒 x 3
+DOTA_Tooltip_ability_path_12_Lore,"he Radiant land is full of vitality because of the World Tree. Under the protection of the World Tree, the whole army's defense and resistance are enhanced.",天辉大地因世界树充满活力。受到世界树的庇护，全军防御抗性提升。
+DOTA_Tooltip_Modifier_path_12_l1,Radiant Glow,辉光普照
+DOTA_Tooltip_Modifier_path_12_l1_Description,"Armor: +%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%, Magic Resistance: +%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%.<br><font color='#FFFF00'>Next Level: ★★Radiant Soldier x2</font>",护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。<br><font color='#FFFF00'>下个等级 : ★★天辉兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_12_l2,Radiant Glow,辉光普照
+DOTA_Tooltip_Modifier_path_12_l2_Description,"Armor: +%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%, Magic Resistance: +%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%.<br><font color='#FFFF00'>Next Level: ★★★Radiant Soldier x3</font>",护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。<br><font color='#FFFF00'>下个等级 : ★★★天辉兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_12_l3,Radiant Glow,辉光普照
+DOTA_Tooltip_Modifier_path_12_l3_Description,"Armor: +%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%, Magic Resistance: +%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%.",护甲：+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，魔抗：+%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%。
+DOTA_Tooltip_ability_path_13,River,河道
+DOTA_Tooltip_ability_path_13_Description,<h1>【Path Buff: Cold Stream】</h1> Armor Penetration (Top River): <font color='#FFFFFF'>15% / 25% / 35%</font> <br>Magic Resistance Penetration (Bottom River): <font color='#FFFFFF'>15% / 25% / 35%</font>\n<h1>[Boost Level Rules]</h1> Level 1: Requires ★River Soldier x 1<br>Level 2: Requires ★★River Soldier x 1<br>Level 3: Requires ★★★River Soldier x 1,<h1>【领地增益 ：寒流】</h1>护甲穿透（上河道） : <font color='#FFFFFF'>15% / 25% / 35%</font> <br>魔抗穿透（下河道） : <font color='#FFFFFF'>15% / 25% / 35%</font>\n<h1>【增益等级规则】</h1>一级 : 需★河道兵卒 x 1<br>二级 : 需★★河道兵卒 x 1<br>三级 : 需★★★河道兵卒 x 1
+DOTA_Tooltip_ability_path_13_Lore,"The world of slaughter is as cold as the river, and the biting chill penetrates the hard armor.",肃杀的世界连流水同样冰冷，刺骨之寒透过坚硬的盔甲。
+DOTA_Tooltip_Modifier_path_13_hujia_l1,Cold Stream: Physical Penetration,寒流 : 物理穿透
+DOTA_Tooltip_Modifier_path_13_hujia_l1_Description,Ignore %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% armor.<br><font color='#FFFF00'>Next Level: ★★Top River Soldier x1</font>,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。<br><font color='#FFFF00'>下个等级 : ★★上河道兵卒 x1</font>
+DOTA_Tooltip_Modifier_path_13_mokang_l1,Cold Stream: Magic Penetration,寒流 : 魔法穿透
+DOTA_Tooltip_Modifier_path_13_mokang_l1_Description,Ignore %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% magic resistance.<br><font color='#FFFF00'>Next Level: ★★Bottom River Soldier x1</font>,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性 。<br><font color='#FFFF00'>下个等级 : ★★下河道兵卒  x1</font>
+DOTA_Tooltip_Modifier_path_13_hujia_l2,Cold Stream: Physical Penetration,寒流 : 物理穿透
+DOTA_Tooltip_Modifier_path_13_hujia_l2_Description,Ignore %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% armor.<br><font color='#FFFF00'>Next Level: ★★★Top River Soldier x1</font>,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。<br><font color='#FFFF00'>下个等级 : ★★★上河道兵卒 x1</font>
+DOTA_Tooltip_Modifier_path_13_mokang_l2,Cold Stream: Magic Penetration,寒流 : 魔法穿透
+DOTA_Tooltip_Modifier_path_13_mokang_l2_Description,Ignore %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% magic resistance.<br><font color='#FFFF00'>Next Level: ★★★Bottom River Soldier x1</font>,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性。<br><font color='#FFFF00'>下个等级 : ★★★下河道兵卒 x1</font>
+DOTA_Tooltip_Modifier_path_13_hujia_l3,Cold Stream: Physical Penetration,寒流 : 物理穿透
+DOTA_Tooltip_Modifier_path_13_hujia_l3_Description,Ignore %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% armor.,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 护甲。
+DOTA_Tooltip_Modifier_path_13_mokang_l3,Cold Stream: Magic Penetration,寒流 : 魔法穿透
+DOTA_Tooltip_Modifier_path_13_mokang_l3_Description,Ignore %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% magic resistance.,无视 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法抗性。
+DOTA_Tooltip_ability_path_14,Snake Marsh,蛇沼
+DOTA_Tooltip_ability_path_14_Description,<h1>【Path Buff: Snare】</h1> Enemies passing through this area have a chance to be bound by a swarm of snakes.\nBinding Chance: <font color='#FFFFFF'>25%</font> <br>Binding Duration: <font color='#FFFFFF'>1 / 2 / 2</font>\n<h1>[Full Level Effect: Expansion]</h1> Affects all allied territory\n<h1>[Boost Level Rules]</h1> Level 1: Requires ★Snake Marsh Soldier x 1<br>Level 2: Requires ★★Snake Marsh Soldier x 2<br>Level 3: Requires ★★★Snake Marsh Soldier x 3,<h1>【领地增益 ：缚足】</h1>敌人经过此地有概率被群蛇束缚。\n束缚概率 : <font color='#FFFFFF'>25%</font> <br>束缚时间 : <font color='#FFFFFF'>1 / 2 / 2</font>\n<h1>【满级效果 : 扩张】</h1>作用全部己方领地\n<h1>【增益等级规则】</h1>一级 : 需★蛇沼兵卒 x 1<br>二级 : 需★★蛇沼兵卒 x 2<br>三级 : 需★★★蛇沼兵卒 x 3
+DOTA_Tooltip_ability_path_14_Lore,"Wading through the marsh is no easy task, but luckily the snakes are there to help.",穿行沼泽的确不是件轻松活，好在有蛇蛇们的帮助。
+DOTA_Tooltip_Modifier_path_14_l1,Snare,缚足
+DOTA_Tooltip_Modifier_path_14_l1_Description,"Enemies passing through the snake marsh have a %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% chance to be bound by a swarm of snakes,<br>immobilized for %dMODIFIER_PROPERTY_BONUS_DAY_VISION% seconds. (Only once per movement phase)<br><font color='#FFFF00'>Next Level: ★★Snake Marsh Soldier x2</font>",敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）<br><font color='#FFFF00'>下个等级 : ★★蛇沼兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_14_l2,Snare,缚足
+DOTA_Tooltip_Modifier_path_14_l2_Description,"Enemies passing through the snake marsh have a %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% chance to be bound by a swarm of snakes,<br>immobilized for %dMODIFIER_PROPERTY_BONUS_DAY_VISION% seconds. (Only once per movement phase)<br><font color='#FFFF00'>Next Level: ★★★Snake Marsh Soldier x3</font>",敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）<br><font color='#FFFF00'>下个等级 : ★★★蛇沼兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_14_l3,Snare,缚足
+DOTA_Tooltip_Modifier_path_14_l3_Description,"Enemies passing through the snake marsh have a %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% chance to be bound by a swarm of snakes,<br>immobilized for %dMODIFIER_PROPERTY_BONUS_DAY_VISION% seconds. (Only once per movement phase)",敌人经过蛇沼有 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%% 概率被群蛇束缚，<br>不可移动 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 秒。（每移动阶段仅一次）
+DOTA_Tooltip_ability_path_15,Dire,夜魇
+DOTA_Tooltip_ability_path_15_Description,"<h1>【Path Buff: Frenzy】</h1> Attack Speed Increase: <font color='#FFFFFF'>25 / 50 / 100</font> <br>Move Speed Increase: <font color='#FFFFFF'>10 / 20 / 40</font>\n<h1>[Full Level Effect: Frenzy]</h1> Dire Soldier's bonuses are doubled, and they cannot cast soldier skills when silenced.\n<h1>[Boost Level Rules]</h1> Level 1: Requires ★Dire Soldier x 1<br>Level 2: Requires ★★Dire Soldier x 2<br>Level 3: Requires ★★★Dire Soldier x 3",<h1>【领地增益 ：癫狂】</h1>攻速提升 : <font color='#FFFFFF'>25 / 50 / 100</font> <br>移速提升 : <font color='#FFFFFF'>10 / 20 / 40</font>\n<h1>【满级效果 : 癫狂】</h1>夜魇兵卒双倍提升，被沉默无法施法兵卒技。\n<h1>【增益等级规则】</h1>一级 : 需★夜魇兵卒 x 1<br>二级 : 需★★夜魇兵卒 x 2<br>三级 : 需★★★夜魇兵卒 x 3
+DOTA_Tooltip_ability_path_15_Lore,"The source of evil corrupts its people, losing their souls in exchange for the fear of others.",至邪的源泉侵蚀它的子民，失去了灵魂换得他人的恐惧。
+DOTA_Tooltip_Modifier_path_15_l1,Frenzy,癫狂
+DOTA_Tooltip_Modifier_path_15_l1_Description,"All units attack speed +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%, movement speed +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%.<br><font color='#FFFF00'>Next level : ★★Nightmare Soldiers x2</font>",全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。<br><font color='#FFFF00'>下个等级 : ★★夜魇兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_15_l2,Frenzy,癫狂
+DOTA_Tooltip_Modifier_path_15_l2_Description,"All units attack speed +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%, movement speed +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%.<br><font color='#FFFF00'>Next level : ★★★Nightmare Soldiers x3</font>",全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。<br><font color='#FFFF00'>下个等级 : ★★★夜魇兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_15_l3,Frenzy,癫狂
+DOTA_Tooltip_Modifier_path_15_l3_Description,"All units attack speed +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%, movement speed +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%. Nightmare Soldiers double up, silence self.",全军攻击速度 +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度 +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%。夜魇兵卒双倍提升，沉默自身。
+DOTA_Tooltip_Modifier_path_15_chenmo,Madness Backlash,癫狂反噬
+DOTA_Tooltip_Modifier_path_15_chenmo_Description,"Lose sanity, unable to cast spells.",失去理性，无法释放技能。
+DOTA_Tooltip_ability_path_16,Dragon Valley,龙谷
+DOTA_Tooltip_ability_path_16_Description,<h1>【Path Buff : Dragon Gift】</h1>+ Mana Regeneration (Hero) : <font color='#FFFFFF'>1</font><br>+ Mana Regeneration (Creeps) : <font color='#FFFFFF'>40%</font><br>EXTRACT Chance : <font color='#FFFFFF'>15% / 30% / 50%</font><br>REFRESH Chance : <font color='#FFFFFF'>0% / 15% / 50%</font>\n<h1>[EXTRACT]</h1>Casting has a chance to return mana\n<h1>[REFRESH]</h1>Casting has the possibility to refresh the skill CD\n<h1>[BUFF LEVEL RULE]</h1>LEVEL I : Need ★DRAGON VALLEY Creeps x 1<br>LEVEL II : Need ★★DRAGON VALLEY Creeps x 2<br>LEVEL III : Need ★★★DRAGON VALLEY Creeps x 3,<h1>【领地增益 ：神龙赐法】</h1>英雄回魔提升 : <font color='#FFFFFF'>1</font><br>兵卒蓝量获取提升 : <font color='#FFFFFF'>15% / 25% / 40%</font><br>萃魔概率 : <font color='#FFFFFF'>15% / 25% / 40%</font><br>刷新概率 : <font color='#FFFFFF'>1% / 20% / 40%</font><br>技能增强 : <font color='#FFFFFF'>10% / 20% / 40%</font>\n<h1>【特殊效果 : 萃魔】</h1>施法有概率返还魔法\n<h1>【特殊效果 : 刷新】</h1>施法有概率刷新技能\n<h1>【增益等级规则】</h1>一级 : 需★龙谷兵卒 x 1<br>二级 : 需★★龙谷兵卒 x 2<br>三级 : 需★★★龙谷兵卒 x 3
+DOTA_Tooltip_ability_path_16_Lore,"A mysterious ancient race, wielding the purest magic.",神秘的古老种族，掌管着最纯粹的魔法。
+DOTA_Tooltip_Modifier_path_16_l1,Dragon Gift,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l1_Description,"Hero mana regen +1, creep mana regen +15%, spell amplification +10%.<br>Casting 15% mana cost refund.<br>Casting 1% cooldown refresh.<br><font color='#FFFF00'>Next level: ★★ Dragon Valley Soldier x2</font>",英雄回魔 +1，兵卒回魔 +15%%，技能增强 +10%%。<br>施法 15%% 返还魔耗。<br>施法 1%% 刷新冷却。<br><font color='#FFFF00'>下个等级 : ★★龙谷兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_16_l2,Dragon Gift,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l2_Description,"Hero mana regen +1, creep mana regen +25%, spell amplification +20%.<br>Casting 25% mana cost refund.<br>Casting 20% cooldown refresh.<br><font color='#FFFF00'>Next level: ★★★ Dragon Valley Soldier x3</font>",英雄回魔 +1，兵卒回魔 +25%%，技能增强 +20%%。<br>施法 25%% 返还魔耗。<br>施法 20%% 刷新冷却。<br><font color='#FFFF00'>下个等级 : ★★★龙谷兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_16_l3,Dragon Gift,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l3_Description,"Hero mana regen +1, creep mana regen +40%, spell amplification +30%.<br>Casting 40% mana cost refund.<br>Casting 40% cooldown refresh.<br><font color='#FFFF00'>Next level: ★★★ Dragon Valley Soldier x3</font>",英雄回魔 +1，兵卒回魔 +40%%，技能增强 +30%%。<br>施法 40%% 返还魔耗。<br>施法 40%% 刷新冷却。
+DOTA_Tooltip_Modifier_path_16_l1_BZ,Dragon Gift,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l1_BZ_Description,"Hero mana regen +1, creep mana regen +15%, spell amplification +10%.<br>Casting 15% mana cost refund.<br>Casting 1% cooldown refresh.<br><font color='#FFFF00'>Next level: ★★ Dragon Valley Soldier x2</font>",英雄回魔 +1，兵卒回魔 +15%%，技能增强 +10%%。<br>施法 15%% 返还魔耗。<br>施法 1%% 刷新冷却。<br><font color='#FFFF00'>下个等级 : ★★龙谷兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_16_l2_BZ,Dragon Gift,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l2_BZ_Description,"Hero mana regen +1, creep mana regen +25%, spell amplification +20%.<br>Casting 25% mana cost refund.<br>Casting 20% cooldown refresh.<br><font color='#FFFF00'>Next level: ★★★ Dragon Valley Soldier x3</font>",英雄回魔 +1，兵卒回魔 +25%%，技能增强 +20%%。<br>施法 25%% 返还魔耗。<br>施法 20%% 刷新冷却。<br><font color='#FFFF00'>下个等级 : ★★★龙谷兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_16_l3_BZ,Dragon Gift,神龙赐法
+DOTA_Tooltip_Modifier_path_16_l3_BZ_Description,"Hero mana regen +1, creep mana regen +15%, spell amplification +10%.<br>Casting 15% mana cost refund.<br>Casting 1% cooldown refresh.<br><font color='#FFFF00'>Next level: ★★ Dragon Valley Soldier x2</font>",英雄回魔 +1，兵卒回魔 +40%%，技能增强 +30%%。<br>施法 40%% 返还魔耗。<br>施法 40%% 刷新冷却。
+DOTA_Tooltip_ability_path_17,Eagle's Nest,鵰巢
+DOTA_Tooltip_ability_path_17_Description,"<h1>【Path Buff: Sacred Beast's Fury】</h1>The sacred beast summons a tornado, damaging enemies in its path.<br>Continuous magic damage: <font color='#FFFFFF'>30</font><br>Slow: <font color='#FFFFFF'>0% / 50% / 50%</font><h1>【Level 2 Effect: Slow】</h1>The tornado causes slow<h1>【Max Level Effect: Expansion】</h1>",<h1>【领地增益 ：圣兽之怒】</h1>圣兽刮起飓风，伤害经过的敌人。\n持续魔法伤害 : <font color='#FFFFFF'>30</font><br>减速 : <font color='#FFFFFF'>0% / 50% / 50%</font>\n<h1>【二级效果 : 减速】</h1>飓风造成减速\n<h1>【满级效果 : 扩张】</h1>作用全部己方领地\n<h1>【增益等级规则】</h1>一级 : 需★鵰巢兵卒 x 1<br>二级 : 需★★鵰巢兵卒 x 2<br>三级 : 需★★★鵰巢兵卒 x 3
+DOTA_Tooltip_ability_path_17_Lore,"Awaken the sacred beast, summon a tornado, and slow and damage enemies it touches. Awaken the sleeping sacred beast, whose fury is ignited by the senseless war.",唤醒圣兽，刮起飓风，触碰的敌人被持续减速，并造成魔法伤害。唤醒沉睡的圣兽，无谓的战争引燃它的怒火。
+DOTA_Tooltip_Modifier_path_17_l1,Sacred Beast,圣兽
+DOTA_Tooltip_Modifier_path_17_l1_Description,The tornado deals continuous %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% magic damage and slows by %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%.<br><font color='#FFFF00'>Next level: ★★ Eagle's Nest Soldier x2</font>,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害，并减速 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%。<br><font color='#FFFF00'>下个等级 : ★★鵰巢兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_17_l2,Sacred Beast,圣兽
+DOTA_Tooltip_Modifier_path_17_l2_Description,The tornado deals continuous %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% magic damage and slows by %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%.<br><font color='#FFFF00'>Next level: ★★★ Eagle's Nest Soldier x3</font>,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害，并减速 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%。<br><font color='#FFFF00'>下个等级 : ★★★鵰巢兵卒 x3</font>
+DOTA_Tooltip_Modifier_path_17_l3,Sacred Beast,圣兽
+DOTA_Tooltip_Modifier_path_17_l3_Description,The tornado deals continuous %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% magic damage and slows by %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%.,飓风造成持续性 %dMODIFIER_PROPERTY_BONUS_DAY_VISION%%% 魔法伤害，并减速 %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%。
+DOTA_Tooltip_Modifier_path_17_debuff,Sacred Beast,圣兽
+DOTA_Tooltip_Modifier_path_17_debuff_Description,The tornado slows by %dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%%%,飓风减速 %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%
+DOTA_Tooltip_ability_path_18,Sanctuary,圣所
+DOTA_Tooltip_ability_path_18_Description,<h1>【Path Buff: Holy Sanctuary】</h1>Deals pure damage to enemies who step into the sanctuary.<br>Pure damage: <font color='#FFFFFF'>1000 / 2000 /4000</font><h1>【Special Effect: Stone Buddha】</h1>Sanctuary creeps cannot attack. Cannot be sieged.<h1>【Buff Level Rules】</h1>Level 1: Requires ★ Sanctuary Creep x 2<br>Level 2: Requires ★★ Sanctuary Creep x 2<br>Level 3: Requires ★★★ Sanctuary Creep x 2,<h1>【领地增益 ：圣洁净土】</h1>对驻足在圣所的敌人造成神圣伤害。\n纯粹伤害 : <font color='#FFFFFF'>1000 / 2000 / 4000</font>\n<h1>【特殊效果 : 石佛】</h1>圣所兵卒无法攻击。无法被攻城。\n<h1>【增益等级规则】</h1>一级 : 需★圣所兵卒 x 2<br>二级 : 需★★圣所兵卒 x 2<br>三级 : 需★★★圣所兵卒 x 2
+DOTA_Tooltip_ability_path_18_Lore,There is no strife or unwelcome guests before the holy temple,神圣的殿堂前没有纷争也没有不速之客。
+DOTA_Tooltip_Modifier_path_18_l1,Holy Sanctuary,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l1_Description,"Deals %dMODIFIER_PROPERTY_BONUS_DAY_VISION% holy damage to enemies who stay in the sanctuary. <br>The sanctuary cannot be sieged, creeps cannot attack it. <br><font color='#FFFF00'>Next level: ★★Sanctuary Soldier x2</font>",对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★圣所兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_18_l2,Holy Sanctuary,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l2_Description,"Deals %dMODIFIER_PROPERTY_BONUS_DAY_VISION% holy damage to enemies who stay in the sanctuary. <br>The sanctuary cannot be sieged, creeps cannot attack it. <br><font color='#FFFF00'>Next level: ★★★Sanctuary Soldier x3</font>",对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★★圣所兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_18_l3,Holy Sanctuary,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l3_Description,"Deals %dMODIFIER_PROPERTY_BONUS_DAY_VISION% holy damage to enemies who stay in the sanctuary. <br>The sanctuary cannot be sieged, creeps cannot attack it. ",对驻足在圣所的敌人造成 %dMODIFIER_PROPERTY_BONUS_DAY_VISION% 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。
+DOTA_Tooltip_Modifier_path_18_l1_BZ,Holy Sanctuary,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l1_BZ_Description,"Transforms into a stone statue to guard the sanctuary, dealing 1000 holy damage to enemies who stay in the sanctuary. <br>The sanctuary cannot be sieged, creeps cannot attack it. <br><font color='#FFFF00'>Next level: ★★Sanctuary Soldier x2</font>",化身石佛守护圣所，对驻足在圣所的敌人造成 1000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★圣所兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_18_l2_BZ,Holy Sanctuary,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l2_BZ_Description,"Transforms into a stone statue to guard the sanctuary, dealing 2000 holy damage to enemies who stay in the sanctuary. <br>The sanctuary cannot be sieged, creeps cannot attack it. <br><font color='#FFFF00'>Next level: ★★★Sanctuary Soldier x2</font>",化身石佛守护圣所，对驻足在圣所的敌人造成 2000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。<br><font color='#FFFF00'>下个等级 : ★★★圣所兵卒 x2</font>
+DOTA_Tooltip_Modifier_path_18_l3_BZ,Holy Sanctuary,圣洁净土
+DOTA_Tooltip_Modifier_path_18_l3_BZ_Description,"Transforms into a stone statue to guard the sanctuary, dealing 4000 holy damage to enemies who stay in the sanctuary. <br>The sanctuary cannot be sieged, creeps cannot attack it. ",化身石佛守护圣所，对驻足在圣所的敌人造成 4000 神圣伤害。<br>圣所无法被攻城略地，兵卒无法攻击。
+TypeOperator_Hell,Hell,地狱之门
+DescriptionContent_Hell,"Trapped in hell, all territories are locked.\nHell punishment: (continuous imprisonment)\nRound 3: Lose 100 gold.\nRound 4: Lose 200 gold.\nRound 5: Lose 400 gold.\n And so on...",身处地狱，封锁全部领地。\n地狱惩戒：（持续入狱）\n第3回合：损失100金币。\n第4回合：损失200金币。\n第5回合：损失400金币。\n 以此类推...
+DOTA_Tooltip_ability_item_qtg_tpscroll,Town Portal Scroll,传送卷轴
+DOTA_Tooltip_ability_item_qtg_tpscroll_Description,<h1>Active: Teleport</h1>Teleports to a target teleportation circle.,<h1>使用：传送</h1>传送至指定传送阵。
+DOTA_Tooltip_ability_item_qtg_tpscroll_Lore,"The wind has a way back, the fallen leaves will return to their roots",疾风已有归途，落叶总会归根
+DOTA_Tooltip_ability_item_qtg_tpscroll_Note0,"If it's someone else's, you have to pay a toll",如果是别人的可要过路费哦
+DOTA_Tooltip_ability_item_qtg_iron_talon,Wild Claw,猎野爪
+DOTA_Tooltip_ability_item_qtg_iron_talon_bonus_attack_speed,+$attack,+$attack
+DOTA_Tooltip_ability_item_qtg_iron_talon_bonus_armor,+$armor,+$armor
+DOTA_Tooltip_ability_item_qtg_iron_talon_Description,<h1>Passive: Card</h1>Gain a Wild Card every <font color='#7e8c9d'> %cd_getcard% </font>rounds.,<h1>被动：卡牌</h1>每<font color='#7e8c9d'> %cd_getcard% </font>回合获得一张猎野牌。
+DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will,Helm of Iron Will,铁意头盔
+DOTA_Tooltip_ability_item_qtg_helm_of_iron_will_Lore,The helmet of a legendary warrior who fell in battle.,一位战死沙场的传奇战士身故时戴着的头盔。
+DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will_bonus_armor,+$armor,+$armor
+DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will_health_regen_hero,%+ROUND HERO REGEN MAX HEALTH,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_helm_of_iron_will_health_regen_bz,%+ROUND SOLDIER REGEN MAX HEALTH,%+每回合兵卒回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_ring_of_regen,Ring of Regen,回复戒指
+DOTA_Tooltip_Ability_item_qtg_ring_of_regen_Lore,This ring is considered a good luck charm among the Gnomes.,一些侏儒迷信这个戒指能带来好运气。
+DOTA_Tooltip_Ability_item_qtg_ring_of_regen_health_regen_hero,%+ROUND HERO REGEN MAX HEALTH,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_ring_of_regen_health_regen_bz,%+ROUND SOLDIER REGEN MAX HEALTH,%+每回合兵卒回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_sobi_mask,Sage's Mask,贤者面罩
+DOTA_Tooltip_Ability_item_qtg_sobi_mask_Lore,A mask commonly used by mages and warlocks for various rituals.,法师和术士在各类祭祀中常用的面罩。
+DOTA_Tooltip_Ability_item_qtg_sobi_mask_mana_regen_bz,%+SOLDIER MANA REGEN,%+兵卒蓝量获取提升
+DOTA_Tooltip_Ability_item_qtg_sobi_mask_Description,<h1>Passive: Hero Mana Regen</h1>Hero regenerates %mana_regen_hero% mana points.,<h1>被动：英雄回蓝</h1>英雄回复%mana_regen_hero%点蓝量。
+DOTA_Tooltip_Ability_item_qtg_ghost,Ghost Scepter,幽魂权杖
+DOTA_Tooltip_Ability_item_qtg_ghost_bonus_all_stats,+$all,+$all
+DOTA_Tooltip_Ability_item_qtg_ghost_Lore,"Imbues the wielder with a ghostly presence, allowing them to evade physical damage.",赐予使用者幽灵般的姿态，让他们避开物理性的伤害，但是代价是什么呢。
+DOTA_Tooltip_Ability_item_qtg_ghost_Note0,Shares cooldown with Ethereal Blade.,与虚灵之刃共享冷却时间。
+DOTA_Tooltip_Ability_item_qtg_ghost_Description,"<h1>Active: Ghost Form</h1> Enters a ghostly state for %duration% rounds, during which you cannot perform normal attacks or take physical damage, but you take %extra_spell_damage_percent%%% extra magic damage.",<h1>主动：幽灵形态</h1> 进入虚无状态，持续%duration%回合，期间无法进行普通攻击也不会受到物理伤害，但会受到%extra_spell_damage_percent%%%的额外魔法伤害。
+DOTA_Tooltip_modifier_qtg_ghost_state,Ghost Form,虚灵形态
+DOTA_Tooltip_modifier_qtg_ghost_state_Description,Ethereal Form. Taking %dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%%% increased magic damage and cannot attack or be attacked.,幽魂形态。受到%dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%%%法术攻击加成并且不能进行物理攻击或被攻击。
+DOTA_Tooltip_Ability_item_qtg_blink,Blink Dagger,闪烁匕首
 DOTA_Tooltip_ability_item_qtg_blink_Description,,<h1>主动：闪烁</h1>传送到任意路径，并触发到达路径的事件。
-DOTA_Tooltip_Ability_item_qtg_blink_Lore,,传说中这片大陆上来去如风的刺客使用的匕首。
-DOTA_Tooltip_Ability_item_qtg_blink_Note0,,似乎会跳过起点。
-DOTA_Tooltip_Ability_item_qtg_ring_of_health,,治疗指环
-DOTA_Tooltip_Ability_item_qtg_ring_of_health_Lore,,一枚闪闪发光的指环，在一个胖乎乎的半身人尸体下被人所发现。
-DOTA_Tooltip_Ability_item_qtg_ring_of_health_health_regen_hero,,%+每回合英雄回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_ring_of_health_health_regen_bz,,%+每回合兵卒回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_void_stone,,虚无宝石
-DOTA_Tooltip_Ability_item_qtg_void_stone_Lore,,一件曾被用来引导冥界魔法的珠宝，这个戒指中跃动着魔力。
-DOTA_Tooltip_Ability_item_qtg_void_stone_mana_regen_bz,,%+兵卒蓝量获取提升
-DOTA_Tooltip_Ability_item_qtg_void_stone_Description,,<h1>被动：英雄回蓝</h1>英雄回复%mana_regen_hero%点蓝量。
-DOTA_Tooltip_Ability_item_qtg_cornucopia,,丰饶之环
-DOTA_Tooltip_Ability_item_qtg_cornucopia_health_regen_hero,,%+每回合英雄回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_cornucopia_health_regen_bz,,%+每回合兵卒回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_cornucopia_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_cornucopia_Description,,<h1>被动：英雄回蓝</h1>英雄回复%mana_regen_hero%点蓝量。
-DOTA_Tooltip_Ability_item_qtg_energy_booster,,能量之球
-DOTA_Tooltip_Ability_item_qtg_energy_booster_Lore,,巫师们若想提升战场上的存在感，通常会把这块天青石加入自己的收藏。
-DOTA_Tooltip_Ability_item_qtg_energy_booster_bonus_mana,,+$mana
-DOTA_Tooltip_Ability_item_qtg_orb_of_venom,,淬毒之珠
-DOTA_Tooltip_Ability_item_qtg_orb_of_venom_Description,,<h1>被动：毒性攻击</h1>使目标受到毒素影响，持有该装备的英雄为近战时将减缓目标%poison_movement_speed_melee%%%移动速度，为远程时将减缓%poison_movement_speed_range%%%移动速度，持续%poison_duration%秒。
-DOTA_Tooltip_Ability_item_qtg_orb_of_venom_Note0,,不与后续升级物品叠加。
-DOTA_Tooltip_Ability_item_qtg_orb_of_venom_Lore,,给你的毒器渡上毒蛇的毒液。
-DOTA_Tooltip_modifier_item_qtg_orb_of_venom_melee,,淬毒之珠-近战
-DOTA_Tooltip_modifier_item_qtg_orb_of_venom_melee_Description,,降低%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%移动速度。
-DOTA_Tooltip_modifier_item_qtg_orb_of_venom_range,,淬毒之珠-远程
-DOTA_Tooltip_modifier_item_qtg_orb_of_venom_range_Description,,降低%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%移动速度。
-DOTA_Tooltip_Ability_item_qtg_blight_stone,,枯萎之石
-DOTA_Tooltip_Ability_item_qtg_blight_stone_Description,,<h1>被动：次级腐蚀</h1>攻击将降低目标%corruption_armor%点护甲，持续%corruption_duration%秒。
-DOTA_Tooltip_Ability_item_qtg_blight_stone_Lore,,一颗让人闻风丧胆的石头，发掘自戮尽之地。
-DOTA_Tooltip_Ability_item_qtg_blight_stone_Note0,,不与后续升级物品叠加。
-DOTA_Tooltip_modifier_item_qtg_blight_stone_buff,,枯萎之石
-DOTA_Tooltip_modifier_item_qtg_blight_stone_buff_Description,,护甲被降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。
-DOTA_Tooltip_Ability_item_qtg_orb_of_corrosion,,腐蚀之球
-DOTA_Tooltip_Ability_item_qtg_orb_of_corrosion_health_bonus,,+$health
-DOTA_Tooltip_Ability_item_qtg_orb_of_corrosion_Lore,,给这里添点绿色。
-DOTA_Tooltip_Ability_item_qtg_orb_of_corrosion_Description,,<h1>被动：腐蚀</h1>攻击将降低目标%armor%点护甲，并使其受到毒素影响，持有该装备的英雄为近战时将减缓目标%slow_melee%%%移动速度，为远程时将减缓%slow_range%%%移动速度，持续%duration%秒。
-DOTA_Tooltip_modifier_item_qtg_orb_of_corrosion_melee,,腐蚀之球-近战
-DOTA_Tooltip_modifier_item_qtg_orb_of_corrosion_melee_Description,,护甲降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。并且移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%。
-DOTA_Tooltip_modifier_item_qtg_orb_of_corrosion_range,,腐蚀之球-近战
-DOTA_Tooltip_modifier_item_qtg_orb_of_corrosion_range_Description,,护甲降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。并且移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%。
-DOTA_Tooltip_Ability_item_qtg_falcon_blade,,猎鹰战刃
-DOTA_Tooltip_Ability_item_qtg_falcon_blade_Lore,,一把具有魔力的战刃，多年前让一个无可救药的顽童从乞丐登上王位。
-DOTA_Tooltip_Ability_item_qtg_falcon_blade_bonus_health,,+$health
-DOTA_Tooltip_Ability_item_qtg_falcon_blade_mana_regen_bz,,%+兵卒蓝量获取提升
-DOTA_Tooltip_Ability_item_qtg_falcon_blade_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_falcon_blade_Description,,<h1>被动：英雄回蓝</h1>英雄回复%mana_regen_hero%点蓝量。
-DOTA_Tooltip_Ability_item_qtg_oblivion_staff,,空明杖
-DOTA_Tooltip_Ability_item_qtg_oblivion_staff_Lore,,让人误以为只是根普通战棍的外表下，其实威力不凡，就像原来拥有它的邪王。
-DOTA_Tooltip_Ability_item_qtg_oblivion_staff_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_oblivion_staff_bonus_intellect,,+$int
-DOTA_Tooltip_Ability_item_qtg_oblivion_staff_bonus_attack_speed,,+$attack
-DOTA_Tooltip_Ability_item_qtg_mask_of_madness,,疯狂面具
-DOTA_Tooltip_Ability_item_qtg_mask_of_madness_Description,,<h1>主动：狂热</h1>攻击速度提升%berserk_bonus_attack_speed%，移动速度提升%berserk_bonus_movement_speed%，但是护甲降低%berserk_armor_reduction%点，并且被沉默。持续%duration%回合。\n\n<h1>被动：吸血</h1>攻击者每次攻击都将根据造成伤害的一定百分比回复生命值。攻击非英雄单位的吸血效果降低%creep_lifesteal_reduction_pct%%%。
-DOTA_Tooltip_Ability_item_qtg_mask_of_madness_Lore,,一旦戴上这个面具就会变成无法控制的好战分子。
-DOTA_Tooltip_Ability_item_qtg_mask_of_madness_bonus_attack_speed,,+$attack
-DOTA_Tooltip_Ability_item_qtg_mask_of_madness_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_mask_of_madness_lifesteal_percent,,%+$lifesteal
-DOTA_Tooltip_modifier_qtg_mask_of_madness_berserk,,狂热
-DOTA_Tooltip_modifier_qtg_mask_of_madness_berserk_Description,,攻击速度提升%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%并且移动速度提升%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%，但是护甲降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点，并且被沉默。
-DOTA_Tooltip_Ability_item_qtg_tranquil_boots,,静谧之鞋
-DOTA_Tooltip_Ability_item_qtg_tranquil_boots_Description,,<h1>被动：静谧</h1> 如果上回合没有造成伤害和受到伤害，静谧之鞋就会额外回复%bonus_regen%%%生命值。\n多个鞋类物品提供的移动速度加成不叠加。
-DOTA_Tooltip_Ability_item_qtg_tranquil_boots_Lore,,虽然延长了穿戴者的寿命，但这鞋子其实并不可靠。
-DOTA_Tooltip_Ability_item_qtg_tranquil_boots_bonus_movement_speed,,+$move_speed
-DOTA_Tooltip_Ability_item_qtg_tranquil_boots_health_regen_hero,,%+每回合英雄回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_tranquil_boots_health_regen_bz,,%+每回合兵卒回复最大生命值
-DOTA_Tooltip_modifier_item_qtg_tranquil_boots_bonus_regen,,静谧
-DOTA_Tooltip_modifier_item_qtg_tranquil_boots_bonus_regen_Description,,下回合将会获得额外回复。
-DOTA_Tooltip_Ability_item_qtg_medallion_of_courage,,勇气勋章
-DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_Description,,<h1>主动：无畏</h1> 如果对己方单位施放可以在降低自身%armor_reduction%点护甲的同时，提升目标相同数值的护甲。<br><br>如果对敌方单位施放将同时降低自身和目标%armor_reduction%点护甲。<br><br>持续%duration%回合。\n\n<h1>被动：英雄回蓝</h1>每%mana_regen_hero_cd%回合回复英雄%mana_regen_hero%点蓝量。
-DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_Lore,,持有者将无惧于战斗。
-DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_Note0,,与炎阳纹章共享冷却时间。
-DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_Note1,,可以对自己使用，但好像...
-DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_bonus_armor,,+$armor
-DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_mana_regen_bz,,%+兵卒蓝量获取提升
-DOTA_Tooltip_modifier_qtg_medallion_of_courage_cd,,勇气勋章的英雄回蓝
-DOTA_Tooltip_modifier_qtg_medallion_of_courage_cd_Description,,英雄回蓝冷却中，剩余回合数。
-DOTA_Tooltip_modifier_qtg_medallion_of_courage_buff,,勇气勋章
-DOTA_Tooltip_modifier_qtg_medallion_of_courage_buff_Description,,护甲提升%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。
-DOTA_Tooltip_modifier_qtg_medallion_of_courage_debuff,,勇气勋章
-DOTA_Tooltip_modifier_qtg_medallion_of_courage_debuff_Description,,护甲被削弱%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。
-DOTA_Tooltip_Ability_item_qtg_arcane_boots,,奥术鞋
-DOTA_Tooltip_Ability_item_qtg_arcane_boots_Description,,<h1>主动：补魔</h1>回复英雄%replenish_hero%点魔法，回复兵卒%replenish_bz%点魔法。\n多个鞋类物品提供的移动速度加成不叠加。
-DOTA_Tooltip_Ability_item_qtg_arcane_boots_Lore,,装备这种鞋子的法师在战斗中值得重视。
-DOTA_Tooltip_Ability_item_qtg_arcane_boots_bonus_movement,,+$move_speed
-DOTA_Tooltip_Ability_item_qtg_arcane_boots_bonus_mana,,+$mana
-DOTA_Tooltip_Ability_item_qtg_pipe,,洞察烟斗
-DOTA_Tooltip_Ability_item_qtg_pipe_Description,,<h1>激活：魔法护盾</h1>受到魔法伤害时有%resist_perct%%%概率消耗1点蓝量抵挡该次伤害。
-DOTA_Tooltip_Ability_item_qtg_pipe_Lore,,一件来源神秘的强大古物，能制造出抵挡法术攻击的护盾。
-DOTA_Tooltip_Ability_item_qtg_pipe_Note0,,能与其他提高魔法抗性的装备或技能叠加。
-DOTA_Tooltip_Ability_item_qtg_pipe_bonus_magical_armor,,%+$spell_resist
-DOTA_Tooltip_Ability_item_qtg_pipe_health_regen_hero,,%+每回合英雄回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_pipe_health_regen_bz,,%+每回合兵卒回复最大生命值
-DOTA_Tooltip_modifier_qtg_pipe_active,,一如法术序列
-DOTA_Tooltip_modifier_qtg_pipe_active_Description,,受到魔法伤害时有35%%概率消耗1点蓝量抵挡该次伤害。
+DOTA_Tooltip_Ability_item_qtg_blink_Lore,"<h1>Active: Blink</h1>Teleports to any path, and triggers the event of the destination path.",传说中这片大陆上来去如风的刺客使用的匕首。
+DOTA_Tooltip_Ability_item_qtg_blink_Note0,Seems to skip the starting point.,似乎会跳过起点。
+DOTA_Tooltip_Ability_item_qtg_ring_of_health,Ring of Health,治疗指环
+DOTA_Tooltip_Ability_item_qtg_ring_of_health_Lore,A shiny ring found beneath a fat halfling's corpse.,一枚闪闪发光的指环，在一个胖乎乎的半身人尸体下被人所发现。
+DOTA_Tooltip_Ability_item_qtg_ring_of_health_health_regen_hero,%+ROUND HERO REGEN MAX HEALTH,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_ring_of_health_health_regen_bz,%+ROUND SOLDIER REGEN MAX HEALTH,%+每回合兵卒回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_void_stone,Void Stone,虚无宝石
+DOTA_Tooltip_Ability_item_qtg_void_stone_Lore,"Jewelry that was once used to channel nether realm magic, this ring pulses with energy.",一件曾被用来引导冥界魔法的珠宝，这个戒指中跃动着魔力。
+DOTA_Tooltip_Ability_item_qtg_void_stone_mana_regen_bz,%+SOLDIER MANA REGEN,%+兵卒蓝量获取提升
+DOTA_Tooltip_Ability_item_qtg_void_stone_Description,<h1>Passive: Hero Mana Regen</h1>Hero regenerates %mana_regen_hero% mana points.,<h1>被动：英雄回蓝</h1>英雄回复%mana_regen_hero%点蓝量。
+DOTA_Tooltip_Ability_item_qtg_cornucopia,Cornucopia,丰饶之环
+DOTA_Tooltip_Ability_item_qtg_cornucopia_health_regen_hero,%+ROUND HERO REGEN MAX HEALTH,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_cornucopia_health_regen_bz,%+ROUND SOLDIER REGEN MAX HEALTH,%+每回合兵卒回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_cornucopia_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_cornucopia_Description,<h1>Passive: Hero Mana Regen</h1>Hero regenerates %mana_regen_hero% mana points.,<h1>被动：英雄回蓝</h1>英雄回复%mana_regen_hero%点蓝量。
+DOTA_Tooltip_Ability_item_qtg_energy_booster,Energy Booster,能量之球
+DOTA_Tooltip_Ability_item_qtg_energy_booster_Lore,This lapis gemstone is commonly added to the collection of wizards seeking to improve their presence in combat.,巫师们若想提升战场上的存在感，通常会把这块天青石加入自己的收藏。
+DOTA_Tooltip_Ability_item_qtg_energy_booster_bonus_mana,+$mana,+$mana
+DOTA_Tooltip_Ability_item_qtg_orb_of_venom,Orb of Venom,淬毒之珠
+DOTA_Tooltip_Ability_item_qtg_orb_of_venom_Description,"<h1>Passive: Poison Attack</h1>Poisons the target, slowing their movement speed by %poison_movement_speed_melee%%% if the holder is melee, or by %poison_movement_speed_range%%% if the holder is ranged, for %poison_duration% seconds.",<h1>被动：毒性攻击</h1>使目标受到毒素影响，持有该装备的英雄为近战时将减缓目标%poison_movement_speed_melee%%%移动速度，为远程时将减缓%poison_movement_speed_range%%%移动速度，持续%poison_duration%秒。
+DOTA_Tooltip_Ability_item_qtg_orb_of_venom_Note0,Does not stack with its upgrades.,不与后续升级物品叠加。
+DOTA_Tooltip_Ability_item_qtg_orb_of_venom_Lore,Envenoms your veapon with the venom of a venomous viper.,给你的毒器渡上毒蛇的毒液。
+DOTA_Tooltip_modifier_item_qtg_orb_of_venom_melee,Orb of Venom - Melee,淬毒之珠-近战
+DOTA_Tooltip_modifier_item_qtg_orb_of_venom_melee_Description,Reduces movement speed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%.,降低%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%移动速度。
+DOTA_Tooltip_modifier_item_qtg_orb_of_venom_range,Orb of Venom - Range,淬毒之珠-远程
+DOTA_Tooltip_modifier_item_qtg_orb_of_venom_range_Description,Reduces movement speed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%.,降低%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%移动速度。
+DOTA_Tooltip_Ability_item_qtg_blight_stone,Blight Stone,枯萎之石
+DOTA_Tooltip_Ability_item_qtg_blight_stone_Description,<h1>Passive: Lesser Corrosion</h1>Your attacks reduce the target's armor by %corruption_armor% for %corruption_duration% seconds.,<h1>被动：次级腐蚀</h1>攻击将降低目标%corruption_armor%点护甲，持续%corruption_duration%秒。
+DOTA_Tooltip_Ability_item_qtg_blight_stone_Lore,An unnerving stone unearthed beneath the Fields of Endless Carnage.,一颗让人闻风丧胆的石头，发掘自戮尽之地。
+DOTA_Tooltip_Ability_item_qtg_blight_stone_Note0,Does not stack with its upgrades.,不与后续升级物品叠加。
+DOTA_Tooltip_modifier_item_qtg_blight_stone_buff,Blight Stone,枯萎之石
+DOTA_Tooltip_modifier_item_qtg_blight_stone_buff_Description,Armor reduced by %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% points.,护甲被降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。
+DOTA_Tooltip_Ability_item_qtg_orb_of_corrosion,Orb of Corrosion,腐蚀之球
+DOTA_Tooltip_Ability_item_qtg_orb_of_corrosion_health_bonus,+$health,+$health
+DOTA_Tooltip_Ability_item_qtg_orb_of_corrosion_Lore,"Seepage from the wounds of a warrior deity, sealed in an arcanist's orb following a campaign of vicious slaughter.",凶残的屠杀战役过后，从战士之神的伤口渗出的液体被封进一个秘术师的宝珠内。
+DOTA_Tooltip_Ability_item_qtg_orb_of_corrosion_Description,"<h1>Passive: Corrosion</h1>Your attacks reduce the target's armor by %armor% and poison them, slowing their movement speed by %slow_melee%%% if the holder is melee, or by %slow_range%%% if the holder is ranged, for %duration% seconds.",<h1>被动：腐蚀</h1>攻击将降低目标%armor%点护甲，并使其受到毒素影响，持有该装备的英雄为近战时将减缓目标%slow_melee%%%移动速度，为远程时将减缓%slow_range%%%移动速度，持续%duration%秒。
+DOTA_Tooltip_modifier_item_qtg_orb_of_corrosion_melee,Orb of Corrosion - Melee,腐蚀之球-近战
+DOTA_Tooltip_modifier_item_qtg_orb_of_corrosion_melee_Description,Armor reduced by %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% points. And movement speed slowed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%.,护甲降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。并且移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%。
+DOTA_Tooltip_modifier_item_qtg_orb_of_corrosion_range,Orb of Corrosion - Range,腐蚀之球-近战
+DOTA_Tooltip_modifier_item_qtg_orb_of_corrosion_range_Description,Armor reduced by %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% points. And movement speed slowed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%.,护甲降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。并且移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%。
+DOTA_Tooltip_Ability_item_qtg_falcon_blade,Falcon Blade,猎鹰战刃
+DOTA_Tooltip_Ability_item_qtg_falcon_blade_Lore,An enchanted blade that long ago raised a hopeless urchin from pauper to king.,一把具有魔力的战刃，多年前让一个无可救药的顽童从乞丐登上王位。
+DOTA_Tooltip_Ability_item_qtg_falcon_blade_bonus_health,+$health,+$health
+DOTA_Tooltip_Ability_item_qtg_falcon_blade_mana_regen_bz,%+SOLDIER MANA REGEN,%+兵卒蓝量获取提升
+DOTA_Tooltip_Ability_item_qtg_falcon_blade_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_falcon_blade_Description,<h1>Passive: Hero Mana Regen</h1>Hero regenerates %mana_regen_hero% mana points.,<h1>被动：英雄回蓝</h1>英雄回复%mana_regen_hero%点蓝量。
+DOTA_Tooltip_Ability_item_qtg_oblivion_staff,Oblivion Staff,空明杖
+DOTA_Tooltip_Ability_item_qtg_oblivion_staff_Lore,"Deceptively hidden as an ordinary staff, it is actually very powerful, much like the Eldritch who originally possessed it.",让人误以为只是根普通战棍的外表下，其实威力不凡，就像原来拥有它的邪王。
+DOTA_Tooltip_Ability_item_qtg_oblivion_staff_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_oblivion_staff_bonus_intellect,+$int,+$int
+DOTA_Tooltip_Ability_item_qtg_oblivion_staff_bonus_attack_speed,+$attack,+$attack
+DOTA_Tooltip_Ability_item_qtg_mask_of_madness,Mask of Madness,疯狂面具
+DOTA_Tooltip_Ability_item_qtg_mask_of_madness_Description,"<h1>Active: Berserk</h1>Increases attack speed by %berserk_bonus_attack_speed% and movement speed by %berserk_bonus_movement_speed%, but reduces armor by %berserk_armor_reduction% and silences yourself. Lasts for %duration% rounds.\n\n<h1>Passive: Lifesteal</h1>Heals the attacker for a percentage of attack damage dealt. Lifesteal from non-hero units is reduced by %creep_lifesteal_reduction_pct%%%.",<h1>主动：狂热</h1>攻击速度提升%berserk_bonus_attack_speed%，移动速度提升%berserk_bonus_movement_speed%，但是护甲降低%berserk_armor_reduction%点，并且被沉默。持续%duration%回合。\n\n<h1>被动：吸血</h1>攻击者每次攻击都将根据造成伤害的一定百分比回复生命值。攻击非英雄单位的吸血效果降低%creep_lifesteal_reduction_pct%%%。
+DOTA_Tooltip_Ability_item_qtg_mask_of_madness_Lore,"Once this mask is worn, its bearer becomes an uncontrollable aggressive force.",一旦戴上这个面具就会变成无法控制的好战分子。
+DOTA_Tooltip_Ability_item_qtg_mask_of_madness_bonus_attack_speed,+$attack,+$attack
+DOTA_Tooltip_Ability_item_qtg_mask_of_madness_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_mask_of_madness_lifesteal_percent,%+$lifesteal,%+$lifesteal
+DOTA_Tooltip_modifier_qtg_mask_of_madness_berserk,Berserk,狂热
+DOTA_Tooltip_modifier_qtg_mask_of_madness_berserk_Description,Attack speed increased by %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT% and movement speed increased by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT% but reduces armor by %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% and silences you.,攻击速度提升%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%并且移动速度提升%dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%，但是护甲降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点，并且被沉默。
+DOTA_Tooltip_Ability_item_qtg_tranquil_boots,Tranquil Boots,静谧之鞋
+DOTA_Tooltip_Ability_item_qtg_tranquil_boots_Description,"<h1>Passive: Tranquility</h1> If you did not deal or take damage in the last round, Tranquil Boots will heal an extra %bonus_regen%%% of your health.\nMovement speed bonuses from multiple boots items do not stack.",<h1>被动：静谧</h1> 如果上回合没有造成伤害和受到伤害，静谧之鞋就会额外回复%bonus_regen%%%生命值。\n多个鞋类物品提供的移动速度加成不叠加。
+DOTA_Tooltip_Ability_item_qtg_tranquil_boots_Lore,"While they increase the longevity of the wearer, this boot is not particularly reliable.",虽然延长了穿戴者的寿命，但这鞋子其实并不可靠。
+DOTA_Tooltip_Ability_item_qtg_tranquil_boots_bonus_movement_speed,+$move_speed,+$move_speed
+DOTA_Tooltip_Ability_item_qtg_tranquil_boots_health_regen_hero,%+ROUND HERO REGEN MAX HEALTH,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_tranquil_boots_health_regen_bz,%+ROUND SOLDIER REGEN MAX HEALTH,%+每回合兵卒回复最大生命值
+DOTA_Tooltip_modifier_item_qtg_tranquil_boots_bonus_regen,Tranquility,静谧
+DOTA_Tooltip_modifier_item_qtg_tranquil_boots_bonus_regen_Description,The next round will receive an additional reply.,下回合将会获得额外回复。
+DOTA_Tooltip_Ability_item_qtg_medallion_of_courage,Medallion of Courage,勇气勋章
+DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_Description,"<h1>Active: Valor</h1> If cast on an ally unit, you can reduce your own armor by %armor_reduction% while increasing the target's armor by the same amount. <br><br>If cast on an enemy unit, you and the target will both lose %armor_reduction% armor. <br><br>Lasts for %duration% rounds.\n\n<h1>Passive: Hero Mana Regen</h1>Regenerates %mana_regen_hero% mana points for the hero every %mana_regen_hero_cd% rounds.",<h1>主动：无畏</h1> 如果对己方单位施放可以在降低自身%armor_reduction%点护甲的同时，提升目标相同数值的护甲。<br><br>如果对敌方单位施放将同时降低自身和目标%armor_reduction%点护甲。<br><br>持续%duration%回合。\n\n<h1>被动：英雄回蓝</h1>每%mana_regen_hero_cd%回合回复英雄%mana_regen_hero%点蓝量。
+DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_Lore,The bearer has no fear of combat.,持有者将无惧于战斗。
+DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_Note0,Shares cooldown with Solar Crest.,与炎阳纹章共享冷却时间。
+DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_Note1,"You can use it on yourself, but it seems...",可以对自己使用，但好像...
+DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_bonus_armor,+$armor,+$armor
+DOTA_Tooltip_Ability_item_qtg_medallion_of_courage_mana_regen_bz,%+SOLDIER MANA REGEN,%+兵卒蓝量获取提升
+DOTA_Tooltip_modifier_qtg_medallion_of_courage_cd,Medallion of Courage's Hero Mana Regen,勇气勋章的英雄回蓝
+DOTA_Tooltip_modifier_qtg_medallion_of_courage_cd_Description,"Hero mana regen on cooldown, remaining turns.",英雄回蓝冷却中，剩余回合数。
+DOTA_Tooltip_modifier_qtg_medallion_of_courage_buff,Medallion of Courage,勇气勋章
+DOTA_Tooltip_modifier_qtg_medallion_of_courage_buff_Description,Armor increased by %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% points.,护甲提升%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。
+DOTA_Tooltip_modifier_qtg_medallion_of_courage_debuff,Medallion of Courage,勇气勋章
+DOTA_Tooltip_modifier_qtg_medallion_of_courage_debuff_Description,Armor reduced by %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% points.,护甲被削弱%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。
+DOTA_Tooltip_Ability_item_qtg_arcane_boots,Arcane Boots,奥术鞋
+DOTA_Tooltip_Ability_item_qtg_arcane_boots_Description,<h1>Active: Replenish Mana</h1>Restores %replenish_hero% mana to heroes and %replenish_bz% mana to creeps.\nMultiple boots items do not stack movement speed bonuses.,<h1>主动：补魔</h1>回复英雄%replenish_hero%点魔法，回复兵卒%replenish_bz%点魔法。\n多个鞋类物品提供的移动速度加成不叠加。
+DOTA_Tooltip_Ability_item_qtg_arcane_boots_Lore,Magi equipped with these boots are valued in battle.,装备这种鞋子的法师在战斗中值得重视。
+DOTA_Tooltip_Ability_item_qtg_arcane_boots_bonus_movement,+$move_speed,+$move_speed
+DOTA_Tooltip_Ability_item_qtg_arcane_boots_bonus_mana,+$mana,+$mana
+DOTA_Tooltip_Ability_item_qtg_pipe,Pipe of Insight,洞察烟斗
+DOTA_Tooltip_Ability_item_qtg_pipe_Description,"<h1>Active: Barrier</h1>When taking magic damage, has a %resist_perct%%% chance to consume 1 mana to block the damage.\nMultiple hood items do not stack magic resistance bonuses.",<h1>激活：魔法护盾</h1>受到魔法伤害时有%resist_perct%%%概率消耗1点蓝量抵挡该次伤害。
+DOTA_Tooltip_Ability_item_qtg_pipe_Lore,"A powerful artifact of mysterious origin, it creates barriers against magical forces.",一件来源神秘的强大古物，能制造出抵挡法术攻击的护盾。
+DOTA_Tooltip_Ability_item_qtg_pipe_Note0,Stacks multiplicatively with other sources of magic resistance.,能与其他提高魔法抗性的装备或技能叠加。
+DOTA_Tooltip_Ability_item_qtg_pipe_bonus_magical_armor,%+$spell_resist,%+$spell_resist
+DOTA_Tooltip_Ability_item_qtg_pipe_health_regen_hero,%+ROUND HERO REGEN MAX HEALTH,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_pipe_health_regen_bz,%+ROUND SOLDIER REGEN MAX HEALTH,%+每回合兵卒回复最大生命值
+DOTA_Tooltip_modifier_qtg_pipe_active,Spell Sequence,一如法术序列
+DOTA_Tooltip_modifier_qtg_pipe_active_Description,35%% chance of expending 1 mana against Magic damage.,受到魔法伤害时有35%%概率消耗1点蓝量抵挡该次伤害。
 DOTA_Tooltip_Ability_item_qtg_witch_blade,Witch Blade,巫师之刃
-DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_attack_speed,,+$attack
-DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_intellect,,+$int
-DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_armor,,+$armor
-DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_project_speed,,#NAME?
-DOTA_Tooltip_Ability_item_qtg_witch_blade_Description,,<h1>被动：巫师之刃</h1>每次攻击命中后额外造成玩家英雄智力%attack_intell%%%的魔法伤害。
+DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_attack_speed,+$attack,+$attack
+DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_intellect,+$int,+$int
+DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_armor,+$armor,+$armor
+DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_witch_blade_bonus_project_speed,+$projectile_speed,+$projectile_speed
+DOTA_Tooltip_Ability_item_qtg_witch_blade_Description,"<h1>Passive: Witch Blade</h1>Each attack deals an additional %attack_intell%%% of the hero's intelligence as magic damage and applies a poison for 4 seconds, slowing by 25%. This attack has True Strike.",<h1>被动：巫师之刃</h1>每次攻击命中后额外造成玩家英雄智力%attack_intell%%%的魔法伤害。
 DOTA_Tooltip_Ability_item_qtg_witch_blade_Lore,A spiteful blade inadvertently possessed by the soul of its incautious creator.,一把怨毒的战刃，它鲁莽的创造者不慎将自己的灵魂依附在上面。
-DOTA_Tooltip_Ability_item_qtg_orchid,,紫怨
-DOTA_Tooltip_Ability_item_qtg_orchid_Description,,<h1>主动：灵魂枷锁</h1>沉默目标英雄及其所有兵卒%silence_duration%回合。\n\n<h1>被动：英雄回蓝</h1>每%mana_regen_hero_cd%回合回复英雄%mana_regen_hero%点蓝量。
-DOTA_Tooltip_Ability_item_qtg_orchid_Lore,,一颗诞自火焰恶魔精华的榴石。
-DOTA_Tooltip_Ability_item_qtg_orchid_bonus_intellect,,+$int
-DOTA_Tooltip_Ability_item_qtg_orchid_bonus_attack_speed,,+$attack
-DOTA_Tooltip_Ability_item_qtg_orchid_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_orchid_mana_regen_bz,,%+兵卒蓝量获取提升
-DOTA_Tooltip_modifier_qtg_orchid_cd,,紫怨的英雄回蓝
-DOTA_Tooltip_modifier_qtg_orchid_cd_Description,,英雄回蓝冷却中，剩余回合数。
-DOTA_Tooltip_modifier_qtg_orchid_debuff,,灵魂枷锁
-DOTA_Tooltip_modifier_qtg_orchid_debuff_Description,,被沉默。
-DOTA_Tooltip_Ability_item_qtg_solar_crest,,炎阳纹章
-DOTA_Tooltip_Ability_item_qtg_solar_crest_Description,,<h1>主动：日耀</h1>对队友施放可以提供%target_armor%点护甲，%target_attack_speed%攻击速度，和%target_movement_speed%%%移动速度。对敌人施放将降低其%target_armor%点护甲，%target_attack_speed%攻击速度并减缓%target_movement_speed%%%移动速度。<br><br>使用时移除施法者%target_armor%点护甲。<br><br>持续%duration%回合。\n\n<h1>被动：英雄回蓝</h1>每%mana_regen_hero_cd%回合回复英雄%mana_regen_hero%点蓝量。
-DOTA_Tooltip_Ability_item_qtg_solar_crest_Lore,,为了纪念炎日天空所打造的护符。
-DOTA_Tooltip_Ability_item_qtg_solar_crest_Note0,,与炎阳纹章共享冷却时间。
-DOTA_Tooltip_Ability_item_qtg_solar_crest_Note1,,可以对自己使用。
-DOTA_Tooltip_Ability_item_qtg_solar_crest_bonus_armor,,+$armor
-DOTA_Tooltip_Ability_item_qtg_solar_crest_bonus_all_stats,,+$all
-DOTA_Tooltip_Ability_item_qtg_solar_crest_bonus_attack_speed,,+$attack
-DOTA_Tooltip_Ability_item_qtg_solar_crest_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_solar_crest_mana_regen_bz,,%+兵卒蓝量获取提升
-DOTA_Tooltip_modifier_qtg_solar_crest_cd,,炎阳纹章的英雄回蓝
-DOTA_Tooltip_modifier_qtg_solar_crest_cd_Description,,英雄回蓝冷却中，剩余回合数。
-DOTA_Tooltip_modifier_qtg_solar_crest_buff,,炎阳纹章
-DOTA_Tooltip_modifier_qtg_solar_crest_buff_Description,,提升%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点护甲，%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%移动速度，和%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%攻击速度。
-DOTA_Tooltip_modifier_qtg_solar_crest_debuff,,炎阳纹章
-DOTA_Tooltip_modifier_qtg_solar_crest_debuff_Description,,降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点护甲，减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%移动速度，降低%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%攻击速度。
-DOTA_Tooltip_Ability_item_qtg_rod_of_atos,,阿托斯之棍
-DOTA_Tooltip_Ability_item_qtg_rod_of_atos_Description,,<h1>主动：致残</h1>缠绕目标英雄%duration%回合，使其无法移动。
-DOTA_Tooltip_Ability_item_qtg_rod_of_atos_Note0,,最多等待10秒因缠绕的无法移动。
-DOTA_Tooltip_Ability_item_qtg_rod_of_atos_Lore,,荒芜之王阿托斯将他的精粹储存在这根看似平平无奇的魔杖中。
-DOTA_Tooltip_Ability_item_qtg_rod_of_atos_bonus_intellect,,+$int
-DOTA_Tooltip_Ability_item_qtg_rod_of_atos_bonus_health,,+$health
-DOTA_Tooltip_modifier_qtg_rod_of_atos_debuff,,阿托斯之棍
-DOTA_Tooltip_modifier_qtg_rod_of_atos_debuff_Description,,被缠绕时无法移动。
-DOTA_Tooltip_Ability_item_qtg_refresher,,刷新球
-DOTA_Tooltip_Ability_item_qtg_refresher_Description,,<h1>主动：完全重置</h1>重置所有装备和技能的冷却时间。\n\n<h1>被动：英雄回蓝</h1>每%mana_regen_hero_cd%回合回复英雄%mana_regen_hero%点蓝量。
-DOTA_Tooltip_Ability_item_qtg_refresher_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_refresher_mana_regen_bz,,%+兵卒蓝量获取提升
-DOTA_Tooltip_Ability_item_qtg_refresher_health_regen_hero,,%+每回合英雄回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_refresher_health_regen_bz,,%+每回合兵卒回复最大生命值
-DOTA_Tooltip_modifier_qtg_refresher_cd,,刷新球的英雄回蓝
-DOTA_Tooltip_modifier_qtg_refresher_cd_Description,,英雄回蓝冷却中，剩余回合数。
-DOTA_Tooltip_Ability_item_qtg_octarine_core,,玲珑心
-DOTA_Tooltip_Ability_item_qtg_octarine_core_bonus_health,,+$health
-DOTA_Tooltip_Ability_item_qtg_octarine_core_bonus_mana,,+$mana
-DOTA_Tooltip_Ability_item_qtg_octarine_core_mana_regen_bz,,%+兵卒蓝量获取提升
-DOTA_Tooltip_Ability_item_qtg_octarine_core_Description,,<h1>被动：英雄回蓝</h1>每%mana_regen_hero_cd%回合回复英雄%mana_regen_hero%点蓝量。\n\n<h1>被动：冷却减少</h1>降低英雄所有回合类技能<font color='#7e8c9d'> %cd_sub% </font>回合的冷却时间和<font color='#7e8c9d'> %mana_sub% </font>点的魔法消耗。
+DOTA_Tooltip_Ability_item_qtg_orchid,Orchid Malevolence,紫怨
+DOTA_Tooltip_Ability_item_qtg_orchid_Description,<h1>Active: Soul Burn</h1>Silences the target hero and all its creeps for %silence_duration% turns.\n\n<h1>Passive: Hero Mana Regen</h1>Restores %mana_regen_hero% mana to the hero every %mana_regen_hero_cd% turns.,<h1>主动：灵魂枷锁</h1>沉默目标英雄及其所有兵卒%silence_duration%回合。\n\n<h1>被动：英雄回蓝</h1>每%mana_regen_hero_cd%回合回复英雄%mana_regen_hero%点蓝量。
+DOTA_Tooltip_Ability_item_qtg_orchid_Lore,A garnet rod constructed from the essence of a fire demon.,一颗诞自火焰恶魔精华的榴石。
+DOTA_Tooltip_Ability_item_qtg_orchid_bonus_intellect,+$int,+$int
+DOTA_Tooltip_Ability_item_qtg_orchid_bonus_attack_speed,+$attack,+$attack
+DOTA_Tooltip_Ability_item_qtg_orchid_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_orchid_mana_regen_bz,%+SOLDIER MANA REGEN,%+兵卒蓝量获取提升
+DOTA_Tooltip_modifier_qtg_orchid_cd,Orchid Malevolence's Hero Mana Regen,紫怨的英雄回蓝
+DOTA_Tooltip_modifier_qtg_orchid_cd_Description,"Hero mana regen on cooldown, remaining turns.",英雄回蓝冷却中，剩余回合数。
+DOTA_Tooltip_modifier_qtg_orchid_debuff,Soul Burn,灵魂枷锁
+DOTA_Tooltip_modifier_qtg_orchid_debuff_Description,Silenced.,被沉默。
+DOTA_Tooltip_Ability_item_qtg_solar_crest,Solar Crest,炎阳纹章
+DOTA_Tooltip_Ability_item_qtg_solar_crest_Description,"<h1>Active: Shine</h1>When cast on an ally, grants them %target_armor% armor, %target_attack_speed% attack speed, and %target_movement_speed%%% movement speed, and creates a 400 Physical Damage Barrier for them. When cast on an enemy, reduces their %target_armor% armor, %target_attack_speed% attack speed, and slows them by %target_movement_speed%%%. Removes %target_armor% armor from the caster when used.\n\n<h1>Passive: Hero Mana Regen</h1>Restores %mana_regen_hero% mana to the hero every %mana_regen_hero_cd% turns.",<h1>主动：日耀</h1>对队友施放可以提供%target_armor%点护甲，%target_attack_speed%攻击速度，和%target_movement_speed%%%移动速度。对敌人施放将降低其%target_armor%点护甲，%target_attack_speed%攻击速度并减缓%target_movement_speed%%%移动速度。<br><br>使用时移除施法者%target_armor%点护甲。<br><br>持续%duration%回合。\n\n<h1>被动：英雄回蓝</h1>每%mana_regen_hero_cd%回合回复英雄%mana_regen_hero%点蓝量。
+DOTA_Tooltip_Ability_item_qtg_solar_crest_Lore,A talisman forged to honor the daytime sky.,为了纪念炎日天空所打造的护符。
+DOTA_Tooltip_Ability_item_qtg_solar_crest_Note0,Shares cooldown with Pavise.,与炎阳纹章共享冷却时间。
+DOTA_Tooltip_Ability_item_qtg_solar_crest_Note1,You can use it on yourself.,可以对自己使用。
+DOTA_Tooltip_Ability_item_qtg_solar_crest_bonus_armor,+$armor,+$armor
+DOTA_Tooltip_Ability_item_qtg_solar_crest_bonus_all_stats,+$all,+$all
+DOTA_Tooltip_Ability_item_qtg_solar_crest_bonus_attack_speed,+$attack,+$attack
+DOTA_Tooltip_Ability_item_qtg_solar_crest_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_solar_crest_mana_regen_bz,%+SOLDIER MANA REGEN,%+兵卒蓝量获取提升
+DOTA_Tooltip_modifier_qtg_solar_crest_cd,Solar Crest's Hero Mana Regen,炎阳纹章的英雄回蓝
+DOTA_Tooltip_modifier_qtg_solar_crest_cd_Description,"Hero mana regen on cooldown, remaining turns.",英雄回蓝冷却中，剩余回合数。
+DOTA_Tooltip_modifier_qtg_solar_crest_buff,Solar Crest,炎阳纹章
+DOTA_Tooltip_modifier_qtg_solar_crest_buff_Description,"Increase %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% armor, %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% movement speed, and %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT% attack speed.",提升%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点护甲，%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%移动速度，和%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%攻击速度。
+DOTA_Tooltip_modifier_qtg_solar_crest_debuff,Solar Crest,炎阳纹章
+DOTA_Tooltip_modifier_qtg_solar_crest_debuff_Description,"Decrease %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% armor, %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% movement speed, and slow %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT% attack speed.",降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点护甲，减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%移动速度，降低%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%攻击速度。
+DOTA_Tooltip_Ability_item_qtg_rod_of_atos,Rod of Atos,阿托斯之棍
+DOTA_Tooltip_Ability_item_qtg_rod_of_atos_Description,"<h1>Active: Cripple</h1>Roots the target hero for %duration% turns, preventing them from moving.",<h1>主动：致残</h1>缠绕目标英雄%duration%回合，使其无法移动。
+DOTA_Tooltip_Ability_item_qtg_rod_of_atos_Note0,Wait up to 10 seconds due to entanglement unable to move.,最多等待10秒因缠绕的无法移动。
+DOTA_Tooltip_Ability_item_qtg_rod_of_atos_Lore,"Atos, the Lord of Blight, has his essence stored in this deceptively simple wand.",荒芜之王阿托斯将他的精粹储存在这根看似平平无奇的魔杖中。
+DOTA_Tooltip_Ability_item_qtg_rod_of_atos_bonus_intellect,+$int,+$int
+DOTA_Tooltip_Ability_item_qtg_rod_of_atos_bonus_health,+$health,+$health
+DOTA_Tooltip_modifier_qtg_rod_of_atos_debuff,Rod of Atos,阿托斯之棍
+DOTA_Tooltip_modifier_qtg_rod_of_atos_debuff_Description,Unable to move while rooted.,被缠绕时无法移动。
+DOTA_Tooltip_Ability_item_qtg_refresher,Refresher Orb,刷新球
+DOTA_Tooltip_Ability_item_qtg_refresher_Description,<h1>Active: Reset</h1>Resets the cooldowns of all items and abilities.\n\n<h1>Passive: Hero Mana Regen</h1>Restores %mana_regen_hero% mana to the hero every %mana_regen_hero_cd% turns.,<h1>主动：完全重置</h1>重置所有装备和技能的冷却时间。\n\n<h1>被动：英雄回蓝</h1>每%mana_regen_hero_cd%回合回复英雄%mana_regen_hero%点蓝量。
+DOTA_Tooltip_Ability_item_qtg_refresher_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_refresher_mana_regen_bz,%+SOLDIER MANA REGEN,%+兵卒蓝量获取提升
+DOTA_Tooltip_Ability_item_qtg_refresher_health_regen_hero,%+ROUND HERO REGEN MAX HEALTH,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_refresher_health_regen_bz,%+ROUND SOLDIER REGEN MAX HEALTH,%+每回合兵卒回复最大生命值
+DOTA_Tooltip_modifier_qtg_refresher_cd,Refresher Orb's Hero Mana Regen,刷新球的英雄回蓝
+DOTA_Tooltip_modifier_qtg_refresher_cd_Description,"Hero mana regen on cooldown, remaining turns.",英雄回蓝冷却中，剩余回合数。
+DOTA_Tooltip_Ability_item_qtg_octarine_core,Octarine Core,玲珑心
+DOTA_Tooltip_Ability_item_qtg_octarine_core_bonus_health,+$health,+$health
+DOTA_Tooltip_Ability_item_qtg_octarine_core_bonus_mana,+$mana,+$mana
+DOTA_Tooltip_Ability_item_qtg_octarine_core_mana_regen_bz,%+SOLDIER MANA REGEN,%+兵卒蓝量获取提升
+DOTA_Tooltip_Ability_item_qtg_octarine_core_Description,<h1>Passive: Hero Mana Regen</h1>Restores %mana_regen_hero% mana to the hero every %mana_regen_hero_cd% turns.\n\n<h1>Passive: Cooldown Reduction</h1>Reduces the cooldown time and mana cost of all turn-based abilities by <font color='#7e8c9d'> %cd_sub% </font> turns and <font color='#7e8c9d'> %mana_sub% </font> mana respectively.,<h1>被动：英雄回蓝</h1>每%mana_regen_hero_cd%回合回复英雄%mana_regen_hero%点蓝量。\n\n<h1>被动：冷却减少</h1>降低英雄所有回合类技能<font color='#7e8c9d'> %cd_sub% </font>回合的冷却时间和<font color='#7e8c9d'> %mana_sub% </font>点的魔法消耗。
 DOTA_Tooltip_Ability_item_qtg_octarine_core_Lore,At the core of spellcraft are spectrums only the very gifted can sense.,位于法术技艺核心的，是只有身负异能之人才能感知的光带。
-DOTA_Tooltip_Ability_item_qtg_vanguard,,先锋盾
-DOTA_Tooltip_Ability_item_qtg_vanguard_bonus_health,,+$health
-DOTA_Tooltip_Ability_item_qtg_vanguard_health_regen_hero,,%+每回合英雄回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_vanguard_health_regen_bz,,%+每回合兵卒回复最大生命值
-DOTA_Tooltip_ability_item_qtg_vanguard_Description,,<h1>被动：伤害格挡</h1> 拥有%block_chance%%%几率格挡伤害，近战英雄可格挡%block_damage_melee%点伤害，远程英雄可格挡%block_damage_ranged%点。
-DOTA_Tooltip_Ability_item_qtg_vanguard_Lore,,能够让持有者躲过最致命攻击的强力盾牌。
-DOTA_Tooltip_Ability_item_qtg_blade_mail,,刃甲
-DOTA_Tooltip_Ability_item_qtg_blade_mail_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_blade_mail_bonus_armor,,+$armor
-DOTA_Tooltip_Ability_item_qtg_blade_mail_Description,,<h1>主动：伤害反弹</h1>在一回合内，所有来源的伤害都会被反弹并可以从中获得金币。对所有兵卒生效。
-DOTA_Tooltip_Ability_item_qtg_blade_mail_Lore,,覆盖着尖锐剃刀的盔甲，战斗中可以用来做出不顾自身安危的烈士行为。
-DOTA_Tooltip_modifier_item_qtg_blade_mail_buff,,刃甲反射
-DOTA_Tooltip_modifier_item_qtg_blade_mail_buff_Description,,正在将伤害反弹给攻击单位
-DOTA_Tooltip_Ability_item_qtg_crimson_guard,,赤红甲
-DOTA_Tooltip_Ability_item_qtg_crimson_guard_bonus_health,,+$health
-DOTA_Tooltip_Ability_item_qtg_crimson_guard_bonus_armor,,+$armor
-DOTA_Tooltip_Ability_item_qtg_crimson_guard_health_regen_hero,,%+每回合英雄回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_crimson_guard_health_regen_bz,,%+每回合兵卒回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_crimson_guard_Description,,<h1>主动：坚盾</h1>使英雄和所有友方兵卒每次受到物理攻击都有%active_chance%%%几率格挡%block_damage_melee%点伤害，持续%duration%回合。\n\n<h1>被动：伤害格挡</h1>近战英雄每次受到攻击都有%block_chance%%%几率格挡%block_damage_melee%点伤害，远程英雄则是格挡%block_damage_ranged%点。
-DOTA_Tooltip_Ability_item_qtg_crimson_guard_Lore,,原为抵御可怕的年兽所打造的铠甲。
-DOTA_Tooltip_modifier_item_qtg_crimson_guard_buff,,坚盾
-DOTA_Tooltip_modifier_item_qtg_crimson_guard_buff_Description,,每次受到攻击都有100%%几率格挡%dMODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK%点伤害。
-DOTA_Tooltip_Ability_item_qtg_shivas_guard,,希瓦的守护
-DOTA_Tooltip_Ability_item_qtg_shivas_guard_bonus_intellect,,+$int
-DOTA_Tooltip_Ability_item_qtg_shivas_guard_bonus_armor,,+$armor
-DOTA_Tooltip_Ability_item_qtg_shivas_guard_Description,,<h1>被动：霜冷光环</h1>降低敌人%decrease_attack_speed%攻击速度和%jiansu%%%移动速度，以及%jianliao%%%所有治疗、恢复和吸血效果。<br><br>作用范围：%range%
-DOTA_Tooltip_Ability_item_qtg_shivas_guard_Lore,,据说曾经属于某位女神，至今仍保持大部分神力。
-DOTA_Tooltip_modifier_item_qtg_shivas_guard_aura,,霜冷光环
-DOTA_Tooltip_modifier_item_qtg_shivas_guard_aura_Description,,攻击速度减少%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度减少%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%，恢复效果%dMODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE%%%。
-DOTA_Tooltip_Ability_item_qtg_heart,,恐鳌之心
-DOTA_Tooltip_Ability_item_qtg_heart_bonus_strength,,+$str
-DOTA_Tooltip_Ability_item_qtg_heart_bonus_health,,+$health
-DOTA_Tooltip_Ability_item_qtg_heart_health_regen_hero,,%+每回合英雄回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_heart_health_regen_bz,,%+每回合兵卒回复最大生命值
-DOTA_Tooltip_Ability_item_qtg_heart_Description,,<h1>被动：巨龙之心</h1>溢出的回复可以制造一个庇佑英雄的护盾，抵消其受到的伤害并不损失金币。<br><br>护盾值上限：最大生命值的%shield_pct%%%<br>护盾转换效率：%shield_eff%%%
-DOTA_Tooltip_Ability_item_qtg_heart_Lore,,保存完好的心脏，来自早已绝种的怪兽，能提升携带者的耐久力。杀不死其的，会令其更强大。
-DOTA_Tooltip_Ability_item_qtg_assault,,强袭胸甲
-DOTA_Tooltip_Ability_item_qtg_assault_bonus_attack_speed,,+$attack
-DOTA_Tooltip_Ability_item_qtg_assault_bonus_armor,,+$armor
-DOTA_Tooltip_Ability_item_qtg_assault_Description,,<h1>被动：强袭光环</h1>削弱附近敌军%aura_negative_armor%点护甲。<br><br>作用范围：%range%
-DOTA_Tooltip_Ability_item_qtg_assault_Lore,,在三途川的深处锻造而成，这件地狱盔甲能提高整支军队的护甲和攻击速度。
-DOTA_Tooltip_modifier_item_qtg_assault_aura,,强袭胸甲
-DOTA_Tooltip_modifier_item_qtg_assault_aura_Description,,护甲被降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%
-DOTA_Tooltip_Ability_item_qtg_lesser_crit,,水晶剑
-DOTA_Tooltip_Ability_item_qtg_lesser_crit_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_lesser_crit_Description,,<h1>被动：致命一击</h1>每次攻击时有%crit_chance%%%概率造成%crit_multiplier%%%伤害。
-DOTA_Tooltip_Ability_item_qtg_lesser_crit_Lore,,用稀有水晶锻造的剑刃，会寻找敌人护甲的脆弱处。
-DOTA_Tooltip_Ability_item_qtg_desolator,,黯灭
-DOTA_Tooltip_Ability_item_qtg_desolator_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_desolator_Description,,<h1>被动：毁蚀</h1>物理攻击将降低目标%corruption_armor%点护甲，持续%corruption_duration%秒。
-DOTA_Tooltip_Ability_item_qtg_desolator_Lore,,这把邪恶并且嗜血的武器，通常用于拷打政治犯。
-DOTA_Tooltip_modifier_item_qtg_desolator_buff,,黯灭
-DOTA_Tooltip_modifier_item_qtg_desolator_buff_Description,,黯灭使你的护甲被削弱%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。
-DOTA_Tooltip_Ability_item_qtg_butterfly,,蝴蝶
-DOTA_Tooltip_Ability_item_qtg_butterfly_bonus_agility,,+$agi
-DOTA_Tooltip_Ability_item_qtg_butterfly_attack_speed_pct,,%+$attack_pct
-DOTA_Tooltip_Ability_item_qtg_butterfly_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_butterfly_bonus_movespeed_pct,,%+移动速度
-DOTA_Tooltip_Ability_item_qtg_butterfly_Description,,<h1>被动：振翅</h1>蝴蝶翅膀轻盈地振动，提供%slow_resistance%%%减速抗性。
-DOTA_Tooltip_Ability_item_qtg_butterfly_Lore,,只有最强大最老练的战士才能携带蝴蝶，但它也提供无可比拟的战斗灵活力作为回报。
-DOTA_Tooltip_Ability_item_qtg_greater_crit,,代达罗斯之殇
-DOTA_Tooltip_Ability_item_qtg_greater_crit_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_greater_crit_Description,,<h1>被动：致命一击</h1>普通攻击有%crit_chance%%%几率造成%crit_multiplier%%%伤害。
-DOTA_Tooltip_Ability_item_qtg_greater_crit_Lore,,这件武器有着惊人的力量，即使是最强的战士也难以掌控它。
-DOTA_Tooltip_Ability_item_qtg_rapier,,圣剑
-DOTA_Tooltip_Ability_item_qtg_rapier_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_rapier_bonus_spell_amp,,%+技能增强
-DOTA_Tooltip_Ability_item_qtg_rapier_Description,,<h1>被动：永恒</h1> <font color='#e03e2e'>玩家死亡后掉落到其所在路径，下一个到达该路径的玩家将会拾取。</font> <br><br>圣剑无法被摧毁，也无法放入背包中，只有当装备栏有空位时才会拾取成功。
-DOTA_Tooltip_Ability_item_qtg_rapier_Lore,,它强横无匹，并不满足于侍奉唯一的主人。
-DOTA_Tooltip_Ability_item_qtg_revenants_brooch,,英灵胸针
-DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_attack_speed,,+$attack
-DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_intellect,,+$int
-DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_armor,,+$armor
-DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_project_speed,,#NAME?
+DOTA_Tooltip_Ability_item_qtg_vanguard,Vanguard,先锋盾
+DOTA_Tooltip_Ability_item_qtg_vanguard_bonus_health,+$health,+$health
+DOTA_Tooltip_Ability_item_qtg_vanguard_health_regen_hero,%+ROUND HERO REGEN MAX HEALTH,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_vanguard_health_regen_bz,%+ROUND SOLDIER REGEN MAX HEALTH,%+每回合兵卒回复最大生命值
+DOTA_Tooltip_ability_item_qtg_vanguard_Description,"<h1>Passive: Damage Block</h1>Has a %block_chance%%% chance to block damage, blocking %block_damage_melee% damage for melee heroes and %block_damage_ranged% damage for ranged heroes.",<h1>被动：伤害格挡</h1> 拥有%block_chance%%%几率格挡伤害，近战英雄可格挡%block_damage_melee%点伤害，远程英雄可格挡%block_damage_ranged%点。
+DOTA_Tooltip_Ability_item_qtg_vanguard_Lore,A powerful shield that defends its wielder from even the most vicious of attacks.,能够让持有者躲过最致命攻击的强力盾牌。
+DOTA_Tooltip_Ability_item_qtg_blade_mail,Blade Mail,刃甲
+DOTA_Tooltip_Ability_item_qtg_blade_mail_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_blade_mail_bonus_armor,+$armor,+$armor
+DOTA_Tooltip_Ability_item_qtg_blade_mail_Description,"<h1>Active: Damage Return</h1>For one turn, reflects all damage from any source and gains gold from the reflected damage. Affects all creeps.",<h1>主动：伤害反弹</h1>在一回合内，所有来源的伤害都会被反弹并可以从中获得金币。对所有兵卒生效。
+DOTA_Tooltip_Ability_item_qtg_blade_mail_Lore,"A razor-sharp coat of mail, it is the choice of selfless martyrs in combat.",覆盖着尖锐剃刀的盔甲，战斗中可以用来做出不顾自身安危的烈士行为。
+DOTA_Tooltip_modifier_item_qtg_blade_mail_buff,Blade Mail Reflection,刃甲反射
+DOTA_Tooltip_modifier_item_qtg_blade_mail_buff_Description,Returning damage to attacking units.,正在将伤害反弹给攻击单位
+DOTA_Tooltip_Ability_item_qtg_crimson_guard,Crimson Guard,赤红甲
+DOTA_Tooltip_Ability_item_qtg_crimson_guard_bonus_health,+$health,+$health
+DOTA_Tooltip_Ability_item_qtg_crimson_guard_bonus_armor,+$armor,+$armor
+DOTA_Tooltip_Ability_item_qtg_crimson_guard_health_regen_hero,%+ROUND HERO REGEN MAX HEALTH,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_crimson_guard_health_regen_bz,%+ROUND SOLDIER REGEN MAX HEALTH,%+每回合兵卒回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_crimson_guard_Description,"<h1>Active: Guard</h1> gives heroes and all allied pawns a %active_chance%%% chance to block %block_damage_melee% damage for %duration% turns every time they take a physical attack. \n\n<h1>Passive: Damage Block</h1> Melee heroes have a %block_chance%%% chance to block %block_damage_melee% damage every time they take an attack, while ranged heroes block %block_damage_ranged%.",<h1>主动：坚盾</h1>使英雄和所有友方兵卒每次受到物理攻击都有%active_chance%%%几率格挡%block_damage_melee%点伤害，持续%duration%回合。\n\n<h1>被动：伤害格挡</h1>近战英雄每次受到攻击都有%block_chance%%%几率格挡%block_damage_melee%点伤害，远程英雄则是格挡%block_damage_ranged%点。
+DOTA_Tooltip_Ability_item_qtg_crimson_guard_Lore,A cuirass originally built to protect against the dreaded Year Beast.,原为抵御可怕的年兽所打造的铠甲。
+DOTA_Tooltip_modifier_item_qtg_crimson_guard_buff,Guard,坚盾
+DOTA_Tooltip_modifier_item_qtg_crimson_guard_buff_Description,Gained a 100%% chance to block %dMODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK% damage from incoming attacks.,每次受到攻击都有100%%几率格挡%dMODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK%点伤害。
+DOTA_Tooltip_Ability_item_qtg_shivas_guard,Shiva's Guard,希瓦的守护
+DOTA_Tooltip_Ability_item_qtg_shivas_guard_bonus_intellect,+$int,+$int
+DOTA_Tooltip_Ability_item_qtg_shivas_guard_bonus_armor,+$armor,+$armor
+DOTA_Tooltip_Ability_item_qtg_shivas_guard_Description,"<h1>Passive: Freezing Aura</h1>Reduces the attack speed and movement speed of enemies by %decrease_attack_speed% and %jiansu%%%, respectively, and also reduces all healing, regeneration and lifesteal effects by %jianliao%%%.<br><br>Radius: %range%",<h1>被动：霜冷光环</h1>降低敌人%decrease_attack_speed%攻击速度和%jiansu%%%移动速度，以及%jianliao%%%所有治疗、恢复和吸血效果。<br><br>作用范围：%range%
+DOTA_Tooltip_Ability_item_qtg_shivas_guard_Lore,"Said to have belonged to a goddess, today it retains much of its former power.",据说曾经属于某位女神，至今仍保持大部分神力。
+DOTA_Tooltip_modifier_item_qtg_shivas_guard_aura,Freezing Aura,霜冷光环
+DOTA_Tooltip_modifier_item_qtg_shivas_guard_aura_Description,"Attack speed reduced by %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%, movement speed slowed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% and regeneration by %dMODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE%%%.",攻击速度减少%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%，移动速度减少%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%，恢复效果%dMODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE%%%。
+DOTA_Tooltip_Ability_item_qtg_heart,Heart of Tarrasque,恐鳌之心
+DOTA_Tooltip_Ability_item_qtg_heart_bonus_strength,+$str,+$str
+DOTA_Tooltip_Ability_item_qtg_heart_bonus_health,+$health,+$health
+DOTA_Tooltip_Ability_item_qtg_heart_health_regen_hero,%+ROUND HERO REGEN MAX HEALTH,%+每回合英雄回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_heart_health_regen_bz,%+ROUND SOLDIER REGEN MAX HEALTH,%+每回合兵卒回复最大生命值
+DOTA_Tooltip_Ability_item_qtg_heart_Description,<h1>Passive: Dragon Heart</h1>Overflowing regeneration creates a shield that protects the hero from damage and prevents gold loss.<br><br>Shield value limit: %shield_pct%%% of maximum health<br>Shield conversion efficiency: %shield_eff%%%,<h1>被动：巨龙之心</h1>溢出的回复可以制造一个庇佑英雄的护盾，抵消其受到的伤害并不损失金币。<br><br>护盾值上限：最大生命值的%shield_pct%%%<br>护盾转换效率：%shield_eff%%%
+DOTA_Tooltip_Ability_item_qtg_heart_Lore,"Preserved heart of an extinct monster, it bolsters the bearer's fortitude.",保存完好的心脏，来自早已绝种的怪兽，能提升携带者的耐久力。杀不死其的，会令其更强大。
+DOTA_Tooltip_Ability_item_qtg_assault,Assault Cuirass,强袭胸甲
+DOTA_Tooltip_Ability_item_qtg_assault_bonus_attack_speed,+$attack,+$attack
+DOTA_Tooltip_Ability_item_qtg_assault_bonus_armor,+$armor,+$armor
+DOTA_Tooltip_Ability_item_qtg_assault_Description,<h1>Passive: Assault Aura</h1>Reduces the armor of nearby enemies by %aura_negative_armor%.<br><br>Radius: %range%,<h1>被动：强袭光环</h1>削弱附近敌军%aura_negative_armor%点护甲。<br><br>作用范围：%range%
+DOTA_Tooltip_Ability_item_qtg_assault_Lore,"Forged in the depths of the nether reaches, this hellish mail provides an army with increased armor and attack speed.",在三途川的深处锻造而成，这件地狱盔甲能提高整支军队的护甲和攻击速度。
+DOTA_Tooltip_modifier_item_qtg_assault_aura,Assault Cuirass,强袭胸甲
+DOTA_Tooltip_modifier_item_qtg_assault_aura_Description,Armor reduced by %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%,护甲被降低%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%
+DOTA_Tooltip_Ability_item_qtg_lesser_crit,Crystalys,水晶剑
+DOTA_Tooltip_Ability_item_qtg_lesser_crit_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_lesser_crit_Description,<h1>Passive: Critical Strike</h1>Grants each attack a %crit_chance%%% chance to deal %crit_multiplier%%% damage.,<h1>被动：致命一击</h1>每次攻击时有%crit_chance%%%概率造成%crit_multiplier%%%伤害。
+DOTA_Tooltip_Ability_item_qtg_lesser_crit_Lore,"A blade forged from rare crystals, it seeks weak points in enemy armor.",用稀有水晶锻造的剑刃，会寻找敌人护甲的脆弱处。
+DOTA_Tooltip_Ability_item_qtg_desolator,Desolator,黯灭
+DOTA_Tooltip_Ability_item_qtg_desolator_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_desolator_Description,<h1>Passive: Corruption</h1> Your attacks reduce the target's armor by %corruption_armor% for %corruption_duration% seconds.,<h1>被动：毁蚀</h1>物理攻击将降低目标%corruption_armor%点护甲，持续%corruption_duration%秒。
+DOTA_Tooltip_Ability_item_qtg_desolator_Lore,"A wicked weapon, used in torturing political criminals.",这把邪恶并且嗜血的武器，通常用于拷打政治犯。
+DOTA_Tooltip_modifier_item_qtg_desolator_buff,Desolator,黯灭
+DOTA_Tooltip_modifier_item_qtg_desolator_buff_Description,Desolator attacks reduced your armor by %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%.,黯灭使你的护甲被削弱%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%点。
+DOTA_Tooltip_Ability_item_qtg_butterfly,Butterfly,蝴蝶
+DOTA_Tooltip_Ability_item_qtg_butterfly_bonus_agility,+$agi,+$agi
+DOTA_Tooltip_Ability_item_qtg_butterfly_attack_speed_pct,%+$attack_pct,%+$attack_pct
+DOTA_Tooltip_Ability_item_qtg_butterfly_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_butterfly_bonus_movespeed_pct,%+$move_speed,%+移动速度
+DOTA_Tooltip_Ability_item_qtg_butterfly_Description,"<h1>Passive: Flutter</h1>The butterfly wings flutter lightly, providing %slow_resistance%%% slow resistance.",<h1>被动：振翅</h1>蝴蝶翅膀轻盈地振动，提供%slow_resistance%%%减速抗性。
+DOTA_Tooltip_Ability_item_qtg_butterfly_Lore,"Only the mightiest and most experienced of warriors can wield the Butterfly, but it provides incredible dexterity in combat.",只有最强大最老练的战士才能携带蝴蝶，但它也提供无可比拟的战斗灵活力作为回报。
+DOTA_Tooltip_Ability_item_qtg_greater_crit,Daedalus,代达罗斯之殇
+DOTA_Tooltip_Ability_item_qtg_greater_crit_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_greater_crit_Description,<h1>Passive: Critical Strike</h1>Grants each attack a %crit_chance%%% chance to deal %crit_multiplier%%% damage.,<h1>被动：致命一击</h1>普通攻击有%crit_chance%%%几率造成%crit_multiplier%%%伤害。
+DOTA_Tooltip_Ability_item_qtg_greater_crit_Lore,A weapon of incredible power that is difficult for even the strongest of warriors to control.,这件武器有着惊人的力量，即使是最强的战士也难以掌控它。
+DOTA_Tooltip_Ability_item_qtg_rapier,Divine Rapier,圣剑
+DOTA_Tooltip_Ability_item_qtg_rapier_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_rapier_bonus_spell_amp,%+Spell Amplification,%+技能增强
+DOTA_Tooltip_Ability_item_qtg_rapier_Description,"<h1>Passive: Eternal</h1> <font color='#e03e2e'>Drops on the path where the owner died, and the next player to reach that path will pick it up.</font> <br><br>The Rapier cannot be destroyed, nor can it be put in the backpack. It can only be picked up if there is a free slot in the inventory.",<h1>被动：永恒</h1> <font color='#e03e2e'>玩家死亡后掉落到其所在路径，下一个到达该路径的玩家将会拾取。</font> <br><br>圣剑无法被摧毁，也无法放入背包中，只有当装备栏有空位时才会拾取成功。
+DOTA_Tooltip_Ability_item_qtg_rapier_Lore,"So powerful, it cannot have a single owner.",它强横无匹，并不满足于侍奉唯一的主人。
+DOTA_Tooltip_Ability_item_qtg_revenants_brooch,Revenant's Brooch,英灵胸针
+DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_attack_speed,+$attack,+$attack
+DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_intellect,+$int,+$int
+DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_armor,+$armor,+$armor
+DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_revenants_brooch_bonus_project_speed,+$projectile_speed,+$projectile_speed
 DOTA_Tooltip_Ability_item_qtg_revenants_brooch_Description,,<h1>被动：英灵之刃</h1>每次攻击命中后额外造成玩家英雄智力%attack_intell%%%的魔法伤害。
-DOTA_Tooltip_Ability_item_qtg_sange,,散华
-DOTA_Tooltip_Ability_item_qtg_sange_bonus_strength,,+$str
-DOTA_Tooltip_Ability_item_qtg_sange_slow_resistance,,%+减速抗性
-DOTA_Tooltip_Ability_item_qtg_sange_regen_amp,,%+生命恢复和吸血增强
-DOTA_Tooltip_Ability_item_qtg_sange_Lore,,散华是一把异常精准的武器，会自动寻找对方的弱点所在。
-DOTA_Tooltip_Ability_item_qtg_yasha,,夜叉
-DOTA_Tooltip_Ability_item_qtg_yasha_bonus_agility,,+$agi
-DOTA_Tooltip_Ability_item_qtg_yasha_bonus_attack_speed,,+$attack
-DOTA_Tooltip_Ability_item_qtg_yasha_movement_speed_percent_bonus,,%+$move_speed
-DOTA_Tooltip_Ability_item_qtg_yasha_Lore,,夜叉可以称得上有史以来最轻巧的武器。
-DOTA_Tooltip_Ability_item_qtg_yasha_Note0,,不会与其他夜叉、散夜对剑提供的移动速度加成叠加。
-DOTA_Tooltip_Ability_item_qtg_kaya,,慧光
-DOTA_Tooltip_Ability_item_qtg_kaya_bonus_intellect,,+$int
-DOTA_Tooltip_Ability_item_qtg_kaya_spell_amp,,%+技能增强
-DOTA_Tooltip_Ability_item_qtg_kaya_spell_lifesteal_amp,,%+技能吸血增强
-DOTA_Tooltip_Ability_item_qtg_kaya_Lore,,一位闻名遐迩的女巫师手上的法杖，已经失落了上万年。
-DOTA_Tooltip_Ability_item_qtg_kaya_Note0,,不会与其他慧光、散慧对剑提供的技能增强加成叠加。
-DOTA_Tooltip_Ability_item_qtg_mage_slayer,,法师克星
-DOTA_Tooltip_Ability_item_qtg_mage_slayer_bonus_magical_armor,,%+$spell_resist
-DOTA_Tooltip_Ability_item_qtg_mage_slayer_bonus_attack_speed,,+$attack
-DOTA_Tooltip_Ability_item_qtg_mage_slayer_bonus_damage,,+$damage
-DOTA_Tooltip_Ability_item_qtg_mage_slayer_bonus_intellect,,+$int
-DOTA_Tooltip_Ability_item_qtg_mage_slayer_Description,,<h1>被动：法师克星</h1>攻击敌人时施加一个负面效果，并且使目标造成的技能伤害降低%spell_amp_debuff%%%，持续%duration%秒。
-DOTA_Tooltip_Ability_item_qtg_mage_slayer_Lore,,在天瑶城的第三纪元由一个秘密教团打造，意图扳倒冒牌的大帝。
-DOTA_Tooltip_modifier_item_qtg_mage_slayer_debuff,,法师克星
-DOTA_Tooltip_modifier_item_qtg_mage_slayer_debuff_Description,,造成的技能伤害减少%dMODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE%%%。
-DOTA_Tooltip_Ability_item_qtg_kaya_and_sange,,散慧对剑
-DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_bonus_strength,,+$str
-DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_bonus_intellect,,+$int
-DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_spell_amp,,%+技能增强
-DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_slow_resistance,,%+减速抗性
-DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_spell_lifesteal_amp,,%+技能吸血增强
-DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_regen_amp,,%+生命恢复和吸血增强
-DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_Lore,,这是三大利器的其中两件，因为他们都蕴含着不可思议的力量，很多人相信他们全是在同一个附魔师的熔炉中打造的。
-DOTA_Tooltip_Ability_item_qtg_sange_and_yasha,,散夜对剑
-DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_bonus_strength,,+$str
-DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_bonus_agility,,+$agi
-DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_bonus_attack_speed,,+$attack
-DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_movement_speed_percent_bonus,,%+$move_speed
-DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_slow_resistance,,%+减速抗性
-DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_regen_amp,,%+生命恢复和吸血增强
-DOTA_Tooltip_Ability_item_qtg_sange_and_yasha__Lore,,散华和夜叉经过月光的照耀而产生共鸣，双剑合璧发挥出更大的威力。
-DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_Note0,,不会与其他夜叉、散夜对剑提供的移动速度加成叠加。
-DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya,,慧夜对剑
-DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_bonus_intellect,,+$int
-DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_bonus_agility,,+$agi
-DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_bonus_attack_speed,,+$attack
-DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_movement_speed_percent_bonus,,%+$move_speed
-DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_spell_amp,,%+技能增强
-DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_spell_lifesteal_amp,,%+技能吸血增强
-DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_Lore,,夜叉和慧光配成一对时会产生共鸣。
-,,
-Card_10005,,小型猎野场
-Card_10005_Description,,入侵小野区
-Card_10006,,大型猎野场
-Card_10006_Description,,入侵大野区
-Card_10007,,远古禁地
-Card_10007_Description,,入侵远古禁地
-Card_10008,,拉野
-Card_10008_Description,,刷新目标野区生物
-Card_20001,,窃取
-Card_20001_Description,,获取目标上次使用的卡牌
-Card_20002,,移形换位
-Card_20002_Description,,与目标英雄互换位置
-Card_20003,,两级反转
-Card_20003_Description,,将敌人都拖拽至前方一格<br>无法影响入狱和战斗中的单位
-Card_20004,,恶念瞥视
-Card_20004_Description,,让目标回到上一次所在位置<br>将触发到达效果
-Card_20005,,阎刃
-Card_20005_Description,,指定玩家出狱或入狱
-Card_20006,,魔瓶
-Card_20006_Description,,灌装一个神符目标
-Card_20007,,双倍神符
-Card_20007_Description,,激活神符
-Card_20008,,极速神符
-Card_20008_Description,,激活神符
-Card_20010,,隐身神符
-Card_20010_Description,,激活神符
-Card_20011,,恢复神符
-Card_20011_Description,,激活神符
-Card_20012,,赏金神符
-Card_20012_Description,,激活神符
-Card_20013,,奥术神符
-Card_20013_Description,,激活神符
-Card_20014,,智慧神符
-Card_20014_Description,,激活神符
-Card_20015,,护盾神符
-Card_20015_Description,,激活神符
-Card_20020,,血怒
-Card_20020_Description,,加深目标20%的输出和承受伤害<br>持续一回合
-Card_30001,,刀刀兄弟
-Card_30001_Description,,立即进入补给环节
-Card_30002,,商店卡
-Card_30002_Description,,可在任意地点购物一次<br>（神秘商店物品除外）
-Card_30003,,阎刃 ● 333
-Card_30003_Description,,随机让一名英雄坠入或脱离炼狱
-
-DOTA_Tooltip_modifier_prison,,<font color='#FF0000'>炎魔炼狱</font>
-DOTA_Tooltip_modifier_prison_Description,,身处<font color='#FF0000'>炎魔炼狱</font>，被封锁全部领地。同时每回合损失金币。
-DOTA_Tooltip_modifier_bloodseeker_bloodrage_card,,血怒
-DOTA_Tooltip_modifier_bloodseeker_bloodrage_card_Description,,加深%dMODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE%%%的输出和承受伤害
-
-CardError_NoLastCard,,没有可窃取卡牌
-CardError_TargetNotRune,,目标不是神符
-Error_ItemMax,,物品栏已满
-Error_ItemSide,,限边路商店购买
-Error_ItemSecret,,限神秘商店购买
-Error_ItemSideAndSecret,,限边路或神秘商店购买
-Error_ItemNoCount,,购买次数不足
-Error_ItemOprt,,兵卒无法操作，请从英雄本体操作装备
-Error_NoSpaceForRapier,,背包没有空位拾取圣剑
-Error_SellNotSelfRound,,仅自身回合出售
-Error_NeedGold,,金币不足
-Error_CantGCLD_Slef,,自身领地，无法攻城
-Error_CantGCLD_Battling,,攻城中......
-Error_CantGCLD_Stunned,,目标眩晕无法攻城
-Error_CantGCLD_InPrison,,目标被地狱封印无法攻城
-Error_Card_TP,,仅传送阵
-Error_NoChichen,,鸡儿不足
-Error_TextNaN,,请输入整数
-Error_Trade_Failed,,发起交易失败，请重试
-Error_Trade_Failed_-1,,交易数据错误
-Error_Trade_Failed_0,,对方拒绝交易
-Error_Trade_Failed_2,,玩家数据错误
-Error_Trade_Failed_3,,金币错误
-Error_Trade_Failed_5,,包含未拥有路径
-Error_Trade_Failed_6,,有连地错误
-Error_Trade_Failed_7,,包含攻城中的领地
-Error_Trade_Failed_8,,玩家正在交易中
-Error_Trade_Failed_9,,交易玩家死亡
-Error_SendAuction_Failed_0,,当前拍卖未完成
-Error_SendAuction_Failed_2,,玩家数据错误
-Error_SendAuction_Failed_3,,路径为空
-Error_SendAuction_Failed_4,,包含未拥有路径
-Error_SendAuction_Failed_5,,有连地错误
-Error_SendAuction_Failed_7,,包含攻城中的领地
-Error_Bid_LessThanLeast,,低于最低加价
-Error_SendBid_Failed_0,,拍卖数据错误
-Error_SendBid_Failed_2,,竞拍玩家错误
-Error_SendBid_Failed_3,,竞拍金币错误
-Error_AYZZ_Failed,,安营扎寨失败
+DOTA_Tooltip_Ability_item_qtg_revenants_brooch_Lore,The cursed brooch of a fallen guardian who stalks forever between the veil of life and death.,这枚受到诅咒的胸针属于一位堕落的卫士，她永远都在生死之界徘徊。
+DOTA_Tooltip_Ability_item_qtg_sange,Sange,散华
+DOTA_Tooltip_Ability_item_qtg_sange_bonus_strength,+$str,+$str
+DOTA_Tooltip_Ability_item_qtg_sange_slow_resistance,%+Slow Resistance,%+减速抗性
+DOTA_Tooltip_Ability_item_qtg_sange_regen_amp,%+Health Regen and Lifesteal Amp,%+生命恢复和吸血增强
+DOTA_Tooltip_Ability_item_qtg_sange_Lore,"Sange is an unusually accurate weapon, seeking weak points automatically.",散华是一把异常精准的武器，会自动寻找对方的弱点所在。
+DOTA_Tooltip_Ability_item_qtg_yasha,Yasha,夜叉
+DOTA_Tooltip_Ability_item_qtg_yasha_bonus_agility,+$agi,+$agi
+DOTA_Tooltip_Ability_item_qtg_yasha_bonus_attack_speed,+$attack,+$attack
+DOTA_Tooltip_Ability_item_qtg_yasha_movement_speed_percent_bonus,%+$move_speed,%+$move_speed
+DOTA_Tooltip_Ability_item_qtg_yasha_Lore,Yasha is regarded as the swiftest weapon ever created.,夜叉可以称得上有史以来最轻巧的武器。
+DOTA_Tooltip_Ability_item_qtg_yasha_Note0,Yasha-based movement speed bonuses from multiple items do not stack.,不会与其他夜叉、散夜对剑提供的移动速度加成叠加。
+DOTA_Tooltip_Ability_item_qtg_kaya,Kay,慧光
+DOTA_Tooltip_Ability_item_qtg_kaya_bonus_intellect,+$int,+$int
+DOTA_Tooltip_Ability_item_qtg_kaya_spell_amp,%+Spell Amplification,%+技能增强
+DOTA_Tooltip_Ability_item_qtg_kaya_spell_lifesteal_amp,%+Spell Lifesteal Amplification,%+技能吸血增强
+DOTA_Tooltip_Ability_item_qtg_kaya_Lore,"The staff of a renowned sorceress, lost for countless millennia.",一位闻名遐迩的女巫师手上的法杖，已经失落了上万年。
+DOTA_Tooltip_Ability_item_qtg_kaya_Note0,Multiple instances of this item do not stack.,不会与其他慧光、散慧对剑提供的技能增强加成叠加。
+DOTA_Tooltip_Ability_item_qtg_mage_slayer,Mage Slayer,法师克星
+DOTA_Tooltip_Ability_item_qtg_mage_slayer_bonus_magical_armor,%+$spell_resist,%+$spell_resist
+DOTA_Tooltip_Ability_item_qtg_mage_slayer_bonus_attack_speed,+$attack,+$attack
+DOTA_Tooltip_Ability_item_qtg_mage_slayer_bonus_damage,+$damage,+$damage
+DOTA_Tooltip_Ability_item_qtg_mage_slayer_bonus_intellect,+$int,+$int
+DOTA_Tooltip_Ability_item_qtg_mage_slayer_Description,"<h1>Passive: Mage Slayer</h1>Places a debuff when you attack enemies, causing them to do %spell_amp_debuff%%% less spell damage for %duration% seconds.",<h1>被动：法师克星</h1>攻击敌人时施加一个负面效果，并且使目标造成的技能伤害降低%spell_amp_debuff%%%，持续%duration%秒。
+DOTA_Tooltip_Ability_item_qtg_mage_slayer_Lore,Forged by a secret order in The Third Age of Praxa'cia to fell the False King.,在天瑶城的第三纪元由一个秘密教团打造，意图扳倒冒牌的大帝。
+DOTA_Tooltip_modifier_item_qtg_mage_slayer_debuff,Mage Slayer,法师克星
+DOTA_Tooltip_modifier_item_qtg_mage_slayer_debuff_Description,Dealing %dMODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE%%% less spell damage and taking damage over time.,造成的技能伤害减少%dMODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE%%%。
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange,Kaya and Sange,散慧对剑
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_bonus_strength,+$str,+$str
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_bonus_intellect,+$int,+$int
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_spell_amp,%+Spell Amplification,%+技能增强
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_slow_resistance,%+Slow Resistance,%+减速抗性
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_spell_lifesteal_amp,%+Spell Lifesteal Amplification,%+技能吸血增强
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_regen_amp,%+Health Regen and Lifesteal Amp,%+生命恢复和吸血增强
+DOTA_Tooltip_Ability_item_qtg_kaya_and_sange_Lore,Two of three known items of unimaginable power that many believe were crafted at the same enchanter's forge.,这是三大利器的其中两件，因为他们都蕴含着不可思议的力量，很多人相信他们全是在同一个附魔师的熔炉中打造的。
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha,Sange and Yasha,散夜对剑
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_bonus_strength,+$str,+$str
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_bonus_agility,+$agi,+$agi
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_bonus_attack_speed,+$attack,+$attack
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_movement_speed_percent_bonus,%+$move_speed,%+$move_speed
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_slow_resistance,%+Slow Resistance,%+减速抗性
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_regen_amp,%+Health Regen and Lifesteal Amp,%+生命恢复和吸血增强
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_Lore,"Sange and Yasha, when attuned by the moonlight and used together, become a very powerful combination.",散华和夜叉经过月光的照耀而产生共鸣，双剑合璧发挥出更大的威力。
+DOTA_Tooltip_Ability_item_qtg_sange_and_yasha_Note0,Yasha-based movement speed bonuses from multiple items do not stack.,不会与其他夜叉、散夜对剑提供的移动速度加成叠加。
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya,Yasha and Kaya,慧夜对剑
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_bonus_intellect,+$int,+$int
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_bonus_agility,+$agi,+$agi
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_bonus_attack_speed,+$attack,+$attack
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_movement_speed_percent_bonus,%+$move_speed,%+$move_speed
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_spell_amp,%+Spell Amplification,%+技能增强
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_spell_lifesteal_amp,%+Spell Lifesteal Amplification,%+技能吸血增强
+DOTA_Tooltip_Ability_item_qtg_yasha_and_kaya_Lore,Yasha and Kaya when paired together share a natural resonance.,夜叉和慧光配成一对时会产生共鸣。
+Card_10005,Small Field,小型猎野场
+Card_10005_Description,Invade small creep field,入侵小野区
+Card_10006,Large Field,大型猎野场
+Card_10006_Description,Invade large creep field,入侵大野区
+Card_10007,Ancient Field,远古禁地
+Card_10007_Description,Invade ancient creep field,入侵远古禁地
+Card_10008,Stack Filed,拉野
+Card_10008_Description,Stack target field creatures,刷新目标野区生物
+Card_20001,Spell Steal,窃取
+Card_20001_Description,Steal target's last used card,获取目标上次使用的卡牌
+Card_20002,Nether Swap,移形换位
+Card_20002_Description,Swaps positions with a target Hero,与目标英雄互换位置
+Card_20003,Reverse Polarity,两级反转
+Card_20003_Description,Sucking all enemies in front<br> Cannot affect units in prison and combat,将敌人都拖拽至前方一格<br>无法影响入狱和战斗中的单位
+Card_20004,Glimpse,恶念瞥视
+Card_20004_Description,Teleports the target hero back to where it was last round,让目标回到上一次所在位置<br>将触发到达效果
+Card_20005,Infernal Blade,阎刃
+Card_20005_Description,Prison or release a player,指定玩家出狱或入狱
+Card_20006,Bottle,魔瓶
+Card_20006_Description,Bottle a rune target,灌装一个神符目标
+Card_20007,Double Rune,双倍神符
+Card_20007_Description,Active rune,激活神符
+Card_20008,Haste Rune,极速神符
+Card_20008_Description,Active rune,激活神符
+Card_20010,Invisible Rune,隐身神符
+Card_20010_Description,Active rune,激活神符
+Card_20011,Regen Rune,恢复神符
+Card_20011_Description,Active rune,激活神符
+Card_20012,Bounty Rune,赏金神符
+Card_20012_Description,Active rune,激活神符
+Card_20013,Arcane Rune,奥术神符
+Card_20013_Description,Active rune,激活神符
+Card_20014,Wisdom Rune,智慧神符
+Card_20014_Description,Active rune,激活神符
+Card_20015,Shield Rune,护盾神符
+Card_20015_Description,Active rune,激活神符
+Card_20020,Bloodrage,血怒
+Card_20020_Description,Increase target's output by 20% and take damage <br> for one turn,加深目标20%的输出和承受伤害<br>持续一回合
+Card_30001,DoDo Brother,刀刀兄弟
+Card_30001_Description,Enter the supply round immediately,立即进入补给环节
+Card_30002,Shop Card,商店卡
+Card_30002_Description,Shop at any location once <br> (except for mystery store items),可在任意地点购物一次<br>（神秘商店物品除外）
+Card_30003,Infernal Blade ● 333,阎刃 ● 333
+Card_30003_Description,Prison or release a random player,随机让一名英雄坠入或脱离炼狱
+Card_30004,God of Hand,上帝之手
+Card_30004_Description,Heals half the health of all heroes and soldiers,治疗所有英雄和兵卒一半的生命值
+Card_30005,Blink Dagger,闪烁匕首
+Card_30005_Description,Randomly blink to an unoccupied path or start,随机传送至未占领路径或起点
+Card_30006,Team Hand,团队之手
+Card_30006_Description,All players get <font color='#FFFF00'>500 gold</font>,所有玩家获得<font color='#FFFF00'>500金币</font>
+Card_30007,Glass Cannon,玻璃大炮
+Card_30007_Description,Increase your hero and all soldiers output by 20% and take damage <br> for one turn,使玩家英雄和所有的兵卒<br>加深20%的输出和承受伤害<br>持续一回合
+Card_30008,Card Duo,卡牌双雄
+Card_30008_Description,Get two cards,使用后获得两张卡牌
+Card_30009,Refresher Shard,刷新球碎片
+Card_30009_Description,Refresh all abilities and items,刷新所有技能和物品
+Card_30010,Cheese,奶酪
+Card_30010_Description,Instantly restores all player units <br> to full health and magic,立刻回复玩家所有单位<br>全部的生命值和魔法
+Card_30011,Dice-6,骰子-6
+Card_30011_Description,Reset the player order,重置玩家的先后顺序
+Card_30012,Dice-3,骰子-3
+Card_30012_Description,Roll as a die to move,当作骰子Roll点移动
+DOTA_Tooltip_modifier_prison,<font color='#FF0000'>Purgatory</font>,<font color='#FF0000'>炎魔炼狱</font>
+DOTA_Tooltip_modifier_prison_Description,"In <font color='#FF0000'> Purgatory </font>, the whole territory is blocked. It also loses gold per turn.",身处<font color='#FF0000'>炎魔炼狱</font>，被封锁全部领地。同时每回合损失金币。
+DOTA_Tooltip_modifier_bloodseeker_bloodrage_card,Bloodrage,血怒
+DOTA_Tooltip_modifier_bloodseeker_bloodrage_card_Description,Increased %dMODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE%%% Output and take damage,加深%dMODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE%%%的输出和承受伤害
+CardError_NoLastCard,No stealable card,没有可窃取卡牌
+CardError_TargetNotRune,Target not rune,目标不是神符
+Error_ItemMax,Inventory max,物品栏已满
+Error_ItemSide,Only Side Shop,限边路商店购买
+Error_ItemSecret,Only Secret Shop,限神秘商店购买
+Error_ItemSideAndSecret,Only Side or Secret Shop,限边路或神秘商店购买
+Error_ItemNoCount,Not Enough Purchases,购买次数不足
+Error_ItemOprt,"Soldier can't operate, Operate Item from the hero",兵卒无法操作，请从英雄本体操作装备
+Error_NoSpaceForRapier,No place for Rappier,背包没有空位拾取圣剑
+Error_SellNotSelfRound,Sell Only Self Round,仅自身回合出售
+Error_NeedGold,Not Enough Gold,金币不足
+Error_CantGCLD_Slef,Can't Siege Owned Domain,自身领地，无法攻城
+Error_CantGCLD_Battling,Besieging…,攻城中......
+Error_CantGCLD_Stunned,"Stunned, Siege Failed",目标眩晕无法攻城
+Error_CantGCLD_InPrison,"In Prison, Siege Failed",目标被地狱封印无法攻城
+Error_Card_TP,Only Teleport Path,仅传送阵
+Error_NoChichen,No Chichen,鸡儿不足
+Error_TextNaN,Enter An Integer,请输入整数
+Error_Trade_Failed,"Failed to initiate transaction, please try again",发起交易失败，请重试
+Error_Trade_Failed_-1,Transaction data error,交易数据错误
+Error_Trade_Failed_0,Counterparty rejects transaction,对方拒绝交易
+Error_Trade_Failed_2,Player data error,玩家数据错误
+Error_Trade_Failed_3,Gold coin error,金币错误
+Error_Trade_Failed_5,Contains unowned paths,包含未拥有路径
+Error_Trade_Failed_6,Continuous errors,有连地错误
+Error_Trade_Failed_7,Contains path in the siege,包含攻城中的领地
+Error_Trade_Failed_8,This player is trading,玩家正在交易中
+Error_Trade_Failed_9,Trading player death,交易玩家死亡
+Error_SendAuction_Failed_0,The current auction is not completed,当前拍卖未完成
+Error_SendAuction_Failed_2,Player data error,玩家数据错误
+Error_SendAuction_Failed_3,Path is empty,路径为空
+Error_SendAuction_Failed_4,Contains unowned paths,包含未拥有路径
+Error_SendAuction_Failed_5,Continuous errors,有连地错误
+Error_SendAuction_Failed_7,Contains path in the siege,包含攻城中的领地
+Error_Bid_LessThanLeast,Below the minimum,低于最低加价
+Error_SendBid_Failed_0,Auction data error,拍卖数据错误
+Error_SendBid_Failed_2,Bidding player error,竞拍玩家错误
+Error_SendBid_Failed_3,Gold coin auction error,竞拍金币错误
+Error_AYZZ_Failed,Occupy Fail,安营扎寨失败
+texttip_SoldierAbility,The captured territory path will spawn a pawn corresponding to the hero which will automatically attack and release skills when the enemy passes by. <br> Pawn damage <font color='#FF0000'> loot </font> Target player <font color='#FFFF00'> gold </font>.,占领的领地路径会诞生英雄对应的兵卒，在敌人路过时会自动攻击并释放技能。<br>兵卒造成的伤害会<font color='#FF0000'>掠夺</font>目标玩家的<font color='#FFFF00'>金币</font>。
+SoldierAbility,Soldier Ability,兵卒技能
 TradeButtonText,T\nR\nA\nD\nE,交\n易\n行
 AuctionButtonText,A\nU\nC\nT\nI\nO\nN,拍\n卖\n场
-TradeTitle,,发起交易
-BeTradeTitle,,收到交易
-AuctionTitle,,举行拍卖
-TradeTargetTitle,,选择玩家：
-BeTradeTargetTitle,,发起交易玩家：
-TradePathTargetTitle,,选择领地：
+TradeTitle,Send Trade,发起交易
+BeTradeTitle,Receive Trade,收到交易
+AuctionTitle,Hold Auction,举行拍卖
+TradeTargetTitle,Target Player:,选择玩家：
+BeTradeTargetTitle,Seller:,发起交易玩家：
+TradePathTargetTitle,Target Path:,选择领地：
 TradeGoldCost,PRICE,交易价格
 SendTradeButton,INITIATE TRADE,发送交易
-TradeButtonWait,,等待确认...
-ConfirmTrade,,确认
-CancelTrade,,取消
-AuctionPrice,,起拍价格：
-SendAuctionButton,,发起拍卖
-AuctionButtonWait,,请等候...
-BidPanelTitle,,叫价玩家：
-BidPanelPrice,,当前叫价：
-BidTitle,,竞拍中
-BidPathTargetTitle,,竞拍领地：
-BidSendPlayerTitle,,发起玩家：
-BidPlayerTitle,,叫价玩家：
-BidGoldTitle,,设置加价：每次最低加价
-BidNotEnoughGold,,金币不足
-SendBidButton,,叫价
-WaitBidButton,,等待...
-BidFinishTitle,,拍卖完成
-BidFinishPanelTitle,,最终价格：
-FinishBidButton,,确认
-SendPriceText,,起拍价格：
-FinishRound,,结束回合
-FinishDC,,结束清算
+TradeButtonWait,Wait…,等待确认...
+ConfirmTrade,Confirm,确认
+CancelTrade,Cancel,取消
+AuctionPrice,Starting Price:,起拍价格：
+SendAuctionButton,Start Auction,发起拍卖
+AuctionButtonWait,Wait…,请等候...
+BidPanelTitle,Bidding Player:,叫价玩家：
+BidPanelPrice,Current Price:,当前叫价：
+BidTitle,In The Auction,竞拍中
+BidPathTargetTitle,Path:,竞拍领地：
+BidSendPlayerTitle,Auctioneer:,发起玩家：
+BidPlayerTitle,Bidder:,叫价玩家：
+BidGoldTitle,Set markup: Minimum markup each time,设置加价：每次最低加价
+BidNotEnoughGold,Not Enough Gold,金币不足
+SendBidButton,Send Bid,叫价
+WaitBidButton,Wait…,等待...
+BidFinishTitle,Auction Completed,拍卖完成
+BidFinishPanelTitle,Final Price:,最终价格：
+FinishBidButton,Confirm,确认
+SendPriceText,Starting Price:,起拍价格：
+FinishRound,Finish,结束回合
+FinishDC,Finish,结束清算
 RoundText,Round,回合
-PathName_1,,起点
-PathName_2,,秘密宝藏
-PathName_3,,天辉 ● 其一
-PathName_4,,天辉 ● 其二
-PathName_5,,天辉 ● 其三
-PathName_6,,传送 ● 西
-PathName_7,,野区 ● 小
-PathName_8,,上河道下坡
-PathName_9,,河道 ● 上路
-PathName_10,,上河道上坡
-PathName_11,,炎魔炼狱
-PathName_12,,当铺
-PathName_13,,蛇沼 ● 之一
-PathName_14,,蛇沼 ● 之二
-PathName_15,,蛇沼 ● 之三
-PathName_16,,传送 ● 北
-PathName_17,,神符 ● 上
-PathName_18,,夜魇 ● 其一
-PathName_19,,夜魇 ● 其二
-PathName_20,,夜魇 ● 其三
-PathName_21,,肉山巢穴
-PathName_22,,天灾福泽
-PathName_23,,龙谷 ● 之一
-PathName_24,,龙谷 ● 之二
-PathName_25,,龙谷 ● 之三
-PathName_26,,传送 ● 东
-PathName_27,,野区 ● 大
-PathName_28,,下河道下坡
-PathName_29,,河道 ● 下路
-PathName_30,,下河道上坡
-PathName_31,,野区 ● 远古
-PathName_32,,秘密宝藏
-PathName_33,,鵰巢 ● 之一
-PathName_34,,鵰巢 ● 之二
-PathName_35,,鵰巢 ● 之三
-PathName_36,,传送 ● 南
-PathName_37,,神符 ● 下
-PathName_38,,当铺
-PathName_39,,圣所 ● 其一
-PathName_40,,圣所 ● 其二
-DOTA_Tooltip_Ability_path_text_1,,起点
+PathName_1,Start,起点
+PathName_2,Treasure,秘密宝藏
+PathName_3,Radiant ●Ⅰ,天辉 ● 其一
+PathName_4,Radiant ●Ⅱ,天辉 ● 其二
+PathName_5,Radiant ●Ⅲ,天辉 ● 其三
+PathName_6,Teleport ●W,传送 ● 西
+PathName_7,Neutral Area ●Small,野区 ● 小
+PathName_8,Top River Downslope,上河道下坡
+PathName_9,River ● Top,河道 ● 上路
+PathName_10,Top River Upslope,上河道上坡
+PathName_11,Purgatory,炎魔炼狱
+PathName_12,Shop,当铺
+PathName_13,Snake Marsh ●Ⅰ,蛇沼 ● 之一
+PathName_14,Snake Marsh ●Ⅱ,蛇沼 ● 之二
+PathName_15,Snake Marsh ●Ⅲ,蛇沼 ● 之三
+PathName_16,Teleport ●N,传送 ● 北
+PathName_17,Rune ●Top,神符 ● 上
+PathName_18,Dire ●Ⅰ,夜魇 ● 其一
+PathName_19,Dire ●Ⅱ,夜魇 ● 其二
+PathName_20,Dire ●Ⅲ,夜魇 ● 其三
+PathName_21,Roshan's Pit,肉山巢穴
+PathName_22,Treasure,天灾福泽
+PathName_23,Dragon Valley ●Ⅰ,龙谷 ● 之一
+PathName_24,Dragon Valley ●Ⅱ,龙谷 ● 之二
+PathName_25,Dragon Valley ●Ⅲ,龙谷 ● 之三
+PathName_26,Teleport ●E,传送 ● 东
+PathName_27,Neutral Area ●Large,野区 ● 大
+PathName_28,Bottom River Downslope,下河道下坡
+PathName_29,River ● Bottom,河道 ● 下路
+PathName_30,Bottom River Upslope,下河道上坡
+PathName_31,Neutral Area ●Ancient,野区 ● 远古
+PathName_32,Shop,当铺
+PathName_33,Eagle's Nest ●Ⅰ,鵰巢 ● 之一
+PathName_34,Eagle's Nest ●Ⅱ,鵰巢 ● 之二
+PathName_35,Eagle's Nest ●Ⅲ,鵰巢 ● 之三
+PathName_36,Teleport ●S,传送 ● 南
+PathName_37,Rune ● Bottom,神符 ● 下
+PathName_38,Shop,当铺
+PathName_39,Sanctuary ●Ⅰ,圣所 ● 其一
+PathName_40,Sanctuary ●Ⅱ,圣所 ● 其二
+DOTA_Tooltip_Ability_path_text_1,Start,起点
 DOTA_Tooltip_Ability_path_text_1_Description,,到达<font color='#EEEEEE'>【起点】</font>时都会获得<font color='#FFFF00'>金币</font>奖励。<br><br>第一次为<font color='#FFFF00'>1000</font>，之后每次递减100，最低为0。
-DOTA_Tooltip_Ability_path_text_treasure,,秘密宝藏
+DOTA_Tooltip_Ability_path_text_treasure,Treasure,秘密宝藏
 DOTA_Tooltip_Ability_path_text_treasure_Description,,到达<font color='#EEEEEE'>【秘密宝藏】</font>会随机获得<font color='#FFFF00'>100~1000金币</font>或者金币数量内的<font color='#FFFF00'>补给装备</font>。
-DOTA_Tooltip_Ability_path_text_12,,天辉
+DOTA_Tooltip_Ability_path_text_12,Radiant,天辉
 DOTA_Tooltip_Ability_path_text_12_Description,,占领后可获得<font color='#EEEEEE'>【辉光普照】</font>领地增益。<br><br>天辉大地因世界树充满活力。全军将受到世界树的庇护防御抗性提升。
-DOTA_Tooltip_Ability_path_text_tp,,传送
+DOTA_Tooltip_Ability_path_text_tp,Teleport,传送
 DOTA_Tooltip_Ability_path_text_tp_Description,,进入己方传送阵时获得一张<font color='#0099ff'>传送卷轴</font>。
-DOTA_Tooltip_Ability_path_text_monster,,野区
+DOTA_Tooltip_Ability_path_text_monster,Neutral Area,野区
 DOTA_Tooltip_Ability_path_text_monster_Description,,前往野区猎杀野怪获得<font color='#FFFF00'>金钱经验</font>。<br>如果被野怪击杀，会坠入<font color='#FF0000'>炎魔炼狱</font>。
-DOTA_Tooltip_Ability_path_text_card,,上下坡
+DOTA_Tooltip_Ability_path_text_card,Slope,上下坡
 DOTA_Tooltip_Ability_path_text_card_Description,,到达<font color='#EEEEEE'>【上坡】</font>或<font color='#EEEEEE'>【下坡】</font>路径时会随机抽取一张<font color='#0099ff'>卡牌</font>。
-DOTA_Tooltip_Ability_path_text_upriver,,河道 ● 上路
+DOTA_Tooltip_Ability_path_text_upriver,River,河道 
 DOTA_Tooltip_Ability_path_text_upriver_Description,,占领后可获得<font color='#EEEEEE'>【寒流】</font>领地增益。<br><br>肃杀的世界连流水同样冰冷，刺骨之寒透过坚硬的盔甲。
-DOTA_Tooltip_Ability_path_text_prison,,炎魔炼狱
+DOTA_Tooltip_Ability_path_text_prison,Purgatory,炎魔炼狱
 DOTA_Tooltip_Ability_path_text_prison_Description,,到达此处的玩家将坠入<font color='#FF0000'>炎魔炼狱</font>。<br><br>身处地狱时，会被封锁全部领地，同时每回合<font color='#FF0000'>损失金币</font>。
-DOTA_Tooltip_Ability_path_text_shop,,当铺
+DOTA_Tooltip_Ability_path_text_shop,Shop,当铺
 DOTA_Tooltip_Ability_path_text_shop_Description,,到达<font color='#EEEEEE'>【当铺】</font>会获得<font color='#FFFF00'>一次</font>购物的机会。
-DOTA_Tooltip_Ability_path_text_14,,蛇沼
+DOTA_Tooltip_Ability_path_text_14,Snake Marsh,蛇沼
 DOTA_Tooltip_Ability_path_text_14_Description,,占领后可获得<font color='#EEEEEE'>【缚足】</font>领地增益。<br><br>敌人经过有概率被群蛇束缚。
-DOTA_Tooltip_Ability_path_text_15,,夜魇
+DOTA_Tooltip_Ability_path_text_15,Dire,夜魇
 DOTA_Tooltip_Ability_path_text_15_Description,,占领后可获得<font color='#EEEEEE'>【癫狂】</font>领地增益。<br><br>至邪的源泉侵蚀它的子民，失去了灵魂换得他人的恐惧。
-DOTA_Tooltip_Ability_path_text_16,,龙谷
+DOTA_Tooltip_Ability_path_text_16,Dragon Valley,龙谷
 DOTA_Tooltip_Ability_path_text_16_Description,,占领后可获得<font color='#EEEEEE'>【神龙赐法】</font>领地增益。<br><br>全军魔法回复提升。神秘的古老种族，掌管着最纯粹的魔法。
-DOTA_Tooltip_Ability_path_text_17,,鵰巢
+DOTA_Tooltip_Ability_path_text_17,Eagle's Nest,鵰巢
 DOTA_Tooltip_Ability_path_text_17_Description,,占领后可获得<font color='#EEEEEE'>【圣兽】</font>领地增益。<br><br>圣兽刮起飓风，伤害经过的敌人。
-DOTA_Tooltip_Ability_path_text_18,,圣所
+DOTA_Tooltip_Ability_path_text_18,Sanctuary,圣所
 DOTA_Tooltip_Ability_path_text_18_Description,,占领后可获得<font color='#EEEEEE'>【圣洁净土】</font>领地增益。<br><br>对驻足在圣所的敌人造成神圣伤害。
-DOTA_Tooltip_Ability_path_text_roshan,,肉山巢穴
-DOTA_Tooltip_Ability_path_text_roshan_Description,,肉山正在路上...
-rune_0,,双倍伤害
-rune_1,,极速
-rune_3,,隐身
-rune_4,,恢复
-rune_5,,赏金
-rune_6,,奥术
-rune_8,,智慧
-rune_9,,护盾
+DOTA_Tooltip_Ability_path_text_roshan,Roshan's Pit,肉山巢穴
+DOTA_Tooltip_Ability_path_text_roshan_Description,Roshan is on its way,肉山正在路上...
+rune_0,Double Rune,双倍伤害
+rune_1,Haste Rune,极速
+rune_3,Invisible Rune,隐身
+rune_4,Regen Rune,恢复
+rune_5,Bounty Rune,赏金
+rune_6,Arcane Rune,奥术
+rune_8,Wisdom Rune,智慧
+rune_9,Shield Rune,护盾
 DOTA_Tooltip_Ability_rune_text_0,,双倍伤害
 DOTA_Tooltip_Ability_rune_text_0_Description,,到达路径后拾取神符，基础攻击翻倍。持续到下个自身回合结束。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
 DOTA_Tooltip_Ability_rune_text_1,,极速
@@ -975,7 +993,7 @@ Capture_12,,<font color='#FFFF00'> 300 </font>耗资
 PathBuff_12,,辉光普照
 PathBuffDescription_12,,天辉大地因世界树充满活力。全军将受到世界树的庇护防御抗性提升。<br>【满级效果 : 融合】<br>天辉兵卒融合成传说中的天辉巨人。<br>（等级，射程，体型是普通兵卒的 2 倍）
 PathBuffKey1_12,,护甲提升 : 
-PathBuffVal1_12,,5/10/20
+PathBuffVal1_12,,2005/10/20
 PathBuffKey2_12,,魔抗提升 : 
 PathBuffVal2_12,,10%/15%/25%
 // 野怪路径,,
@@ -1079,7 +1097,6 @@ scoreboard_title_kills,K,击
 scoreboard_title_gcld,SIEGE,攻
 scoreboard_title_mute,MUTE,屏蔽
 scoreboard_tool_tip_mute_trade,Reject his trade,拒绝他的交易（还未实现=w=）
-,,
 // 战斗广播,,
 Custom_GetGoodCard,,{s:player_name} 获得了卡牌·<font color='#FFFF00'>{s:locstring_value}</font>
 Custom_GetBadCard,,{s:player_name} 获得了卡牌·<font color='#207777'>{s:locstring_value}</font>

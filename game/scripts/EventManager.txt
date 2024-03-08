@@ -118,12 +118,6 @@
 
 "dota_player_used_ability", { caster_entindex: EntityIndex, abilityname: string }
 
-"Event_LastCDChange", {
-                                    strAbltName: event.abilityname,
-                                    entity: entity,
-                                    nCD: 0
-                                }
-
 "Event_GCLDReady", {
     entity: CDOTA_BaseNPC_Hero,
     path: PathDomain,

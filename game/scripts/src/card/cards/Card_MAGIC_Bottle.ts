@@ -4,13 +4,19 @@ import { Card } from '../card';
 
 /**魔瓶 20006 */
 export class Card_MAGIC_Bottle extends Card {
+    m_sName: string = '魔瓶';
     CastFilterResultTarget(target: CDOTA_BaseNPC): UnitFilterResult {
+        print('===bottle cast 0===');
         if (!IsValid(target)) return UnitFilterResult.FAIL_CUSTOM;
+        print('===bottle cast 1===');
         if (!this.CanUseCard(target)) return UnitFilterResult.FAIL_CUSTOM;
+        print('===bottle cast 2===');
         if (!target.GetUnitName().includes('rune_')) {
+            print('===bottle cast 3===');
             this.m_strCastError = 'CardError_TargetNotRune';
             return UnitFilterResult.FAIL_CUSTOM;
         }
+        print('===bottle cast 4===');
         this.m_eTarget = target;
         return UnitFilterResult.SUCCESS;
     }
@@ -34,6 +40,7 @@ export class Card_MAGIC_Bottle extends Card {
     }
 
     OnSpellStart(): void {
+        print('===bottle onspellstart 0===')
         const target = this.GetCursorTarget();
         if (!IsValid(target)) return;
 

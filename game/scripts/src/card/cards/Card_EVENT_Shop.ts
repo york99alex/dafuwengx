@@ -3,6 +3,7 @@ import { Card } from "../card";
 
 /**商店卡 30002 */
 export class Card_EVENT_Shop extends Card {
+    m_sName: string = '商店卡'
     isCanCastMove(): boolean {
         return true;
     }

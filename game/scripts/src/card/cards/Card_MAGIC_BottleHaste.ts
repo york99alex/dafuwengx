@@ -1,7 +1,9 @@
 import { PathRune } from '../../path/pathtype/pathrune';
 import { Card } from '../card';
 
+/**极速神符 */
 export class Card_MAGIC_BottleHaste extends Card {
+    m_sName: string = '极速神符';
     isCanCastMove(): boolean {
         return true;
     }

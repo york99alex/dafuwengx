@@ -4,6 +4,7 @@ import { Card } from '../card';
 
 /**拉野 10008 */
 export class Card_MONSTER_CREEP_STACKING extends Card {
+    m_sName: string = '拉野';
     CastFilterResultLocation(location: Vector): UnitFilterResult {
         print('===Card_CastFilterResultLocation', Card_MONSTER_CREEP_STACKING.name);
         if (!this.CanUseCard()) return UnitFilterResult.FAIL_CUSTOM;

@@ -1,10 +1,10 @@
 import { TP_PRISON, TypeOprt } from '../../constants/gamemessage';
 import { PathPrison } from '../../path/pathtype/pathprison';
-import { IsValid } from '../../utils/amhc';
 import { Card } from '../card';
 
 /**阎刃333 30003 */
 export class Card_EVENT_Infernal_Blade_333 extends Card {
+    m_sName: string = '阎刃333';
     isCanCastInPrison(): boolean {
         return true;
     }

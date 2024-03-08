@@ -5,6 +5,7 @@ import { Card } from '../card';
 
 /**两级反转 20003 */
 export class Card_MAGIC_ReversePolarity extends Card {
+    m_sName: string = '两级反转';
     OnSpellStart(): void {
         const owner = this.GetOwner();
         const path = GameRules.PathManager.getNextPath(owner.m_pathCur, 1 * owner.m_nMoveDir);

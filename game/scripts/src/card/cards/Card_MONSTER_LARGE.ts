@@ -3,8 +3,9 @@ import { PathMonster } from '../../path/pathtype/pathmonster';
 import { Player } from '../../player/player';
 import { Card } from '../card';
 
-/**大野 10006 */
+/**大型猎野场 10006 */
 export class Card_MONSTER_LARGE extends Card {
+    m_sName: string = '大型猎野场';
     CastFilterResult(): UnitFilterResult {
         print('===Card CastFilterResult', Card_MONSTER_LARGE.name);
         if (!this.CanUseCard()) return UnitFilterResult.FAIL_CUSTOM;

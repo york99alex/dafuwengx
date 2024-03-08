@@ -199,12 +199,12 @@ export class GameConfig {
         ParaAdjuster.SetIntToMana(0);
         GameRules.PlayerManager = new PlayerManager(); // 玩家管理模块
         GameRules.PlayerManager.init();
-        GameRules.PathManager = new PathManager(); // 路径管理模块
-        GameRules.PathManager.init();
-        AbilityManager.init(); // 技能模块
         GameRules.CardFactory = new CardFactory(); // 卡牌工厂模块
         GameRules.CardManager = new CardManager(); // 卡牌管理模块
         GameRules.CardManager.init();
+        GameRules.PathManager = new PathManager(); // 路径管理模块
+        GameRules.PathManager.init();
+        AbilityManager.init(); // 技能模块
         GameRules.Trade = new Trade(); // 交易模块
         GameRules.Trade.init();
         GameRules.Auction = new Auction(); // 拍卖模块

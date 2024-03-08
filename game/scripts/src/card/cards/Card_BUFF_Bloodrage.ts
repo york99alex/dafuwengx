@@ -5,6 +5,7 @@ import { Card } from '../card';
 
 /**血怒 20020 */
 export class Card_BUFF_Bloodrage extends Card {
+    m_sName: string = '血怒';
     isCanCastMove(): boolean {
         return true;
     }
@@ -43,6 +44,7 @@ export class Card_BUFF_Bloodrage extends Card {
 export class modifier_bloodseeker_bloodrage_card extends BaseModifier {
     damage_out_amplify = 20;
     damage_in_amplify = 20;
+    m_nRound = 1;
     IsHidden(): boolean {
         return false;
     }

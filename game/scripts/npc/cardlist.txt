@@ -198,4 +198,85 @@
         "CardKind"          "3"
         "IsSupply"          "1"
     }
+    // 上帝之手
+    "Card_EVENT_Hand_Of_God"
+    {
+        "CardType"          "30004"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
+    // 事件-闪烁匕首
+    "Card_EVENT_Blink"
+    {
+        "CardType"          "30005"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
+    // 团队之手
+    "Card_EVENT_Hand_Of_Midas"
+    {
+        "CardType"          "30006"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
+    // 玻璃大炮
+    "Card_EVENT_Glass_Canon"
+    {
+        "CardType"          "30007"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
+    // 卡牌双雄
+    "Card_EVENT_Card_Double"
+    {
+        "CardType"          "30008"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
+    // 刷新球碎片
+    "Card_EVENT_Card_Refresher"
+    {
+        "CardType"          "30009"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
+    // 刷新球碎片
+    "Card_EVENT_Card_Cheese"
+    {
+        "CardType"          "30010"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
+    // 骰子-6
+    "Card_EVENT_Card_Roll_6"
+    {
+        "CardType"          "30011"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
+    // 骰子-3
+    "Card_EVENT_Card_Roll_3"
+    {
+        "CardType"          "30012"
+        "ManaCost"          "0"
+        "CastType"          "1"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
 }

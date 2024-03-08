@@ -251,6 +251,7 @@ export class AbilityManager {
         if (!IsValid(buff) || !buff['m_nRound'] || buff['m_nRound'] < 1) {
             return;
         }
+        if (IsClient()) return;
         GameRules.EventManager.Register('Event_PlayerRoundFinished', (playerF: Player) => {
             if (playerF.m_nPlayerID == GameRules.GameConfig.getLastValidOrder(casterPlayerID)) {
                 // 一轮结束
