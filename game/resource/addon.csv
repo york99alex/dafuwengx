@@ -904,190 +904,190 @@ DOTA_Tooltip_Ability_path_text_18,Sanctuary,圣所
 DOTA_Tooltip_Ability_path_text_18_Description,,占领后可获得<font color='#EEEEEE'>【圣洁净土】</font>领地增益。<br><br>对驻足在圣所的敌人造成神圣伤害。
 DOTA_Tooltip_Ability_path_text_roshan,Roshan's Pit,肉山巢穴
 DOTA_Tooltip_Ability_path_text_roshan_Description,Roshan is on its way,肉山正在路上...
-rune_0,Double Rune,双倍伤害
-rune_1,Haste Rune,极速
-rune_3,Invisible Rune,隐身
-rune_4,Regen Rune,恢复
-rune_5,Bounty Rune,赏金
-rune_6,Arcane Rune,奥术
-rune_8,Wisdom Rune,智慧
-rune_9,Shield Rune,护盾
-DOTA_Tooltip_Ability_rune_text_0,,双倍伤害
-DOTA_Tooltip_Ability_rune_text_0_Description,,到达路径后拾取神符，基础攻击翻倍。持续到下个自身回合结束。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
-DOTA_Tooltip_Ability_rune_text_1,,极速
-DOTA_Tooltip_Ability_rune_text_1_Description,,到达路径后拾取神符，感受移动速度的极致。持续到下个自身回合结束。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
-DOTA_Tooltip_Ability_rune_text_3,,隐身
-DOTA_Tooltip_Ability_rune_text_3_Description,,到达路径后拾取神符，进入隐身状态，隐身的英雄无法被攻击。持续到下个自身回合结束。<br>攻击或者施法后结束隐身。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
-DOTA_Tooltip_Ability_rune_text_4,,恢复
-DOTA_Tooltip_Ability_rune_text_4_Description,,到达路径后拾取神符，恢复英雄和兵卒全部的生命和魔法。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
-DOTA_Tooltip_Ability_rune_text_5,,赏金
-DOTA_Tooltip_Ability_rune_text_5_Description,,到达路径后拾取神符，获得500金币。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
-DOTA_Tooltip_Ability_rune_text_6,,奥术
-DOTA_Tooltip_Ability_rune_text_6_Description,,到达路径后拾取神符，释放技能冷却时间 -1 。<br>全部技能和卡牌魔法消耗 -1 。<br>持续到下个自身回合结束。<br>（冷却最低为1）<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
-DOTA_Tooltip_Ability_rune_text_8,,智慧
-DOTA_Tooltip_Ability_rune_text_8_Description,,到达路径后拾取神符，获得5点经验。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
-DOTA_Tooltip_Ability_rune_text_9,,护盾
-DOTA_Tooltip_Ability_rune_text_9_Description,,到达路径后拾取神符，制造一个英雄最大生命值50%的护盾，可以庇佑其受到的伤害并不损失金币。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
-DOTA_Tooltip_Modifier_rune_0,,双倍伤害
-DOTA_Tooltip_Modifier_rune_0_Description,,基础攻击翻倍。持续到下个自身回合结束。
-DOTA_Tooltip_Modifier_rune_1,,极速
-DOTA_Tooltip_Modifier_rune_1_Description,,感受移动速度的极致。持续到下个自身回合结束。
-DOTA_Tooltip_Modifier_rune_3,,隐身
-DOTA_Tooltip_Modifier_rune_3_Description,,隐身的英雄无法被攻击。持续到下个自身回合结束。<br>攻击或者施法后结束隐身
-DOTA_Tooltip_Modifier_rune_4,,恢复
-DOTA_Tooltip_Modifier_rune_4_Description,,恢复英雄和兵卒全部的生命和魔法。
-DOTA_Tooltip_Modifier_rune_5,,赏金
-DOTA_Tooltip_Modifier_rune_5_Description,,获得500金币
-DOTA_Tooltip_Modifier_rune_6,,奥术
-DOTA_Tooltip_Modifier_rune_6_Description,,释放技能冷却时间 -1 。<br>全部技能和卡牌魔法消耗 -1 。<br>持续到下个自身回合结束。<br>（冷却最低为1）
-DOTA_Tooltip_Modifier_rune_8,,智慧
-DOTA_Tooltip_Modifier_rune_8_Description,,获得5点经验
-DOTA_Tooltip_Modifier_rune_9,,护盾
-DOTA_Tooltip_Modifier_rune_9_Description,,制造一个英雄最大生命值50%的护盾，可以庇佑其受到的伤害并不损失金币
-supply_title,,补给环节
-supply_tip_ready,,准备阶段
-supply_tip_turn,,选择补给品（左键选择，右键于商店查看）
-supply_tip_end,,补给结束
-supply_tip_select,,请挑选
+rune_0,Double Damage,双倍伤害
+rune_1,Haste,极速
+rune_3,Invisibility,隐身
+rune_4,Regeneration,恢复
+rune_5,Bounty,赏金
+rune_6,Arcane,奥术
+rune_8,Wisdom,智慧
+rune_9,Shield,护盾
+DOTA_Tooltip_Ability_rune_text_0,Double Damage,双倍伤害
+DOTA_Tooltip_Ability_rune_text_0_Description,"Once you reach the path, pick up the rune, doubling your base attack. Last till next own turn. <br><br> Use card <font color='#0099ff'>【 Bottle 】</font> Can be used at any time into the bottle.",到达路径后拾取神符，基础攻击翻倍。持续到下个自身回合结束。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_1,Haste,极速
+DOTA_Tooltip_Ability_rune_text_1_Description,"Once you reach the path, pick up the rune, feel the extreme speed of movement. Last till next own turn. <br><br> Use card <font color='#0099ff'>【 Bottle 】</font> Can be used at any time into the bottle.",到达路径后拾取神符，感受移动速度的极致。持续到下个自身回合结束。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_3,Invisibility,隐身
+DOTA_Tooltip_Ability_rune_text_3_Description,"Once you reach the path, pick up the rune, enter invisibility. Invisible heroes cannot be attacked. Last till next own turn. <br> Ends invisibility after an attack or spell.<br><br> Use card <font color='#0099ff'>【 Bottle 】</font> Can be used at any time into the bottle.",到达路径后拾取神符，进入隐身状态，隐身的英雄无法被攻击。持续到下个自身回合结束。<br>攻击或者施法后结束隐身。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_4,Regeneration,恢复
+DOTA_Tooltip_Ability_rune_text_4_Description,"Once you reach the path, pick up the rune, regenerate all life and magic to heroes and soldiers. Last till next own turn. <br><br> Use card <font color='#0099ff'>【 Bottle 】</font> Can be used at any time into the bottle.",到达路径后拾取神符，恢复英雄和兵卒全部的生命和魔法。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_5,Bounty,赏金
+DOTA_Tooltip_Ability_rune_text_5_Description,"Once you reach the path, pick up the rune, get 500 gold. Last till next own turn. <br><br> Use card <font color='#0099ff'>【 Bottle 】</font> Can be used at any time into the bottle.",到达路径后拾取神符，获得500金币。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_6,Arcane,奥术
+DOTA_Tooltip_Ability_rune_text_6_Description,"Once you reach the path, pick up the rune, release skill cooldown -1.(Minimum cooling 1) <br> All abilities and cards Mana cost -1.<br> Last till next own turn. <br><br> Use card <font color='#0099ff'>【 Bottle 】</font> Can be used at any time into the bottle.",到达路径后拾取神符，释放技能冷却时间 -1 。<br>全部技能和卡牌魔法消耗 -1 。<br>持续到下个自身回合结束。<br>（冷却最低为1）<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_8,Wisdom,智慧
+DOTA_Tooltip_Ability_rune_text_8_Description,"Once you reach the path, pick up the rune, gain 5 EXP. Last till next own turn. <br><br> Use card <font color='#0099ff'>【 Bottle 】</font> Can be used at any time into the bottle.",到达路径后拾取神符，获得5点经验。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Ability_rune_text_9,Shield,护盾
+DOTA_Tooltip_Ability_rune_text_9_Description,"Once you reach the path, pick up the rune, create a shield with 50% of the hero's maximum health, which protects him from damage without losing gold. <br><br> Use card <font color='#0099ff'>【 Bottle 】</font> Can be used at any time into the bottle.",到达路径后拾取神符，制造一个英雄最大生命值50%的护盾，可以庇佑其受到的伤害并不损失金币。<br><br>使用卡牌 <font color='#0099ff'>【魔瓶】</font>可以将神符收入瓶中随时使用。
+DOTA_Tooltip_Modifier_rune_0,Double Damage,双倍伤害
+DOTA_Tooltip_Modifier_rune_0_Description,Doubling your base attack. Last till next own turn.,基础攻击翻倍。持续到下个自身回合结束。
+DOTA_Tooltip_Modifier_rune_1,Haste,极速
+DOTA_Tooltip_Modifier_rune_1_Description,Feel the extreme speed of movement. Last till next own turn.,感受移动速度的极致。持续到下个自身回合结束。
+DOTA_Tooltip_Modifier_rune_3,Invisibility,隐身
+DOTA_Tooltip_Modifier_rune_3_Description,Enter invisibility. Invisible heroes cannot be attacked.<br> Ends invisibility after an attack or spell.,隐身的英雄无法被攻击。持续到下个自身回合结束。<br>攻击或者施法后结束隐身
+DOTA_Tooltip_Modifier_rune_4,Regeneration,恢复
+DOTA_Tooltip_Modifier_rune_4_Description,Regenerate all life and magic to heroes and soldiers.,恢复英雄和兵卒全部的生命和魔法。
+DOTA_Tooltip_Modifier_rune_5,Bounty,赏金
+DOTA_Tooltip_Modifier_rune_5_Description,Get 500 gold,获得500金币
+DOTA_Tooltip_Modifier_rune_6,Arcane,奥术
+DOTA_Tooltip_Modifier_rune_6_Description,Release skill cooldown -1.(Minimum cooling 1) <br> All abilities and cards Mana cost -1.<br> Last till next own turn.,释放技能冷却时间 -1 。<br>全部技能和卡牌魔法消耗 -1 。<br>持续到下个自身回合结束。<br>（冷却最低为1）
+DOTA_Tooltip_Modifier_rune_8,Wisdom,智慧
+DOTA_Tooltip_Modifier_rune_8_Description,Gain 5 EXP,获得5点经验
+DOTA_Tooltip_Modifier_rune_9,Shield,护盾
+DOTA_Tooltip_Modifier_rune_9_Description,"Create a shield with 50% of the hero's maximum health, which protects him from damage without losing gold.",制造一个英雄最大生命值50%的护盾，可以庇佑其受到的伤害并不损失金币
+supply_title,SUPPLY ROUND,补给回合
+supply_tip_ready,ARE YOU READY,准备阶段
+supply_tip_turn,"Select suppy (left click to select, right click to view in store)",选择补给品（左键选择，右键于商店查看）
+supply_tip_end,END OF SUPPLY,补给结束
+supply_tip_select,Please Select,请挑选
 // 通用文本,,
-text_understand,,了解
-text_give_up,,放弃
-text_cancel,,取消
-text_go_to,,前往
+text_understand,KNOWN,了解
+text_give_up,GIVE UP,放弃
+text_cancel,CANCEL,取消
+text_go_to,GO TO,前往
 // 路径面板,,
-TypeOperator_AYZZ,,安营扎寨
-TypeOperator_AtkMonster,,猎野
-PathTitleTip_text,,领地
-PathTitleTip_buff,,增益
-PathTitleTip_AtkMonster,,前往猎野？
-Capture,,占领
-TypeOperator_AYZZ_Description,,是否耗资占领？
-TypeOperator_AYZZ_Owner,, 获得该领地
-TypeOperator_PRISON_title,,炎魔炼狱
-TypeOperator_GCLD,,攻城掠地
-Prison_Out,,买活
+TypeOperator_AYZZ,CAMP,安营扎寨
+TypeOperator_AtkMonster,HUNTING WILD,猎野
+PathTitleTip_text,camp,领地
+PathTitleTip_buff,buff,增益
+PathTitleTip_AtkMonster,Jungling?,前往猎野？
+Capture,Capture,占领
+TypeOperator_AYZZ_Description,Whether to camp?,是否耗资占领？
+TypeOperator_AYZZ_Owner,acquires the path, 获得该领地
+TypeOperator_PRISON_title,PURGATORY,炎魔炼狱
+TypeOperator_GCLD,SIEGE,攻城掠地
+Prison_Out,Buy Back,买活
 // 攻城描述,,
-PathGCLDDescription,,与敌方兵卒决斗，直到有一方战败。<br>或下个自身回合开始。双方都可提升经验。<br><font color='#FFFF00'>胜利：击杀敌兵，抢占领地。</font><br><font color='#FF0000'>失败：被打败，交纳金币。</font> <br>兵卒★：1经验，100金币。<br>兵卒★★：2经验，200金币。<br>兵卒★★★：3经验，300金币。
-PathTitleTip_GCLD,,是否攻城？
+PathGCLDDescription,"Duel with the enemy creeps.<br>Until one party is defeated, or the next round begins.<br>Both sides can enhance their experience.<br><font color='#FFFF00'>WIN : Kill the enemy, and grab the occupation.</font><br><font color='#FF0000'>DEFEAT: Pay gold coins.</font> <br>Creeps★: 1 EXP,100 GOLD.<br>Creeps★★: 2 EXP,200 GOLD.<br>Creeps★★★: 3 EXP,300 GOLD.",与敌方兵卒决斗，直到有一方战败。<br>或下个自身回合开始。双方都可提升经验。<br><font color='#FFFF00'>胜利：击杀敌兵，抢占领地。</font><br><font color='#FF0000'>失败：被打败，交纳金币。</font> <br>兵卒★：1经验，100金币。<br>兵卒★★：2经验，200金币。<br>兵卒★★★：3经验，300金币。
+PathTitleTip_GCLD,Siege the camp?,是否攻城？
 //===领地描述===,,
 // TP,,
-SoldierKey1_3,,TP有一 :
-SoldierKey2_3,,TP有二 :
-SoldierKey3_3,,TP有三 :
-SoldierKey4_3,,TP有四 :
-SoldierVal1_3,,<font color='#FFFF00'> 100 </font>过路费
-SoldierVal2_3,,<font color='#FFFF00'> 200 </font>过路费
-SoldierVal3_3,,<font color='#FFFF00'> 300 </font>过路费
-SoldierVal4_3,,<font color='#FFFF00'> 400 </font>过路费
-Capture_3,,<font color='#FFFF00'> 200 </font>耗资
-PathBuff_3,,传送阵
-PathBuffDescription_3,,进入己方传送阵时<br>获得一张 <font color='#0099ff'> 传送卷轴 </font>
+SoldierKey1_3,1 TP :,TP有一 :
+SoldierKey2_3,2 TP :,TP有二 :
+SoldierKey3_3,3 TP :,TP有三 :
+SoldierKey4_3,4 TP :,TP有四 :
+SoldierVal1_3,<font color='#FFFF00'> 100 </font>TOLL,<font color='#FFFF00'> 100 </font>过路费
+SoldierVal2_3,<font color='#FFFF00'> 200 </font>TOLL,<font color='#FFFF00'> 200 </font>过路费
+SoldierVal3_3,<font color='#FFFF00'> 300 </font>TOLL,<font color='#FFFF00'> 300 </font>过路费
+SoldierVal4_3,<font color='#FFFF00'> 400 </font>TOLL,<font color='#FFFF00'> 400 </font>过路费
+Capture_3,<font color='#FFFF00'> 200 </font>COST,<font color='#FFFF00'> 200 </font>耗资
+PathBuff_3,TP,传送阵
+PathBuffDescription_3,"Entering the own TP,Get a card <font color='#0099ff'> TP SCROLL </font>",进入己方传送阵时<br>获得一张 <font color='#0099ff'> 传送卷轴 </font>
 // 天辉,,
-SoldierKey1_12,,★兵卒 :
-SoldierKey2_12,,★★兵卒 :
-SoldierKey3_12,,★★★兵卒 :
-SoldierVal1_12,,占领天辉
-SoldierVal2_12,,<font color='#FFFF00'> 500 </font>升级
-SoldierVal3_12,,<font color='#FFFF00'> 1000 </font>升级
-Capture_12,,<font color='#FFFF00'> 300 </font>耗资
-PathBuff_12,,辉光普照
-PathBuffDescription_12,,天辉大地因世界树充满活力。全军将受到世界树的庇护防御抗性提升。<br>【满级效果 : 融合】<br>天辉兵卒融合成传说中的天辉巨人。<br>（等级，射程，体型是普通兵卒的 2 倍）
-PathBuffKey1_12,,护甲提升 : 
-PathBuffVal1_12,,2005/10/20
-PathBuffKey2_12,,魔抗提升 : 
-PathBuffVal2_12,,10%/15%/25%
+SoldierKey1_12,★Soldier :,★兵卒 :
+SoldierKey2_12,★★Soldier :,★★兵卒 :
+SoldierKey3_12,★★★Soldier :,★★★兵卒 :
+SoldierVal1_12,CAMP Radiant,占领天辉
+SoldierVal2_12,<font color='#FFFF00'> 500 </font>LEVELUP,<font color='#FFFF00'> 500 </font>升级
+SoldierVal3_12,<font color='#FFFF00'> 1000 </font>LEVELUP,<font color='#FFFF00'> 1000 </font>升级
+Capture_12,<font color='#FFFF00'> 300 </font>COST,<font color='#FFFF00'> 300 </font>耗资
+PathBuff_12,Radiant Glow,辉光普照
+PathBuffDescription_12,"Improve defense resistance.<br>[MAX LEVEL : MERGE]<br>RADIANT CREEPS merge into RADIANT GIANT.<br>(Level, attack range, and body size are 2 times that of regular soldier)",天辉大地因世界树充满活力。全军将受到世界树的庇护防御抗性提升。<br>【满级效果 : 融合】<br>天辉兵卒融合成传说中的天辉巨人。<br>（等级，射程，体型是普通兵卒的 2 倍）
+PathBuffKey1_12,+ Armor : ,护甲提升 : 
+PathBuffVal1_12,5/10/20,5/10/20
+PathBuffKey2_12,+ Magic Resistance : ,魔抗提升 : 
+PathBuffVal2_12,10%/15%/25%,10%/15%/25%
 // 野怪路径,,
-PathBuffDescription_9,,前往野区猎杀野怪获得金钱经验！<br>如果被野怪击杀，会坠入<font color='#FF0000'>炎魔炼狱</font>。
-PathBuffDescription_7,,身处地狱，封锁全部领地。<br>地狱惩戒：（持续入狱）<br>第3回合：损失100金币。<br>第4回合损失200金币。<br>第5回合：损失400金币。<br> 以此类推...<br><br> 囚禁于炼狱之中，可选择花费金币买活<br>或者放弃买活后Roll到相同点数复活。
-OperatorBody_Hell,,是否买活
+PathBuffDescription_9,"Hunting wild monsters to gain money experience!<br> If killed by monsters, will fall into <font color='#FF0000'> Purgatory </font>.",前往野区猎杀野怪获得金钱经验！<br>如果被野怪击杀，会坠入<font color='#FF0000'>炎魔炼狱</font>。
+PathBuffDescription_7,"In hell, seal off all territories. <br> Punishment in Hell: (continued imprisonment) <br> Round 3: Loss of 100 gold. <br> Loss of 200 gold in Round 4. <br> Round 5:400 gold is lost. <br> And so on... <br><br> Imprisoned in Purgatory, can choose to spend gold to buy life <br> or give up buying life after Roll up to the same number of points to revive.",身处地狱，封锁全部领地。<br>地狱惩戒：（持续入狱）<br>第3回合：损失100金币。<br>第4回合损失200金币。<br>第5回合：损失400金币。<br> 以此类推...<br><br> 囚禁于炼狱之中，可选择花费金币买活<br>或者放弃买活后Roll到相同点数复活。
+OperatorBody_Hell,Whether to buy back?,是否买活
 // 上河道,,
-SoldierKey1_13,,★兵卒 :
-SoldierKey2_13,,★★兵卒 :
-SoldierKey3_13,,★★★兵卒 :
-SoldierVal1_13,,占领河道
-SoldierVal2_13,,<font color='#FFFF00'> 1000 </font>升级
-SoldierVal3_13,,<font color='#FFFF00'> 1500 </font>升级
-Capture_13,,<font color='#FFFF00'> 300 </font>耗资
-PathBuff_13,,寒流
-PathBuffDescription_13,,肃杀的世界连流水同样冰冷，刺骨之寒透过坚硬的盔甲。
-PathBuffKey1_13,,上路护甲穿透 : 
-PathBuffVal1_13,,15% / 25% / 35%
-PathBuffKey2_13,,下路魔抗穿透 :
-PathBuffVal2_13,,15% / 25% / 35%
+SoldierKey1_13,★Soldier :,★兵卒 :
+SoldierKey2_13,★★Soldier :,★★兵卒 :
+SoldierKey3_13,★★★Soldier :,★★★兵卒 :
+SoldierVal1_13,CAMP RIVER,占领河道
+SoldierVal2_13,<font color='#FFFF00'> 1000 </font>LEVELUP,<font color='#FFFF00'> 1000 </font>升级
+SoldierVal3_13,<font color='#FFFF00'> 1500 </font>LEVELUP,<font color='#FFFF00'> 1500 </font>升级
+Capture_13,<font color='#FFFF00'> 300 </font>COST,<font color='#FFFF00'> 300 </font>耗资
+PathBuff_13,Cold Stream,寒流
+PathBuffDescription_13,"The world of chilling is also cold, and the biting cold passes through hard armor.",肃杀的世界连流水同样冰冷，刺骨之寒透过坚硬的盔甲。
+PathBuffKey1_13,Armor Penetration :,上路护甲穿透 : 
+PathBuffVal1_13,15% / 25% / 35%,15% / 25% / 35%
+PathBuffKey2_13,Magic Resistance Penetration :,下路魔抗穿透 :
+PathBuffVal2_13,15% / 25% / 35%,15% / 25% / 35%
 // 蛇沼,,
-SoldierKey1_14,,★兵卒 :
-SoldierKey2_14,,★★兵卒 :
-SoldierKey3_14,,★★★兵卒 :
-SoldierVal1_14,,占领蛇沼
-SoldierVal2_14,,<font color='#FFFF00'> 500 </font>升级
-SoldierVal3_14,,<font color='#FFFF00'> 1000 </font>升级
-Capture_14,,<font color='#FFFF00'> 300 </font>耗资
-PathBuff_14,,缚足
-PathBuffDescription_14,,敌人经过有概率被群蛇束缚。穿行沼泽的确不是件轻松活，好在有蛇蛇们的帮助。<br>【满级效果 : 扩张】<br>作用全部己方领地。
-PathBuffKey1_14,,束缚时间 : 
-PathBuffVal1_14,,1 / 1.5 / 2 秒
-PathBuffKey2_14,,束缚概率 :
-PathBuffVal2_14,,25%
+SoldierKey1_14,★Soldier :,★兵卒 :
+SoldierKey2_14,★★Soldier :,★★兵卒 :
+SoldierKey3_14,★★★Soldier :,★★★兵卒 :
+SoldierVal1_14,CAMP SNAKE MARSH,占领蛇沼
+SoldierVal2_14,<font color='#FFFF00'> 500 </font>LEVELUP,<font color='#FFFF00'> 500 </font>升级
+SoldierVal3_14,<font color='#FFFF00'> 1000 </font>LEVELUP,<font color='#FFFF00'> 1000 </font>升级
+Capture_14,<font color='#FFFF00'> 300 </font>COST,<font color='#FFFF00'> 300 </font>耗资
+PathBuff_14,Snare,缚足
+PathBuffDescription_14,The enemy is bound by a group of snakes with probability.<br>[MAX LEVEL : EXPANDING]<br>Effect on all own path.,敌人经过有概率被群蛇束缚。穿行沼泽的确不是件轻松活，好在有蛇蛇们的帮助。<br>【满级效果 : 扩张】<br>作用全部己方领地。
+PathBuffKey1_14,BINDING SECONDS : ,束缚时间 : 
+PathBuffVal1_14,1 / 1.5 / 2,1 / 1.5 / 2
+PathBuffKey2_14,BINDING CHANCE : ,束缚概率 :
+PathBuffVal2_14,25%,25%
 // 夜魇,,
-SoldierKey1_15,,★兵卒 :
-SoldierKey2_15,,★★兵卒 :
-SoldierKey3_15,,★★★兵卒 :
-SoldierVal1_15,,占领夜魇
-SoldierVal2_15,,<font color='#FFFF00'> 500 </font>升级
-SoldierVal3_15,,<font color='#FFFF00'> 1000 </font>升级
-Capture_15,,<font color='#FFFF00'> 300 </font>耗资
-PathBuff_15,,癫狂
-PathBuffDescription_15,,至邪的源泉侵蚀它的子民，失去了灵魂换得他人的恐惧。<br>【满级效果 : 癫狂】<br>夜魇兵卒双倍提升，被沉默无法施法兵卒技。
-PathBuffKey1_15,,攻速提升 : 
-PathBuffVal1_15,,25 / 50 / 100
-PathBuffKey2_15,,移速提升 : 
-PathBuffVal2_15,,10 / 20 / 40
+SoldierKey1_15,★Soldier :,★兵卒 :
+SoldierKey2_15,★★Soldier :,★★兵卒 :
+SoldierKey3_15,★★★Soldier :,★★★兵卒 :
+SoldierVal1_15,CAMP DIRE,占领夜魇
+SoldierVal2_15,<font color='#FFFF00'> 500 </font>LEVELUP,<font color='#FFFF00'> 500 </font>升级
+SoldierVal3_15,<font color='#FFFF00'> 1000 </font>LEVELUP,<font color='#FFFF00'> 1000 </font>升级
+Capture_15,<font color='#FFFF00'> 300 </font>COST,<font color='#FFFF00'> 300 </font>耗资
+PathBuff_15,Frenzy,癫狂
+PathBuffDescription_15,"The source of evil to erode its people, losing the fear of the soul for others.<br>[MAX LEVEL : MADNESS]<br>DIRE Soldiers double improvement, being silenced and unable to cast spells.",至邪的源泉侵蚀它的子民，失去了灵魂换得他人的恐惧。<br>【满级效果 : 癫狂】<br>夜魇兵卒双倍提升，被沉默无法施法兵卒技。
+PathBuffKey1_15,+ Attack Speed : ,攻速提升 : 
+PathBuffVal1_15,25 / 50 / 100,25 / 50 / 100
+PathBuffKey2_15,+ Movement Speed : ,移速提升 : 
+PathBuffVal2_15,10 / 20 / 40,10 / 20 / 40
 // 龙谷,,
-SoldierKey1_16,,★兵卒 :
-SoldierKey2_16,,★★兵卒 :
-SoldierKey3_16,,★★★兵卒 :
-SoldierVal1_16,,占领龙谷
-SoldierVal2_16,,<font color='#FFFF00'> 500 </font>升级
-SoldierVal3_16,,<font color='#FFFF00'> 1000 </font>升级
-Capture_16,,<font color='#FFFF00'> 300 </font>耗资
-PathBuff_16,,神龙赐法
-PathBuffDescription_16,,全军魔法回复提升。神秘的古老种族，掌管着最纯粹的魔法。<br>【特殊效果 : 萃魔】<br>施法有概率返还魔法。<br>【特殊效果 : 刷新】<br>施法有概率刷新技能。
-PathBuffKey1_16,,英雄回魔提升 : 
-PathBuffVal1_16,,1
-PathBuffKey2_16,,兵卒回魔提升 : 
-PathBuffVal2_16,,15% / 25% / 40%
-PathBuffKey3_16,,萃魔概率 : 
-PathBuffVal3_16,,15% / 25% / 40%
-PathBuffKey4_16,,刷新概率 : 
-PathBuffVal4_16,, 1% / 20% / 40%
-PathBuffKey5_16,,技能增强 : 
-PathBuffVal5_16,,10% / 20% / 30%
+SoldierKey1_16,★Soldier :,★兵卒 :
+SoldierKey2_16,★★Soldier :,★★兵卒 :
+SoldierKey3_16,★★★Soldier :,★★★兵卒 :
+SoldierVal1_16,CAMP DRAGON VALLEY,占领龙谷
+SoldierVal2_16,<font color='#FFFF00'> 500 </font>LEVELUP,<font color='#FFFF00'> 500 </font>升级
+SoldierVal3_16,<font color='#FFFF00'> 1000 </font>LEVELUP,<font color='#FFFF00'> 1000 </font>升级
+Capture_16,<font color='#FFFF00'> 300 </font>COST,<font color='#FFFF00'> 300 </font>耗资
+PathBuff_16,Dragon Gift,神龙赐法
+PathBuffDescription_16,"Mysterious ancient race, in charge of the purest magic.<br>[EXTRACT]<br>Casting has the chance to return mana.<br>[REFRESH]<br>Casting has the chance to refresh the skill CD.",全军魔法回复提升。神秘的古老种族，掌管着最纯粹的魔法。<br>【特殊效果 : 萃魔】<br>施法有概率返还魔法。<br>【特殊效果 : 刷新】<br>施法有概率刷新技能。
+PathBuffKey1_16,+ Mana Regeneration (Hero): ,英雄回魔提升 : 
+PathBuffVal1_16,1,1
+PathBuffKey2_16,+ Mana Regeneration (Soldier) : ,兵卒回魔提升 : 
+PathBuffVal2_16,15% / 25% / 40%,15% / 25% / 40%
+PathBuffKey3_16,EXTRACT Chance : ,萃魔概率 : 
+PathBuffVal3_16,15% / 25% / 40%,15% / 25% / 40%
+PathBuffKey4_16,REFRESH Chance : ,刷新概率 : 
+PathBuffVal4_16, 1% / 20% / 40%, 1% / 20% / 40%
+PathBuffKey5_16,SPELL AMP : ,技能增强 : 
+PathBuffVal5_16,10% / 20% / 30%,10% / 20% / 30%
 // 雕巢,,
-SoldierKey1_17,,★兵卒 :
-SoldierKey2_17,,★★兵卒 :
-SoldierKey3_17,,★★★兵卒 :
-SoldierVal1_17,,占领鵰巢
-SoldierVal2_17,,<font color='#FFFF00'> 500 </font>升级
-SoldierVal3_17,,<font color='#FFFF00'> 1000 </font>升级
-Capture_17,,<font color='#FFFF00'> 300 </font>耗资
-PathBuff_17,,圣兽
-PathBuffDescription_17,,圣兽刮起飓风，伤害经过的敌人。<br>唤醒沉睡的圣兽，无谓的战争引燃它的怒火。<br>【满级效果 : 扩张 】<br>作用全部己方领地。
-PathBuffKey1_17,,持续伤害 : 
-PathBuffVal1_17,,30
-PathBuffKey2_17,,减速 : 
-PathBuffVal2_17,,10% / 20% / 40%
+SoldierKey1_17,★Soldier :,★兵卒 :
+SoldierKey2_17,★★Soldier :,★★兵卒 :
+SoldierKey3_17,★★★Soldier :,★★★兵卒 :
+SoldierVal1_17,CAMP NEST,占领鵰巢
+SoldierVal2_17,<font color='#FFFF00'> 500 </font>LEVELUP,<font color='#FFFF00'> 500 </font>升级
+SoldierVal3_17,<font color='#FFFF00'> 1000 </font>LEVELUP,<font color='#FFFF00'> 1000 </font>升级
+Capture_17,<font color='#FFFF00'> 300 </font>COST,<font color='#FFFF00'> 300 </font>耗资
+PathBuff_17,Sacred Beast,圣兽
+PathBuffDescription_17,"Sacred Beast hurricane, hurting enemies.<br>Awaken the sleeping HOLY BEAST, a senseless war igniting its anger.<br>[MAX LEVEL : EXPANDING ]<br>Effect on all own path",圣兽刮起飓风，伤害经过的敌人。<br>唤醒沉睡的圣兽，无谓的战争引燃它的怒火。<br>【满级效果 : 扩张 】<br>作用全部己方领地。
+PathBuffKey1_17,DoT : ,持续伤害 : 
+PathBuffVal1_17,30,30
+PathBuffKey2_17,Slowing : ,减速 : 
+PathBuffVal2_17,10% / 20% / 40%,10% / 20% / 40%
 // 圣所,,
-SoldierKey1_18,,★兵卒 :
-SoldierKey2_18,,★★兵卒 :
-SoldierKey3_18,,★★★兵卒 :
-SoldierVal1_18,,占领圣所
-SoldierVal2_18,,<font color='#FFFF00'> 1000 </font>升级
-SoldierVal3_18,,<font color='#FFFF00'> 2000 </font>升级
-Capture_18,,<font color='#FFFF00'> 400 </font>耗资
-PathBuff_18,,圣洁净土
-PathBuffDescription_18,,对驻足在圣所的敌人造成神圣伤害。<br>神圣的殿堂前没有纷争也没有不速之客。<br>【特殊效果 : 石佛】<br>圣所兵卒无法攻击。无法被攻城。
-PathBuffKey1_18,,纯粹伤害 : 
-PathBuffVal1_18,,1000 / 2000 / 4000
+SoldierKey1_18,★Soldier :,★兵卒 :
+SoldierKey2_18,★★Soldier :,★★兵卒 :
+SoldierKey3_18,★★★Soldier :,★★★兵卒 :
+SoldierVal1_18,CAMP SANCTUARY,占领圣所
+SoldierVal2_18,<font color='#FFFF00'> 1000 </font>LEVELUP,<font color='#FFFF00'> 1000 </font>升级
+SoldierVal3_18,<font color='#FFFF00'> 2000 </font>LEVELUP,<font color='#FFFF00'> 2000 </font>升级
+Capture_18,<font color='#FFFF00'> 400 </font>COST,<font color='#FFFF00'> 400 </font>耗资
+PathBuff_18,Holy Sanctuary,圣洁净土
+PathBuffDescription_18,"Inflicts Holy damage to enemies who stop at SANCTUARY.<br>There are no disputes and no uninvited guests in front of the sacred temple..<br>[SPECIAL EFFECT : STONE BUDDHA]<br>SANCTUARY Creeps unable to attack,and can't be attacked.",对驻足在圣所的敌人造成神圣伤害。<br>神圣的殿堂前没有纷争也没有不速之客。<br>【特殊效果 : 石佛】<br>圣所兵卒无法攻击。无法被攻城。
+PathBuffKey1_18,Pure Damage : ,纯粹伤害 : 
+PathBuffVal1_18,1000 / 2000 / 4000,1000 / 2000 / 4000
 // tab计分板,,
 scoreboard_title_level,LEVEL,等级
 scoreboard_title_total,TOTAL,总资产
@@ -1098,5 +1098,5 @@ scoreboard_title_gcld,SIEGE,攻
 scoreboard_title_mute,MUTE,屏蔽
 scoreboard_tool_tip_mute_trade,Reject his trade,拒绝他的交易（还未实现=w=）
 // 战斗广播,,
-Custom_GetGoodCard,,{s:player_name} 获得了卡牌·<font color='#FFFF00'>{s:locstring_value}</font>
-Custom_GetBadCard,,{s:player_name} 获得了卡牌·<font color='#207777'>{s:locstring_value}</font>
+Custom_GetGoodCard,{s:player_name} get card ·<font color='#FFFF00'>{s:locstring_value}</font>,{s:player_name} 获得了卡牌·<font color='#FFFF00'>{s:locstring_value}</font>
+Custom_GetBadCard,{s:player_name} get card ·<font color='#207777'>{s:locstring_value}</font>,{s:player_name} 获得了卡牌·<font color='#207777'>{s:locstring_value}</font>

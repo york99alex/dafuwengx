@@ -439,6 +439,10 @@ CDOTABaseGameMode extends CBaseEntity
 
 
 
+## 伤害流程
+
+[Docs (feishu.cn)](https://jwjqx0waogx.feishu.cn/wiki/VxgewwSudiqsJ5kC6BzcDti6nwb?from=from_copylink)
+
 
 
 # UI
