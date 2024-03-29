@@ -710,7 +710,7 @@
 		"ScriptFile" "ability/ursa/Ability_ursa_fury_swipes"
 		"AbilityValues" {
 			"damage_per_stack" "10 17 27"
-			"reset_round" "2"
+			"reset_round" "1 1 2"
 		}
 		"MaxLevel" "3"
 		"RequiredLevel" "0"

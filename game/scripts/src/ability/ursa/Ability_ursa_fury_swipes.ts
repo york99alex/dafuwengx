@@ -34,7 +34,7 @@ export class modifier_ability_ursa_fury_swipes_handle extends BaseModifier {
         return [ModifierFunction.PROCATTACK_BONUS_DAMAGE_PHYSICAL];
     }
     GetModifierProcAttack_BonusDamage_Physical(event: ModifierAttackEvent): number {
-        AMHC.AddNewModifier(event.target, event.attacker, this.GetAbility(), modifier_ability_ursa_fury_swipes_debuff.name, {});
+        AMHC.AddNewModifier(event.target, event.attacker, this.GetAbility(), modifier_ability_ursa_fury_swipes_debuff.name, { add: 1 });
         return this.damage_per_stack * event.target.GetModifierStackCount(modifier_ability_ursa_fury_swipes_debuff.name, event.attacker);
     }
 }
@@ -66,15 +66,16 @@ export class modifier_ability_ursa_fury_swipes_debuff extends BaseModifier {
         this.SetHasCustomTransmitterData(true);
         this.damage_per_stack = this.GetAbility().GetSpecialValueFor('damage_per_stack');
         this.reset_round = this.GetAbility().GetSpecialValueFor('reset_round');
-        this.m_nRound = this.reset_round;
         if (this.GetStackCount() == 0) this.SetStackCount(1);
-        AbilityManager.judgeBuffRound(this.GetCaster().GetPlayerOwnerID(), this);
         if (IsServer()) {
+            this.m_nRound = this.reset_round;
+            AbilityManager.judgeBuffRound(this.GetCaster().GetPlayerOwnerID(), this, () => this.SendBuffRefreshToClients());
             ParticleManager.CreateParticle(
                 'particles/units/heroes/hero_ursa/ursa_fury_swipes.vpcf',
                 ParticleAttachment.OVERHEAD_FOLLOW,
                 this.GetParent()
             );
+            this.SendBuffRefreshToClients();
         }
     }
     AddCustomTransmitterData() {
@@ -88,10 +89,11 @@ export class modifier_ability_ursa_fury_swipes_debuff extends BaseModifier {
     OnRefresh(params: object): void {
         this.damage_per_stack = this.GetAbility().GetSpecialValueFor('damage_per_stack');
         this.reset_round = this.GetAbility().GetSpecialValueFor('reset_round');
-        print('===reset_round:', this.reset_round);
-        this.m_nRound = this.reset_round;
-        print('===m_nRound:', this.m_nRound);
-        if (IsServer()) this.IncrementStackCount();
+        if (IsServer()) {
+            this.m_nRound = this.reset_round;
+            this.IncrementStackCount();
+            this.SendBuffRefreshToClients();
+        }
 
         const parent = this.GetParent();
         if (parent.IsRealHero()) ParaAdjuster.ModifyMana(parent);
@@ -103,7 +105,6 @@ export class modifier_ability_ursa_fury_swipes_debuff extends BaseModifier {
     DeclareFunctions(): ModifierFunction[] {
         return [ModifierFunction.TOOLTIP, ModifierFunction.TOOLTIP2];
     }
-
     OnTooltip(): number {
         return this.damage_per_stack * this.GetStackCount();
     }

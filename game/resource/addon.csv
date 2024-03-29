@@ -188,7 +188,7 @@ DOTA_Tooltip_ability_Ability_ursa_fury_swipes_Description,"Ursa's claws dig deep
 DOTA_Tooltip_ability_Ability_ursa_fury_swipes_Lore,"In nature, the wounded rarely survive the attacks of hungry predators.",在大自然中，很少有受伤的动物能在饥饿的捕食者攻击下幸存。
 DOTA_Tooltip_ability_Ability_ursa_fury_swipes_damage_per_stack,DAMAGE PER ATTACK:,每次攻击叠加伤害：
 DOTA_Tooltip_modifier_ability_ursa_fury_swipes_debuff,Fury Swipes,怒意狂击
-DOTA_Tooltip_modifier_ability_ursa_fury_swipes_debuff_Description,Taking an extra %dMODIFIER_PROPERTY_TOOLTIP% damage from Ursa's attacks,乌尔萨的攻击正在对你造成%dMODIFIER_PROPERTY_TOOLTIP%点额外伤害
+DOTA_Tooltip_modifier_ability_ursa_fury_swipes_debuff_Description,"Taking an extra %dMODIFIER_PROPERTY_TOOLTIP% damage from Ursa's attacks, reset after %dMODIFIER_PROPERTY_TOOLTIP2% round.",乌尔萨的攻击正在对你造成%dMODIFIER_PROPERTY_TOOLTIP%点额外伤害，%dMODIFIER_PROPERTY_TOOLTIP2%回合后重置。
 DOTA_Tooltip_ability_Ability_ursa_fury_swipes_reset_round,RESET ROUND:,重置回合：
 AbilityError_Target,TARGET ERROR,目标错误
 AbilityError_Range,NOT IN RANGE,不在范围内
