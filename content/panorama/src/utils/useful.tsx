@@ -64,6 +64,9 @@ export function getHeroName(localName: string): string {
         case '噬魂鬼':
         case 'Lifestealer':
             return 'npc_dota_hero_life_stealer';
+        case '熊战士':
+        case 'Ursa':
+            return 'npc_dota_hero_ursa';
         default:
             return '';
     }

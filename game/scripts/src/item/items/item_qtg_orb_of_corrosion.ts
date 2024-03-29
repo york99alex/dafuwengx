@@ -2,7 +2,7 @@ import { TSBaseItem } from '../tsBaseItem';
 import { AMHC } from '../../utils/amhc';
 import { BaseModifier, registerAbility, registerModifier } from '../../utils/dota_ts_adapter';
 import { ParaAdjuster } from '../../utils/paraadjuster';
-import { HERO_AttackCapabilit } from '../../constants/constant';
+import { HERO_TO_AttackCap } from '../../constants/constant';
 
 /**
  * 腐蚀之球，1500，毛毛帽500+淬毒之珠500+枯萎之石500
@@ -33,7 +33,7 @@ export class item_qtg_orb_of_corrosion_modifier extends BaseModifier {
                 this.duration = this.GetAbility().GetSpecialValueFor('duration');
                 if (
                     this.GetParent().IsRangedAttacker() ||
-                    HERO_AttackCapabilit[this.GetParent().GetUnitName()] == UnitAttackCapability.RANGED_ATTACK
+                    HERO_TO_AttackCap[this.GetParent().GetUnitName()] == UnitAttackCapability.RANGED_ATTACK
                 ) {
                     // 远程 range
                     AMHC.AddNewModifier(event.target, event.attacker, this.GetAbility(), modifier_item_qtg_orb_of_corrosion_range.name, {

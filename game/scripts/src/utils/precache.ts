@@ -127,6 +127,10 @@ export default function Precache(context: CScriptPrecacheContext) {
             'particles/units/heroes/hero_bloodseeker/bloodseeker_bloodrage.vpcf',
             'particles/units/heroes/hero_chen/chen_hand_of_god.vpcf',
             'particles/items2_fx/refresher.vpcf',
+            'particles/units/heroes/hero_ursa/ursa_earthshock.vpcf',
+            'soundevents/game_sounds_heroes/game_sounds_ursa.vsndevts',
+            'particles/units/heroes/hero_ursa/ursa_fury_swipes_debuff.vpcf',
+            'particles/units/heroes/hero_ursa/ursa_fury_swipes.vpcf',
         ],
         context
     );

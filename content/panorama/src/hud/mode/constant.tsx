@@ -162,4 +162,5 @@ export const BZ_Ability: Record<string, string> = {
     npc_dota_hero_dragon_knight: 'Ability_dragon_knight_elder_dragon_form',
     npc_dota_hero_undying: 'Ability_undying_tombstone',
     npc_dota_hero_life_stealer: 'Ability_life_stealer_feast',
+    npc_dota_hero_ursa: 'Ability_ursa_fury_swipes',
 };

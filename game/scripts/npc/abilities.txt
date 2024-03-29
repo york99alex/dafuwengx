@@ -680,6 +680,49 @@
 		"AbilityUnitDamageType" "DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
 	}
+	"Ability_ursa_earthshock" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/ursa/Ability_ursa_earthshock"
+		"AbilityValues" {
+			"hop_distance" "1"
+			"range" "3"
+			"damage" "75 100 150"
+			"offset" "1"
+		}
+		"MaxLevel" "3"
+		"RequiredLevel" "0"
+		"LevelsBetweenUpgrades" "10"
+		"AbilityCooldown" "3"
+		"AbilityManaCost" "3"
+		"ID" "5357"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityTextureName" "ursa_earthshock"
+		"AbilityType" "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilitySound" "Hero_Ursa.Earthshock"
+		"AbilityCastAnimation" "ACT_DOTA_CAST_ABILITY_1"
+	}
+	"Ability_ursa_fury_swipes" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability/ursa/Ability_ursa_fury_swipes"
+		"AbilityValues" {
+			"damage_per_stack" "10 17 27"
+			"reset_round" "2"
+		}
+		"MaxLevel" "3"
+		"RequiredLevel" "0"
+		"LevelsBetweenUpgrades" "10"
+		"ID" "5359"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" "ursa_fury_swipes"
+		"AbilityType" "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityUnitDamageType" "DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityCastAnimation" "ACT_DOTA_CAST_ABILITY_3"
+	}
 	"path_12" {
 		"BaseClass" "ability_lua"
 		"ScriptFile" "ability/path/path_12"

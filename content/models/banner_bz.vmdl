@@ -1,4 +1,4 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc32:version{c5dcef98-b629-46ab-88e3-a17c005c935e} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc33:version{bed0390a-a564-41a6-9dc3-c9a293c8eea3} -->
 {
 	rootNode = 
 	{
@@ -192,6 +192,21 @@
 							{
 								from = "materials/models/props_gameplay/ti9_consumable_banner_logo_wind.vmat"
 								to = "materials/npc_dota_hero_life_stealer_png.vmat"
+							},
+						]
+					},
+					{
+						_class = "MaterialGroup"
+						name = "12"
+						remaps = 
+						[
+							{
+								from = "materials/models/props_gameplay/ti9_consumable_banner_steamprofile.vmat"
+								to = "materials/models/props_gameplay/ti9_consumable_banner_steamprofile.vmat"
+							},
+							{
+								from = "materials/models/props_gameplay/ti9_consumable_banner_logo_wind.vmat"
+								to = "materials/npc_dota_hero_ursa_png.vmat"
 							},
 						]
 					},

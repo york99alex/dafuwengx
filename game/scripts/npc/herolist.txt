@@ -68,7 +68,7 @@
 	"npc_dota_hero_warlock" "0"
 	"npc_dota_hero_alchemist" "0"
 	"npc_dota_hero_death_prophet" "0"
-	"npc_dota_hero_ursa" "0"
+	"npc_dota_hero_ursa" "1"
 	"npc_dota_hero_bounty_hunter" "0"
 	"npc_dota_hero_silencer" "0"
 	"npc_dota_hero_spirit_breaker" "0"

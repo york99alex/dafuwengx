@@ -1390,18 +1390,27 @@ export const App = () => {	// 根组件
 
 以下为刀富翁本项目特有，不具有普遍性
 
-1. npc_heroes_custom.txt 定义英雄
-2. npc_abilities_custom.txt 定义技能(x模板里用kv.excel的abilities)
-3. 实现lua技能的对应的script代码
-4. npc_units_custom.txt 定义英雄对应的兵卒(x模板里用kv.excel的minions)
+1. herolist.txt 设置英雄启用kv为1
+2. npc_heroes_custom.txt 定义英雄
+3. npc_abilities_custom.txt 定义技能(x模板里用kv.excel的abilities)
+4. 实现lua技能的对应的script代码
+5. npc_units_custom.txt 定义英雄对应的兵卒(x模板里用kv.excel的minions)
+     - 兵卒属性参考 [兵卒-数值](#数值)
+     - !! 并在constant.ts中给以下对象添加对应键值
+          - HERO_TO_BANNER
+          - HERO_TO_BZ
+          - HERO_TO_AttackCap
+          - 以及前端的content\panorama\src\hud\mode\constant.tsx添加兵卒技能对应名
+          - content\panorama\src\utils\useful.tsx getHeroName添加
 
-     - !! 并在constant.ts中给HERO_TO_BANNER和HERO_TO_BZ数组添加对应内容
-
-     - !! 还要更改旗帜模型的skin设置, 添加新英雄头像, 重新编译地图
+     - !! 还要更改旗帜模型 banner_bz.vmdl 的skin设置，添加新英雄头像, 重新编译地图
+          1. 添加英雄头像图片，==注意调整为128*128像素==
+          2. 创建贴图，引用英雄头像
+          3. 在 banner_bz.vmdl 中的 MaterialGroup复制新节点，引用对应贴图
 
      - 注意: 可能还要给兵卒单独定义和编写技能
 
-5. 本地化 resource\addon_english.txt resource\addon_schinese.txt
+6. 本地化 resource\addon_english.txt resource\addon_schinese.txt
    X模板编写 resource\addon.csv
 
 

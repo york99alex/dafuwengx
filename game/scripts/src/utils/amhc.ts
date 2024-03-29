@@ -447,3 +447,8 @@ export function getRandomsInRange(min: number, max: number, n: number): number[]
 
     return Array.from(result);
 }
+
+export function stringToVector(str: string) {
+    const nums = str.split(' ');
+    return Vector(tonumber(nums[0]), tonumber(nums[1]), tonumber(nums[2]));
+}

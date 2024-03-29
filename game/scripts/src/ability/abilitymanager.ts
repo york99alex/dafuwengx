@@ -253,14 +253,18 @@ export class AbilityManager {
         }
         if (IsClient()) return;
         GameRules.EventManager.Register('Event_PlayerRoundFinished', (playerF: Player) => {
+            print('===playerID:', playerF.m_nPlayerID, playerF.m_eHero.GetUnitName(), '===judge m_nRound:', buff['m_nRound']);
             if (playerF.m_nPlayerID == GameRules.GameConfig.getLastValidOrder(casterPlayerID)) {
                 // 一轮结束
                 buff['m_nRound'] -= 1;
+                buff.SendBuffRefreshToClients();
+                print('===judgeBuffRound===m_nRound:', buff['m_nRound'], 'typeof:', typeof buff['m_nRound']);
                 if (funChange) {
                     funChange();
                 }
                 if (buff['m_nRound'] <= 0) {
                     if (IsValid(buff)) {
+                        print('===', buff.GetName(), '===judge destroy===m_nRound:', buff['m_nRound']);
                         const owner = buff.GetParent();
                         buff.Destroy();
                         if (owner.IsRealHero()) {

@@ -144,21 +144,7 @@ export const HERO_TO_BANNER = {
     npc_dota_hero_dragon_knight: 9,
     npc_dota_hero_undying: 10,
     npc_dota_hero_life_stealer: 11,
-};
-
-/**英雄对应攻击能力 */
-export const HERO_TO_AttackCap = {
-    npc_dota_hero_phantom_assassin: UnitAttackCapability.MELEE_ATTACK,
-    npc_dota_hero_meepo: UnitAttackCapability.MELEE_ATTACK,
-    npc_dota_hero_pudge: UnitAttackCapability.MELEE_ATTACK,
-    npc_dota_hero_lina: UnitAttackCapability.RANGED_ATTACK,
-    npc_dota_hero_zuus: UnitAttackCapability.RANGED_ATTACK,
-    npc_dota_hero_axe: UnitAttackCapability.MELEE_ATTACK,
-    npc_dota_hero_techies: UnitAttackCapability.RANGED_ATTACK,
-    npc_dota_hero_bloodseeker: UnitAttackCapability.MELEE_ATTACK,
-    npc_dota_hero_dragon_knight: UnitAttackCapability.MELEE_ATTACK,
-    npc_dota_hero_undying: UnitAttackCapability.MELEE_ATTACK,
-    npc_dota_hero_life_stealer: UnitAttackCapability.MELEE_ATTACK,
+    npc_dota_hero_ursa: 12,
 };
 
 /**英雄对应兵卒名 */
@@ -174,10 +160,11 @@ export const HERO_TO_BZ: Record<string, string> = {
     npc_dota_hero_dragon_knight: 'bz_dragon_knight_1',
     npc_dota_hero_undying: 'bz_undying_1',
     npc_dota_hero_life_stealer: 'bz_life_stealer_1',
+    npc_dota_hero_ursa: 'bz_ursa_1',
 };
 
 /**英雄对应攻击能力 */
-export const HERO_AttackCapabilit = {
+export const HERO_TO_AttackCap = {
     npc_dota_hero_phantom_assassin: UnitAttackCapability.MELEE_ATTACK,
     npc_dota_hero_meepo: UnitAttackCapability.MELEE_ATTACK,
     npc_dota_hero_pudge: UnitAttackCapability.MELEE_ATTACK,
@@ -189,6 +176,7 @@ export const HERO_AttackCapabilit = {
     npc_dota_hero_dragon_knight: UnitAttackCapability.MELEE_ATTACK,
     npc_dota_hero_undying: UnitAttackCapability.MELEE_ATTACK,
     npc_dota_hero_life_stealer: UnitAttackCapability.MELEE_ATTACK,
+    npc_dota_hero_ursa: UnitAttackCapability.MELEE_ATTACK,
 };
 
 /**起兵回合 */

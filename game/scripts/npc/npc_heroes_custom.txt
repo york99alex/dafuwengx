@@ -406,4 +406,34 @@
 		// "AttributeBaseIntelligence"	"27"
 		// "AttributeIntelligenceGain"	"2.800000"
 	}
+
+	"npc_dota_hero_ursa"
+	{
+		"ModelScale"	"0.7"
+		"AutoAttacksByDefault"	"0"
+		// 选择圈半径
+		"RingRadius"	"50"
+		// 魔法上限
+		"StatusMana"	"0"
+		// "HealthBarOffset"			"100"					//血条高度
+		// 技能槽数量，最低4个，最高为6个，单位可以同时拥有最多16个技能
+		"AbilityLayout"	"2"
+		"Ability1"	"Ability_ursa_earthshock"
+		"Ability2"	"Ability_ursa_fury_swipes"
+		"Ability3"	""
+		"Ability4"	""
+		"Ability5"	""
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	"tt7"
+		"Ability11"	"tt8"
+		"Ability12"	"tt5"
+		"Ability13"	"tt6"
+		"Ability14"	"tt3"
+		"Ability15"	"tt4"
+		"Ability16"	"tt1"
+		"Ability17"	"tt2"
+	}
 }

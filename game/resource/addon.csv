@@ -179,6 +179,17 @@ DOTA_Tooltip_ability_Ability_life_stealer_feast_Note0,Heal and bonus damage only
 DOTA_Tooltip_ability_Ability_life_stealer_feast_Note1,Bonus damage is bundled with the normal attack damage as a single damage instance.,额外伤害直接附加在原始伤害中，视为同一次伤害。
 DOTA_Tooltip_modifier_ability_life_stealer_open_wounds,Open Wounds,撕裂伤口
 DOTA_Tooltip_modifier_ability_life_stealer_open_wounds_Description,Slowed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%,移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%
+DOTA_Tooltip_ability_Ability_ursa_earthshock,Earthshock,震撼大地
+DOTA_Tooltip_ability_Ability_ursa_earthshock_Description,"Ursa leaps forward %hop_distance% grid and slams the earth, causing a powerful shock to damage in a nearby %range% grids.<br><br>The leap arrival path event will be triggered.",熊战士向前跳跃%hop_distance%格并猛击地面带来强烈的冲击，对附近%range%格范围内的所有敌方单位造成伤害。<br><br>将会触发跳跃到达的路径事件。
+DOTA_Tooltip_ability_Ability_ursa_earthshock_Lore,The very steps of a male ursine shake the ground as well as the resolve of opposing warriors.,雄性熊怪有力的步伐撼动着大地，展示了他们坚定的战士之心。
+DOTA_Tooltip_ability_Ability_ursa_earthshock_damage,DAMAGE:,伤害：
+DOTA_Tooltip_ability_Ability_ursa_fury_swipes,Fury Swipes,怒意狂击
+DOTA_Tooltip_ability_Ability_ursa_fury_swipes_Description,"Ursa's claws dig deeper wounds in the enemy, causing consecutive attacks to the same enemy to deal more damage.  If the same target is not attacked after %reset_round% round, the bonus damage is lost.",熊战士的利爪深深地撕裂敌人的伤口，对同一敌人连续攻击将造成更多伤害。如果同一个目标在%reset_round%回合内不受攻击，将失去额外伤害加成。
+DOTA_Tooltip_ability_Ability_ursa_fury_swipes_Lore,"In nature, the wounded rarely survive the attacks of hungry predators.",在大自然中，很少有受伤的动物能在饥饿的捕食者攻击下幸存。
+DOTA_Tooltip_ability_Ability_ursa_fury_swipes_damage_per_stack,DAMAGE PER ATTACK:,每次攻击叠加伤害：
+DOTA_Tooltip_modifier_ability_ursa_fury_swipes_debuff,Fury Swipes,怒意狂击
+DOTA_Tooltip_modifier_ability_ursa_fury_swipes_debuff_Description,Taking an extra %dMODIFIER_PROPERTY_TOOLTIP% damage from Ursa's attacks,乌尔萨的攻击正在对你造成%dMODIFIER_PROPERTY_TOOLTIP%点额外伤害
+DOTA_Tooltip_ability_Ability_ursa_fury_swipes_reset_round,RESET ROUND:,重置回合：
 AbilityError_Target,TARGET ERROR,目标错误
 AbilityError_Range,NOT IN RANGE,不在范围内
 AbilityError_TargetPath,ONLY PATH TARGET,仅路径目标
@@ -993,7 +1004,7 @@ Capture_12,<font color='#FFFF00'> 300 </font>COST,<font color='#FFFF00'> 300 </f
 PathBuff_12,Radiant Glow,辉光普照
 PathBuffDescription_12,"Improve defense resistance.<br>[MAX LEVEL : MERGE]<br>RADIANT CREEPS merge into RADIANT GIANT.<br>(Level, attack range, and body size are 2 times that of regular soldier)",天辉大地因世界树充满活力。全军将受到世界树的庇护防御抗性提升。<br>【满级效果 : 融合】<br>天辉兵卒融合成传说中的天辉巨人。<br>（等级，射程，体型是普通兵卒的 2 倍）
 PathBuffKey1_12,+ Armor : ,护甲提升 : 
-PathBuffVal1_12,5/10/20,5/10/20
+PathBuffVal1_12,2005/10/20,2005/10/20
 PathBuffKey2_12,+ Magic Resistance : ,魔抗提升 : 
 PathBuffVal2_12,10%/15%/25%,10%/15%/25%
 // 野怪路径,,
