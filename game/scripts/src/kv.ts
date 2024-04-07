@@ -3,4 +3,5 @@ export const KeyValues = {
     CardKV: LoadKeyValues("scripts/npc/cardlist.txt"),
     AbilitiesKV: LoadKeyValues("scripts/npc/abilities.txt"),
     ItemsKV: LoadKeyValues("scripts/npc/npc_items_custom.txt"),
+    HeroKV: LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
 }

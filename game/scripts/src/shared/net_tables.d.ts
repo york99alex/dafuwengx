@@ -23,6 +23,10 @@ declare interface CustomNetTableDeclarations {
         PlayersSort: PlayerID[];
     };
 
+    HostPlayer: {
+        hostPlayer: { hostID: PlayerID };
+    };
+
     GamingTable: {
         game_mode: {
             typeGameMode: number;

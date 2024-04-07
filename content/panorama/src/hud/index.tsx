@@ -27,6 +27,7 @@ const Test: FC = () => {
 //     GameUI.SetDefaultUIEnabled(index, true);
 // }
 
+GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_PREGAME_STRATEGYUI, false);
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ACTION_MINIMAP, false);
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_AGHANIMS_STATUS, false);
 GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_COURIER, false);
@@ -48,8 +49,6 @@ HideHudElement(UIHud, 'ToggleScoreboardButton');
 // HideHudElement(UIHud, 'stash');
 HideHudElement(UIHud, 'StatBranch');
 HideHudElement(UIHud, 'level_stats_frame');
-
-
 
 export const PlayerMgr = new PlayerManager();
 export const GameMgr = new GameManager();

@@ -62,7 +62,7 @@ export class GameConfig {
     m_nOrderIndex = -1;
     m_nOrderFirstIndex = 0; // 首操作index
     m_timeOprt: number = -1; // 回合剩余时限
-    m_timeTemp: number = -1;    // 临时记录时间
+    m_timeTemp: number = -1; // 临时记录时间
     m_nRound = 0; // 当前回合数
     m_nBaoZi = 0; // 当前玩家豹子次数
     m_bFinalBattle = false; // 终局决战
@@ -963,6 +963,7 @@ export class GameConfig {
     }
 
     onEvent_game_rules_state_change(): void {
+        print('===game state change===', GameRules.State_Get());
         if (GameRules.State_Get() == GameState.WAIT_FOR_PLAYERS_TO_LOAD) {
             // 等待玩家加载界面
         } else if (GameRules.State_Get() == GameState.CUSTOM_GAME_SETUP) {
@@ -970,7 +971,11 @@ export class GameConfig {
         } else if (GameRules.State_Get() == GameState.HERO_SELECTION) {
             // 选择hero
             GameRules.HeroSelection.UpdateTime();
+            // 获取房主，更新网表
+            GameRules.HeroSelection.UpdateHost();
         } else if (GameRules.State_Get() == GameState.PRE_GAME) {
+            // 创建机器人玩家
+            GameRules.HeroSelection.spawnBots();
             // 进入地图,准备阶段
             if (GameRules.IsCheatMode() && !IsInToolsMode()) {
                 // 作弊

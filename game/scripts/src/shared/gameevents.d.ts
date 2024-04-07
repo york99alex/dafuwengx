@@ -110,4 +110,8 @@ declare interface CustomGameEventDeclarations {
     GM_CardInfo: {
         tabCardInfo: {};
     };
+
+    C2S_Bot_Setting: {
+        setNum: number;
+    };
 }

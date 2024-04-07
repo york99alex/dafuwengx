@@ -4,6 +4,7 @@
     [
         "hero_list",
         "game_timer",
+        "HostPlayer",
         "GamingTable",
         "HeroSelection",
         "common",

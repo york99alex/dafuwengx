@@ -1,0 +1,52 @@
+.root {
+    width: 100%;
+    height: 100%;
+}
+
+.BotSet {
+    width: 20%;
+    height: 15%;
+    margin: 30% 0 0 5%;
+    background-color: gradient(linear, 0% 100%, 0% 0%, from(#2c2e30dd), to(#2c3555dd)) gray;
+
+    animation-name: GameStart;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+
+    flow-children: down;
+
+    .BotSetText{
+        margin-top: 10%;
+        horizontal-align: center;
+        color: #eeeeee;
+        letter-spacing: 3px;
+        font-size: 30px;
+        font-weight: thin;
+        font-family: titleFont;
+        text-shadow: 0px 0px 8px #00809498;
+    }
+
+    .DropDown{
+        margin: 10% 5% 0 5%;
+    }
+    
+    .BotSetTip{
+        margin: 10% 0 0 5%;
+        color: #eeeeee51;
+        font-size: 20px;
+        font-weight: thin;
+        font-family: Valve Radus;
+        text-shadow: 0px 0px 1px #ffd285;
+    }
+}
+
+@keyframes GameStart {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

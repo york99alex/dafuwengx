@@ -5,7 +5,7 @@
 	// =================================================================================================================
 	"npc_dota_hero_phantom_assassin"
 	{
-		"ModelScale"	"0.7"
+		"ModelScale"	"0.6"
 		"AutoAttacksByDefault"	"0"
 		"HasInventory"	"1"
 		// 选择圈半径
@@ -46,7 +46,7 @@
 
 	"npc_dota_hero_meepo"
 	{
-		"ModelScale"	"0.8"
+		"ModelScale"	"0.6"
 		"AutoAttacksByDefault"	"0"
 		// 选择圈半径
 		"RingRadius"	"50"
@@ -82,7 +82,7 @@
 
 	"npc_dota_hero_pudge"
 	{
-		"ModelScale"	"0.7"
+		"ModelScale"	"0.6"
 		"AutoAttacksByDefault"	"0"
 		// 选择圈半径
 		"RingRadius"	"50"
@@ -112,7 +112,7 @@
 
 	"npc_dota_hero_lina"
 	{
-		"ModelScale"	"0.8"
+		"ModelScale"	"0.6"
 		"AutoAttacksByDefault"	"0"
 		// 选择圈半径
 		"RingRadius"	"50"
@@ -144,7 +144,7 @@
 
 	"npc_dota_hero_zuus"
 	{
-		"ModelScale"	"0.8"
+		"ModelScale"	"0.6"
 		"AutoAttacksByDefault"	"0"
 		// 选择圈半径
 		"RingRadius"	"50"
@@ -176,7 +176,7 @@
 
 	"npc_dota_hero_axe"
 	{
-		"ModelScale"	"0.7"
+		"ModelScale"	"0.6"
 		"AutoAttacksByDefault"	"0"
 		// 选择圈半径
 		"RingRadius"	"50"
@@ -239,7 +239,7 @@
 
 	"npc_dota_hero_bloodseeker"
 	{
-		"ModelScale"	"0.9"
+		"ModelScale"	"0.6"
 		"AutoAttacksByDefault"	"0"
 		// 选择圈半径
 		"RingRadius"	"50"
@@ -305,37 +305,37 @@
 		// "AttributeIntelligenceGain"	"1.700000"
 	}
 
-	"npc_dota_hero_warlock"
-	{
-		"AutoAttacksByDefault"	"0"
-		// 魔法上限
-		"StatusMana"	"0"
-		// "AttributePrimary"	"0"
-		// 技能槽数量，最低4个，最高为6个，单位可以同时拥有最多16个技能
-		"AbilityLayout"	"2"
-		"Ability1"	""
-		"Ability2"	""
-		"Ability3"	""
-		"Ability4"	""
-		"Ability5"	""
-		"Ability6"	""
-		"Ability7"	""
-		"Ability8"	""
-		"Ability9"	""
-		"Ability10"	"tt7"
-		"Ability11"	"tt8"
-		"Ability12"	"tt5"
-		"Ability13"	"tt6"
-		"Ability14"	"tt3"
-		"Ability15"	"tt4"
-		"Ability16"	"tt1"
-		"Ability17"	"tt2"
-		// "AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
-	}
+	// "npc_dota_hero_warlock"
+	// {
+	// 	"AutoAttacksByDefault"	"0"
+	// 	// 魔法上限
+	// 	"StatusMana"	"0"
+	// 	// "AttributePrimary"	"0"
+	// 	// 技能槽数量，最低4个，最高为6个，单位可以同时拥有最多16个技能
+	// 	"AbilityLayout"	"2"
+	// 	"Ability1"	""
+	// 	"Ability2"	""
+	// 	"Ability3"	""
+	// 	"Ability4"	""
+	// 	"Ability5"	""
+	// 	"Ability6"	""
+	// 	"Ability7"	""
+	// 	"Ability8"	""
+	// 	"Ability9"	""
+	// 	"Ability10"	"tt7"
+	// 	"Ability11"	"tt8"
+	// 	"Ability12"	"tt5"
+	// 	"Ability13"	"tt6"
+	// 	"Ability14"	"tt3"
+	// 	"Ability15"	"tt4"
+	// 	"Ability16"	"tt1"
+	// 	"Ability17"	"tt2"
+	// 	// "AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
+	// }
 
 	"npc_dota_hero_undying"
 	{
-		"ModelScale"	"0.8"
+		"ModelScale"	"0.6"
 		"AutoAttacksByDefault"	"0"
 		// 选择圈半径
 		"RingRadius"	"50"
@@ -372,7 +372,7 @@
 
 	"npc_dota_hero_life_stealer"
 	{
-		"ModelScale"	"0.7"
+		"ModelScale"	"0.6"
 		"AutoAttacksByDefault"	"0"
 		// 选择圈半径
 		"RingRadius"	"50"
@@ -409,7 +409,7 @@
 
 	"npc_dota_hero_ursa"
 	{
-		"ModelScale"	"0.7"
+		"ModelScale"	"0.6"
 		"AutoAttacksByDefault"	"0"
 		// 选择圈半径
 		"RingRadius"	"50"

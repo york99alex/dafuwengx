@@ -1,4 +1,7 @@
 import { TIME_SELECTHERO } from '../constants/constant';
+import { TP_START } from '../constants/gamemessage';
+import { KeyValues } from '../kv';
+import { getRandomsInRange } from '../utils/amhc';
 
 export class HeroSelection {
     m_timeLast = TIME_SELECTHERO;
@@ -8,10 +11,15 @@ export class HeroSelection {
     m_RandomHeroPlayerID: PlayerID[] = [];
     m_SelectHeroPlayerID: PlayerID[] = [];
     m_PlayersSort: PlayerID[] = [];
+    hostID: PlayerID;
+    botSetNum: number = 0;
 
     init() {
-        print('PlayerManager.m_tabPlayers:');
-        DeepPrintTable(GameRules.PlayerManager.m_tabPlayers);
+        print('[HeroSelection] init...');
+
+        CustomGameEventManager.RegisterListener('C2S_Bot_Setting', (_, event) => {
+            this.botSetNum = event.setNum;
+        });
     }
 
     /** 自动选择英雄(自动随机英雄) */
@@ -56,11 +64,54 @@ export class HeroSelection {
         DeepPrintTable(this.m_PlayersSort);
         CustomNetTables.SetTableValue('HeroSelection', 'PlayersSort', this.m_PlayersSort);
     }
-
     /** 获得(this.m_PlayersSort)玩家ID对应的index */
     GetPlayerIDIndex(nPlayerID: number): number {
         for (let index = 0; index < this.m_PlayersSort.length; index++) {
             if (this.m_PlayersSort[index] == nPlayerID) return index;
         }
+    }
+
+    UpdateHost() {
+        print('===UpdateHost===tPlayer length', GameRules.PlayerManager.m_tabPlayers.length);
+        for (const player of GameRules.PlayerManager.m_tabPlayers) {
+            if (GameRules.PlayerHasCustomGameHostPrivileges(PlayerResource.GetPlayer(player.m_nPlayerID))) {
+                this.hostID = player.m_nPlayerID;
+                print('===hostID:', this.hostID);
+                CustomNetTables.SetTableValue('HostPlayer', 'hostPlayer', { hostID: this.hostID });
+                return;
+            }
+        }
+    }
+
+    /**创建机器人玩家 */
+    spawnBots() {
+        print('===spawnBots===botSetNum:', this.botSetNum);
+        if (this.botSetNum == 0) return;
+
+        let botHeroes = this.getUnselectedHeroes();
+        const randoms = getRandomsInRange(0, botHeroes.length - 1, this.botSetNum);
+
+        for (let i = 0; i < this.botSetNum; i++) {
+            const heroname = botHeroes[randoms[i]];
+            print('===bot ' + i + ': ', heroname, heroname.split('npc_dota_hero_')[1]);
+
+            const eBot = GameRules.AddBotPlayerWithEntityScript(heroname, heroname.split('npc_dota_hero_')[1], DotaTeam.GOODGUYS, null, true);
+            FindClearSpaceForUnit(eBot, GameRules.PathManager.getPathByType(TP_START)[0].getNilPos(eBot), true);
+        }
+    }
+
+    getUnselectedHeroes() {
+        let result: string[] = [];
+        for (const heroname in KeyValues.HeroKV) {
+            let bSelect = false;
+            for (const player of GameRules.PlayerManager.m_tabPlayers) {
+                if (PlayerResource.GetSelectedHeroName(player.m_nPlayerID) == heroname) {
+                    bSelect = true;
+                    break;
+                }
+            }
+            if (!bSelect) result.push(heroname);
+        }
+        return result;
     }
 }

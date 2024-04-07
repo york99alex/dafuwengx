@@ -38,6 +38,8 @@ export const TIME_SUPPLY_OPRT: number = 101;
 export const TIME_OUT_DISCONNECT: number = 300;
 // 入狱豹子数
 export const PRISON_BAOZI_COUNT: number = 3;
+/**起兵回合 */
+export const BZ_OUT_ROUND = 5;
 // 兵卒最大等级
 export const BZ_MAX_LEVEL: number = 3;
 /**远程兵卒回魔率 */
@@ -178,9 +180,6 @@ export const HERO_TO_AttackCap = {
     npc_dota_hero_life_stealer: UnitAttackCapability.MELEE_ATTACK,
     npc_dota_hero_ursa: UnitAttackCapability.MELEE_ATTACK,
 };
-
-/**起兵回合 */
-export const BZ_OUT_ROUND = 2;
 
 /**地图拐角处 */
 export const PATH_VERTEX = [1, 11, 21, 31];

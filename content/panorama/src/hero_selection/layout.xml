@@ -1,6 +1,7 @@
 <root>
     <styles>
         <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+        <include src="./styles.less" />
     </styles>
     <scripts>
         <include src="./index.tsx" />

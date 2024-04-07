@@ -510,8 +510,8 @@
 		"MaxLevel" "3"
 		"RequiredLevel" "0"
 		"LevelsBetweenUpgrades" "10"
-		"AbilityCooldown" "0"
-		"AbilityManaCost" "0"
+		"AbilityCooldown" "3"
+		"AbilityManaCost" "2"
 		"ID" "5226"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityTextureName" "dragon_knight_breathe_fire"
@@ -709,7 +709,7 @@
 		"BaseClass" "ability_lua"
 		"ScriptFile" "ability/ursa/Ability_ursa_fury_swipes"
 		"AbilityValues" {
-			"damage_per_stack" "10 17 27"
+			"damage_per_stack" "7 17 27"
 			"reset_round" "1 1 2"
 		}
 		"MaxLevel" "3"
