@@ -13,6 +13,7 @@ export class HeroSelection {
     m_PlayersSort: PlayerID[] = [];
     hostID: PlayerID;
     botSetNum: number = 0;
+    m_tBots: CDOTA_BaseNPC_Hero[] = [];
 
     init() {
         print('[HeroSelection] init...');
@@ -71,12 +72,11 @@ export class HeroSelection {
         }
     }
 
+    /**更新房主id至网表 */
     UpdateHost() {
-        print('===UpdateHost===tPlayer length', GameRules.PlayerManager.m_tabPlayers.length);
         for (const player of GameRules.PlayerManager.m_tabPlayers) {
             if (GameRules.PlayerHasCustomGameHostPrivileges(PlayerResource.GetPlayer(player.m_nPlayerID))) {
                 this.hostID = player.m_nPlayerID;
-                print('===hostID:', this.hostID);
                 CustomNetTables.SetTableValue('HostPlayer', 'hostPlayer', { hostID: this.hostID });
                 return;
             }
@@ -85,7 +85,6 @@ export class HeroSelection {
 
     /**创建机器人玩家 */
     spawnBots() {
-        print('===spawnBots===botSetNum:', this.botSetNum);
         if (this.botSetNum == 0) return;
 
         let botHeroes = this.getUnselectedHeroes();
@@ -93,13 +92,13 @@ export class HeroSelection {
 
         for (let i = 0; i < this.botSetNum; i++) {
             const heroname = botHeroes[randoms[i]];
-            print('===bot ' + i + ': ', heroname, heroname.split('npc_dota_hero_')[1]);
-
             const eBot = GameRules.AddBotPlayerWithEntityScript(heroname, heroname.split('npc_dota_hero_')[1], DotaTeam.GOODGUYS, null, true);
+            this.m_tBots.push(eBot);
             FindClearSpaceForUnit(eBot, GameRules.PathManager.getPathByType(TP_START)[0].getNilPos(eBot), true);
         }
     }
 
+    /**获取未选择的英雄 */
     getUnselectedHeroes() {
         let result: string[] = [];
         for (const heroname in KeyValues.HeroKV) {

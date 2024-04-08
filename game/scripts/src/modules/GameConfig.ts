@@ -963,7 +963,7 @@ export class GameConfig {
     }
 
     onEvent_game_rules_state_change(): void {
-        print('===game state change===', GameRules.State_Get());
+        print('[Server]===game state change===', GameRules.State_Get());
         if (GameRules.State_Get() == GameState.WAIT_FOR_PLAYERS_TO_LOAD) {
             // 等待玩家加载界面
         } else if (GameRules.State_Get() == GameState.CUSTOM_GAME_SETUP) {

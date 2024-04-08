@@ -5,13 +5,15 @@ export default function BotSet() {
 
     // 获取房主
     useEffect(() => {
-        setInterval(() => {
+        const timer = setInterval(() => {
             const id = CustomNetTables.GetTableValue('HostPlayer', 'hostPlayer')?.hostID;
             if (id != undefined && id >= 0) {
                 setHostID(id);
                 return;
             }
         }, 1000);
+
+        return () => clearInterval(timer);
     }, []);
 
     return (

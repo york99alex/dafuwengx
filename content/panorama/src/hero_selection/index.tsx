@@ -77,35 +77,4 @@ setInterval(() => {
     });
 }, 10);
 
-function FindDotaHudElement(sElement: string) {
-    var BaseHud = $.GetContextPanel()!.GetParent()!.GetParent()!.GetParent()!;
-
-    console.log(BaseHud.id);
-    return BaseHud.FindChildTraverse(sElement);
-}
-
-ShowLoading();
-
-function ShowLoading() {
-    console.log(Game.GetState());
-    if (Game.GameStateIs(DOTA_GameState.DOTA_GAMERULES_STATE_PLAYER_DRAFT) || Game.GameStateIs(DOTA_GameState.DOTA_GAMERULES_STATE_STRATEGY_TIME)) {
-        if (FindDotaHudElement('PreGame') != null) {
-            FindDotaHudElement('PreGame')!.style.opacity = '0';
-        }
-        $.Schedule(0.5, ShowLoading);
-    } else {
-        FindDotaHudElement('PreGame')!.style.opacity = '1';
-    }
-}
-
-render(
-    <>
-        {/* 在选马倒计时之前，可能有玩家长时间加载，因此添加Panel遮挡加载玩家界面的全英雄选择界面 */}
-        {Game.GetState() == DOTA_GameState.DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD ? (
-            <Panel style={{ width: '100%', height: '100%', backgroundImage: "url('file://{images}/custom_game/loading.png" }}></Panel>
-        ) : (
-            <BotSet></BotSet>
-        )}
-    </>,
-    $.GetContextPanel()
-);
+render(<BotSet></BotSet>, $.GetContextPanel());

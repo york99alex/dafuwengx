@@ -94,8 +94,11 @@ module.exports = {
                 // if type is not set, it will not be included in the manifest
                 // usually used for loading screen, tooltips and popups which loaded
                 // by engine or BLoadLayout etc.
-                
-                // 加载地图阶段（右侧天辉夜魇玩家倒计时，选马页面）
+
+                // 最先加载的启动页面
+                { import: './setup/layout.xml', type: 'GameSetup' },
+
+                // 加载页面
                 { import: './loading-screen/layout.xml', filename: 'custom_loading_screen.xml' },
 
                 // provide type and filename to include in the manifest

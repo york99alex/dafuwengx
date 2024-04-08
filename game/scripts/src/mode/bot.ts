@@ -1,4 +1,3 @@
-import { TP_START } from '../constants/gamemessage';
 
 export class Bot {
     constructor(eBot?: CDOTA_BaseNPC_Hero) {}
