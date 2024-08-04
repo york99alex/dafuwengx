@@ -809,6 +809,7 @@ export const App = () => {	// 根组件
 - DOTA2技能Lua库 
    - https://github.com/Elfansoer/dota-2-lua-abilities
    - https://github.com/vulkantsk/SpellLibraryLua
+   - https://github.com/Pizzalol/SpellLibrary
 - [ts+xtemplate](https://www.bilibili.com/video/BV1n44y1e7B4?p=1)
 - [火蛙-KV键值文档](https://docs.qq.com/sheet/DZUVFaVVobmptQ2Rl)
 - TS教程:
@@ -825,6 +826,7 @@ export const App = () => {	// 根组件
    - [如何在一个react页面内控制另一个页面的开关显示 (shimo.im)](https://shimo.im/docs/gXqmewLn0GHnedqo/read)
    - [ 制作自定义的ui背景 (shimo.im)](https://shimo.im/docs/dPkpKvV7Y4ueDpqO/read)
 - [V社内置函数（二）](https://jwjqx0waogx.feishu.cn/wiki/Sn1QwpD2Cir9eJki9sec5SMtnme?from=from_copylink) 在游戏vpk目录下有
+- [Dota2官方伤害结算流程 (shimo.im)](https://shimo.im/docs/N2A1MoGMp4hvXjAD/read)
 
 
 ## ==文件目录/路径==
